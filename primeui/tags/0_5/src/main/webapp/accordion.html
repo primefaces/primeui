@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+        <meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="expires" content="0" />
+        <title>Prime-UI Showcase</title>
+        <link rel="stylesheet" href="demo/css/aristo/theme.css" />
+        <link rel="stylesheet" href="demo/css/demo.css" />
+        <link rel="stylesheet" href="demo/css/sh.css" />
+        <link rel="stylesheet" href="prime-ui/css/accordion/accordion.css" />
+        <script type="text/javascript" src="demo/js/sh.js"></script>
+        <link rel="stylesheet" href="prime-ui/css/tabview/tabview.css" />
+        <script type="text/javascript" src="demo/js/jquery.js"></script>
+        <script type="text/javascript" src="demo/js/jquery-ui.js"></script>
+        <script type="text/javascript" src="demo/js/demo.js"></script>
+        <script type="text/javascript" src="prime-ui/js/accordion/accordion.js"></script>
+        <script type="text/javascript" src="prime-ui/js/tabview/tabview.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                $('#default').puiaccordion();
+
+                $('#multiple').puiaccordion({multiple:true});
+
+                $('#doc').puitabview();
+            });
+        </script>
+    <body>
+
+    <div id="header" class="ui-widget ui-widget-header">
+        <div id="logo">
+            <img src="demo/images/logo.png" alt="Logo"/>
+        </div>
+        <div id="menu" class="ui-widget">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="http://www.primefaces.org/downloads.html" style="">Download</a></li>
+                <li><a href="http://forum.primefaces.org/viewforum.php?f=16" style="">Forum</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="page" class="ui-widget">
+        <div id="sidebar" class="ui-widget-content ui-corner-bottom ui-helper-clearfix ui-shadow">
+
+            <div class="ui-widget submenu-content">
+                <a href="accordion.html" class="ui-state-default ui-state-highlight ui-corner-all widget-link">
+                    Accordion
+                </a>
+                <a href="button.html" class="ui-state-default ui-corner-all widget-link">
+                    Button
+                </a>
+                <a href="fieldset.html" class="ui-state-default ui-corner-all widget-link">
+                    Fieldset
+                </a>
+                <a href="galleria.html" class="ui-state-default ui-corner-all widget-link">
+                    Growl
+                </a>
+                <a href="growl.html" class="ui-state-default ui-corner-all widget-link">
+                    Growl
+                </a>
+                <a href="inputtext.html" class="ui-state-default ui-corner-all widget-link">
+                    Inputtext
+                </a>
+                <a href="inputtextarea.html" class="ui-state-default ui-corner-all widget-link">
+                    Inputtextarea
+                </a>
+                <a href="lightbox.html" class="ui-state-default ui-corner-all widget-link">
+                    Lightbox
+                </a>
+                <a href="panel.html" class="ui-state-default ui-corner-all widget-link">
+                    Panel
+                </a>
+                <a href="rating.html" class="ui-state-default ui-corner-all widget-link">
+                    Rating
+                </a>
+                <a href="spinner.html" class="ui-state-default ui-corner-all widget-link">
+                    Spinner
+                </a>
+                <a href="tabview.html" class="ui-state-default ui-corner-all widget-link">
+                    Tabview
+                </a>
+            </div>
+
+        </div>
+
+        <div id="content">
+            
+            <h2 class="ui-widget-header widget-title ui-corner-all">Accordion</h2>
+
+            <h3 class="title" style="margin-top: 0px;">Default</h3>
+            <div id="default">
+                <h3>Godfather 1</h3>
+                <div>
+                    The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
+                </div>
+
+                <h3>Godfather 2</h3>
+                <div>
+                    Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows.
+                </div>
+
+                <h3>Godfather 3</h3>
+                <div>
+                    After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.
+                </div>    
+            </div>
+
+            <h3 class="title" >Multiple</h3>
+            <div id="multiple">
+                <h3>Godfather 1</h3>
+                <div>
+                    The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
+                </div>
+
+                <h3>Godfather 2</h3>
+                <div>
+                    Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows.
+                </div>
+
+                <h3>Godfather 3</h3>
+                <div>
+                    After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.
+                </div>    
+            </div>
+
+            <h2 class="title" >Documentation</h2>
+            <div id="doc">
+                <ul>
+                    <li><a href="#doc-overview">Overview</a></li>
+                    <li><a href="#doc-options">Options</a></li>
+                    <li><a href="#doc-events">Events</a></li>
+                    <li><a href="#doc-methods">Methods</a></li>
+                    <li><a href="#doc-methods">Source</a></li>
+                </ul>
+                <div>
+                    <div id="doc-overview">
+                        <p>Accordion groups a collection of contents in tabs. Markup required is a set of headers and corresponding contents. </p>
+
+                        <pre name="code" class="jscript">
+$('#default').puiaccordion();
+                        </pre>
+
+                        <pre name="code" class="xml">
+&lt;div id="default"&gt;
+    &lt;h3&gt;Title 1&lt;/h3&gt;
+    &lt;div&gt;
+        Content 1
+    &lt;/div&gt;  
+
+    &lt;h3&gt;Title 2&lt;/h3&gt;
+    &lt;div&gt;
+        Content 2
+    &lt;/div&gt;  
+
+    &lt;h3&gt;Title 3&lt;/h3&gt;
+    &lt;div&gt;
+        Content 3
+    &lt;/div&gt;  
+&lt;/div&gt;
+                        </pre>
+                    </div>
+
+                    <div id="doc-options">
+                        <table class="doc-table">
+                            <thead>
+                            <th class="ui-state-default">Name</th>
+                            <th class="ui-state-default">Type</th>
+                            <th class="ui-state-default">Default</th>
+                            <th class="ui-state-default">Description</th>
+                            </thead>
+                            <tbody>
+                                <tr class="ui-widget-content">
+                                    <td>activeIndex</td>
+                                    <td>Integer/Array</td>
+                                    <td>0</td>
+                                    <td>Index of the active tab. If multiple is enabled, an array of active indexes.</td>
+                                </tr>
+                                <tr class="ui-widget-content">
+                                    <td>multiple</td>
+                                    <td>Boolean</td>
+                                    <td>false</td>
+                                    <td>Defines if multiple tabs can be active at the same time.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="doc-events">
+                        <table class="doc-table">
+                            <thead>
+                            <th class="ui-state-default">Name</th>
+                            <th class="ui-state-default">Parameters</th>
+                            <th class="ui-state-default">Description</th>
+                            </thead>
+                            <tbody>
+                                <tr class="ui-widget-content">
+                                    <td>change</td>
+                                    <td>event: puiaccordionchange event
+                                        <br />
+                                        panel: New panel content</td>
+                                    <td>Fired when an inactive tab is selected.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <pre name="code" class="jscript">
+$('#default').puiaccordion({
+    change: function(event, panel) {
+        //...
+    }
+});
+                        </pre>
+                    </div>
+
+                    <div id="doc-methods">
+                        <table class="doc-table">
+                            <thead>
+                            <th class="ui-state-default">Name</th>
+                            <th class="ui-state-default">Parameters</th>
+                            <th class="ui-state-default">Description</th>
+                            </thead>
+                            <tbody>
+                                <tr class="ui-widget-content">
+                                    <td>select</td>
+                                    <td>index: Index of the tab to select.</td>
+                                    <td>Activates the tab with given index.</td>
+                                </tr>
+                                <tr class="ui-widget-content">
+                                    <td>unselect</td>
+                                    <td>index: Index of the tab to unselect.</td>
+                                    <td>Deactivates the tab with given index.</td>
+                                </tr>
+                                <tr class="ui-widget-content">
+                                    <td>option</td>
+                                    <td>name: Name of the option</td>
+                                    <td>Returns the value of the option.</td>
+                                </tr>
+                                <tr class="ui-widget-content">
+                                    <td>option</td>
+                                    <td>name: Name of the option, value: Value of the option</td>
+                                    <td>Set the value of the option.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <pre name="code" class="jscript">
+$('#default').puiaccordion('select', 1);
+                        </pre>
+                    </div>
+
+                    <div id="doc-source">
+                        <pre name="code" class="jscript">
+&lt;script type="text/javascript"&gt;
+    $(function() {
+        $('#default').puiaccordion();
+
+        $('#multiple').puiaccordion({multiple:true});
+    });
+&lt;/script&gt;
+                        </pre>
+
+                        <pre name="code" class="xml">
+&lt;div id="default"&gt;
+    &lt;h3&gt;Godfather 1&lt;/h3&gt;
+    &lt;div&gt;
+        The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
+    &lt;/div&gt;
+
+    &lt;h3&gt;Godfather 2&lt;/h3&gt;
+    &lt;div&gt;
+        Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows.
+    &lt;/div&gt;
+
+    &lt;h3&gt;Godfather 3&lt;/h3&gt;
+    &lt;div&gt;
+        After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.
+    &lt;/div&gt;    
+&lt;/div&gt;
+
+&lt;div id="multiple"&gt;
+    &lt;h3&gt;Godfather 1&lt;/h3&gt;
+    &lt;div&gt;
+        The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
+    &lt;/div&gt;
+
+    &lt;h3&gt;Godfather 2&lt;/h3&gt;
+    &lt;div&gt;
+        Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows.
+    &lt;/div&gt;
+
+    &lt;h3&gt;Godfather 3&lt;/h3&gt;
+    &lt;div&gt;
+        After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.
+    &lt;/div&gt;    
+&lt;/div&gt;
+                        </pre>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div style="clear: both;">&nbsp;</div>
+    </div>
+
+    <div id="footer" class="ui-widget ui-widget-header ui-corner-bottom">
+        <p>Prime-UI, From the Producers of <a href="http://www.primefaces.org">PrimeFaces</a>. Copyright 2012 - <a href="http://www.prime.com.tr">Prime Teknoloji.</a></p>
+    </div>
+
+    <script language="javascript">
+        dp.SyntaxHighlighter.ClipboardSwf = '/demo/js/clipboard.swf';
+        dp.SyntaxHighlighter.HighlightAll('code');
+    </script>
+
+</body>
+</html>

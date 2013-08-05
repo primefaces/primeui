@@ -1,0 +1,81 @@
+.ui-widget {
+    font-size: 12px !important;
+}
+
+#sidebar {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
+    float: left;
+    margin-top: 1em;
+    overflow: hidden;
+    width: 15%;
+}
+
+#sidebar ul {
+    margin: 0;
+    padding: 0;
+}
+
+#sidebar li {
+    list-style-type: none;
+    line-height: 15px;
+    list-style-type: none;
+    padding: 5px 10px 5px 15px;
+    border-bottom: 1px solid #F2F2F2;
+    font-weight: bold;
+}
+
+#sidebar .widgets-header {
+    background: none repeat scroll 0 0 #85B2CB;
+    color: #FFFFFF;
+}
+
+#sidebar li a {
+    color: #636363;
+}
+
+#content-demo {
+    float: left;
+    padding-left: 20px;
+    width: 80%;
+}
+
+#content-demo p {
+    display: none;
+}
+
+.content-block h1.widget-title {
+    font-size: 24px;
+    text-align: center;
+    background: none repeat scroll 0 0 #424548;
+    color: #F9F7F7;
+    padding: 4px 10px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.doc-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.doc-table th, .doc-table td {
+    border-color: inherit;
+    border-style: solid;
+    border-width: 1px;
+    padding: 4px 10px;
+}
+
+.content-block h3.pui-accordion-header {
+    margin: auto;
+	font: inherit;
+	color: inherit;
+}
+
+.content-block .pui-menu h3 {
+	color: inherit;
+}
+
+.content-block h3 {
+    color: #636363;
+}

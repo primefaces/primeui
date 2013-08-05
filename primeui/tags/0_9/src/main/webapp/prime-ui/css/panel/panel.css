@@ -1,0 +1,51 @@
+.pui-panel {
+	padding: 0.2em;
+}
+
+.pui-panel .pui-panel-titlebar {
+	padding: 0.5em 1em 0.3em;
+}
+
+.pui-panel .pui-panel-title {
+	margin: 0.1em 16px 0.2em 0;
+}
+
+.pui-panel .pui-panel-titlebar-icon {
+	float: right;
+    cursor: pointer;
+}
+
+.pui-panel .pui-panel-titlebar-icon,
+.pui-panel .pui-panel-titlebar-icon:hover,
+.pui-panel .pui-panel-titlebar-icon:focus {
+	margin-left:0.2em;
+    margin-top:-0.1em;
+    *margin:-1.5em 0em 0em 0.2em;
+}
+
+.pui-panel .pui-panel-content {
+	border: 0;
+    background: none;
+	padding: 0.5em 1em;
+}
+
+.pui-panel .pui-panel-footer {
+	border-width:1px 0 0;
+	margin:0.5em 0 0;
+	padding:0.5em 1em;
+	text-align:left;
+}
+
+.pui-panel-collapsed-h .pui-panel-titlebar-icon,
+.pui-panel-collapsed-h .pui-panel-titlebar-icon:hover,
+.pui-panel-collapsed-h .pui-panel-titlebar-icon:focus {
+    *margin:-0.2em 0em 0em 0.1em;
+}
+
+.pui-panel.pui-panel-collapsed-h {
+    width: 42px;
+}
+
+.pui-panel.pui-panel-collapsed-h .pui-panel-title {
+    display:none;
+}            

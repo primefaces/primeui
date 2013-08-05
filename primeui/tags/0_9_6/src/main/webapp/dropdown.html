@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>PrimeUI</title>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+        <meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="expires" content="0" />
+        <link rel="stylesheet" type="text/css" href="http://www.primefaces.org/css/all.css" />
+        <link rel="stylesheet" type="text/css" href="demo/css/demo.css" />
+        <link rel="stylesheet" href="demo/css/jquery-ui.css" />
+        <link rel="stylesheet" href="themes/aristo/theme.css" />
+        <link rel="stylesheet" href="primeui/css/core/core.css" />
+        <link rel="stylesheet" href="demo/css/sh.css" />
+        <link rel="stylesheet" href="primeui/css/inputtext/inputtext.css" />
+        <link rel="stylesheet" href="primeui/css/dropdown/dropdown.css" />
+        <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
+        <script type="text/javascript" src="demo/js/sh.js"></script>
+        <script type="text/javascript" src="demo/js/jquery.js"></script>
+        <script type="text/javascript" src="demo/js/jquery-ui.js"></script>
+        <script src="http://www.primefaces.org/script/common.js"></script>
+        <script type="text/javascript" src="primeui/js/core/core.js"></script>
+        <script type="text/javascript" src="primeui/js/inputtext/inputtext.js"></script>
+        <script type="text/javascript" src="primeui/js/dropdown/dropdown.js"></script>
+        <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
+                        'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
+                        'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
+                        'ui-darkness', 'ui-lightness', 'vader');
+
+                $('#basic').puidropdown();
+
+                $('#editable').puidropdown({
+                    editable: true
+                });
+
+                $('#custom').puidropdown({
+                    source: themes,
+                    content: function(option) {
+                        return '<img src="demo/images/themes/' + option + '.png" alt="" /><span style="float:right;font-size:14px">' + option + '</span>';
+                    }
+                });
+
+                $('#filter').puidropdown({
+                    filter: true
+                });
+
+                $('#doc').puitabview();
+                
+                $('#themes').puidropdown({
+                    source: themes,
+                    content: function(option) {
+                        return '<img src="demo/images/themes/' + option + '.png" alt="" /><span style="float:right;font-size:14px">' + option + '</span>';
+                    },
+                    change: function(e) {
+                        var themeLink = $('link[href$="theme.css"]'),
+                        newThemeURL =  'themes/' + $(this).val() + '/theme.css';
+                        
+                        themeLink.attr('href', newThemeURL);
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="header">
+                <div class="header-block">
+                    <h1 class="logo"><a href="index.html">prime faces</a></h1>
+                    <ul id="nav">
+                        <li><a id="menu-overview" href="#">Overview</a></li>
+                        <li><a id="menu-demos" href="#">Demos</a></li>
+                        <li><a id="menu-development" href="#">Development</a></li>
+                        <li><a id="menu-support" href="#">Support</a></li>
+                        <li><a id="menu-social" href="#">Social</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="main">
+                <div class="content-section">
+                    <div class="heading">
+                        <h2>PrimeUI</h2>
+                    </div>
+                    <div class="content-block">					
+                        <div id="sidebar">
+                            <ul>
+                                <li class="widgets-header">Resources</li>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="setup.html">Setup</a></li>
+                                <li><a href="http://www.primefaces.org/downloads.html#primeui">Download</a></li>
+                                <li><a href="themes.html">Themes</a></li>
+                                <li><a href="http://forum.primefaces.org">Forum</a></li>
+                                <li><a href="http://blog.primefaces.org/?cat=11">Blog</a></li>
+                                <li><a href="license.html">License</a></li>
+                            </ul>
+                            <ul>
+                                <li class="widgets-header">ThemeSwitcher</li>
+                                <li class="themes-container"><select id="themes" name="themes"></select></li>
+                            </ul>
+                            <ul>
+                                <li class="widgets-header">Widgets</li>
+                                <li><a href="accordion.html">Accordion</a></li>
+                                <li><a href="autocomplete.html">AutoComplete</a></li>
+                                <li><a href="breadcrumb.html">Breadcrumb</a></li>
+                                <li><a href="button.html">Button</a></li>
+                                <li><a href="checkbox.html">Checkbox</a></li>
+                                <li><a href="datatable.html">Datatable</a></li>
+                                <li><a href="dialog.html">Dialog</a></li>
+                                <li><a href="dropdown.html">Dropdown</a></li>
+                                <li><a href="fieldset.html">Fieldset</a></li>
+                                <li><a href="galleria.html">Galleria</a></li>
+                                <li><a href="growl.html">Growl</a></li>
+                                <li><a href="inputtext.html">Inputtext</a></li>
+                                <li><a href="inputtextarea.html">Inputtextarea</a></li>
+                                <li><a href="lightbox.html">Lightbox</a></li>
+                                <li><a href="menu.html">Menu</a></li>
+                                <li><a href="menubar.html">Menubar</a></li>
+                                <li><a href="contextmenu.html">Menu - Context</a></li>
+                                <li><a href="slidemenu.html">Menu - Slide</a></li>
+                                <li><a href="tieredmenu.html">Menu - Tiered</a></li>
+                                <li><a href="notify.html">Notify</a></li>
+                                <li><a href="paginator.html">Paginator</a></li>
+                                <li><a href="panel.html">Panel</a></li>
+                                <li><a href="password.html">Password</a></li>
+                                <li><a href="progressbar.html">ProgressBar</a></li>
+                                <li><a href="radiobutton.html">RadioButton</a></li>
+                                <li><a href="rating.html">Rating</a></li>
+                                <li><a href="spinner.html">Spinner</a></li>
+                                <li><a href="tabview.html">Tabview</a></li>
+                                <li><a href="terminal.html">Terminal</a></li>
+                                <li><a href="tooltip.html">Tooltip</a></li>
+                            </ul>
+                        </div>
+
+                        <div id="content-demo">
+                            <h1 class="widget-title">Dropdown</h1>
+                            <p>Dropdown is an advanced widget to select an item from a collection.</p>
+
+                            <h3>Basic</h3>
+                            <select id="basic" name="basic">
+                                <option value="0">Select One</option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+
+                            <h3>Editable</h3>
+                            <select id="editable" name="editable">
+                                <option value="0">Select a City</option>
+                                <option value="1">Barcelona</option>
+                                <option value="2">Berlin</option>
+                                <option value="3">Istanbul</option>
+                                <option value="4">London</option>
+                                <option value="5">New York</option>
+                                <option value="6">Paris</option>
+                                <option value="7">Rome</option>
+                            </select>
+
+                            <h3>Content</h3>
+                            <select id="custom" name="custom"></select>
+
+                            <h3>Filter</h3>
+                            <select id="filter" name="filter">
+                                <option value="0">Select a City</option>
+                                <option value="1">Barcelona</option>
+                                <option value="2">Berlin</option>
+                                <option value="3">Istanbul</option>
+                                <option value="4">London</option>
+                                <option value="5">New York</option>
+                                <option value="6">Paris</option>
+                                <option value="7">Rome</option>
+                            </select>
+
+                            <h3>Documentation</h3>
+                            <div id="doc">
+                                <ul>
+                                    <li><a href="#doc-overview">Overview</a></li>
+                                    <li><a href="#doc-options">Options</a></li>
+                                    <li><a href="#doc-events">Events</a></li>
+                                    <li><a href="#doc-methods">Methods</a></li>
+                                    <li><a href="#doc-methods">Source</a></li>
+                                </ul>
+                                <div>
+                                    <div id="doc-overview">
+
+                                        <p>Dropdown is an advanced widget to select an item from a collection.</p>
+
+                                        <pre name="code" class="jscript">
+$('#basic').puidropdown();
+                                        </pre>
+
+                                        <pre name="code" class="xml">
+&lt;select id="basic" name="basic"&gt;
+    &lt;option value="0"&gt;Select One&lt;/option&gt;
+    &lt;option value="1"&gt;Option 1&lt;/option&gt;
+    &lt;option value="2"&gt;Option 2&lt;/option&gt;
+    &lt;option value="3"&gt;Option 3&lt;/option&gt;
+&lt;/select&gt;
+                                        </pre>
+
+                                    </div>
+
+                                    <div id="doc-options">
+
+                                        <table class="doc-table">
+                                            <thead>
+                                                <th class="ui-state-default">Name</th>
+                                                <th class="ui-state-default">Type</th>
+                                                <th class="ui-state-default">Default</th>
+                                                <th class="ui-state-default">Description</th>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="ui-widget-content">
+                                                    <td>effect</td>
+                                                    <td>string</td>
+                                                    <td>fade</td>
+                                                    <td>Animation to run on displaying the options overlay, refer to jQuery UI effect api for valid values.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>effectSpeed</td>
+                                                    <td>int/string</td>
+                                                    <td>normal</td>
+                                                    <td>Duration in milliseconds or keywords like slow, normal and fast.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>filter</td>
+                                                    <td>boolean</td>
+                                                    <td>false</td>
+                                                    <td>Adds a filter input at options panel when enabled.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>filterMatchMode</td>
+                                                    <td>string</td>
+                                                    <td>startsWith</td>
+                                                    <td>Mode of filter, valid values are startsWith, contains, endsWith and custom.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>caseSensitiveFilter</td>
+                                                    <td>false</td>
+                                                    <td>boolean</td>
+                                                    <td>Defines case sensitivity on filtering.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>filterFunction</td>
+                                                    <td>function</td>
+                                                    <td>null</td>
+                                                    <td>Function to be used in custom filtering, this function gets option as parameter and needs to return a boolean.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>source</td>
+                                                    <td>array</td>
+                                                    <td>null</td>
+                                                    <td>An array of items to populate dropdown dynamically. Objects in this array can be simple types or object with
+                                                        label-value fields like {label:'Option 1', value:1}</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>content</td>
+                                                    <td>string</td>
+                                                    <td>null</td>
+                                                    <td>Content template of an item in overlay.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>scrollHeight</td>
+                                                    <td>integer</td>
+                                                    <td>200</td>
+                                                    <td>Maximum height boundary of overlay panel in pixels, if total height of items exceed this value, scrollbar is displayed.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+
+                                    <div id="doc-events">
+
+                                        <table class="doc-table">
+                                            <thead>
+                                                <th class="ui-state-default">Name</th>
+                                                <th class="ui-state-default">Parameters</th>
+                                                <th class="ui-state-default">Description</th>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="ui-widget-content">
+                                                    <td>change</td>
+                                                    <td>
+                                                        event: puidropdownchange event
+                                                    </td>
+                                                    <td>Fired on value change.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div id="doc-methods">
+
+                                        <table class="doc-table">
+                                            <thead>
+                                                <th class="ui-state-default">Name</th>
+                                                <th class="ui-state-default">Parameters</th>
+                                                <th class="ui-state-default">Description</th>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="ui-widget-content">
+                                                    <td>getSelectedValue</td>
+                                                    <td>-.</td>
+                                                    <td>Returns value of current value.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>getSelectedLabel</td>
+                                                    <td>-.</td>
+                                                    <td>Returns label of current option.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>selectValue</td>
+                                                    <td>value: Value to select.</td>
+                                                    <td>Updates the current value with given parameter.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>option</td>
+                                                    <td>name: Name of the option</td>
+                                                    <td>Returns the value of the option.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>option</td>
+                                                    <td>name: Name of the option, value: Value of the option</td>
+                                                    <td>Set the value of the option.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <pre name="code" class="jscript">
+$('#basic').puidropdown('selectValue', 1);
+                                        </pre>
+
+                                    </div>
+
+                                    <div id="doc-source">
+
+                                        <pre name="code" class="jscript">
+&lt;script type="text/javascript"&gt;
+    $(function() {
+        var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
+        'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
+        'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
+        'ui-darkness', 'ui-lightness', 'vader');
+
+        $('#basic').puidropdown();
+
+        $('#editable').puidropdown({
+            editable: true
+        });
+
+        $('#custom').puidropdown({
+            source: themes,
+            content: function(option) {
+                return '&lt;img src="demo/images/themes/' + option + '.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;' + option + '&lt;/span&gt;';
+            }
+        });
+
+        $('#filter').puidropdown({
+            filter: true
+        });
+    });
+&lt;/script&gt;
+                                        </pre>
+
+                                        <pre name="code" class="xml">
+&lt;h3 class="title title-short" style="margin-top: 0px;"&gt;Basic&lt;/h3&gt;
+&lt;select id="basic" name="basic"&gt;
+    &lt;option value="0"&gt;Select One&lt;/option&gt;
+    &lt;option value="1"&gt;Option 1&lt;/option&gt;
+    &lt;option value="2"&gt;Option 2&lt;/option&gt;
+    &lt;option value="3"&gt;Option 3&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;h3 class="title title-short"&gt;Editable&lt;/h3&gt;
+&lt;select id="editable" name="editable"&gt;
+    &lt;option value="0"&gt;Select a City&lt;/option&gt;
+    &lt;option value="1"&gt;Barcelona&lt;/option&gt;
+    &lt;option value="2"&gt;Berlin&lt;/option&gt;
+    &lt;option value="3"&gt;Istanbul&lt;/option&gt;
+    &lt;option value="4"&gt;London&lt;/option&gt;
+    &lt;option value="5"&gt;New York&lt;/option&gt;
+    &lt;option value="6"&gt;Paris&lt;/option&gt;
+    &lt;option value="7"&gt;Rome&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;h3 class="title title-short"&gt;Custom Content&lt;/h3&gt;
+&lt;select id="custom" name="custom"&gt;&lt;/select&gt;
+
+&lt;h3 class="title title-short"&gt;Filter&lt;/h3&gt;
+&lt;select id="filter" name="filter"&gt;
+    &lt;option value="0"&gt;Select a City&lt;/option&gt;
+    &lt;option value="1"&gt;Barcelona&lt;/option&gt;
+    &lt;option value="2"&gt;Berlin&lt;/option&gt;
+    &lt;option value="3"&gt;Istanbul&lt;/option&gt;
+    &lt;option value="4"&gt;London&lt;/option&gt;
+    &lt;option value="5"&gt;New York&lt;/option&gt;
+    &lt;option value="6"&gt;Paris&lt;/option&gt;
+    &lt;option value="7"&gt;Rome&lt;/option&gt;
+&lt;/select&gt;
+                                        </pre>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div style="clear: both" />
+                    </div>
+                </div>
+            </div>
+            <div id="footer">
+                <div class="footer-block">
+                    <div class="box-section">
+                        <div class="box">
+                            <h4>Overview</h4>
+                            <ul class="footer-list">
+                                <li><a href="http://www.primefaces.org/whyprimefaces.html">Why PrimeFaces</a></li>
+                                <li><a href="http://www.primefaces.org/whouses.html">Who Uses PrimeFaces</a></li>
+                                <li><a href="http://www.primefaces.org/testimonials.html">Testimonials</a></li>
+                                <li><a href="http://www.primefaces.org/license.html">License</a></li>
+                                <li><a href="http://www.primefaces.org/multimedia.html">Multimedia</a></li>
+                                <li><a href="http://www.primefaces.org/faq.html">FAQ</a></li>
+                            </ul>
+                        </div>
+                        <div class="box">
+                            <h4>Demos</h4>
+                            <ul class="footer-list">
+                                <li><a href="http://www.primefaces.org/showcase/ui/home.jsf">Showcase</a></li>
+                                <li><a href="http://www.primefaces.org/showcase/ui/macosx.jsf">Mock OS X</a></li>
+                                <li><a href="http://www.primefaces.org/showcase-labs/mobile/index.jsf">Mobile</a></li>
+                                <li><a href="http://primefaces-rocks.appspot.com/ui/">Cloud - GAE</a></li>
+                                <li><a href="http://www.primefaces.org/prime-ui/">Prime-UI</a></li>
+                            </ul>
+                        </div>
+                        <div class="box">
+                            <h4>Development</h4>
+                            <ul class="footer-list">
+                                <li><a href="http://www.primefaces.org/gettingStarted.html">Getting Started</a></li>
+                                <li><a href="http://www.primefaces.org/documentation.html">Documentation</a></li>
+                                <li><a href="http://www.primefaces.org/downloads.html">Downloads</a></li>
+                                <li><a href="http://code.google.com/p/primefaces/w/list">Wiki</a></li>
+                                <li><a href="http://www.primefaces.org/themes.html">Theme Gallery</a></li>
+                                <li><a href="http://primefaces-extensions.github.com">Extensions</a></li>
+                            </ul>
+                        </div>
+                        <div class="box">
+                            <h4>Support</h4>
+                            <ul class="footer-list">
+                                <li><a href="http://www.primefaces.org/support.html">Support Options</a></li>
+                                <li><a href="http://pro.primefaces.org">PrimeFaces PRO</a></li>
+                                <li><a href="http://www.primefaces.org/elite">PrimeFaces ELITE</a></li>
+                                <li><a href="http://www.primefaces.org/training.html">Training</a></li>
+                                <li><a href="http://forum.primefaces.org">Forum</a></li>
+                                <li><a href="http://www.primefaces.org/issuetracker.html">Issue Tracker</a></li>
+                                <li><a href="http://www.primefaces.org/partners.html">Partners</a></li>
+                            </ul>
+                        </div>
+                        <div class="box">
+                            <h4>Social</h4>
+                            <ul class="footer-list">
+                                <li><a href="http://blog.primefaces.org">Blog</a></li>
+                                <li><a href="http://forum.primefaces.org/">Forum</a></li>
+                                <li><a href="http://www.primefaces.org/mobileapps.html">Mobile Apps</a></li>
+                                <li><a href="http://twitter.com/primefaces">Twitter</a></li>
+                                <li><a href="http://www.facebook.com/groups/206606616332/">Facebook</a></li>
+                                <li><a href="http://www.linkedin.com/groups/PrimeFaces-NextGen-Component-Suite-3095471">LinkedIn</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="copy-block">
+                        <span class="copy">Copyright 2011 <a href="#">PrimeFaces</a> All rights reserved.</span>
+                    </div>
+                    <img src="primeui/images/ornament.png" width="167" height="43" alt="image description" class="ornament" />
+                </div>
+            </div>
+        </div>
+
+        <script language="javascript">
+            dp.SyntaxHighlighter.ClipboardSwf = '/demo/js/clipboard.swf';
+            dp.SyntaxHighlighter.HighlightAll('code');
+        </script>
+    </body>
+</html>

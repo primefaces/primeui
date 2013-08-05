@@ -1,0 +1,25 @@
+.pui-terminal {
+    height: 300px;
+    overflow: auto;
+    padding: 3px;
+}
+
+.pui-terminal-input {
+    border: 0 none;
+    background-color: transparent;
+    color: inherit;
+    padding: 0;
+    margin: 0 0 0 2px;
+    width: 75%;
+    outline: none;
+    vertical-align: baseline;
+}
+
+.pui-terminal-command {
+    margin-left: 2px;
+    -moz-margin-start: 3px;
+}
+
+.pui-terminal-input::-ms-clear {
+    display: none;
+}

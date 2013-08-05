@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>PrimeUI</title>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+        <meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="expires" content="0" />
+        <link rel="stylesheet" type="text/css" href="http://www.primefaces.org/css/all.css" />
+        <link rel="stylesheet" type="text/css" href="demo/css/demo.css" />
+        <link rel="stylesheet" href="demo/css/jquery-ui.css" />
+        <link rel="stylesheet" href="demo/css/aristo/theme.css" />
+        <link rel="stylesheet" href="demo/css/sh.css" />
+        <link rel="stylesheet" href="primeui/css/core/core.css" />
+        <link rel="stylesheet" href="primeui/css/menu/menu.css" />
+        <link rel="stylesheet" href="primeui/css/button/button.css" />
+        <link rel="stylesheet" href="primeui/css/menu/menu.css" />
+        <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
+        <link rel="stylesheet" href="primeui/css/inputtext/inputtext.css" />
+        <link rel="stylesheet" href="primeui/css/dropdown/dropdown.css" />
+        <script type="text/javascript" src="demo/js/sh.js"></script>
+        <script type="text/javascript" src="primeui/js/core/core.js"></script>
+        <script type="text/javascript" src="demo/js/jquery.js"></script>
+        <script type="text/javascript" src="demo/js/jquery-ui.js"></script>
+        <script src="http://www.primefaces.org/script/common.js"></script>
+        <script type="text/javascript" src="primeui/js/menu/menu.js"></script>
+        <script type="text/javascript" src="primeui/js/button/button.js"></script>
+        <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
+        <script type="text/javascript" src="primeui/js/dropdown/dropdown.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                $('#sm1').puislidemenu();
+
+                $('#sm2').puislidemenu({
+                    popup: true,
+                    trigger: $('#sm2trigger')
+                });
+
+                $('button').puibutton();
+
+
+                $('#doc').puitabview();
+                
+                var themes = new Array('aristo', 'afterdark', 'afternoon', 'afterwork', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
+                    'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
+                    'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
+                    'ui-darkness', 'ui-lightness', 'vader');
+            
+                $('#themes').puidropdown({
+                    source: themes,
+                    content: function(option) {
+                        return '<img src="demo/images/themes/' + option + '.png" alt="" /><span style="float:right;font-size:14px">' + option + '</span>';
+                    },
+                    change: function(e) {
+                        var themeLink = $('link[href$="theme.css"]'),
+                        newThemeURL =  'themes/' + $(this).val() + '/theme.css';
+                        
+                        themeLink.attr('href', newThemeURL);
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="header">
+                <div class="header-block">
+                    <h1 class="logo"><a href="index.html">prime faces</a></h1>
+                    <ul id="nav">
+                        <li><a id="menu-overview" href="#">Overview</a></li>
+                        <li><a id="menu-demos" href="#">Demos</a></li>
+                        <li><a id="menu-development" href="#">Development</a></li>
+                        <li><a id="menu-support" href="#">Support</a></li>
+                        <li><a id="menu-social" href="#">Social</a></li>
+                        <li><a href="license.html">License</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="main">
+                <div class="content-section">
+                    <div class="heading">
+                        <h2>PrimeUI</h2>
+                    </div>
+                    <div class="content-block">					
+                        <div id="sidebar">
+                            <ul>
+                          	  	<li class="widgets-header">Resources</li>
+                            	<li><a href="index.html">Home</a></li>
+                            	<li><a href="setup.html">Setup</a></li>
+                            	<li><a href="http://www.primefaces.org/downloads.html#primeui">Download</a></li>
+                            	<li><a href="themes.html">Themes</a></li>
+                            	<li><a href="http://forum.primefaces.org">Forum</a></li>
+                            	<li><a href="http://blog.primefaces.org/?cat=11">Blog</a></li>
+                            	<li><a href="license.html">License</a></li>
+                            </ul>
+                            <ul>
+                                <li class="widgets-header">ThemeSwitcher</li>
+                                <li class="themes-container"><select id="themes" name="themes"></select></li>
+                            </ul>
+                            <ul>
+                                <li class="widgets-header">Widgets</li>
+                                <li><a href="accordion.html">Accordion</a></li>
+                                <li><a href="autocomplete.html">AutoComplete</a></li>
+                                <li><a href="breadcrumb.html">Breadcrumb</a></li>
+                                <li><a href="button.html">Button</a></li>
+                                <li><a href="checkbox.html">Checkbox</a></li>
+                                <li><a href="datatable.html">Datatable</a></li>
+                                <li><a href="dialog.html">Dialog</a></li>
+                                <li><a href="dropdown.html">Dropdown</a></li>
+                                <li><a href="fieldset.html">Fieldset</a></li>
+                                <li><a href="galleria.html">Galleria</a></li>
+                                <li><a href="growl.html">Growl</a></li>
+                                <li><a href="inputtext.html">Inputtext</a></li>
+                                <li><a href="inputtextarea.html">Inputtextarea</a></li>
+                                <li><a href="lightbox.html">Lightbox</a></li>
+                                <li><a href="menu.html">Menu</a></li>
+                                <li><a href="menubar.html">Menubar</a></li>
+                                <li><a href="contextmenu.html">Menu - Context</a></li>
+                                <li><a href="slidemenu.html">Menu - Slide</a></li>
+                                <li><a href="tieredmenu.html">Menu - Tiered</a></li>
+                                <li><a href="notify.html">Notify</a></li>
+                                <li><a href="paginator.html">Paginator</a></li>
+                                <li><a href="panel.html">Panel</a></li>
+                                <li><a href="password.html">Password</a></li>
+                                <li><a href="progressbar.html">ProgressBar</a></li>
+                                <li><a href="radiobutton.html">RadioButton</a></li>
+                                <li><a href="rating.html">Rating</a></li>
+                                <li><a href="spinner.html">Spinner</a></li>
+                                <li><a href="tabview.html">Tabview</a></li>
+                                <li><a href="terminal.html">Terminal</a></li>
+                                <li><a href="tooltip.html">Tooltip</a></li>
+                            </ul>
+                        </div>
+
+                        <div id="content-demo">
+                            <h1 class="widget-title">SlideMenu</h1>
+                            <p>SlideMenu displays submenus in with slide animation similar to ipod menus.</p>
+
+                            <h3>Default</h3>
+                            <ul id="sm1">
+                                <li> <a data-icon="ui-icon-document">File</a>
+                                    <ul> 
+                                        <li><a data-icon="ui-icon-contact">New</a>
+                                            <ul>
+                                                <li><a>Project</a></li>
+                                                <li><a>Other</a></li>
+                                            </ul>
+                                        </li> 
+                                        <li><a>Open</a></li> 
+                                        <li><a>Quit</a></li> 
+                                    </ul>
+                                </li>
+                                <li> <a data-icon="ui-icon-pencil">Edit</a>
+                                    <ul>
+                                        <li><a data-icon="ui-icon-arrowreturnthick-1-w">Undo</a></li>
+                                        <li><a data-icon="ui-icon-arrowreturnthick-1-e">Redo</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a data-icon="ui-icon-help">Help</a>
+                                    <ul>
+                                        <li><a>Contents</a></li>
+                                        <li>
+                                            <a data-icon="ui-icon-search">Search</a>
+                                            <ul>
+                                                <li><a>Text</a>
+                                                    <ul>
+                                                        <li><a>Workspace</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a>File</a></li>
+                                            </ul>
+                                        </li>
+
+                                    </ul>
+
+                                </li>
+                                <li>
+                                    <a data-icon="ui-icon-gear">Actions</a>
+                                    <ul>
+                                        <li><a data-icon="ui-icon-refresh">Ajax</a>
+                                            <ul>
+                                                <li><a data-icon="ui-icon-disk">Save</a></li>
+                                                <li><a data-icon="ui-icon-arrowrefresh-1-w">Update</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a data-icon="ui-icon-document">Non-Ajax</a>
+                                            <ul>
+                                                <li><a data-icon="ui-icon-close">Delete</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a data-icon="ui-icon-close">Quit</a>
+                                </li>
+                            </ul>
+
+                            <h3>Popup</h3>
+
+                            <button id="sm2trigger" style="margin-top:0px">Show</button>
+
+                            <ul id="sm2">
+                                <li> <a data-icon="ui-icon-document">File</a>
+                                    <ul> 
+                                        <li><a data-icon="ui-icon-contact">New</a>
+                                            <ul>
+                                                <li><a>Project</a></li>
+                                                <li><a>Other</a></li>
+                                            </ul>
+                                        </li> 
+                                        <li><a>Open</a></li> 
+                                        <li><a>Quit</a></li> 
+                                    </ul>
+                                </li>
+                                <li> <a data-icon="ui-icon-pencil">Edit</a>
+                                    <ul>
+                                        <li><a data-icon="ui-icon-arrowreturnthick-1-w">Undo</a></li>
+                                        <li><a data-icon="ui-icon-arrowreturnthick-1-e">Redo</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a data-icon="ui-icon-help">Help</a>
+                                    <ul>
+                                        <li><a>Contents</a></li>
+                                        <li>
+                                            <a data-icon="ui-icon-search">Search</a>
+                                            <ul>
+                                                <li><a>Text</a>
+                                                    <ul>
+                                                        <li><a>Workspace</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a>File</a></li>
+                                            </ul>
+                                        </li>
+
+                                    </ul>
+
+                                </li>
+                                <li>
+                                    <a data-icon="ui-icon-gear">Actions</a>
+                                    <ul>
+                                        <li><a data-icon="ui-icon-refresh">Ajax</a>
+                                            <ul>
+                                                <li><a data-icon="ui-icon-disk">Save</a></li>
+                                                <li><a data-icon="ui-icon-arrowrefresh-1-w">Update</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a data-icon="ui-icon-document">Non-Ajax</a>
+                                            <ul>
+                                                <li><a data-icon="ui-icon-close">Delete</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a data-icon="ui-icon-close">Quit</a>
+                                </li>
+                            </ul>
+
+
+
+                            <h3 class="subtitle">Documentation</h3>
+                            <div id="doc">
+                                <ul>
+                                    <li><a href="#doc-overview">Overview</a></li>
+                                    <li><a href="#doc-options">Options</a></li>
+                                    <li><a href="#doc-events">Events</a></li>
+                                    <li><a href="#doc-methods">Methods</a></li>
+                                    <li><a href="#doc-methods">Source</a></li>
+                                </ul>
+
+                                <div>
+                                    <div id="doc-overview">
+
+                                        <pre name="code" class="jscript">
+        $('#default').puislidemenu();
+                                        </pre>
+
+                                        <pre name="code" class="xml">
+        &lt;ul id="mb1" &gt;
+         &lt;li &gt;
+            &lt;ul &gt;
+                &lt;li /&gt;
+                &lt;li /&gt;
+            &lt;/ul &gt;
+         &lt;/li &gt;
+         &lt;li /&gt;
+         &lt;li /&gt;
+        &lt;/ul &gt;
+
+                                        </pre>
+
+                                    </div>
+
+                                    <div id="doc-options">
+                                        <h3>No options.</h3>
+                                    </div>
+
+                                    <div id="doc-events">
+                                        <h3>No events.</h3>
+                                    </div>
+
+                                    <div id="doc-methods">
+ <table class="doc-table">
+                                            <thead>
+                                                <th class="ui-state-default">Name</th>
+                                                <th class="ui-state-default">Parameters</th>
+                                                <th class="ui-state-default">Description</th>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="ui-widget-content">
+                                                    <td>show</td>
+                                                    <td>-</td>
+                                                    <td>Shows Menu.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>hide</td>
+                                                    <td>-</td>
+                                                    <td>Hides Menu.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>align</td>
+                                                    <td>-</td>
+                                                    <td>Align Menu.</td>
+                                                </tr>                                           
+                                            </tbody>
+                                        </table>                                     </div>
+
+                                    <div id="doc-source">
+
+                                        <pre name="code" class="jscript">
+                $('#sm1').puislidemenu();
+                
+                 $('#sm2').puislidemenu({
+                    popup: true,
+                    trigger: $('#sm2trigger')
+                });
+                
+                $('button').puibutton();
+        &lt;/script&gt; 
+                                        </pre>
+
+                                        <pre name="code" class="xml">
+&ltul id="sm1"&gt
+    &ltli&gt &lta data-icon="ui-icon-document"&gtFile&lt/a&gt
+        &ltul&gt 
+            &ltli&gt&lta data-icon="ui-icon-contact"&gtNew&lt/a&gt
+                &ltul&gt
+                    &ltli&gt&lta&gtProject&lt/a&gt&lt/li&gt
+                    &ltli&gt&lta&gtOther&lt/a&gt&lt/li&gt
+                &lt/ul&gt
+            &lt/li&gt 
+            &ltli&gt&lta&gtOpen&lt/a&gt&lt/li&gt 
+            &ltli&gt&lta&gtQuit&lt/a&gt&lt/li&gt 
+        &lt/ul&gt
+    &lt/li&gt
+    &ltli&gt &lta data-icon="ui-icon-pencil"&gtEdit&lt/a&gt
+        &ltul&gt
+            &ltli&gt&lta data-icon="ui-icon-arrowreturnthick-1-w"&gtUndo&lt/a&gt&lt/li&gt
+            &ltli&gt&lta data-icon="ui-icon-arrowreturnthick-1-e"&gtRedo&lt/a&gt&lt/li&gt
+        &lt/ul&gt
+    &lt/li&gt
+    &ltli&gt
+        &lta data-icon="ui-icon-help"&gtHelp&lt/a&gt
+        &ltul&gt
+            &ltli&gt&lta&gtContents&lt/a&gt&lt/li&gt
+            &ltli&gt
+                &lta data-icon="ui-icon-search"&gtSearch&lt/a&gt
+                &ltul&gt
+                    &ltli&gt&lta&gtText&lt/a&gt
+                        &ltul&gt
+                            &ltli&gt&lta&gtWorkspace&lt/a&gt&lt/li&gt
+                        &lt/ul&gt
+                    &lt/li&gt
+                    &ltli&gt&lta&gtFile&lt/a&gt&lt/li&gt
+                &lt/ul&gt
+            &lt/li&gt
+
+        &lt/ul&gt
+
+    &lt/li&gt
+    &ltli&gt
+        &lta data-icon="ui-icon-gear"&gtActions&lt/a&gt
+        &ltul&gt
+            &ltli&gt&lta data-icon="ui-icon-refresh"&gtAjax&lt/a&gt
+                &ltul&gt
+                    &ltli&gt&lta data-icon="ui-icon-disk"&gtSave&lt/a&gt&lt/li&gt
+                    &ltli&gt&lta data-icon="ui-icon-arrowrefresh-1-w"&gtUpdate&lt/a&gt&lt/li&gt
+                &lt/ul&gt
+            &lt/li&gt
+            &ltli&gt&lta data-icon="ui-icon-document"&gtNon-Ajax&lt/a&gt
+                &ltul&gt
+                    &ltli&gt&lta data-icon="ui-icon-close"&gtDelete&lt/a&gt&lt/li&gt
+                &lt/ul&gt
+            &lt/li&gt
+        &lt/ul&gt
+    &lt/li&gt
+    &ltli&gt
+        &lta data-icon="ui-icon-close"&gtQuit&lt/a&gt
+    &lt/li&gt
+&lt/ul&gt    
+                                        </pre>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div style="clear: both" />
+                    </div>
+                </div>
+            </div>
+            <div id="footer">
+                <div class="footer-block">
+                    <div class="box-section">
+                        <div class="box">
+                            <h4>Overview</h4>
+                            <ul class="footer-list">
+                                <li><a href="http://www.primefaces.org/whyprimefaces.html">Why PrimeFaces</a></li>
+                                <li><a href="http://www.primefaces.org/whouses.html">Who Uses PrimeFaces</a></li>
+                                <li><a href="http://www.primefaces.org/testimonials.html">Testimonials</a></li>
+                                <li><a href="http://www.primefaces.org/license.html">License</a></li>
+                                <li><a href="http://www.primefaces.org/multimedia.html">Multimedia</a></li>
+                                <li><a href="http://www.primefaces.org/faq.html">FAQ</a></li>
+                            </ul>
+                        </div>
+                        <div class="box">
+                            <h4>Demos</h4>
+                            <ul class="footer-list">
+                                <li><a href="http://www.primefaces.org/showcase/ui/home.jsf">Showcase</a></li>
+                                <li><a href="http://www.primefaces.org/showcase/ui/macosx.jsf">Mock OS X</a></li>
+                                <li><a href="http://www.primefaces.org/showcase-labs/mobile/index.jsf">Mobile</a></li>
+                                <li><a href="http://primefaces-rocks.appspot.com/ui/">Cloud - GAE</a></li>
+                                <li><a href="http://www.primefaces.org/prime-ui/">Prime-UI</a></li>
+                            </ul>
+                        </div>
+                        <div class="box">
+                            <h4>Development</h4>
+                            <ul class="footer-list">
+                                <li><a href="http://www.primefaces.org/gettingStarted.html">Getting Started</a></li>
+                                <li><a href="http://www.primefaces.org/documentation.html">Documentation</a></li>
+                                <li><a href="http://www.primefaces.org/downloads.html">Downloads</a></li>
+                                <li><a href="http://code.google.com/p/primefaces/w/list">Wiki</a></li>
+                                <li><a href="http://www.primefaces.org/themes.html">Theme Gallery</a></li>
+                                <li><a href="http://primefaces-extensions.github.com">Extensions</a></li>
+                            </ul>
+                        </div>
+                        <div class="box">
+                            <h4>Support</h4>
+                            <ul class="footer-list">
+                                <li><a href="http://www.primefaces.org/support.html">Support Options</a></li>
+                                <li><a href="http://pro.primefaces.org">PrimeFaces PRO</a></li>
+                                <li><a href="http://www.primefaces.org/elite">PrimeFaces ELITE</a></li>
+                                <li><a href="http://www.primefaces.org/training.html">Training</a></li>
+                                <li><a href="http://forum.primefaces.org">Forum</a></li>
+                                <li><a href="http://www.primefaces.org/issuetracker.html">Issue Tracker</a></li>
+                                <li><a href="http://www.primefaces.org/partners.html">Partners</a></li>
+                            </ul>
+                        </div>
+                        <div class="box">
+                            <h4>Social</h4>
+                            <ul class="footer-list">
+                                <li><a href="http://blog.primefaces.org">Blog</a></li>
+                                <li><a href="http://forum.primefaces.org/">Forum</a></li>
+                                <li><a href="http://www.primefaces.org/mobileapps.html">Mobile Apps</a></li>
+                                <li><a href="http://twitter.com/primefaces">Twitter</a></li>
+                                <li><a href="http://www.facebook.com/groups/206606616332/">Facebook</a></li>
+                                <li><a href="http://www.linkedin.com/groups/PrimeFaces-NextGen-Component-Suite-3095471">LinkedIn</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="copy-block">
+                        <span class="copy">Copyright 2011 <a href="#">PrimeFaces</a> All rights reserved.</span>
+                    </div>
+                    <img src="primeui/images/ornament.png" width="167" height="43" alt="image description" class="ornament" />
+                </div>
+            </div>
+        </div>
+
+        <script language="javascript">
+            dp.SyntaxHighlighter.ClipboardSwf = '/demo/js/clipboard.swf';
+            dp.SyntaxHighlighter.HighlightAll('code');
+        </script>
+    </body>
+</html>

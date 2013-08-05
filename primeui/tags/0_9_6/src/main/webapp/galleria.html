@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>PrimeUI</title>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+        <meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="expires" content="0" />
+        <link rel="stylesheet" type="text/css" href="http://www.primefaces.org/css/all.css" />
+        <link rel="stylesheet" type="text/css" href="demo/css/demo.css" />
+        <link rel="stylesheet" href="demo/css/jquery-ui.css" />
+        <link rel="stylesheet" href="themes/aristo/theme.css" />
+        <link rel="stylesheet" href="primeui/css/core/core.css" />
+        <link rel="stylesheet" href="demo/css/sh.css" />
+        <link rel="stylesheet" href="primeui/css/inputtext/inputtext.css" />
+        <link rel="stylesheet" href="primeui/css/galleria/galleria.css" />
+        <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
+        <link rel="stylesheet" href="primeui/css/dropdown/dropdown.css" />
+        <script type="text/javascript" src="demo/js/sh.js"></script>
+        <script type="text/javascript" src="demo/js/jquery.js"></script>
+        <script type="text/javascript" src="demo/js/jquery-ui.js"></script>
+        <script src="http://www.primefaces.org/script/common.js"></script>
+        <script type="text/javascript" src="primeui/js/core/core.js"></script>
+        <script type="text/javascript" src="primeui/js/galleria/galleria.js"></script>
+        <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
+        <script type="text/javascript" src="primeui/js/dropdown/dropdown.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                $('#images').puigalleria({
+                    panelWidth: 500,
+                    panelHeight: 313
+                });
+
+                $('#customcontent').puigalleria({
+                    autoPlay: false,
+                    customContent: true,
+                    showCaption: false,
+                    panelWidth: 360,
+                    panelHeight: 200,
+                    frameWidth: 100,
+                    frameHeight: 60,
+                    effect: 'fold',
+                    effectSpeed: 500
+                });
+                $('#doc').puitabview();
+                
+                var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
+                    'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
+                    'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
+                    'ui-darkness', 'ui-lightness', 'vader');
+                    
+                $('#themes').puidropdown({
+                    source: themes,
+                    content: function(option) {
+                        return '<img src="demo/images/themes/' + option + '.png" alt="" /><span style="float:right;font-size:14px">' + option + '</span>';
+                    },
+                    change: function(e) {
+                        var themeLink = $('link[href$="theme.css"]'),
+                        newThemeURL =  'themes/' + $(this).val() + '/theme.css';
+                        
+                        themeLink.attr('href', newThemeURL);
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="header">
+                <div class="header-block">
+                    <h1 class="logo"><a href="index.html">prime faces</a></h1>
+                    <ul id="nav">
+                        <li><a id="menu-overview" href="#">Overview</a></li>
+                        <li><a id="menu-demos" href="#">Demos</a></li>
+                        <li><a id="menu-development" href="#">Development</a></li>
+                        <li><a id="menu-support" href="#">Support</a></li>
+                        <li><a id="menu-social" href="#">Social</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="main">
+                <div class="content-section">
+                    <div class="heading">
+                        <h2>PrimeUI</h2>
+                    </div>
+                    <div class="content-block">					
+                        <div id="sidebar">
+                            <ul>
+                                <li class="widgets-header">Resources</li>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="setup.html">Setup</a></li>
+                                <li><a href="http://www.primefaces.org/downloads.html#primeui">Download</a></li>
+                                <li><a href="themes.html">Themes</a></li>
+                                <li><a href="http://forum.primefaces.org">Forum</a></li>
+                                <li><a href="http://blog.primefaces.org/?cat=11">Blog</a></li>
+                                <li><a href="license.html">License</a></li>
+                            </ul>
+                            <ul>
+                                <li class="widgets-header">ThemeSwitcher</li>
+                                <li class="themes-container"><select id="themes" name="themes"></select></li>
+                            </ul>
+                            <ul>
+                                <li class="widgets-header">Widgets</li>
+                                <li><a href="accordion.html">Accordion</a></li>
+                                <li><a href="autocomplete.html">AutoComplete</a></li>
+                                <li><a href="breadcrumb.html">Breadcrumb</a></li>
+                                <li><a href="button.html">Button</a></li>
+                                <li><a href="checkbox.html">Checkbox</a></li>
+                                <li><a href="datatable.html">Datatable</a></li>
+                                <li><a href="dialog.html">Dialog</a></li>
+                                <li><a href="dropdown.html">Dropdown</a></li>
+                                <li><a href="fieldset.html">Fieldset</a></li>
+                                <li><a href="galleria.html">Galleria</a></li>
+                                <li><a href="growl.html">Growl</a></li>
+                                <li><a href="inputtext.html">Inputtext</a></li>
+                                <li><a href="inputtextarea.html">Inputtextarea</a></li>
+                                <li><a href="lightbox.html">Lightbox</a></li>
+                                <li><a href="menu.html">Menu</a></li>
+                                <li><a href="menubar.html">Menubar</a></li>
+                                <li><a href="contextmenu.html">Menu - Context</a></li>
+                                <li><a href="slidemenu.html">Menu - Slide</a></li>
+                                <li><a href="tieredmenu.html">Menu - Tiered</a></li>
+                                <li><a href="notify.html">Notify</a></li>
+                                <li><a href="paginator.html">Paginator</a></li>
+                                <li><a href="panel.html">Panel</a></li>
+                                <li><a href="password.html">Password</a></li>
+                                <li><a href="progressbar.html">ProgressBar</a></li>
+                                <li><a href="radiobutton.html">RadioButton</a></li>
+                                <li><a href="rating.html">Rating</a></li>
+                                <li><a href="spinner.html">Spinner</a></li>
+                                <li><a href="tabview.html">Tabview</a></li>
+                                <li><a href="terminal.html">Terminal</a></li>
+                                <li><a href="tooltip.html">Tooltip</a></li>
+                            </ul>
+                        </div>
+
+                        <div id="content-demo">
+                            <h1 class="widget-title">Galleria</h1>
+                            <p>Galleria is a content gallery widget.</p>
+
+                            <h3>Default</h3>          
+                            <div id="images">
+                                <ul>
+                                    <li><img src="demo/images/galleria/galleria1.jpg" alt="Galleria 1 Description" title="Galleria 1"/></li>
+                                    <li><img src="demo/images/galleria/galleria2.jpg" alt="Galleria 2 Description" title="Galleria 2"/></li>
+                                    <li><img src="demo/images/galleria/galleria3.jpg" alt="Galleria 3 Description" title="Galleria 3"/></li>
+                                    <li><img src="demo/images/galleria/galleria4.jpg" alt="Galleria 4 Description" title="Galleria 4"/></li>
+                                    <li><img src="demo/images/galleria/galleria5.jpg" alt="Galleria 5 Description" title="Galleria 5"/></li>
+                                    <li><img src="demo/images/galleria/galleria6.jpg" alt="Galleria 6 Description" title="Galleria 6"/></li>
+                                    <li><img src="demo/images/galleria/galleria7.jpg" alt="Galleria 7 Description" title="Galleria 7"/></li>
+                                    <li><img src="demo/images/galleria/galleria8.jpg" alt="Galleria 8 Description" title="Galleria 8"/></li>
+                                    <li><img src="demo/images/galleria/galleria9.jpg" alt="Galleria 9 Description" title="Galleria 9"/></li>
+                                    <li><img src="demo/images/galleria/galleria10.jpg" alt="Galleria 10 Description" title="Galleria 10"/></li>
+                                    <li><img src="demo/images/galleria/galleria11.jpg" alt="Galleria 11 Description" title="Galleria 11"/></li>
+                                    <li><img src="demo/images/galleria/galleria12.jpg" alt="Galleria 12 Description" title="Galleria 12"/></li>
+                                </ul>
+                            </div>
+
+                            <h3>Content</h3>
+                            <div id="customcontent">
+                                <ul>
+                                    <li>
+                                        <img src="demo/images/galleria/galleria1.jpg" alt="Galleria 1 Description" title="Galleria 1"/>
+                                        <div>
+                                            Lorem ipsum dolor sit amet, explicabo sapien per elit et, sed sed non sit habitant elit leo, sollicitudin vitae pellentesque, blandit metus at donec. Aenean wisi tristique nulla suspendisse. 
+                                            Auctor non nam, ultrices nec penatibus ligula dapibus, neque congue scelerisque, dolor nec amet orci eleifend curabitur, morbi in. Sit feugiat non. 
+                                            A in nunc massa non, nihil pellentesque et laoreet porta lobortis, vel vivamus blandit et. Iaculis ut praesent ipsum praesent mauris, quisque elementum mi donec mi, etiam diam mauris viverra. 
+                                            Scelerisque faucibus eget pellentesque lacus, etiam eu dictum potenti risus ut aliquam, sed elit.
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img src="demo/images/galleria/galleria2.jpg" alt="Galleria 2 Description" title="Galleria 2"/>
+                                        <div>
+                                            Per augue rhoncus, pede sed nec a quis amet. Sem fusce felis non vulputate, eius vivamus malesuada montes vitae viverra arcu, mauris justo vel fermentum metus urna. 
+                                            Urna risus, vel mollis morbi in ligula, et diam dui, urna turpis turpis ultricies metus tempus, at magnis tempus maecenas. 
+                                            Vel sociosqu elit volutpat, mollis neque quis ac ac, dignissim lorem ipsum nullam, penatibus id, tempor cum mauris.
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img src="demo/images/galleria/galleria3.jpg" alt="Galleria 3 Description" title="Galleria 3"/>
+                                        <div>
+                                            Morbi lectus nulla quis maxime. Elit quis a cras eleifend duis, in amet lacus ultricies. 
+                                            Nonummy sollicitudin, tristique suspendisse cras mauris amet nec, nulla felis velit faucibus tortor, pellentesque dignissim. 
+                                            Proin lorem, felis rutrum, pretium sed volutpat nulla urna sit, tellus pellentesque curabitur mi sed, dui arcu etiam vivamus donec nullam. 
+                                            Sit aliquam et justo tellus, porta nec, potenti in arcu wisi vitae. 
+                                            Magna in, sociosqu sapien, justo dolores at vivamus tristique luctus in, parturient sapien semper cras fermentum.
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img src="demo/images/galleria/galleria4.jpg" alt="Galleria 4 Description" title="Galleria 4"/>
+                                        <div>
+                                            A accumsan in facilisi purus morbi, in ultricies vehicula, tellus curabitur tempor, justo excepturi luctus tristique odio. 
+                                            Ullamcorper vel, sit et at nulla mauris, rutrum pharetra libero justo pellentesque nec. Lectus sodales iaculis viverra. 
+                                            In rutrum, suscipit a id sed leo montes, integer sit sapien non morbi dolor, erat ipsum iaculis velit aliquam egestas massa, etiam iaculis justo. 
+                                            Arcu dui suspendisse fringilla, mi nibh, tempor quam quis lectus ut mi.
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img src="demo/images/galleria/galleria5.jpg" alt="Galleria 5 Description" title="Galleria 5"/>
+                                        <div>
+                                            Habitasse vulputate sodales pharetra vitae. Arcu libero ut donec porta sed sapien, metus aliquam qui integer et amet, dui adipiscing justo vel semper. 
+                                            Dictumst ut, vestibulum nisl lorem interdum, integer auctor, sem scelerisque, eget in nunc ac sit scelerisque. 
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img src="demo/images/galleria/galleria6.jpg" alt="Galleria 6 Description" title="Galleria 6"/>
+                                        <div>
+                                            Mauris at hendrerit velit. Fusce vel dignissim, penatibus faucibus ridiculus in auctor. Sodales placerat. Cras velit ipsum eu etiam malesuada congue. 
+                                            Eros dui ante metus sit aliquam, praesent eros tempor mauris ut id wisi, metus erat facilisi egestas commodo ut at, elementum suspendisse rutrum mauris quis,  justo aspernatur
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <h3>Documentation</h3>
+                            <div id="doc">
+                                <ul>
+                                    <li><a href="#doc-overview">Overview</a></li>
+                                    <li><a href="#doc-options">Options</a></li>
+                                    <li><a href="#doc-events">Events</a></li>
+                                    <li><a href="#doc-methods">Methods</a></li>
+                                    <li><a href="#doc-methods">Source</a></li>
+                                </ul>
+                                <div>
+                                    <div id="doc-overview">
+
+
+
+                                        <pre name="code" class="jscript">
+$('#images').puigalleria();
+                                        </pre>
+
+                                        <pre name="code" class="xml">
+&lt;div id="images"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;img src="demo/images/galleria/galleria1.jpg" alt="Galleria 1 Description" title="Galleria 1"/&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;img src="demo/images/galleria/galleria2.jpg" alt="Galleria 2 Description" title="Galleria 2"/&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;img src="demo/images/galleria/galleria3.jpg" alt="Galleria 3 Description" title="Galleria 3"/&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;img src="demo/images/galleria/galleria4.jpg" alt="Galleria 4 Description" title="Galleria 4"/&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;img src="demo/images/galleria/galleria5.jpg" alt="Galleria 5 Description" title="Galleria 5"/&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;img src="demo/images/galleria/galleria6.jpg" alt="Galleria 6 Description" title="Galleria 6"/&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;img src="demo/images/galleria/galleria7.jpg" alt="Galleria 7 Description" title="Galleria 7"/&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;img src="demo/images/galleria/galleria8.jpg" alt="Galleria 8 Description" title="Galleria 8"/&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;img src="demo/images/galleria/galleria9.jpg" alt="Galleria 9 Description" title="Galleria 9"/&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;img src="demo/images/galleria/galleria10.jpg" alt="Galleria 10 Description" title="Galleria 10"/&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;img src="demo/images/galleria/galleria11.jpg" alt="Galleria 11 Description" title="Galleria 11"/&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;img src="demo/images/galleria/galleria12.jpg" alt="Galleria 12 Description" title="Galleria 12"/&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+                                        </pre>
+
+                                    </div>
+
+                                    <div id="doc-options">
+                                        <table class="doc-table">
+                                            <thead>
+                                                <th class="ui-state-default">Name</th>
+                                                <th class="ui-state-default">Type</th>
+                                                <th class="ui-state-default">Default</th>
+                                                <th class="ui-state-default">Description</th>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="ui-widget-content">
+                                                    <td>panelWidth</td>
+                                                    <td>integer</td>
+                                                    <td>600</td>
+                                                    <td>Width of the content panel.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>panelHeight</td>
+                                                    <td>integer</td>
+                                                    <td>400</td>
+                                                    <td>Height of the content panel.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>frameWidth</td>
+                                                    <td>integer</td>
+                                                    <td>60</td>
+                                                    <td>Width of the filmstrip frames.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>frameHeight</td>
+                                                    <td>integer</td>
+                                                    <td>40</td>
+                                                    <td>Height of the filmstrip frames.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>showFilmstrip</td>
+                                                    <td>boolean</td>
+                                                    <td>true</td>
+                                                    <td>Defines visibility of filmstrip.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>autoPlay</td>
+                                                    <td>boolean</td>
+                                                    <td>true</td>
+                                                    <td>Images are displayed with a slideshow in autoPlay mode.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>transitionInterval</td>
+                                                    <td>integer</td>
+                                                    <td>4000</td>
+                                                    <td>Time in milliseconds between each slide in autoPlay mode.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>effect</td>
+                                                    <td>string</td>
+                                                    <td>fade</td>
+                                                    <td>Name of animation to use on transitions.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>effectSpeed</td>
+                                                    <td>integer</td>
+                                                    <td>250</td>
+                                                    <td>Duration of animation in milliseconds.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>effectOptions</td>
+                                                    <td>object</td>
+                                                    <td>{}</td>
+                                                    <td>Settings for effect, refer to jQuery UI effect api for available options per effect.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>showCaption</td>
+                                                    <td>boolean</td>
+                                                    <td>true</td>
+                                                    <td>Displays information retrieved from title and alt attributes of images in content caption.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>customContent</td>
+                                                    <td>boolean</td>
+                                                    <td>false</td>
+                                                    <td>In custom content mode, galleria displays content next to the image element instead of the image itself.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div id="doc-events">
+                                        <h3>No events.</h3>
+                                    </div>
+
+                                    <div id="doc-methods">
+                                        <table class="doc-table">
+                                            <thead>
+                                                <th class="ui-state-default">Name</th>
+                                                <th class="ui-state-default">Parameters</th>
+                                                <th class="ui-state-default">Description</th>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="ui-widget-content">
+                                                    <td>select</td>
+                                                    <td>index: Index of the item.</td>
+                                                    <td>Selects item with given index.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>startSlideshow</td>
+                                                    <td>-</td>
+                                                    <td>Starts auto play.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>stopSlideshow</td>
+                                                    <td>-</td>
+                                                    <td>Stops auto play.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>isSlideshowActive</td>
+                                                    <td>-</td>
+                                                    <td>Returns true if auto play is active.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>prev</td>
+                                                    <td>-</td>
+                                                    <td>Selects next item.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>next</td>
+                                                    <td>-</td>
+                                                    <td>Selects previous item.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>option</td>
+                                                    <td>name: Name of the option</td>
+                                                    <td>Returns the value of the option.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>option</td>
+                                                    <td>name: Name of the option, value: Value of the option</td>
+                                                    <td>Set the value of the option.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <pre name="code" class="jscript">
+$('#images').puigalleria('select', 1);
+                                        </pre>
+                                    </div>
+
+                                    <div id="doc-source">
+
+                                        <pre name="code" class="jscript">
+&lt;script type="text/javascript"&gt;
+    $(function() {
+        $('#images').puigalleria({
+            panelWidth: 500,
+            panelHeight: 313
+        });
+
+        $('#customcontent').puigalleria({
+            autoPlay: false,
+            customContent: true,
+            showCaption: false,
+            panelWidth: 360,
+            panelHeight: 200,
+            frameWidth: 100,
+            frameHeight: 60,
+            effect: 'fold',
+            effectSpeed: 500
+        });
+
+        $('#doc').puitabview();
+    });
+&lt;/script&gt;
+                                        </pre>
+
+                                        <pre name="code" class="xml">
+&lt;div id="images"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;img src="demo/images/galleria/galleria1.jpg" alt="Galleria 1 Description" title="Galleria 1"/&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;img src="demo/images/galleria/galleria2.jpg" alt="Galleria 2 Description" title="Galleria 2"/&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;img src="demo/images/galleria/galleria3.jpg" alt="Galleria 3 Description" title="Galleria 3"/&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;img src="demo/images/galleria/galleria4.jpg" alt="Galleria 4 Description" title="Galleria 4"/&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;img src="demo/images/galleria/galleria5.jpg" alt="Galleria 5 Description" title="Galleria 5"/&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;img src="demo/images/galleria/galleria6.jpg" alt="Galleria 6 Description" title="Galleria 6"/&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;img src="demo/images/galleria/galleria7.jpg" alt="Galleria 7 Description" title="Galleria 7"/&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;img src="demo/images/galleria/galleria8.jpg" alt="Galleria 8 Description" title="Galleria 8"/&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;img src="demo/images/galleria/galleria9.jpg" alt="Galleria 9 Description" title="Galleria 9"/&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;img src="demo/images/galleria/galleria10.jpg" alt="Galleria 10 Description" title="Galleria 10"/&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;img src="demo/images/galleria/galleria11.jpg" alt="Galleria 11 Description" title="Galleria 11"/&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;img src="demo/images/galleria/galleria12.jpg" alt="Galleria 12 Description" title="Galleria 12"/&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id="customcontent"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+            &lt;img src="demo/images/galleria/galleria1.jpg" alt="Galleria 1 Description" title="Galleria 1"/&gt;
+            &lt;div&gt;
+                Lorem ipsum dolor sit amet, explicabo sapien per elit et, sed sed non sit habitant elit leo, sollicitudin vitae pellentesque, blandit metus at donec. Aenean wisi tristique nulla suspendisse. 
+                Auctor non nam, ultrices nec penatibus ligula dapibus, neque congue scelerisque, dolor nec amet orci eleifend curabitur, morbi in. Sit feugiat non. 
+                A in nunc massa non, nihil pellentesque et laoreet porta lobortis, vel vivamus blandit et. Iaculis ut praesent ipsum praesent mauris, quisque elementum mi donec mi, etiam diam mauris viverra. 
+                Scelerisque faucibus eget pellentesque lacus, etiam eu dictum potenti risus ut aliquam, sed elit.
+            &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;img src="demo/images/galleria/galleria2.jpg" alt="Galleria 2 Description" title="Galleria 2"/&gt;
+            &lt;div&gt;
+                Per augue rhoncus, pede sed nec a quis amet. Sem fusce felis non vulputate, eius vivamus malesuada montes vitae viverra arcu, mauris justo vel fermentum metus urna. 
+                Urna risus, vel mollis morbi in ligula, et diam dui, urna turpis turpis ultricies metus tempus, at magnis tempus maecenas. 
+                Vel sociosqu elit volutpat, mollis neque quis ac ac, dignissim lorem ipsum nullam, penatibus id, tempor cum mauris.
+            &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;img src="demo/images/galleria/galleria3.jpg" alt="Galleria 3 Description" title="Galleria 3"/&gt;
+            &lt;div&gt;
+                Morbi lectus nulla quis maxime. Elit quis a cras eleifend duis, in amet lacus ultricies. 
+                Nonummy sollicitudin, tristique suspendisse cras mauris amet nec, nulla felis velit faucibus tortor, pellentesque dignissim. 
+                Proin lorem, felis rutrum, pretium sed volutpat nulla urna sit, tellus pellentesque curabitur mi sed, dui arcu etiam vivamus donec nullam. 
+                Sit aliquam et justo tellus, porta nec, potenti in arcu wisi vitae. 
+                Magna in, sociosqu sapien, justo dolores at vivamus tristique luctus in, parturient sapien semper cras fermentum.
+            &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;img src="demo/images/galleria/galleria4.jpg" alt="Galleria 4 Description" title="Galleria 4"/&gt;
+            &lt;div&gt;
+                A accumsan in facilisi purus morbi, in ultricies vehicula, tellus curabitur tempor, justo excepturi luctus tristique odio. 
+                Ullamcorper vel, sit et at nulla mauris, rutrum pharetra libero justo pellentesque nec. Lectus sodales iaculis viverra. 
+                In rutrum, suscipit a id sed leo montes, integer sit sapien non morbi dolor, erat ipsum iaculis velit aliquam egestas massa, etiam iaculis justo. 
+                Arcu dui suspendisse fringilla, mi nibh, tempor quam quis lectus ut mi.
+            &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;img src="demo/images/galleria/galleria5.jpg" alt="Galleria 5 Description" title="Galleria 5"/&gt;
+            &lt;div&gt;
+                Habitasse vulputate sodales pharetra vitae. Arcu libero ut donec porta sed sapien, metus aliquam qui integer et amet, dui adipiscing justo vel semper. 
+                Dictumst ut, vestibulum nisl lorem interdum, integer auctor, sem scelerisque, eget in nunc ac sit scelerisque. 
+            &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;img src="demo/images/galleria/galleria6.jpg" alt="Galleria 6 Description" title="Galleria 6"/&gt;
+            &lt;div&gt;
+                 Mauris at hendrerit velit. Fusce vel dignissim, penatibus faucibus ridiculus in auctor. Sodales placerat. Cras velit ipsum eu etiam malesuada congue. 
+                 Eros dui ante metus sit aliquam, praesent eros tempor mauris ut id wisi, metus erat facilisi egestas commodo ut at, elementum suspendisse rutrum mauris quis,  justo aspernatur
+            &lt;/div&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+                                        </pre>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div style="clear: both" />
+                    </div>
+                </div>
+                </div>
+                <div id="footer">
+                    <div class="footer-block">
+                        <div class="box-section">
+                            <div class="box">
+                                <h4>Overview</h4>
+                                <ul class="footer-list">
+                                    <li><a href="http://www.primefaces.org/whyprimefaces.html">Why PrimeFaces</a></li>
+                                    <li><a href="http://www.primefaces.org/whouses.html">Who Uses PrimeFaces</a></li>
+                                    <li><a href="http://www.primefaces.org/testimonials.html">Testimonials</a></li>
+                                    <li><a href="http://www.primefaces.org/license.html">License</a></li>
+                                    <li><a href="http://www.primefaces.org/multimedia.html">Multimedia</a></li>
+                                    <li><a href="http://www.primefaces.org/faq.html">FAQ</a></li>
+                                </ul>
+                            </div>
+                            <div class="box">
+                                <h4>Demos</h4>
+                                <ul class="footer-list">
+                                    <li><a href="http://www.primefaces.org/showcase/ui/home.jsf">Showcase</a></li>
+                                    <li><a href="http://www.primefaces.org/showcase/ui/macosx.jsf">Mock OS X</a></li>
+                                    <li><a href="http://www.primefaces.org/showcase-labs/mobile/index.jsf">Mobile</a></li>
+                                    <li><a href="http://primefaces-rocks.appspot.com/ui/">Cloud - GAE</a></li>
+                                    <li><a href="http://www.primefaces.org/prime-ui/">Prime-UI</a></li>
+                                </ul>
+                            </div>
+                            <div class="box">
+                                <h4>Development</h4>
+                                <ul class="footer-list">
+                                    <li><a href="http://www.primefaces.org/gettingStarted.html">Getting Started</a></li>
+                                    <li><a href="http://www.primefaces.org/documentation.html">Documentation</a></li>
+                                    <li><a href="http://www.primefaces.org/downloads.html">Downloads</a></li>
+                                    <li><a href="http://code.google.com/p/primefaces/w/list">Wiki</a></li>
+                                    <li><a href="http://www.primefaces.org/themes.html">Theme Gallery</a></li>
+                                    <li><a href="http://primefaces-extensions.github.com">Extensions</a></li>
+                                </ul>
+                            </div>
+                            <div class="box">
+                                <h4>Support</h4>
+                                <ul class="footer-list">
+                                    <li><a href="http://www.primefaces.org/support.html">Support Options</a></li>
+                                    <li><a href="http://pro.primefaces.org">PrimeFaces PRO</a></li>
+                                    <li><a href="http://www.primefaces.org/elite">PrimeFaces ELITE</a></li>
+                                    <li><a href="http://www.primefaces.org/training.html">Training</a></li>
+                                    <li><a href="http://forum.primefaces.org">Forum</a></li>
+                                    <li><a href="http://www.primefaces.org/issuetracker.html">Issue Tracker</a></li>
+                                    <li><a href="http://www.primefaces.org/partners.html">Partners</a></li>
+                                </ul>
+                            </div>
+                            <div class="box">
+                                <h4>Social</h4>
+                                <ul class="footer-list">
+                                    <li><a href="http://blog.primefaces.org">Blog</a></li>
+                                    <li><a href="http://forum.primefaces.org/">Forum</a></li>
+                                    <li><a href="http://www.primefaces.org/mobileapps.html">Mobile Apps</a></li>
+                                    <li><a href="http://twitter.com/primefaces">Twitter</a></li>
+                                    <li><a href="http://www.facebook.com/groups/206606616332/">Facebook</a></li>
+                                    <li><a href="http://www.linkedin.com/groups/PrimeFaces-NextGen-Component-Suite-3095471">LinkedIn</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="copy-block">
+                            <span class="copy">Copyright 2011 <a href="#">PrimeFaces</a> All rights reserved.</span>
+                        </div>
+                        <img src="primeui/images/ornament.png" width="167" height="43" alt="image description" class="ornament" />
+                    </div>
+                </div>
+            </div>
+
+            <script language="javascript">
+                dp.SyntaxHighlighter.ClipboardSwf = '/demo/js/clipboard.swf';
+                dp.SyntaxHighlighter.HighlightAll('code');
+            </script>
+    </body>
+</html>

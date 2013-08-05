@@ -1,0 +1,52 @@
+.pui-lightbox {
+    position: fixed;
+}
+
+.pui-lightbox-content-wrapper {
+    position: relative;
+}
+
+.pui-lightbox-content {
+    position: relative;
+    margin:0;
+    padding: 0;
+    background-color: #000000;
+}
+
+.pui-lightbox-nav-right, .pui-lightbox-nav-left {
+   position: absolute;
+   top:50%;
+   cursor: pointer;
+}
+
+.pui-lightbox-nav-left {
+   left:0;
+}
+
+.pui-lightbox-nav-right {
+   right:0;
+}
+
+.pui-lightbox-loading {
+    background: url("../../images/loading.gif") #000000 center center no-repeat;
+}
+
+.pui-lightbox-caption {
+    padding: 0.2em 0.4em;
+    display: none;
+}
+
+.pui-lightbox-caption-text {
+    margin: 0.3em 0 0.1em 0;
+    float:left;
+}
+
+.pui-lightbox-close {
+    float:right;
+    margin:0;
+    padding:1px;
+}
+
+.pui-lightbox-close.ui-state-hover {
+    padding: 0;
+}

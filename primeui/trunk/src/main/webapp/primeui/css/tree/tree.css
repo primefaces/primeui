@@ -1,0 +1,78 @@
+.pui-tree {
+    width: 300px;
+}
+            
+.pui-tree .pui-tree-container {
+    height: 100%;
+    margin: 0;
+    overflow: auto;
+    padding: 3px;
+    white-space: nowrap;
+}
+
+.pui-tree .pui-treenode-children {
+    margin: 0;
+    padding: 0 0 0 16px;
+}
+
+.pui-tree .pui-treenode {
+    background-attachment: scroll;
+    background-color: transparent;
+    background-image: none;
+    background-position: 0 0;
+    background-repeat: repeat-y;
+    list-style: none outside none;
+    margin: 0;
+    padding: 1px 0 0;
+}
+
+.pui-tree .pui-treenode-content {
+    
+}
+
+.pui-tree .pui-tree-toggler {
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.pui-tree .pui-treenode-icon {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.pui-tree .pui-treenode-label {
+    display: inline-block;
+    margin: 2px 0 0 0;
+    vertical-align: top;
+    padding: 0 3px;
+}
+
+.pui-tree .pui-treenode-selectable .pui-treenode-label,
+.pui-tree .pui-treenode-selectable .pui-treenode-icon {
+    cursor: pointer;
+}
+
+.pui-tree .pui-treenode-label.ui-state-hover,
+.pui-tree .pui-treenode-label.ui-state-highlight {
+    font-weight: normal;
+    border: 0 none;
+}
+
+.pui-tree .pui-treenode-leaf-icon {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+}
+
+.pui-tree .ui-chkbox-box {
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+    float: left;
+}
+
+.pui-tree .ui-chkbox {
+    display: inline-block;
+    zoom: 1;
+}

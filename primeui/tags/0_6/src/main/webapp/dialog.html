@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+        <meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="expires" content="0" />
+        <link rel="stylesheet" href="demo/css/jquery-ui.css" />
+        <link rel="stylesheet" href="demo/css/aristo/theme.css" />
+        <link rel="stylesheet" href="demo/css/demo.css" />
+        <link rel="stylesheet" href="demo/css/sh.css" />
+        <link rel="stylesheet" href="prime-ui/css/core/core.css" />
+        <link rel="stylesheet" href="prime-ui/css/button/button.css" />
+        <link rel="stylesheet" href="prime-ui/css/dialog/dialog.css" />
+        <link rel="stylesheet" href="prime-ui/css/tabview/tabview.css" />
+        <script type="text/javascript" src="demo/js/sh.js"></script>
+        <script type="text/javascript" src="demo/js/jquery.js"></script>
+        <script type="text/javascript" src="demo/js/jquery-ui.js"></script>
+        <script type="text/javascript" src="demo/js/demo.js"></script>
+        <script type="text/javascript" src="prime-ui/js/core/core.js"></script>
+        <script type="text/javascript" src="prime-ui/js/button/button.js"></script>
+        <script type="text/javascript" src="prime-ui/js/dialog/dialog.js"></script>
+        <script type="text/javascript" src="prime-ui/js/tabview/tabview.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                $('#dlg').puidialog({
+                    showEffect: 'fade',
+                    hideEffect: 'fade',
+                    minimizable: true,
+                    maximizable: true,
+                    modal: true,
+                    buttons: [{
+                            text: 'Yes',
+                            icon: 'ui-icon-check',
+                            click: function() {
+                                $('#dlg').puidialog('hide');
+                            }
+                        },
+                        {
+                            text: 'No',
+                            icon: 'ui-icon-close',
+                            click: function() {
+                                $('#dlg').puidialog('hide');
+                            }
+                        }
+                    ]
+                });
+                
+                $('#btn-show').puibutton({
+                    icon: 'ui-icon-arrow-4-diag',
+                    click: function() {
+                        $('#dlg').puidialog('show');
+                    }
+                });
+                        
+                $('#doc').puitabview();
+            });
+        </script>
+    </head>
+
+    <body>
+
+        <div id="header" class="ui-widget ui-widget-header">
+            <div id="logo">
+                <img src="demo/images/logo.png" alt="Logo"/>
+            </div>
+            <div id="menu" class="ui-widget">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="http://www.primefaces.org/downloads.html" style="">Download</a></li>
+                    <li><a href="http://forum.primefaces.org/viewforum.php?f=16" style="">Forum</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="page" class="ui-widget">
+            <div id="sidebar" class="ui-widget-content ui-corner-bottom ui-helper-clearfix ui-shadow">
+
+                <div class="ui-widget submenu-content">
+                    <a href="accordion.html" class="ui-state-default ui-corner-all widget-link">
+                        Accordion
+                    </a>
+                    <a href="button.html" class="ui-state-default ui-corner-all widget-link">
+                        Button
+                    </a>
+                    <a href="dialog.html" class="ui-state-default ui-state-highlight ui-corner-all widget-link">
+                        Dialog
+                    </a>
+                    <a href="fieldset.html" class="ui-state-default ui-corner-all widget-link">
+                        Fieldset
+                    </a>
+                    <a href="galleria.html" class="ui-state-default ui-corner-all widget-link">
+                        Galleria
+                    </a>
+                    <a href="growl.html" class="ui-state-default ui-corner-all widget-link">
+                        Growl
+                    </a>
+                    <a href="inputtext.html" class="ui-state-default ui-corner-all widget-link">
+                        Inputtext
+                    </a>
+                    <a href="inputtextarea.html" class="ui-state-default ui-corner-all widget-link">
+                        Inputtextarea
+                    </a>
+                    <a href="lightbox.html" class="ui-state-default ui-corner-all widget-link">
+                        Lightbox
+                    </a>
+                    <a href="panel.html" class="ui-state-default ui-corner-all widget-link">
+                        Panel
+                    </a>
+                    <a href="rating.html" class="ui-state-default ui-corner-all widget-link">
+                        Rating
+                    </a>
+                    <a href="spinner.html" class="ui-state-default ui-corner-all widget-link">
+                        Spinner
+                    </a>
+                    <a href="tabview.html" class="ui-state-default ui-corner-all widget-link">
+                        Tabview
+                    </a>
+                </div>
+
+            </div>
+
+            <div id="content">
+
+                <h2 class="ui-widget-header widget-title ui-corner-all">Dialog</h2>
+                
+                <button id="btn-show" type="button">Show</button>
+                <div id="dlg" title="Godfather I">
+                    <p>The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
+                    His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. 
+                    Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, 
+                    kind and benevolent to those who give respect, 
+                    but given to ruthless violence whenever anything stands against the good of the family.</p>
+                </div>
+                 
+                <h2 class="title" style="margin-top: 40px;">Documentation</h2> 
+                <div id="doc">
+                    <ul>
+                        <li><a href="#doc-overview">Overview</a></li>
+                        <li><a href="#doc-options">Options</a></li>
+                        <li><a href="#doc-events">Events</a></li>
+                        <li><a href="#doc-methods">Methods</a></li>
+                        <li><a href="#doc-methods">Source</a></li>
+                    </ul>
+                    <div>
+                        <div id="doc-overview">
+                            <p>Dialog is a overlay panel widget featuring modality, minimize, maximize and animations.</p>
+
+                            <pre name="code" class="jscript">
+$('#dlg').puidialog();
+                            </pre>
+
+                            <pre name="code" class="xml">
+&lt;div id="dlg" title="Header"&gt;
+    Content
+&lt;/div&gt;
+                            </pre>
+                        </div>
+
+                        <div id="doc-options">
+                            <table class="doc-table">
+                                <thead>
+                                <th class="ui-state-default">Name</th>
+                                <th class="ui-state-default">Type</th>
+                                <th class="ui-state-default">Default</th>
+                                <th class="ui-state-default">Description</th>
+                                </thead>
+                                <tbody>
+                                    <tr class="ui-widget-content">
+                                        <td>draggable</td>
+                                        <td>boolean</td>
+                                        <td>true</td>
+                                        <td>Enables dragging using header.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>resizable</td>
+                                        <td>boolean</td>
+                                        <td>true</td>
+                                        <td>Enables content resizing.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>location</td>
+                                        <td>string</td>
+                                        <td>center</td>
+                                        <td>Defines the position of the dialog, valid values are combination of "left", "right", "top", "bottom" like "left right"
+                                            or absolute coordinates like "50,150".</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>width</td>
+                                        <td>int</td>
+                                        <td>300</td>
+                                        <td>Width of the dialog.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>height</td>
+                                        <td>int</td>
+                                        <td>auto</td>
+                                        <td>Height of the dialog.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>minHeight</td>
+                                        <td>int</td>
+                                        <td>25</td>
+                                        <td>Maximum height of a resizable dialog.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>minHeight</td>
+                                        <td>int</td>
+                                        <td>25</td>
+                                        <td>Maximum height of a resizable dialog.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>visible</td>
+                                        <td>boolean</td>
+                                        <td>false</td>
+                                        <td>When true, dialog is visible on page load.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>modal</td>
+                                        <td>boolean</td>
+                                        <td>false</td>
+                                        <td>Defines if background should be blocked.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>showEffect</td>
+                                        <td>string</td>
+                                        <td>null</td>
+                                        <td>Effect to run to show the dialog.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>hideEffect</td>
+                                        <td>string</td>
+                                        <td>false</td>
+                                        <td>Effect to run to hide the dialog.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>effectOptions</td>
+                                        <td>object</td>
+                                        <td>{}</td>
+                                        <td>Options for show and hide effect.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>effectSpeed</td>
+                                        <td>string</td>
+                                        <td>normal</td>
+                                        <td>Speed of the animation in milliseconds or predefines values like slow, normal and fast.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>closeOnEscape</td>
+                                        <td>boolean</td>
+                                        <td>true</td>
+                                        <td>Specifices if pressing escape key should hide the dialog.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>rtl</td>
+                                        <td>boolean</td>
+                                        <td>false</td>
+                                        <td>When enabled dialog is displayed in RTL direction.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>closable</td>
+                                        <td>boolean</td>
+                                        <td>true</td>
+                                        <td>Adds a close icon to the header to hide the dialog.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>minimizable</td>
+                                        <td>boolean</td>
+                                        <td>true</td>
+                                        <td>Adds a toggle icon to the header to minimize the dialog.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>maximizable</td>
+                                        <td>boolean</td>
+                                        <td>true</td>
+                                        <td>Adds a toggle icon to the header to maximize the dialog.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>appendTo</td>
+                                        <td>element</td>
+                                        <td>null</td>
+                                        <td>Defines where dialog should be appended e.g. document body.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>buttons</td>
+                                        <td>array</td>
+                                        <td>null</td>
+                                        <td>An array of options for generated dialog buttons.</td>
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div id="doc-events">
+                            <table class="doc-table">
+                                <thead>
+                                <th class="ui-state-default">Name</th>
+                                <th class="ui-state-default">Parameters</th>
+                                <th class="ui-state-default">Description</th>
+                                </thead>
+                                <tbody>
+                                    <tr class="ui-widget-content">
+                                        <td>beforeShow</td>
+                                        <td>event: puidialogbeforeShow event
+                                        <td>Fired before showing.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>afterShow</td>
+                                        <td>event: puidialogafterShow event
+                                        <td>Fired after showing.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>beforeHide</td>
+                                        <td>event: puidialogbeforeHide event
+                                        <td>Fired before hiding.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>afterHide</td>
+                                        <td>event: puidialogafterHide event
+                                        <td>Fired after hiding.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>minimize</td>
+                                        <td>event: puidialogafterMinimize event
+                                        <td>Fired after minimize.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>maximize</td>
+                                        <td>event: puidialogafterMaximize event
+                                        <td>Fired after maximize.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <pre name="code" class="jscript">
+$('#dlg').puidialog({
+    afterHide: function(event) {
+        //...
+    }
+});
+                            </pre>
+                        </div>
+
+                        <div id="doc-methods">
+                            <table class="doc-table">
+                                <thead>
+                                    <th class="ui-state-default">Name</th>
+                                    <th class="ui-state-default">Parameters</th>
+                                    <th class="ui-state-default">Description</th>
+                                </thead>
+                                <tbody>
+                                    <tr class="ui-widget-content">
+                                        <td>show</td>
+                                        <td>-</td>
+                                        <td>Shows dialog.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>hide</td>
+                                        <td>-</td>
+                                        <td>Hides dialog.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>toggleMinimize</td>
+                                        <td>-</td>
+                                        <td>Toggles minimized and current state.</td>
+                                    </tr>
+                                    <tr class="ui-widget-content">
+                                        <td>toggleMaximize</td>
+                                        <td>-</td>
+                                        <td>Toggles maximized and current state.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <pre name="code" class="jscript">
+$('#dlg').puidialog('show');
+                            </pre>
+                        </div>
+
+                        <div id="doc-source">
+                            <pre name="code" class="jscript">
+$(function() {
+    $('#dlg').puidialog({
+        showEffect: 'fade',
+        hideEffect: 'fade',
+        minimizable: true,
+        maximizable: true,
+        modal: true,
+        buttons: [{
+                text: 'Yes',
+                icon: 'ui-icon-check',
+                click: function() {
+                    $('#dlg').puidialog('hide');
+                }
+            },
+            {
+                text: 'No',
+                icon: 'ui-icon-close',
+                click: function() {
+                    $('#dlg').puidialog('hide');
+                }
+            }
+        ]
+    });
+
+    $('#btn-show').puibutton({
+        icon: 'ui-icon-arrow-4-diag',
+        click: function() {
+            $('#dlg').puidialog('show');
+        }
+    });
+});
+                            </pre>
+
+                            <pre name="code" class="xml">
+&lt;button id="btn-show" type="button"&gt;Show&lt;/button&gt;
+
+&lt;div id="dlg" title="Godfather I"&gt;
+    &lt;p&gt;The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
+    His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. 
+    Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, 
+    kind and benevolent to those who give respect, 
+    but given to ruthless violence whenever anything stands against the good of the family.&lt;/p&gt;
+&lt;/div&gt;
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="clear: both;">&nbsp;</div>
+        </div>
+
+        <div id="footer" class="ui-widget ui-widget-header ui-corner-bottom">
+            <p>Prime-UI, From the Producers of <a href="http://www.primefaces.org">PrimeFaces</a>. Copyright 2012 - <a href="http://www.prime.com.tr">Prime Teknoloji.</a></p>
+        </div>
+
+        <script language="javascript">
+            dp.SyntaxHighlighter.ClipboardSwf = '/demo/js/clipboard.swf';
+            dp.SyntaxHighlighter.HighlightAll('code');
+        </script>
+
+    </body>
+</html>

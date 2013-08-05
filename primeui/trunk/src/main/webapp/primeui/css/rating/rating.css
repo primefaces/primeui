@@ -1,0 +1,37 @@
+.pui-rating-star,
+.pui-rating-cancel {
+    float: left;
+    display: block;
+    overflow: hidden;
+    text-indent: -999em;
+    cursor: pointer;
+}
+
+.pui-rating-star a,
+.pui-rating-cancel a {
+    width: 16px;
+    height: 15px;
+    display: block;
+    background: url("./images/rating.png") no-repeat 0 0;
+}
+
+.pui-rating-star a {
+    background-position: 0 -32px;
+}
+
+.pui-rating-star-on a {
+    background-position: 0 -48px;
+}
+
+.pui-rating-star-hover a {
+    background-position: 0 -64px;
+}
+
+.pui-rating-cancel-hover a {
+    background-position: 0 -16px;
+}
+
+.pui-rating.ui-state-disabled .pui-rating-star,
+.pui-rating.ui-state-disabled .pui-rating-cancel {
+    cursor: default;    
+}

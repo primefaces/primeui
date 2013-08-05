@@ -1,0 +1,124 @@
+.pui-tabview {
+    position: relative; 
+    padding: .2em; 
+    zoom: 1; 
+} /* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
+
+.pui-tabview .pui-tabview-nav { 
+    margin: 0;
+}
+
+.pui-tabview .pui-tabview-nav li { 
+    list-style: none; 
+    float: left; 
+    position: relative; 
+    margin: 0 .2em 1px 0;  
+    padding: 0; 
+    white-space: nowrap; 
+}
+
+.pui-tabview .pui-tabview-nav li a { 
+    float: left; 
+    padding: .5em 1em; 
+    text-decoration: none; 
+}
+
+.pui-tabview .pui-tabview-nav li.pui-tabview-selected a, 
+.pui-tabview .pui-tabview-nav li.ui-state-disabled a, 
+.pui-tabview .pui-tabview-nav li.ui-state-processing a { 
+    cursor: text; 
+}
+
+.pui-tabview .pui-tabview-nav li a, 
+.pui-tabview.pui-tabview-collapsible .pui-tabview-nav li.pui-tabview-selected a { 
+    cursor: pointer; 
+} /* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
+
+.pui-tabview .pui-tabview-panel { 
+    border-width: 0; 
+    padding: 1em 1.4em; 
+    background: none; 
+}
+
+.pui-tabview .pui-tabview-nav li { 
+    display: block; 
+}
+
+.pui-tabview .pui-tabview-nav li .ui-icon { 
+    float: left; 
+    margin: 0.4em 0.2em 0 0; 
+    cursor: pointer; 
+}
+
+/* per orientation settings */
+/* top and bottom */
+.pui-tabview.pui-tabview-top > .pui-tabview-nav li { 
+    border-bottom: 0;
+    top: 1px; 
+}
+
+.pui-tabview.pui-tabview-top > .pui-tabview-nav { 
+    padding: .2em .2em 0; 
+}
+
+.pui-tabview.pui-tabview-bottom > .pui-tabview-nav { 
+    padding: 0 .2em .2em; 
+}
+
+.pui-tabview.pui-tabview-bottom > .pui-tabview-nav li { 
+    border-top: 0;
+}
+
+/* left and right*/
+.pui-tabview-left:after,
+.pui-tabview-right:after {
+    clear:both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+.pui-tabview-left > .pui-tabview-nav {
+    float:left;
+    width:23%;
+    height:300px;
+    background-image: none;
+    padding-top:1px;
+}
+
+.pui-tabview-left > .pui-tabview-panels {
+    float:right;
+    width:75%;
+}
+
+.pui-tabview.pui-tabview-left > .pui-tabview-nav li,
+.pui-tabview.pui-tabview-right > .pui-tabview-nav li{
+    display: block;
+    float: right;
+    white-space: normal;
+    width: 98%;
+}
+
+.pui-tabview.pui-tabview-left > .pui-tabview-nav li {
+    margin:0 0 1px 0.2em;
+    border-right:0 none;
+}
+
+.pui-tabview.pui-tabview-right > .pui-tabview-nav {
+    float:right;
+    width:23%;
+    height:300px;
+    background-image: none;
+    padding-top:1px;
+}
+
+.pui-tabview.pui-tabview-right > .pui-tabview-panels {
+    float:left;
+    width:75%;
+}
+
+.pui-tabview.pui-tabview-right > .pui-tabview-nav li {
+    margin:0 0.2em 1px 0;
+    border-left:0 none;
+}

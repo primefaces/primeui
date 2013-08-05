@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>PrimeUI</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <link rel="stylesheet" type="text/css" href="http://www.primefaces.org/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="demo/css/demo.css" />
+    <link rel="stylesheet" href="demo/css/jquery-ui.css" />
+    <link rel="stylesheet" href="themes/aristo/theme.css" />
+    <link rel="stylesheet" href="primeui/css/core/core.css" />
+    <link rel="stylesheet" href="demo/css/sh.css" />
+    <link rel="stylesheet" href="primeui/css/accordion/accordion.css" />
+    <link rel="stylesheet" href="primeui/css/inputtext/inputtext.css" />
+    <link rel="stylesheet" href="primeui/css/dropdown/dropdown.css" />
+    <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
+    <script type="text/javascript" src="demo/js/sh.js"></script>
+    <script type="text/javascript" src="demo/js/jquery.js"></script>
+    <script type="text/javascript" src="demo/js/jquery-ui.js"></script>
+    <script src="http://www.primefaces.org/script/common.js"></script>
+    <script type="text/javascript" src="primeui/js/core/core.js"></script>
+    <script type="text/javascript" src="primeui/js/accordion/accordion.js"></script>
+    <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
+    <script type="text/javascript" src="primeui/js/dropdown/dropdown.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('#default').puiaccordion();
+
+            $('#multiple').puiaccordion({multiple:true});
+
+            $('#doc').puitabview();
+            
+            var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
+                    'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
+                    'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
+                    'ui-darkness', 'ui-lightness', 'vader');
+            
+            $('#themes').puidropdown({
+                    source: themes,
+                    content: function(option) {
+                        return '<img src="demo/images/themes/' + option + '.png" alt="" /><span style="float:right;font-size:14px">' + option + '</span>';
+                    },
+                    change: function(e) {
+                        var themeLink = $('link[href$="theme.css"]'),
+                        newThemeURL =  'themes/' + $(this).val() + '/theme.css';
+                        
+                        themeLink.attr('href', newThemeURL);
+                    }
+                });
+        });
+    </script>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="header">
+			<div class="header-block">
+				<h1 class="logo"><a href="index.html">prime faces</a></h1>
+				<ul id="nav">
+					<li><a id="menu-overview" href="#">Overview</a></li>
+					<li><a id="menu-demos" href="#">Demos</a></li>
+					<li><a id="menu-development" href="#">Development</a></li>
+					<li><a id="menu-support" href="#">Support</a></li>
+					<li><a id="menu-social" href="#">Social</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="main">
+			<div class="content-section">
+				<div class="heading">
+                    <h2>PrimeUI</h2>
+				</div>
+				<div class="content-block">					
+                    <div id="sidebar">
+                        <ul>
+                            <li class="widgets-header">Resources</li>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="setup.html">Setup</a></li>
+                            <li><a href="http://www.primefaces.org/downloads.html#primeui">Download</a></li>
+                            <li><a href="themes.html">Themes</a></li>
+                            <li><a href="http://forum.primefaces.org">Forum</a></li>
+                            <li><a href="http://blog.primefaces.org/?cat=11">Blog</a></li>
+                            <li><a href="license.html">License</a></li>
+                        </ul>
+                        <ul>
+                            <li class="widgets-header">ThemeSwitcher</li>
+                            <li class="themes-container"><select id="themes" name="themes"></select></li>
+                        </ul>
+                        <ul>
+                            <li class="widgets-header">Widgets</li>
+                            <li><a href="accordion.html">Accordion</a></li>
+                            <li><a href="autocomplete.html">AutoComplete</a></li>
+                            <li><a href="breadcrumb.html">Breadcrumb</a></li>
+                            <li><a href="button.html">Button</a></li>
+                            <li><a href="checkbox.html">Checkbox</a></li>
+                            <li><a href="datatable.html">Datatable</a></li>
+                            <li><a href="dialog.html">Dialog</a></li>
+                            <li><a href="dropdown.html">Dropdown</a></li>
+                            <li><a href="fieldset.html">Fieldset</a></li>
+                            <li><a href="galleria.html">Galleria</a></li>
+                            <li><a href="growl.html">Growl</a></li>
+                            <li><a href="inputtext.html">Inputtext</a></li>
+                            <li><a href="inputtextarea.html">Inputtextarea</a></li>
+                            <li><a href="lightbox.html">Lightbox</a></li>
+                            <li><a href="menu.html">Menu</a></li>
+                            <li><a href="menubar.html">Menubar</a></li>
+                            <li><a href="contextmenu.html">Menu - Context</a></li>
+                            <li><a href="slidemenu.html">Menu - Slide</a></li>
+                            <li><a href="tieredmenu.html">Menu - Tiered</a></li>
+                            <li><a href="notify.html">Notify</a></li>
+                            <li><a href="paginator.html">Paginator</a></li>
+                            <li><a href="panel.html">Panel</a></li>
+                            <li><a href="password.html">Password</a></li>
+                            <li><a href="progressbar.html">ProgressBar</a></li>
+                            <li><a href="radiobutton.html">RadioButton</a></li>
+                            <li><a href="rating.html">Rating</a></li>
+                            <li><a href="spinner.html">Spinner</a></li>
+                            <li><a href="tabview.html">Tabview</a></li>
+                            <li><a href="terminal.html">Terminal</a></li>
+                            <li><a href="tooltip.html">Tooltip</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div id="content-demo">
+                        <h1 class="widget-title">Accordion</h1>
+                        <p>Accordion groups a collection of contents in tabs. Markup required is a set of headers and corresponding contents.</p>
+                        
+                        <h3>Default</h3>
+                        <div id="default">
+                            <h3>Godfather 1</h3>
+                            <div>
+                                The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
+                            </div>
+
+                            <h3>Godfather 2</h3>
+                            <div>
+                                Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows.
+                            </div>
+
+                            <h3>Godfather 3</h3>
+                            <div>
+                                After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.
+                            </div>    
+                        </div>
+
+                        <h3>Multiple</h3>
+                        <div id="multiple">
+                            <h3>Godfather 1</h3>
+                            <div>
+                                The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
+                            </div>
+
+                            <h3>Godfather 2</h3>
+                            <div>
+                                Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows.
+                            </div>
+
+                            <h3>Godfather 3</h3>
+                            <div>
+                                After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.
+                            </div>    
+                        </div>
+                        
+                        <h3>Documentation</h3>
+                        <div id="doc">
+                            <ul>
+                                <li><a href="#doc-overview">Overview</a></li>
+                                <li><a href="#doc-options">Options</a></li>
+                                <li><a href="#doc-events">Events</a></li>
+                                <li><a href="#doc-methods">Methods</a></li>
+                                <li><a href="#doc-methods">Source</a></li>
+                            </ul>
+                            <div>
+                                <div id="doc-overview">
+                                    <pre name="code" class="jscript">
+            $('#default').puiaccordion();
+                                    </pre>
+
+                                    <pre name="code" class="xml">
+            &lt;div id="default"&gt;
+                &lt;h3&gt;Title 1&lt;/h3&gt;
+                &lt;div&gt;
+                    Content 1
+                &lt;/div&gt;  
+
+                &lt;h3&gt;Title 2&lt;/h3&gt;
+                &lt;div&gt;
+                    Content 2
+                &lt;/div&gt;  
+
+                &lt;h3&gt;Title 3&lt;/h3&gt;
+                &lt;div&gt;
+                    Content 3
+                &lt;/div&gt;  
+            &lt;/div&gt;
+                                    </pre>
+                                </div>
+
+                                <div id="doc-options">
+                                    <table class="doc-table">
+                                        <thead>
+                                            <th class="ui-state-default">Name</th>
+                                            <th class="ui-state-default">Type</th>
+                                            <th class="ui-state-default">Default</th>
+                                            <th class="ui-state-default">Description</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="ui-widget-content">
+                                                <td>activeIndex</td>
+                                                <td>Integer/Array</td>
+                                                <td>0</td>
+                                                <td>Index of the active tab. If multiple is enabled, an array of active indexes.</td>
+                                            </tr>
+                                            <tr class="ui-widget-content">
+                                                <td>multiple</td>
+                                                <td>Boolean</td>
+                                                <td>false</td>
+                                                <td>Defines if multiple tabs can be active at the same time.</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div id="doc-events">
+                                    <table class="doc-table">
+                                        <thead>
+                                            <th class="ui-state-default">Name</th>
+                                            <th class="ui-state-default">Parameters</th>
+                                            <th class="ui-state-default">Description</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="ui-widget-content">
+                                                <td>change</td>
+                                                <td>event: puiaccordionchange event
+                                                    <br />
+                                                    panel: New panel content</td>
+                                                <td>Fired when an inactive tab is selected.</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <pre name="code" class="jscript">
+            $('#default').puiaccordion({
+                change: function(event, panel) {
+                    //...
+                }
+            });
+                                    </pre>
+                                </div>
+
+                                <div id="doc-methods">
+                                    <table class="doc-table">
+                                        <thead>
+                                        <th class="ui-state-default">Name</th>
+                                        <th class="ui-state-default">Parameters</th>
+                                        <th class="ui-state-default">Description</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="ui-widget-content">
+                                                <td>select</td>
+                                                <td>index: Index of the tab to select.</td>
+                                                <td>Activates the tab with given index.</td>
+                                            </tr>
+                                            <tr class="ui-widget-content">
+                                                <td>unselect</td>
+                                                <td>index: Index of the tab to unselect.</td>
+                                                <td>Deactivates the tab with given index.</td>
+                                            </tr>
+                                            <tr class="ui-widget-content">
+                                                <td>option</td>
+                                                <td>name: Name of the option</td>
+                                                <td>Returns the value of the option.</td>
+                                            </tr>
+                                            <tr class="ui-widget-content">
+                                                <td>option</td>
+                                                <td>name: Name of the option, value: Value of the option</td>
+                                                <td>Set the value of the option.</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <pre name="code" class="jscript">
+            $('#default').puiaccordion('select', 1);
+                                    </pre>
+                                </div>
+
+                                <div id="doc-source">
+                                    <pre name="code" class="jscript">
+            &lt;script type="text/javascript"&gt;
+                $(function() {
+                    $('#default').puiaccordion();
+
+                    $('#multiple').puiaccordion({multiple:true});
+                });
+            &lt;/script&gt;
+                                    </pre>
+
+                                    <pre name="code" class="xml">
+            &lt;div id="default"&gt;
+                &lt;h3&gt;Godfather 1&lt;/h3&gt;
+                &lt;div&gt;
+                    The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
+                &lt;/div&gt;
+
+                &lt;h3&gt;Godfather 2&lt;/h3&gt;
+                &lt;div&gt;
+                    Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows.
+                &lt;/div&gt;
+
+                &lt;h3&gt;Godfather 3&lt;/h3&gt;
+                &lt;div&gt;
+                    After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.
+                &lt;/div&gt;    
+            &lt;/div&gt;
+
+            &lt;div id="multiple"&gt;
+                &lt;h3&gt;Godfather 1&lt;/h3&gt;
+                &lt;div&gt;
+                    The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
+                &lt;/div&gt;
+
+                &lt;h3&gt;Godfather 2&lt;/h3&gt;
+                &lt;div&gt;
+                    Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows.
+                &lt;/div&gt;
+
+                &lt;h3&gt;Godfather 3&lt;/h3&gt;
+                &lt;div&gt;
+                    After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.
+                &lt;/div&gt;    
+            &lt;/div&gt;
+                                    </pre>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                        
+                    <div style="clear: both" />
+                    
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+			<div class="footer-block">
+				<div class="box-section">
+										<div class="box">
+						<h4>Overview</h4>
+						<ul class="footer-list">
+							<li><a href="http://www.primefaces.org/whyprimefaces.html">Why PrimeFaces</a></li>
+							<li><a href="http://www.primefaces.org/whouses.html">Who Uses PrimeFaces</a></li>
+							<li><a href="http://www.primefaces.org/testimonials.html">Testimonials</a></li>
+							<li><a href="http://www.primefaces.org/license.html">License</a></li>
+							<li><a href="http://www.primefaces.org/multimedia.html">Multimedia</a></li>
+							<li><a href="http://www.primefaces.org/faq.html">FAQ</a></li>
+						</ul>
+					</div>
+					<div class="box">
+						<h4>Demos</h4>
+						<ul class="footer-list">
+							<li><a href="http://www.primefaces.org/showcase/ui/home.jsf">Showcase</a></li>
+							<li><a href="http://www.primefaces.org/showcase/ui/macosx.jsf">Mock OS X</a></li>
+							<li><a href="http://www.primefaces.org/showcase-labs/mobile/index.jsf">Mobile</a></li>
+							<li><a href="http://primefaces-rocks.appspot.com/ui/">Cloud - GAE</a></li>
+							<li><a href="http://www.primefaces.org/prime-ui/">Prime-UI</a></li>
+						</ul>
+					</div>
+					<div class="box">
+						<h4>Development</h4>
+						<ul class="footer-list">
+							<li><a href="http://www.primefaces.org/gettingStarted.html">Getting Started</a></li>
+							<li><a href="http://www.primefaces.org/documentation.html">Documentation</a></li>
+							<li><a href="http://www.primefaces.org/downloads.html">Downloads</a></li>
+							<li><a href="http://code.google.com/p/primefaces/w/list">Wiki</a></li>
+							<li><a href="http://www.primefaces.org/themes.html">Theme Gallery</a></li>
+							<li><a href="http://primefaces-extensions.github.com">Extensions</a></li>
+						</ul>
+					</div>
+					<div class="box">
+						<h4>Support</h4>
+						<ul class="footer-list">
+                            <li><a href="http://www.primefaces.org/support.html">Support Options</a></li>
+							<li><a href="http://pro.primefaces.org">PrimeFaces PRO</a></li>
+							<li><a href="http://www.primefaces.org/elite">PrimeFaces ELITE</a></li>
+							<li><a href="http://www.primefaces.org/training.html">Training</a></li>
+							<li><a href="http://forum.primefaces.org">Forum</a></li>
+							<li><a href="http://www.primefaces.org/issuetracker.html">Issue Tracker</a></li>
+							<li><a href="http://www.primefaces.org/partners.html">Partners</a></li>
+						</ul>
+					</div>
+					<div class="box">
+						<h4>Social</h4>
+						<ul class="footer-list">
+							<li><a href="http://blog.primefaces.org">Blog</a></li>
+							<li><a href="http://forum.primefaces.org/">Forum</a></li>
+							<li><a href="http://www.primefaces.org/mobileapps.html">Mobile Apps</a></li>
+							<li><a href="http://twitter.com/primefaces">Twitter</a></li>
+							<li><a href="http://www.facebook.com/groups/206606616332/">Facebook</a></li>
+							<li><a href="http://www.linkedin.com/groups/PrimeFaces-NextGen-Component-Suite-3095471">LinkedIn</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="copy-block">
+					<span class="copy">Copyright 2011 <a href="#">PrimeFaces</a> All rights reserved.</span>
+				</div>
+				<img src="primeui/images/ornament.png" width="167" height="43" alt="image description" class="ornament" />
+			</div>
+		</div>
+	</div>
+        
+    <script language="javascript">
+        dp.SyntaxHighlighter.ClipboardSwf = '/demo/js/clipboard.swf';
+        dp.SyntaxHighlighter.HighlightAll('code');
+    </script>
+</body>
+</html>
