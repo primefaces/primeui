@@ -16,24 +16,16 @@
 
     <fileSets>
         <fileSet>
-            <directory>${basedir}/src/main/webapp/primeui</directory>
+            <directory>${basedir}/src/main/webapp/prime-ui</directory>
             <outputDirectory>/development</outputDirectory>
         </fileSet>
         <fileSet>
-            <directory>${project.build.directory}/primeui/development</directory>
+            <directory>${project.build.directory}/prime-ui/development</directory>
             <outputDirectory>/development</outputDirectory>
         </fileSet>
         <fileSet>
-            <directory>${project.build.directory}/primeui/production</directory>
+            <directory>${project.build.directory}/prime-ui/production</directory>
             <outputDirectory>/production</outputDirectory>
-        </fileSet>
-        <fileSet>
-            <directory>${basedir}/src/main/webapp/primeui/images</directory>
-            <outputDirectory>/production/images</outputDirectory>
-        </fileSet>
-        <fileSet>
-            <directory>${basedir}/src/main/webapp/themes</directory>
-            <outputDirectory>/themes</outputDirectory>
         </fileSet>
     </fileSets>
     
