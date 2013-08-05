@@ -8,44 +8,21 @@
         <link rel="stylesheet" type="text/css" href="http://www.primefaces.org/css/all.css" />
         <link rel="stylesheet" type="text/css" href="demo/css/demo.css" />
         <link rel="stylesheet" href="demo/css/jquery-ui.css" />
-        <link rel="stylesheet" href="themes/aristo/theme.css" />
-        <link rel="stylesheet" href="primeui/css/core/core.css" />
+        <link rel="stylesheet" href="demo/css/aristo/theme.css" />
         <link rel="stylesheet" href="demo/css/sh.css" />
-        <link rel="stylesheet" href="primeui/css/checkbox/checkbox.css" />
-        <link rel="stylesheet" href="primeui/css/inputtext/inputtext.css" />
-        <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
-        <link rel="stylesheet" href="primeui/css/dropdown/dropdown.css" />
+        <link rel="stylesheet" href="prime-ui/css/checkbox/checkbox.css" />
+        <link rel="stylesheet" href="prime-ui/css/tabview/tabview.css" />
         <script type="text/javascript" src="demo/js/sh.js"></script>
         <script type="text/javascript" src="demo/js/jquery.js"></script>
         <script type="text/javascript" src="demo/js/jquery-ui.js"></script>
         <script src="http://www.primefaces.org/script/common.js"></script>
-        <script type="text/javascript" src="primeui/js/core/core.js"></script>
-        <script type="text/javascript" src="primeui/js/checkbox/checkbox.js"></script>
-        <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
-        <script type="text/javascript" src="primeui/js/dropdown/dropdown.js"></script>
+        <script type="text/javascript" src="prime-ui/js/checkbox/checkbox.js"></script>
+        <script type="text/javascript" src="prime-ui/js/tabview/tabview.js"></script>
         <script type="text/javascript">
             $(function() {
                 $(':checkbox').puicheckbox();
 
                 $('#doc').puitabview();
-                
-                var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
-                    'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
-                    'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
-                    'ui-darkness', 'ui-lightness', 'vader');
-            
-                $('#themes').puidropdown({
-                    source: themes,
-                    content: function(option) {
-                        return '<img src="demo/images/themes/' + option + '.png" alt="" /><span style="float:right;font-size:14px">' + option + '</span>';
-                    },
-                    change: function(e) {
-                        var themeLink = $('link[href$="theme.css"]'),
-                        newThemeURL =  'themes/' + $(this).val() + '/theme.css';
-                        
-                        themeLink.attr('href', newThemeURL);
-                    }
-                });
             });
         </script>
     </head>
@@ -75,14 +52,9 @@
                                 <li><a href="index.html">Home</a></li>
                                 <li><a href="setup.html">Setup</a></li>
                                 <li><a href="http://www.primefaces.org/downloads.html#primeui">Download</a></li>
-                                <li><a href="themes.html">Themes</a></li>
                                 <li><a href="http://forum.primefaces.org">Forum</a></li>
                                 <li><a href="http://blog.primefaces.org/?cat=11">Blog</a></li>
                                 <li><a href="license.html">License</a></li>
-                            </ul>
-                            <ul>
-                                <li class="widgets-header">ThemeSwitcher</li>
-                                <li class="themes-container"><select id="themes" name="themes"></select></li>
                             </ul>
                             <ul>
                                 <li class="widgets-header">Widgets</li>
@@ -114,9 +86,7 @@
                                 <li><a href="rating.html">Rating</a></li>
                                 <li><a href="spinner.html">Spinner</a></li>
                                 <li><a href="tabview.html">Tabview</a></li>
-                                <li><a href="terminal.html">Terminal</a></li>
                                 <li><a href="tooltip.html">Tooltip</a></li>
-                                <li><a href="tree.html">Tree</a></li>
                             </ul>
                         </div>
 
@@ -347,7 +317,7 @@
                         <div class="copy-block">
                             <span class="copy">Copyright 2011 <a href="#">PrimeFaces</a> All rights reserved.</span>
                         </div>
-                        <img src="primeui/images/ornament.png" width="167" height="43" alt="image description" class="ornament" />
+                        <img src="prime-ui/images/ornament.png" width="167" height="43" alt="image description" class="ornament" />
                     </div>
                 </div>
             </div>
