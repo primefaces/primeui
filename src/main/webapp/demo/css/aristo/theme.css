@@ -55,11 +55,6 @@ a {
 {
     color: #4f4f4f;
 }
-
-.pui-datatable-odd {
-    background: none repeat scroll 0 0 #F2F5F9;
-}
-
 .ui-widget-header
 {
     border: 1px solid #a8a8a8;
@@ -1249,3 +1244,6 @@ a {
     filter: chroma(color=#c4c4c4);
 }
 
+.ui-datatable-odd {
+    background: none repeat scroll 0 0 #F2F5F9;
+}

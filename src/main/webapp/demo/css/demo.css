@@ -19,31 +19,18 @@
     list-style-type: none;
     line-height: 15px;
     list-style-type: none;
-    padding: 0;
+    padding: 5px 10px 5px 15px;
+    text-shadow: 0 1px 0 #FFFFFF;
     border-bottom: 1px solid #F2F2F2;
     font-weight: bold;
 }
 
-#sidebar li.themes-container {
-    padding: 5px 0px 5px 8px;
-}
-
 #sidebar .widgets-header {
     background: none repeat scroll 0 0 #85B2CB;
-    color: #FFFFFF;
-    padding: 5px 10px 5px 15px;
 }
 
 #sidebar li a {
     color: #636363;
-    display: block;
-    padding: 5px 10px 5px 15px;
-}
-
-#sidebar li a:hover {
-    text-decoration: none;
-    background: none repeat scroll 0 0 #424548;
-    color: #F9F7F7;
 }
 
 #content-demo {

@@ -3,7 +3,16 @@
          xmlns="http://java.sun.com/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" >
-	        
+	    
+    <servlet>
+        <servlet-name>AutoComplete Servlet</servlet-name>
+        <servlet-class>org.primefaces.primeui.servlet.AutoCompleteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AutoComplete Servlet</servlet-name>
+        <url-pattern>/autocomplete/*</url-pattern>
+    </servlet-mapping>
+    
     <servlet>
         <servlet-name>TabContent Servlet</servlet-name>
         <servlet-class>org.primefaces.primeui.servlet.TabContentServlet</servlet-class>
@@ -19,10 +28,6 @@
 		<init-param>
 		     <param-name>com.sun.jersey.config.property.packages</param-name>
 		     <param-value>org.primefaces.primeui.service</param-value>
-		</init-param>
-        <init-param>
-		     <param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
-		     <param-value>true</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
