@@ -1,70 +1,103 @@
 .ui-widget {
-    font-size: 12px !important;
+    font-size: 80%;
+}
+
+body {
+    margin:0;
+    padding:0;
+}
+
+#header {
+    padding: 4px 0px;
+    height: 75px;
+    position: relative;
+}
+
+#header-text {
+    position: absolute;
+    top:30px;
+    right:30px;
+    font-size: 24px;
+    font-family: "Trebuchet MS","Times New Roman",Times,serif
+}
+
+#logo {
+    text-align: left;
+    padding-left: 20px;
+}
+
+#page {
+	padding: 10px 0px;
+	background: #FFFFFF;
+}
+
+/* Content */
+#content {
+	width: 80%;
+    float:left;
+    padding-left:20px;
 }
 
 #sidebar {
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
-    float: left;
-    margin-top: 1em;
+	float: left;
+	width: 15%;
+	padding: 2px 10px 0px 10px;
+	margin-left: -1px;
     overflow: hidden;
-    width: 15%;
+    height:600px;
+    -moz-box-shadow: 0px 5px 10px rgba(0,0,0,0.8);
+    -webkit-box-shadow: 0px 5px 10px rgba(0,0,0,0.8);
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.8);
 }
 
-#sidebar ul {
-    margin: 0;
-    padding: 0;
+/* Footer */
+#footer {
+	height: 70px;
+	margin: 0 auto;
+	padding: 0 20px;
+    font-size: 14px;
 }
 
-#sidebar li {
-    list-style-type: none;
-    line-height: 15px;
-    list-style-type: none;
-    padding: 0;
-    border-bottom: 1px solid #F2F2F2;
-    font-weight: bold;
+#footer p {
+	margin: 0;
+	padding: 25px 0 0 0;
+	text-align: center;
 }
 
-#sidebar li.themes-container {
-    padding: 5px 0px 5px 8px;
-}
-
-#sidebar .widgets-header {
-    background: none repeat scroll 0 0 #85B2CB;
-    color: #FFFFFF;
-    padding: 5px 10px 5px 15px;
-}
-
-#sidebar li a {
-    color: #636363;
-    display: block;
-    padding: 5px 10px 5px 15px;
-}
-
-#sidebar li a:hover {
-    text-decoration: none;
-    background: none repeat scroll 0 0 #424548;
-    color: #F9F7F7;
-}
-
-#content-demo {
-    float: left;
-    padding-left: 20px;
-    width: 80%;
-}
-
-#content-demo p {
-    display: none;
-}
-
-.content-block h1.widget-title {
-    font-size: 24px;
-    text-align: center;
-    background: none repeat scroll 0 0 #424548;
-    color: #F9F7F7;
+.title {
     padding: 4px 10px;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
+    margin-bottom: 5px;
+    border-bottom:1px solid lightgrey;
+    margin-top: 10px;
+    display: block;
+}
+
+.title-docs {
+    padding: 4px 10px;
+    margin-top: 10px;
+}
+
+.widget-link {
+    display: block;
+    text-decoration: none;
+    padding: 4px 10px;
+    margin-bottom: 1px;
+}
+
+.widget-title {
+    padding: 8px 20px;
+    text-align: center;
+    margin-top: 0px;
+}
+
+.title-short {
+    width: 200px;
+}
+
+a,
+a:visited,
+a:active{
+    text-decoration: none;
 }
 
 .doc-table {
@@ -72,23 +105,42 @@
     width: 100%;
 }
 
-.doc-table th, .doc-table td {
+.doc-table th,
+.doc-table td {
+    padding: 4px 10px;
     border-color: inherit;
     border-style: solid;
     border-width: 1px;
-    padding: 4px 10px;
 }
 
-.content-block h3.pui-accordion-header {
-    margin: auto;
-	font: inherit;
-	color: inherit;
+#menu {
+    position: absolute;
+    top:25px;
+    right:15px;
+	padding: 0;
+	height: 59px;
+    overflow: hidden;
 }
 
-.content-block .pui-menu h3 {
-	color: inherit;
+#menu ul {
+	margin: 0;
+	list-style: none;
 }
 
-.content-block h3 {
-    color: #636363;
+#menu li {
+	display: inline;
+}
+
+#menu li a {
+	display: block;
+	float: left;
+	height: 42px;
+	margin: 0;
+	padding: 18px 40px 0 40px;
+	text-decoration: none;
+	font-size: 20px;
+}
+
+#menu li a:hover {
+	text-decoration: underline;
 }
