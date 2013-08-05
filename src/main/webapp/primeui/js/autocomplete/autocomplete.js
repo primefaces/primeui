@@ -99,14 +99,13 @@ $(function() {
             }
             
             if(this.options.forceSelection) {
-                this.currentItems = [this.element.val()];
-
+                this.cachedResults = [this.element.val()];
                 this.element.on('blur.puiautocomplete', function() {
-                    var value = $(this).val(),
+                    var value = $this.element.val(),
                     valid = false;
-                    
-                    for(var i = 0; i < $this.currentItems.length; i++) {
-                        if($this.currentItems[i] === value) {
+
+                    for(var i = 0; i < $this.cachedResults.length; i++) {
+                        if($this.cachedResults[i] == value) {
                             valid = true;
                             break;
                         }
@@ -350,9 +349,9 @@ $(function() {
                 }
 
                 if(this.options.forceSelection) {
-                    this.currentItems = [];
-                    $.each(data, function(i, item) {
-                        $this.currentItems.push(item.label);
+                    this.cachedResults = [];
+                    this.data.each(function(i, item) {
+                        $this.cachedResults.push(item.label);
                     });
                 }
 

@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.primefaces</groupId>
     <artifactId>primeui</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.9.6</version>
     <packaging>war</packaging>
     <name>primeui</name>
     <url>http://maven.apache.org</url>
@@ -119,7 +119,6 @@
                                                 <include>${basedir}/src/main/webapp/primeui/js/tabview/tabview.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/terminal/terminal.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/tooltip/tooltip.js</include>
-                                                <include>${basedir}/src/main/webapp/primeui/js/tree/tree.js</include>
                                             </includes>
                                         </aggregation>
 
@@ -152,7 +151,6 @@
                                                 <include>${basedir}/src/main/webapp/primeui/css/tabview/tabview.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/terminal/terminal.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/tooltip/tooltip.css</include>
-                                                <include>${basedir}/src/main/webapp/primeui/css/tree/tree.css</include>
                                             </includes>
                                         </aggregation>
                                     </aggregations>
@@ -200,7 +198,6 @@
                                                 <include>${project.build.directory}/primeui/production/js/tabview/tabview.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/terminal/terminal.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/tooltip/tooltip.js</include>
-                                                <include>${project.build.directory}/primeui/production/js/tree/tree.js</include>
                                             </includes>
                                         </aggregation>
 
@@ -233,13 +230,13 @@
                                                 <include>${project.build.directory}/primeui/production/css/tabview/tabview.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/terminal/terminal.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/tooltip/tooltip.css</include>
-                                                <include>${project.build.directory}/primeui/production/css/tree/tree.css</include>
                                             </includes>
                                         </aggregation>
                                     </aggregations>
                                 </configuration>
                             </execution>
-                        </executions>
+                        </executions>   
+                
                     </plugin>
             
                     <plugin>
@@ -252,8 +249,8 @@
                         </configuration>
                         <executions>
                             <execution>
-                                <id>make-assembly</id>
-                                <phase>package</phase>
+                                <id>make-assembly</id> <!-- this is used for inheritance merges -->
+                                <phase>package</phase> <!-- bind to the packaging phase -->
                                 <goals>
                                     <goal>single</goal>
                                 </goals>

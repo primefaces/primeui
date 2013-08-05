@@ -271,7 +271,7 @@ $(function() {
                     var keyCode = $.ui.keyCode,
                     active = parseInt($this.element.css('z-index')) === PUI.zindex;
 
-                    if(e.which === keyCode.ESCAPE && $this.element.is(':visible') && active) {
+                    if(e.which === keyCode.ESCAPE && $this.is(':visible') && active) {
                         $this.hide();
                     };
                 });
