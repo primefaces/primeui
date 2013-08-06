@@ -117,6 +117,7 @@
                                                 <include>${basedir}/src/main/webapp/primeui/js/radiobutton/radiobutton.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/rating/rating.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/spinner/spinner.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/sticky/sticky.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/tabview/tabview.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/terminal/terminal.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/tooltip/tooltip.js</include>
@@ -151,6 +152,7 @@
                                                 <include>${basedir}/src/main/webapp/primeui/css/radiobutton/radiobutton.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/rating/rating.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/spinner/spinner.css</include>
+                                                <include>${basedir}/src/main/webapp/primeui/css/sticky/sticky.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/tabview/tabview.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/terminal/terminal.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/tooltip/tooltip.css</include>
@@ -200,6 +202,7 @@
                                                 <include>${project.build.directory}/primeui/production/js/radiobutton/radiobutton.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/rating/rating.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/spinner/spinner.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/production/js/sticky/sticky.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/tabview/tabview.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/terminal/terminal.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/tooltip/tooltip.js</include>
@@ -234,6 +237,7 @@
                                                 <include>${project.build.directory}/primeui/production/css/radiobutton/radiobutton.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/rating/rating.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/spinner/spinner.css</include>
+                                                <include>${basedir}/src/main/webapp/primeui/production/css/sticky/sticky.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/tabview/tabview.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/terminal/terminal.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/tooltip/tooltip.css</include>
