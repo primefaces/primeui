@@ -7,7 +7,8 @@ $(function() {
        
         options: {
             effect: 'fade',
-            effectSpeed: 'fast'
+            effectSpeed: 'fast',
+            filter: false
         },
 
         _create: function() {
@@ -16,10 +17,18 @@ $(function() {
             this.items = $();
             this.sourceInput = this.inputs.eq(0);
             this.targetInput = this.inputs.eq(1);
-            
+                        
             this.sourceList = this._createList(this.sourceInput);
             this._createButtons();
             this.targetList = this._createList(this.targetInput);
+            
+            if(this.options.showSourceControls) {
+                this.element.prepend(this._createListControls(this.sourceList));
+            }
+            
+            if(this.options.showTargetControls) {
+                this.element.append(this._createListControls(this.targetList));
+            }
             
             this._bindEvents();
         },
@@ -48,7 +57,7 @@ $(function() {
                 
         _createButtons: function() {
             var $this = this,
-            buttonContainer = $('<ul class="pui-picklist-buttons"></ul>')
+            buttonContainer = $('<ul class="pui-picklist-buttons"></ul>');
             
             buttonContainer.append(this._createButton('ui-icon-arrow-1-e', 'pui-picklist-button-add', function(){$this._add();}))
                             .append(this._createButton('ui-icon-arrowstop-1-e', 'pui-picklist-button-addall', function(){$this._addAll();}))
@@ -56,6 +65,18 @@ $(function() {
                             .append(this._createButton('ui-icon-arrowstop-1-w', 'pui-picklist-button-removeall', function(){$this._removeAll();}));
                     
             this.element.append(buttonContainer);
+        },
+                
+        _createListControls: function(list) {
+            var $this = this,
+            buttonContainer = $('<ul class="pui-picklist-buttons"></ul>');
+            
+            buttonContainer.append(this._createButton('ui-icon-arrow-1-n', 'pui-picklist-button-move-up', function(){$this._moveUp(list);}))
+                            .append(this._createButton('ui-icon-arrowstop-1-n', 'pui-picklist-button-move-top', function(){$this._moveTop(list);}))
+                            .append(this._createButton('ui-icon-arrow-1-s', 'pui-picklist-button-move-down', function(){$this._moveDown(list);}))
+                            .append(this._createButton('ui-icon-arrowstop-1-s', 'pui-picklist-button-move-bottom', function(){$this._moveBottom(list);}));
+                    
+            return buttonContainer;
         },
                 
         _createButton: function(icon, cssClass, fn) {
@@ -168,6 +189,143 @@ $(function() {
             this._transfer(items, this.targetList, this.sourceList, 'command');
         },
                 
+        _moveUp: function(list) {
+            var $this = this,
+            animated = $this.options.effect,
+            items = list.children('.ui-state-highlight'),
+            itemsCount = items.length,
+            movedCount = 0;
+
+            items.each(function() {
+                var item = $(this);
+                
+                if(!item.is(':first-child')) {
+                    if(animated) {
+                        item.hide($this.options.effect, {}, $this.options.effectSpeed, function() {
+                            item.insertBefore(item.prev()).show($this.options.effect, {}, $this.options.effectSpeed, function() {
+                                movedCount++;
+
+                                if(movedCount === itemsCount) {
+                                    $this._saveState();
+                                }
+                            });
+                        });
+                    }
+                    else {
+                        item.hide().insertBefore(item.prev()).show();
+                    }
+
+                }
+            });
+
+            if(!animated) {
+                this._saveState();
+            }
+
+        },
+
+        _moveTop: function(list) {
+            var $this = this,
+            animated = $this.options.effect,
+            items = list.children('.ui-state-highlight'),
+            itemsCount = items.length,
+            movedCount = 0;
+
+            list.children('.ui-state-highlight').each(function() {
+                var item = $(this);
+
+                if(!item.is(':first-child')) {
+                    if(animated) {
+                        item.hide($this.options.effect, {}, $this.options.effectSpeed, function() {
+                            item.prependTo(item.parent()).show($this.options.effect, {}, $this.options.effectSpeed, function(){
+                                movedCount++;
+
+                                if(movedCount === itemsCount) {
+                                    $this._saveState();
+                                }
+                            });
+                        });
+                    }
+                    else {
+                        item.hide().prependTo(item.parent()).show();
+                    }
+                }
+            });
+
+            if(!animated) {
+                this._saveState();
+            }
+        },
+
+        _moveDown: function(list) {
+            var $this = this,
+            animated = $this.options.effect,
+            items = list.children('.ui-state-highlight'),
+            itemsCount = items.length,
+            movedCount = 0;
+
+            $(list.children('.ui-state-highlight').get().reverse()).each(function() {
+                var item = $(this);
+
+                if(!item.is(':last-child')) {
+                    if(animated) {
+                        item.hide($this.options.effect, {}, $this.options.effectSpeed, function() {
+                            item.insertAfter(item.next()).show($this.options.effect, {}, $this.options.effectSpeed, function() {
+                                movedCount++;
+
+                                if(movedCount === itemsCount) {
+                                    $this._saveState();
+                                }
+                            });
+                        });
+                    }
+                    else {
+                        item.hide().insertAfter(item.next()).show();
+                    }
+                }
+
+            });
+
+            if(!animated) {
+                this._saveState();
+            }
+        },
+
+        _moveBottom: function(list) {
+            var $this = this,
+            animated = $this.options.effect,
+            items = list.children('.ui-state-highlight'),
+            itemsCount = items.length,
+            movedCount = 0;
+
+            list.children('.ui-state-highlight').each(function() {
+                var item = $(this);
+
+                if(!item.is(':last-child')) {
+
+                    if(animated) {
+                        item.hide($this.options.effect, {}, $this.options.effectSpeed, function() {
+                            item.appendTo(item.parent()).show($this.options.effect, {}, $this.options.effectSpeed, function() {
+                                movedCount++;
+
+                                if(movedCount === itemsCount) {
+                                    $this._saveState();
+                                }
+                            });
+                        });
+                    }
+                    else {
+                        item.hide().appendTo(item.parent()).show();
+                    }
+                }
+
+            });
+
+            if(!animated) {
+                this._saveState();
+            }
+        },
+                
         _transfer: function(items, from, to, type) {  
             var $this = this,
             itemsCount = items.length,
@@ -189,7 +347,7 @@ $(function() {
                 });
             }
             else {
-                items.hide().removeClass('ui-state-highlight').appendTo(to).show();
+                items.hide().removeClass('ui-state-highlight ui-state-hover').appendTo(to).show();
 
                 this._saveState();
                 this._triggerTransferEvent(items, from, to, type);

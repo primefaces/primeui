@@ -35,6 +35,12 @@
                         
                 $('#basic').puipicklist();
                 
+                $('#advanced').puipicklist({
+                    effect: 'clip',
+                    showSourceControls: true,
+                    showTargetControls: true
+                });
+                
                 $('#doc').puitabview();
                 
                 $('#themes').puidropdown({
@@ -146,6 +152,21 @@
                             </div>
                             
                             <h3>Advanced</h3>
+                            <div id="advanced">
+                                <select name="source">
+                                    <option value="1">Volkswagen</option>
+                                    <option value="2">Ford</option>
+                                    <option value="3">Mercedes</option>
+                                    <option value="4">Audi</option>
+                                    <option value="5">BMW</option>
+                                    <option value="6">Honda</option>
+                                    <option value="6">Porsche</option>
+                                    <option value="6">Chevrolet</option>
+                                    <option value="6">Jaguar</option>
+                                </select>
+                                <select name="target">
+                                </select>
+                            </div>
 
                             <h3>Documentation</h3>
                             <div id="doc">
