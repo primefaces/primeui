@@ -1,11 +1,14 @@
+.pui-picklist .pui-picklist-listwrapper {
+    float: left;
+    width: 125px;
+}
+
 .pui-picklist .pui-picklist-list {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow:auto;
     height:200px;
-    width:200px;
-    float: left;
 }
 
 .pui-picklist .pui-picklist-buttons {
@@ -43,7 +46,7 @@
 
 .pui-picklist .pui-picklist-filter {
     padding-right: 15px;
-    width: 90%;
+    width: 83%;
 }
 
 .pui-picklist .pui-picklist-filter-container {
