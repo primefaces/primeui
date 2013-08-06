@@ -29,9 +29,9 @@
         <script type="text/javascript" src="primeui/js/sticky/sticky.js"></script>
         <script type="text/javascript">
             $(function() {
+                $('#stickymenu').puimenubar();
                 
-                $('#mb1').puimenubar();
-                $('#sticky').puisticky();
+                $('#stickymenu').parent().puisticky();
                 
                 $('#doc').puitabview();
                 
@@ -131,69 +131,63 @@
                             <h1 class="widget-title">Sticky</h1>
                             <p>Sticky component positions other components as fixed so that these components stay in window viewport during scrolling. In this example, menubar component made sticky so it is always visible during page scroll.</p>
 
-                          
-                            <div id="sticky">
-                                <ul id="mb1">
-                                    <li> <a data-icon="ui-icon-document">File</a>
-                                        <ul> 
-                                            <li><a data-icon="ui-icon-contact">New</a>
-                                                <ul>
-                                                    <li><a>Project</a></li>
-                                                    <li><a>Other</a></li>
-                                                </ul>
-                                            </li> 
-                                            <li><a>Open</a></li> 
-                                            <li><a>Quit</a></li> 
-                                        </ul>
-                                    </li>
-                                    <li> <a data-icon="ui-icon-pencil">Edit</a>
-                                        <ul>
-                                            <li><a data-icon="ui-icon-arrowreturnthick-1-w">Undo</a></li>
-                                            <li><a data-icon="ui-icon-arrowreturnthick-1-e">Redo</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a data-icon="ui-icon-help">Help</a>
-                                        <ul>
-                                            <li><a>Contents</a></li>
-                                            <li>
-                                                <a data-icon="ui-icon-search">Search</a>
-                                                <ul>
-                                                    <li><a>Text</a>
-                                                        <ul>
-                                                            <li><a>Workspace</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a>File</a></li>
-                                                </ul>
-                                            </li>
+                            <ul id="stickymenu">
+                                <li> <a data-icon="ui-icon-document">File</a>
+                                    <ul> 
+                                        <li><a data-icon="ui-icon-contact">New</a>
+                                            <ul>
+                                                <li><a>Project</a></li>
+                                                <li><a>Other</a></li>
+                                            </ul>
+                                        </li> 
+                                        <li><a>Open</a></li> 
+                                        <li><a>Quit</a></li> 
+                                    </ul>
+                                </li>
+                                <li> <a data-icon="ui-icon-pencil">Edit</a>
+                                    <ul>
+                                        <li><a data-icon="ui-icon-arrowreturnthick-1-w">Undo</a></li>
+                                        <li><a data-icon="ui-icon-arrowreturnthick-1-e">Redo</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a data-icon="ui-icon-help">Help</a>
+                                    <ul>
+                                        <li><a>Contents</a></li>
+                                        <li>
+                                            <a data-icon="ui-icon-search">Search</a>
+                                            <ul>
+                                                <li><a>Text</a>
+                                                    <ul>
+                                                        <li><a>Workspace</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a>File</a></li>
+                                            </ul>
+                                        </li>
 
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a data-icon="ui-icon-gear">Actions</a>
-                                        <ul>
-                                            <li><a data-icon="ui-icon-refresh">Ajax</a>
-                                                <ul>
-                                                    <li><a data-icon="ui-icon-disk">Save</a></li>
-                                                    <li><a data-icon="ui-icon-arrowrefresh-1-w">Update</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a data-icon="ui-icon-document">Non-Ajax</a>
-                                                <ul>
-                                                    <li><a data-icon="ui-icon-close">Delete</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a data-icon="ui-icon-close">Quit</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <br /><br />
-                            
-                           
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a data-icon="ui-icon-gear">Actions</a>
+                                    <ul>
+                                        <li><a data-icon="ui-icon-refresh">Ajax</a>
+                                            <ul>
+                                                <li><a data-icon="ui-icon-disk">Save</a></li>
+                                                <li><a data-icon="ui-icon-arrowrefresh-1-w">Update</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a data-icon="ui-icon-document">Non-Ajax</a>
+                                            <ul>
+                                                <li><a data-icon="ui-icon-close">Delete</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a data-icon="ui-icon-close">Quit</a>
+                                </li>
+                            </ul>
 
                             <h3 class="subtitle">Documentation</h3>
                             <div id="doc">
@@ -210,25 +204,13 @@
                                     <div id="doc-overview">
 
                                         <pre name="code" class="jscript">
-                $('#mb1').puimenubar();
-                $('#sticky').puisticky();
-                
+$('#target').puisticky();
                                         </pre>
 
                                         <pre name="code" class="xml">
-        &lt;div id="sticky" &gt;                                
-            &lt;ul id="mb1" &gt;
-             &lt;li &gt;
-                &lt;ul &gt;
-                    &lt;li /&gt;
-                    &lt;li /&gt;
-                &lt;/ul &gt;
-             &lt;/li &gt;
-             &lt;li /&gt;
-             &lt;li /&gt;
-            &lt;/ul &gt;
-        &lt/div&gt
-
+&lt;div id="target" &gt;                                
+    //content
+&lt/div&gt
                                         </pre>
 
                                     </div>
@@ -242,80 +224,75 @@
                                     </div>
 
                                     <div id="doc-methods">
- 
-                                                                                 </div>
+                                        <h3>No methods.</h3>
+                                    </div>
 
                                     <div id="doc-source">
 
                                         <pre name="code" class="jscript">
-        &lt;script type="text/javascript"&gt;
-                $('#mb1').puimenubar();
-                $('#sticky').puisticky();
-                
-        &lt;/script&gt; 
+$('#stickymenu').puimenubar();
+
+$('#stickymenu').parent().puisticky();
                                         </pre>
 
                                         <pre name="code" class="xml">
-&lt;div id="sticky" &gt; 
-    &ltul id="mb1"&gt
-        &ltli&gt &lta data-icon="ui-icon-document"&gtFile&lt/a&gt
-            &ltul&gt 
-                &ltli&gt&lta data-icon="ui-icon-contact"&gtNew&lt/a&gt
-                    &ltul&gt
-                        &ltli&gt&lta&gtProject&lt/a&gt&lt/li&gt
-                        &ltli&gt&lta&gtOther&lt/a&gt&lt/li&gt
-                    &lt/ul&gt
-                &lt/li&gt 
-                &ltli&gt&lta&gtOpen&lt/a&gt&lt/li&gt 
-                &ltli&gt&lta&gtQuit&lt/a&gt&lt/li&gt 
-            &lt/ul&gt
-        &lt/li&gt
-        &ltli&gt &lta data-icon="ui-icon-pencil"&gtEdit&lt/a&gt
-            &ltul&gt
-                &ltli&gt&lta data-icon="ui-icon-arrowreturnthick-1-w"&gtUndo&lt/a&gt&lt/li&gt
-                &ltli&gt&lta data-icon="ui-icon-arrowreturnthick-1-e"&gtRedo&lt/a&gt&lt/li&gt
-            &lt/ul&gt
-        &lt/li&gt
-        &ltli&gt
-            &lta data-icon="ui-icon-help"&gtHelp&lt/a&gt
-            &ltul&gt
-                &ltli&gt&lta&gtContents&lt/a&gt&lt/li&gt
-                &ltli&gt
-                    &lta data-icon="ui-icon-search"&gtSearch&lt/a&gt
-                    &ltul&gt
-                        &ltli&gt&lta&gtText&lt/a&gt
-                            &ltul&gt
-                                &ltli&gt&lta&gtWorkspace&lt/a&gt&lt/li&gt
-                            &lt/ul&gt
-                        &lt/li&gt
-                        &ltli&gt&lta&gtFile&lt/a&gt&lt/li&gt
-                    &lt/ul&gt
-                &lt/li&gt
+&lt;ul id="stickymenu"&gt;
+    &lt;li&gt; &lt;a data-icon="ui-icon-document"&gt;File&lt;/a&gt;
+        &lt;ul&gt; 
+            &lt;li&gt;&lt;a data-icon="ui-icon-contact"&gt;New&lt;/a&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;a&gt;Project&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a&gt;Other&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/li&gt; 
+            &lt;li&gt;&lt;a&gt;Open&lt;/a&gt;&lt;/li&gt; 
+            &lt;li&gt;&lt;a&gt;Quit&lt;/a&gt;&lt;/li&gt; 
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt; &lt;a data-icon="ui-icon-pencil"&gt;Edit&lt;/a&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a data-icon="ui-icon-arrowreturnthick-1-w"&gt;Undo&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a data-icon="ui-icon-arrowreturnthick-1-e"&gt;Redo&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a data-icon="ui-icon-help"&gt;Help&lt;/a&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a&gt;Contents&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;
+                &lt;a data-icon="ui-icon-search"&gt;Search&lt;/a&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;a&gt;Text&lt;/a&gt;
+                        &lt;ul&gt;
+                            &lt;li&gt;&lt;a&gt;Workspace&lt;/a&gt;&lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;&lt;a&gt;File&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/li&gt;
 
-            &lt/ul&gt
-
-        &lt/li&gt
-        &ltli&gt
-            &lta data-icon="ui-icon-gear"&gtActions&lt/a&gt
-            &ltul&gt
-                &ltli&gt&lta data-icon="ui-icon-refresh"&gtAjax&lt/a&gt
-                    &ltul&gt
-                        &ltli&gt&lta data-icon="ui-icon-disk"&gtSave&lt/a&gt&lt/li&gt
-                        &ltli&gt&lta data-icon="ui-icon-arrowrefresh-1-w"&gtUpdate&lt/a&gt&lt/li&gt
-                    &lt/ul&gt
-                &lt/li&gt
-                &ltli&gt&lta data-icon="ui-icon-document"&gtNon-Ajax&lt/a&gt
-                    &ltul&gt
-                        &ltli&gt&lta data-icon="ui-icon-close"&gtDelete&lt/a&gt&lt/li&gt
-                    &lt/ul&gt
-                &lt/li&gt
-            &lt/ul&gt
-        &lt/li&gt
-        &ltli&gt
-            &lta data-icon="ui-icon-close"&gtQuit&lt/a&gt
-        &lt/li&gt
-    &lt/ul&gt 
-&lt/div&gt    
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a data-icon="ui-icon-gear"&gt;Actions&lt;/a&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a data-icon="ui-icon-refresh"&gt;Ajax&lt;/a&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;a data-icon="ui-icon-disk"&gt;Save&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a data-icon="ui-icon-arrowrefresh-1-w"&gt;Update&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/li&gt;
+            &lt;li&gt;&lt;a data-icon="ui-icon-document"&gt;Non-Ajax&lt;/a&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;a data-icon="ui-icon-close"&gt;Delete&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a data-icon="ui-icon-close"&gt;Quit&lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
                                         </pre>
 
                                     </div>
