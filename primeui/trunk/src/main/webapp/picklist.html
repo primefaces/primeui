@@ -26,6 +26,11 @@
         <script type="text/javascript" src="primeui/js/picklist/picklist.js"></script>
         <script type="text/javascript" src="primeui/js/dropdown/dropdown.js"></script>
         <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
+        <style type="text/css">
+            #advanced .pui-picklist-buttons {
+                margin-top: 90px;
+            }
+        </style>
         <script type="text/javascript">
             $(function() {
                 var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
@@ -38,7 +43,14 @@
                 $('#advanced').puipicklist({
                     effect: 'clip',
                     showSourceControls: true,
-                    showTargetControls: true
+                    showTargetControls: true,
+                    sourceCaption: 'Available',
+                    targetCaption: 'Selected',
+                    filter: true,
+                    sourceData: themes,
+                    content: function(option) {
+                        return '<img src="demo/images/themes/' + option + '.png" alt="" /><span style="float:right;font-size:14px">' + option + '</span>';
+                    }
                 });
                 
                 $('#doc').puitabview();
@@ -154,15 +166,6 @@
                             <h3>Advanced</h3>
                             <div id="advanced">
                                 <select name="source">
-                                    <option value="1">Volkswagen</option>
-                                    <option value="2">Ford</option>
-                                    <option value="3">Mercedes</option>
-                                    <option value="4">Audi</option>
-                                    <option value="5">BMW</option>
-                                    <option value="6">Honda</option>
-                                    <option value="6">Porsche</option>
-                                    <option value="6">Chevrolet</option>
-                                    <option value="6">Jaguar</option>
                                 </select>
                                 <select name="target">
                                 </select>

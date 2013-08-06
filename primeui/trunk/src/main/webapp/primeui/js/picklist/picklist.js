@@ -8,19 +8,36 @@ $(function() {
         options: {
             effect: 'fade',
             effectSpeed: 'fast',
-            filter: false
+            filter: false,
+            sourceCaption: null,
+            targetCaption: null,
+            filter: false,
+            filterFunction: null,
+            filterMatchMode: 'startsWith',
+            dragdrop: true,
+            sourceData: null,
+            targetData: null,
+            content: null
         },
 
         _create: function() {
-            this.element.addClass('pui-picklist ui-widget ui-helper-clearfix');
+            this.element.uniqueId().addClass('pui-picklist ui-widget ui-helper-clearfix');
             this.inputs = this.element.children('select');
             this.items = $();
             this.sourceInput = this.inputs.eq(0);
             this.targetInput = this.inputs.eq(1);
+            
+            if(this.options.sourceData) {
+                this._populateInputFromData(this.sourceInput, this.options.sourceData);
+            }
+            
+            if(this.options.targetData) {
+                this._populateInputFromData(this.targetInput, this.options.targetData);
+            }
                         
-            this.sourceList = this._createList(this.sourceInput);
+            this.sourceList = this._createList(this.sourceInput, 'pui-picklist-source', this.options.sourceCaption, this.options.sourceData);
             this._createButtons();
-            this.targetList = this._createList(this.targetInput);
+            this.targetList = this._createList(this.targetInput, 'pui-picklist-target', this.options.targetCaption, this.options.targetData);
             
             if(this.options.showSourceControls) {
                 this.element.prepend(this._createListControls(this.sourceList));
@@ -33,24 +50,49 @@ $(function() {
             this._bindEvents();
         },
                 
-        _createList: function(input, cssClass) {
+        _populateInputFromData: function(input, data) {
+            for(var i = 0; i < data.length; i++) {
+                var choice = data[i];
+                if(choice.label)
+                    input.append('<option value="' + choice.value + '">' + choice.label + '</option>');
+                else
+                    input.append('<option value="' + choice + '">' + choice + '</option>');
+            }
+        },
+                
+        _createList: function(input, cssClass, caption, data) {
             input.wrap('<div class="ui-helper-hidden"></div>');
-            
-            var listContainer = $('<ul class="ui-widget-content pui-picklist-list pui-inputtext ui-corner-all ' + cssClass + '"></ul>'),
-            options = input.children('option');
+                        
+            var listWrapper = $('<div class="pui-picklist-listwrapper ' + cssClass + '"></div>'),
+            listContainer = $('<ul class="ui-widget-content pui-picklist-list pui-inputtext"></ul>'),
+            choices = input.children('option');
     
-            for(var i = 0; i < options.length; i++) {
-                var option = options.eq(i),
-                item = $('<li class="pui-picklist-item ui-corner-all">' + option.text() + '</li>').data({
-                    'item-label': option.text(),
-                    'item-value': option.val()
+            if(this.options.filter) {
+                listWrapper.append('<div class="pui-picklist-filter-container"><input type="text" class="pui-picklist-filter" /><span class="ui-icon ui-icon-search"></span></div>');
+                listWrapper.find('> .pui-picklist-filter-container > input').puiinputtext();
+            } 
+    
+            if(caption) {
+                listWrapper.append('<div class="pui-picklist-caption ui-widget-header ui-corner-tl ui-corner-tr">' + caption + '</div>');
+                listContainer.addClass('ui-corner-bottom');
+            }
+            else {
+                listContainer.addClass('ui-corner-all');
+            }
+    
+            for(var i = 0; i < choices.length; i++) {
+                var choice = choices.eq(i),
+                content = this.options.content ? this.options.content.call(this, data[i]) : choice.text(),
+                item = $('<li class="pui-picklist-item ui-corner-all">' + content + '</li>').data({
+                    'item-label': choice.text(),
+                    'item-value': choice.val()
                 });
         
                 this.items = this.items.add(item);
                 listContainer.append(item);
             }
             
-            this.element.append(listContainer);
+            listWrapper.append(listContainer).appendTo(this.element);
             
             return listContainer;
         },
@@ -148,6 +190,35 @@ $(function() {
 
                 PUI.clearSelection();
             });
+            
+            if(this.options.filter) {
+                this._setupFilterMatcher();
+                
+                this.element.find('> .pui-picklist-source > .pui-picklist-filter-container > input').on('keyup', function(e) {
+                    $this._filter(this.value, $this.sourceList);
+                });
+
+                this.element.find('> .pui-picklist-target > .pui-picklist-filter-container > input').on('keyup', function(e) {
+                    $this._filter(this.value, $this.targetList);
+                });
+            }
+            
+            if(this.options.dragdrop) {                
+                this.element.find('> .pui-picklist-listwrapper > ul.pui-picklist-list').sortable({
+                    cancel: '.ui-state-disabled',
+                    connectWith: '#' + this.element.attr('id') + ' .pui-picklist-list',
+                    revert: true,
+                    containment: this.element,
+                    update: function(event, ui) {
+                        $this.unselectItem(ui.item);
+
+                        $this._saveState();
+                    },
+                    receive: function(event, ui) {
+                        $this._triggerTransferEvent(ui.item, ui.sender, ui.item.closest('ul.pui-picklist-list'), 'dragdrop');
+                    }
+                });
+            }
         },
                 
         selectItem: function(item) {
@@ -381,7 +452,50 @@ $(function() {
 
                 input.append('<option value="' + itemValue + '" selected="selected">' + itemLabel + '</option>');
             });
-        }
+        },
+                
+        _setupFilterMatcher: function() {
+            this.filterMatchers = {
+                'startsWith': this._startsWithFilter
+                ,'contains': this._containsFilter
+                ,'endsWith': this._endsWithFilter
+                ,'custom': this.options.filterFunction
+            };
+
+            this.filterMatcher = this.filterMatchers[this.options.filterMatchMode];
+        },
+                
+        _filter: function(value, list) {
+            var filterValue = $.trim(value).toLowerCase(),
+            items = list.children('li.pui-picklist-item');
+
+            if(filterValue === '') {
+                items.filter(':hidden').show();
+            }
+            else {
+                for(var i = 0; i < items.length; i++) {
+                    var item = items.eq(i),
+                    itemLabel = item.data('item-label');
+
+                    if(this.filterMatcher(itemLabel, filterValue))
+                        item.show();
+                    else 
+                        item.hide();                    
+                }
+            }
+        },
+
+        _startsWithFilter: function(value, filter) {
+            return value.toLowerCase().indexOf(filter) === 0;
+        },
+
+        _containsFilter: function(value, filter) {
+            return value.toLowerCase().indexOf(filter) !== -1;
+        },
+
+        _endsWithFilter: function(value, filter) {
+            return value.indexOf(filter, value.length - filter.length) !== -1;
+        },
     });
         
 });
