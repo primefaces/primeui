@@ -39,7 +39,7 @@ $(function() {
             markup += '<span class="pui-growl-image pui-growl-image-' + msg.severity + '" />';
             markup += '<div class="pui-growl-message">';
             markup += '<span class="pui-growl-title">' + msg.summary + '</span>';
-            markup += '<p>' + msg.detail + '</p>';
+            markup += '<p>' + (msg.detail||'') + '</p>';
             markup += '</div><div style="clear: both;"></div></div></div>';
 
             var message = $(markup);

@@ -1,5 +1,5 @@
 /**
- * PrimeFaces Growl Widget
+ * PrimeFaces Button Widget
  */
 $(function() {
 
