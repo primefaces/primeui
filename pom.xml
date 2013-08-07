@@ -113,6 +113,7 @@
                                                 <include>${basedir}/src/main/webapp/primeui/js/paginator/paginator.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/panel/panel.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/password/password.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/picklist/picklist.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/progressbar/progressbar.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/radiobutton/radiobutton.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/rating/rating.js</include>
@@ -148,6 +149,7 @@
                                                 <include>${basedir}/src/main/webapp/primeui/css/paginator/paginator.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/panel/panel.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/password/password.css</include>
+                                                <include>${basedir}/src/main/webapp/primeui/css/picklist/picklist.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/progressbar/progressbar.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/radiobutton/radiobutton.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/rating/rating.css</include>
@@ -198,6 +200,7 @@
                                                 <include>${project.build.directory}/primeui/production/js/paginator/paginator.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/panel/panel.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/password/password.js</include>
+                                                <include>${project.build.directory}/primeui/production/js/picklist/picklist.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/progressbar/progressbar.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/radiobutton/radiobutton.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/rating/rating.js</include>
@@ -233,6 +236,7 @@
                                                 <include>${project.build.directory}/primeui/production/css/paginator/paginator.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/panel/panel.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/password/password.css</include>
+                                                <include>${project.build.directory}/primeui/production/css/picklist/picklist.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/progressbar/progressbar.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/radiobutton/radiobutton.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/rating/rating.css</include>
