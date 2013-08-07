@@ -8,7 +8,6 @@ $(function() {
         options: {
             effect: 'fade',
             effectSpeed: 'fast',
-            filter: false,
             sourceCaption: null,
             targetCaption: null,
             filter: false,
@@ -173,7 +172,7 @@ $(function() {
                         for(var i = startIndex ; i < endIndex; i++) {
                             $this.selectItem(parentList.children('li.ui-picklist-item').eq(i));
                         }
-                    } 
+                    }
                     else {
                         $this.selectItem(item);
                         $this.cursorItem = item;
@@ -183,10 +182,10 @@ $(function() {
             .on('dblclick.pickList', function() {
                 var item = $(this);
 
-                if($(this).parent().hasClass('ui-picklist-source'))
-                    $this.transfer(item, $this.sourceList, $this.targetList, 'dblclick');
+                if($(this).closest('.pui-picklist-listwrapper').hasClass('pui-picklist-source'))
+                    $this._transfer(item, $this.sourceList, $this.targetList, 'dblclick');
                 else
-                    $this.transfer(item, $this.targetList, $this.sourceList, 'dblclick');
+                    $this._transfer(item, $this.targetList, $this.sourceList, 'dblclick');
 
                 PUI.clearSelection();
             });
