@@ -17,6 +17,10 @@ $(function() {
             this.menuButton = this.container.append('<button class="pui-splitbutton-menubutton" type="button"></button>').children('.pui-splitbutton-menubutton');
             this.options.disabled = this.element.prop('disabled');
             
+            if(this.options.disabled) {
+                this.menuButton.prop('disabled', true);
+            }
+            
             this.element.puibutton(this.options).removeClass('ui-corner-all').addClass('ui-corner-left');
             this.menuButton.puibutton({
                 icon: 'ui-icon-triangle-1-s'
@@ -122,6 +126,5 @@ $(function() {
         _alignPanel: function() {
             this.menu.css({left:'', top:'','z-index': ++PUI.zindex}).position(this.options.position);
         }
-    
     });
 });
