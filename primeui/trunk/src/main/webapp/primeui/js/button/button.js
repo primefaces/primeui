@@ -6,22 +6,23 @@ $(function() {
     $.widget("primeui.puibutton", {
        
         options: {
-            icon: null
-            ,iconPos : 'left'
+            value: null,
+            icon: null,
+            iconPos: 'left',
+            click: null
         },
         
         _create: function() {
             var element = this.element,
-            text = element.text()||'pui-button',
+            elementText = element.text(),
+            value = this.options.value||(elementText === '' ? 'pui-button' : elementText),
             disabled = element.prop('disabled'),
             styleClass = null;
             
-            if(this.options.icon) {
-                styleClass = (text === 'pui-button') ? 'pui-button-icon-only' : 'pui-button-text-icon-' + this.options.iconPos;
-            }
-            else {
+            if(this.options.icon)
+                styleClass = (value === 'pui-button') ? 'pui-button-icon-only' : 'pui-button-text-icon-' + this.options.iconPos;
+            else
                 styleClass = 'pui-button-text-only';
-            }
         
             if(disabled) {
                 styleClass += ' ui-state-disabled';
@@ -33,7 +34,7 @@ $(function() {
                 this.element.append('<span class="pui-button-icon-' + this.options.iconPos + ' ui-icon ' + this.options.icon + '" />');
             }
             
-            this.element.append('<span class="pui-button-text">' + text + '</span>');
+            this.element.append('<span class="pui-button-text">' + value + '</span>');
             
             //aria
             element.attr('role', 'button').attr('aria-disabled', disabled);    
