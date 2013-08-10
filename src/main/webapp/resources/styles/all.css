@@ -70,14 +70,14 @@ q:after{content:''}
 }
 #nav a{
 	display:block;
-	color:#f9f7f7;
-	padding:0 14px 0 0;
+	color:#a2a0a0;
+	padding:0;
 	text-decoration:none;
 }
 #nav .active a,
 #nav li:hover a,
 #nav a:hover{
-	color:#a2a0a0;
+    color:#f9f7f7;
 	background-position:100% 8px;
 }
 #nav .drop{
