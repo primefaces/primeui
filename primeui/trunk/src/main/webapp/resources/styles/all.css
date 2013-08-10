@@ -439,6 +439,7 @@ q:after{content:''}
 	width:935px;
 	padding:0 2px 13px 21px;
 	overflow:hidden;
+    display: none;
 }
 .content-section h2{
 	float:left;
