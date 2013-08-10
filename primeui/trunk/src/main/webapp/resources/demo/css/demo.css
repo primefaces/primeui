@@ -56,6 +56,10 @@
     display: none;
 }
 
+#content-nondemo {
+    width: 100%;
+}
+
 .content-block h1.widget-title {
     font-size: 24px;
     text-align: center;
