@@ -64,7 +64,7 @@
                 $('#customcontent').puiautocomplete({
                     completeSource: themes,
                     content: function(data) {
-                        return '<img src="demo/images/themes/' + data.label + '.png" alt="" /><span style="float:right;font-size:14px">' + data.label + '</span>';
+                        return '<img src="resources/demo/images/themes/' + data.label + '.png" alt="" /><span style="float:right;font-size:14px">' + data.label + '</span>';
                     }
                 });
 
@@ -107,7 +107,7 @@
                 $('#themes').puidropdown({
                     source: themes,
                     content: function(option) {
-                        return '<img src="demo/images/themes/' + option + '.png" alt="" /><span style="float:right;font-size:14px">' + option + '</span>';
+                        return '<img src="resources/demo/images/themes/' + option + '.png" alt="" /><span style="float:right;font-size:14px">' + option + '</span>';
                     },
                     change: function(e) {
                         var themeLink = $('link[href$="theme.css"]'),
@@ -414,7 +414,7 @@ $('#basic').puiautocomplete('search', 'A');
         $('#customcontent').puiautocomplete({
             completeSource: themes,
             content: function(data) {
-                return '&lt;img src="demo/images/themes/' + data.label + '.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;' + data.label + '&lt;/span&gt;';
+                return '&lt;img src="resources/demo/images/themes/' + data.label + '.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;' + data.label + '&lt;/span&gt;';
             }
         });
 
