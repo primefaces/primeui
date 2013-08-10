@@ -66,12 +66,12 @@ q:after{content:''}
 #nav li{
 	float:left;
 	position:relative;
-	margin:0 0 0 25px;
+	margin:0 0 0 10px;
 }
 #nav a{
 	display:block;
 	color:#a2a0a0;
-	padding:0;
+	padding:0 14px 0 0;
 	text-decoration:none;
 }
 #nav .active a,
