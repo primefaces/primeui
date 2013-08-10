@@ -627,7 +627,7 @@ q:after{content:''}
 	padding:0 0 0 7px;
 	background:url(../images/bg-copy.gif) no-repeat 0 8px;
 	text-align:center;
-	margin:0 0 49px -10px;
+	margin: 20px 0 25px -10px
 }
 .copy-block .copy{
 	color:#959595;
