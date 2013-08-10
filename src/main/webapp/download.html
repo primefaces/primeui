@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>PrimeUI</title>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
         <meta http-equiv="pragma" content="no-cache" />
         <meta http-equiv="expires" content="0" />
-        <title>PrimeFaces</title>
         <link rel="stylesheet" type="text/css" href="resources/styles/all.css" />
         <link rel="stylesheet" type="text/css" href="resources/demo/css/demo.css" />
         <link rel="stylesheet" href="resources/demo/css/jquery-ui.css" />
         <link rel="stylesheet" href="resources/demo/css/aristo/theme.css" />
+        <link rel="stylesheet" href="resources/demo/css/sh.css" />
+        <script type="text/javascript" src="resources/demo/js/sh.js"></script>
     </head>
     <body>
         <div id="wrapper">
@@ -34,7 +36,7 @@
                     <div class="content-block">					
                         <div id="content-nondemo">
                             <h1 class="widget-title">Download</h1>
-                            <p>PrimeUI distribution contains production and development versions of resources widget resources along with the theme
+                            <p>PrimeUI distributions contain production and development versions of resources widget resources along with the theme
                                 artifacts.</p>
 
                             <table class="doc-table ui-widget ui-widget-content">
@@ -101,10 +103,12 @@
                                     </tr>
                                 </tbody>
                             </table>
+
+                            <p>&nbsp;</p>
+                            
                         </div>
 
                         <div style="clear: both" />
-
                     </div>
                 </div>
             </div>
@@ -117,5 +121,10 @@
                 </div>
             </div>
         </div>
+
+        <script language="javascript">
+            dp.SyntaxHighlighter.ClipboardSwf = '/resources/demo/js/clipboard.swf';
+            dp.SyntaxHighlighter.HighlightAll('code');
+        </script>
     </body>
 </html>
