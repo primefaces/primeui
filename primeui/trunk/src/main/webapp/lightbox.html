@@ -42,7 +42,7 @@
                 $('#themes').puidropdown({
                     source: themes,
                     content: function(option) {
-                        return '<img src="demo/images/themes/' + option + '.png" alt="" /><span style="float:right;font-size:14px">' + option + '</span>';
+                        return '<img src="resources/demo/images/themes/' + option + '.png" alt="" /><span style="float:right;font-size:14px">' + option + '</span>';
                     },
                     change: function(e) {
                         var themeLink = $('link[href$="theme.css"]'),
@@ -184,7 +184,7 @@ $('#images').puilightbox();
 
                                         <pre name="code" class="xml">
 &lt;div id="images"&gt;
-    &lt;a href="resources/demo/images/sopranos/sopranos1.jpg"&gt;
+    &lt;a href="/resources/demo/images/sopranos/sopranos1.jpg"&gt;
         &lt;img src="resources/demo/images/sopranos/sopranos1_small.jpg" alt="Sopranos 1"/&gt;
     &lt;/a&gt;
     &lt;a href="resources/demo/images/sopranos/sopranos2.jpg"&gt;
@@ -350,7 +350,7 @@ $('#images').puilightbox('show);
 
     &lt;div class="ui-helper-hidden"&gt;
         &lt;h2&gt;PrimeUI&lt;/h2&gt;
-        &lt;img src="./demo/images/logo.png" /&gt; 
+        &lt;img src="./resources/demo/images/logo.png" /&gt; 
     &lt;/div&gt;
 &lt;/div&gt;
 
