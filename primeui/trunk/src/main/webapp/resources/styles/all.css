@@ -315,8 +315,13 @@ q:after{content:''}
 .user-section,
 .blogs-section{
 	float:left;
-	width:325px;
 	margin:0 32px 0 0;
+}
+.blogs-section{
+	width:650px;
+}
+.user-section {
+    width: 325px
 }
 .testi-section .headline,
 .user-section .headline,
