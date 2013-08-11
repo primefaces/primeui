@@ -201,7 +201,6 @@ q:after{content:''}
 
 .tab-section{
 	width:100%;
-	height:388px;
 	overflow:hidden;
 	background:#fff url(../images/bg-tab-block.gif) repeat-x;
 	padding:12px 0;
@@ -276,7 +275,7 @@ q:after{content:''}
 .tab-content .image img{display:block;}
 .tab-box{
 	overflow:hidden;
-	padding:14px 0 0 21px;
+	padding:104px 0 0 21px;
 }
 .tab-box h3{
 	margin:0 0 2px;
