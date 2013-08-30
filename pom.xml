@@ -132,6 +132,7 @@
                                             <includes>
                                                 <include>${basedir}/src/main/resources/copyright.txt</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/core/core.css</include>
+                                                <include>${basedir}/src/main/webapp/primeui/css/accordion/accordion.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/autocomplete/autocomplete.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/button/button.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/checkbox/checkbox.css</include>
@@ -156,7 +157,6 @@
                                                 <include>${basedir}/src/main/webapp/primeui/css/rating/rating.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/spinner/spinner.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/splitbutton/splitbutton.css</include>
-                                                <include>${basedir}/src/main/webapp/primeui/css/sticky/sticky.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/tabview/tabview.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/terminal/terminal.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/tooltip/tooltip.css</include>
@@ -221,6 +221,7 @@
                                             <includes>
                                                 <include>${basedir}/src/main/resources/copyright.txt</include>
                                                 <include>${project.build.directory}/primeui/production/css/core/core.css</include>
+                                                <include>${project.build.directory}/primeui/production/css/accordion/accordion.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/autocomplete/autocomplete.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/button/button.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/checkbox/checkbox.css</include>
@@ -245,7 +246,6 @@
                                                 <include>${project.build.directory}/primeui/production/css/rating/rating.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/spinner/spinner.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/splitbutton/splitbutton.css</include>
-                                                <include>${project.build.directory}/primeui/production/css/sticky/sticky.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/tabview/tabview.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/terminal/terminal.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/tooltip/tooltip.css</include>
