@@ -108,17 +108,8 @@ $(function() {
         _bindEvents: function() {
             var $this = this;
 
-            this.items.filter(':not(.ui-state-disabled)').on('mouseover.puidropdown', function() {
-                var el = $(this);
-
-                if(!el.hasClass('ui-state-highlight'))
-                    $(this).addClass('ui-state-hover');
-            })
-            .on('mouseout.puidropdown', function() {
-                $(this).removeClass('ui-state-hover');
-            })
-            .on('click.puidropdown', function() {
-                $this._selectItem($(this));   
+            this.items.filter(':not(.ui-state-disabled)').each(function(i, item) {
+                $this._bindItemEvents($(item));
             });
 
             this.triggers.on('mouseenter.puidropdown', function() {
@@ -177,6 +168,23 @@ $(function() {
                     $this._filter($(this).val());
                 });
             }
+        },
+                
+        _bindItemEvents: function(item) {
+            var $this = this;
+            
+            item.on('mouseover.puidropdown', function() {
+                var el = $(this);
+
+                if(!el.hasClass('ui-state-highlight'))
+                    $(this).addClass('ui-state-hover');
+            })
+            .on('mouseout.puidropdown', function() {
+                $(this).removeClass('ui-state-hover');
+            })
+            .on('click.puidropdown', function() {
+                $this._selectItem($(this));   
+            });
         },
         
         _bindConstantEvents: function() {
@@ -540,6 +548,16 @@ $(function() {
             var option = this.choices.filter('[value="' + value + '"]');
 
             this._selectItem(this.items.eq(option.index()), true);
+        },
+                
+        addOption: function(label, value) {            
+            var item = $('<li data-label="' + label + '" class="pui-dropdown-item pui-dropdown-list-item ui-corner-all">' + label + '</li>'),
+            choice = $('<option value="' + value + '">' + label + '</option>');
+    
+            choice.appendTo(this.element);
+            this._bindItemEvents(item);
+            item.appendTo(this.itemsContainer);
+            this.items.add(item);
         }
     });
     
