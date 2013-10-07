@@ -12,7 +12,9 @@ $(function() {
             selectionMode: null,
             rowSelect: null,
             rowUnselect: null,
-            caption: null
+            caption: null,
+            sortField: null,
+            sortOrder: null
         },
         
         _create: function() {
@@ -33,7 +35,10 @@ $(function() {
                     this._initialize();
                 }
                 else if($.type(this.options.datasource) === 'function') {
-                    this.options.datasource.call(this, this._handleDataLoad);
+                    if(this.options.lazy)
+                        this.options.datasource.call(this, this._onDataInit, {first:0, sortField:this.options.sortField, sortorder:this.options.sortOrder});
+                    else
+                        this.options.datasource.call(this, this._onDataInit);
                 }
             }
         },
@@ -51,7 +56,7 @@ $(function() {
                     
                     if(col.sortable) {
                         header.addClass('pui-sortable-column')
-                                .data('order', 1)
+                                .data('order', 0)
                                 .append('<span class="pui-sortable-column-icon ui-icon ui-icon-carat-2-n-s"></span>');
                     }
                 });
@@ -62,9 +67,9 @@ $(function() {
             }
 
             if(this.options.paginator) {
-                this.options.paginator.paginate = function(state) {
+                this.options.paginator.paginate = function(event, state) {
                     $this.paginate();
-                }
+                };
                 
                 this.options.paginator.totalRecords = this.options.paginator.totalRecords||this.data.length;
                 this.paginator = $('<div></div>').insertAfter(this.tableWrapper).puipaginator(this.options.paginator);
@@ -81,13 +86,22 @@ $(function() {
             this._renderData();
         },
                 
-        _handleDataLoad: function(data) {
+        _onDataInit: function(data) {
             this.data = data;
             if(!this.data) {
                 this.data = [];
             }
                 
             this._initialize();
+        },
+        
+        _onLazyLoad: function(data) {
+            this.data = data;
+            if(!this.data) {
+                this.data = [];
+            }
+            
+            this._renderData();
         },
                 
         _initSorting: function() {
@@ -108,49 +122,63 @@ $(function() {
             })
             .on('click.puidatatable', function() {
                 var column = $(this),
-                field = column.data('field'),
+                sortField = column.data('field'),
                 order = column.data('order'),
+                sortOrder = (order === 0) ? 1 : (order * -1),
                 sortIcon = column.children('.pui-sortable-column-icon');
                 
                 //clean previous sort state
-                column.siblings().filter('.ui-state-active').data('order', 1).removeClass('ui-state-active').children('span.pui-sortable-column-icon')
+                column.siblings().filter('.ui-state-active').data('order', 0).removeClass('ui-state-active').children('span.pui-sortable-column-icon')
                                                             .removeClass('ui-icon-triangle-1-n ui-icon-triangle-1-s');
-                
-                $this.sort(field, order);
-                
+                                                    
                 //update state
-                column.data('order', -1*order);
-                
-                column.removeClass('ui-state-hover').addClass('ui-state-active');
-                if(order === -1)
+                $this.options.sortField = sortField;
+                $this.options.sortOrder = sortOrder;
+    
+                $this.sort(sortField, sortOrder);
+                                
+                column.data('order', sortOrder).removeClass('ui-state-hover').addClass('ui-state-active');
+                if(sortOrder === -1)
                     sortIcon.removeClass('ui-icon-triangle-1-n').addClass('ui-icon-triangle-1-s');
-                else if(order === 1)
+                else if(sortOrder === 1)
                     sortIcon.removeClass('ui-icon-triangle-1-s').addClass('ui-icon-triangle-1-n');
             });
         },
                 
         paginate: function() {
-            this._renderData();
+            if(this.options.lazy)
+                this.options.datasource.call(this, this._onLazyLoad, this._createStateMeta());
+            else
+               this._renderData();
         },
                 
-        sort: function(field,order) {
-            this.data.sort(function(data1, data2) {
-                var value1 = data1[field],
-                value2 = data2[field],
-                result = (value1 < value2) ? -1 : (value1 > value2) ? 1 : 0;
-
-                return (order * result);
-            });
-            
+        sort: function(field, order) {
             if(this.options.selectionMode) {
                 this.selection = [];
             }
-
-            if(this.paginator) {
-                this.paginator.puipaginator('option', 'page', 0);
-            }
             
-            this._renderData();
+            if(this.options.lazy) {
+                this.options.datasource.call(this, this._onLazyLoad, this._createStateMeta());
+            }
+            else {
+                this.data.sort(function(data1, data2) {
+                    var value1 = data1[field],
+                    value2 = data2[field],
+                    result = (value1 < value2) ? -1 : (value1 > value2) ? 1 : 0;
+
+                    return (order * result);
+                });
+
+                if(this.options.selectionMode) {
+                    this.selection = [];
+                }
+
+                if(this.paginator) {
+                    this.paginator.puipaginator('option', 'page', 0);
+                }
+
+                this._renderData();
+            }
         },
                 
         sortByField: function(a, b) {
@@ -163,8 +191,8 @@ $(function() {
             if(this.data) {
                 this.tbody.html('');
                 
-                var first = this.getFirst(),
-                rows = this.getRows();
+                var first = this.options.lazy ? 0 : this._getFirst(),
+                rows = this._getRows();
 
                 for(var i = first; i < (first + rows); i++) {
                     var rowData = this.data[i];
@@ -190,7 +218,7 @@ $(function() {
             }
         },
                 
-        getFirst: function() {
+        _getFirst: function() {
             if(this.paginator) {
                 var page = this.paginator.puipaginator('option', 'page'),
                 rows = this.paginator.puipaginator('option', 'rows');
@@ -202,7 +230,7 @@ $(function() {
             }
         },
         
-        getRows: function() {
+        _getRows: function() {
             return this.paginator ? this.paginator.puipaginator('option', 'rows') : this.data.length;
         },
                 
@@ -328,7 +356,18 @@ $(function() {
         _getRowIndex: function(row) {
             var index = row.index();
             
-            return this.options.paginator ? this.getFirst() + index : index;
+            return this.options.paginator ? this._getFirst() + index : index;
+        },
+                
+        _createStateMeta: function() {
+            var state = {
+                first: this._getFirst(),
+                rows: this._getRows(),
+                sortField: this.options.sortField,
+                sortOrder: this.options.sortOrder
+            };
+            
+            return state;
         }
     });
 });
