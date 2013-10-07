@@ -3,7 +3,11 @@
          xmlns="http://java.sun.com/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" >
-	        
+	 
+    <listener>
+        <listener-class>org.primefaces.primeui.servlet.CacheListener</listener-class>
+    </listener>
+           
     <servlet>
         <servlet-name>TabContent Servlet</servlet-name>
         <servlet-class>org.primefaces.primeui.servlet.TabContentServlet</servlet-class>
@@ -30,6 +34,5 @@
 	<servlet-mapping>
 		<servlet-name>jersey-servlet</servlet-name>
 		<url-pattern>/rest/*</url-pattern>
-	</servlet-mapping>
-    
+	</servlet-mapping>    
 </web-app>

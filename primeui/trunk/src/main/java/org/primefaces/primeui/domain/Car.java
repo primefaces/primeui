@@ -17,10 +17,10 @@ package org.primefaces.primeui.domain;
 
 public class Car {
     
-    private String vin;
-    private String brand;
-    private int year;
-    private String color;
+    public String vin;
+    public String brand;
+    public int year;
+    public String color;
 
     public Car() {
     }

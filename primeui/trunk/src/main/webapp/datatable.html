@@ -60,8 +60,8 @@
                     }
                 });
                 
-                $('#tblremote').puidatatable({
-                    caption: 'Remote Restful Webservice',
+                $('#tblremoteeager').puidatatable({
+                    caption: 'Remote Restful Webservice - Eager',
                     paginator: {
                         rows: 5
                     },
@@ -75,6 +75,44 @@
                         $.ajax({
                             type: "GET",
                             url: 'rest/cars/list',
+                            dataType: "json",
+                            context: this,
+                            success: function(response) {
+                                callback.call(this, response);
+                            }
+                        });
+                    },
+                    selectionMode: 'multiple',
+                    rowSelect: function(event, data) {
+                        $('#messages').puigrowl('show', [{severity:'info', summary: 'Row Selected', detail: (data.brand + ' ' + data.vin)}]);
+                    },
+                    rowUnselect: function(event, data) {
+                        $('#messages').puigrowl('show', [{severity:'info', summary: 'Row Unselected', detail: (data.brand + ' ' + data.vin)}]);
+                    }
+                });
+                
+                $('#tblremotelazy').puidatatable({
+                    lazy: true,
+                    caption: 'Remote Restful Webservice - Lazy',
+                    paginator: {
+                        rows: 5,
+                        totalRecords: 200
+                    },
+                    columns: [
+                        {field:'vin', headerText: 'Vin', sortable:true},
+                        {field:'brand', headerText: 'Brand', sortable:true},
+                        {field:'year', headerText: 'Year', sortable:true},
+                        {field:'color', headerText: 'Color', sortable:true}
+                    ],
+                    datasource: function(callback, ui) {
+                        var uri = 'rest/cars/lazylist/' + ui.first;
+                        if(ui.sortField) {
+                            uri += '/' + ui.sortField + '/' + ui.sortOrder;
+                        }
+                        
+                        $.ajax({
+                            type: "GET",
+                            url: uri,
                             dataType: "json",
                             context: this,
                             success: function(response) {
@@ -196,7 +234,11 @@
                             
                             <br />
                             
-                            <div id="tblremote"></div>
+                            <div id="tblremoteeager"></div>
+                            
+                            <br />
+                            
+                            <div id="tblremotelazy"></div>
 
                             <h3>Documentation</h3>
                             <div id="doc">

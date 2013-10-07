@@ -249,7 +249,7 @@ $(function() {
             }
         },
                 
-        _setPage: function(p) {
+        _setPage: function(p, silent) {
             var pc = this.getPageCount();
             
             if(p >= 0 && p < pc && this.options.page !== p) {        
@@ -262,14 +262,18 @@ $(function() {
                 };
                 
                 this.options.page = p;
-                this._updateUI(newState);
-                this._trigger('paginate', null, newState);
+                
+                if(!silent) {
+                    this._trigger('paginate', null, newState);
+                }
+                
+                this.updateUI(newState);
             }
         },
                 
-        _updateUI: function(newState) {
+        updateUI: function(state) {
             for(var paginatorElementKey in this.paginatorElements) {
-                ElementHandlers[paginatorElementKey].update(this.paginatorElements[paginatorElementKey], newState);
+                ElementHandlers[paginatorElementKey].update(this.paginatorElements[paginatorElementKey], state);
             }
         },
                 
