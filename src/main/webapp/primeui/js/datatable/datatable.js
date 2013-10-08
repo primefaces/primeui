@@ -14,7 +14,8 @@ $(function() {
             rowUnselect: null,
             caption: null,
             sortField: null,
-            sortOrder: null
+            sortOrder: null,
+            content: null
         },
         
         _create: function() {
@@ -208,10 +209,18 @@ $(function() {
                         }
 
                         for(var j = 0; j < this.options.columns.length; j++) {
-                            var column = $('<td />').appendTo(row),
-                            fieldValue = rowData[this.options.columns[j].field];
-
-                            column.text(fieldValue);
+                            var column = $('<td />').appendTo(row);
+                            
+                            if(this.options.columns[j].content) {
+                                var content = this.options.columns[j].content.call(this, rowData);
+                                if($.type(content) === 'string')
+                                    column.html(content);
+                                else
+                                    column.append(content);
+                            }
+                            else {
+                                column.text(rowData[this.options.columns[j].field]);
+                            }                            
                         }
                     }
                 }
