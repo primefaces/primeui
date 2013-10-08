@@ -147,10 +147,15 @@ $(function() {
         },
                 
         paginate: function() {
-            if(this.options.lazy)
+            if(this.options.lazy) {
+                if(this.options.selectionMode) {
+                    this.selection = [];
+                }
                 this.options.datasource.call(this, this._onLazyLoad, this._createStateMeta());
-            else
+            }
+            else {
                this._renderData();
+            }
         },
                 
         sort: function(field, order) {
