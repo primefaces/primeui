@@ -317,7 +317,7 @@ $(function() {
                         this.unselectAllRows();
                     }
                     
-                    this.selectRow(row);
+                    this.selectRow(row, false, event);
                 } 
 
                 PUI.clearSelection();
@@ -348,15 +348,24 @@ $(function() {
             }
         },
                 
-        selectRow: function(row, silent) {
+        selectRow: function(row, silent, event) {
             var rowIndex = this._getRowIndex(row);
             row.removeClass('ui-state-hover').addClass('ui-state-highlight').attr('aria-selected', true);
 
             this._addSelection(rowIndex);
 
             if(!silent) {
-                this._trigger('rowSelect', null, this.data[rowIndex]);
+                this._trigger('rowSelect', event, this.data[rowIndex]);
             }
+        },
+                
+        getSelection: function() {
+            var selections = [];
+            for(var i = 0; i < this.selection.length; i++) {
+                selections.push(this.data[this.selection[i]]);
+            }
+            
+            return selections;
         },
                 
         _removeSelection: function(rowIndex) {        
