@@ -242,14 +242,14 @@ $(function() {
         
         _setOption: function(key, value) {
             if(key === 'page') {
-                this._setPage(value);
+                this.setPage(value);
             }
             else {
                 $.Widget.prototype._setOption.apply(this, arguments);
             }
         },
                 
-        _setPage: function(p, silent) {
+        setPage: function(p, silent) {
             var pc = this.getPageCount();
             
             if(p >= 0 && p < pc && this.options.page !== p) {        
@@ -262,7 +262,7 @@ $(function() {
                 };
                 
                 this.options.page = p;
-                
+
                 if(!silent) {
                     this._trigger('paginate', null, newState);
                 }

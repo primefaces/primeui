@@ -95,6 +95,15 @@ $(function() {
                 
             this._initialize();
         },
+                
+        _onDataUpdate: function(data) {
+            this.data = data;
+            if(!this.data) {
+                this.data = [];
+            }
+                
+            this._renderData();
+        },
         
         _onLazyLoad: function(data) {
             this.data = data;
@@ -231,7 +240,7 @@ $(function() {
                 }
             }
         },
-                
+                                
         _getFirst: function() {
             if(this.paginator) {
                 var page = this.paginator.puipaginator('option', 'page'),
@@ -382,6 +391,45 @@ $(function() {
             };
             
             return state;
+        },
+                
+        _updateDatasource: function(datasource) {
+            this.options.datasource = datasource;
+            
+            this.reset();
+            
+            if($.isArray(this.options.datasource)) {
+                this.data = this.options.datasource;
+                this._renderData();
+            }
+            else if($.type(this.options.datasource) === 'function') {
+                if(this.options.lazy)
+                    this.options.datasource.call(this, this._onDataUpdate, {first:0, sortField:this.options.sortField, sortorder:this.options.sortOrder});
+                else
+                    this.options.datasource.call(this, this._onDataUpdate);
+            }
+        },
+                
+        _setOption: function(key, value) {
+            if(key === 'datasource') {
+                this._updateDatasource(value);
+            }
+            else {
+                $.Widget.prototype._setOption.apply(this, arguments);
+            }
+        },
+                
+        reset: function() {
+            if(this.options.selectionMode) {
+                this.selection = [];
+            }
+            
+            if(this.paginator) {
+                this.paginator.puipaginator('setPage', 0, true);
+            }
+            
+            this.thead.children('th.pui-sortable-column').data('order', 0).filter('.ui-state-active').removeClass('ui-state-active')
+                                .children('span.pui-sortable-column-icon').removeClass('ui-icon-triangle-1-n ui-icon-triangle-1-s');
         }
     });
 });
