@@ -1,0 +1,27 @@
+.pui-notify {
+	position: fixed;
+	width: 100%;
+	height: 100px;
+	display: none;
+	padding: 10px;
+}
+
+.pui-notify-top {
+    top: 0;
+}
+
+.pui-notify-bottom {
+    bottom: 0;
+}
+ 
+.pui-notify-close {
+	position: absolute;
+	right: 3em;
+	top: 1em;
+	cursor: pointer;
+    opacity: 0.5;
+}
+
+.pui-notify-close:hover {
+    opacity: 1.0;
+}

@@ -1,0 +1,20 @@
+.pui-radiobutton {
+    position: relative;
+    width: 16px;
+    margin: 2px 0;
+    line-height: 16px;
+    cursor: pointer;
+}
+
+.pui-radiobutton .pui-radiobutton-box {
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.pui-radiobutton-icon {
+    margin-left: 1px;
+}

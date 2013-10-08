@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>PrimeUI</title>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+        <meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="expires" content="0" />
+        <link rel="stylesheet" type="text/css" href="resources/styles/all.css" />
+        <link rel="stylesheet" type="text/css" href="resources/demo/css/demo.css" />
+        <link rel="stylesheet" href="resources/demo/css/jquery-ui.css" />
+        <link rel="stylesheet" href="resources/demo/css/aristo/theme.css" />
+        <link rel="stylesheet" href="resources/demo/css/sh.css" />
+        <script type="text/javascript" src="resources/demo/js/sh.js"></script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="header">
+                <div class="header-block">
+                    <h1 class="logo"><a href="index.html">primeui</a></h1>
+                    <ul id="nav">
+                        <li><a id="menu-overview" href="setup.html">Quickstart</a></li>	
+                        <li><a id="menu-demos" href="demo.html">Demo</a></li>
+                        <li><a id="menu-development" href="download.html">Download</a></li>
+                        <li><a id="menu-development" href="themes.html">Themes</a></li>
+                        <li><a id="menu-support" href="http://blog.primefaces.org/?cat=11">Blog</a></li>
+                        <li><a id="menu-social" href="http://forum.primefaces.org">Forum</a></li>
+                        <li><a id="menu-social" href="license.html">License</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="main">
+                <div class="content-section">
+                    <div class="heading">
+                        <h2>PrimeUI</h2>
+                    </div>
+                    <div class="content-block">					
+                        <div id="content-nondemo">
+                            <h1 class="widget-title">Setup</h1>
+                            <p>Getting Started with PrimeUI is a straightforward process.</p>
+
+                            <h3>Download</h3>
+                            <p>PrimeUI is distributed in a zip file that is available at <a href="http://www.primefaces.org/downloads.html#primeui">download page</a>.
+                            Once you download the file and extract it in filesystem, you'd see two folders named development and production. Development folder has
+                            the uncompressed and the Production folder has the compressed distribution.</p>
+                            
+                            <h3>Include Resources</h3>
+                            <p>Although you can include resources of each widget individually, it is suggested to use the prime-ui.js and prime-ui.css file to register all
+                                the widgets at once. As PrimeUI is jQuery UI based, you also need to include jQuery and jQuery UI.</p>
+                            
+                            <pre name="code" class="xml">
+                                <head>
+                                    &lt;link rel="stylesheet" href="%PATH%/jquery-ui.css" /&gt;
+                                    &lt;link rel="stylesheet" href="%PATH%/theme.css" /&gt;
+                                    &lt;link rel="stylesheet" href="%PATH%/prime-ui-min.css" /&gt;
+                                    &lt;script type="text/javascript" src="%PATH%/jquery.js"&gt;&lt;/script&gt;
+                                    &lt;script type="text/javascript" src="%PATH%/jquery-ui.js"&gt;&lt;/script&gt;
+                                    &lt;script type="text/javascript" src="%PATH%/prime-ui.js"&gt;&lt;/script&gt;
+                                </head>
+                            </pre>
+                            
+                            <p>Distribution also has a couple of images that are used by some of the widgets. The image folder should be placed at two level up for correct
+                            reference. For example if prime-ui.css is under %PATH%/resources/prime-ui/css/prime-ui-min.css location images folder should be at
+                            %PATH%/resources/images.</p>
+                            
+                        </div>
+
+                        <div style="clear: both" />
+                    </div>
+                </div>
+            </div>
+            <div id="footer">
+                <div class="footer-block">
+                    <div class="copy-block">
+                        <span class="copy">Copyright 2013 <a href="http://www.primetek.com.tr">PrimeTek</a> All rights reserved.</span>
+                    </div>
+                    <img src="primeui/images/ornament.png" width="167" height="43" alt="image description" class="ornament" />
+                </div>
+            </div>
+        </div>
+
+        <script language="javascript">
+            dp.SyntaxHighlighter.ClipboardSwf = '/resources/demo/js/clipboard.swf';
+            dp.SyntaxHighlighter.HighlightAll('code');
+        </script>
+    </body>
+</html>

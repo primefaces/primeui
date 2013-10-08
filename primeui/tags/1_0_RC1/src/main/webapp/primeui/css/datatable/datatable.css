@@ -1,0 +1,60 @@
+.pui-datatable table {
+	border-collapse: collapse;
+    width: 100%;
+}
+
+.pui-datatable .pui-datatable-header,
+.pui-datatable .pui-datatable-footer {
+    text-align: center;
+    padding: 4px 10px;
+}
+
+.pui-datatable .pui-datatable-caption {
+    border-bottom: 0px none;
+    text-align: center;
+    padding: 4px 10px;
+}
+
+.pui-datatable .pui-datatable-footer {
+    border-top: 0px none;
+}
+
+.pui-datatable thead th, .pui-datatable tfoot td {
+    text-align: center;
+}
+
+.pui-datatable thead th,
+.pui-datatable tbody td,
+.pui-datatable tfoot td {
+    padding: 4px 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.pui-datatable tbody td {
+    border-color: inherit;
+}
+
+.pui-datatable .pui-sortable-column {
+    cursor: pointer;
+}
+
+.pui-datatable .pui-sortable-column-icon {
+    display: inline-block;
+    margin: -3px 0px -3px 2px;
+}
+
+.pui-datatable .pui-paginator {
+    border-top: 0 none;
+}
+
+.pui-datatable .pui-datatable-data tr.ui-state-hover {
+    font-weight: inherit;
+    cursor: pointer;
+}
+
+.pui-datatable tr.ui-state-highlight {
+    cursor: pointer;
+}
