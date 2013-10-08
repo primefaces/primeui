@@ -14,8 +14,7 @@ $(function() {
             rowUnselect: null,
             caption: null,
             sortField: null,
-            sortOrder: null,
-            content: null
+            sortOrder: null
         },
         
         _create: function() {
