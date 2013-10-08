@@ -244,7 +244,21 @@
                                 </ul>
                                 <div>
                                     <div id="doc-overview">
-
+                                        <p>DataTable requires column metadata and a datasource as requires options. A column
+                                        definition has the following properties;</p>
+                                         {field, headerText, sortable, content}.
+                                        <ul>
+                                            <li>field: Name of field.</li>
+                                            <li>headerText: Column header.</li>
+                                            <li>sortable: Controls sorting.</li>
+                                            <li>content: A function that takes row data and expects a string or a jQuery object to customize the cell.</li>
+                                        </ul>
+                                         
+                                         <p>Datasource on the other hand, can either be a javascript array or a function to load
+                                         data from a remote location. In eager mode, datasource is loaded only once and in lazy mode
+                                         ,invoked everytime whenever the state changes like paging or sorting. To update the datasource
+                                         use $('#example').puidatatable('option', 'datasource', newdatasource).</p>
+                                        
                                         <pre name="code" class="jscript">
 $('#tbl').puidatatable({
     columns: [],
@@ -254,7 +268,7 @@ $('#tbl').puidatatable({
                                         </pre>
 
                                         <pre name="code" class="xml">
-&lt;div id="tbl"&gt;
+&lt;div id="tbl"&gt;&lt;/div&gt;
                                         </pre>
                                     </div>
 
@@ -271,7 +285,7 @@ $('#tbl').puidatatable({
                                                     <td>columns</td>
                                                     <td>Array</td>
                                                     <td>null</td>
-                                                    <td>An array of columns definition instances {field, headerText, sortable}.</td>
+                                                    <td>An array of columns definition instances.</td>
                                                 </tr>
                                                 <tr class="ui-widget-content">
                                                     <td>datasource</td>
@@ -363,6 +377,11 @@ $('#tbl').puidatatable({
                                                     <td>row: tr element as jquery, silent: Flag not to trigger select event.</td>
                                                     <td>Unselects a given row.</td>
                                                 </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>reset</td>
+                                                    <td>-</td>
+                                                    <td>Resets the datatable state.</td>
+                                                </tr>
                                             </tbody>
                                         </table>
 
@@ -407,7 +426,7 @@ $('#default').puidatatable('unselectAllRows');
             }
         });
 
-        $('#tblremote').puidatatable({
+        $('#tblremoteeager').puidatatable({
             caption: 'Remote Restful Webservice',
             paginator: {
                 rows: 5
@@ -438,6 +457,37 @@ $('#default').puidatatable('unselectAllRows');
             }
         });
 
+        $('#tblremotelazy').puidatatable({
+            lazy: true,
+            caption: 'Remote Restful Webservice - Lazy',
+            paginator: {
+                rows: 5,
+                totalRecords: 200
+            },
+            columns: [
+                {field:'vin', headerText: 'Vin', sortable:true},
+                {field:'brand', headerText: 'Brand', sortable:true},
+                {field:'year', headerText: 'Year', sortable:true},
+                {field:'color', headerText: 'Color', sortable:true}
+            ],
+            datasource: function(callback, ui) {
+                var uri = 'rest/cars/lazylist/' + ui.first;
+                if(ui.sortField) {
+                    uri += '/' + ui.sortField + '/' + ui.sortOrder;
+                }
+
+                $.ajax({
+                    type: "GET",
+                    url: uri,
+                    dataType: "json",
+                    context: this,
+                    success: function(response) {
+                        callback.call(this, response);
+                    }
+                });
+            }
+        });
+
         $('#messages').puigrowl();
     });
 &lt;/script&gt;
@@ -448,7 +498,9 @@ $('#default').puidatatable('unselectAllRows');
                             
 &lt;div id="tbllocal"&gt;&lt;/div&gt;
 
-&lt;div id="tblremote"&gt;&lt;/div&gt;
+&lt;div id="tblremoteeager"&gt;&lt;/div&gt;
+
+&lt;div id="tblremotelazy"&gt;&lt;/div&gt;
                                         </pre>
                                     </div>
                                 </div>
