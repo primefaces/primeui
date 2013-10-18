@@ -54,7 +54,7 @@ $(function() {
                 label = null,
                 meterPos = null;
 
-                if(value.length == 0) {
+                if(value.length === 0) {
                     label = $this.options.promptLabel;
                     meterPos = '0px 0px';
                 }

@@ -20,9 +20,8 @@ $(function() {
                 
             var title = this.element.attr('title');
             if(title) {
-                this.element.prepend('<div class="pui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all"><span class="ui-panel-title">'
-                        + title + "</span></div>")
-                        .removeAttr('title');
+                this.element.prepend('<div class="pui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all"><span class="ui-panel-title">' +
+                        title + "</span></div>").removeAttr('title');
             }
             
             this.header = this.element.children('div.pui-panel-titlebar');
@@ -160,9 +159,9 @@ $(function() {
                 $this.options.collapsed = !$this.options.collapsed;
 
                 $this.content.css({
-                    'visibility': 'visible'
-                    ,'display': 'block'
-                    ,'height': 'auto'
+                    'visibility': 'visible',
+                    'display': 'block',
+                    'height': 'auto'
                 });
             });
         }

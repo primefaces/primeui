@@ -107,14 +107,14 @@ $(function() {
         show: function() {
             var $this = this;
 
-            this.timeout = setTimeout(function() {
+            this.timeout = window.setTimeout(function() {
                 $this._align();
                 $this.container.show($this.options.showEffect, {}, $this.options.showEffectSpeed);
             }, this.options.showDelay);
         },
 
         hide: function() {
-            clearTimeout(this.timeout);
+            window.clearTimeout(this.timeout);
 
             this.container.hide(this.options.hideEffect, {}, this.options.hideEffectSpeed, function() {
                 $(this).css('z-index', '');

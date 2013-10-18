@@ -76,7 +76,7 @@ $(function() {
                 $this._removeMessage(message);
 
                 if(!sticky) {
-                    clearTimeout(message.data('timeout'));
+                    window.clearTimeout(message.data('timeout'));
                 }
             });
 
@@ -88,7 +88,7 @@ $(function() {
         _setRemovalTimeout: function(message) {
             var $this = this;
 
-            var timeout = setTimeout(function() {
+            var timeout = window.setTimeout(function() {
                 $this._removeMessage(message);
             }, this.options.life);
 

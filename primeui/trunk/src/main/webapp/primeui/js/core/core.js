@@ -1,7 +1,7 @@
 /**
  * PUI Object 
  */
-PUI = {
+var PUI = {
     
     zindex : 1000,
         

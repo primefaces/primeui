@@ -151,14 +151,14 @@ $(function() {
                 key = e.which,
                 shouldSearch = true;
 
-                if(key == keyCode.UP 
-                    || key == keyCode.LEFT 
-                    || key == keyCode.DOWN 
-                    || key == keyCode.RIGHT 
-                    || key == keyCode.TAB 
-                    || key == keyCode.SHIFT 
-                    || key == keyCode.ENTER
-                    || key == keyCode.NUMPAD_ENTER) {
+                if(key == keyCode.UP ||
+                    key == keyCode.LEFT ||
+                    key == keyCode.DOWN ||
+                    key == keyCode.RIGHT ||
+                    key == keyCode.TAB ||
+                    key == keyCode.SHIFT ||
+                    key == keyCode.ENTER ||
+                    key == keyCode.NUMPAD_ENTER) {
                     shouldSearch = false;
                 } 
 
@@ -171,10 +171,10 @@ $(function() {
 
                     if(value.length >= $this.options.minQueryLength) {
                         if($this.timeout) {
-                            clearTimeout($this.timeout);
+                            window.clearTimeout($this.timeout);
                         }
 
-                        $this.timeout = setTimeout(function() {
+                        $this.timeout = window.setTimeout(function() {
                             $this.search(value);
                         }, 
                         $this.options.delay);
@@ -430,9 +430,9 @@ $(function() {
                             'z-index': ++PUI.zindex
                     })
                     .position({
-                        my: 'left top'
-                        ,at: 'left bottom'
-                        ,of: this.element
+                        my: 'left top',
+                        at: 'left bottom',
+                        of: this.element
                     });
         }
     });

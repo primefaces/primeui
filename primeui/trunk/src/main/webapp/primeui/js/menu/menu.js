@@ -25,10 +25,10 @@ $(function() {
             this.element.closest('.pui-menu').addClass('pui-menu-dynamic pui-shadow').appendTo(document.body);
 
             this.positionConfig = {
-                my: this.options.my
-                ,at: this.options.at
-                ,of: this.options.trigger
-            }
+                my: this.options.my,
+                at: this.options.at,
+                of: this.options.trigger
+            };
 
             this.options.trigger.on(this.options.triggerEvent + '.pui-menu', function(e) {
                 var trigger = $(this);
@@ -263,7 +263,7 @@ $(function() {
 
             if(this.options.autoDisplay === false) {
                 this.rootLinks = this.element.find('> .pui-menuitem > .pui-menuitem-link');
-                this.rootLinks.data('primeui-tieredmenu-rootlink', this.options.id).find('*').data('primeui-tieredmenu-rootlink', this.options.id)
+                this.rootLinks.data('primeui-tieredmenu-rootlink', this.options.id).find('*').data('primeui-tieredmenu-rootlink', this.options.id);
 
                 this.rootLinks.on('click.pui-menu', function(e) {
                     var link = $(this),
@@ -349,9 +349,9 @@ $(function() {
                 
         _showSubmenu: function(menuitem, submenu) {
             submenu.css({
-                'left': menuitem.outerWidth()
-                ,'top': 0
-                ,'z-index': ++PUI.zindex
+                'left': menuitem.outerWidth(),
+                'top': 0,
+                'z-index': ++PUI.zindex
             });
 
             submenu.show();
@@ -394,7 +394,7 @@ $(function() {
             else {
                 submenuCSS.left = 0;
                 submenuCSS.top = menuitem.outerHeight(); 
-                menuitem.offset().top - win.scrollTop();
+                menuitem.offset().top - win.scrollTop();     // TODO Assignment to what
                 submenuOffsetTop = menuitem.offset().top + submenuCSS.top - win.scrollTop();
             }
 
@@ -494,7 +494,7 @@ $(function() {
                submenu = link.next();
 
                if(submenu.length == 1) {
-                   $this._forward(submenu)
+                   $this._forward(submenu);
                }
             });
 
@@ -535,7 +535,7 @@ $(function() {
             }, 500, 'easeInOutCirc', function() {
                 last.hide();
 
-                if(depth == 0) {
+                if(depth === 0) {
                     $this.backward.fadeOut('fast');
                 }
             });
