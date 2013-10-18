@@ -18,7 +18,7 @@ $(function() {
             this.container.addClass('pui-rating');
             
             var inputVal = input.val(),
-            value = inputVal == '' ? null : parseInt(inputVal);
+            value = inputVal === '' ? null : parseInt(inputVal, 10);
             
             if(this.options.cancel) {
                 this.container.append('<div class="pui-rating-cancel"><a></a></div>');
@@ -68,7 +68,7 @@ $(function() {
         getValue: function() {
             var inputVal = this.element.val();
 
-            return inputVal == '' ? null : parseInt(inputVal);
+            return inputVal === '' ? null : parseInt(inputVal, 10);
         },
 
         setValue: function(value) {

@@ -6,8 +6,8 @@ $(function() {
     $.widget("primeui.puitabview", {
        
         options: {
-             activeIndex:0
-            ,orientation:'top'
+            activeIndex:0,
+            orientation:'top'
         },
         
         _create: function() {
@@ -138,7 +138,7 @@ $(function() {
        },
 
        _isLoaded: function(panel) {
-           return panel.data('loaded') == true;
+           return panel.data('loaded') === true;
        },
 
        disable: function(index) {

@@ -6,8 +6,8 @@ $(function() {
     $.widget("primeui.puisplitbutton", {
        
         options: {
-            icon: null
-            ,iconPos: 'left',
+            icon: null,
+            iconPos: 'left',
             items: null
         },
         
@@ -57,9 +57,9 @@ $(function() {
             this.menu.appendTo(this.options.appendTo||this.container);
             
             this.options.position = {
-                my: 'left top'
-                ,at: 'left bottom'
-                ,of: this.element
+                my: 'left top',
+                at: 'left bottom',
+                of: this.element
             };
         },
                 

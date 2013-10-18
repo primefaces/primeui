@@ -290,6 +290,29 @@
                 </plugins>
             </build>
         </profile>
+        <profile>
+            <id>jshint</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.mule.tools.javascript</groupId>
+                        <artifactId>jshint-maven-plugin</artifactId>
+                        <version>1.0-SNAPSHOT</version>
+                        <executions>
+                            <execution>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>jshint</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <sourceDirectory>src/main/webapp/primeui/js</sourceDirectory>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
     </profiles>
     
 </project>

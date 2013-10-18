@@ -41,7 +41,7 @@ $(function() {
                 if(!$this._isChecked()) {
                     $this.element.trigger('click');
 
-                    if($.browser.msie && parseInt($.browser.version) < 9) {
+                    if($.browser.msie && parseInt($.browser.version, 10) < 9) {
                         $this.element.trigger('change');
                     }
                 }

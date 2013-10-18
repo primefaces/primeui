@@ -236,7 +236,7 @@ $(function() {
         },
                 
         _add: function() {
-            var items = this.sourceList.children('li.pui-picklist-item.ui-state-highlight')
+            var items = this.sourceList.children('li.pui-picklist-item.ui-state-highlight');
 
             this._transfer(items, this.sourceList, this.targetList, 'command');
         },
@@ -455,10 +455,10 @@ $(function() {
                 
         _setupFilterMatcher: function() {
             this.filterMatchers = {
-                'startsWith': this._startsWithFilter
-                ,'contains': this._containsFilter
-                ,'endsWith': this._endsWithFilter
-                ,'custom': this.options.filterFunction
+                'startsWith': this._startsWithFilter,
+                'contains': this._containsFilter,
+                'endsWith': this._endsWithFilter,
+                'custom': this.options.filterFunction
             };
 
             this.filterMatcher = this.filterMatchers[this.options.filterMatchMode];
@@ -494,7 +494,7 @@ $(function() {
 
         _endsWithFilter: function(value, filter) {
             return value.indexOf(filter, value.length - filter.length) !== -1;
-        },
+        }
     });
         
 });

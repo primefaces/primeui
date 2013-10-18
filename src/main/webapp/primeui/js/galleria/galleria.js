@@ -69,10 +69,10 @@ $(function() {
             for(var i = 0; i < this.panels.length; i++) {
                 var image = this.panels.eq(i).children('img'),
                 frameClass = (i == this.options.activeIndex) ? 'pui-galleria-frame pui-galleria-frame-active' : 'pui-galleria-frame',
-                frameMarkup = '<li class="'+ frameClass + '" ' + frameStyle + '>'
-                + '<div class="pui-galleria-frame-content" ' + frameStyle + '>'
-                + '<img src="' + image.attr('src') + '" class="pui-galleria-frame-image" ' + frameStyle + '/>'
-                + '</div></li>';
+                frameMarkup = '<li class="'+ frameClass + '" ' + frameStyle + '>' +
+                '<div class="pui-galleria-frame-content" ' + frameStyle + '>' +
+                '<img src="' + image.attr('src') + '" class="pui-galleria-frame-image" ' + frameStyle + '/>' +
+                '</div></li>';
 
                 this.strip.append(frameMarkup);
             }
@@ -127,7 +127,7 @@ $(function() {
         startSlideshow: function() {
             var $this = this;
 
-            this.interval = setInterval(function() {
+            this.interval = window.setInterval(function() {
                 $this.next();
             }, this.options.transitionInterval);
 
@@ -135,7 +135,7 @@ $(function() {
         },
 
         stopSlideshow: function() {
-            clearInterval(this.interval);
+            window.clearInterval(this.interval);
 
             this.slideshowActive = false;
         },
@@ -173,7 +173,7 @@ $(function() {
                 //viewport
                 if(reposition === undefined || reposition === true) {
                     var frameLeft = newFrame.position().left,
-                    stepFactor = this.options.frameWidth + parseInt(newFrame.css('margin-right')),
+                    stepFactor = this.options.frameWidth + parseInt(newFrame.css('margin-right'), 10),
                     stripLeft = this.strip.position().left,
                     frameViewportLeft = frameLeft + stripLeft,
                     frameViewportRight = frameViewportLeft + this.options.frameWidth;
@@ -199,7 +199,7 @@ $(function() {
         },
 
         prev: function() {
-            if(this.options.activeIndex != 0) {
+            if(this.options.activeIndex !== 0) {
                 this.select(this.options.activeIndex - 1);
             }
         },

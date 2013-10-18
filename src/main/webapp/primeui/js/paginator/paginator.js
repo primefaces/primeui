@@ -2,8 +2,8 @@
  * PrimeUI Paginator Widget
  */
 $(function() {
-    
-    ElementHandlers = {
+
+    var ElementHandlers = {
         
         '{FirstPageLink}': {
             markup: '<span class="pui-paginator-first pui-paginator-element ui-state-default ui-corner-all"><span class="ui-icon ui-icon-seek-first">p</span></span>',
@@ -121,7 +121,7 @@ $(function() {
                 boundaries = this.calculateBoundaries({
                     page: paginator.options.page,
                     pageLinks: paginator.options.pageLinks,
-                    pageCount: paginator.getPageCount(),
+                    pageCount: paginator.getPageCount()
                 }),
                 start = boundaries[0],
                 end = boundaries[1];
@@ -138,7 +138,7 @@ $(function() {
                         var link = $(this);
 
                         if(!link.hasClass('ui-state-disabled')&&!link.hasClass('ui-state-active')) {
-                            paginator.option('page', parseInt(link.text()) - 1);
+                            paginator.option('page', parseInt(link.text(), 10) - 1);
                         }
                     });
                     
@@ -153,7 +153,7 @@ $(function() {
                 boundaries = this.calculateBoundaries({
                     page: state.page,
                     pageLinks: state.pageLinks,
-                    pageCount: state.pageCount,
+                    pageCount: state.pageCount
                 }),
                 start = boundaries[0],
                 end = boundaries[1],
@@ -182,7 +182,7 @@ $(function() {
                 visiblePages = Math.min(pageLinks, pageCount);
                 
                 //calculate range, keep current in middle if necessary
-                var start = Math.max(0, parseInt(Math.ceil(page - ((visiblePages) / 2)))),
+                var start = Math.max(0, parseInt(Math.ceil(page - ((visiblePages) / 2)), 10)),
                 end = Math.min(pageCount - 1, start + visiblePages - 1);
 
                 //check when approaching to last page

@@ -222,13 +222,14 @@ $(function() {
 
             this.focusElement.on('keydown.puiselectonemenu', function(e) {
                 var keyCode = $.ui.keyCode,
-                key = e.which;
+                    key = e.which,
+                    activeItem;
 
                 switch(key) { 
                     case keyCode.UP:
                     case keyCode.LEFT:
-                        var activeItem = $this._getActiveItem(),
-                        prev = activeItem.prevAll(':not(.ui-state-disabled,.ui-selectonemenu-item-group):first');
+                        activeItem = $this._getActiveItem();
+                        var prev = activeItem.prevAll(':not(.ui-state-disabled,.ui-selectonemenu-item-group):first');
 
                         if(prev.length == 1) {
                             if($this.panel.is(':hidden')) {
@@ -245,8 +246,8 @@ $(function() {
 
                     case keyCode.DOWN:
                     case keyCode.RIGHT:
-                        var activeItem = $this._getActiveItem(),
-                        next = activeItem.nextAll(':not(.ui-state-disabled,.ui-selectonemenu-item-group):first');
+                        activeItem = $this._getActiveItem();
+                        var next = activeItem.nextAll(':not(.ui-state-disabled,.ui-selectonemenu-item-group):first');
 
                         if(next.length == 1) {
                             if($this.panel.is(':hidden')) {
@@ -355,7 +356,7 @@ $(function() {
 
             if(shouldChange) {
                 this._highlightItem(item);
-                this.element.val(selectedOption.val())
+                this.element.val(selectedOption.val());
 
                 this._triggerChange();
 
@@ -435,9 +436,9 @@ $(function() {
         
         _alignPanel: function() {        
             this.panel.css({left:'', top:''}).position({
-                                            my: 'left top'
-                                            ,at: 'left bottom'
-                                            ,of: this.container
+                                            my: 'left top',
+                                            at: 'left bottom',
+                                            of: this.container
                                         });
         },
         
@@ -475,10 +476,10 @@ $(function() {
         
         _setupFilterMatcher: function() {
             this.filterMatchers = {
-                'startsWith': this._startsWithFilter
-                ,'contains': this._containsFilter
-                ,'endsWith': this._endsWithFilter
-                ,'custom': this.options.filterFunction
+                'startsWith': this._startsWithFilter,
+                'contains': this._containsFilter,
+                'endsWith': this._endsWithFilter,
+                'custom': this.options.filterFunction
             };
 
             this.filterMatcher = this.filterMatchers[this.options.filterMatchMode];
@@ -528,7 +529,7 @@ $(function() {
             for(var i = start; i  < end; i++) {
                 var option = this.choices.eq(i);
 
-                if(option.text().indexOf(text) == 0) {
+                if(option.text().indexOf(text) === 0) {
                     return this.items.eq(i);
                 }
             }
