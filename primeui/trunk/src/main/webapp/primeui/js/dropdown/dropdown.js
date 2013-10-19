@@ -558,7 +558,9 @@ $(function() {
             choice.appendTo(this.element);
             this._bindItemEvents(item);
             item.appendTo(this.itemsContainer);
-            this.items.add(item);
+            this.items.push(item[0]);
+            //this.choices.push(choice);  There is an issue when this form is used when selecting an option.
+            this.choices = this.element.children('option');
         }
     });
     
