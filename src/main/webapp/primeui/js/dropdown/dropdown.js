@@ -12,15 +12,15 @@ $(function() {
             filterMatchMode: 'startsWith',
             caseSensitiveFilter: false,
             filterFunction: null,
-            source: null,
+            data: null,
             content: null,
             scrollHeight: 200
         },
 
         _create: function() {
-            if(this.options.source) {
-                for(var i = 0; i < this.options.source.length; i++) {
-                    var choice = this.options.source[i];
+            if(this.options.data) {
+                for(var i = 0; i < this.options.data.length; i++) {
+                    var choice = this.options.data[i];
                     if(choice.label)
                         this.element.append('<option value="' + choice.value + '">' + choice.label + '</option>');
                     else
@@ -97,7 +97,7 @@ $(function() {
             for(var i = 0; i < this.choices.length; i++) {
                 var option = this.choices.eq(i),
                 optionLabel = option.text(),
-                content = this.options.content ? this.options.content.call(this, this.options.source[i]) : optionLabel;
+                content = this.options.content ? this.options.content.call(this, this.options.data[i]) : optionLabel;
                     
                 this.itemsContainer.append('<li data-label="' + optionLabel + '" class="pui-dropdown-item pui-dropdown-list-item ui-corner-all">' + content + '</li>');
             }

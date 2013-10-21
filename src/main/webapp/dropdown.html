@@ -35,7 +35,7 @@
                 });
 
                 $('#custom').puidropdown({
-                    source: themes,
+                    data: themes,
                     content: function(option) {
                         return '<img src="resources/demo/images/themes/' + option + '.png" alt="" /><span style="float:right;font-size:14px">' + option + '</span>';
                     }
@@ -48,7 +48,7 @@
                 $('#doc').puitabview();
                 
                 $('#themes').puidropdown({
-                    source: themes,
+                    data: themes,
                     content: function(option) {
                         return '<img src="resources/demo/images/themes/' + option + '.png" alt="" /><span style="float:right;font-size:14px">' + option + '</span>';
                     },
@@ -244,7 +244,7 @@ $('#basic').puidropdown();
                                                     <td>Function to be used in custom filtering, this function gets option as parameter and needs to return a boolean.</td>
                                                 </tr>
                                                 <tr class="ui-widget-content">
-                                                    <td>source</td>
+                                                    <td>data</td>
                                                     <td>array</td>
                                                     <td>null</td>
                                                     <td>An array of items to populate dropdown dynamically. Objects in this array can be simple types or object with
@@ -352,7 +352,7 @@ $('#basic').puidropdown('selectValue', 1);
         });
 
         $('#custom').puidropdown({
-            source: themes,
+            data: themes,
             content: function(option) {
                 return '&lt;img src="resources/demo/images/themes/' + option + '.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;' + option + '&lt;/span&gt;';
             }

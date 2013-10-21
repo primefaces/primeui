@@ -131,7 +131,7 @@
                     'ui-darkness', 'ui-lightness', 'vader');
             
                 $('#themes').puidropdown({
-                    source: themes,
+                    data: themes,
                     content: function(option) {
                         return '<img src="resources/demo/images/themes/' + option + '.png" alt="" /><span style="float:right;font-size:14px">' + option + '</span>';
                     },
