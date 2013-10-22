@@ -28,9 +28,9 @@ $(function() {
             
             if(this.options.items && this.options.items.length) {            
                 this._renderPanel();
+                this._bindEvents();
             }
-            
-            this._bindEvents();
+
         },
                 
         _renderPanel: function() {
