@@ -123,7 +123,11 @@ $(function() {
         _createButton: function(icon, cssClass, fn) {
             var btn = $('<button class="' + cssClass + '" type="button"></button>').puibutton({
                 'icon': icon,
-                'click': fn
+                'click': function() {
+                    fn();
+                    $(this).removeClass('ui-state-hover ui-state-focus');
+                }
+
             });
             
             return btn;
