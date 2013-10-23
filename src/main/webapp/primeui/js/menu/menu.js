@@ -394,7 +394,6 @@ $(function() {
             else {
                 submenuCSS.left = 0;
                 submenuCSS.top = menuitem.outerHeight(); 
-                menuitem.offset().top - win.scrollTop();     // TODO Assignment to what
                 submenuOffsetTop = menuitem.offset().top + submenuCSS.top - win.scrollTop();
             }
 
