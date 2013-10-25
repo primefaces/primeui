@@ -1,0 +1,36 @@
+.pui-dialog { position: fixed; padding: 0; overflow: hidden; }
+.pui-dialog .pui-dialog-titlebar { padding: .4em .4em .4em 1em; position: relative; border:0px; }
+.pui-dialog .pui-dialog-title { float: left; margin: .3em 16px .1em 0; } 
+.pui-dialog .pui-dialog-content {position: relative; border: 0; padding: .5em 1em; background: none; overflow: auto; zoom: 1; }
+.pui-dialog .pui-dialog-buttonpane { text-align: left; border-width: 1px 0 0 0; background-image: none; margin: .5em 0 0 0; padding: .3em 1em .5em .4em; }
+.pui-dialog .pui-dialog-buttonpane .pui-dialog-buttonset { float: right; }
+.pui-dialog .pui-dialog-buttonpane button { margin: .5em .4em .5em 0; cursor: pointer; }
+.pui-dialog .ui-resizable-se { width: 14px; height: 14px; right: 3px; bottom: 3px; }
+.ui-draggable .pui-dialog-titlebar { cursor: move; }
+.pui-dialog .pui-dialog-titlebar-close, .pui-dialog .pui-dialog-titlebar-minimize,.pui-dialog .pui-dialog-titlebar-maximize { float: right; margin: 0px; top:0px; padding: 1px; cursor:pointer; }
+.pui-dialog .pui-dialog-titlebar-close span, .pui-dialog .pui-dialog-titlebar-minimize span, .pui-dialog .pui-dialog-titlebar-maximize span { display: block; margin: 0px; }
+.pui-dialog .pui-dialog-titlebar-close:hover, .pui-dialog .pui-dialog-titlebar-close:focus, .pui-dialog .pui-dialog-titlebar-minimize:hover, .pui-dialog .pui-dialog-titlebar-minimize:focus, .pui-dialog .pui-dialog-titlebar-maximize:hover, .pui-dialog .pui-dialog-titlebar-maximize:focus   { padding: 0; }
+.pui-dialog-footer {padding: .4em 1em; border-width: 1px 0 0 0;text-align:left;}
+.pui-dialog-docking-zone {position: fixed;bottom: 0;left: 0;}
+.pui-dialog-minimizing {border: 2px dotted gray;}
+.ui-confirm-dialog-severity {float: left; margin: 3px 7px 20px 0;}
+.pui-dialog.pui-dialog-minimized{*width: 200px !important;} /*IE7 hack*/
+
+/** RTL **/
+.pui-dialog-rtl {
+    direction: rtl;
+}
+
+.pui-dialog.pui-dialog-rtl .pui-dialog-title {
+    float: right;
+}
+
+.pui-dialog.pui-dialog-rtl .pui-dialog-titlebar-close,
+.pui-dialog.pui-dialog-rtl .pui-dialog-titlebar-minimize,
+.pui-dialog.pui-dialog-rtl .pui-dialog-titlebar-maximize {
+    float: left;
+}
+
+.pui-dialog.pui-dialog-rtl .pui-dialog-footer {
+    text-align: right;
+}

@@ -1,0 +1,96 @@
+.pui-dropdown {
+    display: inline-block;
+    position: relative;
+    width: auto;
+    zoom: 1;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.pui-dropdown .pui-dropdown-trigger {
+    border-right: none;
+    border-top: none;
+    border-bottom: none;
+    cursor: pointer;
+    width: 16px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0 3px;
+}
+
+.pui-dropdown .pui-dropdown-trigger  .ui-icon {
+    margin-top: 3px;
+}
+
+.pui-dropdown .pui-dropdown-label  {
+    display: block;
+    border: none;
+    white-space: nowrap;
+    overflow: hidden;
+    font-weight: normal;
+    width: 100%;
+    float:left;
+}
+
+.pui-dropdown.ui-state-disabled .pui-dropdown-trigger,
+.pui-dropdown.ui-state-disabled .pui-dropdown-label {
+    cursor: default;
+}
+
+.pui-dropdown label.pui-dropdown-label  {
+    cursor: pointer;
+}
+
+.pui-dropdown input.pui-dropdown-label  {
+    cursor: default;
+}
+
+.pui-dropdown-panel {
+    position: absolute;
+    height: auto;
+}
+
+.pui-dropdown-panel .pui-dropdown-items-wrapper {
+    overflow: auto;
+}
+
+.pui-dropdown-panel .pui-dropdown-item {
+    font-weight: normal;
+}
+
+.pui-dropdown-panel .pui-dropdown-item-group {
+    font-weight: bold;
+}
+
+.pui-dropdown-panel .pui-dropdown-list {
+    padding: 0.4em;
+    border: 0 none;
+}
+
+.pui-dropdown-panel .pui-dropdown-list-item {
+    border:0px none;
+    cursor:pointer;
+    margin:1px 0;
+    padding:3px 5px;
+    text-align:left;
+}
+
+.pui-dropdown-panel .pui-dropdown-filter {
+    width: 85%;
+    padding-right:15px;
+}
+
+.pui-dropdown-panel .pui-dropdown-filter-container {
+    position: relative;
+    margin: 0;
+    padding: 0.4em;
+    display: inline-block;
+}
+
+.pui-dropdown-panel .pui-dropdown-filter-container .ui-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}

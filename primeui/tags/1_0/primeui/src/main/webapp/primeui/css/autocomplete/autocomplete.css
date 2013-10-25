@@ -1,0 +1,100 @@
+.pui-autocomplete {
+    width: auto;
+    zoom: 1;
+    cursor: pointer;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    position:static;
+}
+
+.pui-autocomplete-query {
+    font-weight: bold;
+}
+
+.pui-autocomplete-panel {
+    position: absolute;
+    overflow: auto;
+}
+
+.pui-autocomplete-panel .pui-autocomplete-list {
+    padding: 0.4em;
+    border: 0 none;
+}
+
+.pui-autocomplete-panel .pui-autocomplete-list-item {
+    border:0px none;
+    cursor:pointer;
+    font-weight:normal;
+    margin:1px 0;
+    padding:3px 5px;
+    text-align:left;
+}
+
+.pui-autocomplete-panel .pui-autocomplete-table {
+    border-collapse:collapse;
+    width: 100%;
+}
+
+.pui-autocomplete-panel .pui-autocomplete-table td {
+    border-width: 1px;
+    border-style: solid;
+    border-color: inherit;
+    padding:4px 10px 4px 10px;
+}
+
+.pui-autocomplete .ui-button-icon-only .ui-button-text {
+    padding: 0.29em;
+}
+
+/* Multiple Selection */
+.pui-autocomplete-multiple {
+    clear: left;
+    cursor: text;
+    list-style-type: none;
+    margin: 0;
+    min-height: 1px;
+    overflow: hidden;
+    width: 400px;
+    padding: 0px;
+}
+
+.pui-autocomplete-token {
+    cursor: default;
+    float: left;
+    overflow: hidden;
+    padding: 1px 3px;
+    white-space: nowrap;
+    position: relative;
+    margin:2px;
+}
+
+.pui-autocomplete-token-label {
+    display: block;
+    padding: 0em 2.1em 0em 0.5em;
+}
+
+.pui-autocomplete-token-icon {
+    margin-top: -9px;
+    position: absolute;
+    right: 0.2em;
+    top: 50%;
+    cursor: pointer;
+}
+
+.pui-autocomplete-input-token {
+    float: left;
+    list-style-type: none;
+    margin: 1px;
+    padding: 0;
+}
+
+.pui-autocomplete-input-token .pui-inputtext {
+    border: 0 none;
+    width: 140px;
+    outline: medium none;
+    background-color: transparent;
+    margin: 0px;
+    padding: 4px;
+    box-shadow: none;
+}

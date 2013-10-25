@@ -1,0 +1,23 @@
+.pui-chkbox {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.pui-chkbox .pui-chkbox-box {
+    float: left;
+    width: 16px;
+    height: 16px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    margin-right: 3px;
+}
+
+.pui-chkbox .pui-chkbox-label {
+    cursor: pointer;
+    display: block;
+    margin: 0 3px;
+    outline: medium none;
+    z-index: 1;
+    float: left;
+}
