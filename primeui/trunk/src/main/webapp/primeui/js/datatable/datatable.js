@@ -36,7 +36,7 @@ $(function() {
                 }
                 else if($.type(this.options.datasource) === 'function') {
                     if(this.options.lazy)
-                        this.options.datasource.call(this, this._onDataInit, {first:0, sortField:this.options.sortField, sortorder:this.options.sortOrder});
+                        this.options.datasource.call(this, this._onDataInit, {first:0, sortField:this.options.sortField, sortOrder:this.options.sortOrder});
                     else
                         this.options.datasource.call(this, this._onDataInit);
                 }
@@ -82,10 +82,33 @@ $(function() {
             if(this.options.selectionMode) {
                 this._initSelection();
             }
-            
-            this._renderData();
+
+            if (this.options.sortField && this.options.sortOrder) {
+                this._indicateInitialSortColumn();
+                this.sort(this.options.sortField, this.options.sortOrder);
+            } else {
+                this._renderData();
+            }
         },
-                
+
+        _indicateInitialSortColumn: function() {
+            var sortableColumns = this.thead.children('th.pui-sortable-column'),
+                $this = this;
+            $.each(sortableColumns, function(i, column) {
+                var $column = $(column),
+                    data = $column.data();
+                if ($this.options.sortField === data.field) {
+                    var sortIcon = $column.children('.pui-sortable-column-icon');
+                    $column.data('order', $this.options.sortOrder).removeClass('ui-state-hover').addClass('ui-state-active');
+                    if($this.options.sortOrder === -1)
+                        sortIcon.removeClass('ui-icon-triangle-1-n').addClass('ui-icon-triangle-1-s');
+                    else if($this.options.sortOrder === 1)
+                        sortIcon.removeClass('ui-icon-triangle-1-s').addClass('ui-icon-triangle-1-n');
+                }
+            });
+
+        },
+
         _onDataInit: function(data) {
             this.data = data;
             if(!this.data) {
