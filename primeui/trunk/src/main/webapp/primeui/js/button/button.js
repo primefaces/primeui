@@ -19,11 +19,13 @@ $(function() {
             disabled = element.prop('disabled'),
             styleClass = null;
             
-            if(this.options.icon)
+            if(this.options.icon) {
                 styleClass = (value === 'pui-button') ? 'pui-button-icon-only' : 'pui-button-text-icon-' + this.options.iconPos;
-            else
+            }
+            else {
                 styleClass = 'pui-button-text-only';
-        
+            }
+
             if(disabled) {
                 styleClass += ' ui-state-disabled';
             }

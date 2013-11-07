@@ -92,11 +92,11 @@ $(function() {
                 this._setupDraggable();
             }
 
-            if(this.options.resizable){
+            if(this.options.resizable) {
                 this._setupResizable();
             }
 
-            if(this.options.appendTo){
+            if(this.options.appendTo) {
                 this.element.appendTo(this.options.appendTo);
             }
 
@@ -108,7 +108,7 @@ $(function() {
             //aria
             this._applyARIA();
 
-            if(this.options.visible){
+            if(this.options.visible) {
                 this.show();
             }
         },

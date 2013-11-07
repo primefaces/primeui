@@ -13,7 +13,7 @@ $(function() {
             this.disabled = this.element.prop('disabled');
             this.label = $('label[for="' + this.element.attr('id') + '"]');
             
-            if(this.element.prop('checked')) {
+            if(this.isChecked()) {
                 this.box.addClass('ui-state-active');
                 this.icon.addClass('ui-icon ui-icon-check');
             }

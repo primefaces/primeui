@@ -331,10 +331,12 @@ $(function() {
         },
 
         showURL: function(opt) {
-            if(opt.width)
+            if(opt.width) {
                 this.iframe.attr('width', opt.width);
-            if(opt.height)
+            }
+            if(opt.height) {
                 this.iframe.attr('height', opt.height);
+            }
 
             this.iframe.attr('src', opt.src); 
 

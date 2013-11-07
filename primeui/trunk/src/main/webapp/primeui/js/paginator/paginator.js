@@ -25,10 +25,12 @@ $(function() {
             },
             
             update: function(element, state) {
-                if(state.page === 0)
+                if(state.page === 0) {
                     element.addClass('ui-state-disabled').removeClass('ui-state-hover ui-state-active');
-                else
+                }
+                else {
                     element.removeClass('ui-state-disabled');
+                }
             }
         },
                 
@@ -52,10 +54,12 @@ $(function() {
             },
                     
             update: function(element, state) {
-                if(state.page === 0)
+                if(state.page === 0) {
                     element.addClass('ui-state-disabled').removeClass('ui-state-hover ui-state-active');
-                else
+                }
+                else {
                     element.removeClass('ui-state-disabled');
+                }
             }
         },
                 
@@ -79,10 +83,12 @@ $(function() {
             },
                     
             update: function(element, state) {
-                if(state.page === (state.pageCount - 1))
+                if(state.page === (state.pageCount - 1)) {
                     element.addClass('ui-state-disabled').removeClass('ui-state-hover ui-state-active');
-                else
+                }
+                else {
                     element.removeClass('ui-state-disabled');
+                }
             }
         },
                 
@@ -106,10 +112,12 @@ $(function() {
             },
             
             update: function(element, state) {
-                if(state.page === (state.pageCount - 1))
+                if(state.page === (state.pageCount - 1)) {
                     element.addClass('ui-state-disabled').removeClass('ui-state-hover ui-state-active');
-                else
+                }
+                else {
                     element.removeClass('ui-state-disabled');
+                }
             }
         },
                 

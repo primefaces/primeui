@@ -150,11 +150,13 @@ $(function() {
 
         selectItem: function(value) {
             var item = null;
-            if($.type(value) === 'number')
+            if($.type(value) === 'number') {
                 item = this.items.eq(value);
-            else
+            }
+            else {
                 item = value;
-                
+            }
+
             item.addClass('ui-state-highlight').removeClass('ui-state-hover');
             this.choices.eq(item.index()).prop('selected', true);
             this._trigger('itemSelect', null, this.choices.eq(item.index()));
@@ -162,10 +164,12 @@ $(function() {
 
         unselectItem: function(value) {
             var item = null;
-            if($.type(value) === 'number')
+            if($.type(value) === 'number') {
                 item = this.items.eq(value);
-            else
+            }
+            else {
                 item = value;
+            }
             
             item.removeClass('ui-state-highlight');
             this.choices.eq(item.index()).prop('selected', false);

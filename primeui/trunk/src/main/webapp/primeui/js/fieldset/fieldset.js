@@ -54,7 +54,8 @@ $(function() {
 
             if(this.options.collapsed) {
                 this.toggler.removeClass('ui-icon-plusthick').addClass('ui-icon-minusthick');
-            } else {
+            }
+            else {
                 this.toggler.removeClass('ui-icon-minusthick').addClass('ui-icon-plusthick');
             }
 

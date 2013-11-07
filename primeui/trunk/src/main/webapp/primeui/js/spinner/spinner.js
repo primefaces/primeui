@@ -41,17 +41,18 @@ $(function() {
                 'aria-valuenow': this.value
             });
             
-            if(this.options.min !== undefined)
+            if(this.options.min !== undefined) {
                 input.attr('aria-valuemin', this.options.min);
-
-            if(this.options.max !== undefined)
+            }
+            if(this.options.max !== undefined){
                 input.attr('aria-valuemax', this.options.max);
-
-            if(input.prop('disabled'))
+            }
+            if(input.prop('disabled')) {
                 input.attr('aria-disabled', true);
-
-            if(input.prop('readonly'))
+            }
+            if(input.prop('readonly')) {
                 input.attr('aria-readonly', true);
+            }
         },
         
 
@@ -118,11 +119,12 @@ $(function() {
             //mousewheel
             this.element.bind('mousewheel', function(event, delta) {
                 if($this.element.is(':focus')) {
-                    if(delta > 0)
+                    if(delta > 0) {
                         $this._spin($this.options.step);
-                    else
+                    }
+                    else {
                         $this._spin(-1 * $this.options.step);
-
+                    }
                     return false;
                 }
             });
@@ -149,10 +151,12 @@ $(function() {
             var newValue,
                 currentValue = this.value ? this.value : 0;
         
-            if(this.options.precision)
+            if(this.options.precision) {
                 newValue = parseFloat(this._toFixed(currentValue + step, this.options.precision));
-            else
+            }
+            else {
                 newValue = parseInt(currentValue + step, 10);
+            }
 
             if(this.options.min !== undefined && newValue < this.options.min) {
                 newValue = this.options.min;
@@ -172,16 +176,20 @@ $(function() {
             var value = this.element.val();
 
             if(value === '') {
-                if(this.options.min !== undefined)
+                if(this.options.min !== undefined) {
                     this.value = this.options.min;
-                else
+                }
+                else {
                     this.value = 0;
+                }
             }
             else {
-                if(this.options.step)
+                if(this.options.step) {
                     value = parseFloat(value);
-                else
+                }
+                else {
                     value = parseInt(value, 10);
+                }
 
                 if(!isNaN(value)) {
                     this.value = value;
@@ -193,33 +201,41 @@ $(function() {
             var value = this.element.val();
 
             if(value === '') {
-                if(this.options.min !== undefined)
+                if(this.options.min !== undefined) {
                     this.value = this.options.min;
-                else
+                }
+                else {
                     this.value = 0;
+                }
             }
             else {
-                if(this.options.prefix)
+                if(this.options.prefix) {
                     value = value.split(this.options.prefix)[1];
+                }
 
-                if(this.options.suffix)
+                if(this.options.suffix) {
                     value = value.split(this.options.suffix)[0];
+                }
 
-                if(this.options.step)
+                if(this.options.step) {
                     this.value = parseFloat(value);
-                else
+                }
+                else {
                     this.value = parseInt(value, 10);
+                }
             }
         },
 
         _format: function() {
             var value = this.value;
 
-            if(this.options.prefix)
+            if(this.options.prefix) {
                 value = this.options.prefix + value;
+            }
 
-            if(this.options.suffix)
+            if(this.options.suffix) {
                 value = value + this.options.suffix;
+            }
 
             this.element.val(value);
         }
