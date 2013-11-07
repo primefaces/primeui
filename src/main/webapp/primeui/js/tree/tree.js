@@ -161,10 +161,12 @@ $(function() {
 
             toggleIcon.addClass('ui-icon-triangle-1-e').removeClass('ui-icon-triangle-1-s');
 
-            if(this.options.animate)
+            if(this.options.animate) {
                 childrenContainer.slideUp('fast');
-            else
+            }
+            else {
                 childrenContainer.hide();
+            }
             
             this._trigger('afterCollapse', null, {'node': node, 'data': node.data('puidata')});
         },
@@ -181,10 +183,12 @@ $(function() {
             var toggleIcon = node.find('> .pui-treenode-content > .pui-tree-toggler');
             toggleIcon.addClass('ui-icon-triangle-1-s').removeClass('ui-icon-triangle-1-e');
 
-            if(this.options.animate)
+            if(this.options.animate) {
                 node.children('.pui-treenode-children').slideDown('fast');
-            else
+            }
+            else {
                 node.children('.pui-treenode-children').show();
+            }
             
             this._trigger('afterExpand', null, {'node': node, 'data': node.data('puidata')});
         },

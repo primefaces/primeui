@@ -35,10 +35,12 @@ $(function() {
                     this._initialize();
                 }
                 else if($.type(this.options.datasource) === 'function') {
-                    if(this.options.lazy)
+                    if(this.options.lazy) {
                         this.options.datasource.call(this, this._onDataInit, {first:0, sortField:this.options.sortField, sortOrder:this.options.sortOrder});
-                    else
+                    }
+                    else {
                         this.options.datasource.call(this, this._onDataInit);
+                    }
                 }
             }
         },
@@ -434,10 +436,12 @@ $(function() {
                 this._renderData();
             }
             else if($.type(this.options.datasource) === 'function') {
-                if(this.options.lazy)
+                if(this.options.lazy) {
                     this.options.datasource.call(this, this._onDataUpdate, {first:0, sortField:this.options.sortField, sortorder:this.options.sortOrder});
-                else
+                }
+                else {
                     this.options.datasource.call(this, this._onDataUpdate);
+                }
             }
         },
                 

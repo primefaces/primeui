@@ -394,10 +394,12 @@ $(function() {
         },
         
         _resolveItemIndex: function(item) {
-            if(this.optGroupsSize === 0)
+            if(this.optGroupsSize === 0) {
                 return item.index();
-            else
-                return item.index() - item.prevAll('li.pui-dropdown-item-group').length;        
+            }
+            else {
+                return item.index() - item.prevAll('li.pui-dropdown-item-group').length;
+            }
         },
         
         _setLabel: function(value) {
@@ -405,10 +407,12 @@ $(function() {
                 this.label.val(value);
             }
             else {
-                if(value === '&nbsp;')
+                if(value === '&nbsp;') {
                     this.label.html('&nbsp;');
-                else
+                }
+                else {
                     this.label.text(value);
+                }
             }
         },
         
@@ -447,11 +451,12 @@ $(function() {
 
             this.panel.css('z-index', ++PUI.zindex);
             
-            if(this.options.effect != 'none')
+            if(this.options.effect != 'none') {
                 this.panel.show(this.options.effect, {}, this.options.effectSpeed);
-            else
+            }
+            else {
                 this.panel.show();
-
+            }
             this.preShowValue = this.choices.filter(':selected');
         },
 

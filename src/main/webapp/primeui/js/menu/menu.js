@@ -31,8 +31,6 @@ $(function() {
             };
 
             this.options.trigger.on(this.options.triggerEvent + '.pui-menu', function(e) {
-                var trigger = $(this);
-
                 if($this.element.is(':visible')) {
                     $this.hide();
                 }
@@ -167,10 +165,12 @@ $(function() {
                 var menuitemLink = listItem.children('a');
                 menuitemLink.addClass('pui-menuitem-link ui-corner-all').contents().wrap('<span class="ui-menuitem-text" />');
                     
-                if(index > 0)
+                if(index > 0) {
                     listItem.before('<li class="pui-breadcrumb-chevron ui-icon ui-icon-triangle-1-e"></li>');
-                else
+                }
+                else {
                     menuitemLink.addClass('ui-icon ui-icon-home');
+                }
             });
         }
     });
@@ -315,10 +315,12 @@ $(function() {
             menuitem.children('a.pui-menuitem-link').removeClass('ui-state-hover');
             menuitem.removeClass('pui-menuitem-active');
 
-            if(animate)
+            if(animate) {
                 menuitem.children('ul.pui-menu-child:visible').fadeOut('fast');
-            else
+            }
+            else {
                 menuitem.children('ul.pui-menu-child:visible').hide();
+            }
         },
 
         _activate: function(menuitem) {
@@ -435,8 +437,6 @@ $(function() {
             //config
             this.stack = [];
             this.jqWidth = this.container.width();
-
-            var $this = this;
 
             if(!this.element.hasClass('pui-menu-dynamic')) {
                 this._applyDimensions();

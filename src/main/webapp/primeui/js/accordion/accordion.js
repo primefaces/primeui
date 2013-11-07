@@ -82,11 +82,12 @@ $(function() {
             this._trigger('change', panel);
             
             //update state
-            if(this.options.multiple) 
+            if(this.options.multiple) {
                 this._addToSelection(index);
-            else
+            }
+            else {
                 this.options.activeIndex = index;
-
+            }
             this._show(panel);
         },
 

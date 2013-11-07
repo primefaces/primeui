@@ -147,10 +147,12 @@ $(function() {
         },
 
         hide: function() {
-            if(this.options.inline)
+            if(this.options.inline) {
                 this.panel.slideUp();
-            else
+            }
+            else {
                 this.panel.fadeOut();
+            }
         }
     });
     
