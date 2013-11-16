@@ -322,11 +322,15 @@ $(function() {
 
             //do not adjust width of container if there is user width defined
             if(!userStyle||userStyle.indexOf('width') == -1) {
-                this.container.width(this.element.outerWidth(true) + 5);  
+                this.container.width(this.element.outerWidth(true) + 5);
+            } else {
+                this.container.attr('style', userStyle);
+
             }
 
-            //width of label
+            //width/height of label
             this.label.width(this.container.width() - this.menuIcon.width());
+            this.label.height(this.container.height());
 
             //align panel and container
             var jqWidth = this.container.innerWidth();
