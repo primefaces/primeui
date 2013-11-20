@@ -559,8 +559,8 @@ $(function() {
 
             this._selectItem(this.items.eq(option.index()), true);
         },
-                
-        addOption: function(label, value) {            
+
+        addOption: function(label, value) {
             var item = $('<li data-label="' + label + '" class="pui-dropdown-item pui-dropdown-list-item ui-corner-all">' + label + '</li>'),
             choice = $('<option value="' + value + '">' + label + '</option>');
     
@@ -570,6 +570,12 @@ $(function() {
             this.items.push(item[0]);
             //this.choices.push(choice);  There is an issue when this form is used when selecting an option.
             this.choices = this.element.children('option');
+
+            // If this is the first option, it is the default selected one
+            if (this.items.length === 1) {
+                this.selectValue(value);
+                this._highlightItem(item);
+            }
         }
     });
     
