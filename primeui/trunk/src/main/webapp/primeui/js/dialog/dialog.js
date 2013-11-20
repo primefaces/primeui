@@ -64,7 +64,7 @@ $(function() {
                 this._renderHeaderIcon('pui-dialog-titlebar-close', 'ui-icon-close');
             }
             
-            if(this.options.minimizable) {
+            if(this.options.maximizable) {
                 this._renderHeaderIcon('pui-dialog-titlebar-maximize', 'ui-icon-extlink');
             }
             
