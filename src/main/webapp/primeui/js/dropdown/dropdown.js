@@ -576,6 +576,15 @@ $(function() {
                 this.selectValue(value);
                 this._highlightItem(item);
             }
+        },
+
+        removeAllOptions: function() {
+            this.element.empty();
+            this.itemsContainer.empty();
+            this.items.length = 0;
+            this.choices.length = 0;;
+            this.element.val('');
+            this.label.text('');
         }
     });
     
