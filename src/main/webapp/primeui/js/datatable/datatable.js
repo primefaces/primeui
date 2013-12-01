@@ -14,7 +14,8 @@ $(function() {
             rowUnselect: null,
             caption: null,
             sortField: null,
-            sortOrder: null
+            sortOrder: null,
+            keepSelectionInLazyMode: false
         },
         
         _create: function() {
@@ -181,7 +182,7 @@ $(function() {
                 
         paginate: function() {
             if(this.options.lazy) {
-                if(this.options.selectionMode) {
+                if(this.options.selectionMode && ! this.options.keepSelectionInLazyMode) {
                     this.selection = [];
                 }
                 this.options.datasource.call(this, this._onLazyLoad, this._createStateMeta());
@@ -230,19 +231,23 @@ $(function() {
             if(this.data) {
                 this.tbody.html('');
                 
-                var first = this.options.lazy ? 0 : this._getFirst(),
-                rows = this._getRows();
+                var firstNonLazy = this._getFirst(),
+                    first = this.options.lazy ? 0 : firstNonLazy,
+                  rows = this._getRows();
 
                 for(var i = first; i < (first + rows); i++) {
                     var rowData = this.data[i];
                     
                     if(rowData) {
                         var row = $('<tr class="ui-widget-content" />').appendTo(this.tbody),
-                        zebraStyle = (i%2 === 0) ? 'pui-datatable-even' : 'pui-datatable-odd';
+                            zebraStyle = (i%2 === 0) ? 'pui-datatable-even' : 'pui-datatable-odd',
+                            rowIndex = i;
 
                         row.addClass(zebraStyle);
-                        
-                        if(this.options.selectionMode && PUI.inArray(this.selection, i)) {
+                        if(this.options.lazy) {
+                            rowIndex += firstNonLazy; // Selection is kept as it is non lazy data
+                        }
+                        if(this.options.selectionMode && PUI.inArray(this.selection, rowIndex)) {
                             row.addClass("ui-state-highlight");
                         }
 
@@ -374,13 +379,17 @@ $(function() {
         },
                 
         selectRow: function(row, silent, event) {
-            var rowIndex = this._getRowIndex(row);
+            var rowIndex = this._getRowIndex(row),
+                selectedData = this.data[rowIndex];
             row.removeClass('ui-state-hover').addClass('ui-state-highlight').attr('aria-selected', true);
 
             this._addSelection(rowIndex);
 
             if(!silent) {
-                this._trigger('rowSelect', event, this.data[rowIndex]);
+                if (this.options.lazy) {
+                    selectedData = this.data[rowIndex - this._getFirst()];
+                }
+                this._trigger('rowSelect', event, selectedData);
             }
         },
                 
