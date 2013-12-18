@@ -51,7 +51,25 @@
                         return '<img src="resources/demo/images/themes/' + option + '.png" alt="" /><span style="float:right;font-size:14px">' + option + '</span>';
                     }
                 });
-                
+
+                $('#update').puipicklist();
+
+                $('#updateOptions').puibutton({
+                    click: function () {
+                        var newOptions = [{value: '1', label: 'Volkswagen'},
+                            {value: '2', label: 'Ford'},
+                            {value: '3', label: 'Mercedes'},
+                            {value: '4', label: 'Audi'},
+                            {value: '5', label: 'BMW'},
+                            {value: '6', label: 'Honda'},
+                            {value: '7', label: 'Porsche'},
+                            {value: '8', label: 'Chevrolet'},
+                            {value: '9', label: 'Jaguar'}
+                        ];
+
+                        $('#update').puipicklist('option', 'sourceData', newOptions);
+                        $('#update').puipicklist('option', 'targetData', []);
+                    }});
                 $('#doc').puitabview();
                 
                 $('#themes').puidropdown({
@@ -164,6 +182,17 @@
                                 <select name="target">
                                 </select>
                             </div>
+
+                            <h3>Update</h3>
+                            <div id="update">
+                                <select name="source">
+                                    <option value="1">Volkswagen</option>
+                                    <option value="2">Ford</option>
+                                </select>
+                                <select name="target">
+                                </select>
+                            </div>
+                            <button id="updateOptions" type="button">Update options</button>
 
                             <h3>Documentation</h3>
                             <div id="doc">
@@ -393,6 +422,25 @@ $('#advanced').puipicklist({
         return '&lt;img src="resources/demo/images/themes/' + option + '.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;' + option + '&lt;/span&gt;';
     }
 });
+                                            
+$('#update').puipicklist();
+
+$('#updateOptions').puibutton({
+    click: function () {
+        var newOptions = [{value: '1', label: 'Volkswagen'},
+            {value: '2', label: 'Ford'},
+            {value: '3', label: 'Mercedes'},
+            {value: '4', label: 'Audi'},
+            {value: '5', label: 'BMW'},
+            {value: '6', label: 'Honda'},
+            {value: '7', label: 'Porsche'},
+            {value: '8', label: 'Chevrolet'},
+            {value: '9', label: 'Jaguar'}
+        ];
+
+    $('#update').puipicklist('option', 'sourceData', newOptions);
+    $('#update').puipicklist('option', 'targetData', []);
+}});                                            
                                         </pre>
 
                                         <pre name="code" class="xml">
@@ -420,6 +468,18 @@ $('#advanced').puipicklist({
     &lt;select name="target"&gt;
     &lt;/select&gt;
 &lt;/div&gt;
+                                            
+&lt;h3&gt;Update&lt;/h3&gt;
+&lt;div id="update"&gt;
+    &lt;select name="source"&gt;
+        &lt;option value="1"&gt;Volkswagen&lt;/option&gt;
+        &lt;option value="2"&gt;Ford&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;select name="target"&gt;
+    &lt;/select&gt;
+&lt;/div&gt;
+&lt;button id="updateOptions" type="button"&gt;Update options&lt;/button&gt;
+                                            
                                         </pre>
 
                                     </div>
