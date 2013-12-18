@@ -394,11 +394,13 @@ $(function() {
         },
                 
         getSelection: function() {
-            var selections = [];
+            var first = this.options.lazy ? this._getFirst() : 0,
+                selections = [];
             for(var i = 0; i < this.selection.length; i++) {
-                selections.push(this.data[this.selection[i]]);
+                if(this.data.length > this.selection[i]-first && this.selection[i]-first > 0) {
+                    selections.push(this.data[this.selection[i]-first]);
+                }
             }
-            
             return selections;
         },
                 
