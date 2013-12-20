@@ -582,9 +582,27 @@ $(function() {
             this.element.empty();
             this.itemsContainer.empty();
             this.items.length = 0;
-            this.choices.length = 0;;
+            this.choices.length = 0;
             this.element.val('');
             this.label.text('');
+        },
+
+        _setOption: function (key, value) {
+            $.Widget.prototype._setOption.apply(this, arguments);
+            if (key === 'data') {
+                this.removeAllOptions();
+                for(var i = 0; i < this.options.data.length; i++) {
+                    var choice = this.options.data[i];
+                    if(choice.label)  {
+                        this.addOption(choice.label, choice.value);
+                    } else {
+                        this.addOption(choice, choice);
+                    }
+                }
+                if(this.options.scrollHeight && this.panel.outerHeight() > this.options.scrollHeight) {
+                    this.itemsWrapper.height(this.options.scrollHeight);
+                }
+            }
         }
     });
     
