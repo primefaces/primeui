@@ -14,33 +14,45 @@ $(function() {
             this.container = this.element.parent().parent();
             this.listContainer = $('<ul class="pui-listbox-list"></ul>').appendTo(this.container);
             this.options.multiple = this.element.prop("multiple");
-            
-            if(this.options.data) {
-                for(var i = 0; i < this.options.data.length; i++) {
-                    var choice = this.options.data[i];
-                    if(choice.label)
-                        this.element.append('<option value="' + choice.value + '">' + choice.label + '</option>');
-                    else
-                        this.element.append('<option value="' + choice + '">' + choice + '</option>');
-                }
-            }
-            
-            this.choices = this.element.children('option');
-            for(var i = 0; i < this.choices.length; i++) {
-                var choice = this.choices.eq(i),
-                content = this.options.content ? this.options.content.call(this, this.options.data[i]) : choice.text();
-                this.listContainer.append('<li class="pui-listbox-item ui-corner-all">' + content + '</li>');
-            }
-            
-            this.items = this.listContainer.find('.pui-listbox-item:not(.ui-state-disabled)');
 
-            if(this.container.height() > this.options.scrollHeight) {
-                this.container.height(this.options.scrollHeight); 
+            if(this.options.data) {
+                this._populateInputFromData();
             }
+
+            this._populateContainerFromOptions();
+
+            this._restrictHeight();
 
             this._bindEvents();
         },
-                
+
+        _populateInputFromData: function() {
+            for(var i = 0; i < this.options.data.length; i++) {
+                var choice = this.options.data[i];
+                if(choice.label) {
+                    this.element.append('<option value="' + choice.value + '">' + choice.label + '</option>');
+                } else {
+                    this.element.append('<option value="' + choice + '">' + choice + '</option>');
+                }
+            }
+        },
+
+        _populateContainerFromOptions: function() {
+            this.choices = this.element.children('option');
+            for(var i = 0; i < this.choices.length; i++) {
+                var choice = this.choices.eq(i),
+                    content = this.options.content ? this.options.content.call(this, this.options.data[i]) : choice.text();
+                this.listContainer.append('<li class="pui-listbox-item ui-corner-all">' + content + '</li>');
+            }
+            this.items = this.listContainer.find('.pui-listbox-item:not(.ui-state-disabled)');
+        },
+
+        _restrictHeight: function() {
+            if(this.container.height() > this.options.scrollHeight) {
+                this.container.height(this.options.scrollHeight);
+            }
+        },
+
         _bindEvents: function() {
             var $this = this;
 
@@ -174,6 +186,20 @@ $(function() {
             item.removeClass('ui-state-highlight');
             this.choices.eq(item.index()).prop('selected', false);
             this._trigger('itemUnselect', null, this.choices.eq(item.index()));
+        },
+
+        _setOption: function (key, value) {
+            $.Widget.prototype._setOption.apply(this, arguments);
+            if (key === 'data') {
+                this.element.empty();
+                this.listContainer.empty();
+                this._populateInputFromData();
+
+                this._populateContainerFromOptions();
+
+                this._restrictHeight();
+                this._bindEvents();
+            }
         }
     });
         
