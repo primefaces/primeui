@@ -437,8 +437,6 @@ $(function() {
         _unbindEvents: function() {
             this.items.off();
             this.triggers.off();
-            this.input.off();
-            this.focusInput.off();
             this.label.off();
         },
         
@@ -603,6 +601,18 @@ $(function() {
                     this.itemsWrapper.height(this.options.scrollHeight);
                 }
             }
+        },
+
+        disable: function() {
+            this._unbindEvents();
+            this.label.addClass('ui-state-disabled');
+            this.menuIcon.addClass('ui-state-disabled');
+        },
+
+        enable: function() {
+            this._bindEvents();
+            this.label.removeClass('ui-state-disabled');
+            this.menuIcon.removeClass('ui-state-disabled');
         }
     });
     

@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="primeui/css/core/core.css" />
         <link rel="stylesheet" href="resources/demo/css/sh.css" />
         <link rel="stylesheet" href="primeui/css/inputtext/inputtext.css" />
+        <link rel="stylesheet" href="primeui/css/button/button.css" />
         <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
         <link rel="stylesheet" href="primeui/css/dropdown/dropdown.css" />
         <script type="text/javascript" src="resources/demo/js/sh.js"></script>
@@ -19,11 +20,32 @@
         <script type="text/javascript" src="resources/demo/js/jquery-ui.js"></script>
         <script type="text/javascript" src="primeui/js/core/core.js"></script>
         <script type="text/javascript" src="primeui/js/inputtext/inputtext.js"></script>
+        <script type="text/javascript" src="primeui/js/button/button.js"></script>
         <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
         <script type="text/javascript" src="primeui/js/dropdown/dropdown.js"></script>
         <script type="text/javascript">
             $(function() {
                 $('#in').puiinputtext();
+
+                $('#state').puiinputtext();
+
+                $('#enable').puibutton({
+                    click: function () {
+                        $('#state').puiinputtext('enable');
+                        $('#enable').hide();
+                        $('#disable').show();
+                    }
+                });
+
+                $('#disable').puibutton({
+                    click: function () {
+                        $('#state').puiinputtext('disable');
+                        $('#enable').show();
+                        $('#disable').hide();
+                    }
+                });
+
+                $('#enable').hide();
 
                 $('#doc').puitabview();
                 
@@ -119,6 +141,12 @@
                             <p>InputText is an extension to standard inputText with skinning capabilities.</p>
 
                             <input id="in" type="text" />
+                            <br/>
+                            <h3>Enable / Disable</h3>
+
+                            <input id="state" type="text" /> <br/>
+                            <button id="enable" type="button">Enable</button>
+                            <button id="disable" type="button">Disable</button>
 
                             <h3>Documentation</h3>
                             <div id="doc">
@@ -160,6 +188,16 @@ $('#default').puiinputtext();
                                             </thead>
                                             <tbody>
                                                 <tr class="ui-widget-content">
+                                                    <td>enable</td>
+                                                    <td>-</td>
+                                                    <td>Enable the widget</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>disable</td>
+                                                    <td>-</td>
+                                                    <td>Disable the widget.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
                                                     <td>option</td>
                                                     <td>name: Name of the option</td>
                                                     <td>Returns the value of the option.</td>
@@ -178,13 +216,38 @@ $('#default').puiinputtext();
                                         <pre name="code" class="jscript">
 &lt;script type="text/javascript"&gt;
         $(function() {
-            $('#in').puiinputtext(); 
+            $('#in').puiinputtext();
+
+            $('#enable').puibutton({
+                click: function () {
+                    $('#state').puiinputtext('enable');
+                    $('#enable').hide();
+                    $('#disable').show();
+                }
+            });
+
+            $('#disable').puibutton({
+                click: function () {
+                    $('#state').puiinputtext('disable');
+                    $('#enable').show();
+                    $('#disable').hide();
+                }
+            });
+
+            $('#enable').hide();
         });
 &lt;/script&gt; 
                                         </pre>
 
                                         <pre name="code" class="xml">
 &lt;input id="in" type="text" /&gt;
+                                            
+&lt;h3>Enable / Disable&lt;/h3>
+
+&lt;input id="state" type="text" /> &lt;br/>
+&lt;button id="enable" type="button">Enable&lt;/button>
+&lt;button id="disable" type="button">Disable&lt;/button>
+                                            
                                         </pre>
 
                                     </div>

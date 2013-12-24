@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="resources/demo/css/sh.css" />
         <link rel="stylesheet" href="primeui/css/inputtext/inputtext.css" />
         <link rel="stylesheet" href="primeui/css/spinner/spinner.css" />
+        <link rel="stylesheet" href="primeui/css/button/button.css" />
         <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
         <link rel="stylesheet" href="primeui/css/dropdown/dropdown.css" />
 		<link rel="stylesheet" href="primeui/css/core/core.css" />
@@ -21,6 +22,7 @@
         <script type="text/javascript" src="resources/demo/js/jquery-ui.js"></script>
         <script type="text/javascript" src="primeui/js/inputtext/inputtext.js"></script>
         <script type="text/javascript" src="primeui/js/spinner/spinner.js"></script>
+        <script type="text/javascript" src="primeui/js/button/button.js"></script>
         <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
         <script type="text/javascript" src="primeui/js/dropdown/dropdown.js"></script>
         <script type="text/javascript">
@@ -37,6 +39,24 @@
                 $('#prefix').puispinner({prefix: '$'});
 
                 $('#disabled').puispinner();
+
+                $('#enable').puibutton({
+                    click: function () {
+                        $('#disabled').puispinner('enable');
+                        $('#enable').hide();
+                        $('#disable').show();
+                    }
+                });
+
+                $('#disable').puibutton({
+                    click: function () {
+                        $('#disabled').puispinner('disable');
+                        $('#enable').show();
+                        $('#disable').hide();
+                    }
+                });
+
+                $('#disable').hide();
 
                 $('#doc').puitabview();
                 
@@ -144,7 +164,9 @@
                             <input id="prefix" type="text" value="$10"/>
 
                             <h3>Disabled</h3>
-                            <input id="disabled" type="text" disabled="disabled"/>
+                            <input id="disabled" type="text" disabled="disabled"/> <br/>
+                            <button id="enable" type="button">Enable</button>
+                            <button id="disable" type="button">Disable</button>
 
                             <h3>Documentation</h3> 
                             <div id="doc">
@@ -199,6 +221,16 @@ $('#default').puispinner();
                                             </thead>
                                             <tbody>
                                                 <tr class="ui-widget-content">
+                                                    <td>enable</td>
+                                                    <td>-</td>
+                                                    <td>Enable the widget</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>disable</td>
+                                                    <td>-</td>
+                                                    <td>Disable the widget.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
                                                     <td>option</td>
                                                     <td>name: Name of the option</td>
                                                     <td>Returns the value of the option.</td>
@@ -228,6 +260,24 @@ $('#default').puispinner();
             $('#prefix').puispinner({prefix:'$'});
                 
             $('#disabled').puispinner();
+                                            
+            $('#enable').puibutton({
+                click: function () {
+                    $('#disabled').puispinner('enable');
+                    $('#enable').hide();
+                    $('#disable').show();
+                }
+            });
+
+            $('#disable').puibutton({
+                click: function () {
+                    $('#disabled').puispinner('disable');
+                    $('#enable').show();
+                    $('#disable').hide();
+                }
+            });
+
+            $('#disable').hide();                                            
         });
 &lt;/script&gt;
                                         </pre>
@@ -241,7 +291,9 @@ $('#default').puispinner();
 
 &lt;input id="prefix" type="text" value="$10"/&gt;
 
-&lt;input id="disabled" type="text" disabled="disabled"/&gt;
+&lt;input id="disabled" type="text" disabled="disabled"/&gt;     &lt;br/&gt;
+&lt;button id="enable" type="button"&gt;Enable&lt;/button&gt;
+&lt;button id="disable" type="button"&gt;Disable&lt;/button&gt;
                                         </pre>
                                     </div>
                                 </div>

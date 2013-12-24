@@ -238,6 +238,26 @@ $(function() {
             }
 
             this.element.val(value);
+        },
+
+        _unbindEvents: function() {
+            //visuals for spinner buttons
+            this.wrapper.children('.pui-spinner-button').off();
+
+            this.element.off();
+
+        },
+
+        enable: function() {
+            this.wrapper.removeClass('ui-state-disabled');
+            this.element.puiinputtext('enable');
+            this._bindEvents();
+        },
+
+        disable: function() {
+            this.wrapper.addClass('ui-state-disabled');
+            this.element.puiinputtext('disable');
+            this._unbindEvents();
         }
     });
 });

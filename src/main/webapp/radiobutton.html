@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="primeui/css/radiobutton/radiobutton.css" />
         <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
         <link rel="stylesheet" href="primeui/css/inputtext/inputtext.css" />
+        <link rel="stylesheet" href="primeui/css/button/button.css" />
         <link rel="stylesheet" href="primeui/css/dropdown/dropdown.css" />
 		<link rel="stylesheet" href="primeui/css/core/core.css" />
         <script type="text/javascript" src="resources/demo/js/sh.js"></script>
@@ -20,11 +21,30 @@
         <script type="text/javascript" src="resources/demo/js/jquery.js"></script>
         <script type="text/javascript" src="resources/demo/js/jquery-ui.js"></script>
         <script type="text/javascript" src="primeui/js/radiobutton/radiobutton.js"></script>
+        <script type="text/javascript" src="primeui/js/button/button.js"></script>
         <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
         <script type="text/javascript" src="primeui/js/dropdown/dropdown.js"></script>
         <script type="text/javascript">
             $(function() {
                 $(':radio').puiradiobutton();
+
+                $('#enable').puibutton({
+                    click: function () {
+                        $('#rd4').puiradiobutton('enable');
+                        $('#enable').hide();
+                        $('#disable').show();
+                    }
+                });
+
+                $('#disable').puibutton({
+                    click: function () {
+                        $('#rd4').puiradiobutton('disable');
+                        $('#enable').show();
+                        $('#disable').hide();
+                    }
+                });
+
+                $('#enable').hide();
 
                 $('#doc').puitabview();
                 
@@ -137,6 +157,8 @@
                                     <td><label for="rd4">Option 4</label></td>
                                 </tr>
                             </table>
+                            <button id="enable" type="button">Enable</button>
+                            <button id="disable" type="button">Disable</button>
 
                             <h3>Documentation</h3>
                             <div id="doc">
@@ -201,6 +223,16 @@ $(':radio').puiradiobutton({
                                             </thead>
                                             <tbody>
                                                 <tr class="ui-widget-content">
+                                                    <td>enable</td>
+                                                    <td>-</td>
+                                                    <td>Enable the widget.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>disable</td>
+                                                    <td>-</td>
+                                                    <td>Disable the widget.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
                                                     <td>option</td>
                                                     <td>name: Name of the option</td>
                                                     <td>Returns the value of the option.</td>
@@ -219,7 +251,25 @@ $(':radio').puiradiobutton({
                                         <pre name="code" class="jscript">
 &lt;script type="text/javascript"&gt;
         $(function() {
-            $(':radio').puiradiobutton(); 
+            $(':radio').puiradiobutton();
+
+            $('#enable').puibutton({
+                click: function () {
+                    $('#rd4').puiradiobutton('enable');
+                    $('#enable').hide();
+                    $('#disable').show();
+                }
+            });
+
+            $('#disable').puibutton({
+                click: function () {
+                    $('#rd4').puiradiobutton('disable');
+                    $('#enable').show();
+                    $('#disable').hide();
+                }
+            });
+
+            $('#enable').hide();
         });
 &lt;/script&gt; 
                                         </pre>
@@ -243,6 +293,10 @@ $(':radio').puiradiobutton({
         &lt;td&gt;&lt;label for="rd4"&gt;Option 4&lt;/label&gt;&lt;/td&gt;
     &lt;/tr&gt;
 &lt;/table&gt;
+
+&lt;button id="enable" type="button"&gt;Enable&lt;/button&gt;
+&lt;button id="disable" type="button"&gt;Disable&lt;/button&gt;
+
                                         </pre>
 
                                     </div>

@@ -63,7 +63,7 @@ $(function() {
             input.wrap('<div class="ui-helper-hidden"></div>');
                         
             var listWrapper = $('<div class="pui-picklist-listwrapper ' + cssClass + '"></div>'),
-                listContainer = $('<ul class="ui-widget-content pui-picklist-list pui-inputtext"></ul>')
+                listContainer = $('<ul class="ui-widget-content pui-picklist-list pui-inputtext"></ul>');
 
             if(this.options.filter) {
                 listWrapper.append('<div class="pui-picklist-filter-container"><input type="text" class="pui-picklist-filter" /><span class="ui-icon ui-icon-search"></span></div>');
@@ -521,6 +521,26 @@ $(function() {
 
             this._populateContainerFromOptions(input, listContainer, data);
             this._bindEvents();
+        },
+
+        _unbindEvents: function() {
+            this.items.off("mouseover.puipicklist mouseout.puipicklist click.puipicklist dblclick.pickList");
+        },
+
+        disable: function () {
+            this._unbindEvents();
+            this.items.addClass('ui-state-disabled');
+            this.element.find('.pui-picklist-buttons > button').each(function (idx, btn) {
+                $(btn).puibutton('disable');
+            });
+        },
+
+        enable: function () {
+            this._bindEvents();
+            this.items.removeClass('ui-state-disabled');
+            this.element.find('.pui-picklist-buttons > button').each(function (idx, btn) {
+                $(btn).puibutton('enable');
+            });
         }
     });
         

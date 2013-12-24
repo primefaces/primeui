@@ -125,6 +125,16 @@ $(function() {
 
         _alignPanel: function() {
             this.menu.css({left:'', top:'','z-index': ++PUI.zindex}).position(this.options.position);
+        },
+
+        disable: function() {
+            this.element.puibutton('disable');
+            this.menuButton.puibutton('disable');
+        },
+
+        enable: function() {
+            this.element.puibutton('enable');
+            this.menuButton.puibutton('enable');
         }
     });
 });

@@ -111,6 +111,27 @@ $(function() {
 
                 this.element.trigger('change');
             }
+        },
+
+        _unbindEvents: function() {
+            this.box.off();
+            this.element.off('focus blur keydown keyup');
+            this.label.off();
+        },
+
+        disable: function() {
+            this.box.prop('disabled', true);
+
+            this.box.attr('aria-disabled', true);
+            this.box.addClass('ui-state-disabled').removeClass('ui-state-hover');
+            this._unbindEvents();
+        },
+
+        enable: function() {
+            this.box.prop('disabled', false);
+            this.box.attr('aria-disabled', false);
+            this.box.removeClass('ui-state-disabled');
+            this._bindEvents();
         }
     });
     

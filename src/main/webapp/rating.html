@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="primeui/css/rating/rating.css" />
         <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
         <link rel="stylesheet" href="primeui/css/inputtext/inputtext.css" />
+        <link rel="stylesheet" href="primeui/css/button/button.css" />
         <link rel="stylesheet" href="primeui/css/dropdown/dropdown.css" />
 		<link rel="stylesheet" href="primeui/css/core/core.css" />
         <script type="text/javascript" src="resources/demo/js/sh.js"></script>
@@ -21,6 +22,7 @@
         <script type="text/javascript" src="primeui/js/rating/rating.js"></script>
         <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>       
         <script type="text/javascript" src="primeui/js/core/core.js"></script>
+        <script type="text/javascript" src="primeui/js/button/button.js"></script>
         <script type="text/javascript" src="primeui/js/dropdown/dropdown.js"></script>
         <script type="text/javascript">
             $(function() {
@@ -37,6 +39,24 @@
                 $('#readonly').puirating({readonly: true, cancel: false});
 
                 $('#disabled').puirating({disabled: true, cancel: false});
+
+                $('#enable').puibutton({
+                    click: function () {
+                        $('#disabled').puirating('enable');
+                        $('#enable').hide();
+                        $('#disable').show();
+                    }
+                });
+
+                $('#disable').puibutton({
+                    click: function () {
+                        $('#disabled').puirating('disable');
+                        $('#enable').show();
+                        $('#disable').hide();
+                    }
+                });
+
+                $('#disable').hide();
 
                 $('#doc').puitabview();
                 
@@ -154,6 +174,9 @@
                             <h3>Disabled</h3> 
                             <input id="disabled" type="hidden" value="3" disabled="disabled"/>
                             <br />
+                            <button id="enable" type="button">Enable</button>
+                            <button id="disable" type="button">Disable</button>
+
 
                             <h3>Documentation</h3>
                             <div id="doc">
@@ -258,6 +281,16 @@ $('#default').puirating({
                                                     <td>Updates current value.</td>
                                                 </tr>
                                                 <tr class="ui-widget-content">
+                                                    <td>enable</td>
+                                                    <td>-</td>
+                                                    <td>Enable the widget</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>disable</td>
+                                                    <td>-</td>
+                                                    <td>Disable the widget.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
                                                     <td>option</td>
                                                     <td>name: Name of the option</td>
                                                     <td>Returns the value of the option.</td>
@@ -292,6 +325,24 @@ $('#default').puirating('cancel');
             $('#readonly').puirating({readonly:true, cancel:false});
                 
             $('#disabled').puirating({disabled:true, cancel:false});
+                                            
+            $('#enable').puibutton({
+                click: function () {
+                    $('#disabled').puirating('enable');
+                    $('#enable').hide();
+                    $('#disable').show();
+                }
+             });
+
+            $('#disable').puibutton({
+                click: function () {
+                    $('#disabled').puirating('disable');
+                    $('#enable').show();
+                    $('#disable').hide();
+                }
+            });
+
+            $('#disable').hide();                                            
         });
     &lt;/script&gt;
                                         </pre>
@@ -308,6 +359,10 @@ $('#default').puirating('cancel');
 &lt;input id="readonly" type="hidden" value="3" readonly="readonly"/&gt; 
 
 &lt;input id="disabled" type="hidden" value="3" disabled="disabled"/&gt; 
+                                            
+&lt;button id="enable" type="button"&gt;Enable&lt;/button&gt;
+&lt;button id="disable" type="button"&gt;Disable&lt;/button&gt;
+                                            
                                         </pre>
                                     </div>
                                 </div>

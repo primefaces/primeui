@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="resources/demo/css/sh.css" />
         <link rel="stylesheet" href="primeui/css/inputtext/inputtext.css" />
         <link rel="stylesheet" href="primeui/css/inputtextarea/inputtextarea.css" />
+        <link rel="stylesheet" href="primeui/css/button/button.css" />
         <link rel="stylesheet" href="primeui/css/autocomplete/autocomplete.css" />
         <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
         <link rel="stylesheet" href="primeui/css/dropdown/dropdown.css" />
@@ -23,6 +24,7 @@
         <script type="text/javascript" src="primeui/plugins/cursorposition.js"></script>
         <script type="text/javascript" src="primeui/js/inputtext/inputtext.js"></script>
         <script type="text/javascript" src="primeui/js/inputtextarea/inputtextarea.js"></script>
+        <script type="text/javascript" src="primeui/js/button/button.js"></script>
         <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
         <script type="text/javascript" src="primeui/js/dropdown/dropdown.js"></script>
         <script type="text/javascript">
@@ -49,6 +51,26 @@
                         });
                     }
                 });
+
+                $('#state').puiinputtextarea();
+
+                $('#enable').puibutton({
+                    click: function () {
+                        $('#state').puiinputtext('enable');
+                        $('#enable').hide();
+                        $('#disable').show();
+                    }
+                });
+
+                $('#disable').puibutton({
+                    click: function () {
+                        $('#state').puiinputtext('disable');
+                        $('#enable').show();
+                        $('#disable').hide();
+                    }
+                });
+
+                $('#enable').hide();
 
                 $('#doc').puitabview();
                 
@@ -121,7 +143,7 @@
                                 <li><a href="contextmenu.html">Menu - Context</a></li>
                                 <li><a href="slidemenu.html">Menu - Slide</a></li>
                                 <li><a href="tieredmenu.html">Menu - Tiered</a></li>
-                                <li><a href="notify.htInputtextareaml">Notify</a></li>
+                                <li><a href="notify.html">Notify</a></li>
                                 <li><a href="paginator.html">Paginator</a></li>
                                 <li><a href="panel.html">Panel</a></li>
                                 <li><a href="password.html">Password</a></li>
@@ -161,6 +183,13 @@
 
                             <h3>AutoComplete</h3>
                             <textarea id="ac" rows="5" cols="30"></textarea>
+
+                            <h3>Enable / Disable</h3>
+
+                            <textarea id="state" rows="5" cols="30"></textarea>
+                            <br/>
+                            <button id="enable" type="button">Enable</button>
+                            <button id="disable" type="button">Disable</button>
 
                             <h3>Documentation</h3> 
                             <div id="doc">
@@ -299,6 +328,7 @@ $('#default').puiinputtextarea({
                                                 </tr>
                                             </tbody>
                                         </table>
+                                        Enabling and disabling of the textarea is possible by calling the enable and disable methods of the puiinput like $('#default').puiinput('disable');
 
                                         <pre name="code" class="jscript">
 $('#default').puiinputtextarea('hide');

@@ -59,6 +59,25 @@
                 });
 
                 $('#messages').puigrowl();
+
+                $('#enable').puibutton({
+                    click: function () {
+                        $('#btn').puisplitbutton('enable');
+                        $('#enable').hide();
+                        $('#disable').show();
+                    }
+                });
+
+                $('#disable').puibutton({
+                    click: function () {
+                        $('#btn').puisplitbutton('disable');
+                        $('#enable').show();
+                        $('#disable').hide();
+                    }
+                });
+
+                $('#enable').hide();
+
                 $('#doc').puitabview();
                 
                 var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
@@ -155,6 +174,11 @@
                             <div id="messages"></div>
                             
                             <button id="btn" type="button">Save</button>
+
+                            <h3>Enable / Disable</h3>
+                            <button id="enable" type="button">Enable</button>
+                            <button id="disable" type="button">Disable</button>
+
 
                             <h3>Documentation</h3>
                             <div id="doc">
@@ -260,9 +284,19 @@ $('#default').puisplitbutton({
                                                     <td>Shows the menu.</td>
                                                 </tr>
                                                 <tr class="ui-widget-content">
-                                                    <td>enable</td>
+                                                    <td>hide</td>
                                                     <td>-</td>
                                                     <td>Hides the menu.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>enable</td>
+                                                    <td>-</td>
+                                                    <td>Enable the widget</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>disable</td>
+                                                    <td>-</td>
+                                                    <td>Disable the widget.</td>
                                                 </tr>
                                                 <tr class="ui-widget-content">
                                                     <td>option</td>
@@ -313,12 +347,35 @@ $('#btn').puisplitbutton({
 });
 
 $('#messages').puigrowl();
+                                            
+$('#enable').puibutton({
+    click: function () {
+        $('#btn').puisplitbutton('enable');
+        $('#enable').hide();
+        $('#disable').show();
+    }
+});
+
+$('#disable').puibutton({
+    click: function () {
+        $('#btn').puisplitbutton('disable');
+        $('#enable').show();
+        $('#disable').hide();
+    }
+});
+
+$('#enable').hide();
                                         </pre>
 
                                         <pre name="code" class="xml">
 &lt;button id="btn" type="button"&gt;Save&lt;/button&gt;
 
 &lt;div id="messages"&gt;&lt;/div&gt;
+                                            
+&lt;h3&gt;Enable / Disable&lt;/h3&gt;
+&lt;button id="enable" type="button"&gt;Enable&lt;/button&gt;
+&lt;button id="disable" type="button"&gt;Disable&lt;/button&gt;
+
                                         </pre>
                                     </div>
                                 </div>
