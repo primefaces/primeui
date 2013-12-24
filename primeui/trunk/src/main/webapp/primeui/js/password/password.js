@@ -88,6 +88,10 @@ $(function() {
                 });
             }
         },
+
+        _unbindEvents: function() {
+            this.element.off('focus.puipassword blur.puipassword keyup.puipassword');
+        },
         
         _testStrength: function(str) {
             var grade = 0, 
@@ -153,6 +157,16 @@ $(function() {
             else {
                 this.panel.fadeOut();
             }
+        },
+
+        disable: function () {
+            this.element.puiinputtext('disable');
+            this._unbindEvents();
+        },
+
+        enable: function () {
+            this.element.puiinputtext('enable');
+            this._bindEvents();
         }
     });
     

@@ -355,6 +355,14 @@ $(function() {
 
         _hide: function() {        
             this.panel.hide();
+        },
+
+        disable: function () {
+            this.element.puiinputtext('disable');
+        },
+
+        enable: function () {
+            this.element.puiinputtext('enable');
         }
     });
     

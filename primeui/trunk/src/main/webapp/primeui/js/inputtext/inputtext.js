@@ -16,13 +16,7 @@ $(function() {
                 input.addClass('ui-state-disabled');
             }
             else {
-                input.hover(function() {
-                    input.toggleClass('ui-state-hover');
-                }).focus(function() {
-                    input.addClass('ui-state-focus');
-                }).blur(function() {
-                    input.removeClass('ui-state-focus');
-                });
+                this._enableMouseEffects();
             }
 
             //aria
@@ -32,7 +26,39 @@ $(function() {
         },
         
         _destroy: function() {
-            
+
+        },
+
+        _enableMouseEffects: function () {
+            var input = this.element;
+            input.hover(function () {
+                input.toggleClass('ui-state-hover');
+            }).focus(function () {
+                    input.addClass('ui-state-focus');
+                }).blur(function () {
+                    input.removeClass('ui-state-focus');
+                });
+        },
+
+        _disableMouseEffects: function () {
+            var input = this.element;
+            input.off( "mouseenter mouseleave focus blur" );
+
+        },
+
+        disable: function () {
+            this.element.prop('disabled', true);
+            this.element.attr('aria-disabled', true);
+            this.element.addClass('ui-state-disabled');
+            this.element.removeClass('ui-state-focus ui-state-hover');
+            this._disableMouseEffects();
+        },
+
+        enable: function () {
+            this.element.prop('disabled', false);
+            this.element.attr('aria-disabled', false);
+            this.element.removeClass('ui-state-disabled');
+            this._enableMouseEffects();
         }
         
     });

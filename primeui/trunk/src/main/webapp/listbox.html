@@ -45,6 +45,26 @@
 
                 $('#update').puilistbox();
 
+                $('#state').puilistbox();
+
+                $('#enable').puibutton({
+                    click: function () {
+                        $('#state').puilistbox('enable');
+                        $('#enable').hide();
+                        $('#disable').show();
+                    }
+                });
+
+                $('#disable').puibutton({
+                    click: function () {
+                        $('#state').puilistbox('disable');
+                        $('#enable').show();
+                        $('#disable').hide();
+                    }
+                });
+
+                $('#enable').hide();
+
                 $('#updateOptions').puibutton({
                     click: function () {
                         var newOptions = [{value: '0', label: 'Select one'},
@@ -179,6 +199,18 @@
                             </select>
                             <button id="updateOptions" type="button">Update options</button>
 
+                            <h3>Enable / Disable</h3>
+                            <select id="state">
+                                <option value="0">Select One</option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                                <option value="4">Option 4</option>
+                                <option value="5">Option 5</option>
+                            </select> <br/>
+                            <button id="enable" type="button">Enable</button>
+                            <button id="disable" type="button">Disable</button>
+
                             <h3>Documentation</h3>
                             <div id="doc">
                                 <ul>
@@ -307,6 +339,16 @@ $('#basic').puilistbox();
                                                     <td>Clears selections.</td>
                                                 </tr>
                                                 <tr class="ui-widget-content">
+                                                    <td>enable</td>
+                                                    <td>-</td>
+                                                    <td>Enable the widget</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>disable</td>
+                                                    <td>-</td>
+                                                    <td>Disable the widget.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
                                                     <td>option</td>
                                                     <td>name: Name of the option</td>
                                                     <td>Returns the value of the option.</td>
@@ -362,6 +404,27 @@ $('#updateOptions').puibutton({
         $('#update').puilistbox('option', 'data', newOptions);
     }
 });
+
+$('#state').puilistbox();
+
+$('#enable').puibutton({
+    click: function () {
+        $('#state').puilistbox('enable');
+        $('#enable').hide();
+        $('#disable').show();
+    }
+});
+
+$('#disable').puibutton({
+    click: function () {
+        $('#state').puilistbox('disable');
+        $('#enable').show();
+        $('#disable').hide();
+    }
+});
+
+        $('#enable').hide();
+
                                         </pre>
 
                                         <pre name="code" class="xml">
@@ -397,7 +460,20 @@ $('#updateOptions').puibutton({
     &lt;option value="4"&gt;Option 4&lt;/option&gt;
     &lt;option value="5"&gt;Option 5&lt;/option&gt;
 &lt;/select&gt;
-&lt;button id="updateOptions" type="button"&gt;Update options&lt;/button&gt;                                            
+&lt;button id="updateOptions" type="button"&gt;Update options&lt;/button&gt; 
+                                            
+&lt;h3&gt;Enable / Disable&lt;/h3&gt;
+&lt;select id="state"&gt;
+    &lt;option value="0"&gt;Select One&lt;/option&gt;
+    &lt;option value="1"&gt;Option 1&lt;/option&gt;
+    &lt;option value="2"&gt;Option 2&lt;/option&gt;
+    &lt;option value="3"&gt;Option 3&lt;/option&gt;
+    &lt;option value="4"&gt;Option 4&lt;/option&gt;
+    &lt;option value="5"&gt;Option 5&lt;/option&gt;
+&lt;/select&gt; &lt;br/&gt;
+&lt;button id="enable" type="button"&gt;Enable&lt;/button&gt;
+&lt;button id="disable" type="button"&gt;Disable&lt;/button&gt;
+                                            
                                         </pre>
 
                                     </div>

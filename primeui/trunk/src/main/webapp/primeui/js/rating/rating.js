@@ -81,6 +81,22 @@ $(function() {
             }
             
             this._trigger('rate', null, value);
+        },
+
+        enable: function() {
+            this.container.removeClass('ui-state-disabled');
+            this._bindEvents();
+        },
+
+        disable: function() {
+            this.container.addClass('ui-state-disabled');
+            this._unbindEvents();
+        },
+
+        _unbindEvents: function() {
+            this.stars.off('click');
+
+            this.container.children('.pui-rating-cancel').off('hover click');
         }
     });
     

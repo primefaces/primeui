@@ -200,6 +200,20 @@ $(function() {
                 this._restrictHeight();
                 this._bindEvents();
             }
+        },
+
+        _unbindEvents: function() {
+            this.items.off('mouseover.puilistbox click.puilistbox dblclick.puilistbox');
+        },
+
+        disable: function () {
+            this._unbindEvents();
+            this.items.addClass('ui-state-disabled');
+        },
+
+        enable: function () {
+            this._bindEvents();
+            this.items.removeClass('ui-state-disabled');
         }
     });
         
