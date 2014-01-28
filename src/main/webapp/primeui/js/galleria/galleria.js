@@ -151,38 +151,41 @@ $(function() {
                 }
 
                 var oldPanel = this.panels.eq(this.options.activeIndex),
-                oldFrame = this.frames.eq(this.options.activeIndex),
-                newPanel = this.panels.eq(index),
-                newFrame = this.frames.eq(index);
+                newPanel = this.panels.eq(index);
 
                 //content
                 oldPanel.hide(this.options.effect, this.options.effectOptions, this.options.effectSpeed);
                 newPanel.show(this.options.effect, this.options.effectOptions, this.options.effectSpeed);
 
-                //frame
-                oldFrame.removeClass('pui-galleria-frame-active').css('opacity', '');
-                newFrame.animate({opacity:1.0}, this.options.effectSpeed, null, function() {
-                   $(this).addClass('pui-galleria-frame-active'); 
-                });
+                if (this.options.showFilmstrip) {
+                    var oldFrame = this.frames.eq(this.options.activeIndex),
+                        newFrame = this.frames.eq(index);
+
+                    //frame
+                    oldFrame.removeClass('pui-galleria-frame-active').css('opacity', '');
+                    newFrame.animate({opacity:1.0}, this.options.effectSpeed, null, function() {
+                       $(this).addClass('pui-galleria-frame-active');
+                    });
+
+                    //viewport
+                    if( (reposition === undefined || reposition === true) ) {
+                        var frameLeft = newFrame.position().left,
+                            stepFactor = this.options.frameWidth + parseInt(newFrame.css('margin-right'), 10),
+                            stripLeft = this.strip.position().left,
+                            frameViewportLeft = frameLeft + stripLeft,
+                            frameViewportRight = frameViewportLeft + this.options.frameWidth;
+
+                        if(frameViewportRight > this.stripWrapper.width()) {
+                            this.strip.animate({left: '-=' + stepFactor}, this.options.effectSpeed, 'easeInOutCirc');
+                        } else if(frameViewportLeft < 0) {
+                            this.strip.animate({left: '+=' + stepFactor}, this.options.effectSpeed, 'easeInOutCirc');
+                        }
+                    }
+                }
 
                 //caption
                 if(this.options.showCaption) {
                     this._showCaption(newPanel);
-                }
-
-                //viewport
-                if(reposition === undefined || reposition === true) {
-                    var frameLeft = newFrame.position().left,
-                    stepFactor = this.options.frameWidth + parseInt(newFrame.css('margin-right'), 10),
-                    stripLeft = this.strip.position().left,
-                    frameViewportLeft = frameLeft + stripLeft,
-                    frameViewportRight = frameViewportLeft + this.options.frameWidth;
-
-                    if(frameViewportRight > this.stripWrapper.width()) {
-                        this.strip.animate({left: '-=' + stepFactor}, this.options.effectSpeed, 'easeInOutCirc');
-                    } else if(frameViewportLeft < 0) {
-                        this.strip.animate({left: '+=' + stepFactor}, this.options.effectSpeed, 'easeInOutCirc');
-                    }
                 }
 
                 this.options.activeIndex = index;
