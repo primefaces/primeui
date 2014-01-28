@@ -344,6 +344,13 @@ $(function() {
                 else {
                     //unselect previous selection if this is single selection or multiple one with no keys
                     if(this._isSingleSelection() || (this._isMultipleSelection() && !metaKey && !shiftKey)) {
+                        if (this._isMultipleSelection()) {
+                            var selections = this.getSelection();
+                            for (var i = 0; i < selections.length; i++) {
+                                this._trigger('rowUnselect', null, selections[i]);
+                            }
+                        }
+
                         this.unselectAllRows();
                     }
                     
