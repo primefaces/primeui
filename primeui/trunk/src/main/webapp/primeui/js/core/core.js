@@ -56,5 +56,64 @@ var PUI = {
         }
 
         return false;
+    },
+    
+    calculateScrollbarWidth: function() {
+        if(!this.scrollbarWidth) {
+            if(this.browser.msie) {
+                var $textarea1 = $('<textarea cols="10" rows="2"></textarea>')
+                        .css({ position: 'absolute', top: -1000, left: -1000 }).appendTo('body'),
+                    $textarea2 = $('<textarea cols="10" rows="2" style="overflow: hidden;"></textarea>')
+                        .css({ position: 'absolute', top: -1000, left: -1000 }).appendTo('body');
+                this.scrollbarWidth = $textarea1.width() - $textarea2.width();
+                $textarea1.add($textarea2).remove();
+            }
+            else {
+                var $div = $('<div />')
+                    .css({ width: 100, height: 100, overflow: 'auto', position: 'absolute', top: -1000, left: -1000 })
+                    .prependTo('body').append('<div />').find('div')
+                        .css({ width: '100%', height: 200 });
+                this.scrollbarWidth = 100 - $div.width();
+                $div.parent().remove();
+            }
+        }
+
+        return this.scrollbarWidth;
+    },
+    
+    //adapted from jquery browser plugin
+    resolveUserAgent: function(ua) {
+        if($.browser) {
+            this.browser = $.browser;
+        }
+        else {
+            ua = ua.toLowerCase();
+
+            var match = /(chrome)[ \/]([\w.]+)/.exec(ua) ||
+                /(webkit)[ \/]([\w.]+)/.exec(ua) ||
+                /(opera)(?:.*version|)[ \/]([\w.]+)/.exec(ua) ||
+                /(msie) ([\w.]+)/.exec(ua) ||
+                ua.indexOf("compatible") < 0 && /(mozilla)(?:.*? rv:([\w.]+)|)/.exec(ua) || [],
+            userAgent =  {
+                browser: match[ 1 ] || "",
+                version: match[ 2 ] || "0"
+            },
+            browser = {};
+
+            if(userAgent.browser) {
+                browser[userAgent.browser] = true;
+                browser.version = userAgent.version;
+            }
+
+            if (browser.chrome) {
+                browser.webkit = true;
+            } else if (browser.webkit) {
+                browser.safari = true;
+            }
+
+            this.browser = browser;
+        }
     }
 };
+
+PUI.resolveUserAgent(navigator.userAgent);

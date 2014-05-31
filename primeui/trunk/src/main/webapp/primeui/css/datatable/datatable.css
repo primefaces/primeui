@@ -1,6 +1,7 @@
 .pui-datatable table {
 	border-collapse: collapse;
     width: 100%;
+    table-layout: fixed;
 }
 
 .pui-datatable .pui-datatable-header,
@@ -57,4 +58,13 @@
 
 .pui-datatable tr.ui-state-highlight {
     cursor: pointer;
+}
+
+.pui-datatable-scrollable-header, .pui-datatable-scrollable-footer {
+    border: 0 none;
+    overflow: hidden;
+}
+
+.pui-datatable-scrollable-body {
+    overflow: auto;
 }

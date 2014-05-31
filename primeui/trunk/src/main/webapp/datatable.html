@@ -99,10 +99,10 @@
                         totalRecords: 200
                     },
                     columns: [
-                        {field:'vin', headerText: 'Vin', sortable:true},
-                        {field:'brand', headerText: 'Brand', sortable:true},
-                        {field:'year', headerText: 'Year', sortable:true},
-                        {field:'color', headerText: 'Color', sortable:true}
+                        {field:'vin', headerText: 'Vin'},
+                        {field:'brand', headerText: 'Brand'},
+                        {field:'year', headerText: 'Year'},
+                        {field:'color', headerText: 'Color'}
                     ],
                     datasource: function(callback, ui) {
                         var uri = 'rest/cars/lazylist/' + ui.first;
@@ -113,6 +113,30 @@
                         $.ajax({
                             type: "GET",
                             url: uri,
+                            dataType: "json",
+                            context: this,
+                            success: function(response) {
+                                callback.call(this, response);
+                            }
+                        });
+                    }
+                });
+                
+                $('#tblscrollable').puidatatable({
+                    caption: 'Scrollable',
+                    scrollable: true,
+                    scrollHeight: '200',
+                    scrollWidth: '75%',
+                    columns: [
+                        {field:'vin', headerText: 'Vin'},
+                        {field:'brand', headerText: 'Brand'},
+                        {field:'year', headerText: 'Year'},
+                        {field:'color', headerText: 'Color'}
+                    ],
+                    datasource: function(callback) {
+                        $.ajax({
+                            type: "GET",
+                            url: 'rest/cars/list',
                             dataType: "json",
                             context: this,
                             success: function(response) {
@@ -145,8 +169,8 @@
             });
         </script>
         <style type="text/css">
-            .pui-datatable table {
-                table-layout: fixed;
+            .pui-datatable {
+                margin-bottom: 40px;
             }
         </style>
     </head>
@@ -225,13 +249,11 @@
                             
                             <div id="tbllocal"></div>
                             
-                            <br />
-                            
                             <div id="tblremoteeager"></div>
-                            
-                            <br />
-                            
+   
                             <div id="tblremotelazy"></div>
+                                                        
+                            <div id="tblscrollable"></div>
 
                             <h3>Documentation</h3>
                             <div id="doc">
@@ -520,6 +542,30 @@ $('#default').puidatatable('unselectAllRows');
             }
         });
 
+        $('#tblscrollable').puidatatable({
+                    caption: 'Scrollable',
+                    scrollable: true,
+                    scrollHeight: '200',
+                    scrollWidth: '75%',
+                    columns: [
+                        {field:'vin', headerText: 'Vin'},
+                        {field:'brand', headerText: 'Brand'},
+                        {field:'year', headerText: 'Year'},
+                        {field:'color', headerText: 'Color'}
+                    ],
+                    datasource: function(callback) {
+                        $.ajax({
+                            type: "GET",
+                            url: 'rest/cars/list',
+                            dataType: "json",
+                            context: this,
+                            success: function(response) {
+                                callback.call(this, response);
+                            }
+                        });
+                    }
+                });
+
         $('#messages').puigrowl();
     });
 &lt;/script&gt;
@@ -533,6 +579,8 @@ $('#default').puidatatable('unselectAllRows');
 &lt;div id="tblremoteeager"&gt;&lt;/div&gt;
 
 &lt;div id="tblremotelazy"&gt;&lt;/div&gt;
+
+&lt;div id="tblscrollable"&gt;&lt;/div&gt;
                                         </pre>
                                     </div>
                                 </div>
