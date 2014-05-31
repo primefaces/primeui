@@ -330,7 +330,6 @@ $(function() {
 
             //width/height of label
             this.label.width(this.container.width() - this.menuIcon.width());
-            this.label.height(this.container.height());
 
             //align panel and container
             var jqWidth = this.container.innerWidth();
