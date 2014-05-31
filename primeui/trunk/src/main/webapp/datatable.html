@@ -68,8 +68,8 @@
                     columns: [
                         {field:'vin', headerText: 'Vin', sortable:true},
                         {field:'brand', headerText: 'Brand', sortable:true},
-                        {field:'year', headerText: 'Year', sortable:true},
-                        {field:'color', headerText: 'Color', sortable:true}
+                        {field:'year', headerText: 'Year', sortable:true, headerStyle: 'width:15%'},
+                        {field:'color', headerText: 'Color', sortable:true, headerStyle: 'width:15%'}
                     ],
                     datasource: function(callback) {
                         $.ajax({
@@ -246,12 +246,15 @@
                                     <div id="doc-overview">
                                         <p>DataTable requires column metadata and a datasource as requires options. A column
                                         definition has the following properties;</p>
-                                         {field, headerText, sortable, content}.
                                         <ul>
                                             <li>field: Name of field.</li>
                                             <li>headerText: Column header.</li>
                                             <li>sortable: Controls sorting.</li>
                                             <li>content: A function that takes row data and expects a string or a jQuery object to customize the cell.</li>
+                                            <li>headerStyle: Inline style of the header cell.</li>
+                                            <li>headerClass: Style class of the header cell.</li>
+                                            <li>bodyStyle: Inline style of the body cell.</li>
+                                            <li>bodyClass: Style class of the body cell.</li>
                                         </ul>
                                          
                                          <p>Datasource on the other hand, can either be a javascript array or a function to load

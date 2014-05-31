@@ -52,7 +52,15 @@ $(function() {
             if(this.options.columns) {
                 $.each(this.options.columns, function(i, col) {
                     var header = $('<th class="ui-state-default"></th>').data('field', col.field).appendTo($this.thead);
-                                        
+                    
+                    if(col.headerClass) {
+                        header.addClass(col.headerClass);
+                    } 
+                    
+                    if(col.headerStyle) {
+                        header.attr('style', col.headerStyle);
+                    }
+                    
                     if(col.headerText) {
                         header.text(col.headerText);
                     }
@@ -252,17 +260,26 @@ $(function() {
                         }
 
                         for(var j = 0; j < this.options.columns.length; j++) {
-                            var column = $('<td />').appendTo(row);
+                            var column = $('<td />').appendTo(row),
+                            columnOptions = this.options.columns[j];
+
+                            if(columnOptions.bodyClass) {
+                                column.addClass(columnOptions.bodyClass);
+                            } 
+
+                            if(columnOptions.bodyStyle) {
+                                column.attr('style', columnOptions.bodyStyle);
+                            }
                             
-                            if(this.options.columns[j].content) {
-                                var content = this.options.columns[j].content.call(this, rowData);
+                            if(columnOptions.content) {
+                                var content = columnOptions.content.call(this, rowData);
                                 if($.type(content) === 'string')
                                     column.html(content);
                                 else
                                     column.append(content);
                             }
                             else {
-                                column.text(rowData[this.options.columns[j].field]);
+                                column.text(rowData[columnOptions.field]);
                             }                            
                         }
                     }
