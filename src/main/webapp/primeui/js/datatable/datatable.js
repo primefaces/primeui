@@ -15,7 +15,8 @@ $(function() {
             caption: null,
             sortField: null,
             sortOrder: null,
-            keepSelectionInLazyMode: false
+            keepSelectionInLazyMode: false,
+            scrollable: false
         },
         
         _create: function() {
@@ -25,10 +26,13 @@ $(function() {
             }
             
             this.element.addClass('pui-datatable ui-widget');
-            this.tableWrapper = $('<div class="pui-datatable-tablewrapper" />').appendTo(this.element);
-            this.table = $('<table><thead></thead><tbody></tbody></table>').appendTo(this.tableWrapper);
-            this.thead = this.table.children('thead');
-            this.tbody = this.table.children('tbody').addClass('pui-datatable-data');
+            
+            if(this.options.scrollable) {
+                this._createScrollableDatatable();
+            }
+            else {
+                this._createRegularDatatable();
+            }
             
             if(this.options.datasource) {
                 if($.isArray(this.options.datasource)) {
@@ -43,6 +47,30 @@ $(function() {
                         this.options.datasource.call(this, this._onDataInit);
                     }
                 }
+            }
+        },
+        
+        _createRegularDatatable: function() {
+            this.tableWrapper = $('<div class="pui-datatable-tablewrapper" />').appendTo(this.element);
+            this.table = $('<table><thead></thead><tbody></tbody></table>').appendTo(this.tableWrapper);
+            this.thead = this.table.children('thead');
+            this.tbody = this.table.children('tbody').addClass('pui-datatable-data');
+        },
+        
+        _createScrollableDatatable: function() {
+            var $this = this;
+            
+            this.element.append('<div class="ui-widget-header pui-datatable-scrollable-header"><div class="pui-datatable-scrollable-header-box"><table><thead></thead></table></div></div>')
+                        .append('<div class="pui-datatable-scrollable-body"><table><colgroup></colgroup><tbody></tbody></table></div></div>');
+                
+            this.thead = this.element.find('> .pui-datatable-scrollable-header thead');
+            this.tbody = this.element.find('> .pui-datatable-scrollable-body tbody');
+            this.colgroup = this.tbody.prev();
+            
+            if(this.options.columns) {
+                $.each(this.options.columns, function(i, col) {
+                    $('<col></col>').appendTo($this.colgroup);
+                });
             }
         },
                 
@@ -74,7 +102,7 @@ $(function() {
             }
             
             if(this.options.caption) {
-                this.table.prepend('<caption class="pui-datatable-caption ui-widget-header">' + this.options.caption + '</caption>');
+                this.element.prepend('<div class="pui-datatable-caption ui-widget-header">' + this.options.caption + '</div>');
             }
 
             if(this.options.paginator) {
@@ -99,6 +127,10 @@ $(function() {
                 this.sort(this.options.sortField, this.options.sortOrder);
             } else {
                 this._renderData();
+            }
+            
+            if(this.options.scrollable) {
+                this._initScrolling();
             }
         },
 
@@ -500,6 +532,112 @@ $(function() {
             
             this.thead.children('th.pui-sortable-column').data('order', 0).filter('.ui-state-active').removeClass('ui-state-active')
                                 .children('span.pui-sortable-column-icon').removeClass('ui-icon-triangle-1-n ui-icon-triangle-1-s');
+        },
+        
+        _initScrolling: function() {
+            this.scrollHeader = this.element.children('.pui-datatable-scrollable-header');
+            this.scrollBody = this.element.children('.pui-datatable-scrollable-body');
+            this.scrollHeaderBox = this.scrollHeader.children('div.pui-datatable-scrollable-header-box');
+            this.headerTable = this.scrollHeaderBox.children('table');
+            this.bodyTable = this.scrollBody.children('table');
+            this.percentageScrollHeight = this.options.scrollHeight && (this.options.scrollHeight.indexOf('%') !== -1);
+            this.percentageScrollWidth = this.options.scrollWidth && (this.options.scrollWidth.indexOf('%') !== -1);
+            var $this = this,
+            scrollBarWidth = this.getScrollbarWidth() + 'px';
+
+            if(this.options.scrollHeight) {
+                this.scrollBody.height(this.options.scrollHeight);
+                this.scrollHeaderBox.css('margin-right', scrollBarWidth);
+
+                if(this.percentageScrollHeight) {
+                    this.adjustScrollHeight();
+                }
+            }
+
+            this.fixColumnWidths();
+
+            if(this.options.scrollWidth) {
+                if(this.percentageScrollWidth)
+                    this.adjustScrollWidth();
+                else
+                    this.setScrollWidth(this.options.scrollWidth);
+            }
+
+            this.scrollBody.on('scroll.dataTable', function() {
+                var scrollLeft = $this.scrollBody.scrollLeft();
+                $this.scrollHeaderBox.css('margin-left', -scrollLeft);
+            });
+
+            this.scrollHeader.on('scroll.dataTable', function() {
+                $this.scrollHeader.scrollLeft(0);
+            });
+
+            var resizeNS = 'resize.' + this.id;
+            $(window).unbind(resizeNS).bind(resizeNS, function() {
+                if($this.element.is(':visible')) {
+                    if($this.percentageScrollHeight)
+                        $this.adjustScrollHeight();
+
+                    if($this.percentageScrollWidth)
+                        $this.adjustScrollWidth();
+                }
+            });
+        },
+
+        adjustScrollHeight: function() {
+            var relativeHeight = this.element.parent().innerHeight() * (parseInt(this.options.scrollHeight) / 100),
+            tableHeaderHeight = this.element.children('.pui-datatable-caption').outerHeight(true),
+            scrollersHeight = this.scrollHeader.outerHeight(true),
+            paginatorsHeight = this.paginator ? this.paginator.getContainerHeight(true) : 0,
+            height = (relativeHeight - (scrollersHeight + paginatorsHeight + tableHeaderHeight));
+
+            this.scrollBody.height(height);
+        },
+
+        adjustScrollWidth: function() {
+            var width = parseInt((this.element.parent().innerWidth() * (parseInt(this.options.scrollWidth) / 100)));
+            this.setScrollWidth(width);
+        },
+
+        setScrollWidth: function(width) {
+            this.scrollHeader.width(width);
+            this.scrollBody.css('margin-right', 0).width(width);
+            this.element.width(width);
+        },
+
+        getScrollbarWidth: function() {
+            if(!this.scrollbarWidth) {
+                this.scrollbarWidth = PUI.browser.webkit ? '15' : PUI.calculateScrollbarWidth();
+            }
+
+            return this.scrollbarWidth;
+        },
+
+        fixColumnWidths: function() {
+            var $this = this;
+
+            if(!this.columnWidthsFixed) {
+                if(this.options.scrollable) {
+                    this.thead.children('th').each(function() {
+                        var headerCol = $(this),
+                        colIndex = headerCol.index(),
+                        width = headerCol.width(),
+                        innerWidth = headerCol.innerWidth(),
+                        cellWidth = innerWidth + 1;
+
+                        headerCol.width(width);
+                        $this.colgroup.children().eq(colIndex).width(cellWidth);
+                    });
+                }
+                else {
+                    this.element.find('> .pui-datatable-tablewrapper > table > thead > tr > th').each(function() {
+                        var col = $(this);
+                        col.width(col.width());
+                    });
+                }
+
+                this.columnWidthsFixed = true;
+            }
         }
     });
 });
