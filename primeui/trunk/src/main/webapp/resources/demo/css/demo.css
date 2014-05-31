@@ -7,7 +7,7 @@
     float: left;
     margin-top: 1em;
     overflow: hidden;
-    width: 15%;
+    width: 20%;
 }
 
 #sidebar ul {
@@ -26,6 +26,10 @@
 
 #sidebar li.themes-container {
     padding: 5px 0px 5px 8px;
+}
+
+#sidebar li.themes-container .pui-dropdown {
+    width: 165px !important;
 }
 
 #sidebar .widgets-header {
@@ -49,7 +53,7 @@
 #content-demo {
     float: left;
     padding-left: 20px;
-    width: 80%;
+    width: 75%;
 }
 
 #content-demo p {
