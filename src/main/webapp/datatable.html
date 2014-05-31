@@ -360,6 +360,24 @@ $('#tbl').puidatatable({
                                                     <td>false</td>
                                                     <td>When true, the pagination in lazy mode will keep the selected rows. Developer is responsible for the fact that always the same rows in the same order needs to be returned in order to make the selection behave correctly.</td>
                                                 </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>scrollable</td>
+                                                    <td>boolean</td>
+                                                    <td>false</td>
+                                                    <td>In scrollable mode, data in body is scrollable with fixed header and footer.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>scrollHeight</td>
+                                                    <td>boolean</td>
+                                                    <td>null</td>
+                                                    <td>Height of the scrollable body section, can be a fixed value in pixels like 50 or a percentage 50%.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>scrollWidth</td>
+                                                    <td>boolean</td>
+                                                    <td>null</td>
+                                                    <td>Width of the scrollable body section, can be a fixed value in pixels like 50 or a percentage 50%.</td>
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -367,26 +385,28 @@ $('#tbl').puidatatable({
                                     <div id="doc-events">
                                         <table class="doc-table">
                                             <thead>
-                                            <th class="ui-state-default">Name</th>
-                                            <th class="ui-state-default">Parameters</th>
-                                            <th class="ui-state-default">Description</th>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="ui-widget-content">
-                                                <td>rowSelect</td>
-                                                <td>event: puidatatablerowselect event
-                                                    <br />
-                                                    data: Selected data</td>
-                                                <td>Fired when a row is selected.</td>
-                                            </tr>
-                                            <tr class="ui-widget-content">
-                                                <td>rowUnselect</td>
-                                                <td>event: puidatatablerowunselect event
-                                                    <br />
-                                                    data: Unselected data</td>
-                                                <td>Fired when a row is unselected.</td>
-                                            </tr>
-                                        </tbody>
+                                                <tr>
+                                                    <th class="ui-state-default">Name</th>
+                                                    <th class="ui-state-default">Parameters</th>
+                                                    <th class="ui-state-default">Description</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="ui-widget-content">
+                                                    <td>rowSelect</td>
+                                                    <td>event: puidatatablerowselect event
+                                                        <br />
+                                                        data: Selected data</td>
+                                                    <td>Fired when a row is selected.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>rowUnselect</td>
+                                                    <td>event: puidatatablerowunselect event
+                                                        <br />
+                                                        data: Unselected data</td>
+                                                    <td>Fired when a row is unselected.</td>
+                                                </tr>
+                                            </tbody>
                                     </table>
 
                                     <pre name="code" class="jscript">
