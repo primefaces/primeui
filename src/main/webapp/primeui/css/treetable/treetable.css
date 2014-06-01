@@ -1,0 +1,59 @@
+.pui-treetable table {
+	border-collapse:collapse;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.pui-treetable .pui-treetable-header,
+.pui-treetable .pui-treetable-footer {
+    text-align:center;
+    padding: 4px 10px;
+}
+
+.pui-treetable .pui-treetable-header {
+    border-bottom: 0px none;
+}
+
+.pui-treetable .pui-treetable-footer {
+    border-top: 0px none;
+}
+
+.pui-treetable th, .pui-treetable tfoot td {
+    text-align: center;
+}
+
+.pui-treetable thead th,
+.pui-treetable tbody td,
+.pui-treetable tfoot td {
+    padding: 4px 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.pui-treetable tbody td {
+    border-color: inherit;
+}
+
+.pui-treetable .pui-treetable-toggler {
+    float: left;
+    margin-top: -2px;
+    cursor: pointer;
+}
+
+.pui-treetable .pui-treetable-data tr.ui-state-highlight,
+.pui-treetable .pui-treetable-data tr.ui-state-hover {
+    cursor: pointer;
+}
+      
+.pui-treetable .pui-treetable-data tr.ui-state-hover {
+    border-color: inherit;
+    font-weight: inherit;
+}
+
+.pui-treetable .pui-treetable-indent {
+    width: 16px;
+    height: 16px;
+    float: left;
+}
