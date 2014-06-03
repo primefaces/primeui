@@ -27,7 +27,6 @@
         <script type="text/javascript">
             $(function() {
                 $('#local').puitreetable({
-                    animate: true,
                     selectionMode: 'single',
                     columns: [
                         {field:'name', headerText: 'Name'},
@@ -75,13 +74,38 @@
                         }
                     ]
                 });
-                /*
-                $('#remotelazy').puitree({
+                
+                $('#remoteeager').puitreetable({
+                    selectionMode: 'single',
+                    columns: [
+                        {field:'name', headerText: 'Name'},
+                        {field:'size', headerText: 'Size'},
+                        {field:'type', headerText: 'Type'}
+                    ],
+                    nodes: function(ui, response) {                        
+                        $.ajax({
+                            type: "GET",
+                            url: 'rest/tree/documents',
+                            dataType: "json",
+                            context: this,
+                            success: function(data) {
+                                response.call(this, data);
+                            }
+                        });
+                    }
+                });
+                
+                $('#remoteinfinite').puitreetable({
                     lazy: true,
+                     columns: [
+                        {field:'name', headerText: 'Name'},
+                        {field:'size', headerText: 'Size'},
+                        {field:'type', headerText: 'Type'}
+                    ],
                     nodes: function(ui, response) {  
                         $.ajax({
                             type: "GET",
-                            url: 'rest/tree/' + (ui.data ? ui.data : 'root'),
+                            url: 'rest/tree/lazydocuments',
                             dataType: "json",
                             context: this,
                             success: function(data) {
@@ -89,7 +113,7 @@
                             }
                         });
                     }
-                });*/
+                });
 
                 $('#messages').puigrowl();
                 $('#doc').puitabview();
@@ -191,7 +215,10 @@
                             <div id="local"></div>
                                                         
                             <h3>Remote</h3>
-                            <div id="remote"></div>
+                            <div id="remoteeager"></div>
+                            
+                            <h3>Remote Lazy - Infinite</h3>
+                            <div id="remoteinfinite"></div>
 
                             <h3>Documentation</h3>
                             <div id="doc">
