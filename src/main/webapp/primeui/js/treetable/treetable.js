@@ -56,7 +56,7 @@ $(function() {
             }
             
             if($.isArray(this.options.nodes)) {
-                this._renderNodes(this.options.nodes, null);
+                this._renderNodes(this.options.nodes, null, true);
             }
             else if($.type(this.options.nodes) === 'function') {
                 this.options.nodes.call(this, {}, this._initData);
@@ -64,17 +64,36 @@ $(function() {
             else {
                 throw 'Unsupported type. nodes option can be either an array or a function';
             }
+            
+            this._bindEvents();
+        },
+        
+        _initData: function(data) {
+            this._renderNodes(data, null, true);       
         },
                 
-        _renderNodes: function(nodes, rootRow) {
+        _renderNodes: function(nodes, rootRow, expanded) {
             for(var i = 0; i < nodes.length; i++) {
                 var node = nodes[i],
                 nodeData = node.data,
-                leaf = !node.children||node.children.length === 0,
+                leaf = this.options.lazy ? node.leaf : !(node.children && node.children.length),
                 row = $('<tr class="ui-widget-content"></tr>'),
-                depth = rootRow ? rootRow.data('depth') + 1 : 0;
+                depth = rootRow ? rootRow.data('depth') + 1 : 0,
+                parentRowkey = rootRow ? rootRow.data('rowkey'): null,
+                rowkey = parentRowkey ? parentRowkey + '_' + i : i.toString();
+                        
+                row.data({
+                   'depth': depth, 
+                   'rowkey': rowkey,
+                   'parentrowkey': parentRowkey,
+                   'puidata': nodeData,
+                });
                 
-                row.data('depth', depth);
+                console.log(rowkey + ':' + nodeData.name);
+                
+                if(!expanded) {
+                    row.addClass('ui-helper-hidden');
+                }
                 
                 for(var j = 0; j < this.options.columns.length; j++) {
                     var column = $('<td />').appendTo(row),
@@ -117,7 +136,92 @@ $(function() {
                     row.appendTo(this.tbody);
                 
                 if(!leaf) {
-                    this._renderNodes(node.children, row);
+                    this._renderNodes(node.children, row, node.expanded);
+                }
+            }
+        },
+        
+        _bindEvents: function() {
+            var $this = this,
+            togglerSelector = '> tr > td:first-child > .pui-treetable-toggler';
+
+            //expand and collapse
+            this.tbody.off('click.puitreetable', togglerSelector)
+                        .on('click.puitreetable', togglerSelector, null, function(e) {
+                            var toggler = $(this),
+                            row = toggler.closest('tr');
+
+                            if(!row.data('processing')) {
+                                row.data('processing', true);
+
+                                if(toggler.hasClass('ui-icon-triangle-1-e'))
+                                    $this.expandNode(row);
+                                else
+                                    $this.collapseNode(row);
+                            }
+                        });
+        },
+        
+        expandNode: function(row) {
+            this._trigger('beforeExpand', null, {'node': row, 'data': row.data('puidata')});
+    
+            if(this.options.lazy && !row.data('puiloaded')) {
+                this.options.nodes.call(this, {
+                    'node': row,
+                    'data': row.data('puidata')
+                }, this._handleNodeData);
+            }
+            else {
+                this._showNodeChildren(row);
+            }
+        },
+        
+        _handleNodeData: function(data, node) {
+            this._renderNodes(data, node, true);    
+            this._showNodeChildren(node);
+            node.data('puiloaded', true);
+        },
+        
+        _showNodeChildren: function(row) {
+            row.find('.pui-treetable-toggler:first').addClass('ui-icon-triangle-1-s').removeClass('ui-icon-triangle-1-e');
+            row.attr('aria-expanded', true);
+            
+            var nextAll = row.nextAll();
+            for(var i = 0; i < nextAll.length; i++) {
+                var nextRow = nextAll.eq(i);
+                if(nextRow.data('parentrowkey') === row.data('rowkey')) {
+                    nextRow.removeClass('ui-helper-hidden');
+                }
+            }
+            
+            row.data('processing', false);
+            
+            this._trigger('afterExpand', null, {'node': row, 'data': row.data('puidata')});
+        },
+    
+        collapseNode: function(row) {
+            this._trigger('beforeCollapse', null, {'node': row, 'data': row.data('puidata')});
+    
+            this._hideNodeChildren(row);
+            
+            row.data('processing', false);
+            
+            this._trigger('afterCollapse', null, {'node': row, 'data': row.data('puidata')});
+        },
+        
+        _hideNodeChildren: function(row) {
+            row.find('.pui-treetable-toggler:first').addClass('ui-icon-triangle-1-e').removeClass('ui-icon-triangle-1-s');
+            row.attr('aria-expanded', false);
+            
+            var nextAll = row.nextAll();
+            for(var i = 0; i < nextAll.length; i++) {
+                var nextRow = nextAll.eq(i);
+                if(nextRow.data('parentrowkey') === row.data('rowkey')) {
+                    nextRow.addClass('ui-helper-hidden');
+                    
+                    if(nextRow.attr('aria-expanded')) {
+                        this._hideNodeChildren(nextRow);
+                    }
                 }
             }
         }

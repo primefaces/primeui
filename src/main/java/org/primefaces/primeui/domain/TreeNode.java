@@ -25,6 +25,11 @@ public class TreeNode {
     private boolean leaf;
     private List<TreeNode> children;
     
+    public TreeNode(Object data) {
+        this.data = data;
+        this.children = new ArrayList<TreeNode>();
+    }
+    
     public TreeNode(String label, Object data) {
         this.label = label;
         this.data = data;

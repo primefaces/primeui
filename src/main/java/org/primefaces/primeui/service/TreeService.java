@@ -23,6 +23,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import org.primefaces.primeui.domain.Document;
 import org.primefaces.primeui.domain.TreeNode;
 
 @Path("/tree")
@@ -75,5 +76,59 @@ public class TreeService {
         }
 
         return nodes;
+    }
+    
+    @GET
+    @Path("/documents")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Collection<TreeNode> getDocuments() {
+        List<TreeNode> root = new ArrayList<TreeNode>();
+        
+		TreeNode documents = new TreeNode(new Document("Documents", "-", "Folder"));
+		TreeNode pictures = new TreeNode(new Document("Pictures", "-", "Folder"));
+		TreeNode movies = new TreeNode(new Document("Movies", "-", "Folder"));
+        
+        root.add(documents);
+        root.add(pictures);
+        root.add(movies);
+		
+		TreeNode work = new TreeNode(new Document("Work", "-", "Folder"));
+		TreeNode primefaces = new TreeNode(new Document("PrimeFaces", "-", "Folder"));
+        documents.getChildren().add(work);
+        documents.getChildren().add(primefaces);
+		
+		//Documents
+		TreeNode expenses = new TreeNode("document", new Document("Expenses.doc", "30 KB", "Word Document"));
+		TreeNode resume = new TreeNode("document", new Document("Resume.doc", "10 KB", "Word Document"));
+		TreeNode refdoc = new TreeNode("document", new Document("RefDoc.pages", "40 KB", "Pages Document"));
+        work.getChildren().add(expenses);
+        work.getChildren().add(resume);
+        primefaces.getChildren().add(refdoc);
+		
+		//Pictures
+		TreeNode barca = new TreeNode("picture", new Document("barcelona.jpg", "30 KB", "JPEG Image"));
+		TreeNode primelogo = new TreeNode("picture", new Document("logo.jpg", "45 KB", "JPEG Image"));
+		TreeNode optimus = new TreeNode("picture", new Document("optimusprime.png", "96 KB", "PNG Image"));
+		pictures.getChildren().add(barca);
+        pictures.getChildren().add(primelogo);
+        pictures.getChildren().add(optimus);
+        
+        return root;
+    }
+    
+    @GET
+    @Path("/lazydocuments")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Collection<TreeNode> getLazyDocuments() {
+        List<TreeNode> root = new ArrayList<TreeNode>();
+        
+		TreeNode document1 = new TreeNode(new Document("Folder X", "-", "Folder"));
+		TreeNode document2 = new TreeNode(new Document("Folder Y", "-", "Folder"));
+		TreeNode document3 = new TreeNode(new Document("Folder Z", "-", "Folder"));
+        root.add(document1);
+        root.add(document2);
+        root.add(document3);
+        
+        return root;
     }
 }
