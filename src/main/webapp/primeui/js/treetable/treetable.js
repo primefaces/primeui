@@ -51,10 +51,6 @@ $(function() {
                 this.element.append('<div class="pui-treetable-footer ui-widget-header">' + this.options.caption + '</div>');
             }
             
-            if(this.options.selectionMode) {
-                //this._initSelection();
-            }
-            
             if($.isArray(this.options.nodes)) {
                 this._renderNodes(this.options.nodes, null, true);
             }
@@ -88,8 +84,6 @@ $(function() {
                    'parentrowkey': parentRowkey,
                    'puidata': nodeData,
                 });
-                
-                console.log(rowkey + ':' + nodeData.name);
                 
                 if(!expanded) {
                     row.addClass('ui-helper-hidden');
@@ -160,6 +154,29 @@ $(function() {
                                     $this.collapseNode(row);
                             }
                         });
+                        
+            //selection
+            if(this.options.selectionMode) {
+                this.selection = [];
+                var rowSelector = '> tr';
+        
+                this.tbody.off('mouseover.puitreetable mouseout.puitreetable click.puitreetable', rowSelector)
+                    .on('mouseover.puitreetable', rowSelector, null, function(e) {
+                        var element = $(this);
+                        if(!element.hasClass('ui-state-highlight')) {
+                            element.addClass('ui-state-hover');
+                        }
+                    })
+                    .on('mouseout.puitreetable', rowSelector, null, function(e) {
+                        var element = $(this);
+                        if(!element.hasClass('ui-state-highlight')) {
+                            element.removeClass('ui-state-hover');
+                        }
+                    })
+                    .on('click.puitreetable', rowSelector, null, function(e) {
+                        $this.onRowClick(e, $(this));
+                    });
+            }
         },
         
         expandNode: function(row) {
@@ -224,6 +241,57 @@ $(function() {
                     }
                 }
             }
+        },
+        
+        onRowClick: function(event, row) {
+            if($(event.target).is('td,span:not(.ui-c)')) {
+                var selected = row.hasClass('ui-state-highlight'),
+                metaKey = event.metaKey||event.ctrlKey;
+
+                if(selected && metaKey) {
+                    this.unselectNode(row);
+                }
+                else {
+                    if(this.isSingleSelection()||(this.isMultipleSelection() && !metaKey)) {
+                        this.unselectAllNodes();
+                    }
+
+                    this.selectNode(row);
+                }
+
+                PUI.clearSelection();
+            }
+        },
+
+        selectNode: function(row, silent) {
+            row.removeClass('ui-state-hover').addClass('ui-state-highlight').attr('aria-selected', true);
+
+            if(!silent) {
+                this._trigger('nodeSelect', {}, {'node': row, 'data': row.data('puidata')});
+            }
+        },
+
+        unselectNode: function(row, silent) {
+            row.removeClass('ui-state-highlight').attr('aria-selected', false);
+
+            if(!silent) {
+                this._trigger('nodeUnselect', {}, {'node': row, 'data': row.data('puidata')});
+            }
+        },
+
+        unselectAllNodes: function() {
+            var selectedNodes = this.tbody.children('tr.ui-state-highlight'); 
+            for(var i = 0; i < selectedNodes.length; i++) {
+                this.unselectNode(selectedNodes.eq(i), true);
+            }
+        },
+        
+        isSingleSelection: function() {
+            return this.options.selectionMode === 'single';
+        },
+
+        isMultipleSelection: function() {
+            return this.options.selectionMode === 'multiple';
         }
     });
     
