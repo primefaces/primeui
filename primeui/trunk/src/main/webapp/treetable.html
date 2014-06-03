@@ -27,7 +27,6 @@
         <script type="text/javascript">
             $(function() {
                 $('#local').puitreetable({
-                    selectionMode: 'single',
                     columns: [
                         {field:'name', headerText: 'Name'},
                         {field:'size', headerText: 'Size'},
@@ -76,12 +75,24 @@
                 });
                 
                 $('#remoteeager').puitreetable({
-                    selectionMode: 'single',
+                    selectionMode: 'multiple',
                     columns: [
                         {field:'name', headerText: 'Name'},
                         {field:'size', headerText: 'Size'},
                         {field:'type', headerText: 'Type'}
                     ],
+                    nodeSelect: function(event, ui) {
+                        $('#messages').puigrowl('show', [{severity:'info', summary: 'Node Selected', detail: 'Data: ' + ui.data.name}]);
+                    },
+                    nodeUnselect: function(event, ui) {
+                        $('#messages').puigrowl('show', [{severity:'info', summary: 'Node Unselected', detail: 'Data: ' + ui.data.name}]);
+                    },
+                    afterExpand: function(event, ui) {
+                        $('#messages').puigrowl('show', [{severity:'info', summary: 'Node Expanded', detail: 'Data: ' + ui.data.name}]);
+                    },
+                    afterCollapse: function(event, ui) {
+                        $('#messages').puigrowl('show', [{severity:'info', summary: 'Node Collapsed', detail: 'Data: ' + ui.data.name}]);
+                    },
                     nodes: function(ui, response) {                        
                         $.ajax({
                             type: "GET",
@@ -211,13 +222,13 @@
 
                             <div id="messages"></div>
                             
-                            <h3>Local</h3>
+                            <h3>Local Data</h3>
                             <div id="local"></div>
                                                         
-                            <h3>Remote</h3>
+                            <h3>Remote Data with Selection and Events</h3>
                             <div id="remoteeager"></div>
                             
-                            <h3>Remote Lazy - Infinite</h3>
+                            <h3>Remote - Lazy Data</h3>
                             <div id="remoteinfinite"></div>
 
                             <h3>Documentation</h3>
