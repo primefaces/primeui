@@ -189,56 +189,60 @@ $(function() {
                 }, this._handleNodeData);
             }
             else {
-                this._showNodeChildren(row);
+                this._showNodeChildren(row, false);
+                this._trigger('afterExpand', null, {'node': row, 'data': row.data('puidata')});
             }
         },
         
         _handleNodeData: function(data, node) {
             this._renderNodes(data, node, true);    
-            this._showNodeChildren(node);
+            this._showNodeChildren(node, false);
             node.data('puiloaded', true);
+            this._trigger('afterExpand', null, {'node': row, 'data': row.data('puidata')});
         },
         
-        _showNodeChildren: function(row) {
-            row.find('.pui-treetable-toggler:first').addClass('ui-icon-triangle-1-s').removeClass('ui-icon-triangle-1-e');
-            row.attr('aria-expanded', true);
+        _showNodeChildren: function(row, showOnly) {
+            if(!showOnly) {
+                row.data('expanded', true).attr('aria-expanded', true)
+                        .find('.pui-treetable-toggler:first').addClass('ui-icon-triangle-1-s').removeClass('ui-icon-triangle-1-e');
+            }
             
-            var nextAll = row.nextAll();
-            for(var i = 0; i < nextAll.length; i++) {
-                var nextRow = nextAll.eq(i);
-                if(nextRow.data('parentrowkey') === row.data('rowkey')) {
-                    nextRow.removeClass('ui-helper-hidden');
+            var children = this._getChildren(row);
+            for(var i = 0; i < children.length; i++) {
+                var child = children[i];
+                child.removeClass('ui-helper-hidden');
+                    
+                if(child.data('expanded')) {
+                    this._showNodeChildren(child, true);
                 }
             }
             
             row.data('processing', false);
-            
-            this._trigger('afterExpand', null, {'node': row, 'data': row.data('puidata')});
         },
     
         collapseNode: function(row) {
             this._trigger('beforeCollapse', null, {'node': row, 'data': row.data('puidata')});
     
-            this._hideNodeChildren(row);
+            this._hideNodeChildren(row, false);
             
             row.data('processing', false);
             
             this._trigger('afterCollapse', null, {'node': row, 'data': row.data('puidata')});
         },
         
-        _hideNodeChildren: function(row) {
-            row.find('.pui-treetable-toggler:first').addClass('ui-icon-triangle-1-e').removeClass('ui-icon-triangle-1-s');
-            row.attr('aria-expanded', false);
+        _hideNodeChildren: function(row, hideOnly) {
+            if(!hideOnly) {
+                row.data('expanded', false).attr('aria-expanded', false)
+                        .find('.pui-treetable-toggler:first').addClass('ui-icon-triangle-1-e').removeClass('ui-icon-triangle-1-s');
+            }
             
-            var nextAll = row.nextAll();
-            for(var i = 0; i < nextAll.length; i++) {
-                var nextRow = nextAll.eq(i);
-                if(nextRow.data('parentrowkey') === row.data('rowkey')) {
-                    nextRow.addClass('ui-helper-hidden');
+            var children = this._getChildren(row);
+            for(var i = 0; i < children.length; i++) {
+                var child = children[i];
+                child.addClass('ui-helper-hidden');
                     
-                    if(nextRow.attr('aria-expanded')) {
-                        this._hideNodeChildren(nextRow);
-                    }
+                if(child.data('expanded')) {
+                    this._hideNodeChildren(child, true);
                 }
             }
         },
@@ -292,6 +296,23 @@ $(function() {
 
         isMultipleSelection: function() {
             return this.options.selectionMode === 'multiple';
+        },
+        
+        _getChildren: function(node) {
+            var nodeKey = node.data('rowkey'),
+            nextNodes = node.nextAll(),
+            children = [];
+
+            for(var i = 0; i < nextNodes.length; i++) {
+                var nextNode = nextNodes.eq(i),
+                nextNodeParentKey = nextNode.data('parentrowkey');
+
+                if(nextNodeParentKey === nodeKey) {
+                    children.push(nextNode);
+                }
+            }
+
+            return children;
         }
     });
     
