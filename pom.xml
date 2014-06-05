@@ -135,6 +135,7 @@
                                                 <include>${basedir}/src/main/webapp/primeui/js/terminal/terminal.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/tooltip/tooltip.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/tree/tree.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/treetable/treetable.js</include>
                                             </includes>
                                         </aggregation>
 
@@ -172,6 +173,7 @@
                                                 <include>${basedir}/src/main/webapp/primeui/css/terminal/terminal.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/tooltip/tooltip.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/tree/tree.css</include>
+                                                <include>${basedir}/src/main/webapp/primeui/css/treetable/treetable.css</include>
                                             </includes>
                                         </aggregation>
                                     </aggregations>
@@ -224,6 +226,7 @@
                                                 <include>${project.build.directory}/primeui/production/js/terminal/terminal.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/tooltip/tooltip.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/tree/tree.js</include>
+                                                <include>${project.build.directory}/primeui/production/js/treetable/treetable.js</include>
                                             </includes>
                                         </aggregation>
 
@@ -261,6 +264,7 @@
                                                 <include>${project.build.directory}/primeui/production/css/terminal/terminal.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/tooltip/tooltip.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/tree/tree.css</include>
+                                                <include>${project.build.directory}/primeui/production/css/treetable/treetable.css</include>
                                             </includes>
                                         </aggregation>
                                     </aggregations>
