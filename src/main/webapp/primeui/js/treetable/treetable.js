@@ -44,11 +44,11 @@ $(function() {
             }
             
             if(this.options.header) {
-                this.element.prepend('<div class="pui-treetable-header ui-widget-header">' + this.options.caption + '</div>');
+                this.element.prepend('<div class="pui-treetable-header ui-widget-header ui-corner-top">' + this.options.header + '</div>');
             }
             
             if(this.options.footer) {
-                this.element.append('<div class="pui-treetable-footer ui-widget-header">' + this.options.caption + '</div>');
+                this.element.append('<div class="pui-treetable-footer ui-widget-header ui-corner-bottom">' + this.options.footer + '</div>');
             }
             
             if($.isArray(this.options.nodes)) {
