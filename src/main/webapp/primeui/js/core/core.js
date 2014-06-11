@@ -25,7 +25,7 @@ var PUI = {
     },
     
     isIE: function(version) {
-        return ($.browser.msie && parseInt($.browser.version, 10) === version);
+        return (this.browser.msie && parseInt(this.browser.version, 10) === version);
     },
     
     escapeRegExp: function(text) {
@@ -83,36 +83,30 @@ var PUI = {
     
     //adapted from jquery browser plugin
     resolveUserAgent: function(ua) {
-        if($.browser) {
-            this.browser = $.browser;
+        var agent = ua.toLowerCase(),
+        match = /(chrome)[ \/]([\w.]+)/.exec(agent) ||
+            /(webkit)[ \/]([\w.]+)/.exec(agent) ||
+            /(opera)(?:.*version|)[ \/]([\w.]+)/.exec(agent) ||
+            /(msie) ([\w.]+)/.exec(agent) ||
+            ua.indexOf("compatible") < 0 && /(mozilla)(?:.*? rv:([\w.]+)|)/.exec(agent) || [],
+        userAgent =  {
+            browser: match[ 1 ] || "",
+            version: match[ 2 ] || "0"
+        },
+        browser = {};
+
+        if(userAgent.browser) {
+            browser[userAgent.browser] = true;
+            browser.version = userAgent.version;
         }
-        else {
-            ua = ua.toLowerCase();
 
-            var match = /(chrome)[ \/]([\w.]+)/.exec(ua) ||
-                /(webkit)[ \/]([\w.]+)/.exec(ua) ||
-                /(opera)(?:.*version|)[ \/]([\w.]+)/.exec(ua) ||
-                /(msie) ([\w.]+)/.exec(ua) ||
-                ua.indexOf("compatible") < 0 && /(mozilla)(?:.*? rv:([\w.]+)|)/.exec(ua) || [],
-            userAgent =  {
-                browser: match[ 1 ] || "",
-                version: match[ 2 ] || "0"
-            },
-            browser = {};
-
-            if(userAgent.browser) {
-                browser[userAgent.browser] = true;
-                browser.version = userAgent.version;
-            }
-
-            if (browser.chrome) {
-                browser.webkit = true;
-            } else if (browser.webkit) {
-                browser.safari = true;
-            }
-
-            this.browser = browser;
+        if (browser.chrome) {
+            browser.webkit = true;
+        } else if (browser.webkit) {
+            browser.safari = true;
         }
+
+        this.browser = browser;
     }
 };
 
