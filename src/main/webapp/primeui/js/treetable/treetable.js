@@ -198,7 +198,7 @@ $(function() {
             this._renderNodes(data, node, true);    
             this._showNodeChildren(node, false);
             node.data('puiloaded', true);
-            this._trigger('afterExpand', null, {'node': row, 'data': row.data('puidata')});
+            this._trigger('afterExpand', null, {'node': node, 'data': node.data('puidata')});
         },
         
         _showNodeChildren: function(row, showOnly) {
