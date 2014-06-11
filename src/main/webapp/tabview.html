@@ -26,16 +26,16 @@
                 $('#default').puitabview();
 
                 $('#dynamic').puitabview({
-                    change: function(event, index) {
+                    change: function(event, ui) {
 
                         $.ajax({
                             type: "GET",
                             url: './tabcontent',
-                            data: {tabindex: index},
+                            data: {tabindex: ui.index},
                             dataType: "html",
                             context: this,
                             success: function(data) {
-                                $(this).children('div.ui-tabs-panels').children().eq(index).html(data);
+                                $(this).children('div.ui-tabs-panels').children().eq(ui.index).html(data);
                             }
                         });
                     }
@@ -322,15 +322,20 @@ $('#default').puitabview();
                                             <tbody>
                                                 <tr class="ui-widget-content">
                                                     <td>change</td>
-                                                    <td>index: index of selected tab.</td>
+                                                    <td>ui.index: index of selected tab.</td>
                                                     <td>Fired when an inactive tab is selected.</td>
+                                                </tr>
+                                                <tr class="ui-widget-content">
+                                                    <td>close</td>
+                                                    <td>ui.index: index of selected tab.</td>
+                                                    <td>Fired when a tab is closed.</td>
                                                 </tr>
                                             </tbody>
                                         </table>
 
                                         <pre name="code" class="jscript">
 $('#default').puitabview({
-    change: function(event, index) {
+    change: function(event, ui) {
         //...
     }
 });
@@ -401,16 +406,16 @@ $('#default').puitabview('remove', 1);
             $('#default').puitabview();
                 
             $('#dynamic').puitabview({
-                change: function(event, index) {
+                change: function(event, ui) {
                        
                     $.ajax({
                         type: "GET",
                         url: './tabcontent',
-                        data: {tabindex: index},
+                        data: {tabindex: ui.index},
                         dataType: "html",
                         context: this,
                         success: function(data) {
-                            $(this).children('div.ui-tabs-panels').children().eq(index).html(data);
+                            $(this).children('div.ui-tabs-panels').children().eq(ui.index).html(data);
                         }
                     });
                 }
