@@ -94,7 +94,7 @@ $(function() {
 
                    newHeader.removeClass('ui-state-hover').addClass('pui-tabview-selected ui-state-active');
                    newPanel.show($this.options.name, null, $this.options.effect.duration, function() {
-                       $this._trigger('change', null, index);
+                       $this._trigger('change', null, {'index':index});
                    });
                });
            }
@@ -105,7 +105,7 @@ $(function() {
                newHeader.removeClass('ui-state-hover').addClass('pui-tabview-selected ui-state-active');
                newPanel.show();
 
-               this._trigger('change', null, index);
+               $this._trigger('change', null, {'index':index});
            }
        },
 
@@ -113,7 +113,7 @@ $(function() {
            var header = this.navContainer.children().eq(index),
            panel = this.panelContainer.children().eq(index);
 
-           this._trigger('close', null, index);
+           this._trigger('close', null, {'index':index});
 
            header.remove();
            panel.remove();
