@@ -23,6 +23,10 @@
             <id>rdebusscher</id>
             <name>Rudy De Busscher</name>
         </developer>
+        <developer>
+            <id>mertsincan</id>
+            <name>Mert Sincan</name>
+        </developer>
     </developers>
 	
     <build>
