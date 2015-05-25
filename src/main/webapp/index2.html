@@ -15,11 +15,14 @@
         <script type="text/javascript" src="resources/js/perfect-scrollbar.js"></script>
         <script type="text/javascript" src="resources/js/sh.js"></script>
         <script type="text/javascript" src="resources/js/site.js"></script>
+        
+        <!-- PrimeUI -->
+        <link rel="stylesheet" href="primeui/css/core/core.css" />
+        <script type="text/javascript" src="primeui/js/core/core.js"></script>
     </head>
 
     <body>
         <div class="PC">
-
             <div id="MENUSIDE">
                 <div id="MENUSIDEindent">
                     <span id="LOGO" class="bordersOfMenuSide">
@@ -28,7 +31,8 @@
                     </span>
                     <span id="SubMenu-Ajax" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><img src="resources/images/mono/ajaxCore.svg" /><img class="hiddenIcons" src="resources/images/mono/ajaxCoreBlue.svg" /><span class="MainLinkText">Forms</span></span>
                     <div class="SubMenuLinkContainer">
-                        <a class="SubMenuLink" href="#">* InputText</a>              
+                        <a class="SubMenuLink" href="inputtext.html">&#9679; InputText</a>
+                        <a class="SubMenuLink" href="inputtextarea.html">&#9679; InputTextarea</a>
                     </div>
                 </div>
             </div>
@@ -80,26 +84,8 @@
                     </div>
                     <!-- header bar end-->
 
-                    <div class="ContentSideSections">
-                        <div class="Content100 overHidden TextShadow">
-                            <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock"></span>
-                            <span class="defaultText dispTable">
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="ContentSideSections Implementation">
-
-                    </div>
-
-                    <div id="SourceContentSide" class="ContentSideSections Source">
-                        <div class="Content100 overHidden TextShadow">
-                            <span class="defaultText">
-                                <span class="fontSize18 logoBlueText">
-                                    <ui:insert name="source" />
-                                </span>
-                            </span>
-                        </div>
+                    <div id="widgetdemo">
+                        
                     </div>
 
                     <!-- footer start-->

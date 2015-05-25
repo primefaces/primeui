@@ -221,6 +221,14 @@ $(document).ready(function() {
         });
    });
    
+   $('#MENUSIDE .SubMenuLink').on('click', function(e) {
+       var href = $(this).attr('href');
+       $.get(href, function(content) {
+           $('#widgetdemo').html(content);
+       });
+       e.preventDefault();
+   });
+   
    window.Showcase = Showcase;
 });
 
