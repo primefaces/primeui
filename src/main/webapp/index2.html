@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <title>PrimeUI</title>
+        <link rel="stylesheet" type="text/css" href="resources/css/perfect-scrollbar.css" />
+        <link rel="stylesheet" type="text/css" href="resources/css/sh.css" />
+        <link rel="stylesheet" type="text/css" href="resources/css/site.css" />
+        <link rel="stylesheet" type="text/css" href="themes/aristo/theme.css" />
+        <script type="text/javascript" src="resources/js/jquery.js"></script>
+        <script type="text/javascript" src="resources/js/jquery-ui.js"></script>
+        <script type="text/javascript" src="resources/js/perfect-scrollbar.js"></script>
+        <script type="text/javascript" src="resources/js/sh.js"></script>
+        <script type="text/javascript" src="resources/js/site.js"></script>
+    </head>
+
+    <body>
+        <div class="PC">
+
+            <div id="MENUSIDE">
+                <div id="MENUSIDEindent">
+                    <span id="LOGO" class="bordersOfMenuSide">
+                        <img alt="logo" src="resources/images/logo.svg" />
+                        <img alt="logo" src="resources/images/logoBlue.svg" class="hiddenLogo"/>
+                    </span>
+                    <span id="SubMenu-Ajax" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><img src="resources/images/mono/ajaxCore.svg" /><img class="hiddenIcons" src="resources/images/mono/ajaxCoreBlue.svg" /><span class="MainLinkText">Forms</span></span>
+                    <div class="SubMenuLinkContainer">
+                        <a class="SubMenuLink" href="#">* InputText</a>              
+                    </div>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                //restoreMenuState();
+            </script>
+
+            <div id="CONTENTSIDE">
+                <div id="CONTENTSIDEindent">
+
+                    <!-- header bar start-->
+                    <div class="ContentSideSections" id="PFTopLinksCover" style="height:60px;">
+                        <a id="LOGOTEXTSIDE" href="index.xhtml">
+                            <span class="dispBlock logoDarkText fontSize30">PrimeUI</span>
+                            <span class="dispBlock logoBlueText fontSize30 mediumFont">SHOWCASE</span>
+                        </a>
+
+                        <a href="setup.html" class="PFTopLinks floatRight boldFont marginRight20"><img alt="mockosx" src="resources/images/pfMockosx.svg" /><span class="PFDarkText">QuickStart</span></a>
+                        <a href="download.html" class="PFTopLinks floatRight boldFont"><img alt="mockosx" src="resources/images/pfMockosx.svg" /><span class="PFDarkText">Download</span></a>
+                        <a href="forum.html" class="PFTopLinks floatRight boldFont"><img alt="mockosx" src="resources/images/pfMockosx.svg" /><span class="PFDarkText">Forum</span></a>
+                        <a href="license.html" class="PFTopLinks floatRight boldFont"><img alt="mockosx" src="resources/images/pfMockosx.svg" /><span class="PFDarkText">License</span></a>
+
+                        <div class="mobileLogoCover">
+                            <h:graphicImage name="main/images/logoBlue.svg" style="height:40px;" styleClass="floatLeft marginRight10"/>
+                            <span class="dispBlock logoDarkText fontSize16 floatLeft">PrimeFaces <span class="dispBlock logoBlueText fontSize18 mediumFont">SHOWCASE</span></span> 
+                        </div>
+                        <select id="mobilemenu" class="selectmenu mediumFont">
+                            <option value="">Menu</option>
+                            <option value="#{request.contextPath}/index.xhtml" class="LEVEL1">Home</option>
+                            <optgroup label="Ajax Framework" class="LEVEL1">
+                                <option value="#{request.contextPath}/ui/ajax/basic.xhtml">Basic</option>
+                                <option value="#{request.contextPath}/ui/ajax/event.xhtml">Event</option>
+                                <option value="#{request.contextPath}/ui/ajax/listener.xhtml">Listener</option>
+                                <option value="#{request.contextPath}/ui/ajax/counter.xhtml">Counter</option>
+                                <option value="#{request.contextPath}/ui/ajax/process.xhtml">Process</option>
+                                <option value="#{request.contextPath}/ui/ajax/validation.xhtml">Validation</option>
+                                <option value="#{request.contextPath}/ui/ajax/dropdown.xhtml">Dropdown</option>
+                                <option value="#{request.contextPath}/ui/ajax/partialSubmit.xhtml">PartialSubmit</option>
+                                <option value="#{request.contextPath}/ui/ajax/selector.xhtml">Selector</option>
+                                <option value="#{request.contextPath}/ui/ajax/search.xhtml">Search</option>
+                                <option value="#{request.contextPath}/ui/ajax/poll.xhtml">Poll</option>
+                                <option value="#{request.contextPath}/ui/ajax/fragment.xhtml">Fragment</option>
+                                <option value="#{request.contextPath}/ui/ajax/status.xhtml">Status</option>
+                                <option value="#{request.contextPath}/ui/ajax/remoteCommand.xhtml">RemoteCommand</option>      
+                            </optgroup>
+
+                        </select>
+                    </div>
+                    <!-- header bar end-->
+
+                    <div class="ContentSideSections">
+                        <div class="Content100 overHidden TextShadow">
+                            <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock"></span>
+                            <span class="defaultText dispTable">
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="ContentSideSections Implementation">
+
+                    </div>
+
+                    <div id="SourceContentSide" class="ContentSideSections Source">
+                        <div class="Content100 overHidden TextShadow">
+                            <span class="defaultText">
+                                <span class="fontSize18 logoBlueText">
+                                    <ui:insert name="source" />
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- footer start-->
+                    <div class="ContentSideSections">
+                        <span class="floatLeft fontSize14 gray"><a href="http://www.primetek.com.tr">PrimeTek</a>, Copyright &copy; 2015<br />All rights reserved.</span>
+                        <span class="floatRight fontSize14 gray">Running PrimeUI 1.1.</span>
+                        <div style="clear:both"></div>
+                    </div>
+                    <!-- footer end-->
+
+                </div>
+            </div>
+
+        </div>
+
+    </body>
+</html>
