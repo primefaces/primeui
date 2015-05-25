@@ -1,13 +1,11 @@
 <div>
     <link rel="stylesheet" href="primeui/css/inputtext/inputtext.css" />
     <link rel="stylesheet" href="primeui/css/inputtextarea/inputtextarea.css" />
-    <link rel="stylesheet" href="primeui/css/button/button.css" />
     <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
     <script type="text/javascript" src="primeui/plugins/rangyinput.js"></script>
     <script type="text/javascript" src="primeui/plugins/cursorposition.js"></script>
     <script type="text/javascript" src="primeui/js/inputtext/inputtext.js"></script>
     <script type="text/javascript" src="primeui/js/inputtextarea/inputtextarea.js"></script>
-    <script type="text/javascript" src="primeui/js/button/button.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript">
         $(function() {
@@ -33,26 +31,6 @@
                     });
                 }
             });
-
-            $('#state').puiinputtextarea();
-
-            $('#enable').puibutton({
-                click: function() {
-                    $('#state').puiinputtext('enable');
-                    $('#enable').hide();
-                    $('#disable').show();
-                }
-            });
-
-            $('#disable').puibutton({
-                click: function() {
-                    $('#state').puiinputtext('disable');
-                    $('#enable').show();
-                    $('#disable').hide();
-                }
-            });
-
-            $('#enable').hide();
 
             $('#doc').puitabview();
         });
@@ -84,166 +62,160 @@
 
         <h3>AutoComplete</h3>
         <textarea id="ac" rows="5" cols="30"></textarea>
+    </div>
 
-        <h3>Enable / Disable</h3>
+    <div id="SourceContentSide" class="ContentSideSections Source">
+        <div class="Content100 overHidden TextShadow">
+            <span class="defaultText">
+                <span class="fontSize18 logoBlueText">
+                    <div id="doc">
+                        <ul>
+                            <li><a href="#doc-overview">Overview</a></li>
+                            <li><a href="#doc-options">Options</a></li>
+                            <li><a href="#doc-events">Events</a></li>
+                            <li><a href="#doc-methods">Methods</a></li>
+                            <li><a href="#doc-methods">Source</a></li>
+                        </ul>
+                        <div>
+                            <div id="doc-overview">
 
-        <textarea id="state" rows="5" cols="30"></textarea>
-        <br/>
-        <button id="enable" type="button">Enable</button>
-        <button id="disable" type="button">Disable</button>
-
-        <div id="SourceContentSide" class="ContentSideSections Source">
-            <div class="Content100 overHidden TextShadow">
-                <span class="defaultText">
-                    <span class="fontSize18 logoBlueText">
-                        <div id="doc">
-                            <ul>
-                                <li><a href="#doc-overview">Overview</a></li>
-                                <li><a href="#doc-options">Options</a></li>
-                                <li><a href="#doc-events">Events</a></li>
-                                <li><a href="#doc-methods">Methods</a></li>
-                                <li><a href="#doc-methods">Source</a></li>
-                            </ul>
-                            <div>
-                                <div id="doc-overview">
-
-                                    <pre name="code" class="jscript">
+                                <pre class="brush:js">
 $('#default').puiinputtextarea();
-                                    </pre>
+                                </pre>
 
-                                    <pre name="code" class="jscript">
+                                <pre class="brush:xml">
 &lt;textarea id="default" &gt;&lt;/textarea&gt;
-                                    </pre>
+                                </pre>
 
-                                    <p>Note: Inputtextarea requires rangyinput and cursorposition plugins for autocomplete mode.</p>          
-                                </div>
+                                <p>Note: Inputtextarea requires rangyinput and cursorposition plugins for autocomplete mode.</p>          
+                            </div>
 
-                                <div id="doc-options">
+                            <div id="doc-options">
 
-                                    <table class="doc-table">
-                                        <thead>
-                                        <th class="ui-state-default">Name</th>
-                                        <th class="ui-state-default">Type</th>
-                                        <th class="ui-state-default">Default</th>
-                                        <th class="ui-state-default">Description</th>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="ui-widget-content">
-                                                <td>autoResize</td>
-                                                <td>Boolean</td>
-                                                <td>false</td>
-                                                <td>Defines if textarea increase its size automatically.</td>
-                                            </tr>
-                                            <tr class="ui-widget-content">
-                                                <td>autoComplete</td>
-                                                <td>Boolean</td>
-                                                <td>false</td>
-                                                <td>Defines if textarea auto complete words.</td>
-                                            </tr>
-                                            <tr class="ui-widget-content">
-                                                <td>maxlength</td>
-                                                <td>Integer</td>
-                                                <td>null</td>
-                                                <td>Determines the maximum letters in textarea.</td>
-                                            </tr>
-                                            <tr class="ui-widget-content">
-                                                <td>counter</td>
-                                                <td>Integer</td>
-                                                <td>null</td>
-                                                <td>Determines total length of letters.</td>
-                                            </tr>
-                                            <tr class="ui-widget-content">
-                                                <td>counterTemplate</td>
-                                                <td>String</td>
-                                                <td>'{0}'</td>
-                                                <td>Template the string which shows, how many letters left.</td>
-                                            </tr>
-                                            <tr class="ui-widget-content">
-                                                <td>minQueryLength</td>
-                                                <td>Integer</td>
-                                                <td>3</td>
-                                                <td>Number of characters to be typed to run a query.</td>
-                                            </tr>
-                                            <tr class="ui-widget-content">
-                                                <td>queryDelay</td>
-                                                <td>Integer</td>
-                                                <td>700</td>
-                                                <td>Delay in ms before sending each query.</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                <table class="doc-table">
+                                    <thead>
+                                    <th class="ui-state-default">Name</th>
+                                    <th class="ui-state-default">Type</th>
+                                    <th class="ui-state-default">Default</th>
+                                    <th class="ui-state-default">Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="ui-widget-content">
+                                            <td>autoResize</td>
+                                            <td>Boolean</td>
+                                            <td>false</td>
+                                            <td>Defines if textarea increase its size automatically.</td>
+                                        </tr>
+                                        <tr class="ui-widget-content">
+                                            <td>autoComplete</td>
+                                            <td>Boolean</td>
+                                            <td>false</td>
+                                            <td>Defines if textarea auto complete words.</td>
+                                        </tr>
+                                        <tr class="ui-widget-content">
+                                            <td>maxlength</td>
+                                            <td>Integer</td>
+                                            <td>null</td>
+                                            <td>Determines the maximum letters in textarea.</td>
+                                        </tr>
+                                        <tr class="ui-widget-content">
+                                            <td>counter</td>
+                                            <td>Integer</td>
+                                            <td>null</td>
+                                            <td>Determines total length of letters.</td>
+                                        </tr>
+                                        <tr class="ui-widget-content">
+                                            <td>counterTemplate</td>
+                                            <td>String</td>
+                                            <td>'{0}'</td>
+                                            <td>Template the string which shows, how many letters left.</td>
+                                        </tr>
+                                        <tr class="ui-widget-content">
+                                            <td>minQueryLength</td>
+                                            <td>Integer</td>
+                                            <td>3</td>
+                                            <td>Number of characters to be typed to run a query.</td>
+                                        </tr>
+                                        <tr class="ui-widget-content">
+                                            <td>queryDelay</td>
+                                            <td>Integer</td>
+                                            <td>700</td>
+                                            <td>Delay in ms before sending each query.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
 
-                                </div>
+                            </div>
 
-                                <div id="doc-events">
+                            <div id="doc-events">
 
-                                    <table class="doc-table">
-                                        <thead>
-                                        <th class="ui-state-default">Name</th>
-                                        <th class="ui-state-default">Parameters</th>
-                                        <th class="ui-state-default">Description</th>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="ui-widget-content">
-                                                <td>itemselect</td>
-                                                <td>
-                                                    event: puitextareaitemselect event
-                                                    <br />
-                                                    item: selected item from callback.
-                                                </td>
-                                                <td>Fired when suggested item select. Autocomplete option must be true for run.</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                <table class="doc-table">
+                                    <thead>
+                                    <th class="ui-state-default">Name</th>
+                                    <th class="ui-state-default">Parameters</th>
+                                    <th class="ui-state-default">Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="ui-widget-content">
+                                            <td>itemselect</td>
+                                            <td>
+                                                event: puitextareaitemselect event
+                                                <br />
+                                                item: selected item from callback.
+                                            </td>
+                                            <td>Fired when suggested item select. Autocomplete option must be true for run.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
 
-                                    <pre name="code" class="jscript">
+                                <pre class="brush: js">
 $('#default').puiinputtextarea({
     itemselect: function(event, item) {
         //...
     }
 });
-                                    </pre>
+                                </pre>
 
-                                </div>
+                            </div>
 
-                                <div id="doc-methods">
+                            <div id="doc-methods">
 
-                                    <table class="doc-table">
-                                        <thead>
-                                        <th class="ui-state-default">Name</th>
-                                        <th class="ui-state-default">Parameters</th>
-                                        <th class="ui-state-default">Description</th>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="ui-widget-content">
-                                                <td>search</td>
-                                                <td>query: String that wanted to search in textarea.</td>
-                                                <td>Search the string in textarea.</td>
-                                            </tr>
-                                            <tr class="ui-widget-content">
-                                                <td>option</td>
-                                                <td>name: Name of the option</td>
-                                                <td>Returns the value of the option.</td>
-                                            </tr>
-                                            <tr class="ui-widget-content">
-                                                <td>option</td>
-                                                <td>name: Name of the option, value: Value of the option</td>
-                                                <td>Set the value of the option.</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    Enabling and disabling of the textarea is possible by calling the enable and disable methods of the puiinput like $('#default').puiinput('disable');
+                                <table class="doc-table">
+                                    <thead>
+                                    <th class="ui-state-default">Name</th>
+                                    <th class="ui-state-default">Parameters</th>
+                                    <th class="ui-state-default">Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="ui-widget-content">
+                                            <td>search</td>
+                                            <td>query: String that wanted to search in textarea.</td>
+                                            <td>Search the string in textarea.</td>
+                                        </tr>
+                                        <tr class="ui-widget-content">
+                                            <td>option</td>
+                                            <td>name: Name of the option</td>
+                                            <td>Returns the value of the option.</td>
+                                        </tr>
+                                        <tr class="ui-widget-content">
+                                            <td>option</td>
+                                            <td>name: Name of the option, value: Value of the option</td>
+                                            <td>Set the value of the option.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                Enabling and disabling of the textarea is possible by calling the enable and disable methods of the puiinput like $('#default').puiinput('disable');
 
-                                    <pre name="code" class="jscript">
+                                <pre class="brush:js">
 $('#default').puiinputtextarea('hide');
-                                    </pre>
+                                </pre>
 
 
-                                </div>
+                            </div>
 
-                                <div id="doc-source">
+                            <div id="doc-source">
 
-                                    <pre name="code" class="jscript">
+                                <pre name="code" class="brush:js">
 &lt;script type="text/javascript"&gt;
         $(function() {
             $('#basic').puiinputtextarea();
@@ -271,9 +243,9 @@ $('#default').puiinputtextarea('hide');
 
         });
 &lt;/script&gt;
-                                    </pre>
+                                </pre>
 
-                                    <pre name="code" class="jscript">
+                                <pre class="brush:xml">
 &lt;textarea id="basic" rows="5" cols="30"&gt;&lt;/textarea&gt;
 
 &lt;textarea id="resize" rows="5" cols="30"&gt;&lt;/textarea&gt;
@@ -281,14 +253,17 @@ $('#default').puiinputtextarea('hide');
 &lt;textarea id="counter" rows="5" cols="30"&gt;&lt;/textarea&gt;
 
 &lt;textarea id="ac" rows="5" cols="30"&gt;&lt;/textarea&gt;
-                                    </pre>
+                                </pre>
 
-                                </div>
                             </div>
                         </div>
-                    </span>
+                    </div>
                 </span>
-            </div>
+            </span>
         </div>
     </div>
+
+    <script language="javascript">
+        SyntaxHighlighter.highlight();
+    </script>
 </div> 

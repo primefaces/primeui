@@ -1,34 +1,12 @@
 <div>
     <link rel="stylesheet" href="primeui/css/inputtext/inputtext.css" />
-    <link rel="stylesheet" href="primeui/css/button/button.css" />
     <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
     <script type="text/javascript" src="primeui/js/inputtext/inputtext.js"></script>
-    <script type="text/javascript" src="primeui/js/button/button.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript">
         $(function() {
             $('#in').puiinputtext();
-
-            $('#state').puiinputtext();
-
-            $('#enable').puibutton({
-                click: function() {
-                    $('#state').puiinputtext('enable');
-                    $('#enable').hide();
-                    $('#disable').show();
-                }
-            });
-
-            $('#disable').puibutton({
-                click: function() {
-                    $('#state').puiinputtext('disable');
-                    $('#enable').show();
-                    $('#disable').hide();
-                }
-            });
-
-            $('#enable').hide();
-
+            
             $('#doc').puitabview();
         });
     </script>
@@ -42,12 +20,6 @@
 
     <div class="ContentSideSections Implementation">
         <input id="in" type="text" />
-        <br/>
-        <h3>Enable / Disable</h3>
-
-        <input id="state" type="text" /> <br/>
-        <button id="enable" type="button">Enable</button>
-        <button id="disable" type="button">Disable</button>
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">
@@ -64,13 +36,11 @@
                         </ul>
                         <div>
                             <div id="doc-overview">
-
-
-                                <pre name="code" class="jscript">
+                                <pre class="brush: html">
 $('#default').puiinputtext(); 
                                 </pre>
 
-                                <pre name="code" class="jscript">
+                                <pre class="brush: js">
 &lt;input id="default" type="text" /&gt;
                                 </pre>
 
@@ -118,7 +88,7 @@ $('#default').puiinputtext();
 
                             <div id="doc-source">
 
-                                <pre name="code" class="jscript">
+                                <pre class="brush:js">
 &lt;script type="text/javascript"&gt;
         $(function() {
             $('#in').puiinputtext();
@@ -144,7 +114,7 @@ $('#default').puiinputtext();
 &lt;/script&gt; 
                                 </pre>
 
-                                <pre name="code" class="xml">
+                                <pre class="brush:xml">
 &lt;input id="in" type="text" /&gt;
                                             
 &lt;h3>Enable / Disable&lt;/h3>
@@ -163,5 +133,9 @@ $('#default').puiinputtext();
             </span>
         </div>
     </div>
+
+    <script language="javascript">
+        SyntaxHighlighter.highlight();
+    </script>
 
 </div>

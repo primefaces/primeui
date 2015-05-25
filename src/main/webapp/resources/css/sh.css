@@ -245,10 +245,10 @@
   background-color: white !important;
 }
 .syntaxhighlighter .line.alt1 {
-  background-color: #EFF3F6 !important;
+  background-color: white !important;
 }
 .syntaxhighlighter .line.alt2 {
-  background-color: #EFF3F6 !important;
+  background-color: white !important;
 }
 .syntaxhighlighter .line.highlighted.alt1, .syntaxhighlighter .line.highlighted.alt2 {
   background-color: #e0e0e0 !important;
@@ -263,7 +263,7 @@
   color: #afafaf !important;
 }
 .syntaxhighlighter .gutter .line {
-  border-right: 3px solid #BCC7CF !important;
+  border-right: 3px solid #6ce26c !important;
 }
 .syntaxhighlighter .gutter .line.highlighted {
   background-color: #6ce26c !important;
@@ -304,7 +304,7 @@
   color: #008200 !important;
 }
 .syntaxhighlighter .string, .syntaxhighlighter .string a {
-  color: #25AAE1 !important;
+  color: blue !important;
 }
 .syntaxhighlighter .keyword {
   color: #006699 !important;
@@ -341,8 +341,4 @@
 
 .syntaxhighlighter .keyword {
   font-weight: bold !important;
-}
-
-.syntaxhighlighter .toolbar {
-    display: none;
 }
