@@ -104,7 +104,7 @@
     </div>
 
     <div class="ContentSideSections Implementation">
-        <h3 style="margin-top:0">Basic</h3>
+        <h3 class="first">Basic</h3>
         <input id="basic" name="basic" type="text"/>
 
         <h3>Dropdown</h3>
@@ -251,7 +251,7 @@ $('#input').puiautocomplete({
                                     </tbody>
                                 </table>
 
-                                <pre name="code" class="jscript">
+                                <pre name="code" class="brush:js">
 $('#basic').puiautocomplete({
     select: function(event, item) {
         //...
@@ -288,7 +288,7 @@ $('#basic').puiautocomplete({
                                     </tbody>
                                 </table>
 
-                                <pre name="code" class="jscript">
+                                <pre name="code" class="brush:js">
 $('#basic').puiautocomplete('search', 'A');
                                 </pre>
 
@@ -318,7 +318,8 @@ $('#basic').puiautocomplete('search', 'A');
         $('#customcontent').puiautocomplete({
             completeSource: themes,
             content: function(data) {
-                return '&lt;img src="resources/demo/images/themes/' + data.label + '.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;' + data.label + '&lt;/span&gt;';
+                return '&lt;img src="resources/demo/images/themes/' + data.label + '.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;' 
+                    + data.label + '&lt;/span&gt;';
             }
         });
 

@@ -252,6 +252,10 @@ input.searchInput {
     margin-top: 40px;
 }
 
+.Implementation h3.first {
+    margin-top: 0px !important;
+}
+
 .SubSubMenu {
     padding: 15px 30px;
 }

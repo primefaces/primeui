@@ -1,437 +1,341 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>PrimeUI</title>
-        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
-        <meta http-equiv="pragma" content="no-cache" />
-        <meta http-equiv="expires" content="0" />
-        <link rel="stylesheet" type="text/css" href="resources/styles/all.css" />
-        <link rel="stylesheet" type="text/css" href="resources/demo/css/demo.css" />
-        <link rel="stylesheet" href="resources/demo/css/jquery-ui.css" />
-        <link rel="stylesheet" href="themes/aristo/theme.css" />
-        <link rel="stylesheet" href="primeui/css/core/core.css" />
-        <link rel="stylesheet" href="resources/demo/css/sh.css" />
-        <link rel="stylesheet" href="primeui/css/treetable/treetable.css" />
-        <link rel="stylesheet" href="primeui/css/inputtext/inputtext.css" />
-        <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
-        <link rel="stylesheet" href="primeui/css/growl/growl.css" />
-        <link rel="stylesheet" href="primeui/css/dropdown/dropdown.css" />
-        <script type="text/javascript" src="resources/demo/js/sh.js"></script>
-        <script type="text/javascript" src="resources/demo/js/jquery.js"></script>
-        <script type="text/javascript" src="resources/demo/js/jquery-ui.js"></script>
-        <script type="text/javascript" src="primeui/js/core/core.js"></script>
-        <script type="text/javascript" src="primeui/js/treetable/treetable.js"></script>
-        <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
-        <script type="text/javascript" src="primeui/js/growl/growl.js"></script>
-        <script type="text/javascript" src="primeui/js/dropdown/dropdown.js"></script>
-        <script type="text/javascript">
-            $(function() {
-                $('#local').puitreetable({
-                    columns: [
-                        {field:'name', headerText: 'Name'},
-                        {field:'size', headerText: 'Size'},
-                        {field:'type', headerText: 'Type'}
-                    ],
-                    nodes: [
-                        {
-                            data: {name:'Documents', size: '75kb', type: 'Folder'},
-                            children: [
-                                {
-                                    data: {name:'Work', size: '55kb', type: 'Folder'},
-                                    children: [
-                                        {
-                                            data: {name:'Expenses.doc', size: '30kb', type: 'Document'}
-                                        },
-                                        {
-                                            data: {name:'Resume.doc', size: '25kb', type: 'Resume'}
-                                        }
-                                    ]
-                                },
-                                {
-                                    data: {name:'Home', size: '20kb', type: 'Folder'},
-                                    children: [
-                                        {
-                                           data: {name:'Invoices', size: '20kb', type: 'Text'}
-                                       }
-                                   ]
-                                }
-                            ]
-                        },
-                        {
-                            data: {name:'Pictures', size:'150kb', type:'Folder'},
-                            children:[
-                                {
-                                    data: {name:'barcelona.jpg', size:'90kb', type:'Picture'}
-                                },
-                                {
-                                    data: {name:'primeui.png', size:'30kb', type:'Picture'}
-                                },
-                                {
-                                    data: {name:'optimus.jpg', size:'30kb', type:'Picture'}
-                                }
-                            ]
-                        }
-                    ]
-                });
-                
-                $('#remoteeager').puitreetable({
-                    selectionMode: 'multiple',
-                    columns: [
-                        {field:'name', headerText: 'Name'},
-                        {field:'size', headerText: 'Size'},
-                        {field:'type', headerText: 'Type'}
-                    ],
-                    nodeSelect: function(event, ui) {
-                        $('#messages').puigrowl('show', [{severity:'info', summary: 'Node Selected', detail: 'Data: ' + ui.data.name}]);
-                    },
-                    nodeUnselect: function(event, ui) {
-                        $('#messages').puigrowl('show', [{severity:'info', summary: 'Node Unselected', detail: 'Data: ' + ui.data.name}]);
-                    },
-                    afterExpand: function(event, ui) {
-                        $('#messages').puigrowl('show', [{severity:'info', summary: 'Node Expanded', detail: 'Data: ' + ui.data.name}]);
-                    },
-                    afterCollapse: function(event, ui) {
-                        $('#messages').puigrowl('show', [{severity:'info', summary: 'Node Collapsed', detail: 'Data: ' + ui.data.name}]);
-                    },
-                    nodes: function(ui, response) {                        
-                        $.ajax({
-                            type: "GET",
-                            url: 'rest/tree/documents',
-                            dataType: "json",
-                            context: this,
-                            success: function(data) {
-                                response.call(this, data);
+<div>
+    <link rel="stylesheet" href="primeui/css/treetable/treetable.css" />
+    <link rel="stylesheet" href="primeui/css/inputtext/inputtext.css" />
+    <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
+    <link rel="stylesheet" href="primeui/css/growl/growl.css" />
+    <script type="text/javascript" src="primeui/js/treetable/treetable.js"></script>
+    <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
+    <script type="text/javascript" src="primeui/js/growl/growl.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('#local').puitreetable({
+                columns: [
+                    {field: 'name', headerText: 'Name'},
+                    {field: 'size', headerText: 'Size'},
+                    {field: 'type', headerText: 'Type'}
+                ],
+                nodes: [
+                    {
+                        data: {name: 'Documents', size: '75kb', type: 'Folder'},
+                        children: [
+                            {
+                                data: {name: 'Work', size: '55kb', type: 'Folder'},
+                                children: [
+                                    {
+                                        data: {name: 'Expenses.doc', size: '30kb', type: 'Document'}
+                                    },
+                                    {
+                                        data: {name: 'Resume.doc', size: '25kb', type: 'Resume'}
+                                    }
+                                ]
+                            },
+                            {
+                                data: {name: 'Home', size: '20kb', type: 'Folder'},
+                                children: [
+                                    {
+                                        data: {name: 'Invoices', size: '20kb', type: 'Text'}
+                                    }
+                                ]
                             }
-                        });
-                    }
-                });
-                
-                $('#remoteinfinite').puitreetable({
-                    lazy: true,
-                     columns: [
-                        {field:'name', headerText: 'Name'},
-                        {field:'size', headerText: 'Size'},
-                        {field:'type', headerText: 'Type'}
-                    ],
-                    header: 'Infinite',
-                    nodes: function(ui, response) {  
-                        $.ajax({
-                            type: "GET",
-                            url: 'rest/tree/lazydocuments',
-                            dataType: "json",
-                            context: this,
-                            success: function(data) {
-                                response.call(this, data, ui.node);
-                            }
-                        });
-                    }
-                });
-
-                $('#messages').puigrowl();
-                $('#doc').puitabview();
-                
-                var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
-                    'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
-                    'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
-                    'ui-darkness', 'ui-lightness', 'vader');
-            
-                $('#themes').puidropdown({
-                    data: themes,
-                    content: function(option) {
-                        return '<img src="resources/demo/images/themes/' + option + '.png" alt="" /><span style="float:right;font-size:14px">' + option + '</span>';
+                        ]
                     },
-                    change: function(e) {
-                        var themeLink = $('link[href$="theme.css"]'),
-                        newThemeURL =  'themes/' + $(this).val() + '/theme.css';
-                        
-                        themeLink.attr('href', newThemeURL);
+                    {
+                        data: {name: 'Pictures', size: '150kb', type: 'Folder'},
+                        children: [
+                            {
+                                data: {name: 'barcelona.jpg', size: '90kb', type: 'Picture'}
+                            },
+                            {
+                                data: {name: 'primeui.png', size: '30kb', type: 'Picture'}
+                            },
+                            {
+                                data: {name: 'optimus.jpg', size: '30kb', type: 'Picture'}
+                            }
+                        ]
                     }
-                });
+                ]
             });
-        </script>
-    </head>
-    <body>
-        <div id="wrapper">
-            <div id="header">
-                <div class="header-block">
-                    <h1 class="logo"><a href="index.html">primeui</a></h1>
-                    <ul id="nav">
-                        <li><a id="menu-overview" href="setup.html">Quickstart</a></li>
-                        <li><a id="menu-demos" href="demo.html">Demo</a></li>
-                        <li><a id="menu-development" href="download.html">Download</a></li>
-                        <li><a id="menu-themes" href="themes.html">Themes</a></li>
-                        <li><a id="menu-support" href="http://blog.primefaces.org/?cat=11">Blog</a></li>
-                        <li><a id="menu-social" href="http://forum.primefaces.org">Forum</a></li>
-                        <li><a id="menu-license" href="license.html">License</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div id="main">
-                <div class="content-section">
-                    <div class="heading">
-                        <h2>PrimeUI</h2>
-                    </div>
-                    <div class="content-block">					
-                        <div id="sidebar">
-                            <ul>
-                                <li class="widgets-header">ThemeSwitcher</li>
-                                <li class="themes-container"><select id="themes" name="themes"></select></li>
-                            </ul>
-                            <ul>
-                                <li class="widgets-header">Widgets</li>
-                                <li><a href="accordion.html">Accordion</a></li>
-                                <li><a href="autocomplete.html">AutoComplete</a></li>
-                                <li><a href="breadcrumb.html">Breadcrumb</a></li>
-                                <li><a href="button.html">Button</a></li>
-                                <li><a href="checkbox.html">Checkbox</a></li>
-                                <li><a href="datatable.html">Datatable</a></li>
-                                <li><a href="dialog.html">Dialog</a></li>
-                                <li><a href="dropdown.html">Dropdown</a></li>
-                                <li><a href="fieldset.html">Fieldset</a></li>
-                                <li><a href="galleria.html">Galleria</a></li>
-                                <li><a href="growl.html">Growl</a></li>
-                                <li><a href="inputtext.html">Inputtext</a></li>
-                                <li><a href="inputtextarea.html">Inputtextarea</a></li>
-                                <li><a href="lightbox.html">Lightbox</a></li>
-                                <li><a href="listbox.html">Listbox</a></li>
-                                <li><a href="menu.html">Menu</a></li>
-                                <li><a href="menubar.html">Menubar</a></li>
-                                <li><a href="contextmenu.html">Menu - Context</a></li>
-                                <li><a href="slidemenu.html">Menu - Slide</a></li>
-                                <li><a href="tieredmenu.html">Menu - Tiered</a></li>
-                                <li><a href="notify.html">Notify</a></li>
-                                <li><a href="paginator.html">Paginator</a></li>
-                                <li><a href="panel.html">Panel</a></li>
-                                <li><a href="password.html">Password</a></li>
-                                <li><a href="picklist.html">Picklist</a></li>
-                                <li><a href="progressbar.html">ProgressBar</a></li>
-                                <li><a href="radiobutton.html">RadioButton</a></li>
-                                <li><a href="rating.html">Rating</a></li>
-                                <li><a href="spinner.html">Spinner</a></li>
-                                <li><a href="splitbutton.html">SplitButton</a></li>
-                                <li><a href="sticky.html">Sticky</a></li>
-                                <li><a href="tabview.html">Tabview</a></li>
-                                <li><a href="terminal.html">Terminal</a></li>
-                                <li><a href="tooltip.html">Tooltip</a></li>
-                                <li><a href="tree.html">Tree</a></li>
-                                <li><a href="treetable.html">TreeTable</a></li>
-                            </ul>
-                        </div>
 
-                        <div id="content-demo">
-                            <h1 class="widget-title">TreeTable</h1>
-                            <p>TreeTable is used to display hierarchical data in tabular format.</p>
+            $('#remoteeager').puitreetable({
+                selectionMode: 'multiple',
+                columns: [
+                    {field: 'name', headerText: 'Name'},
+                    {field: 'size', headerText: 'Size'},
+                    {field: 'type', headerText: 'Type'}
+                ],
+                nodeSelect: function(event, ui) {
+                    $('#messages').puigrowl('show', [{severity: 'info', summary: 'Node Selected', detail: 'Data: ' + ui.data.name}]);
+                },
+                nodeUnselect: function(event, ui) {
+                    $('#messages').puigrowl('show', [{severity: 'info', summary: 'Node Unselected', detail: 'Data: ' + ui.data.name}]);
+                },
+                afterExpand: function(event, ui) {
+                    $('#messages').puigrowl('show', [{severity: 'info', summary: 'Node Expanded', detail: 'Data: ' + ui.data.name}]);
+                },
+                afterCollapse: function(event, ui) {
+                    $('#messages').puigrowl('show', [{severity: 'info', summary: 'Node Collapsed', detail: 'Data: ' + ui.data.name}]);
+                },
+                nodes: function(ui, response) {
+                    $.ajax({
+                        type: "GET",
+                        url: 'rest/tree/documents',
+                        dataType: "json",
+                        context: this,
+                        success: function(data) {
+                            response.call(this, data);
+                        }
+                    });
+                }
+            });
 
-                            <div id="messages"></div>
-                            
-                            <h3>Local Data</h3>
-                            <div id="local"></div>
-                                                        
-                            <h3>Remote Data with Selection and Events</h3>
-                            <div id="remoteeager"></div>
-                            
-                            <h3>Remote - Lazy Data</h3>
-                            <div id="remoteinfinite"></div>
+            $('#remoteinfinite').puitreetable({
+                lazy: true,
+                columns: [
+                    {field: 'name', headerText: 'Name'},
+                    {field: 'size', headerText: 'Size'},
+                    {field: 'type', headerText: 'Type'}
+                ],
+                header: 'Infinite',
+                nodes: function(ui, response) {
+                    $.ajax({
+                        type: "GET",
+                        url: 'rest/tree/lazydocuments',
+                        dataType: "json",
+                        context: this,
+                        success: function(data) {
+                            response.call(this, data, ui.node);
+                        }
+                    });
+                }
+            });
 
-                            <h3>Documentation</h3>
-                            <div id="doc">
+            $('#messages').puigrowl();
+            $('#doc').puitabview();
+        });
+    </script>
+
+    <div class="ContentSideSections">
+        <div class="Content100 overHidden TextShadow">
+            <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">TreeTable</span>
+            <span class="defaultText dispTable">TreeTable is used to display hierarchical data in tabular format.</span>
+        </div>
+    </div>
+
+    <div class="ContentSideSections Implementation">
+        <div id="messages"></div>
+
+        <h3 class="first">Local Data</h3>
+        <div id="local"></div>
+
+        <h3>Remote Data with Selection and Events</h3>
+        <div id="remoteeager"></div>
+
+        <h3>Remote - Lazy Data</h3>
+        <div id="remoteinfinite"></div>
+    </div>
+
+    <div id="SourceContentSide" class="ContentSideSections Source">
+        <div class="Content100 overHidden TextShadow">
+            <span class="defaultText">
+                <span class="fontSize18 logoBlueText">
+                    <div id="doc">
+                        <ul>
+                            <li><a href="#doc-overview">Overview</a></li>
+                            <li><a href="#doc-options">Options</a></li>
+                            <li><a href="#doc-events">Events</a></li>
+                            <li><a href="#doc-methods">Methods</a></li>
+                            <li><a href="#doc-methods">Source</a></li>
+                        </ul>
+                        <div>
+                            <div id="doc-overview">
+                                TreeTable has 3 loading methods defined using nodes option. 
                                 <ul>
-                                    <li><a href="#doc-overview">Overview</a></li>
-                                    <li><a href="#doc-options">Options</a></li>
-                                    <li><a href="#doc-events">Events</a></li>
-                                    <li><a href="#doc-methods">Methods</a></li>
-                                    <li><a href="#doc-methods">Source</a></li>
+                                    <li><strong>local:</strong> An array of TreeNode objects.</li>
+                                    <li><strong>remote eager:</strong> A function to load nodes from a url. Response
+                                        should be a JSON array of TreeNode objects. This function is called only once on 
+                                        initialization.</li>
+                                    <li><strong>remote lazy:</strong> A function to load nodes from a url. Response
+                                        should be a JSON array of TreeNode objects. This function is called each time
+                                        an unloaded node is expanded. Subsequents expand events do not call the remote data
+                                        as data is cached on client side.</li>
                                 </ul>
-                                <div>
-                                    <div id="doc-overview">
-                                        TreeTable has 3 loading methods defined using nodes option. 
-                                        <ul>
-                                            <li><strong>local:</strong> An array of TreeNode objects.</li>
-                                            <li><strong>remote eager:</strong> A function to load nodes from a url. Response
-                                            should be a JSON array of TreeNode objects. This function is called only once on 
-                                            initialization.</li>
-                                            <li><strong>remote lazy:</strong> A function to load nodes from a url. Response
-                                            should be a JSON array of TreeNode objects. This function is called each time
-                                            an unloaded node is expanded. Subsequents expand events do not call the remote data
-                                            as data is cached on client side.</li>
-                                        </ul>
-                                        See source tab for examples of each type.
+                                See source tab for examples of each type.
 
-                                        <pre name="code" class="jscript">
+                                <pre name="code" class="brush:js">
 $('#container').puitreetable({
     //options
 });
-                                        </pre>
+                                </pre>
 
-                                        <pre name="code" class="xml">
+                                <pre name="code" class="brush:xml">
 &lt;div id="container"&gt;&lt;/div&gt;
-                                        </pre>
+                                </pre>
 
-                                    </div>
+                            </div>
 
-                                    <div id="doc-options">
-                                        <table class="doc-table">
-                                            <thead>
-                                                <th class="ui-state-default">Name</th>
-                                                <th class="ui-state-default">Type</th>
-                                                <th class="ui-state-default">Default</th>
-                                                <th class="ui-state-default">Description</th>
-                                            </thead>
-                                            <tbody>
-                                                <tr class="ui-widget-content">
-                                                    <td>nodes</td>
-                                                    <td>array/function</td>
-                                                    <td>null</td>
-                                                    <td>DataSource for tree, can either be an array of TreeNodes or a function
-                                                    to provide an array of TreeNodes.</td>
-                                                </tr>
-                                                <tr class="ui-widget-content">
-                                                    <td>lazy</td>
-                                                    <td>boolean</td>
-                                                    <td>false</td>
-                                                    <td>In lazy mode, children nodes are loaded on demand. Prefer this option
-                                                    when dealing with large datasets.</td>
-                                                </tr>
-                                                <tr class="ui-widget-content">
-                                                    <td>selectionMode</td>
-                                                    <td>string</td>
-                                                    <td>null</td>
-                                                    <td>Defines selection type, valid values are single and multiple. Multiple is used with metakey.</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                            <div id="doc-options">
+                                <table class="doc-table">
+                                    <thead>
+                                    <th class="ui-state-default">Name</th>
+                                    <th class="ui-state-default">Type</th>
+                                    <th class="ui-state-default">Default</th>
+                                    <th class="ui-state-default">Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="ui-widget-content">
+                                            <td>nodes</td>
+                                            <td>array/function</td>
+                                            <td>null</td>
+                                            <td>DataSource for tree, can either be an array of TreeNodes or a function
+                                                to provide an array of TreeNodes.</td>
+                                        </tr>
+                                        <tr class="ui-widget-content">
+                                            <td>lazy</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>In lazy mode, children nodes are loaded on demand. Prefer this option
+                                                when dealing with large datasets.</td>
+                                        </tr>
+                                        <tr class="ui-widget-content">
+                                            <td>selectionMode</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Defines selection type, valid values are single and multiple. Multiple is used with metakey.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
 
-                                    <div id="doc-events">
-                                        <table class="doc-table">
-                                            <thead>
-                                                <th class="ui-state-default">Name</th>
-                                                <th class="ui-state-default">Parameters</th>
-                                                <th class="ui-state-default">Description</th>
-                                            </thead>
-                                            <tbody>
-                                                <tr class="ui-widget-content">
-                                                    <td>nodeSelect</td>
-                                                    <td>event: puitreetablenodeselect event
-                                                        <br />
-                                                        node: Node object.
-                                                        <br />
-                                                        data: Node data.</td>
-                                                    <td>Fired when a node is selected.</td>
-                                                </tr>
-                                                <tr class="ui-widget-content">
-                                                    <td>nodeUnselect</td>
-                                                    <td>event: puitreetablenodeunselect event
-                                                        <br />
-                                                        node: Node object.
-                                                        <br />
-                                                        data: Node data.</td>
-                                                    <td>Fired when a node is unselected.</td>
-                                                </tr>
-                                                <tr class="ui-widget-content">
-                                                    <td>beforeExpand</td>
-                                                    <td>event: puitreetablenodebeforeexpand event
-                                                        <br />
-                                                        node: Node object.
-                                                        <br />
-                                                        data: Node data.</td>
-                                                    <td>Fired before a node is expanded.</td>
-                                                </tr>
-                                                <tr class="ui-widget-content">
-                                                    <td>afterExpand</td>
-                                                    <td>event: puitreetablenodeafterexpand event
-                                                        <br />
-                                                        node: Node object.
-                                                        <br />
-                                                        data: Node data.</td>
-                                                    <td>Fired after a node is expanded.</td>
-                                                </tr>
-                                                <tr class="ui-widget-content">
-                                                    <td>beforeCollapse</td>
-                                                    <td>event: puitreetablenodebeforecollapse event
-                                                        <br />
-                                                        node: Node object.
-                                                        <br />
-                                                        data: Node data.</td>
-                                                    <td>Fired before a node is collapsed.</td>
-                                                </tr>
-                                                <tr class="ui-widget-content">
-                                                    <td>afterCollapse</td>
-                                                    <td>event: puitreetableaftercollapse event
-                                                        <br />
-                                                        node: Node object.
-                                                        <br />
-                                                        data: Node data.</td>
-                                                    <td>Fired after a node is collapsed.</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                            <div id="doc-events">
+                                <table class="doc-table">
+                                    <thead>
+                                    <th class="ui-state-default">Name</th>
+                                    <th class="ui-state-default">Parameters</th>
+                                    <th class="ui-state-default">Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="ui-widget-content">
+                                            <td>nodeSelect</td>
+                                            <td>event: puitreetablenodeselect event
+                                                <br />
+                                                node: Node object.
+                                                <br />
+                                                data: Node data.</td>
+                                            <td>Fired when a node is selected.</td>
+                                        </tr>
+                                        <tr class="ui-widget-content">
+                                            <td>nodeUnselect</td>
+                                            <td>event: puitreetablenodeunselect event
+                                                <br />
+                                                node: Node object.
+                                                <br />
+                                                data: Node data.</td>
+                                            <td>Fired when a node is unselected.</td>
+                                        </tr>
+                                        <tr class="ui-widget-content">
+                                            <td>beforeExpand</td>
+                                            <td>event: puitreetablenodebeforeexpand event
+                                                <br />
+                                                node: Node object.
+                                                <br />
+                                                data: Node data.</td>
+                                            <td>Fired before a node is expanded.</td>
+                                        </tr>
+                                        <tr class="ui-widget-content">
+                                            <td>afterExpand</td>
+                                            <td>event: puitreetablenodeafterexpand event
+                                                <br />
+                                                node: Node object.
+                                                <br />
+                                                data: Node data.</td>
+                                            <td>Fired after a node is expanded.</td>
+                                        </tr>
+                                        <tr class="ui-widget-content">
+                                            <td>beforeCollapse</td>
+                                            <td>event: puitreetablenodebeforecollapse event
+                                                <br />
+                                                node: Node object.
+                                                <br />
+                                                data: Node data.</td>
+                                            <td>Fired before a node is collapsed.</td>
+                                        </tr>
+                                        <tr class="ui-widget-content">
+                                            <td>afterCollapse</td>
+                                            <td>event: puitreetableaftercollapse event
+                                                <br />
+                                                node: Node object.
+                                                <br />
+                                                data: Node data.</td>
+                                            <td>Fired after a node is collapsed.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
 
-                                        <pre name="code" class="jscript">
+                                <pre name="code" class="brush:js">
                 $('#default').puitreetable({
                     nodeSelect: function(event, ui) {
                         //ui.data
                     }
                 });
-                                        </pre>
-                                    </div>
+                                </pre>
+                            </div>
 
-                                    <div id="doc-methods">
-                                        <table class="doc-table">
-                                            <thead>
-                                                <tr>
-                                                    <th class="ui-state-default">Name</th>
-                                                    <th class="ui-state-default">Parameters</th>
-                                                    <th class="ui-state-default">Description</th>
-                                                </tr>
-                                            </thead>
-                                        <tbody>
-                                            <tr class="ui-widget-content">
-                                                <td>expandNode</td>
-                                                <td>node: Row element as jQuery object to expand.</td>
-                                                <td>Expands the given node.</td>
-                                            </tr>
-                                            <tr class="ui-widget-content">
-                                                <td>collapseNode</td>
-                                                <td>node: Row element as jQuery object to collapse.</td>
-                                                <td>Collapses the given node.</td>
-                                            </tr>
-                                            <tr class="ui-widget-content">
-                                                <td>selectNode</td>
-                                                <td>node: Row element as jQuery object to collapse.</td>
-                                                <td>Activates the tab with given index.</td>
-                                            </tr>
-                                            <tr class="ui-widget-content">
-                                                <td>unselectNode</td>
-                                                <td>node: Row element as jQuery object to collapse.</td>
-                                                <td>Deactivates the tab with given index.</td>
-                                            </tr>
-                                            <tr class="ui-widget-content">
-                                                <td>unselectAllNodes</td>
-                                                <td></td>
-                                                <td>Clears selection.</td>
-                                            </tr>
-                                            <tr class="ui-widget-content">
-                                                <td>option</td>
-                                                <td>name: Name of the option</td>
-                                                <td>Returns the value of the option.</td>
-                                            </tr>
-                                            <tr class="ui-widget-content">
-                                                <td>option</td>
-                                                <td>name: Name of the option, value: Value of the option</td>
-                                                <td>Set the value of the option.</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                        
-                                    <pre name="code" class="jscript">
+                            <div id="doc-methods">
+                                <table class="doc-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="ui-state-default">Name</th>
+                                            <th class="ui-state-default">Parameters</th>
+                                            <th class="ui-state-default">Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="ui-widget-content">
+                                            <td>expandNode</td>
+                                            <td>node: Row element as jQuery object to expand.</td>
+                                            <td>Expands the given node.</td>
+                                        </tr>
+                                        <tr class="ui-widget-content">
+                                            <td>collapseNode</td>
+                                            <td>node: Row element as jQuery object to collapse.</td>
+                                            <td>Collapses the given node.</td>
+                                        </tr>
+                                        <tr class="ui-widget-content">
+                                            <td>selectNode</td>
+                                            <td>node: Row element as jQuery object to collapse.</td>
+                                            <td>Activates the tab with given index.</td>
+                                        </tr>
+                                        <tr class="ui-widget-content">
+                                            <td>unselectNode</td>
+                                            <td>node: Row element as jQuery object to collapse.</td>
+                                            <td>Deactivates the tab with given index.</td>
+                                        </tr>
+                                        <tr class="ui-widget-content">
+                                            <td>unselectAllNodes</td>
+                                            <td></td>
+                                            <td>Clears selection.</td>
+                                        </tr>
+                                        <tr class="ui-widget-content">
+                                            <td>option</td>
+                                            <td>name: Name of the option</td>
+                                            <td>Returns the value of the option.</td>
+                                        </tr>
+                                        <tr class="ui-widget-content">
+                                            <td>option</td>
+                                            <td>name: Name of the option, value: Value of the option</td>
+                                            <td>Set the value of the option.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <pre name="code" class="brush:js">
                 $('#default').puitreetable('unselectAllNodes');
-                                    </pre>
-                                    </div>
+                                </pre>
+                            </div>
 
-                                    <div id="doc-source">
+                            <div id="doc-source">
 
-                                        <pre name="code" class="jscript">
+                                <pre name="code" class="brush:js">
 $(function() {
     $('#local').puitreetable({
         columns: [
@@ -536,9 +440,9 @@ $(function() {
 
     $('#messages').puigrowl();
 });
-                                        </pre>
+                                </pre>
 
-                                        <pre name="code" class="xml">
+                                <pre name="code" class="brush:xml">
 &lt;div id="messages"&gt;&lt;/div&gt;
                             
 &lt;h3&gt;Local Data&lt;/h3&gt;
@@ -549,32 +453,19 @@ $(function() {
 
 &lt;h3&gt;Remote - Lazy Data&lt;/h3&gt;
 &lt;div id="remoteinfinite"&gt;&lt;/div&gt;
-                                        </pre>
+                                </pre>
 
-                                    </div>
-
-                                </div>
                             </div>
 
                         </div>
-
-                        <div style="clear: both" />
                     </div>
-                </div>
-            </div>
-            <div id="footer">
-                <div class="footer-block">
-                    <div class="copy-block">
-                        <span class="copy">Copyright 2014 <a href="http://www.primetek.com.tr">PrimeTek</a> All rights reserved.</span>
-                    </div>
-                    <img src="primeui/images/ornament.png" width="167" height="43" alt="image description" class="ornament" />
-                </div>
-            </div>
+                </span>
+            </span>
         </div>
+    </div>
 
-        <script language="javascript">
-            dp.SyntaxHighlighter.ClipboardSwf = '/resources/demo/js/clipboard.swf';
-            dp.SyntaxHighlighter.HighlightAll('code');
-        </script>
-    </body>
-</html>
+    <script language="javascript">
+        SyntaxHighlighter.highlight();
+    </script>
+
+</div>

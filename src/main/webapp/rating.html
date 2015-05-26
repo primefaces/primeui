@@ -1,316 +1,195 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>PrimeUI</title>
-        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
-        <meta http-equiv="pragma" content="no-cache" />
-        <meta http-equiv="expires" content="0" />
-        <link rel="stylesheet" type="text/css" href="resources/styles/all.css" />
-        <link rel="stylesheet" type="text/css" href="resources/demo/css/demo.css" />
-        <link rel="stylesheet" href="resources/demo/css/jquery-ui.css" />
-        <link rel="stylesheet" href="resources/demo/css/aristo/theme.css" />
-        <link rel="stylesheet" href="resources/demo/css/sh.css" />
-        <link rel="stylesheet" href="primeui/css/rating/rating.css" />
-        <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
-        <link rel="stylesheet" href="primeui/css/inputtext/inputtext.css" />
-        <link rel="stylesheet" href="primeui/css/button/button.css" />
-        <link rel="stylesheet" href="primeui/css/dropdown/dropdown.css" />
-		<link rel="stylesheet" href="primeui/css/core/core.css" />
-        <script type="text/javascript" src="resources/demo/js/sh.js"></script>
-        <script type="text/javascript" src="resources/demo/js/jquery.js"></script>
-        <script type="text/javascript" src="resources/demo/js/jquery-ui.js"></script>
-        <script type="text/javascript" src="primeui/js/rating/rating.js"></script>
-        <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>       
-        <script type="text/javascript" src="primeui/js/core/core.js"></script>
-        <script type="text/javascript" src="primeui/js/button/button.js"></script>
-        <script type="text/javascript" src="primeui/js/dropdown/dropdown.js"></script>
-        <script type="text/javascript">
-            $(function() {
-                $('#rating').puirating();
+<div>
+    <link rel="stylesheet" href="primeui/css/rating/rating.css" />
+    <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
+    <link rel="stylesheet" href="primeui/css/inputtext/inputtext.css" />
+    <link rel="stylesheet" href="primeui/css/button/button.css" />
+    <script type="text/javascript" src="primeui/js/rating/rating.js"></script>
+    <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>       
+    <script type="text/javascript" src="primeui/js/core/core.js"></script>
+    <script type="text/javascript" src="primeui/js/button/button.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('#rating').puirating();
 
-                $('#default').puirating();
+            $('#default').puirating();
 
-                $('#callback').puirating({rate: function(event, value) {
-                        alert(value);
-                    }});
+            $('#callback').puirating({rate: function(event, value) {
+                    alert(value);
+                }});
 
-                $('#nocancel').puirating({cancel: false});
+            $('#nocancel').puirating({cancel: false});
 
-                $('#readonly').puirating({readonly: true, cancel: false});
+            $('#readonly').puirating({readonly: true, cancel: false});
 
-                $('#disabled').puirating({disabled: true, cancel: false});
+            $('#doc').puitabview();
+        });
+    </script>
 
-                $('#enable').puibutton({
-                    click: function () {
-                        $('#disabled').puirating('enable');
-                        $('#enable').hide();
-                        $('#disable').show();
-                    }
-                });
+    <div class="ContentSideSections">
+        <div class="Content100 overHidden TextShadow">
+            <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">Rating</span>
+            <span class="defaultText dispTable">Rating widget is a star based selection input.</span>
+        </div>
+    </div>
 
-                $('#disable').puibutton({
-                    click: function () {
-                        $('#disabled').puirating('disable');
-                        $('#enable').show();
-                        $('#disable').hide();
-                    }
-                });
+    <div class="ContentSideSections Implementation">
 
-                $('#disable').hide();
+        <h3 class="first">Default</h3> 
+        <input id="rating" type="hidden" />
+        <br />
 
-                $('#doc').puitabview();
-                
-                var themes = new Array('aristo', 'afterdark', 'afternoon', 'afterwork', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
-                    'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
-                    'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
-                    'ui-darkness', 'ui-lightness', 'vader');
-            
-                $('#themes').puidropdown({
-                    data: themes,
-                    content: function(option) {
-                        return '<img src="resources/demo/images/themes/' + option + '.png" alt="" /><span style="float:right;font-size:14px">' + option + '</span>';
-                    },
-                    change: function(e) {
-                        var themeLink = $('link[href$="theme.css"]'),
-                        newThemeURL =  'themes/' + $(this).val() + '/theme.css';
-                        
-                        themeLink.attr('href', newThemeURL);
-                    }
-                });
-            });
-        </script>
-    </head>
-    <body>
-        <div id="wrapper">
-            <div id="header">
-                <div class="header-block">
-                    <h1 class="logo"><a href="index.html">primeui</a></h1>
-                    <ul id="nav">
-                        <li><a id="menu-overview" href="setup.html">Quickstart</a></li>
-                        <li><a id="menu-demos" href="demo.html">Demo</a></li>
-                        <li><a id="menu-development" href="download.html">Download</a></li>
-                        <li><a id="menu-themes" href="themes.html">Themes</a></li>
-                        <li><a id="menu-support" href="http://blog.primefaces.org/?cat=11">Blog</a></li>
-                        <li><a id="menu-social" href="http://forum.primefaces.org">Forum</a></li>
-                        <li><a id="menu-license" href="license.html">License</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div id="main">
-                <div class="content-section">
-                    <div class="heading">
-                        <h2>PrimeUI</h2>
-                    </div>
-                    <div class="content-block">					
-                        <div id="sidebar">
-                            <ul>
-                                <li class="widgets-header">ThemeSwitcher</li>
-                                <li class="themes-container"><select id="themes" name="themes"></select></li>
-                            </ul>
-                            <ul>
-                                <li class="widgets-header">Widgets</li>
-                                <li><a href="accordion.html">Accordion</a></li>
-                                <li><a href="autocomplete.html">AutoComplete</a></li>
-                                <li><a href="breadcrumb.html">Breadcrumb</a></li>
-                                <li><a href="button.html">Button</a></li>
-                                <li><a href="checkbox.html">Checkbox</a></li>
-                                <li><a href="datatable.html">Datatable</a></li>
-                                <li><a href="dialog.html">Dialog</a></li>
-                                <li><a href="dropdown.html">Dropdown</a></li>
-                                <li><a href="fieldset.html">Fieldset</a></li>
-                                <li><a href="galleria.html">Galleria</a></li>
-                                <li><a href="growl.html">Growl</a></li>
-                                <li><a href="inputtext.html">Inputtext</a></li>
-                                <li><a href="inputtextarea.html">Inputtextarea</a></li>
-                                <li><a href="lightbox.html">Lightbox</a></li>
-                                <li><a href="listbox.html">Listbox</a></li>
-                                <li><a href="menu.html">Menu</a></li>
-                                <li><a href="menubar.html">Menubar</a></li>
-                                <li><a href="contextmenu.html">Menu - Context</a></li>
-                                <li><a href="slidemenu.html">Menu - Slide</a></li>
-                                <li><a href="tieredmenu.html">Menu - Tiered</a></li>
-                                <li><a href="notify.html">Notify</a></li>
-                                <li><a href="paginator.html">Paginator</a></li>
-                                <li><a href="panel.html">Panel</a></li>
-                                <li><a href="password.html">Password</a></li>
-                                <li><a href="picklist.html">Picklist</a></li>
-                                <li><a href="progressbar.html">ProgressBar</a></li>
-                                <li><a href="radiobutton.html">RadioButton</a></li>
-                                <li><a href="rating.html">Rating</a></li>
-                                <li><a href="spinner.html">Spinner</a></li>
-                                <li><a href="splitbutton.html">SplitButton</a></li>
-                                <li><a href="sticky.html">Sticky</a></li>
-                                <li><a href="tabview.html">Tabview</a></li>
-                                <li><a href="terminal.html">Terminal</a></li>
-                                <li><a href="tooltip.html">Tooltip</a></li>
-                                <li><a href="tree.html">Tree</a></li>
-                                <li><a href="treetable.html">TreeTable</a></li>
-                            </ul>
-                        </div>
+        <h3>Default Value</h3> 
+        <input id="default" type="hidden" value="2"/>
+        <br />
 
-                        <div id="content-demo">
-                            <h1 class="widget-title">Rating</h1>
-                            <p>Rating widget is a star based selection input.</p>
+        <h3>Callback</h3> 
+        <input id="callback" type="hidden" />
+        <br />
 
-                            <h3>Default</h3> 
-                            <input id="rating" type="hidden" />
-                            <br />
+        <h3>No Cancel</h3> 
+        <input id="nocancel" type="hidden" />
+        <br />
 
-                            <h3>Default Value</h3> 
-                            <input id="default" type="hidden" value="2"/>
-                            <br />
+        <h3>ReadOnly</h3> 
+        <input id="readonly" type="hidden" value="3" readonly="readonly"/>
+  
+    </div>
 
-                            <h3>Callback</h3> 
-                            <input id="callback" type="hidden" />
-                            <br />
+    <div id="SourceContentSide" class="ContentSideSections Source">
+        <div class="Content100 overHidden TextShadow">
+            <span class="defaultText">
+                <span class="fontSize18 logoBlueText">
+                    <div id="doc">
+                        <ul>
+                            <li><a href="#doc-overview">Overview</a></li>
+                            <li><a href="#doc-options">Options</a></li>
+                            <li><a href="#doc-events">Events</a></li>
+                            <li><a href="#doc-methods">Methods</a></li>
+                            <li><a href="#doc-methods">Source</a></li>
+                        </ul>
+                        <div>
+                            <div id="doc-overview">
 
-                            <h3>No Cancel</h3> 
-                            <input id="nocancel" type="hidden" />
-                            <br />
-
-                            <h3>ReadOnly</h3> 
-                            <input id="readonly" type="hidden" value="3" readonly="readonly"/>
-                            <br />
-
-                            <h3>Disabled</h3> 
-                            <input id="disabled" type="hidden" value="3" disabled="disabled"/>
-                            <br />
-                            <button id="enable" type="button">Enable</button>
-                            <button id="disable" type="button">Disable</button>
-
-
-                            <h3>Documentation</h3>
-                            <div id="doc">
-                                <ul>
-                                    <li><a href="#doc-overview">Overview</a></li>
-                                    <li><a href="#doc-options">Options</a></li>
-                                    <li><a href="#doc-events">Events</a></li>
-                                    <li><a href="#doc-methods">Methods</a></li>
-                                    <li><a href="#doc-methods">Source</a></li>
-                                </ul>
-                                <div>
-                                    <div id="doc-overview">
-
-                                        <pre name="code" class="jscript">
+                                <pre name="code" class="brush:js">
 $('#default').puirating();
-                                        </pre>
+                                </pre>
 
-                                        <pre name="code" class="jscript">
+                                <pre name="code" class="brush:js">
 &lt;input id="rating" type="hidden" /&gt;   
-                                        </pre>
-                                    </div>
+                                </pre>
+                            </div>
 
-                                    <div id="doc-options">
-                                        <table class="doc-table">
-                                            <thead>
-                                                <th class="ui-state-default">Name</th>
-                                                <th class="ui-state-default">Type</th>
-                                                <th class="ui-state-default">Default</th>
-                                                <th class="ui-state-default">Description</th>
-                                            </thead>
-                                            <tbody>
-                                                <tr class="ui-widget-content">
-                                                    <td>stars</td>
-                                                    <td>Integer</td>
-                                                    <td>5</td>
-                                                    <td>Rating stars number.</td>
-                                                </tr>
-                                                <tr class="ui-widget-content">
-                                                    <td>cancel</td>
-                                                    <td>Boolean</td>
-                                                    <td>true</td>
-                                                    <td>Defines if user can cancel rating.</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                            <div id="doc-options">
+                                <table class="doc-table">
+                                    <thead>
+                                    <th class="ui-state-default">Name</th>
+                                    <th class="ui-state-default">Type</th>
+                                    <th class="ui-state-default">Default</th>
+                                    <th class="ui-state-default">Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="ui-widget-content">
+                                            <td>stars</td>
+                                            <td>Integer</td>
+                                            <td>5</td>
+                                            <td>Rating stars number.</td>
+                                        </tr>
+                                        <tr class="ui-widget-content">
+                                            <td>cancel</td>
+                                            <td>Boolean</td>
+                                            <td>true</td>
+                                            <td>Defines if user can cancel rating.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
 
-                                    <div id="doc-events">
-                                        <table class="doc-table">
-                                            <thead>
-                                                <th class="ui-state-default">Name</th>
-                                                <th class="ui-state-default">Parameters</th>
-                                                <th class="ui-state-default">Description</th>
-                                            </thead>
-                                            <tbody>
-                                                <tr class="ui-widget-content">
-                                                    <td>rate</td>
-                                                    <td>event: puiratingrate event
-                                                        <br />
-                                                        value: Rating value.
-                                                    </td>
-                                                    <td>Fired when stars selected.</td>
-                                                </tr>
-                                                <tr class="ui-widget-content">
-                                                    <td>cancel</td>
-                                                    <td>event: puiratingcancel event
-                                                    </td>
-                                                    <td>Fired when rating is cleared.</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                            <div id="doc-events">
+                                <table class="doc-table">
+                                    <thead>
+                                    <th class="ui-state-default">Name</th>
+                                    <th class="ui-state-default">Parameters</th>
+                                    <th class="ui-state-default">Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="ui-widget-content">
+                                            <td>rate</td>
+                                            <td>event: puiratingrate event
+                                                <br />
+                                                value: Rating value.
+                                            </td>
+                                            <td>Fired when stars selected.</td>
+                                        </tr>
+                                        <tr class="ui-widget-content">
+                                            <td>cancel</td>
+                                            <td>event: puiratingcancel event
+                                            </td>
+                                            <td>Fired when rating is cleared.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
 
-                                        <pre name="code" class="jscript">
+                                <pre name="code" class="brush:js">
 $('#default').puirating({
     rate: function(event, value) { 
         //..
 }});
-                                        </pre>
-                                    </div>
+                                </pre>
+                            </div>
 
-                                    <div id="doc-methods">
-                                        <table class="doc-table">
-                                            <thead>
-                                                <th class="ui-state-default">Name</th>
-                                                <th class="ui-state-default">Parameters</th>
-                                                <th class="ui-state-default">Description</th>
-                                            </thead>
-                                            <tbody>
-                                                <tr class="ui-widget-content">
-                                                    <td>cancel</td>
-                                                    <td>-</td>
-                                                    <td>Clears selection.</td>
-                                                </tr>
-                                                <tr class="ui-widget-content">
-                                                    <td>getValue</td>
-                                                    <td>-</td>
-                                                    <td>Returns current value.</td>
-                                                </tr>
-                                                <tr class="ui-widget-content">
-                                                    <td>setValue</td>
-                                                    <td>value: Value to update.</td>
-                                                    <td>Updates current value.</td>
-                                                </tr>
-                                                <tr class="ui-widget-content">
-                                                    <td>enable</td>
-                                                    <td>-</td>
-                                                    <td>Enable the widget</td>
-                                                </tr>
-                                                <tr class="ui-widget-content">
-                                                    <td>disable</td>
-                                                    <td>-</td>
-                                                    <td>Disable the widget.</td>
-                                                </tr>
-                                                <tr class="ui-widget-content">
-                                                    <td>option</td>
-                                                    <td>name: Name of the option</td>
-                                                    <td>Returns the value of the option.</td>
-                                                </tr>
-                                                <tr class="ui-widget-content">
-                                                    <td>option</td>
-                                                    <td>name: Name of the option, value: Value of the option</td>
-                                                    <td>Set the value of the option.</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                            <div id="doc-methods">
+                                <table class="doc-table">
+                                    <thead>
+                                    <th class="ui-state-default">Name</th>
+                                    <th class="ui-state-default">Parameters</th>
+                                    <th class="ui-state-default">Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="ui-widget-content">
+                                            <td>cancel</td>
+                                            <td>-</td>
+                                            <td>Clears selection.</td>
+                                        </tr>
+                                        <tr class="ui-widget-content">
+                                            <td>getValue</td>
+                                            <td>-</td>
+                                            <td>Returns current value.</td>
+                                        </tr>
+                                        <tr class="ui-widget-content">
+                                            <td>setValue</td>
+                                            <td>value: Value to update.</td>
+                                            <td>Updates current value.</td>
+                                        </tr>
+                                        <tr class="ui-widget-content">
+                                            <td>enable</td>
+                                            <td>-</td>
+                                            <td>Enable the widget</td>
+                                        </tr>
+                                        <tr class="ui-widget-content">
+                                            <td>disable</td>
+                                            <td>-</td>
+                                            <td>Disable the widget.</td>
+                                        </tr>
+                                        <tr class="ui-widget-content">
+                                            <td>option</td>
+                                            <td>name: Name of the option</td>
+                                            <td>Returns the value of the option.</td>
+                                        </tr>
+                                        <tr class="ui-widget-content">
+                                            <td>option</td>
+                                            <td>name: Name of the option, value: Value of the option</td>
+                                            <td>Set the value of the option.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
 
-                                        <pre name="code" class="jscript">
+                                <pre name="code" class="brush:js">
 $('#default').puirating('cancel');  
-                                        </pre>
-                                    </div>
+                                </pre>
+                            </div>
 
-                                    <div id="doc-source">
-                                        <pre name="code" class="jscript">
+                            <div id="doc-source">
+                                <pre name="code" class="brush:js">
 &lt;script type="text/javascript"&gt;
         $(function() {
             $('#rating').puirating();
@@ -324,31 +203,12 @@ $('#default').puirating('cancel');
             $('#nocancel').puirating({cancel:false});
                 
             $('#readonly').puirating({readonly:true, cancel:false});
-                
-            $('#disabled').puirating({disabled:true, cancel:false});
-                                            
-            $('#enable').puibutton({
-                click: function () {
-                    $('#disabled').puirating('enable');
-                    $('#enable').hide();
-                    $('#disable').show();
-                }
-             });
-
-            $('#disable').puibutton({
-                click: function () {
-                    $('#disabled').puirating('disable');
-                    $('#enable').show();
-                    $('#disable').hide();
-                }
-            });
-
-            $('#disable').hide();                                            
+                                         
         });
     &lt;/script&gt;
-                                        </pre>
+                                </pre>
 
-                                        <pre name="code" class="xml">
+                                <pre name="code" class="brush:xml">
 &lt;input id="rating" type="hidden" /&gt;
 
 &lt;input id="default" type="hidden" value="2"/&gt; 
@@ -358,38 +218,18 @@ $('#default').puirating('cancel');
 &lt;input id="nocancel" type="hidden" /&gt;  
 
 &lt;input id="readonly" type="hidden" value="3" readonly="readonly"/&gt; 
-
-&lt;input id="disabled" type="hidden" value="3" disabled="disabled"/&gt; 
                                             
-&lt;button id="enable" type="button"&gt;Enable&lt;/button&gt;
-&lt;button id="disable" type="button"&gt;Disable&lt;/button&gt;
-                                            
-                                        </pre>
-                                    </div>
-                                </div>
+                                </pre>
                             </div>
-
-
-
                         </div>
-
-                        <div style="clear: both" />
                     </div>
-                </div>
-            </div>
-            <div id="footer">
-                <div class="footer-block">
-                    <div class="copy-block">
-                        <span class="copy">Copyright 2014 <a href="http://www.primetek.com.tr">PrimeTek</a> All rights reserved.</span>
-                    </div>
-                    <img src="primeui/images/ornament.png" width="167" height="43" alt="image description" class="ornament" />
-                </div>
-            </div>
+                </span>
+            </span>
         </div>
+    </div>
 
-        <script language="javascript">
-            dp.SyntaxHighlighter.ClipboardSwf = '/resources/demo/js/clipboard.swf';
-            dp.SyntaxHighlighter.HighlightAll('code');
-        </script>
-    </body>
-</html>
+    <script language="javascript">
+        SyntaxHighlighter.highlight();
+    </script>
+
+</div>

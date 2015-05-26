@@ -92,37 +92,12 @@ $('#default').puiinputtext();
 &lt;script type="text/javascript"&gt;
         $(function() {
             $('#in').puiinputtext();
-
-            $('#enable').puibutton({
-                click: function () {
-                    $('#state').puiinputtext('enable');
-                    $('#enable').hide();
-                    $('#disable').show();
-                }
-            });
-
-            $('#disable').puibutton({
-                click: function () {
-                    $('#state').puiinputtext('disable');
-                    $('#enable').show();
-                    $('#disable').hide();
-                }
-            });
-
-            $('#enable').hide();
         });
 &lt;/script&gt; 
                                 </pre>
 
                                 <pre class="brush:xml">
-&lt;input id="in" type="text" /&gt;
-                                            
-&lt;h3>Enable / Disable&lt;/h3>
-
-&lt;input id="state" type="text" /> &lt;br/>
-&lt;button id="enable" type="button">Enable&lt;/button>
-&lt;button id="disable" type="button">Disable&lt;/button>
-                                            
+&lt;input id="in" type="text" /&gt;             
                                 </pre>
 
                             </div>
