@@ -219,18 +219,37 @@ $(document).ready(function() {
                 $(this).prev().show();
             }
         });
-   });
+    });
    
-   $('#MENUSIDE .SubMenuLink').on('click', function(e) {
+    $('#MENUSIDE .SubMenuLink').on('click', function(e) {
        var href = $(this).attr('href');
        $.get(href, function(content) {
            $('#widgetdemo').html(content);
        });
+       
+       window.location.hash = href.split('.')[0]; 
        e.preventDefault();
    });
-   
+
+   searchLocationHash();
    window.Showcase = Showcase;
 });
+
+$(window).bind('hashchange', function (e) {
+    searchLocationHash();
+    e.preventDefault();
+});
+
+function searchLocationHash() {
+   var hash = window.location.hash,
+       item = null;
+
+   if(hash.length) {
+       hash = hash.replace("#","");
+       item = $('#MENUSIDE .SubMenuLink').filter("[href^="+ hash +"]");
+       item.trigger("click");
+   }
+}
 
 function restoreMenuState() {
     var activeMenuId = $.cookie('menustate');
