@@ -14,7 +14,10 @@ Showcase = {
 
         this.bindEvents();
         
-        this.openHashPage();
+        var hash = window.location.hash;
+        if(hash) {
+            this.openPageHash(hash);
+        }
     },
 
     bindEvents: function() {
@@ -34,17 +37,22 @@ Showcase = {
         
         this.menu.find('a.SubMenuLink').on('click', function(e) {
             var href = $(this).attr('href');
-            $.get(href, function(content) {
-                $('#widgetdemo').html(content);
-            });
-
+            Showcase.openPage(href);
             window.location.hash = href.substring(href.lastIndexOf('/'), href.indexOf('.html'));
+            Showcase.hashChangeByLink = true;
             e.preventDefault();
         });
         
         $(window).on('hashchange', function (e) {
-            //Showcase.openHashPage();
-            e.preventDefault();
+            if(!Showcase.hashChangeByLink) {
+                var hash = window.location.hash;
+                if(hash) {
+                    Showcase.openPageHash(hash);
+                }
+            }
+            else {
+                Showcase.hashChangeByLink = false;
+            }
         });
     },
 
@@ -85,19 +93,24 @@ Showcase = {
             $.cookie('menustate', headerJQ.attr('id'), {path: '/'});
         }
     },
+    
+    openPageHash: function(hash) {
+        if(hash && hash.length > 1) {
+            var plainHash = hash.substring(1),
+            root = window.location.href.split('#')[0],
+            url = root + plainHash + '.html';
 
-    openHashPage: function() {
-        var hash = window.location.hash,
-        item = null;
-
-        if(hash.length) {
-            hash = hash.replace("#","");
-            item = $('#MENUSIDE .SubMenuLink').filter("[href^="+ hash +"]");
-            item.trigger("click");
+            this.openPage(url);
         }
-     },
+    },
 
-     restoreMenuState: function() {
+    openPage: function(url) {
+        $.get(url, function(content) {
+            $('#widgetdemo').html(content);
+        });
+    },
+
+    restoreMenuState: function() {
          var activeMenuId = $.cookie('menustate');
          this.activeMenu = document.getElementById(activeMenuId);
 
