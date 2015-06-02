@@ -1,10 +1,8 @@
 <div>
     <link rel="stylesheet" href="primeui/css/inputtext/inputtext.css" />
-    <link rel="stylesheet" href="primeui/css/button/button.css" />
     <link rel="stylesheet" href="primeui/css/dropdown/dropdown.css" />
     <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
     <script type="text/javascript" src="primeui/js/inputtext/inputtext.js"></script>
-    <script type="text/javascript" src="primeui/js/button/button.js"></script>
     <script type="text/javascript" src="primeui/js/dropdown/dropdown.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript">
@@ -30,20 +28,6 @@
             $('#filter').puidropdown({
                 filter: true
             });
-
-            $('#update').puidropdown();
-
-            $('#updateOptions').puibutton({
-                click: function() {
-                    var newOptions = [{value: '0', label: 'Select one'},
-                        {value: '6', label: 'Option 6'},
-                        {value: '7', label: 'Option 7'},
-                        {value: '8', label: 'Option 8'},
-                        {value: '9', label: 'Option 9'}
-                    ];
-
-                    $('#update').puidropdown('option', 'data', newOptions);
-                }});
 
             $('#doc').puitabview();
 
@@ -92,16 +76,6 @@
             <option value="6">Paris</option>
             <option value="7">Rome</option>
         </select>
-
-        <h3>Update</h3>
-        <select id="update" name="update">
-            <option value="0">Select One</option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-        </select><br/>
-        <button id="updateOptions" type="button">Update options</button>
-
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">
@@ -283,6 +257,7 @@ $('#basic').puidropdown();
                                     </tbody>
                                 </table>
 
+                                <h3>Example</h3>
                                 <pre name="code" class="brush:js">
 $('#basic').puidropdown('selectValue', 1);
                                 </pre>
@@ -314,22 +289,7 @@ $('#basic').puidropdown('selectValue', 1);
 
         $('#filter').puidropdown({
             filter: true
-        });
-
-        $('#update').puidropdown();
-
-        $('#updateOptions').puibutton({
-            click: function () {
-                var newOptions = [{value: '0', label: 'Select one'},
-                    {value: '6', label: 'Option 6'},
-                    {value: '7', label: 'Option 7'},
-                    {value: '8', label: 'Option 8'},
-                    {value: '9', label: 'Option 9'}
-                ];
-
-                $('#update').puidropdown('option', 'data', newOptions);
-            }
-        });                                           
+        });                                     
     });
 &lt;/script&gt;
                                 </pre>
@@ -369,15 +329,6 @@ $('#basic').puidropdown('selectValue', 1);
     &lt;option value="6"&gt;Paris&lt;/option&gt;
     &lt;option value="7"&gt;Rome&lt;/option&gt;
 &lt;/select&gt;
-                                            
-&lt;h3&gt;Update&lt;/h3&gt;
-&lt;select id="update" name="update"&gt;
-    &lt;option value="0"&gt;Select One&lt;/option&gt;
-    &lt;option value="1"&gt;Option 1&lt;/option&gt;
-    &lt;option value="2"&gt;Option 2&lt;/option&gt;
-    &lt;option value="3"&gt;Option 3&lt;/option&gt;
-&lt;/select&gt;&lt;br/&gt;
-&lt;button id="updateOptions" type="button"&gt;Update options&lt;/button&gt;
 
                                 </pre>
 

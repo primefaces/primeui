@@ -17,8 +17,8 @@
 
             $('#ac').puiinputtextarea({
                 autoComplete: true
-                , scrollHeight: 150
-                , completeSource: function(request, response) {
+                ,scrollHeight: 150
+                ,completeSource: function(request, response) {
                     $.ajax({
                         type: "GET",
                         url: './autocomplete',
@@ -168,6 +168,7 @@ $('#default').puiinputtextarea();
                                     </tbody>
                                 </table>
 
+                                <h3>Example</h3>
                                 <pre class="brush: js">
 $('#default').puiinputtextarea({
     itemselect: function(event, item) {
@@ -204,8 +205,8 @@ $('#default').puiinputtextarea({
                                         </tr>
                                     </tbody>
                                 </table>
-                                Enabling and disabling of the textarea is possible by calling the enable and disable methods of the puiinput like $('#default').puiinput('disable');
 
+                                <h3>Example</h3>
                                 <pre class="brush:js">
 $('#default').puiinputtextarea('hide');
                                 </pre>
@@ -217,31 +218,31 @@ $('#default').puiinputtextarea('hide');
 
                                 <pre name="code" class="brush:js">
 &lt;script type="text/javascript"&gt;
-        $(function() {
-            $('#basic').puiinputtextarea();
-                
-            $('#resize').puiinputtextarea({autoResize:true});
-                
-            $('#counter').puiinputtextarea({counter:$('#display'), counterTemplate:'{0} characters remaining.', maxlength:10});
-                
-            $('#ac').puiinputtextarea({
-                autoComplete:true
-                ,scrollHeight:150
-                ,completeSource:function(request, response) {
-                    $.ajax({
-                        type: "GET",
-                        url: './autocomplete',
-                        data: {query: request.query},
-                        dataType: "json",
-                        context: this,
-                        success: function(data) {
-                            response.call(this, data);
-                        }
-                    });
+$(function() {
+    $('#basic').puiinputtextarea();
+
+    $('#resize').puiinputtextarea({autoResize:true});
+
+    $('#counter').puiinputtextarea({counter:$('#display'), counterTemplate:'{0} characters remaining.', maxlength:10});
+
+    $('#ac').puiinputtextarea({
+        autoComplete:true
+        ,scrollHeight:150
+        ,completeSource:function(request, response) {
+            $.ajax({
+                type: "GET",
+                url: './autocomplete',
+                data: {query: request.query},
+                dataType: "json",
+                context: this,
+                success: function(data) {
+                    response.call(this, data);
                 }
             });
+        }
+    });
 
-        });
+});
 &lt;/script&gt;
                                 </pre>
 
