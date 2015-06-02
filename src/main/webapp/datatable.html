@@ -205,79 +205,79 @@ $('#tbl').puidatatable({
                             <div id="doc-options">
                                 <table class="doc-table">
                                     <thead>
-                                    <th class="ui-state-default">Name</th>
-                                    <th class="ui-state-default">Type</th>
-                                    <th class="ui-state-default">Default</th>
-                                    <th class="ui-state-default">Description</th>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Description</th>
                                     </thead>
                                     <tbody>
-                                        <tr class="ui-widget-content">
+                                        <tr>
                                             <td>columns</td>
                                             <td>Array</td>
                                             <td>null</td>
                                             <td>An array of columns definition instances.</td>
                                         </tr>
-                                        <tr class="ui-widget-content">
+                                        <tr>
                                             <td>datasource</td>
                                             <td>Array/Function</td>
                                             <td>null</td>
                                             <td>Datasource to load the data, valid options are a local javascript array or a function.</td>
                                         </tr>
-                                        <tr class="ui-widget-content">
+                                        <tr>
                                             <td>paginator</td>
                                             <td>Object</td>
                                             <td>null</td>
                                             <td>Configuration for paginator, see paginator widget for the options.</td>
                                         </tr>
-                                        <tr class="ui-widget-content">
+                                        <tr>
                                             <td>selectionMode</td>
                                             <td>string</td>
                                             <td>null</td>
                                             <td>Selection mode for datatable, valid values are single and multiple.</td>
                                         </tr>
-                                        <tr class="ui-widget-content">
+                                        <tr>
                                             <td>caption</td>
                                             <td>String</td>
                                             <td>null</td>
                                             <td>Caption text of the datatable.</td>
                                         </tr>
-                                        <tr class="ui-widget-content">
+                                        <tr>
                                             <td>lazy</td>
                                             <td>boolean</td>
                                             <td>false</td>
                                             <td>Determines if the remote data loading is lazy, only the current page is loaded if true.</td>
                                         </tr>
-                                        <tr class="ui-widget-content">
+                                        <tr>
                                             <td>sortField</td>
                                             <td>String</td>
                                             <td>null</td>
                                             <td>Determines the column on which the rows are initially sorted.</td>
                                         </tr>
-                                        <tr class="ui-widget-content">
+                                        <tr>
                                             <td>sortOrder</td>
                                             <td>int</td>
                                             <td>null</td>
                                             <td>Determines the order of the initial sorting 1 is up, -1 is down.</td>
                                         </tr>
-                                        <tr class="ui-widget-content">
+                                        <tr>
                                             <td>keepSelectionInLazyMode</td>
                                             <td>boolean</td>
                                             <td>false</td>
                                             <td>When true, the pagination in lazy mode will keep the selected rows. Developer is responsible for the fact that always the same rows in the same order needs to be returned in order to make the selection behave correctly.</td>
                                         </tr>
-                                        <tr class="ui-widget-content">
+                                        <tr>
                                             <td>scrollable</td>
                                             <td>boolean</td>
                                             <td>false</td>
                                             <td>In scrollable mode, data in body is scrollable with fixed header and footer.</td>
                                         </tr>
-                                        <tr class="ui-widget-content">
+                                        <tr>
                                             <td>scrollHeight</td>
                                             <td>boolean</td>
                                             <td>null</td>
                                             <td>Height of the scrollable body section, can be a fixed value in pixels like 50 or a percentage 50%.</td>
                                         </tr>
-                                        <tr class="ui-widget-content">
+                                        <tr>
                                             <td>scrollWidth</td>
                                             <td>boolean</td>
                                             <td>null</td>
@@ -291,20 +291,20 @@ $('#tbl').puidatatable({
                                 <table class="doc-table">
                                     <thead>
                                         <tr>
-                                            <th class="ui-state-default">Name</th>
-                                            <th class="ui-state-default">Parameters</th>
-                                            <th class="ui-state-default">Description</th>
+                                            <th>Name</th>
+                                            <th>Parameters</th>
+                                            <th>Description</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="ui-widget-content">
+                                        <tr>
                                             <td>rowSelect</td>
                                             <td>event: puidatatablerowselect event
                                                 <br />
                                                 data: Selected data</td>
                                             <td>Fired when a row is selected.</td>
                                         </tr>
-                                        <tr class="ui-widget-content">
+                                        <tr>
                                             <td>rowUnselect</td>
                                             <td>event: puidatatablerowunselect event
                                                 <br />
@@ -326,37 +326,37 @@ $('#tbl').puidatatable({
                             <div id="doc-methods">
                                 <table class="doc-table">
                                     <thead>
-                                    <th class="ui-state-default">Name</th>
-                                    <th class="ui-state-default">Parameters</th>
-                                    <th class="ui-state-default">Description</th>
+                                    <th>Name</th>
+                                    <th>Parameters</th>
+                                    <th>Description</th>
                                     </thead>
                                     <tbody>
-                                        <tr class="ui-widget-content">
+                                        <tr>
                                             <td>sort</td>
                                             <td>field: Name of the sort field, order: 1 or -1 for sort order.</td>
                                             <td>Sorts the data.</td>
                                         </tr>
-                                        <tr class="ui-widget-content">
+                                        <tr>
                                             <td>unselectAllRows</td>
                                             <td>-</td>
                                             <td>Cleans datatable selection.</td>
                                         </tr>
-                                        <tr class="ui-widget-content">
+                                        <tr>
                                             <td>selectRow(row, silent)</td>
                                             <td>row: tr element as jquery, silent: Flag not to trigger select event.</td>
                                             <td>Selects a given row.</td>
                                         </tr>
-                                        <tr class="ui-widget-content">
+                                        <tr>
                                             <td>unselectRow(row, silent)</td>
                                             <td>row: tr element as jquery, silent: Flag not to trigger select event.</td>
                                             <td>Unselects a given row.</td>
                                         </tr>
-                                        <tr class="ui-widget-content">
+                                        <tr>
                                             <td>reset</td>
                                             <td>-</td>
                                             <td>Resets the datatable state.</td>
                                         </tr>
-                                        <tr class="ui-widget-content">
+                                        <tr>
                                             <td>getSelection</td>
                                             <td>-</td>
                                             <td>Retrieves selected data. Warning: In Lazy loading mode, it retrieves only the selected rows on the current page of the paginator.</td>

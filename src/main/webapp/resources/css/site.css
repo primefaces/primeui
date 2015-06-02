@@ -199,7 +199,7 @@ a{ text-decoration:none; outline:none;color: #25AAE1}
 .Content100{width:100%;}
 
 /* general text styles */
-.defaultText{font-size:18px; color:#84939f;}
+.defaultText{font-size:18px; color:#5C666A;}
 .defaultTopic{font-size:46px; color:#e26e60; line-height:46px; padding:10px 0px 10px 0px;}
 
 /* buttons */
@@ -226,10 +226,6 @@ padding:20px; border-radius:5px; border-right:solid 60px #404c51;}
 
 input.searchInput {
     padding-left: 30px;
-}
-
-.ui-tabs .ui-tabs-nav li.tab-doc {
-    float: right
 }
 
 /** ClearFix **/
@@ -278,52 +274,88 @@ input.searchInput {
     margin-top: 0px;
 }
 
+/* Docs Table */
+.doc-table {
+    border-collapse: collapse;
+    font-size: 16px;
+    width: 100%;
+    text-shadow: none;
+    font-family: 'exoregular', "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+.doc-table th {
+    background-color: #dae8ef;
+    color: #72828B;
+    border: solid 1px #C1D5DF;
+    padding: 5px;
+}
+
+.doc-table tbody td {
+    color: #72828B;
+    padding: 4px 10px;
+    border: 1px solid #E5EBF0;
+}
+
+.doc-table tbody tr:nth-child(even) {
+    background-color: #FBFCFD;
+}
+
+.doc-table tbody nth-child(odd) {
+    background-color: #F3F6F9;
+}
+
 /* Tabs Source */
-.Source .ui-tabs {
+.Source .pui-tabview {
     background: none;
     border: 0 none;
 }
 
-.Source .ui-tabs .ui-tabs-nav {
+.Source .pui-tabview .pui-tabview-nav {
     background: none;
     margin-bottom: -1px;
     padding: 0 !important;
 }
 
-.Source .ui-tabs .ui-tabs-nav li {
+.Source .pui-tabview .pui-tabview-nav li {
     background: #DFE4E6;
     border-color: #BCC7CF;
     box-shadow: none !important;
 }
 
-.Source .ui-tabs .ui-tabs-nav li.tab-doc {
+.Source .pui-tabview .pui-tabview-nav li.tab-doc {
     margin-right: 0;
 }
 
-.Source .ui-tabs .ui-tabs-nav li.ui-state-hover.ui-state-default a {
+.Source .pui-tabview .pui-tabview-nav li.ui-state-hover.ui-state-default a {
     color: #5C666A;
 }
 
-.Source .ui-tabs .ui-tabs-nav li.ui-state-default a {
+.Source .pui-tabview .pui-tabview-nav li.ui-state-default a {
     color: #84939F;
     font-family: 'exoregular', "Trebuchet MS", Arial, Helvetica, sans-serif;
     text-shadow: none;
 }
 
-.Source .ui-tabs .ui-tabs-nav li.ui-state-active a {
+.Source .pui-tabview .pui-tabview-nav li.ui-state-active a {
     color: #5C666A;
 }
 
-.Source .ui-tabs .ui-tabs-nav li.ui-state-hover {
+.Source .pui-tabview .pui-tabview-nav li.ui-state-hover {
     box-shadow: none; 
 }
 
-.Source .ui-tabs .ui-tabs-nav li.ui-tabs-selected {
+.Source .pui-tabview .pui-tabview-nav li.pui-tabview-selected {
     background: #EFF3F6;
 }
 
-.Source .ui-tabs .ui-tabs-panels {
+.Source .pui-tabview .pui-tabview-panels {
     border-top: 1px solid #BCC7CF;
+}
+
+.Source .pui-tabview-panels h3 {
+    font-size: 24px;
+    font-color: #5C666A;
+    font-weight: normal;
 }
 
 /** Responsive **/
@@ -401,12 +433,8 @@ input.searchInput {
     .Content66 {
         width: 100%;
     }
-    
-    .ui-tabs .ui-tabs-nav li.tab-doc {
-        float: left
-    }
-    
-    .ui-tabs.ui-tabs-top > .ui-tabs-nav li {
+        
+    .pui-tabview.pui-tabview-top > .pui-tabview-nav li {
         width: 100%;
     }
     
