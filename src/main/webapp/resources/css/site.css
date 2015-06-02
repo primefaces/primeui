@@ -245,7 +245,8 @@ input.searchInput {
 }
 
 .Implementation h3 {
-    margin-top: 40px;
+    margin-top: 30px;
+    color: #5C666A;
 }
 
 .Implementation h3.first {
@@ -304,6 +305,12 @@ input.searchInput {
     background-color: #F3F6F9;
 }
 
+.Source h3 {
+    color: #5C666A;
+    font-family: 'exoregular', "Trebuchet MS", Arial, Helvetica, sans-serif;
+    margin-top: 20px;
+}
+
 /* Tabs Source */
 .Source .pui-tabview {
     background: none;
@@ -332,7 +339,6 @@ input.searchInput {
 
 .Source .pui-tabview .pui-tabview-nav li.ui-state-default a {
     color: #84939F;
-    font-family: 'exoregular', "Trebuchet MS", Arial, Helvetica, sans-serif;
     text-shadow: none;
 }
 
@@ -354,7 +360,6 @@ input.searchInput {
 
 .Source .pui-tabview-panels h3 {
     font-size: 24px;
-    font-color: #5C666A;
     font-weight: normal;
 }
 
