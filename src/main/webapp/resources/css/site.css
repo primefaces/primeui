@@ -305,9 +305,13 @@ input.searchInput {
     background-color: #F3F6F9;
 }
 
-.Source h3 {
+.Source .pui-tabview-panel {
     color: #5C666A;
     font-family: 'exoregular', "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+.Source h3 {
+    color: #5C666A;
     margin-top: 20px;
 }
 
@@ -356,6 +360,7 @@ input.searchInput {
 
 .Source .pui-tabview .pui-tabview-panels {
     border-top: 1px solid #BCC7CF;
+    color: #5C666A !important;
 }
 
 .Source .pui-tabview-panels h3 {

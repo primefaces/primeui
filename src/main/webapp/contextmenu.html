@@ -28,7 +28,7 @@
 
     <div class="ContentSideSections Implementation">
         <h3 class="first">Specific Target</h3>                            
-        <img id="img1" src="resources/demo/images/logo.png" />
+        <img id="img1" src="resources/demo/images/galleria/galleria1.jpg" />
 
         <ul id="cm2">
             <li><a data-icon="ui-icon-triangle-1-e">Next</a></li>
@@ -195,17 +195,17 @@ $('#cm1').puicontextmenu();
 
                                 <pre name="code" class="brush:js">
 &lt;script type="text/javascript"&gt;
+    $('#cm1').puicontextmenu();   
 
-$('#cm1').puicontextmenu();   
-  
-$('#cm2').puicontextmenu({
-   target:$('#img1')
-});
-     
+    $('#cm2').puicontextmenu({
+       target:$('#img1')
+    });
 &lt;/script&gt;
                                 </pre>
 
                                 <pre name="code" class="brush:xml">
+&lt;img id="img1" src="resources/demo/images/galleria/galleria1.jpg" /&gt;
+
 &ltul id="cm1"&gt
     &ltli&gt &lta data-icon="ui-icon-document"&gtFile&lt/a&gt
         &ltul&gt 
