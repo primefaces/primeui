@@ -181,7 +181,7 @@ a{ text-decoration:none; outline:none;color: #25AAE1}
 
 .bordersOfMenuSide{border-top:solid 1px #404a4e;}
 .hiddenIcons{opacity:0; filter:alpha(opacity=0);margin-left:-30px}
-.hiddenLogo{opacity:0; filter:alpha(opacity=0);margin-left:-62px}
+.hiddenLogo{opacity:0; filter:alpha(opacity=0);margin-left:-66px}
 .emptyBox{display:block; height:121px;}
 
 /* display */
