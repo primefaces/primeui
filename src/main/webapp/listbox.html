@@ -25,20 +25,6 @@
                 }
             });
 
-            $('#update').puilistbox();
-
-            $('#updateOptions').puibutton({
-                click: function() {
-                    var newOptions = [{value: '0', label: 'Select one'},
-                        {value: '6', label: 'Option 6'},
-                        {value: '7', label: 'Option 7'},
-                        {value: '8', label: 'Option 8'},
-                        {value: '9', label: 'Option 9'}
-                    ];
-
-                    $('#update').puilistbox('option', 'data', newOptions);
-                }});
-
             $('#doc').puitabview();
         });
     </script>
@@ -73,17 +59,6 @@
 
         <h3>Custom</h3>
         <select id="custom"></select>
-
-        <h3>Update</h3>
-        <select id="update">
-            <option value="0">Select One</option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-            <option value="4">Option 4</option>
-            <option value="5">Option 5</option>
-        </select>
-        <button id="updateOptions" type="button">Update options</button>
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">
@@ -183,10 +158,11 @@ $('#basic').puilistbox();
                                     </tbody>
                                 </table>
 
+                                <h3>Example</h3>
                                 <pre name="code" class="brush:js">
-                $('#default').puitree({
-                    nodeSelect: function(event, item) {
-                        //item.text()
+                $('#default').puilistbox({
+                    itemSelect: function(event, item) {
+                        
                     }
                 });
                                 </pre>
@@ -239,6 +215,7 @@ $('#basic').puilistbox();
                                     </tbody>
                                 </table>
 
+                                <h3>Example</h3>
                                 <pre name="code" class="brush:js">
 $('#basic').puilistbox('selectItem', 1);
                                 </pre>
@@ -264,23 +241,6 @@ $(function() {
             return '&lt;img src="resources/demo/images/themes/' + option + '.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;' + option + '&lt;/span&gt;';
         }
     });
-
-    $('#doc').puitabview();
-});
-
-$('#update').puilistbox();
-
-$('#updateOptions').puibutton({
-    click: function () {
-        var newOptions = [{value: '0', label: 'Select one'},
-            {value: '6', label: 'Option 6'},
-            {value: '7', label: 'Option 7'},
-            {value: '8', label: 'Option 8'},
-            {value: '9', label: 'Option 9'}
-        ];
-
-        $('#update').puilistbox('option', 'data', newOptions);
-    }
 });
 
                                 </pre>
@@ -308,17 +268,6 @@ $('#updateOptions').puibutton({
 
 &lt;h3&gt;Custom&lt;/h3&gt;
 &lt;select id="custom"&gt;&lt;/select&gt;
-                                            
-&lt;h3&gt;Update&lt;/h3&gt;
-&lt;select id="update"&gt;
-    &lt;option value="0"&gt;Select One&lt;/option&gt;
-    &lt;option value="1"&gt;Option 1&lt;/option&gt;
-    &lt;option value="2"&gt;Option 2&lt;/option&gt;
-    &lt;option value="3"&gt;Option 3&lt;/option&gt;
-    &lt;option value="4"&gt;Option 4&lt;/option&gt;
-    &lt;option value="5"&gt;Option 5&lt;/option&gt;
-&lt;/select&gt;
-&lt;button id="updateOptions" type="button"&gt;Update options&lt;/button&gt; 
                                             
                                 </pre>
 

@@ -123,6 +123,7 @@ $('#default').puiprogressbar();
                                     </tbody>
                                 </table>
 
+                                <h3>Example</h3>
                                 <pre name="code" class="brush:js">
 $('#default').puiprogressbar({
     complete: function(event) {
@@ -157,20 +158,18 @@ $('#default').puiprogressbar({
                             <div id="doc-source">
 
                                 <pre name="code" class="brush:js">
-&lt;script type="text/javascript"&gt;
-    $(function() {
-         $('#pb1').puiprogressbar();
-                
-         $('#pb2').puiprogressbar({
-              value: 50
-         });                
-         
-         setInterval(function() {
-              var val = $('#pb1').puiprogressbar('option', 'value') + 10;
-              $('#pb1').puiprogressbar('option', 'value', val);
-         }, 1000);
-    });
-&lt;/script&gt; 
+$(function() {
+     $('#pb1').puiprogressbar();
+
+     $('#pb2').puiprogressbar({
+          value: 50
+     });                
+
+     setInterval(function() {
+          var val = $('#pb1').puiprogressbar('option', 'value') + 10;
+          $('#pb1').puiprogressbar('option', 'value', val);
+     }, 1000);
+}); 
                                 </pre>
 
                                 <pre name="code" class="brush:xml">

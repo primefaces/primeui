@@ -161,6 +161,7 @@ $('#default').puipanel();
                                     </tbody>
                                 </table>
 
+                                <h3>Example</h3>
                                 <pre name="code" class="brush:js">
 $('#default').puipanel({
     afterToggle: function(event) {
@@ -211,6 +212,7 @@ $('#default').puipanel({
                                     </tbody>
                                 </table>
 
+                                <h3>Example</h3>
                                 <pre name="code" class="brush:js">
 $('#default').puipanel('toggle');
                                 </pre>
@@ -218,21 +220,19 @@ $('#default').puipanel('toggle');
 
                             <div id="doc-source">
                                 <pre name="code" class="brush:js">
-&lt;script type="text/javascript"&gt;
-    $(function() {
-        $('#default').puipanel();
+$(function() {
+    $('#default').puipanel();
 
-        $('#options').puipanel({
-            toggleable: true
-            ,closable: true
-        });
-
-        $('#horiztoggle').puipanel({
-            toggleable: true
-            ,toggleOrientation: 'horizontal'
-        });
+    $('#options').puipanel({
+        toggleable: true
+        ,closable: true
     });
-&lt;/script&gt;
+
+    $('#horiztoggle').puipanel({
+        toggleable: true
+        ,toggleOrientation: 'horizontal'
+    });
+});
                                 </pre>
 
                                 <pre name="code" class="brush:xml">

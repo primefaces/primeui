@@ -23,7 +23,6 @@
                 }
             });
 
-
             $('#doc').puitabview();
         });
     </script>
@@ -62,7 +61,7 @@ $('#trmnl').puiterminal({
 });
                                 </pre>
 
-                                <pre name="code" class="brush:js">
+                                <pre name="code" class="brush:xml">
 &lt;div id="trmnl" /&gt;
                                 </pre>
 
@@ -106,9 +105,9 @@ $('#trmnl').puiterminal({
                             <div id="doc-methods">
                                 <table class="doc-table">
                                     <thead>
-                                    <th>Name</th>
-                                    <th>Parameters</th>
-                                    <th>Description</th>
+                                        <th>Name</th>
+                                        <th>Parameters</th>
+                                        <th>Description</th>
                                     </thead>
                                     <tbody>
                                         <tr>
@@ -122,22 +121,20 @@ $('#trmnl').puiterminal({
 
                             <div id="doc-source">
                                 <pre name="code" class="brush:js">
-&lt;script type="text/javascript"&gt;
-         $('#trmnl').puiterminal({
-                    welcomeMessage:'Welcome to PrimeFaces Terminal, how are you today?',
-                    handler: function(request, response) {
-                        $.ajax({
-                            type: "GET",
-                            url: 'rest/terminal/' + request,
-                            dataType: "text",
-                            context: this,
-                            success: function(data) {
-                                response.call(this, data);
-                            }
-                        });
-                    }
-                });
-&lt;/script&gt; 
+$('#trmnl').puiterminal({
+        welcomeMessage:'Welcome to PrimeFaces Terminal, how are you today?',
+        handler: function(request, response) {
+            $.ajax({
+                type: "GET",
+                url: 'rest/terminal/' + request,
+                dataType: "text",
+                context: this,
+                success: function(data) {
+                    response.call(this, data);
+                }
+            });
+        }
+});
                                 </pre>
 
                                 <pre name="code" class="brush:xml">

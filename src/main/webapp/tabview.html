@@ -9,7 +9,6 @@
 
             $('#dynamic').puitabview({
                 change: function(event, ui) {
-
                     $.ajax({
                         type: "GET",
                         url: './tabcontent',
@@ -27,7 +26,7 @@
             $('#effect').puitabview({
                 effect: {
                     name: 'fade'
-                            , duration: 'normal'
+                    ,duration: 'normal'
                 }
             });
 
@@ -81,10 +80,8 @@
                     <p>Dynamic Content for Tab 1</p>
                 </div>
                 <div id="tab2">
-                    <p>Dynamic Content for Tab 2</p>
                 </div>
                 <div id="tab3">
-                    <p>Dynamic Content for Tab 3</p>
                 </div>
             </div>
         </div>
@@ -237,6 +234,7 @@ $('#default').puitabview();
                                     </tbody>
                                 </table>
 
+                                <h3>Example</h3>
                                 <pre name="code" class="brush:js">
 $('#default').puitabview({
     change: function(event, ui) {
@@ -297,6 +295,7 @@ $('#default').puitabview({
                                     </tbody>
                                 </table>
 
+                                <h3>Example</h3>
                                 <pre name="code" class="brush:js">
 $('#default').puitabview('remove', 1);
                                 </pre>
@@ -304,42 +303,39 @@ $('#default').puitabview('remove', 1);
 
                             <div id="doc-source">
                                 <pre name="code" class="brush:js">
- &lt;script type="text/javascript"&gt;
-        $(function() {       
-               
-            $('#default').puitabview();
-                
-            $('#dynamic').puitabview({
-                change: function(event, ui) {
-                       
-                    $.ajax({
-                        type: "GET",
-                        url: './tabcontent',
-                        data: {tabindex: ui.index},
-                        dataType: "html",
-                        context: this,
-                        success: function(data) {
-                            $(this).children('div.ui-tabs-panels').children().eq(ui.index).html(data);
-                        }
-                    });
+$(function() {       
+    $('#default').puitabview();
+
+    $('#dynamic').puitabview({
+        change: function(event, ui) {
+
+            $.ajax({
+                type: "GET",
+                url: './tabcontent',
+                data: {tabindex: ui.index},
+                dataType: "html",
+                context: this,
+                success: function(data) {
+                    $(this).children('div.ui-tabs-panels').children().eq(ui.index).html(data);
                 }
             });
-            
-                
-            $('#effect').puitabview({
-                effect: {
-                    name: 'fade'
-                    ,duration: 'normal'
-                }
-            });
-                
-            $('#closable').puitabview();
-                
-            $('#left').puitabview({
-                orientation: 'left'
-            });
-        });
-    &lt;/script&gt;
+        }
+    });
+
+
+    $('#effect').puitabview({
+        effect: {
+            name: 'fade'
+            ,duration: 'normal'
+        }
+    });
+
+    $('#closable').puitabview();
+
+    $('#left').puitabview({
+        orientation: 'left'
+    });
+});
                                 </pre>
 
                                 <pre name="code" class="brush:xml">
@@ -374,10 +370,8 @@ $('#default').puitabview('remove', 1);
             &lt;p&gt;Dynamic Content for Tab 1&lt;/p&gt;
         &lt;/div&gt;
         &lt;div id="tab2"&gt;
-            &lt;p&gt;Dynamic Content for Tab 2&lt;/p&gt;
         &lt;/div&gt;
         &lt;div id="tab3"&gt;
-            &lt;p&gt;Dynamic Content for Tab 3&lt;/p&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;

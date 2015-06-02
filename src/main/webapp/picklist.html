@@ -34,25 +34,6 @@
                 }
             });
 
-            $('#update').puipicklist();
-
-            $('#updateOptions').puibutton({
-                click: function() {
-                    var newOptions = [{value: '1', label: 'Volkswagen'},
-                        {value: '2', label: 'Ford'},
-                        {value: '3', label: 'Mercedes'},
-                        {value: '4', label: 'Audi'},
-                        {value: '5', label: 'BMW'},
-                        {value: '6', label: 'Honda'},
-                        {value: '7', label: 'Porsche'},
-                        {value: '8', label: 'Chevrolet'},
-                        {value: '9', label: 'Jaguar'}
-                    ];
-
-                    $('#update').puipicklist('option', 'sourceData', newOptions);
-                    $('#update').puipicklist('option', 'targetData', []);
-                }});
-
             $('#doc').puitabview();
         });
     </script>
@@ -255,13 +236,14 @@ $('#pick').puipicklist();
                                     </tbody>
                                 </table>
 
+                                <h3>Example</h3>
                                 <pre name="code" class="brush:js">
-                $('#default').puitree({
+                $('#default').puipicklist({
                     transfer: function(event, ui) {
-                            //ui.items: Transferred items. 
-                            //ui.from: Old list.
-                            //ui.to: New list.
-                            //ui.type: Type of transfer e.g. "dragdrop","button" and "command"
+                        //ui.items: Transferred items. 
+                        //ui.from: Old list.
+                        //ui.to: New list.
+                        //ui.type: Type of transfer e.g. "dragdrop","button" and "command"
                     }
                 });
                                 </pre>
@@ -314,9 +296,10 @@ $('#pick').puipicklist();
                                     </tbody>
                                 </table>
 
+                                <h3>Example</h3>
                                 <pre name="code" class="brush:js">
 var item = //li element as jQuery object
-$('#basic').puilistbox('selectItem', item);
+$('#basic').puipicklist('selectItem', item);
                                 </pre>
 
                             </div>
@@ -341,26 +324,6 @@ $('#advanced').puipicklist({
     sourceData: themes,
     content: function(option) {
         return '&lt;img src="resources/demo/images/themes/' + option + '.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;' + option + '&lt;/span&gt;';
-    }
-});
-                                            
-$('#update').puipicklist();
-
-$('#updateOptions').puibutton({
-    click: function () {
-        var newOptions = [{value: '1', label: 'Volkswagen'},
-            {value: '2', label: 'Ford'},
-            {value: '3', label: 'Mercedes'},
-            {value: '4', label: 'Audi'},
-            {value: '5', label: 'BMW'},
-            {value: '6', label: 'Honda'},
-            {value: '7', label: 'Porsche'},
-            {value: '8', label: 'Chevrolet'},
-            {value: '9', label: 'Jaguar'}
-        ];
-
-        $('#update').puipicklist('option', 'sourceData', newOptions);
-        $('#update').puipicklist('option', 'targetData', []);
     }
 });
                                 </pre>
@@ -390,17 +353,6 @@ $('#updateOptions').puibutton({
     &lt;select name="target"&gt;
     &lt;/select&gt;
 &lt;/div&gt;
-                                            
-&lt;h3&gt;Update&lt;/h3&gt;
-&lt;div id="update"&gt;
-    &lt;select name="source"&gt;
-        &lt;option value="1"&gt;Volkswagen&lt;/option&gt;
-        &lt;option value="2"&gt;Ford&lt;/option&gt;
-    &lt;/select&gt;
-    &lt;select name="target"&gt;
-    &lt;/select&gt;
-&lt;/div&gt;
-&lt;button id="updateOptions" type="button"&gt;Update options&lt;/button&gt;
                                             
                                 </pre>
 

@@ -145,8 +145,9 @@ $('#notify').puinotify();
                                     </tbody>
                                 </table>
 
+                                <h3>Example</h3>
                                 <pre name="code" class="brush:js">
-$('#default').puinofiy({
+$('#default').puinotify({
     beforeShow: function(event) {
         //...
     }
@@ -190,6 +191,7 @@ $('#default').puinofiy({
                                     </tbody>
                                 </table>
 
+                                <h3>Example</h3>
                                 <pre name="code" class="brush:js">
 $('#default').puinotify('show');
                                 </pre>
@@ -197,30 +199,28 @@ $('#default').puinotify('show');
 
                             <div id="doc-source">
                                 <pre name="code" class="brush:js">
-&lt;script type="text/javascript"&gt;
-    $(function() {                
-        $('#t-btn-show').puibutton({
-            click: function() {
-                $('#notifytop').puinotify('show', '&lt;h1&gt;PrimeUI Notify Widget&lt;/h1&gt; &lt;p&gt;Notify is a notification bar that can be positioned at the top or bottom of screen.&lt;/p&gt;');
-            }
-        });
-
-        $('#b-btn-show').puibutton({
-            click: function() {
-                $('#notifybottom').puinotify('show', '&lt;h1&gt;PrimeUI Notify Widget&lt;/h1&gt; &lt;p&gt;Notify is a notification bar that can be positioned at the top or bottom of screen.&lt;/p&gt;');
-            }
-        });
-
-        $('#notifytop').puinotify({
-            easing: 'easeInOutCirc'
-        });
-
-        $('#notifybottom').puinotify({
-            easing: 'easeInOutCirc',
-            position: 'bottom'
-        });
+$(function() {                
+    $('#t-btn-show').puibutton({
+        click: function() {
+            $('#notifytop').puinotify('show', '&lt;h1&gt;PrimeUI Notify Widget&lt;/h1&gt; &lt;p&gt;Notify is a notification bar that can be positioned at the top or bottom of screen.&lt;/p&gt;');
+        }
     });
-&lt;/script&gt;
+
+    $('#b-btn-show').puibutton({
+        click: function() {
+            $('#notifybottom').puinotify('show', '&lt;h1&gt;PrimeUI Notify Widget&lt;/h1&gt; &lt;p&gt;Notify is a notification bar that can be positioned at the top or bottom of screen.&lt;/p&gt;');
+        }
+    });
+
+    $('#notifytop').puinotify({
+        easing: 'easeInOutCirc'
+    });
+
+    $('#notifybottom').puinotify({
+        easing: 'easeInOutCirc',
+        position: 'bottom'
+    });
+});
                                 </pre>
 
                                 <pre name="code" class="brush:xml">

@@ -71,7 +71,6 @@
 
                                 <pre name="code" class="brush:js">
                 $('#pm1').puimenu();
-                
                                 </pre>
 
                                 <pre name="code" class="brush:xml">
@@ -114,7 +113,7 @@
                                         <tr>
                                             <td>align</td>
                                             <td>-</td>
-                                            <td>Align Menu.</td>
+                                            <td>Aligns overlay menu.</td>
                                         </tr>                                           
                                     </tbody>
                                 </table>                                                            
@@ -123,29 +122,36 @@
                             <div id="doc-source">
 
                                 <pre name="code" class="brush:js">
-        &lt;script type="text/javascript"&gt;
-                $('#pm1').puimenu();
-                
-                $('#pm2').puimenu({
-                    popup: true,
-                    trigger: $('#pm2trigger')
-                });
-                
-                $('button').puibutton();
+$('#pm1').puimenu();
 
-        &lt;/script&gt; 
+$('#pm2').puimenu({
+    popup: true,
+    trigger: $('#pm2trigger')
+});
+
+$('button').puibutton();
                                 </pre>
 
                                 <pre name="code" class="brush:xml">
 
-&ltul id="pm1"&gt
-    &ltli&gt&lth3&gtFile&lt/h3&gt&lt/li&gt
-    &ltli&gt &lta data-icon="ui-icon-document">New&lt/a&gt&lt/li&gt
-    &ltli&gt &lta data-icon="ui-icon-folder-open">Open&lt/a&gt&lt/li&gt
-    &ltli&gt&lth3&gtEdit&lt/h3&gt&lt/li&gt
-    &ltli&gt &lta data-icon="ui-icon-arrowreturnthick-1-w">Undo&lt/a&gt&lt/li&gt
-    &ltli&gt &lta data-icon="ui-icon-arrowreturnthick-1-e">Redo&lt/a&gt&lt/li&gt
-&lt/ul&gt
+&lt;ul id="pm1"&gt;
+    &lt;li&gt;&lt;h3&gt;File&lt;/h3&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a data-icon="ui-icon-document"&gt;New&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a data-icon="ui-icon-folder-open"&gt;Open&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;h3&gt;Edit&lt;/h3&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a data-icon="ui-icon-arrowreturnthick-1-w"&gt;Undo&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a data-icon="ui-icon-arrowreturnthick-1-e"&gt;Redo&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;button id="pm2trigger" style="margin-top:0px"&gt;Show&lt;/button&gt;
+&lt;ul id="pm2"&gt;
+    &lt;li&gt;&lt;h3&gt;File&lt;/h3&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a data-icon="ui-icon-document"&gt;New&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a data-icon="ui-icon-folder-open"&gt;Open&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;h3&gt;Edit&lt;/h3&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a data-icon="ui-icon-arrowreturnthick-1-w"&gt;Undo&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a data-icon="ui-icon-arrowreturnthick-1-e"&gt;Redo&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
                                 </pre>
 

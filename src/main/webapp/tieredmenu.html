@@ -9,6 +9,7 @@
     <script type="text/javascript">
         $(function() {
             $('#tm1').puitieredmenu();
+            
             $('#tm2').puitieredmenu({
                 autoDisplay: false
             });
@@ -232,22 +233,20 @@
                             <div id="doc-overview">
 
                                 <pre name="code" class="brush:js">
-               $('#tm1').puitieredmenu();
-                
+$('#tm1').puitieredmenu();
                                 </pre>
 
                                 <pre name="code" class="brush:xml">
-        &lt;ul id="mb1" &gt;
-         &lt;li &gt;
-            &lt;ul &gt;
-                &lt;li /&gt;
-                &lt;li /&gt;
-            &lt;/ul &gt;
-         &lt;/li &gt;
-         &lt;li /&gt;
-         &lt;li /&gt;
-        &lt;/ul &gt;
-
+&lt;ul id="mb1" &gt;
+ &lt;li &gt;
+    &lt;ul &gt;
+        &lt;li /&gt;
+        &lt;li /&gt;
+    &lt;/ul &gt;
+ &lt;/li &gt;
+ &lt;li /&gt;
+ &lt;li /&gt;
+&lt;/ul &gt;
                                 </pre>
 
                             </div>
@@ -305,82 +304,201 @@
                             <div id="doc-source">
 
                                 <pre name="code" class="brush:js">
-&lt;script type="text/javascript"&gt;
+$('#tm1').puitieredmenu();
 
-    $('#tm1').puitieredmenu();
-    $('#tm2').puitieredmenu({
-        autoDisplay: false
-    });
+$('#tm2').puitieredmenu({
+    autoDisplay: false
+});
 
-    $('#tm3').puitieredmenu({
-        popup: true,
-        trigger: $('#tm3trigger')
-    });
+$('#tm3').puitieredmenu({
+    popup: true,
+    trigger: $('#tm3trigger')
+});
 
-    $('button').puibutton();
-     
-&lt;/script&gt;
+$('button').puibutton();
                                 </pre>
 
                                 <pre name="code" class="brush:xml">
-&ltul id="tm1"&gt
-    &ltli&gt &lta data-icon="ui-icon-document"&gtFile&lt/a&gt
-        &ltul&gt 
-            &ltli&gt&lta data-icon="ui-icon-contact"&gtNew&lt/a&gt
-                &ltul&gt
-                    &ltli&gt&lta&gtProject&lt/a&gt&lt/li&gt
-                    &ltli&gt&lta&gtOther&lt/a&gt&lt/li&gt
-                &lt/ul&gt
-            &lt/li&gt 
-            &ltli&gt&lta&gtOpen&lt/a&gt&lt/li&gt 
-            &ltli&gt&lta&gtQuit&lt/a&gt&lt/li&gt 
-        &lt/ul&gt
-    &lt/li&gt
-    &ltli&gt &lta data-icon="ui-icon-pencil"&gtEdit&lt/a&gt
-        &ltul&gt
-            &ltli&gt&lta data-icon="ui-icon-arrowreturnthick-1-w"&gtUndo&lt/a&gt&lt/li&gt
-            &ltli&gt&lta data-icon="ui-icon-arrowreturnthick-1-e"&gtRedo&lt/a&gt&lt/li&gt
-        &lt/ul&gt
-    &lt/li&gt
-    &ltli&gt
-        &lta data-icon="ui-icon-help"&gtHelp&lt/a&gt
-        &ltul&gt
-            &ltli&gt&lta&gtContents&lt/a&gt&lt/li&gt
-            &ltli&gt
-                &lta data-icon="ui-icon-search"&gtSearch&lt/a&gt
-                &ltul&gt
-                    &ltli&gt&lta&gtText&lt/a&gt
-                        &ltul&gt
-                            &ltli&gt&lta&gtWorkspace&lt/a&gt&lt/li&gt
-                        &lt/ul&gt
-                    &lt/li&gt
-                    &ltli&gt&lta&gtFile&lt/a&gt&lt/li&gt
-                &lt/ul&gt
-            &lt/li&gt
+&lt;h3 class="first"&gt;Default&lt;/h3&gt;
+&lt;ul id="tm1"&gt;
+    &lt;li&gt; &lt;a data-icon="ui-icon-document"&gt;File&lt;/a&gt;
+        &lt;ul&gt; 
+            &lt;li&gt;&lt;a data-icon="ui-icon-contact"&gt;New&lt;/a&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;a&gt;Project&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a&gt;Other&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/li&gt; 
+            &lt;li&gt;&lt;a&gt;Open&lt;/a&gt;&lt;/li&gt; 
+            &lt;li&gt;&lt;a&gt;Quit&lt;/a&gt;&lt;/li&gt; 
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt; &lt;a data-icon="ui-icon-pencil"&gt;Edit&lt;/a&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a data-icon="ui-icon-arrowreturnthick-1-w"&gt;Undo&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a data-icon="ui-icon-arrowreturnthick-1-e"&gt;Redo&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a data-icon="ui-icon-help"&gt;Help&lt;/a&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a&gt;Contents&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;
+                &lt;a data-icon="ui-icon-search"&gt;Search&lt;/a&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;a&gt;Text&lt;/a&gt;
+                        &lt;ul&gt;
+                            &lt;li&gt;&lt;a&gt;Workspace&lt;/a&gt;&lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;&lt;a&gt;File&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/li&gt;
 
-        &lt/ul&gt
+        &lt;/ul&gt;
 
-    &lt/li&gt
-    &ltli&gt
-        &lta data-icon="ui-icon-gear"&gtActions&lt/a&gt
-        &ltul&gt
-            &ltli&gt&lta data-icon="ui-icon-refresh"&gtAjax&lt/a&gt
-                &ltul&gt
-                    &ltli&gt&lta data-icon="ui-icon-disk"&gtSave&lt/a&gt&lt/li&gt
-                    &ltli&gt&lta data-icon="ui-icon-arrowrefresh-1-w"&gtUpdate&lt/a&gt&lt/li&gt
-                &lt/ul&gt
-            &lt/li&gt
-            &ltli&gt&lta data-icon="ui-icon-document"&gtNon-Ajax&lt/a&gt
-                &ltul&gt
-                    &ltli&gt&lta data-icon="ui-icon-close"&gtDelete&lt/a&gt&lt/li&gt
-                &lt/ul&gt
-            &lt/li&gt
-        &lt/ul&gt
-    &lt/li&gt
-    &ltli&gt
-        &lta data-icon="ui-icon-close"&gtQuit&lt/a&gt
-    &lt/li&gt
-&lt/ul&gt    
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a data-icon="ui-icon-gear"&gt;Actions&lt;/a&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a data-icon="ui-icon-refresh"&gt;Ajax&lt;/a&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;a data-icon="ui-icon-disk"&gt;Save&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a data-icon="ui-icon-arrowrefresh-1-w"&gt;Update&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/li&gt;
+            &lt;li&gt;&lt;a data-icon="ui-icon-document"&gt;Non-Ajax&lt;/a&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;a data-icon="ui-icon-close"&gt;Delete&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a data-icon="ui-icon-close"&gt;Quit&lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Click Trigger&lt;/h3&gt;
+&lt;ul id="tm2"&gt;
+    &lt;li&gt; &lt;a data-icon="ui-icon-document"&gt;File&lt;/a&gt;
+        &lt;ul&gt; 
+            &lt;li&gt;&lt;a data-icon="ui-icon-contact"&gt;New&lt;/a&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;a&gt;Project&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a&gt;Other&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/li&gt; 
+            &lt;li&gt;&lt;a&gt;Open&lt;/a&gt;&lt;/li&gt; 
+            &lt;li&gt;&lt;a&gt;Quit&lt;/a&gt;&lt;/li&gt; 
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt; &lt;a data-icon="ui-icon-pencil"&gt;Edit&lt;/a&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a data-icon="ui-icon-arrowreturnthick-1-w"&gt;Undo&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a data-icon="ui-icon-arrowreturnthick-1-e"&gt;Redo&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a data-icon="ui-icon-help"&gt;Help&lt;/a&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a&gt;Contents&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;
+                &lt;a data-icon="ui-icon-search"&gt;Search&lt;/a&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;a&gt;Text&lt;/a&gt;
+                        &lt;ul&gt;
+                            &lt;li&gt;&lt;a&gt;Workspace&lt;/a&gt;&lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;&lt;a&gt;File&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/li&gt;
+
+        &lt;/ul&gt;
+
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a data-icon="ui-icon-gear"&gt;Actions&lt;/a&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a data-icon="ui-icon-refresh"&gt;Ajax&lt;/a&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;a data-icon="ui-icon-disk"&gt;Save&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a data-icon="ui-icon-arrowrefresh-1-w"&gt;Update&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/li&gt;
+            &lt;li&gt;&lt;a data-icon="ui-icon-document"&gt;Non-Ajax&lt;/a&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;a data-icon="ui-icon-close"&gt;Delete&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a data-icon="ui-icon-close"&gt;Quit&lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Overlay&lt;/h3&gt;
+&lt;button id="tm3trigger" style="margin-top:0px"&gt;Show&lt;/button&gt;
+&lt;ul id="tm3"&gt;
+    &lt;li&gt; &lt;a data-icon="ui-icon-document"&gt;File&lt;/a&gt;
+        &lt;ul&gt; 
+            &lt;li&gt;&lt;a data-icon="ui-icon-contact"&gt;New&lt;/a&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;a&gt;Project&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a&gt;Other&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/li&gt; 
+            &lt;li&gt;&lt;a&gt;Open&lt;/a&gt;&lt;/li&gt; 
+            &lt;li&gt;&lt;a&gt;Quit&lt;/a&gt;&lt;/li&gt; 
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt; &lt;a data-icon="ui-icon-pencil"&gt;Edit&lt;/a&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a data-icon="ui-icon-arrowreturnthick-1-w"&gt;Undo&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a data-icon="ui-icon-arrowreturnthick-1-e"&gt;Redo&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a data-icon="ui-icon-help"&gt;Help&lt;/a&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a&gt;Contents&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;
+                &lt;a data-icon="ui-icon-search"&gt;Search&lt;/a&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;a&gt;Text&lt;/a&gt;
+                        &lt;ul&gt;
+                            &lt;li&gt;&lt;a&gt;Workspace&lt;/a&gt;&lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;&lt;a&gt;File&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/li&gt;
+
+        &lt;/ul&gt;
+
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a data-icon="ui-icon-gear"&gt;Actions&lt;/a&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a data-icon="ui-icon-refresh"&gt;Ajax&lt;/a&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;a data-icon="ui-icon-disk"&gt;Save&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a data-icon="ui-icon-arrowrefresh-1-w"&gt;Update&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/li&gt;
+            &lt;li&gt;&lt;a data-icon="ui-icon-document"&gt;Non-Ajax&lt;/a&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;a data-icon="ui-icon-close"&gt;Delete&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a data-icon="ui-icon-close"&gt;Quit&lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;  
                                 </pre>
 
                             </div>
