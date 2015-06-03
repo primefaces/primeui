@@ -156,7 +156,16 @@ $(function() {
                 this.paginator.puipaginator('page', 0, true);
             }
             
-            this._initializeDatasource();
+            if($.isArray(this.options.datasource)) {
+                this.data = this.options.datasource;
+                this._renderData();
+            }
+            else if($.type(this.options.datasource) === 'function') {
+                if(this.options.lazy)
+                    this.options.datasource.call(this, this._onDataUpdate, {first:0, rows: this._getRows()});
+                else
+                    this.options.datasource.call(this, this._onDataUpdate);
+            }
         },
                 
         _setOption: function(key, value) {
