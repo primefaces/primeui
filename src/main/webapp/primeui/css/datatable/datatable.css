@@ -68,3 +68,43 @@
 .pui-datatable-scrollable-body {
     overflow: auto;
 }
+
+/** Reflow **/
+.pui-datatable-reflow .pui-datatable-data td .pui-column-title {
+    display: none;
+}
+
+@media ( max-width: 35em ) {
+    .pui-datatable-reflow thead th,
+    .pui-datatable-reflow tfoot td {
+        display: none;
+    }
+
+    .pui-datatable-reflow .pui-datatable-data td { 
+        text-align: left;
+        display: block;
+        border: 0px none;
+        width: 100%;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		float: left;
+		clear: left;
+    }
+    
+    .pui-datatable-reflow .pui-datatable-data.ui-widget-content {
+        border: 0px none;
+    }
+    
+    .pui-datatable-reflow .pui-datatable-data tr.ui-widget-content {
+        border-left: 0px none;
+        border-right: 0px none;
+    }
+
+    .pui-datatable-reflow .pui-datatable-data td .pui-column-title { 
+        padding: .4em; 
+        min-width: 30%; 
+        display: inline-block;
+        margin: -.4em 1em -.4em -.4em;
+    }
+}

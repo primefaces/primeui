@@ -16,7 +16,8 @@ $(function() {
             sortField: null,
             sortOrder: null,
             keepSelectionInLazyMode: false,
-            scrollable: false
+            scrollable: false,
+            responsive: false
         },
         
         _create: function() {
@@ -26,6 +27,9 @@ $(function() {
             }
             
             this.element.addClass('pui-datatable ui-widget');
+            if(this.options.responsive) {
+                this.element.addClass('pui-datatable-reflow');
+            }
             
             if(this.options.scrollable) {
                 this._createScrollableDatatable();
@@ -79,7 +83,7 @@ $(function() {
             
             if(this.options.columns) {
                 $.each(this.options.columns, function(i, col) {
-                    var header = $('<th class="ui-state-default"></th>').data('field', col.field).appendTo($this.thead);
+                    var header = $('<th class="ui-state-default"><span class="pui-column-title"></span></th>').data('field', col.field).appendTo($this.thead);
                     
                     if(col.headerClass) {
                         header.addClass(col.headerClass);
@@ -90,7 +94,7 @@ $(function() {
                     }
                     
                     if(col.headerText) {
-                        header.text(col.headerText);
+                        header.children('.pui-column-title').text(col.headerText);
                     }
                     
                     if(col.sortable) {
@@ -272,8 +276,8 @@ $(function() {
                 this.tbody.html('');
                 
                 var firstNonLazy = this._getFirst(),
-                    first = this.options.lazy ? 0 : firstNonLazy,
-                  rows = this._getRows();
+                first = this.options.lazy ? 0 : firstNonLazy,
+                rows = this._getRows();
 
                 for(var i = first; i < (first + rows); i++) {
                     var rowData = this.data[i];
@@ -312,7 +316,11 @@ $(function() {
                             }
                             else {
                                 column.text(rowData[columnOptions.field]);
-                            }                            
+                            }
+                            
+                            if(this.options.responsive && columnOptions.headerText) {
+                                column.prepend('<span class="pui-column-title">' + columnOptions.headerText + '</span>');
+                            }
                         }
                     }
                 }
