@@ -38,41 +38,13 @@ $(function() {
             
             //data
             if(this.options.datasource) {
-                if($.isArray(this.options.datasource)) {
-                    this.data = this.options.datasource;
-                    this._initialize();
-                }
-                else if($.type(this.options.datasource) === 'function') {
-                    if(this.options.lazy)
-                        this.options.datasource.call(this, this._onDataInit, {first:0, sortField:this.options.sortField, sortOrder:this.options.sortOrder});
-                    else
-                        this.options.datasource.call(this, this._onDataInit);
-                }
+                this._initDatasource();
             }
         },
-                
-        _initialize: function() {
-            var $this = this;
-            
-            if(this.options.paginator) {
-                this.options.paginator.paginate = function(event, state) {
-                    $this.paginate();
-                };
-                
-                this.options.paginator.totalRecords = this.options.paginator.totalRecords||this.data.length;
-                this.paginator = $('<div></div>').insertAfter(this.content).puipaginator(this.options.paginator);
-            }
-
-            this._renderData();
-        },
-
+        
         _onDataInit: function(data) {
-            this.data = data;
-            if(!this.data) {
-                this.data = [];
-            }
-                
-            this._initialize();
+            this._onDataUpdate(data);
+            this._initPaginator();
         },
                 
         _onDataUpdate: function(data) {
@@ -85,12 +57,7 @@ $(function() {
         },
         
         _onLazyLoad: function(data) {
-            this.data = data;
-            if(!this.data) {
-                this.data = [];
-            }
-            
-            this._renderData();
+            this._onDataUpdate(data);
         },
                 
         paginate: function() {
@@ -141,7 +108,10 @@ $(function() {
         },
         
         _getRows: function() {
-            return this.paginator ? this.paginator.puipaginator('option', 'rows') : this.data.length;
+            if(this.options.paginator)
+                return this.paginator ? this.paginator.puipaginator('option', 'rows') : this.options.paginator.rows; 
+            else
+                return this.data ? this.data.length : 0;
         },
             
         _createStateMeta: function() {
@@ -152,24 +122,41 @@ $(function() {
             
             return state;
         },
+        
+        _initPaginator: function() {
+            var $this = this;
+            if(this.options.paginator) {
+                this.options.paginator.paginate = function(event, state) {
+                    $this.paginate();
+                };
+                
+                this.options.paginator.totalRecords = this.options.paginator.totalRecords||this.data.length;
+                this.paginator = $('<div></div>').insertAfter(this.content).puipaginator(this.options.paginator);
+            }
+        },
+        
+        _initDatasource: function() {
+            if($.isArray(this.options.datasource)) {
+                this.data = this.options.datasource;
+                this._initPaginator();
+                this._renderData();
+            }
+            else if($.type(this.options.datasource) === 'function') {
+                if(this.options.lazy)
+                    this.options.datasource.call(this, this._onDataInit, {first:0, rows: this._getRows()});
+                else
+                    this.options.datasource.call(this, this._onDataInit);
+            }  
+        },
                 
         _updateDatasource: function(datasource) {
             this.options.datasource = datasource;
             
-            this.reset();
+            if(this.paginator) {
+                this.paginator.puipaginator('page', 0, true);
+            }
             
-            if($.isArray(this.options.datasource)) {
-                this.data = this.options.datasource;
-                this._renderData();
-            }
-            else if($.type(this.options.datasource) === 'function') {
-                if(this.options.lazy) {
-                    this.options.datasource.call(this, this._onDataUpdate, {first:0, sortField:this.options.sortField, sortorder:this.options.sortOrder});
-                }
-                else {
-                    this.options.datasource.call(this, this._onDataUpdate);
-                }
-            }
+            this._initializeDatasource();
         },
                 
         _setOption: function(key, value) {

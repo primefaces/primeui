@@ -84,7 +84,7 @@
                     totalRecords: 200
                 },
                 datasource: function(callback, ui) {
-                    var uri = 'rest/cars/lazylist/' + ui.first + '/' + 9;
+                    var uri = 'rest/cars/lazylist/' + ui.first + '/' + ui.rows;
 
                     $.ajax({
                         type: "GET",
