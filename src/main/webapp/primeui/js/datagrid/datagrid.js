@@ -11,7 +11,8 @@ $(function() {
             paginator: null,
             header: null,
             footer: null,
-            content: null
+            content: null,
+            lazy: false
         },
         
         _create: function() {
@@ -19,9 +20,7 @@ $(function() {
             if(!this.id) {
                 this.id = this.element.uniqueId().attr('id');
             }
-            
-            var $this = this;
-            
+                        
             this.element.addClass('pui-datagrid ui-widget');
             
             //header

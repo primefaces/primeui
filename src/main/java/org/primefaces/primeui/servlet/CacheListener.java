@@ -44,16 +44,15 @@ public class CacheListener implements ServletContextListener {
 		colors[9] = "Maroon";
 		
 		brands = new String[10];
-		brands[0] = "Mercedes";
+		brands[0] = "Audi";
 		brands[1] = "BMW";
-		brands[2] = "Volvo";
-		brands[3] = "Audi";
-		brands[4] = "Renault";
-		brands[5] = "Opel";
-		brands[6] = "Volkswagen";
-		brands[7] = "Chrysler";
-		brands[8] = "Ferrari";
-		brands[9] = "Ford";
+		brands[2] = "Fiat";
+		brands[3] = "Honda";
+		brands[4] = "Jaguar";
+		brands[5] = "Mercedes";
+		brands[6] = "Renault";
+		brands[7] = "Volkswagen";
+		brands[8] = "Volvo";
 	}
     
     private List<Car> populateCars(int size) {
@@ -78,7 +77,7 @@ public class CacheListener implements ServletContextListener {
 	}
 	
 	private String getRandomBrand() {
-		return brands[(int) (Math.random() * 10)];
+		return brands[(int) (Math.random() * 9)];
 	}
     
     public void contextInitialized(ServletContextEvent sce) {
@@ -87,7 +86,6 @@ public class CacheListener implements ServletContextListener {
         cache.put("lazyCars", populateCars(200));
         
         sce.getServletContext().setAttribute("puicache", cache);
-        System.out.println("Done");
     }
 
     public void contextDestroyed(ServletContextEvent sce) {

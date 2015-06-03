@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2013 PrimeTek.
+ * Copyright 2009-2015 PrimeTek.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package org.primefaces.primeui.service;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -49,6 +48,20 @@ public class CarService {
         List<Car> cars = (List<Car>) ((Map<String,Object>) context.getAttribute("puicache")).get("lazyCars");
         
         return cars.subList(first, (first + 5));
+    }
+    
+    @GET
+    @Path("/lazylist/{first}/{rows}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Collection<Car> lazyLoadCars(@PathParam("first") int first, @PathParam("rows") int rows) {
+        List<Car> cars = (List<Car>) ((Map<String,Object>) context.getAttribute("puicache")).get("lazyCars");
+        
+        int last = first + rows;
+        int size = cars.size();
+        if(last >= cars.size()) {
+            last = (size - 1);
+        }
+        return cars.subList(first, last);
     }
     
     @GET
