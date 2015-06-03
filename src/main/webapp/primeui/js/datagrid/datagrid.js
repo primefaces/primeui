@@ -137,9 +137,7 @@ $(function() {
         
         _initDatasource: function() {
             if($.isArray(this.options.datasource)) {
-                this.data = this.options.datasource;
-                this._initPaginator();
-                this._renderData();
+                this._onDataInit(this.options.datasource);
             }
             else if($.type(this.options.datasource) === 'function') {
                 if(this.options.lazy)
@@ -157,8 +155,7 @@ $(function() {
             }
             
             if($.isArray(this.options.datasource)) {
-                this.data = this.options.datasource;
-                this._renderData();
+                this._onDataUpdate(this.options.datasource);
             }
             else if($.type(this.options.datasource) === 'function') {
                 if(this.options.lazy)
