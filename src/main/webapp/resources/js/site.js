@@ -7,13 +7,6 @@ Showcase = {
         this.menu = $('#MENUSIDE');
         this.hiddenMenuIcons = this.menu.find('> div > span.MenuSideMainLink > .hiddenIcons');
         this.hiddenLogo = $('#BlueLogo');
-
-        
-        
-        var hash = window.location.hash;
-        if(hash) {
-            this.openPageHash(hash);
-        }
         
         this.menu.height($(window).height());
         
@@ -23,6 +16,8 @@ Showcase = {
         });
         
         this.bindEvents();
+        
+        this.initMenuState();
     },
 
     bindEvents: function() {
@@ -83,6 +78,13 @@ Showcase = {
         });
     },
     
+    initMenuState: function() {
+        var hash = window.location.hash;
+        if(hash) {
+            this.openPageHash(hash);
+        }
+    },
+    
     onWinResize: function() {
         this.menu.height($(window).height());
     },
@@ -100,11 +102,6 @@ Showcase = {
     openSubMenu: function(header) {
         var $this = this,
         headerJQ = $(header);
-
-        if(this.activeSubSubMenu) {
-            $(this.activeSubSubMenu).removeClass("openSubMenuLink");
-            this.activeSubSubMenu = null;
-        }
 
         if(this.activeMenu) {
             if(this.activeMenu === header) {
@@ -138,6 +135,18 @@ Showcase = {
             url = root + plainHash + '.html';
 
             this.openPage(url);
+            
+            this.menu.find('> div > span.MenuSideMainLink.MenuSideMainLinkDark').removeClass('MenuSideMainLinkDark').next().hide();
+            
+            var menuitem = this.menu.find('a.SubMenuLink[href="' + plainHash + '.html"]');
+            if(menuitem.length) {
+                var submenu = menuitem.parent(),
+                submenuTitle = submenu.prev();
+        
+                submenu.show();
+                submenuTitle.addClass('MenuSideMainLinkDark');
+                this.activeMenu = submenuTitle;
+            }
         }
     },
 
