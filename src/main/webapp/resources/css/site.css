@@ -461,7 +461,7 @@ input.searchInput {
 }
 
 /* Themes */
-.ui-theme {background: url("#{resource['demo/images/themes.png") no-repeat top left;display: block;}
+.ui-theme {background: url("../images/themes.png") no-repeat top left;display: block;}
 .ui-theme.ui-theme-afterdark{ background-position: 0 0; width: 30px; height: 25px; } 
 .ui-theme.ui-theme-afternoon{ background-position: 0 -75px; width: 30px; height: 25px; } 
 .ui-theme.ui-theme-afterwork{ background-position: 0 -150px; width: 30px; height: 25px; } 
@@ -499,5 +499,4 @@ input.searchInput {
 .ui-theme.ui-theme-trontastic{ background-position: -80px -614px; width: 30px; height: 27px; } 
 .ui-theme.ui-theme-ui-darkness{ background-position: -80px -691px; width: 30px; height: 27px; } 
 .ui-theme.ui-theme-ui-lightness{ background-position: -80px -768px; width: 30px; height: 27px; } 
-.ui-theme.ui-theme-vader{ background-position: -80px -845px; width: 30px; height: 27px; } 
-.ui-theme.ui-theme-metroui{ background: url("#{resource['demo/images/metroui.png") no-repeat top left; display: block;width: 30px; height: 27px;} 
+.ui-theme.ui-theme-vader{ background-position: -80px -845px; width: 30px; height: 27px; }
