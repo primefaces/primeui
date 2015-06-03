@@ -1,0 +1,34 @@
+.pui-datagrid .pui-paginator {
+	text-align: center;
+    border-top: 0px none;
+}
+
+.pui-datagrid-column {
+	padding: 3px;
+}
+
+.pui-datagrid-content-empty {
+    padding: 4px 10px;
+}
+
+.pui-datagrid .pui-datagrid-header,
+.pui-datagrid .pui-datagrid-footer {
+    text-align:center;
+    padding:4px 10px;
+}
+
+.pui-datagrid .pui-datagrid-header {
+    border-bottom: 0px none;
+}
+
+.pui-datagrid .pui-datagrid-footer {
+    border-top: 0px none;
+}
+
+.pui-datagrid .pui-paginator-top {
+    border-bottom: 0px none;
+}
+
+.pui-datagrid .pui-paginator-bottom {
+    border-top: 0px none;
+}
