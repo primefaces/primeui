@@ -9,3 +9,7 @@
 .ui-widget-content .pui-inputtext {
     font-weight: normal;
 }
+
+.pui-fluid .pui-inputtext {
+    width: 100%;
+}

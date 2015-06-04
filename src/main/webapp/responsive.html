@@ -1,0 +1,224 @@
+<div>
+    <link rel="stylesheet" href="primeui/css/inputtext/inputtext.css" />
+    <link rel="stylesheet" href="primeui/css/inputtextarea/inputtextarea.css" />
+    <link rel="stylesheet" href="primeui/css/button/button.css" />
+    <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
+    <link rel="stylesheet" href="primeui/css/grid/grid.css" />
+    <link rel="stylesheet" href="primeui/css/listbox/listbox.css" />
+    <link rel="stylesheet" href="primeui/css/panel/panel.css" />
+    <link rel="stylesheet" href="primeui/css/datatable/datatable.css" />
+    <link rel="stylesheet" href="primeui/css/dialog/dialog.css" />
+    <link rel="stylesheet" href="primeui/css/splitbutton/splitbutton.css" />
+    <link rel="stylesheet" href="primeui/css/datagrid/datagrid.css" />
+    <script type="text/javascript" src="primeui/js/inputtext/inputtext.js"></script>
+    <script type="text/javascript" src="primeui/js/inputtextarea/inputtextarea.js"></script>
+    <script type="text/javascript" src="primeui/js/button/button.js"></script>
+    <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
+    <script type="text/javascript" src="primeui/js/listbox/listbox.js"></script>
+    <script type="text/javascript" src="primeui/js/panel/panel.js"></script>
+    <script type="text/javascript" src="primeui/js/datatable/datatable.js"></script>
+    <script type="text/javascript" src="primeui/js/dialog/dialog.js"></script>
+    <script type="text/javascript" src="primeui/js/splitbutton/splitbutton.js"></script>
+    <script type="text/javascript" src="primeui/js/datagrid/datagrid.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
+                        'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
+                        'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
+                        'ui-darkness', 'ui-lightness', 'vader');
+                        
+            $('#it').puiinputtext();
+            
+            $('#ita').puiinputtext();
+            
+            $('#btn').puibutton();
+            
+            $('#lbox').puilistbox({
+                data: themes
+            });
+            
+            $('#pnl').puipanel();
+            
+            $('#tbl').puidatatable({
+                caption: 'Cars',
+                responsive: true,
+                columns: [
+                    {field: 'vin', headerText: 'Vin'},
+                    {field: 'brand', headerText: 'Brand'},
+                    {field: 'year', headerText: 'Year'},
+                    {field: 'color', headerText: 'Color'}
+                ],
+                datasource: [
+                    {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
+                    {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
+                    {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
+                    {'brand': 'Bmw', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
+                    {'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
+                    {'brand': 'Opel', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
+                    {'brand': 'Honda', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
+                    {'brand': 'Chevrolet', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
+                    {'brand': 'Opel', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'},
+                    {'brand': 'Mazda', 'year': 2013, 'color': 'Red', 'vin': '245t2s'}
+                ]
+            });
+            
+            $('#dlgbtn').puibutton({
+                icon: 'ui-icon-arrow-4-diag',
+                click: function() {
+                    $('#dlg').puidialog('show');
+                }
+            });
+            
+            $('#dlg').puidialog({
+                responsive: true
+            });
+            
+            $('#splitbtn').puisplitbutton({
+                icon: 'ui-icon-check',
+                items: [
+                    {
+                        icon: 'ui-icon-arrowrefresh-1-w',
+                        text: 'Update'
+                    },
+                    {
+                        icon: 'ui-icon-close',
+                        text: 'Delete'
+                    },
+                    {
+                        icon: 'ui-icon-extlink',
+                        text: 'Homepage',
+                        url: 'http://www.primefaces.org/primeui'
+                    }
+                ]
+            });
+            
+            $('#dtgrid').puidatagrid({
+                header: 'DataGrid',
+                datasource: [
+                    {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
+                    {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
+                    {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
+                    {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
+                    {'brand': 'Ford', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
+                    {'brand': 'Fiat', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
+                    {'brand': 'Honda', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
+                    {'brand': 'Volvo', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
+                    {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'}
+                ],
+                content: function(car) {
+                    return $('<div title="'+ car.vin + '"><img src="resources/demo/images/car/' + car.brand + 
+                            '.gif" /><div class="car-detail">' + car.year + ' - ' + car.color  +'</div></div>').puipanel();
+                }
+            });
+            
+            $('#doc').puitabview();
+        });
+    </script>
+    <style type="text/css">
+        /** Demo **/
+        .pui-grid-row .pui-grid-col-2,
+        .pui-grid-row .pui-grid-col-10 {
+            padding: 0.5em 0;
+        }
+        
+        .pui-datagrid .pui-datagrid-column {
+            text-align: center; 
+        }     
+    </style>
+
+    <div class="ContentSideSections">
+        <div class="Content100 overHidden TextShadow">
+            <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">Responsive</span>
+            <span class="defaultText dispTable">In combination with <a href="grid.html">Grid CSS</a>, .ui-fluid style class provides fluid width for efficient use of space in screen. 
+                This example demonstrates ui-fluid in combination with the components having built-in responsive modes.</span>
+        </div>
+    </div>
+
+    <div class="ContentSideSections Implementation pui-fluid">
+        <div class="pui-grid pui-grid-responsive">
+            <div class="pui-grid-row">
+                <div class="pui-grid-col-2">
+                    InputText
+                </div>
+                <div class="pui-grid-col-10">
+                    <input id="it" type="text" />
+                </div>
+            </div>
+            <div class="pui-grid-row">
+                <div class="pui-grid-col-2">
+                    InputTextarea
+                </div>
+                <div class="pui-grid-col-10">
+                    <textarea id="ita" type="text"></textarea>
+                </div>
+            </div>
+            <div class="pui-grid-row">
+                <div class="pui-grid-col-2">
+                    Button
+                </div>
+                <div class="pui-grid-col-10">
+                    <button id="btn" type="button">Save</button>
+                </div>
+            </div>
+            <div class="pui-grid-row">
+                <div class="pui-grid-col-2">
+                    SplitButton
+                </div>
+                <div class="pui-grid-col-10">
+                    <button id="splitbtn" type="button">Save</button>
+                </div>
+            </div>
+            
+            <div class="pui-grid-row">
+                <div class="pui-grid-col-2">
+                    Listbox
+                </div>
+                <div class="pui-grid-col-10">
+                    <select id="lbox"></select>
+                </div>
+            </div>
+            <div class="pui-grid-row">
+                <div class="pui-grid-col-2">
+                    Dialog
+                </div>
+                <div class="pui-grid-col-10">
+                    <button id="dlgbtn" type="button">Show</button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="dlg" title="Godfather I">
+            <p>The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
+                His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. 
+                Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, 
+                kind and benevolent to those who give respect, 
+                but given to ruthless violence whenever anything stands against the good of the family.</p>
+        </div>
+        
+        <div id="pnl" title="Panel" style="margin-top:20px">
+            The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
+            His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. 
+            Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, 
+            kind and benevolent to those who give respect, 
+            but given to ruthless violence whenever anything stands against the good of the family.
+        </div>
+        
+        <div id="tbl" style="margin-top:20px"></div>
+        
+        <div id="dtgrid" style="margin-top:20px;margin-bottom:20px"></div>
+    </div>
+
+    <div id="SourceContentSide" class="ContentSideSections Source">
+        <div class="Content100 overHidden TextShadow">
+            <span class="defaultText">
+               <pre name="code" class="brush:xml">
+               </pre>
+            </span>
+        </div>
+    </div>
+
+    <script language="javascript">
+        SyntaxHighlighter.highlight();
+    </script>
+
+</div>

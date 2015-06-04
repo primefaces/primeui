@@ -1,0 +1,15 @@
+.pui-fluid .pui-splitbutton .pui-button {
+    width: 96%;
+}
+.pui-fluid .pui-splitbutton .pui-button.pui-splitbutton-menubutton {
+    width: 4%;
+}
+
+@media (max-width: 35em) {
+    .pui-fluid .pui-splitbutton .pui-button {
+        width: 90%;
+    }
+    .pui-fluid .pui-splitbutton .pui-button.pui-splitbutton-menubutton {
+        width: 10%;
+    }
+}

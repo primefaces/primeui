@@ -2,3 +2,7 @@
     overflow: hidden;
     resize:none;
 }
+
+.pui-fluid .pui-inputtextarea {
+    width: 100%;
+}
