@@ -86,7 +86,7 @@ $(function() {
                             gridRow = $('<div class="pui-grid-row"></div>').appendTo(this.content);
                         }
                         
-                        var gridColumn = $('<div class="pui-datagrid-column pui-grid-col-4"></div>').appendTo(gridRow),
+                        var gridColumn = $('<div class="pui-datagrid-column ' + PUI.getGridColumn(this.options.columns) + '"></div>').appendTo(gridRow),
                         markup = this.options.content.call(this, dataValue);
                         
                         gridColumn.append(markup);

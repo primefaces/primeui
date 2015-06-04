@@ -4,6 +4,15 @@
 var PUI = {
     
     zindex : 1000,
+    
+    gridColumns: {
+        '1': 'pui-grid-col-12',
+        '2': 'pui-grid-col-6',
+        '3': 'pui-grid-col-4',
+        '4': 'pui-grid-col-3',
+        '6': 'pui-grid-col-2',
+        '12': 'pui-grid-col-11'
+    },
         
     /**
      *  Aligns container scrollbar to keep item in container viewport, algorithm copied from jquery-ui menu widget
@@ -107,6 +116,10 @@ var PUI = {
         }
 
         this.browser = browser;
+    },
+    
+    getGridColumn: function(number) {
+        return this.gridColumns[number + ''];
     }
 };
 
