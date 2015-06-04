@@ -13,6 +13,8 @@
                 hideEffect: 'fade',
                 minimizable: true,
                 maximizable: true,
+                draggable: false,
+                responsive: true,
                 modal: true,
                 buttons: [{
                         text: 'Yes',
@@ -217,7 +219,12 @@ $('#dlg').puidialog();
                                             <td>null</td>
                                             <td>An array of options for generated dialog buttons.</td>
                                         </tr>
-
+                                        <tr>
+                                            <td>responsive</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>In responsive mode, dialog adjusts itself based on screen width.</td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -318,6 +325,7 @@ $(function() {
         hideEffect: 'fade',
         minimizable: true,
         maximizable: true,
+        draggable: false,
         modal: true,
         buttons: [{
                 text: 'Yes',

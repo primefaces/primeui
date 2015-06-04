@@ -25,10 +25,16 @@ $(function() {
             minimizable: false,
             maximizable: false,
             appendTo: null,
-            buttons: null
+            buttons: null,
+            responsive: false
         },
         
         _create: function() {
+            this.id = this.element.attr('id');
+            if(!this.id) {
+                this.id = this.element.uniqueId().attr('id');
+            }
+            
             //container
             this.element.addClass('pui-dialog ui-widget ui-widget-content ui-helper-hidden ui-corner-all pui-shadow')
                         .contents().wrapAll('<div class="pui-dialog-content ui-widget-content" />');
@@ -98,6 +104,10 @@ $(function() {
 
             if(this.options.appendTo) {
                 this.element.appendTo(this.options.appendTo);
+            }
+            
+            if(this.options.responsive) {
+                this.resizeNS = 'resize.' + this.id;
             }
 
             //docking zone
@@ -201,6 +211,10 @@ $(function() {
             });
 
             this._applyFocus();
+            
+            if(this.options.responsive) {
+                this._bindResizeListener();
+            }
         },
 
         hide: function() {   
@@ -236,6 +250,10 @@ $(function() {
                 'aria-hidden': true,
                 'aria-live': 'off'
             });
+            
+            if(this.options.responsive) {
+                this._unbindResizeListener();
+            }
         },
 
         _applyFocus: function() {
@@ -480,6 +498,17 @@ $(function() {
             });
 
             this.titlebar.children('a.pui-dialog-titlebar-icon').attr('role', 'button');
+        },
+        
+        _bindResizeListener: function() {
+            var $this = this;
+            $(window).on(this.resizeNS, function() {
+                $this._initPosition();
+            });
+        },
+
+        _unbindResizeListener: function() {
+            $(window).off(this.resizeNS);
         }
     });
 });
