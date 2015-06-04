@@ -42,6 +42,9 @@ Showcase = {
             Showcase.openPage(href);
             window.location.hash = href.substring(href.lastIndexOf('/'), href.indexOf('.html'));
             Showcase.hashChangeByLink = true;
+            
+            //clear notify
+            $(document.body).children('.pui-notify').remove();
             e.preventDefault();
         });
         
