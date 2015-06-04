@@ -123,7 +123,7 @@ body{margin:0px; height:100%; overflow-x:hidden; overflow-y:auto; background-col
 					.MOBILE .widgetsLink span{ width:100%; margin-top:0px; overflow:hidden; height:50px; display:table; font-size:11px;}
 				
 			.BoxesIndent{width:85%; float:right; padding-top:30px;}
-				.brandLogo{ background-image:url(resources/images/brandLogo.svg); background-repeat:no-repeat; background-position:center; background-size:contain; width:70px; height:70px; display:block;
+				.brandLogo{ width:70px; height:70px; display:block;
 				margin:10px 10px 10px 0px; float:left;}
 				
 			.MOBILE .BoxesIndent{width:85%; float:none; margin:0px auto; padding-top:30px;}
