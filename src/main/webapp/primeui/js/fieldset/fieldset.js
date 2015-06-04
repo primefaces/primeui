@@ -15,11 +15,10 @@ $(function() {
             this.element.addClass('pui-fieldset ui-widget ui-widget-content ui-corner-all').
                 children('legend').addClass('pui-fieldset-legend ui-corner-all ui-state-default');
             
-            this.element.contents(':not(legend)').wrapAll('<div class="pui-fieldset-content" />');
+            this.element.contents().wrapAll('<div class="pui-fieldset-content" />');            
             
-            this.legend = this.element.children('legend.pui-fieldset-legend');
             this.content = this.element.children('div.pui-fieldset-content');
-            
+            this.legend = this.content.children('legend.pui-fieldset-legend');
             this.legend.prependTo(this.element);
             
             if(this.options.toggleable) {
@@ -49,7 +48,7 @@ $(function() {
         
         toggle: function(e) {
             var $this = this;
-            
+
             this._trigger('beforeToggle', e);
 
             if(this.options.collapsed) {

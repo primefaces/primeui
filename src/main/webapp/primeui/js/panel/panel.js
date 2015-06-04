@@ -58,7 +58,12 @@ $(function() {
         },
 
         _bindEvents: function() {
-            this.header.find('a.pui-panel-titlebar-icon').on('hover.puipanel', function() {$(this).toggleClass('ui-state-hover');});
+            this.header.find('a.pui-panel-titlebar-icon').on('mouseenter.puipanel', function() {
+                $(this).addClass('ui-state-hover');
+            })
+            .on('mouseleave.puipanel', function() {
+                $(this).removeClass('ui-state-hover');
+            });
         },
         
         close: function() {
