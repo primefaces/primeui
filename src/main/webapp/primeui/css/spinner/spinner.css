@@ -25,7 +25,7 @@
     width: 16px;
     z-index: 100;
 }
-.pui-spinner .ui-icon {
+.pui-spinner .pui-icon {
     left: 0;
     margin-top: -8px;
     position: absolute;
@@ -36,11 +36,4 @@
 }
 .pui-spinner-down {
     bottom: 0;
-}
-.pui-spinner .ui-icon-triangle-1-s {
-    background-position: -65px -16px;
-}
-
-.pui-spinner .ui-icon-triangle-1-n {
-    margin-top: -9px;
 }
