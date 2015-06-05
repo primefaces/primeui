@@ -47,10 +47,13 @@ $(function() {
             this._bindKeyEvents();
             
             if(this.options.dropdown) {
-                this.dropdown.on('hover.puiautocomplete', function() {
+                this.dropdown.on('mouseenter.puiautocomplete', function() {
                     if(!$this.element.prop('disabled')) {
-                        $this.dropdown.toggleClass('ui-state-hover');
+                        $this.dropdown.addClass('ui-state-hover');
                     }
+                })
+                .on('mouseleave.puiautocomplete', function() {
+                    $this.dropdown.removeClass('ui-state-hover');
                 })
                 .on('mousedown.puiautocomplete', function() {
                     if(!$this.element.prop('disabled')) {
