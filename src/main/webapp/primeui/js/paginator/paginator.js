@@ -6,7 +6,7 @@ $(function() {
     var ElementHandlers = {
         
         '{FirstPageLink}': {
-            markup: '<span class="pui-paginator-first pui-paginator-element ui-state-default ui-corner-all"><span class="ui-icon ui-icon-seek-first">p</span></span>',
+            markup: '<span class="pui-paginator-first pui-paginator-element ui-state-default ui-corner-all"><span class="fa fa-fast-backward"></span></span>',
             
             create: function(paginator) {
                 var element = $(this.markup);
@@ -35,7 +35,7 @@ $(function() {
         },
                 
         '{PreviousPageLink}': {
-            markup: '<span class="pui-paginator-prev pui-paginator-element ui-state-default ui-corner-all"><span class="ui-icon ui-icon-seek-prev">p</span></span>',
+            markup: '<span class="pui-paginator-prev pui-paginator-element ui-state-default ui-corner-all"><span class="fa fa-backward"></span></span>',
                     
             create: function(paginator) {
                 var element = $(this.markup);
@@ -64,7 +64,7 @@ $(function() {
         },
                 
         '{NextPageLink}': {
-            markup: '<span class="pui-paginator-next pui-paginator-element ui-state-default ui-corner-all"><span class="ui-icon ui-icon-seek-next">p</span></span>',
+            markup: '<span class="pui-paginator-next pui-paginator-element ui-state-default ui-corner-all"><span class="fa fa-forward"></span></span>',
                     
             create: function(paginator) {
                 var element = $(this.markup);
@@ -93,7 +93,7 @@ $(function() {
         },
                 
         '{LastPageLink}': {
-            markup: '<span class="pui-paginator-last pui-paginator-element ui-state-default ui-corner-all"><span class="ui-icon ui-icon-seek-end">p</span></span>',
+            markup: '<span class="pui-paginator-last pui-paginator-element ui-state-default ui-corner-all"><span class="fa fa-fast-forward"></span></span>',
                     
             create: function(paginator) {
                 var element = $(this.markup);
