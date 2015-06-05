@@ -430,7 +430,6 @@ $(function() {
     $.widget("primeui.puislidemenu", $.primeui.puibasemenu, {
                 
         _create: function() {
-            
             this._render();
         
             //elements
@@ -448,7 +447,11 @@ $(function() {
             this.jqWidth = this.container.width();
 
             if(!this.element.hasClass('pui-menu-dynamic')) {
-                this._applyDimensions();
+                var $this = this;
+                setTimeout(function() {
+                    $this._applyDimensions();
+                }, 100);
+                
             }
             this._super();
 
@@ -457,9 +460,9 @@ $(function() {
         
         _render: function() {
             this.element.addClass('pui-menu-list ui-helper-reset').
-                    wrap('<div class="pui-menu pui-slidemenu ui-widget ui-widget-content ui-corner-all ui-helper-clearfix"/>').
+                    wrap('<div class="pui-menu pui-slidemenu ui-widget ui-widget-content ui-corner-all"/>').
                     wrap('<div class="pui-slidemenu-wrapper" />').
-                    after('<div class="pui-slidemenu-backward ui-widget-header ui-corner-all ui-helper-clearfix">\n\
+                    after('<div class="pui-slidemenu-backward ui-widget-header ui-corner-all">\n\
                     <span class="ui-icon ui-icon-triangle-1-w"></span>Back</div>').
                     wrap('<div class="pui-slidemenu-content" />');
             
@@ -474,17 +477,15 @@ $(function() {
                     menuitemLink.addClass('pui-menuitem-link ui-corner-all').contents().wrap('<span class="ui-menuitem-text" />');
                     
                     if(icon) {
-                        menuitemLink.prepend('<span class="pui-menuitem-icon ui-icon ' + icon + '"></span>');
+                        menuitemLink.prepend('<span class="pui-menuitem-icon fa fa-fw ' + icon + '"></span>');
                     }
                     
                     listItem.addClass('pui-menuitem ui-widget ui-corner-all');
                     if(listItem.children('ul').length > 0) {
                         listItem.addClass('pui-menu-parent');
                         listItem.children('ul').addClass('ui-widget-content pui-menu-list ui-corner-all ui-helper-clearfix pui-menu-child ui-shadow');
-                        menuitemLink.prepend('<span class="ui-icon ui-icon-triangle-1-e"></span>');
+                        menuitemLink.prepend('<span class="pui-submenu-icon fa fa-fw fa-caret-right"></span>');
                     }
-                
-            
             });
         },
               

@@ -11,14 +11,6 @@
         $(function() {
             $('#sm1').puislidemenu();
 
-            $('#sm2').puislidemenu({
-                popup: true,
-                trigger: $('#sm2trigger')
-            });
-
-            $('button').puibutton();
-
-
             $('#doc').puitabview();
         });
     </script>
@@ -34,9 +26,9 @@
 
         <h3 class="first">Default</h3>
         <ul id="sm1">
-            <li> <a data-icon="ui-icon-document">File</a>
+            <li> <a data-icon="fa-file-o">File</a>
                 <ul> 
-                    <li><a data-icon="ui-icon-contact">New</a>
+                    <li><a data-icon="fa-plus">New</a>
                         <ul>
                             <li><a>Project</a></li>
                             <li><a>Other</a></li>
@@ -46,18 +38,18 @@
                     <li><a>Quit</a></li> 
                 </ul>
             </li>
-            <li> <a data-icon="ui-icon-pencil">Edit</a>
+            <li> <a data-icon="fa-edit">Edit</a>
                 <ul>
-                    <li><a data-icon="ui-icon-arrowreturnthick-1-w">Undo</a></li>
-                    <li><a data-icon="ui-icon-arrowreturnthick-1-e">Redo</a></li>
+                    <li><a data-icon="fa-mail-forward">Undo</a></li>
+                    <li><a data-icon="fa-mail-reply">Redo</a></li>
                 </ul>
             </li>
             <li>
-                <a data-icon="ui-icon-help">Help</a>
+                <a data-icon="fa-question">Help</a>
                 <ul>
                     <li><a>Contents</a></li>
                     <li>
-                        <a data-icon="ui-icon-search">Search</a>
+                        <a data-icon="fa-search">Search</a>
                         <ul>
                             <li><a>Text</a>
                                 <ul>
@@ -72,17 +64,17 @@
 
             </li>
             <li>
-                <a data-icon="ui-icon-gear">Actions</a>
+                <a data-icon="fa-gear">Actions</a>
                 <ul>
-                    <li><a data-icon="ui-icon-refresh">Ajax</a>
+                    <li><a data-icon="fa-refresh">Edit</a>
                         <ul>
-                            <li><a data-icon="ui-icon-disk">Save</a></li>
-                            <li><a data-icon="ui-icon-arrowrefresh-1-w">Update</a></li>
+                            <li><a data-icon="fa-save">Save</a></li>
+                            <li><a data-icon="fa-save">Update</a></li>
                         </ul>
                     </li>
-                    <li><a data-icon="ui-icon-document">Non-Ajax</a>
+                    <li><a data-icon="fa-phone">Other</a>
                         <ul>
-                            <li><a data-icon="ui-icon-close">Delete</a></li>
+                            <li><a data-icon="fa-minus">Delete</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -92,68 +84,6 @@
             </li>
         </ul>
 
-        <h3>Popup</h3>
-
-        <button id="sm2trigger" style="margin-top:0px">Show</button>
-
-        <ul id="sm2">
-            <li> <a data-icon="ui-icon-document">File</a>
-                <ul> 
-                    <li><a data-icon="ui-icon-contact">New</a>
-                        <ul>
-                            <li><a>Project</a></li>
-                            <li><a>Other</a></li>
-                        </ul>
-                    </li> 
-                    <li><a>Open</a></li> 
-                    <li><a>Quit</a></li> 
-                </ul>
-            </li>
-            <li> <a data-icon="ui-icon-pencil">Edit</a>
-                <ul>
-                    <li><a data-icon="ui-icon-arrowreturnthick-1-w">Undo</a></li>
-                    <li><a data-icon="ui-icon-arrowreturnthick-1-e">Redo</a></li>
-                </ul>
-            </li>
-            <li>
-                <a data-icon="ui-icon-help">Help</a>
-                <ul>
-                    <li><a>Contents</a></li>
-                    <li>
-                        <a data-icon="ui-icon-search">Search</a>
-                        <ul>
-                            <li><a>Text</a>
-                                <ul>
-                                    <li><a>Workspace</a></li>
-                                </ul>
-                            </li>
-                            <li><a>File</a></li>
-                        </ul>
-                    </li>
-
-                </ul>
-
-            </li>
-            <li>
-                <a data-icon="ui-icon-gear">Actions</a>
-                <ul>
-                    <li><a data-icon="ui-icon-refresh">Ajax</a>
-                        <ul>
-                            <li><a data-icon="ui-icon-disk">Save</a></li>
-                            <li><a data-icon="ui-icon-arrowrefresh-1-w">Update</a></li>
-                        </ul>
-                    </li>
-                    <li><a data-icon="ui-icon-document">Non-Ajax</a>
-                        <ul>
-                            <li><a data-icon="ui-icon-close">Delete</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a data-icon="ui-icon-close">Quit</a>
-            </li>
-        </ul>
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">
