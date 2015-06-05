@@ -100,7 +100,7 @@ $(function() {
                     if(col.sortable) {
                         header.addClass('pui-sortable-column')
                                 .data('order', 0)
-                                .append('<span class="pui-sortable-column-icon ui-icon ui-icon-carat-2-n-s"></span>');
+                                .append('<span class="pui-sortable-column-icon fa fa-fw fa-sort"></span>');
                     }
                 });
             }
@@ -148,9 +148,9 @@ $(function() {
                     var sortIcon = $column.children('.pui-sortable-column-icon');
                     $column.data('order', $this.options.sortOrder).removeClass('ui-state-hover').addClass('ui-state-active');
                     if($this.options.sortOrder === -1)
-                        sortIcon.removeClass('ui-icon-triangle-1-n').addClass('ui-icon-triangle-1-s');
+                        sortIcon.removeClass('fa-sort fa-sort-asc').addClass('fa-sort-desc');
                     else if($this.options.sortOrder === 1)
-                        sortIcon.removeClass('ui-icon-triangle-1-s').addClass('ui-icon-triangle-1-n');
+                        sortIcon.removeClass('fa-sort fa-sort-desc').addClass('fa-sort-asc');
                 }
             });
 
@@ -208,7 +208,7 @@ $(function() {
                 
                 //clean previous sort state
                 column.siblings().filter('.ui-state-active').data('order', 0).removeClass('ui-state-active').children('span.pui-sortable-column-icon')
-                                                            .removeClass('ui-icon-triangle-1-n ui-icon-triangle-1-s');
+                                                            .removeClass('fa-sort-asc fa-sort-desc').addClass('fa-sort');
                                                     
                 //update state
                 $this.options.sortField = sortField;
@@ -218,9 +218,9 @@ $(function() {
                                 
                 column.data('order', sortOrder).removeClass('ui-state-hover').addClass('ui-state-active');
                 if(sortOrder === -1)
-                    sortIcon.removeClass('ui-icon-triangle-1-n').addClass('ui-icon-triangle-1-s');
+                    sortIcon.removeClass('fa-sort fa-sort-asc').addClass('fa-sort-desc');
                 else if(sortOrder === 1)
-                    sortIcon.removeClass('ui-icon-triangle-1-s').addClass('ui-icon-triangle-1-n');
+                    sortIcon.removeClass('fa-sort fa-sort-desc').addClass('fa-sort-asc');
             });
         },
                 
@@ -539,7 +539,7 @@ $(function() {
             }
             
             this.thead.children('th.pui-sortable-column').data('order', 0).filter('.ui-state-active').removeClass('ui-state-active')
-                                .children('span.pui-sortable-column-icon').removeClass('ui-icon-triangle-1-n ui-icon-triangle-1-s');
+                                .children('span.pui-sortable-column-icon').removeClass('fa-sort-asc fa-sort-desc').addClass('fa-sort');
         },
         
         _initScrolling: function() {

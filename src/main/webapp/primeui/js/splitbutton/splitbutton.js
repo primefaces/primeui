@@ -23,7 +23,7 @@ $(function() {
             
             this.element.puibutton(this.options).removeClass('ui-corner-all').addClass('ui-corner-left');
             this.menuButton.puibutton({
-                icon: 'ui-icon-triangle-1-s'
+                icon: 'fa-caret-down'
             }).removeClass('ui-corner-all').addClass('ui-corner-right');
             
             if(this.options.items && this.options.items.length) {            

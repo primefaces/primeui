@@ -33,7 +33,7 @@ $(function() {
             this.element.addClass('pui-button ui-widget ui-state-default ui-corner-all ' + styleClass).text('');
             
             if(this.options.icon) {
-                this.element.append('<span class="pui-button-icon-' + this.options.iconPos + ' ui-icon ' + this.options.icon + '" />');
+                this.element.append('<span class="pui-button-icon-' + this.options.iconPos + ' ui-icon fa fa-fw ' + this.options.icon + '" />');
             }
             
             this.element.append('<span class="pui-button-text">' + value + '</span>');
