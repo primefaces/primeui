@@ -41,7 +41,7 @@ $(function() {
             for(var i = 0; i < this.options.items.length; i++) {
                 var item = this.options.items[i],
                 menuitem = $('<li class="pui-menuitem ui-widget ui-corner-all" role="menuitem"></li>'),
-                link = $('<a class="pui-menuitem-link ui-corner-all"><span class="pui-menuitem-icon ui-icon ' + item.icon +'"></span><span class="ui-menuitem-text">' + item.text +'</span></a>');
+                link = $('<a class="pui-menuitem-link ui-corner-all"><span class="pui-menuitem-icon fa fa-fw ' + item.icon +'"></span><span class="ui-menuitem-text">' + item.text +'</span></a>');
                 
                 if(item.url) {
                     link.attr('href', item.url);

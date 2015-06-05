@@ -13,27 +13,27 @@
     <script type="text/javascript">
         $(function() {
             $('#btn').puisplitbutton({
-                icon: 'ui-icon-check',
+                icon: 'fa-check',
                 click: function() {
                     $('#messages').puigrowl('show', [{severity: 'info', summary: 'Saved'}]);
                 },
                 items: [
                     {
-                        icon: 'ui-icon-arrowrefresh-1-w',
+                        icon: 'fa-edit',
                         text: 'Update',
                         click: function() {
                             $('#messages').puigrowl('show', [{severity: 'info', summary: 'Updated'}]);
                         }
                     },
                     {
-                        icon: 'ui-icon-close',
+                        icon: 'fa-minus',
                         text: 'Delete',
                         click: function() {
                             $('#messages').puigrowl('show', [{severity: 'info', summary: 'Deleted'}]);
                         }
                     },
                     {
-                        icon: 'ui-icon-extlink',
+                        icon: 'fa-home',
                         text: 'Homepage',
                         url: 'http://www.primefaces.org/primeui'
                     }
@@ -204,27 +204,27 @@ $('#default').puisplitbutton('show');
                             <div id="doc-source">
                                 <pre name="code" class="brush:js">
 $('#btn').puisplitbutton({
-    icon: 'ui-icon-check',
+    icon: 'fa-check',
     click: function() {
-        $('#messages').puigrowl('show', [{severity:'info', summary: 'Saved'}]);
+        $('#messages').puigrowl('show', [{severity: 'info', summary: 'Saved'}]);
     },
     items: [
         {
-            icon: 'ui-icon-arrowrefresh-1-w',
+            icon: 'fa-edit',
             text: 'Update',
             click: function() {
-                $('#messages').puigrowl('show', [{severity:'info', summary: 'Updated'}]);
+                $('#messages').puigrowl('show', [{severity: 'info', summary: 'Updated'}]);
             }
         },
         {
-            icon: 'ui-icon-close',
+            icon: 'fa-minus',
             text: 'Delete',
             click: function() {
-                $('#messages').puigrowl('show', [{severity:'info', summary: 'Deleted'}]);
+                $('#messages').puigrowl('show', [{severity: 'info', summary: 'Deleted'}]);
             }
         },
         {
-            icon: 'ui-icon-extlink',
+            icon: 'fa-home',
             text: 'Homepage',
             url: 'http://www.primefaces.org/primeui'
         }
