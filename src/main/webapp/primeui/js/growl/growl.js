@@ -35,7 +35,7 @@ $(function() {
         _renderMessage: function(msg) {
             var markup = '<div class="pui-growl-item-container ui-state-highlight ui-corner-all ui-helper-hidden" aria-live="polite">';
             markup += '<div class="pui-growl-item pui-shadow">';
-            markup += '<div class="pui-growl-icon-close ui-icon ui-icon-closethick" style="display:none"></div>';
+            markup += '<div class="pui-growl-icon-close fa fa-close" style="display:none"></div>';
             markup += '<span class="pui-growl-image pui-growl-image-' + msg.severity + '" />';
             markup += '<div class="pui-growl-message">';
             markup += '<span class="pui-growl-title">' + msg.summary + '</span>';
