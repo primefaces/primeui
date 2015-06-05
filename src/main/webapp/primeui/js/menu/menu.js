@@ -215,14 +215,14 @@ $(function() {
                     menuitemLink.addClass('pui-menuitem-link ui-corner-all').contents().wrap('<span class="ui-menuitem-text" />');
                     
                     if(icon) {
-                        menuitemLink.prepend('<span class="pui-menuitem-icon ui-icon ' + icon + '"></span>');
+                        menuitemLink.prepend('<span class="fa fa-fw ' + icon + '"></span>');
                     }
                     
                     listItem.addClass('pui-menuitem ui-widget ui-corner-all');
                     if(listItem.children('ul').length > 0) {
                         listItem.addClass('pui-menu-parent');
                         listItem.children('ul').addClass('ui-widget-content pui-menu-list ui-corner-all ui-helper-clearfix pui-menu-child pui-shadow');
-                        menuitemLink.prepend('<span class="ui-icon ui-icon-triangle-1-e"></span>');
+                        menuitemLink.prepend('<span class="pui-submenu-icon fa fa-fw fa-caret-right"></span>');
                     }
                 
             

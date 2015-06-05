@@ -93,10 +93,7 @@
     position:relative;
 }
 
-.pui-menu .pui-menu-parent .ui-icon-triangle-1-e,
-.pui-menu .pui-menu-parent .ui-icon-triangle-1-s,
-.pui-menubar .pui-menu-child .ui-icon-triangle-1-s,
-.pui-menubar .pui-menu-child .ui-icon-triangle-1-s {
+.pui-menu .pui-menu-parent .pui-submenu-icon {
     float:right;
 }
 
