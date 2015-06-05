@@ -55,7 +55,7 @@
     padding: 0;
 }
 
-.pui-picklist .pui-picklist-filter-container .ui-icon {
+.pui-picklist .pui-picklist-filter-container .pui-icon {
     position: absolute;
     top: 5px;
     right: 2px;
