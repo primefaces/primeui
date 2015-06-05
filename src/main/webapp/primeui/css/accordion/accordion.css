@@ -15,7 +15,7 @@
     padding: .5em .5em .5em 2.2em; 
 }
 
-.pui-accordion .pui-accordion-header .ui-icon { 
+.pui-accordion .pui-accordion-header .pui-icon { 
     position: absolute; 
     left: .5em; 
     top: 50%; 
