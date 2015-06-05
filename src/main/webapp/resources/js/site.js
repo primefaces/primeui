@@ -165,6 +165,10 @@ Showcase = {
 
 $(function() {
     Showcase.init();
+    
+    $.ajaxSetup({
+        cache: true
+    });
 });
 
 /*!
