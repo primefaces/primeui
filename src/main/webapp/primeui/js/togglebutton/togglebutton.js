@@ -19,7 +19,7 @@ $(function() {
             this.element.addClass('ui-helper-hidden-accessible');
             if(this.options.onIcon && this.options.offIcon) {
                 this.container.addClass('pui-button-text-icon-left');
-                this.container.append('<span class="pui-button-icon-left ui-icon fa fa-fw"></span>');
+                this.container.append('<span class="pui-button-icon-left pui-icon fa fa-fw"></span>');
             }
             else {
                 this.container.addClass('pui-button-text-only');
@@ -35,7 +35,7 @@ $(function() {
             }
             
             this.label = this.container.children('.pui-button-text');
-            this.icon = this.container.children('.ui-icon');
+            this.icon = this.container.children('.pui-icon');
             
             //initial state
             if(this.element.prop('checked')) {
@@ -97,7 +97,7 @@ $(function() {
             else
                 this.check();
             
-            this._trigger('change', null, this.input.prop('checked'));
+            this._trigger('change', null, this.element.prop('checked'));
         },
 
         check: function(silent) {
