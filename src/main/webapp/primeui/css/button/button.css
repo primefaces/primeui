@@ -81,3 +81,10 @@ button.pui-button::-moz-focus-inner {
 .pui-fluid .ui-buttonset {
     width: 100%;
 }
+
+/* FontAwesome Support */
+.pui-button-icon-only .ui-icon.fa, 
+.pui-button-text-icon-left .ui-icon.fa, 
+.pui-button-text-icon-right .ui-icon.fa {  
+    margin-top: -7px; 
+}
