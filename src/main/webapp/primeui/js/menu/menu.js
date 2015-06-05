@@ -166,10 +166,10 @@ $(function() {
                 menuitemLink.addClass('pui-menuitem-link ui-corner-all').contents().wrap('<span class="ui-menuitem-text" />');
                     
                 if(index > 0) {
-                    listItem.before('<li class="pui-breadcrumb-chevron ui-icon ui-icon-triangle-1-e"></li>');
+                    listItem.before('<li class="pui-breadcrumb-chevron fa fa-chevron-right"></li>');
                 }
                 else {
-                    menuitemLink.addClass('ui-icon ui-icon-home');
+                    listItem.before('<li class="fa fa-home"></li>');
                 }
             });
         }

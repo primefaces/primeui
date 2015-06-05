@@ -216,15 +216,13 @@
     margin-top:3px;
 }
 
-.pui-breadcrumb ul li a.ui-icon-home {
+.pui-breadcrumb ul li.fa {
     padding: 0;
-    margin-top: 1px;
-    overflow: hidden;
+    margin: 4px 3px 0px 3px;
 }
 
-.pui-breadcrumb-chevron{
+.pui-breadcrumb-chevron {
     float:left;
-    margin-top:2px;
 }
            
 /** SlideMenu **/
