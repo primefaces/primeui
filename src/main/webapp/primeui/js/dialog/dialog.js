@@ -67,15 +67,15 @@ $(function() {
             this.titlebar = this.element.children('.pui-dialog-titlebar');
             
             if(this.options.closable) {
-                this._renderHeaderIcon('pui-dialog-titlebar-close', 'ui-icon-close');
+                this._renderHeaderIcon('pui-dialog-titlebar-close', 'fa-close');
             }
             
             if(this.options.maximizable) {
-                this._renderHeaderIcon('pui-dialog-titlebar-maximize', 'ui-icon-extlink');
+                this._renderHeaderIcon('pui-dialog-titlebar-maximize', 'fa-plus');
             }
             
             if(this.options.minimizable) {
-                this._renderHeaderIcon('pui-dialog-titlebar-minimize', 'ui-icon-minus');
+                this._renderHeaderIcon('pui-dialog-titlebar-minimize', 'fa-minus');
             }
             
             //icons
@@ -125,7 +125,7 @@ $(function() {
         
         _renderHeaderIcon: function(styleClass, icon) {
             this.titlebar.append('<a class="pui-dialog-titlebar-icon ' + styleClass + ' ui-corner-all" href="#" role="button">' +
-                                '<span class="ui-icon ' + icon + '"></span></a>');
+                                '<span class="fa fa-fw ' + icon + '"></span></a>');
         },
         
         _enableModality: function() {

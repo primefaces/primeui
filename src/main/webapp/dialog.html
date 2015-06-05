@@ -18,14 +18,14 @@
                 modal: true,
                 buttons: [{
                         text: 'Yes',
-                        icon: 'ui-icon-check',
+                        icon: 'fa-check',
                         click: function() {
                             $('#dlg').puidialog('hide');
                         }
                     },
                     {
                         text: 'No',
-                        icon: 'ui-icon-close',
+                        icon: 'fa-close',
                         click: function() {
                             $('#dlg').puidialog('hide');
                         }
@@ -34,7 +34,7 @@
             });
 
             $('#btn-show').puibutton({
-                icon: 'ui-icon-arrow-4-diag',
+                icon: 'fa-external-link-square',
                 click: function() {
                     $('#dlg').puidialog('show');
                 }
@@ -326,17 +326,18 @@ $(function() {
         minimizable: true,
         maximizable: true,
         draggable: false,
+        responsive: true,
         modal: true,
         buttons: [{
                 text: 'Yes',
-                icon: 'ui-icon-check',
+                icon: 'fa-check',
                 click: function() {
                     $('#dlg').puidialog('hide');
                 }
             },
             {
                 text: 'No',
-                icon: 'ui-icon-close',
+                icon: 'fa-close',
                 click: function() {
                     $('#dlg').puidialog('hide');
                 }
@@ -345,7 +346,7 @@ $(function() {
     });
 
     $('#btn-show').puibutton({
-        icon: 'ui-icon-arrow-4-diag',
+        icon: 'fa-external-link-square',
         click: function() {
             $('#dlg').puidialog('show');
         }
