@@ -32,7 +32,7 @@ $(function() {
             else {
                 if(this.options.dropdown) {
                     this.dropdown = $('<button type="button" class="pui-button ui-widget ui-state-default ui-corner-right pui-button-icon-only">' +
-                        '<span class="pui-button-icon-primary ui-icon fa fa-fw fa-caret-down"></span><span class="pui-button-text">&nbsp;</span></button>')
+                        '<span class="pui-icon fa fa-fw fa-caret-down"></span><span class="pui-button-text">&nbsp;</span></button>')
                         .insertAfter(this.element);
                     this.element.removeClass('ui-corner-all').addClass('ui-corner-left');
                 }
@@ -259,7 +259,7 @@ $(function() {
                 
                 if($this.options.multiple) {
                     var tokenMarkup = '<li class="pui-autocomplete-token ui-state-active ui-corner-all ui-helper-hidden">';
-                    tokenMarkup += '<span class="pui-autocomplete-token-icon ui-icon ui-icon-close" />';
+                    tokenMarkup += '<span class="pui-autocomplete-token-icon fa fa-fw fa-close" />';
                     tokenMarkup += '<span class="pui-autocomplete-token-label">' + item.data('label') + '</span></li>';
 
                     $(tokenMarkup).data(item.data())

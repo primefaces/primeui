@@ -39,15 +39,15 @@
 }
 
 /*button icon element(s) */
-.pui-button-icon-only .ui-icon, 
-.pui-button-text-icon-left .ui-icon, 
-.pui-button-text-icon-right .ui-icon { 
+.pui-button-icon-only .pui-icon, 
+.pui-button-text-icon-left .pui-icon, 
+.pui-button-text-icon-right .pui-icon { 
     position: absolute; 
     top: 50%; 
     margin-top: -8px; 
 }
 
-.pui-button-icon-only .ui-icon { 
+.pui-button-icon-only .pui-icon { 
     left: 50%; 
     margin-left: -8px; 
 }
