@@ -23,15 +23,15 @@ $(function() {
             
             if(this.options.toggleable) {
                 this.element.addClass('pui-fieldset-toggleable');
-                this.toggler = $('<span class="pui-fieldset-toggler ui-icon" />').prependTo(this.legend);
+                this.toggler = $('<span class="pui-fieldset-toggler fa fa-fw" />').prependTo(this.legend);
                 
                 this._bindEvents();
                 
                 if(this.options.collapsed) {
                     this.content.hide();
-                    this.toggler.addClass('ui-icon-plusthick');
+                    this.toggler.addClass('fa-plus');
                 } else {
-                    this.toggler.addClass('ui-icon-minusthick');
+                    this.toggler.addClass('fa-minus');
                 }
             }
         },
@@ -52,10 +52,10 @@ $(function() {
             this._trigger('beforeToggle', e);
 
             if(this.options.collapsed) {
-                this.toggler.removeClass('ui-icon-plusthick').addClass('ui-icon-minusthick');
+                this.toggler.removeClass('fa-plus').addClass('fa-minus');
             }
             else {
-                this.toggler.removeClass('ui-icon-minusthick').addClass('ui-icon-plusthick');
+                this.toggler.removeClass('fa-minus').addClass('fa-plus');
             }
 
             this.content.slideToggle(this.options.toggleSpeed, 'easeInOutCirc', function() {
