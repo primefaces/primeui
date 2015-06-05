@@ -11,13 +11,13 @@ $(function() {
             this.element.wrap('<div class="pui-radiobutton ui-widget"><div class="ui-helper-hidden-accessible"></div></div>');
             this.container = this.element.parent().parent();
             this.box = $('<div class="pui-radiobutton-box ui-widget pui-radiobutton-relative ui-state-default">').appendTo(this.container);
-            this.icon = $('<span class="pui-radiobutton-icon pui-c"></span>').appendTo(this.box);
+            this.icon = $('<span class="pui-radiobutton-icon pui-icon"></span>').appendTo(this.box);
             this.disabled = this.element.prop('disabled');
             this.label = $('label[for="' + this.element.attr('id') + '"]');
             
             if(this.element.prop('checked')) {
                 this.box.addClass('ui-state-active');
-                this.icon.addClass('ui-icon fa fa-fw fa-circle');
+                this.icon.addClass('fa fa-fw fa-circle');
                 checkedRadios[this.element.attr('name')] = this.box;
             }
             
@@ -72,10 +72,10 @@ $(function() {
             .change(function(e) {
                 var name = $this.element.attr('name');
                 if(checkedRadios[name]) {
-                    checkedRadios[name].removeClass('ui-state-active ui-state-focus ui-state-hover').children('.pui-radiobutton-icon').removeClass('ui-icon fa fa-fw fa-circle');
+                    checkedRadios[name].removeClass('ui-state-active ui-state-focus ui-state-hover').children('.pui-radiobutton-icon').removeClass('fa fa-fw fa-circle');
                 }
 
-                $this.icon.addClass('ui-icon fa fa-fw fa-circle');
+                $this.icon.addClass('fa fa-fw fa-circle');
                 if(!$this.element.is(':focus')) {
                     $this.box.addClass('ui-state-active');
                 }
