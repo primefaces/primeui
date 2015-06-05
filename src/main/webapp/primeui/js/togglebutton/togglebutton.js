@@ -19,7 +19,7 @@ $(function() {
             this.element.addClass('ui-helper-hidden-accessible');
             if(this.options.onIcon && this.options.offIcon) {
                 this.container.addClass('pui-button-text-icon-left');
-                this.container.append('<span class="pui-button-icon-left ui-icon"></span>');
+                this.container.append('<span class="pui-button-icon-left ui-icon fa fa-fw"></span>');
             }
             else {
                 this.container.addClass('pui-button-text-only');
