@@ -55,6 +55,10 @@ $(function() {
 
             this._generateItems();
             
+            if(this.options.scrollHeight && this.panel.outerHeight() > this.options.scrollHeight) {
+                this.itemsWrapper.height(this.options.scrollHeight);
+            }
+            
             var $this = this,
             selectedOption = this.choices.filter(':selected');
 
@@ -89,8 +93,6 @@ $(function() {
                 this._bindEvents();
                 this._bindConstantEvents();
             }
-
-            this._initDimensions();
         },
         
         _generateItems: function() {
@@ -316,34 +318,7 @@ $(function() {
                 }
             });
         },
-        
-        _initDimensions: function() {
-            var userStyle = this.element.attr('style');
-
-            //do not adjust width of container if there is user width defined
-            if(!userStyle||userStyle.indexOf('width') == -1) {
-                this.container.width(this.element.outerWidth(true) + 5);
-            } else {
-                this.container.attr('style', userStyle);
-
-            }
-
-            //width/height of label
-            this.label.width(this.container.width() - this.menuIcon.width());
-
-            //align panel and container
-            var jqWidth = this.container.innerWidth();
-            if(this.panel.outerWidth() < jqWidth) {
-                this.panel.width(jqWidth);
-            }
-
-            this.element.parent().addClass('ui-helper-hidden').removeClass('ui-helper-hidden-accessible');
-            
-            if(this.options.scrollHeight && this.panel.outerHeight() > this.options.scrollHeight) {
-                this.itemsWrapper.height(this.options.scrollHeight);
-            }
-        },
-        
+                
         _selectItem: function(item, silent) {
             var selectedOption = this.choices.eq(this._resolveItemIndex(item)),
             currentOption = this.choices.filter(':selected'),
@@ -439,11 +414,25 @@ $(function() {
             this.label.off();
         },
         
-        _alignPanel: function() {        
+        _alignPanelWidth: function() {
+            if(!this.panelWidthAdjusted) {
+                var jqWidth = this.container.outerWidth();
+                if(this.panel.outerWidth() < jqWidth) {
+                    this.panel.width(jqWidth);
+                }
+
+                this.panelWidthAdjusted = true;
+            }
+        },
+        
+        _alignPanel: function() {
+            this._alignPanelWidth();
+            
             this.panel.css({left:'', top:''}).position({
                                             my: 'left top',
                                             at: 'left bottom',
-                                            of: this.container
+                                            of: this.container,
+                                            collision: 'flipfit'
                                         });
         },
         

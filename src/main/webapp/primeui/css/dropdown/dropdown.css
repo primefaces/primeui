@@ -5,6 +5,7 @@
     zoom: 1;
     cursor: pointer;
     overflow: hidden;
+    padding-right: 2em;
 }
 
 .pui-dropdown .pui-dropdown-trigger {
