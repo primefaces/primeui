@@ -117,7 +117,7 @@ $(function() {
                     menuitemLink.addClass('pui-menuitem-link ui-corner-all').contents().wrap('<span class="ui-menuitem-text" />');
                     
                     if(icon) {
-                        menuitemLink.prepend('<span class="pui-menuitem-icon ui-icon ' + icon + '"></span>');
+                        menuitemLink.prepend('<span class="pui-menuitem-icon fa fa-fw ' + icon + '"></span>');
                     }
                 }
             });
@@ -463,7 +463,7 @@ $(function() {
                     wrap('<div class="pui-menu pui-slidemenu ui-widget ui-widget-content ui-corner-all"/>').
                     wrap('<div class="pui-slidemenu-wrapper" />').
                     after('<div class="pui-slidemenu-backward ui-widget-header ui-corner-all">\n\
-                    <span class="ui-icon ui-icon-triangle-1-w"></span>Back</div>').
+                    <span class="pui-icon fa fa-fw fa-caret-left"></span>Back</div>').
                     wrap('<div class="pui-slidemenu-content" />');
             
             this.element.parent().uniqueId();

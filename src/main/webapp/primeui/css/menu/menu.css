@@ -258,8 +258,9 @@
     display: none;
 }
 
-.pui-slidemenu-backward .ui-icon {
+.pui-slidemenu-backward .pui-icon {
     float:left;
+    margin-top: 1px;
 }
 
 /** Fluid **/
