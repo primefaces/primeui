@@ -102,7 +102,7 @@ $(function() {
                     }
                     
                     if(j === 0) {
-                        var toggler = $('<span class="pui-treetable-toggler ui-icon ui-icon-triangle-1-e ui-c"></span>');
+                        var toggler = $('<span class="pui-treetable-toggler pui-icon fa fa-fw fa-caret-right"></span>');
                         
                         toggler.css('margin-left', depth * 16 + 'px');
                         if(leaf) {
@@ -148,7 +148,7 @@ $(function() {
                             if(!row.data('processing')) {
                                 row.data('processing', true);
 
-                                if(toggler.hasClass('ui-icon-triangle-1-e'))
+                                if(toggler.hasClass('fa-caret-right'))
                                     $this.expandNode(row);
                                 else
                                     $this.collapseNode(row);
@@ -204,7 +204,7 @@ $(function() {
         _showNodeChildren: function(row, showOnly) {
             if(!showOnly) {
                 row.data('expanded', true).attr('aria-expanded', true)
-                        .find('.pui-treetable-toggler:first').addClass('ui-icon-triangle-1-s').removeClass('ui-icon-triangle-1-e');
+                        .find('.pui-treetable-toggler:first').addClass('fa-caret-down').removeClass('fa-caret-right');
             }
             
             var children = this._getChildren(row);
@@ -233,7 +233,7 @@ $(function() {
         _hideNodeChildren: function(row, hideOnly) {
             if(!hideOnly) {
                 row.data('expanded', false).attr('aria-expanded', false)
-                        .find('.pui-treetable-toggler:first').addClass('ui-icon-triangle-1-e').removeClass('ui-icon-triangle-1-s');
+                        .find('.pui-treetable-toggler:first').addClass('fa-caret-right').removeClass('fa-caret-down');
             }
             
             var children = this._getChildren(row);
