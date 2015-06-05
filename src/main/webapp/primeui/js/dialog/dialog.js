@@ -71,7 +71,7 @@ $(function() {
             }
             
             if(this.options.maximizable) {
-                this._renderHeaderIcon('pui-dialog-titlebar-maximize', 'fa-plus');
+                this._renderHeaderIcon('pui-dialog-titlebar-maximize', 'fa-sort');
             }
             
             if(this.options.minimizable) {
@@ -125,7 +125,7 @@ $(function() {
         
         _renderHeaderIcon: function(styleClass, icon) {
             this.titlebar.append('<a class="pui-dialog-titlebar-icon ' + styleClass + ' ui-corner-all" href="#" role="button">' +
-                                '<span class="fa fa-fw ' + icon + '"></span></a>');
+                                '<span class="pui-icon fa fa-fw ' + icon + '"></span></a>');
         },
         
         _enableModality: function() {
@@ -375,7 +375,7 @@ $(function() {
                 this.element.removeClass('pui-dialog-maximized');
                 this._restoreState();
 
-                this.maximizeIcon.removeClass('ui-state-hover').children('.ui-icon').removeClass('ui-icon-newwin').addClass('ui-icon-extlink');
+                this.maximizeIcon.removeClass('ui-state-hover');//.children('.ui-icon').removeClass('ui-icon-newwin').addClass('ui-icon-extlink');
                 this.maximized = false;
             }
             else {
@@ -397,7 +397,7 @@ $(function() {
                     height: 'auto'
                 });
 
-                this.maximizeIcon.removeClass('ui-state-hover').children('.ui-icon').removeClass('ui-icon-extlink').addClass('ui-icon-newwin');
+                this.maximizeIcon.removeClass('ui-state-hover');//.children('.ui-icon').removeClass('ui-icon-extlink').addClass('ui-icon-newwin');
                 this.maximized = true;
                 this._trigger('maximize');
             }
@@ -418,7 +418,7 @@ $(function() {
                 this.element.appendTo(this.parent).removeClass('pui-dialog-minimized').css({'position':'fixed', 'float':'none'});
                 this._restoreState();
                 this.content.show();
-                this.minimizeIcon.removeClass('ui-state-hover').children('.ui-icon').removeClass('ui-icon-plus').addClass('ui-icon-minus');
+                this.minimizeIcon.removeClass('ui-state-hover');//.children('.ui-icon').removeClass('ui-icon-plus').addClass('ui-icon-minus');
                 this.minimized = false;
 
                 if(this.options.resizable) {
