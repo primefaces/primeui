@@ -6,7 +6,7 @@ $(function() {
     var ElementHandlers = {
         
         '{FirstPageLink}': {
-            markup: '<span class="pui-paginator-first pui-paginator-element ui-state-default ui-corner-all"><span class="fa fa-fast-backward"></span></span>',
+            markup: '<span class="pui-paginator-first pui-paginator-element ui-state-default ui-corner-all"><span class="fa fa-step-backward"></span></span>',
             
             create: function(paginator) {
                 var element = $(this.markup);
@@ -93,7 +93,7 @@ $(function() {
         },
                 
         '{LastPageLink}': {
-            markup: '<span class="pui-paginator-last pui-paginator-element ui-state-default ui-corner-all"><span class="fa fa-fast-forward"></span></span>',
+            markup: '<span class="pui-paginator-last pui-paginator-element ui-state-default ui-corner-all"><span class="fa fa-step-forward"></span></span>',
                     
             create: function(paginator) {
                 var element = $(this.markup);
