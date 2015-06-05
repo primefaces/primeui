@@ -80,13 +80,13 @@ $(function() {
             this.frames = this.strip.children('li.pui-galleria-frame');
 
             //navigators
-            this.element.append('<div class="pui-galleria-nav-prev ui-icon ui-icon-circle-triangle-w" style="bottom:' + (this.options.frameHeight / 2) + 'px"></div>' + 
-                '<div class="pui-galleria-nav-next ui-icon ui-icon-circle-triangle-e" style="bottom:' + (this.options.frameHeight / 2) + 'px"></div>');
+            this.element.append('<div class="pui-galleria-nav-prev fa fa-fw fa-chevron-circle-left" style="bottom:' + (this.options.frameHeight / 2) + 'px"></div>' + 
+                '<div class="pui-galleria-nav-next fa fa-fw fa-chevron-circle-right" style="bottom:' + (this.options.frameHeight / 2) + 'px"></div>');
 
             //caption
             if(this.options.showCaption) {
                 this.caption = $('<div class="pui-galleria-caption"></div>').css({
-                    'bottom': this.stripWrapper.outerHeight(true),
+                    'bottom': this.stripWrapper.outerHeight() + 10,
                     'width': this.panelWrapper.width()
                     }).appendTo(this.element);
             }
