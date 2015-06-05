@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="primeui/css/panel/panel.css" />
     <link rel="stylesheet" href="primeui/css/datatable/datatable.css" />
     <link rel="stylesheet" href="primeui/css/dialog/dialog.css" />
-    <link rel="stylesheet" href="primeui/css/splitbutton/splitbutton.css" />
+    <link rel="stylesheet" href="primeui/css/dropdown/dropdown.css" />
     <link rel="stylesheet" href="primeui/css/datagrid/datagrid.css" />
     <script type="text/javascript" src="primeui/js/inputtext/inputtext.js"></script>
     <script type="text/javascript" src="primeui/js/inputtextarea/inputtextarea.js"></script>
@@ -18,7 +18,7 @@
     <script type="text/javascript" src="primeui/js/panel/panel.js"></script>
     <script type="text/javascript" src="primeui/js/datatable/datatable.js"></script>
     <script type="text/javascript" src="primeui/js/dialog/dialog.js"></script>
-    <script type="text/javascript" src="primeui/js/splitbutton/splitbutton.js"></script>
+    <script type="text/javascript" src="primeui/js/dropdown/dropdown.js"></script>
     <script type="text/javascript" src="primeui/js/datagrid/datagrid.js"></script>
     <script type="text/javascript">
         $(function() {
@@ -73,23 +73,8 @@
                 responsive: true
             });
             
-            $('#splitbtn').puisplitbutton({
-                icon: 'ui-icon-check',
-                items: [
-                    {
-                        icon: 'ui-icon-arrowrefresh-1-w',
-                        text: 'Update'
-                    },
-                    {
-                        icon: 'ui-icon-close',
-                        text: 'Delete'
-                    },
-                    {
-                        icon: 'ui-icon-extlink',
-                        text: 'Homepage',
-                        url: 'http://www.primefaces.org/primeui'
-                    }
-                ]
+            $('#dd').puidropdown({
+                appendTo: 'self'
             });
             
             $('#dtgrid').puidatagrid({
@@ -165,7 +150,12 @@
                     SplitButton
                 </div>
                 <div class="pui-grid-col-10">
-                    <button id="splitbtn" type="button">Save</button>
+                    <select id="dd" name="dd">
+                        <option value="0">Select One</option>
+                        <option value="1">Option 1</option>
+                        <option value="2">Option 2</option>
+                        <option value="3">Option 3</option>
+                    </select>
                 </div>
             </div>
             

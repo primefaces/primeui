@@ -14,7 +14,8 @@ $(function() {
             filterFunction: null,
             data: null,
             content: null,
-            scrollHeight: 200
+            scrollHeight: 200,
+            appendTo: 'body'
         },
 
         _create: function() {
@@ -38,10 +39,17 @@ $(function() {
             this.label.appendTo(this.container);
             this.menuIcon = $('<div class="pui-dropdown-trigger ui-state-default ui-corner-right"><span class="ui-icon ui-icon-triangle-1-s"></span></div>')
                                 .appendTo(this.container);
-            this.panel = $('<div class="pui-dropdown-panel ui-widget-content ui-corner-all ui-helper-hidden pui-shadow" />').appendTo(document.body);
+            //panel
+            this.panel = $('<div class="pui-dropdown-panel ui-widget-content ui-corner-all ui-helper-hidden pui-shadow" />');
+            if(this.options.appendTo === 'self')
+                this.panel.appendTo(this.container);
+            else
+                this.panel.appendTo(this.options.appendTo);
+                
             this.itemsWrapper = $('<div class="pui-dropdown-items-wrapper" />').appendTo(this.panel);
             this.itemsContainer = $('<ul class="pui-dropdown-items pui-dropdown-list ui-widget-content ui-widget ui-corner-all ui-helper-reset"></ul>')
                                     .appendTo(this.itemsWrapper);
+                            
             this.disabled = this.element.prop('disabled');
             this.choices = this.element.children('option');
             this.optGroupsSize = this.itemsContainer.children('li.puiselectonemenu-item-group').length;
@@ -426,14 +434,22 @@ $(function() {
         },
         
         _alignPanel: function() {
-            this._alignPanelWidth();
-            
-            this.panel.css({left:'', top:''}).position({
+            if(this.panel.parent().is(this.container)) {
+                this.panel.css({
+                    left: '0px',
+                    top: this.container.outerHeight() + 'px'
+                })
+                .width(this.container.outerWidth());
+            } 
+            else {
+                this._alignPanelWidth();
+                this.panel.css({left:'', top:''}).position({
                                             my: 'left top',
                                             at: 'left bottom',
                                             of: this.container,
                                             collision: 'flipfit'
                                         });
+            }
         },
         
         _show: function() {
@@ -441,7 +457,7 @@ $(function() {
 
             this.panel.css('z-index', ++PUI.zindex);
             
-            if(this.options.effect != 'none') {
+            if(this.options.effect !== 'none') {
                 this.panel.show(this.options.effect, {}, this.options.effectSpeed);
             }
             else {

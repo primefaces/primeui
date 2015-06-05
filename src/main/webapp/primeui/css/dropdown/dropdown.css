@@ -4,7 +4,6 @@
     width: auto;
     zoom: 1;
     cursor: pointer;
-    overflow: hidden;
     padding-right: 2em;
 }
 
@@ -94,4 +93,13 @@
     position: absolute;
     top: 10px;
     right: 10px;
+}
+
+/** Dropdown **/
+.pui-fluid .pui-dropdown {
+    width: 100%;
+}
+.pui-fluid .pui-dropdown .pui-dropdown-trigger {
+    width: 32px;
+    padding: 0 6px;
 }
