@@ -201,6 +201,7 @@ $(function() {
         },
                 
         _render: function() {
+            var $this = this;
             this.element.addClass('pui-menu-list ui-helper-reset').
                     wrap('<div class="pui-tieredmenu pui-menu ui-widget ui-widget-content ui-corner-all ui-helper-clearfix" />');
             
@@ -220,12 +221,12 @@ $(function() {
                     
                     listItem.addClass('pui-menuitem ui-widget ui-corner-all');
                     if(listItem.children('ul').length > 0) {
+                        var submenuIcon = listItem.parent().hasClass('pui-menu-child') ? 'fa-caret-right' : $this._getRootSubmenuIcon();
                         listItem.addClass('pui-menu-parent');
                         listItem.children('ul').addClass('ui-widget-content pui-menu-list ui-corner-all ui-helper-clearfix pui-menu-child pui-shadow');
-                        menuitemLink.prepend('<span class="pui-submenu-icon fa fa-fw fa-caret-right"></span>');
-                    }
-                
-            
+                        
+                        menuitemLink.prepend('<span class="pui-submenu-icon fa fa-fw ' + submenuIcon + '"></span>');
+                    }            
             });
         },
                 
@@ -357,6 +358,10 @@ $(function() {
             });
 
             submenu.show();
+        },
+        
+        _getRootSubmenuIcon: function() {
+            return 'fa-caret-right';
         }
             
     });
@@ -407,7 +412,11 @@ $(function() {
             }
 
             submenu.css(submenuCSS).show();
-        }       
+        },
+        
+        _getRootSubmenuIcon: function() {
+            return 'fa-caret-down';
+        }
     });
 
 });
