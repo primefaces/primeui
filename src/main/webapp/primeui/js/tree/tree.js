@@ -47,7 +47,7 @@ $(function() {
             expanded = node.expanded,
             selectable = this.options.selectionMode ? (node.selectable === false ? false : true) : false,
             toggleIcon = leaf ? 'pui-treenode-leaf-icon' : 
-                        (node.expanded ? 'pui-tree-toggler ui-icon fa fa-fw fa-caret-down' : 'pui-tree-toggler ui-icon fa fa-fw fa-caret-right'),
+                        (node.expanded ? 'pui-tree-toggler fa fa-fw fa-caret-down' : 'pui-tree-toggler fa fa-fw fa-caret-right'),
             styleClass = leaf ? 'pui-treenode pui-treenode-leaf' : 'pui-treenode pui-treenode-parent',
             nodeElement = $('<li class="' + styleClass + '"></li>'),
             contentElement = $('<span class="pui-treenode-content"></span>');

@@ -135,8 +135,8 @@
                         </ul>
                         <div>
                             <div id="doc-overview">
-                                Tree has 3 loading methods defined using nodes option. 
-                                <ul>
+                                <span class="defaultText">Tree has 3 loading methods defined using nodes option.</span>
+                                <ul class="defaultText">
                                     <li><strong>local:</strong> An array of TreeNode objects.</li>
                                     <li><strong>remote eager:</strong> A function to load nodes from a url. Response
                                         should be a JSON array of TreeNode objects. This function is called only once on 
@@ -146,7 +146,7 @@
                                         an unloaded node is expanded. Subsequents expand events do not call the remote data
                                         as data is cached on client side.</li>
                                 </ul>
-                                See source tab for examples of each type.
+                                <span class="defaultText">See source tab for examples of each type.</span>
 
                                 <pre name="code" class="brush:js">
 $('#tree').puitree({
