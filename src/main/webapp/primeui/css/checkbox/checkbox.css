@@ -13,6 +13,11 @@
     margin-right: 3px;
 }
 
+.pui-chkbox .pui-chkbox-icon {
+    margin-top: 1px;
+    margin-left: -1px;
+}
+
 .pui-chkbox .pui-chkbox-label {
     cursor: pointer;
     display: block;
@@ -21,3 +26,4 @@
     z-index: 1;
     float: left;
 }
+

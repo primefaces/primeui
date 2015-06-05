@@ -17,7 +17,7 @@ $(function() {
             
             if(this.element.prop('checked')) {
                 this.box.addClass('ui-state-active');
-                this.icon.addClass('ui-icon ui-icon-bullet');
+                this.icon.addClass('ui-icon fa fa-fw fa-circle');
                 checkedRadios[this.element.attr('name')] = this.box;
             }
             
@@ -72,10 +72,10 @@ $(function() {
             .change(function(e) {
                 var name = $this.element.attr('name');
                 if(checkedRadios[name]) {
-                    checkedRadios[name].removeClass('ui-state-active ui-state-focus ui-state-hover').children('.pui-radiobutton-icon').removeClass('ui-icon ui-icon-bullet');
+                    checkedRadios[name].removeClass('ui-state-active ui-state-focus ui-state-hover').children('.pui-radiobutton-icon').removeClass('ui-icon fa fa-fw fa-circle');
                 }
 
-                $this.icon.addClass('ui-icon ui-icon-bullet');
+                $this.icon.addClass('ui-icon fa fa-fw fa-circle');
                 if(!$this.element.is(':focus')) {
                     $this.box.addClass('ui-state-active');
                 }

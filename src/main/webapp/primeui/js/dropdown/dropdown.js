@@ -37,7 +37,7 @@ $(function() {
             this.label = this.options.editable ? $('<input type="text" class="pui-dropdown-label pui-inputtext ui-corner-all"">') 
                                 : $('<label class="pui-dropdown-label pui-inputtext ui-corner-all"/>');
             this.label.appendTo(this.container);
-            this.menuIcon = $('<div class="pui-dropdown-trigger ui-state-default ui-corner-right"><span class="ui-icon ui-icon-triangle-1-s"></span></div>')
+            this.menuIcon = $('<div class="pui-dropdown-trigger ui-state-default ui-corner-right"><span class="ui-icon fa fa-fw fa-caret-down"></span></div>')
                                 .appendTo(this.container);
             //panel
             this.panel = $('<div class="pui-dropdown-panel ui-widget-content ui-corner-all ui-helper-hidden pui-shadow" />');

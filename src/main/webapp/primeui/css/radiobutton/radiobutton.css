@@ -15,6 +15,9 @@
     border-radius: 10px;
 }
 
-.pui-radiobutton-icon {
-    margin-left: 1px;
+.pui-radiobutton-icon.ui-icon {
+    font-size: 10px;
+    margin-top: 3px;
+    margin-left: 2px;
 }
+  

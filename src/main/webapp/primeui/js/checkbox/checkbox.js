@@ -15,7 +15,7 @@ $(function() {
             
             if(this.isChecked()) {
                 this.box.addClass('ui-state-active');
-                this.icon.addClass('ui-icon ui-icon-check');
+                this.icon.addClass('ui-icon fa fa-fw fa-check');
             }
             
             if(this.disabled) {
@@ -91,7 +91,7 @@ $(function() {
         check: function(activate, silent) {
             if(!this.isChecked()) {
                 this.element.prop('checked', true);
-                this.icon.addClass('ui-icon ui-icon-check');
+                this.icon.addClass('ui-icon fa fa-fw fa-check');
 
                 if(!activate) {
                     this.box.addClass('ui-state-active');
@@ -107,7 +107,7 @@ $(function() {
             if(this.isChecked()) {
                 this.element.prop('checked', false);
                 this.box.removeClass('ui-state-active');
-                this.icon.removeClass('ui-icon ui-icon-check');
+                this.icon.removeClass('ui-icon fa fa-fw fa-check');
 
                 this.element.trigger('change');
             }
