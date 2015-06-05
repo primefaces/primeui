@@ -31,7 +31,7 @@ $(function() {
             var $this = this;
             
             if(this.options.closable) {
-                this.closer = $('<a class="pui-panel-titlebar-icon ui-corner-all ui-state-default" href="#"><span class="ui-icon ui-icon-closethick"></span></a>')
+                this.closer = $('<a class="pui-panel-titlebar-icon ui-corner-all ui-state-default" href="#"><span class="fa fa-fw fa-close"></span></a>')
                                 .appendTo(this.header)
                                 .on('click.puipanel', function(e) {
                                     $this.close();
@@ -40,9 +40,9 @@ $(function() {
             }
             
             if(this.options.toggleable) {
-                var icon = this.options.collapsed ? 'ui-icon-plusthick' : 'ui-icon-minusthick';
+                var icon = this.options.collapsed ? 'fa-plus' : 'fa-minus';
                 
-                this.toggler = $('<a class="pui-panel-titlebar-icon ui-corner-all ui-state-default" href="#"><span class="ui-icon ' + icon + '"></span></a>')
+                this.toggler = $('<a class="pui-panel-titlebar-icon ui-corner-all ui-state-default" href="#"><span class="fa fa-fw ' + icon + '"></span></a>')
                                 .appendTo(this.header)
                                 .on('click.puipanel', function(e) {
                                     $this.toggle();
@@ -88,7 +88,7 @@ $(function() {
         },
         
         expand: function() {
-            this.toggler.children('span.ui-icon').removeClass('ui-icon-plusthick').addClass('ui-icon-minusthick');
+            this.toggler.children('span.ui-icon').removeClass('fa-plus').addClass('fa-minus');
             
             if(this.options.toggleOrientation === 'vertical') {
                 this._slideDown();
@@ -99,7 +99,7 @@ $(function() {
         },
 
         collapse: function() {
-            this.toggler.children('span.ui-icon').removeClass('ui-icon-minusthick').addClass('ui-icon-plusthick');
+            this.toggler.children('span.ui-icon').removeClass('fa-minus').addClass('fa-plus');
             
             if(this.options.toggleOrientation === 'vertical') {
                 this._slideUp();
