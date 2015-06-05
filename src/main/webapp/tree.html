@@ -51,12 +51,12 @@
                 ],
                 icons: {
                     def: {
-                        expanded: 'ui-icon-folder-open',
-                        collapsed: 'ui-icon-folder-collapsed'
+                        expanded: 'fa-folder-open',
+                        collapsed: 'fa-folder'
                     },
-                    picture: 'ui-icon-image',
-                    doc: 'ui-icon-document',
-                    video: 'ui-icon-video'
+                    picture: 'fa-file-image-o',
+                    doc: 'fa-file-word-o',
+                    video: 'fa-file-video-o'
                 },
                 nodeSelect: function(event, ui) {
                     $('#messages').puigrowl('show', [{severity: 'info', summary: 'Node Selected', detail: 'Data: ' + ui.data}]);
@@ -382,14 +382,14 @@ $(function() {
             }
         ],
         icons: {
-            def: {
-                expanded: 'ui-icon-folder-open',
-                collapsed: 'ui-icon-folder-collapsed'
-            },
-            picture: 'ui-icon-image',
-            doc: 'ui-icon-document',
-            video: 'ui-icon-video'
-        },
+             def: {
+                 expanded: 'fa-folder-open',
+                 collapsed: 'fa-folder'
+             },
+             picture: 'fa-file-image-o',
+             doc: 'fa-file-word-o',
+             video: 'fa-file-video-o'
+         },
         nodeSelect: function(event, ui) {
             $('#messages').puigrowl('show', [{severity:'info', summary: 'Node Selected', detail: 'Data: ' + ui.data}]);
         },

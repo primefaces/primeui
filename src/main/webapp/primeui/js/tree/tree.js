@@ -47,7 +47,7 @@ $(function() {
             expanded = node.expanded,
             selectable = this.options.selectionMode ? (node.selectable === false ? false : true) : false,
             toggleIcon = leaf ? 'pui-treenode-leaf-icon' : 
-                        (node.expanded ? 'pui-tree-toggler ui-icon ui-icon-triangle-1-s' : 'pui-tree-toggler ui-icon ui-icon-triangle-1-e'),
+                        (node.expanded ? 'pui-tree-toggler ui-icon fa fa-fw fa-caret-down' : 'pui-tree-toggler ui-icon fa fa-fw fa-caret-right'),
             styleClass = leaf ? 'pui-treenode pui-treenode-leaf' : 'pui-treenode pui-treenode-parent',
             nodeElement = $('<li class="' + styleClass + '"></li>'),
             contentElement = $('<span class="pui-treenode-content"></span>');
@@ -67,7 +67,7 @@ $(function() {
             if(iconConfig) {
                 var iconContainer = contentElement.children('.pui-treenode-icon'),
                 icon = ($.type(iconConfig) === 'string') ? iconConfig : (expanded ? iconConfig.expanded : iconConfig.collapsed);
-                iconContainer.addClass('ui-icon ' + icon);
+                iconContainer.addClass('fa fa-fw ' + icon);
             }
                     
             if(!leaf) {
@@ -159,7 +159,7 @@ $(function() {
             var toggleIcon = node.find('> .pui-treenode-content > .pui-tree-toggler'),
             childrenContainer = node.children('.pui-treenode-children');
 
-            toggleIcon.addClass('ui-icon-triangle-1-e').removeClass('ui-icon-triangle-1-s');
+            toggleIcon.addClass('fa-caret-right').removeClass('fa-caret-down');
 
             if(this.options.animate) {
                 childrenContainer.slideUp('fast');
@@ -181,7 +181,7 @@ $(function() {
             }
 
             var toggleIcon = node.find('> .pui-treenode-content > .pui-tree-toggler');
-            toggleIcon.addClass('ui-icon-triangle-1-s').removeClass('ui-icon-triangle-1-e');
+            toggleIcon.addClass('fa-caret-down').removeClass('fa-caret-right');
 
             if(this.options.animate) {
                 node.children('.pui-treenode-children').slideDown('fast');

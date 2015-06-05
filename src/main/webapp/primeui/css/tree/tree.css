@@ -33,12 +33,12 @@
 .pui-tree .pui-tree-toggler {
     cursor: pointer;
     display: inline-block;
-    vertical-align: top;
+    vertical-align: bottom;
 }
 
 .pui-tree .pui-treenode-icon {
     display: inline-block;
-    vertical-align: top;
+    margin-top: 3px;
 }
 
 .pui-tree .pui-treenode-label {
