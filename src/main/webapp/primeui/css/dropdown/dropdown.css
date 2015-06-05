@@ -20,7 +20,7 @@
     padding: 0 3px;
 }
 
-.pui-dropdown .pui-dropdown-trigger  .ui-icon {
+.pui-dropdown .pui-dropdown-trigger  .pui-icon {
     margin-top: 4px;
     margin-left: -1px;
 }
@@ -80,7 +80,7 @@
 
 .pui-dropdown-panel .pui-dropdown-filter {
     width: 85%;
-    padding-right:15px;
+    padding-right:18px;
 }
 
 .pui-dropdown-panel .pui-dropdown-filter-container {
@@ -90,10 +90,10 @@
     display: inline-block;
 }
 
-.pui-dropdown-panel .pui-dropdown-filter-container .ui-icon {
+.pui-dropdown-panel .pui-dropdown-filter-container .pui-icon {
     position: absolute;
     top: 10px;
-    right: 10px;
+    right: 15px;
 }
 
 /** Dropdown **/

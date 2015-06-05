@@ -37,7 +37,7 @@ $(function() {
             this.label = this.options.editable ? $('<input type="text" class="pui-dropdown-label pui-inputtext ui-corner-all"">') 
                                 : $('<label class="pui-dropdown-label pui-inputtext ui-corner-all"/>');
             this.label.appendTo(this.container);
-            this.menuIcon = $('<div class="pui-dropdown-trigger ui-state-default ui-corner-right"><span class="ui-icon fa fa-fw fa-caret-down"></span></div>')
+            this.menuIcon = $('<div class="pui-dropdown-trigger ui-state-default ui-corner-right"><span class="pui-icon fa fa-fw fa-caret-down"></span></div>')
                                 .appendTo(this.container);
             //panel
             this.panel = $('<div class="pui-dropdown-panel ui-widget-content ui-corner-all ui-helper-hidden pui-shadow" />');
@@ -58,7 +58,7 @@ $(function() {
                 this.filterContainer = $('<div class="pui-dropdown-filter-container" />').prependTo(this.panel);
                 this.filterInput = $('<input type="text" autocomplete="off" class="pui-dropdown-filter pui-inputtext ui-widget ui-state-default ui-corner-all" />')
                                             .appendTo(this.filterContainer);
-                this.filterContainer.append('<span class="ui-icon ui-icon-search"></span>');
+                this.filterContainer.append('<span class="pui-icon fa fa-search"></span>');
             }
 
             this._generateItems();
