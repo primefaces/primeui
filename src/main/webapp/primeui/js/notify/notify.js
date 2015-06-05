@@ -17,7 +17,7 @@ $(function() {
             this.element.addClass('pui-notify pui-notify-' + this.options.position + ' ui-widget ui-widget-content pui-shadow')
                     .wrapInner('<div class="pui-notify-content" />').appendTo(document.body);
             this.content = this.element.children('.pui-notify-content');
-            this.closeIcon = $('<span class="ui-icon ui-icon-closethick pui-notify-close"></span>').appendTo(this.element);
+            this.closeIcon = $('<span class="pui-notify-close fa fa-close"></span>').appendTo(this.element);
             
             this._bindEvents();
             

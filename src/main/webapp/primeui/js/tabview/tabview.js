@@ -50,7 +50,7 @@ $(function() {
                     .on('click.tabview', function(e) {
                         var element = $(this);
 
-                        if($(e.target).is(':not(.ui-icon-close)')) {
+                        if($(e.target).is(':not(.fa-close)')) {
                             var index = element.index();
 
                             if(!element.hasClass('ui-state-disabled') && index != $this.options.selected) {
@@ -62,7 +62,7 @@ $(function() {
                     });
 
             //Closable tabs
-            this.navContainer.find('li .ui-icon-close')
+            this.navContainer.find('li .fa-close')
                 .on('click.tabview', function(e) {
                     var index = $(this).parent().index();
 

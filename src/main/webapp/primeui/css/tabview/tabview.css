@@ -44,9 +44,9 @@
     display: block; 
 }
 
-.pui-tabview .pui-tabview-nav li .ui-icon { 
+.pui-tabview .pui-tabview-nav li .fa { 
     float: left; 
-    margin: 0.4em 0.2em 0 0; 
+    margin: 0.6em 0.3em 0 0; 
     cursor: pointer; 
 }
 
