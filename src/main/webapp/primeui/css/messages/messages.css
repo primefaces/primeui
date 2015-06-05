@@ -1,0 +1,60 @@
+.pui-messages {
+    border: 1px solid;
+    margin: 10px 0px;
+    padding: 20px 20px 20px 10px;
+    display: none;
+    position: relative;
+}
+
+.pui-messages-icon {
+    display:block;
+    float:left;
+    margin-top:-5px;
+    padding:0;
+    position: relative;
+}
+
+.pui-messages-summary {
+    margin-left:10px;
+    font-weight:bold;
+}
+
+.pui-messages-detail {
+    margin-left:5px;
+}
+
+.pui-messages-info {
+    color: #ffffff;
+    background-color: #2196f3;
+    border-color: #2196f3;
+}
+
+.pui-messages-warn {
+    color: #ffffff;
+    background-color: #ff9800;
+    border-color: #ff9800;
+}
+
+.pui-messages-error {
+    color: #ffffff;
+    background-color: #f44336;
+    border-color: #f44336;
+}
+
+.pui-messages ul {
+    margin: 0 25px;
+    padding:0;
+    list-style-type:none;
+}
+
+.pui-messages.pui-messages-noicon ul {
+    margin: 0 25px 0 0;
+}
+
+.pui-messages .pui-messages-close {
+    color: #ffffff;
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
