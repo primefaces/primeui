@@ -37,7 +37,10 @@ Showcase = {
             }
         });
         
-        this.menu.find('a.SubMenuLink').on('click', function(e) {
+        var hashedLinks = this.menu.find('a.SubMenuLink');
+        hashedLinks = hashedLinks.add($('#PFTopLinksCover').children('a.hashed'));
+
+        hashedLinks.on('click', function(e) {
             var href = $(this).attr('href');
             Showcase.openPage(href);
             window.location.hash = href.substring(href.lastIndexOf('/'), href.indexOf('.html'));

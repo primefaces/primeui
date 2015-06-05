@@ -1,281 +1,34 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <title>PrimeUI</title>
-        <link rel="stylesheet" type="text/css" href="themes/aristo/theme.css" />
-        <link rel="stylesheet" type="text/css" href="resources/css/jquery-ui.css" />
-        <link rel="stylesheet" type="text/css" href="resources/css/site.css" />
-        <link rel="stylesheet" type="text/css" href="resources/css/perfect-scrollbar.css" />
-        <link rel="stylesheet" type="text/css" href="resources/css/sh.css" />
-        <script type="text/javascript" src="resources/js/jquery.js"></script>
-        <script type="text/javascript" src="resources/js/jquery-ui.js"></script>
-        <script type="text/javascript" src="resources/js/perfect-scrollbar.js"></script>
-        <script type="text/javascript" src="resources/js/site.js"></script>        
-        <script type="text/javascript" src="resources/js/sh.js"></script>
+<div>
+    <div class="ContentSideSections overHidden defaultText">
+        <span class="defaultTopic mediumFont orange">Setup</span>
+        <p>Getting Started with PrimeUI is a straightforward process.</p>
 
-        <!-- PrimeUI -->
-        <link rel="stylesheet" href="primeui/css/core/core.css" />
-        <script type="text/javascript" src="primeui/js/core/core.js"></script>
-    </head>
+        <h3>Download</h3>
+        <p>PrimeUI is distributed in a zip file that is available at <a href="http://www.primefaces.org/downloads.html#primeui">download page</a>.
+            Once you download the file and extract it in filesystem, you'd see two folders named development and production. Development folder has
+            the uncompressed and the Production folder has the compressed distribution.</p>
 
-    <body>
-        <div class="PC">
-            <div id="MENUSIDE">
-                <div id="MENUSIDEindent">
-                    <span id="LOGO" class="bordersOfMenuSide">
-                        <img alt="logo" src="resources/images/logo.svg" />
-                        <img id="BlueLogo" alt="logo" src="resources/images/logoBlue.svg" class="hiddenLogo"/>
-                    </span>
-                    <span id="SubMenu-Input" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><img src="resources/images/mono/input.svg" /><img class="hiddenIcons" src="resources/images/mono/inputBlue.svg" /><span class="MainLinkText">Input</span></span>
-                    <div class="SubMenuLinkContainer">
-                        <a class="SubMenuLink" href="autocomplete.html">&#9679; AutoComplete</a>
-                        <a class="SubMenuLink" href="inputtext.html">&#9679; InputText</a>
-                        <a class="SubMenuLink" href="inputtextarea.html">&#9679; InputTextarea</a>
-                        <a class="SubMenuLink" href="checkbox.html">&#9679; Checkbox</a>
-                        <a class="SubMenuLink" href="dropdown.html">&#9679; DropDown</a>
-                        <a class="SubMenuLink" href="listbox.html">&#9679; Listbox</a>
-                        <a class="SubMenuLink" href="password.html">&#9679; Password</a>
-                        <a class="SubMenuLink" href="radiobutton.html">&#9679; RadioButton</a>
-                        <a class="SubMenuLink" href="rating.html">&#9679; Rating</a>
-                        <a class="SubMenuLink" href="spinner.html">&#9679; Spinner</a>
-                        <a class="SubMenuLink" href="togglebutton.html">&#9679; ToggleButton</a>
-                    </div>
-                    <span id="SubMenu-Button" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><img src="resources/images/mono/button.svg" /><img class="hiddenIcons" src="resources/images/mono/buttonBlue.svg" /><span class="MainLinkText">Button</span></span>
-                    <div class="SubMenuLinkContainer">
-                        <a class="SubMenuLink" href="button.html">&#9679; Button</a>
-                        <a class="SubMenuLink" href="splitbutton.html">&#9679; SplitButton</a>
-                    </div>
+        <h3>Include Resources</h3>
+        <p>Although you can include resources of each widget individually, it is suggested to use the prime-ui.js and prime-ui.css file to register all
+            the widgets at once. As PrimeUI is jQuery UI based, you also need to include jQuery and jQuery UI.</p>
 
-                    <span id="SubMenu-Data" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><img src="resources/images/mono/data.svg" /><img class="hiddenIcons" src="resources/images/mono/dataBlue.svg" /><span class="MainLinkText">Data</span></span>
-                    <div class="SubMenuLinkContainer">
-                        <a class="SubMenuLink" href="datatable.html">&#9679; DataTable</a>
-                        <a class="SubMenuLink" href="picklist.html">&#9679; PickList</a>
-                        <a class="SubMenuLink" href="tree.html">&#9679; Tree</a>
-                        <a class="SubMenuLink" href="treetable.html">&#9679; TreeTable</a>
-                        <a class="SubMenuLink" href="paginator.html">&#9679; Paginator</a>
-                    </div>
-
-                    <span id="SubMenu-Panel" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><img src="resources/images/mono/panel.svg" /><img class="hiddenIcons" src="resources/images/mono/panelBlue.svg" /><span class="MainLinkText">Panel</span></span>
-                    <div class="SubMenuLinkContainer">
-                        <a class="SubMenuLink" href="accordion.html">&#9679; Accordion</a>
-                        <a class="SubMenuLink" href="fieldset.html">&#9679; Fieldset</a>
-                        <a class="SubMenuLink" href="notify.html">&#9679; Notify</a>
-                        <a class="SubMenuLink" href="panel.html">&#9679; Panel</a>
-                        <a class="SubMenuLink" href="tabview.html">&#9679; TabView</a>
-                    </div>
-
-                    <span id="SubMenu-Overlay" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><img src="resources/images/mono/overlay.svg" /><img class="hiddenIcons" src="resources/images/mono/overlayBlue.svg" /><span class="MainLinkText">Overlay</span></span>
-                    <div class="SubMenuLinkContainer">
-                        <a class="SubMenuLink" href="dialog.html">&#9679; Dialog</a>
-                        <a class="SubMenuLink" href="lightbox.html">&#9679; LightBox</a>
-                        <a class="SubMenuLink" href="tooltip.html">&#9679; Tooltip</a>
-                    </div>
-
-                    <span id="SubMenu-Menu" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><img src="resources/images/mono/menu.svg" /><img class="hiddenIcons" src="resources/images/mono/menuBlue.svg" /><span class="MainLinkText">Menu</span></span>
-                    <div class="SubMenuLinkContainer">
-                        <a class="SubMenuLink" href="breadcrumb.html">&#9679; Breadcrumb</a>
-                        <a class="SubMenuLink" href="contextmenu.html">&#9679; ContextMenu</a>
-                        <a class="SubMenuLink" href="menu.html">&#9679; Menu</a>
-                        <a class="SubMenuLink" href="menubar.html">&#9679; Menubar</a>
-                        <a class="SubMenuLink" href="slidemenu.html">&#9679; SlideMenu</a>
-                        <a class="SubMenuLink" href="tieredmenu.html">&#9679; TieredMenu</a>
-                    </div>
-
-                    <span id="SubMenu-Message" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><img src="resources/images/mono/message.svg" /><img class="hiddenIcons" src="resources/images/mono/messageBlue.svg" /><span class="MainLinkText">Messages</span></span>
-                    <div class="SubMenuLinkContainer">
-                        <a class="SubMenuLink" href="growl.html">&#9679; Growl</a>
-                    </div>
-
-                    <span id="SubMenu-Multimedia" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><img src="resources/images/mono/multimedia.svg" /><img class="hiddenIcons" src="resources/images/mono/multimediaBlue.svg" /><span class="MainLinkText">Multimedia</span></span>
-                    <div class="SubMenuLinkContainer">
-                        <a class="SubMenuLink" href="galleria.html">&#9679; Galleria</a>
-                    </div>
-
-                    <span id="SubMenu-Misc" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><img src="resources/images/mono/misc.svg" /><img class="hiddenIcons" src="resources/images/mono/miscBlue.svg" /><span class="MainLinkText">Misc</span></span>
-                    <div class="SubMenuLinkContainer">
-                        <a class="SubMenuLink" href="progressbar.html">&#9679; ProgressBar</a>
-                        <a class="SubMenuLink" href="progressbar.html">&#9679; ProgressBar</a>
-                        <a class="SubMenuLink" href="sticky.html">&#9679; Sticky</a>
-                        <a class="SubMenuLink" href="terminal.html">&#9679; Terminal</a>
-                    </div>
-                </div>
-            </div>
-
-            <div id="CONTENTSIDE">
-                <div id="CONTENTSIDEindent">
-
-                    <!-- header bar start-->
-                    <div class="ContentSideSections" id="PFTopLinksCover" style="height:60px;">
-                        <a id="LOGOTEXTSIDE" href="index.html">
-                            <span class="dispBlock logoDarkText fontSize30">PrimeUI</span>
-                            <span class="dispBlock logoBlueText fontSize30 mediumFont">SHOWCASE</span>
-                        </a>
-
-                        <a href="http://www.primefaces.org/license" class="PFTopLinks floatRight boldFont"><img alt="mockosx" src="resources/images/license.svg" /><span class="PFDarkText">License</span></a>
-                        <span class="PFTopLinks floatRight boldFont cursorPointer" id="themeSwitcher">
-                            <img src="resources/images/themeswitcher.svg" /><span class="PFDarkText">Themes</span>
-                            <div id="GlobalThemeSwitcher" class="navOverlay">
-                                <a href="#" data-theme="afterdark"><span class="ui-theme ui-theme-afterdark"></span><span class="ui-text">Afterdark</span></a>
-                                <a href="#" data-theme="afternoon"><span class="ui-theme ui-theme-afternoon"></span><span class="ui-text">Afternoon</span></a>
-                                <a href="#" data-theme="afterwork"><span class="ui-theme ui-theme-afterwork"></span><span class="ui-text">Afterwork</span></a>
-                                <a href="#" data-theme="aristo"><span class="ui-theme ui-theme-aristo"></span><span class="ui-text">Aristo</span></a>
-                                <a href="#" data-theme="black-tie"><span class="ui-theme ui-theme-black-tie"></span><span class="ui-text">Black-Tie</span></a>
-                                <a href="#" data-theme="bluesky"><span class="ui-theme ui-theme-bluesky"></span><span class="ui-text">Bluesky</span></a>
-                                <a href="#" data-theme="bootstrap"><span class="ui-theme ui-theme-bootstrap"></span><span class="ui-text">Bootstrap</span></a>
-                                <a href="#" data-theme="casablanca"><span class="ui-theme ui-theme-casablanca"></span><span class="ui-text">Casablanca</span></a>
-                                <a href="#" data-theme="cruze"><span class="ui-theme ui-theme-cruze"></span><span class="ui-text">Cruze</span></a>
-                                <a href="#" data-theme="dark-hive"><span class="ui-theme ui-theme-dark-hive"></span><span class="ui-text">Dark-Hive</span></a>
-                                <a href="#" data-theme="delta"><span class="ui-theme ui-theme-delta"></span><span class="ui-text">Delta</span></a>
-                                <a href="#" data-theme="dot-luv"><span class="ui-theme ui-theme-dot-luv"></span><span class="ui-text">Dot-Lov</span></a>
-                                <a href="#" data-theme="eggplant"><span class="ui-theme ui-theme-eggplant"></span><span class="ui-text">Eggplant</span></a>
-                                <a href="#" data-theme="excite-bike"><span class="ui-theme ui-theme-excite-bike"></span><span class="ui-text">Excite-Bike</span></a>
-                                <a href="#" data-theme="flick"><span class="ui-theme ui-theme-flick"></span><span class="ui-text">Flick</span></a>
-                                <a href="#" data-theme="glass-x"><span class="ui-theme ui-theme-glass-x"></span><span class="ui-text">Glass-X</span></a>
-                                <a href="#" data-theme="home"><span class="ui-theme ui-theme-home"></span><span class="ui-text">Home</span></a>
-                                <a href="#" data-theme="hot-sneaks"><span class="ui-theme ui-theme-hot-sneaks"></span><span class="ui-text">Hot-Sneaks</span></a>
-                                <a href="#" data-theme="humanity"><span class="ui-theme ui-theme-humanity"></span><span class="ui-text">Humanity</span></a>
-                                <a href="#" data-theme="le-frog"><span class="ui-theme ui-theme-le-frog"></span><span class="ui-text">Le-Forg</span></a>
-                                <a href="#" data-theme="midnight"><span class="ui-theme ui-theme-midnight"></span><span class="ui-text">Midnight</span></a>
-                                <a href="#" data-theme="mint-choc"><span class="ui-theme ui-theme-mint-choc"></span><span class="ui-text">Mint-Choc</span></a>
-                                <a href="#" data-theme="overcast"><span class="ui-theme ui-theme-overcast"></span><span class="ui-text">Overcast</span></a>
-                                <a href="#" data-theme="pepper-grinder"><span class="ui-theme ui-theme-pepper-grinder"></span><span class="ui-text">Pepper-Grinder</span></a>
-                                <a href="#" data-theme="redmond"><span class="ui-theme ui-theme-redmond"></span><span class="ui-text">Redmond</span></a>
-                                <a href="#" data-theme="rocket"><span class="ui-theme ui-theme-rocket"></span><span class="ui-text">Rocket</span></a>
-                                <a href="#" data-theme="sam"><span class="ui-theme ui-theme-sam"></span><span class="ui-text">Sam</span></a>
-                                <a href="#" data-theme="smoothness"><span class="ui-theme ui-theme-smoothness"></span><span class="ui-text">Smoothness</span></a>
-                                <a href="#" data-theme="south-street"><span class="ui-theme ui-theme-south-street"></span><span class="ui-text">South-Street</span></a>
-                                <a href="#" data-theme="start"><span class="ui-theme ui-theme-start"></span><span class="ui-text">Start</span></a>
-                                <a href="#" data-theme="sunny"><span class="ui-theme ui-theme-sunny"></span><span class="ui-text">Sunny</span></a>
-                                <a href="#" data-theme="swanky-purse"><span class="ui-theme ui-theme-swanky-purse"></span><span class="ui-text">Swanky-Purse</span></a>
-                                <a href="#" data-theme="trontastic"><span class="ui-theme ui-theme-trontastic"></span><span class="ui-text">Trontastic</span></a>
-                                <a href="#" data-theme="ui-darkness"><span class="ui-theme ui-theme-ui-darkness"></span><span class="ui-text">UI-Darkness</span></a>
-                                <a href="#" data-theme="ui-lightness"><span class="ui-theme ui-theme-ui-lightness"></span><span class="ui-text">UI-Lightness</span></a>
-                                <a href="#" data-theme="vader"><span class="ui-theme ui-theme-var"></span><span class="ui-text">Vader</span></a>
-                            </div>
-                        </span>
-                        <a href="http://forum.primefaces.org/viewforum.php?f=16" class="PFTopLinks floatRight boldFont"><img alt="mockosx" src="resources/images/community.svg" /><span class="PFDarkText">Forum</span></a>
-                        <a href="download.html" class="PFTopLinks floatRight boldFont"><img alt="mockosx" src="resources/images/download.svg" /><span class="PFDarkText">Download</span></a>
-                        <a href="setup.html" class="PFTopLinks floatRight boldFont marginRight20"><img alt="mockosx" src="resources/images/setup.svg" /><span class="PFDarkText">QuickStart</span></a>
-
-                        <div class="mobileLogoCover">
-                            <img src="resources/images/logoBlue.svg" style="height:40px;" class="floatLeft marginRight10" />
-                            <span class="dispBlock logoDarkText fontSize16 floatLeft">PrimeFaces <span class="dispBlock logoBlueText fontSize18 mediumFont">SHOWCASE</span></span> 
-                        </div>
-                        <select id="mobilemenu" class="selectmenu mediumFont">
-                            <option value="">Menu</option>
-                            <option value="index2.xhtml" class="LEVEL1">Home</option>
-                            <optgroup label="Input" class="LEVEL1">
-                                <option value="autocomplete.html">AutoComplete</option>
-                                <option value="inputtext.html">InputText</option>
-                                <option value="inputtextarea.html">InputTextarea</option>
-                                <option value="checkbox.html">Checkbox</option>
-                                <option value="dropdown.html">DropDown</option>
-                                <option value="listbox.html">Listbox</option>
-                                <option value="password.html">Password</option>
-                                <option value="radiobutton.html">RadioButton</option>
-                                <option value="rating.html">Rating</option>
-                                <option value="spinner.html">Spinner</option>
-                                <option value="togglebutton.html">ToggleButton</option>
-                            </optgroup>
-                            <optgroup label="Button" class="LEVEL1">
-                                <option value="button.html">Button</option>
-                                <option value="splitbutton.html">SplitButton</option>   
-                            </optgroup>
-                            <optgroup label="Data" class="LEVEL1">
-                                <option value="datatable.html">DataTable</option>
-                                <option value="picklist.html">PickList</option>
-                                <option value="tree.html">Tree</option>
-                                <option value="treetable.html">TreeTable</option>
-                                <option value="paginator.html">Paginator</option>   
-                            </optgroup>
-                            <optgroup label="Panel" class="LEVEL1">
-                                <option value="accordion.html">Accordion</option>
-                                <option value="fieldset.html">Fieldset</option>
-                                <option value="notify.html">Notify</option>
-                                <option value="panel.html">Panel</option>
-                                <option value="tabview.html">TabView</option> 
-                            </optgroup>
-                            <optgroup label="Overlay" class="LEVEL1">
-                                <option value="dialog.html">Dialog</option>
-                                <option value="lightbox.html">LightBox</option>
-                                <option value="tooltip.html">Tooltip</option>  
-                            </optgroup>
-                            <optgroup label="Menu" class="LEVEL1">
-                                <option value="breadcrumb.html">Breadcrumb</option>
-                                <option value="contextmenu.html">ContextMenu</option>
-                                <option value="menu.html">Menu</option>
-                                <option value="menubar.html">Menubar</option>
-                                <option value="slidemenu.html">SlideMenu</option>
-                                <option value="tieredmenu.html">TieredMenu</option>   
-                            </optgroup>
-                            <optgroup label="Messages" class="LEVEL1">
-                                <option value="growl.html">Growl</option>    
-                            </optgroup>
-                            <optgroup label="Multimedia" class="LEVEL1">
-                                <option value="galleria.html">Galleria</option>  
-                            </optgroup>
-                            <optgroup label="Misc" class="LEVEL1">
-                                <option value="responsive.html">Responsive</option>
-                                <option value="progressbar.html">ProgressBar</option>
-                                <option value="sticky.html">Sticky</option>
-                                <option value="terminal.html">Terminal</option>  
-                            </optgroup>
-
-                        </select>
-                    </div>
-                    <!-- header bar end-->
-
-                    <div id="widgetdemo">
-                        <div class="ContentSideSections overHidden defaultText">
-                            <span class="defaultTopic mediumFont orange">Setup</span>
-                            <p>Getting Started with PrimeUI is a straightforward process.</p>
-
-                            <h3>Download</h3>
-                            <p>PrimeUI is distributed in a zip file that is available at <a href="http://www.primefaces.org/downloads.html#primeui">download page</a>.
-                            Once you download the file and extract it in filesystem, you'd see two folders named development and production. Development folder has
-                            the uncompressed and the Production folder has the compressed distribution.</p>
-                            
-                            <h3>Include Resources</h3>
-                            <p>Although you can include resources of each widget individually, it is suggested to use the prime-ui.js and prime-ui.css file to register all
-                                the widgets at once. As PrimeUI is jQuery UI based, you also need to include jQuery and jQuery UI.</p>
-                            
-                            <pre name="code" class="brush:xml">
-                                &lt;head&gt;
-                                    &lt;link rel="stylesheet" href="%PATH%/jquery-ui.css" /&gt;
+        <pre name="code" class="brush:xml">
+                                &lt;head&gt;                                    
                                     &lt;link rel="stylesheet" href="%PATH%/theme.css" /&gt;
+                                    &lt;link rel="stylesheet" href="%PATH%/jquery-ui.css" /&gt;
                                     &lt;link rel="stylesheet" href="%PATH%/prime-ui-min.css" /&gt;
                                     &lt;script type="text/javascript" src="%PATH%/jquery.js"&gt;&lt;/script&gt;
                                     &lt;script type="text/javascript" src="%PATH%/jquery-ui.js"&gt;&lt;/script&gt;
                                     &lt;script type="text/javascript" src="%PATH%/prime-ui.js"&gt;&lt;/script&gt;
                                 &lt;/head&gt;
-                            </pre>
-                            
-                            <p>Distribution also has a couple of images that are used by some of the widgets. The image folder should be placed at two level up for correct
-                            reference. For example if prime-ui.css is under %PATH%/resources/prime-ui/css/prime-ui-min.css location images folder should be at
-                            %PATH%/resources/images.</p>
-                        </div>
-                    </div>
+        </pre>
 
-                    <!-- footer start-->
-                    <div class="ContentSideSections">
-                        <span class="floatLeft fontSize14 gray"><a href="http://www.primetek.com.tr">PrimeTek</a>, Copyright &copy; 2015<br />All rights reserved.</span>
-                        <span class="floatRight fontSize14 gray">Running PrimeUI 1.2.</span>
-                        <div style="clear:both"></div>
-                    </div>
-                    <!-- footer end-->
+        <p>Distribution also has a couple of images that are used by some of the widgets. The image folder should be placed at two level up for correct
+            reference. For example if prime-ui.css is under %PATH%/resources/prime-ui/css/prime-ui-min.css location images folder should be at
+            %PATH%/resources/images.</p>
+    </div>
 
-                </div>
-            </div>
-
-        </div>
-        
-            <script language="javascript">
+    <script language="javascript">
         SyntaxHighlighter.highlight();
     </script>
-
-    </body>
-</html>
+</div>
