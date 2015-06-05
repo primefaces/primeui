@@ -18,6 +18,11 @@ $(function() {
         _create: function() {
             var $this = this;
             
+            this.id = this.element.attr('id');
+            if(!this.id) {
+                this.id = this.element.uniqueId().attr('id');
+            }
+            
             this.element.puiinputtext();
             
             if(this.options.autoResize) {
@@ -86,7 +91,7 @@ $(function() {
         
         
         _initAutoComplete: function() {
-            var panelMarkup = '<div id="' + this.id + '_panel" class="pui-autocomplete-panel ui-widget-content ui-corner-all ui-helper-hidden ui-shadow"></div>',
+            var panelMarkup = '<div id="' + this.id + '_panel" class="pui-autocomplete-panel ui-widget-content ui-corner-all ui-helper-hidden pui-shadow"></div>',
             $this = this;
 
             this.panel = $(panelMarkup).appendTo(document.body);

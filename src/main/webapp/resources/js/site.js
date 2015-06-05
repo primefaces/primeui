@@ -85,7 +85,7 @@ Showcase = {
             window.location.hash = page.substring(page.lastIndexOf('/'), page.indexOf('.html'));
 
             //clear notify
-            $(document.body).children('.pui-notify').remove();
+            $(document.body).children('.pui-notify,.pui-shadow,.pui-growl').remove();
         }
         
     },
