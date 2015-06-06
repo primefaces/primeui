@@ -18,24 +18,24 @@
 /*button text element */
 .pui-button .pui-button-text { 
     display: block; 
-    line-height: 1.4;  
+    line-height: normal;  
 }
 
 .pui-button-text-only .pui-button-text { 
-    padding: .2em 1em; 
+    padding: .3em 1em; 
 }
 
 .pui-button-icon-only .pui-button-text { 
-    padding: .2em; 
+    padding: .3em; 
     text-indent: -9999999px; 
 }
 
 .pui-button-text-icon-left .pui-button-text { 
-    padding: .2em 1em .2em 2.1em; 
+    padding: .3em 1em .3em 2.1em; 
 }
 
 .pui-button-text-icon-right .pui-button-text { 
-    padding: .2em 2.1em .2em 1em; 
+    padding: .3em 2.1em .3em 1em; 
 }
 
 /*button icon element(s) */
@@ -43,8 +43,8 @@
 .pui-button-text-icon-left .pui-icon, 
 .pui-button-text-icon-right .pui-icon { 
     position: absolute; 
-    top: 50%; 
-    margin-top: -8px; 
+    top: 50%;
+    margin-top: -7px; 
 }
 
 .pui-button-icon-only .pui-icon { 
@@ -80,11 +80,4 @@ button.pui-button::-moz-focus-inner {
 
 .pui-fluid .ui-buttonset {
     width: 100%;
-}
-
-/* FontAwesome Support */
-.pui-button-icon-only .ui-icon.fa, 
-.pui-button-text-icon-left .ui-icon.fa, 
-.pui-button-text-icon-right .ui-icon.fa {  
-    margin-top: -7px; 
 }

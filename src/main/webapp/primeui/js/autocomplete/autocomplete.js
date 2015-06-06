@@ -20,6 +20,7 @@ $(function() {
         },
 
         _create: function() {
+            this.element.wrap('<span class="pui-autocomplete ui-widget" />');
             this.element.puiinputtext();
             this.panel = $('<div class="pui-autocomplete-panel ui-widget-content ui-corner-all ui-helper-hidden pui-shadow"></div>').appendTo('body');
             
@@ -31,7 +32,7 @@ $(function() {
             }
             else {
                 if(this.options.dropdown) {
-                    this.dropdown = $('<button type="button" class="pui-button ui-widget ui-state-default ui-corner-right pui-button-icon-only">' +
+                    this.dropdown = $('<button type="button" class="pui-autocomplete-dropdown pui-button ui-widget ui-state-default ui-corner-right pui-button-icon-only">' +
                         '<span class="pui-icon fa fa-fw fa-caret-down"></span><span class="pui-button-text">&nbsp;</span></button>')
                         .insertAfter(this.element);
                     this.element.removeClass('ui-corner-all').addClass('ui-corner-left');
