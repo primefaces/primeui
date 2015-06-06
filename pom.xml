@@ -160,7 +160,7 @@
                                                 <include>${basedir}/src/main/webapp/primeui/css/fieldset/fieldset.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/galleria/galleria.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/growl/growl.css</include>
-                                                <include>${basedir}/src/main/webapp/primeui/css/grid/grid</include>
+                                                <include>${basedir}/src/main/webapp/primeui/css/grid/grid.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/inputtext/inputtext.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/inputtextarea/inputtextarea.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/lightbox/lightbox.css</include>
@@ -179,7 +179,6 @@
                                                 <include>${basedir}/src/main/webapp/primeui/css/splitbutton/splitbutton.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/tabview/tabview.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/terminal/terminal.css</include>
-                                                <include>${basedir}/src/main/webapp/primeui/css/togglebutton/togglebutton.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/tooltip/tooltip.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/tree/tree.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/treetable/treetable.css</include>
@@ -256,7 +255,7 @@
                                                 <include>${project.build.directory}/primeui/production/css/fieldset/fieldset.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/galleria/galleria.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/growl/growl.css</include>
-                                                <include>${project.build.directory}/primeui/production/css/grid/grid</include>
+                                                <include>${project.build.directory}/primeui/production/css/grid/grid.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/inputtext/inputtext.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/inputtextarea/inputtextarea.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/lightbox/lightbox.css</include>
@@ -275,7 +274,6 @@
                                                 <include>${project.build.directory}/primeui/production/css/splitbutton/splitbutton.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/tabview/tabview.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/terminal/terminal.css</include>
-                                                <include>${project.build.directory}/primeui/production/css/togglebutton/togglebutton.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/tooltip/tooltip.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/tree/tree.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/treetable/treetable.css</include>
