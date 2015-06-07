@@ -42,29 +42,10 @@
 	display:block;
 }
 .pui-growl-image {
-	width:32px;
-	height:32px;
 	float:left;
-    margin:0;
+    margin-left: 5px;
     padding:0;
     display: block;
-    background: url("../../images/messages.png") no-repeat;
-}
-
-.pui-growl-image-info {
-	background-position: 0 -264px;
-}
-
-.pui-growl-image-warn {
-	background-position: 0 -396px;
-}
-
-.pui-growl-image-error {
-	background-position: 0 0;
-}
-
-.pui-growl-image-fatal {
-	background-position: 0 -228px;
 }
 
 .pui-growl-message {
