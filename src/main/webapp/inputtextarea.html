@@ -231,8 +231,7 @@ $(function() {
         ,completeSource:function(request, response) {
             $.ajax({
                 type: "GET",
-                url: './autocomplete',
-                data: {query: request.query},
+                url: 'rest/autocomplete/' + request.query,
                 dataType: "json",
                 context: this,
                 success: function(data) {
