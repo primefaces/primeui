@@ -16,7 +16,7 @@
                         dataType: "html",
                         context: this,
                         success: function(data) {
-                            $(this).children('div.ui-tabs-panels').children().eq(ui.index).html(data);
+                            $(this).children('div.pui-tabview-panels').children().eq(ui.index).html(data);
                         }
                     });
                 }
@@ -316,7 +316,7 @@ $(function() {
                 dataType: "html",
                 context: this,
                 success: function(data) {
-                    $(this).children('div.ui-tabs-panels').children().eq(ui.index).html(data);
+                    $(this).children('div.pui-tabview-panels').children().eq(ui.index).html(data);
                 }
             });
         }
