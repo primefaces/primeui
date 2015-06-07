@@ -79,6 +79,9 @@ Showcase = {
         if(page === '#') {
             window.location.href = '';
         }
+        else if(page.indexOf('http') === 0) {
+            window.location.href = page;
+        }
         else {
             Showcase.hashChangeByLink = true;
             Showcase.openPage(page);
