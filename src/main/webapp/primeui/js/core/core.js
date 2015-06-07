@@ -184,6 +184,7 @@ var PUI = {
         browser.platform = matched.platform;
 
         this.browser = browser;
+        $.browser = browser;
     },
     
     getGridColumn: function(number) {

@@ -303,7 +303,7 @@ $(function() {
 
         _handleResponse: function(data) {
             this.panel.html('');
-
+            
             var listContainer = $('<ul class="pui-autocomplete-items pui-autocomplete-list ui-widget-content ui-widget ui-corner-all ui-helper-reset"></ul>');
 
             for(var i = 0; i < data.length; i++) {
@@ -313,13 +313,13 @@ $(function() {
 
                 listContainer.append(item);
             }
-
-            this.panel.append(listContainer).show();
+            
+            this.panel.append(listContainer);
             this.items = this.panel.find('.pui-autocomplete-item');
 
             this._bindDynamicEvents();
 
-            if(this.items.length > 0) {                            
+            if(this.items.length > 0) {
                 //highlight first item
                 this.items.eq(0).addClass('ui-state-highlight');
 

@@ -1,5 +1,6 @@
 <div>
     <link rel="stylesheet" href="primeui/css/inputtext/inputtext.css" />
+    <link rel="stylesheet" href="primeui/css/autocomplete/autocomplete.css" />
     <link rel="stylesheet" href="primeui/css/inputtextarea/inputtextarea.css" />
     <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
     <script type="text/javascript" src="primeui/plugins/rangyinput.js"></script>
@@ -21,8 +22,7 @@
                 ,completeSource: function(request, response) {
                     $.ajax({
                         type: "GET",
-                        url: './autocomplete',
-                        data: {query: request.query},
+                        url: 'rest/autocomplete/' + request.query,
                         dataType: "json",
                         context: this,
                         success: function(data) {
