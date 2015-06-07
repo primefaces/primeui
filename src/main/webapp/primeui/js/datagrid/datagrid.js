@@ -88,7 +88,6 @@ $(function() {
                         
                         var gridColumn = $('<div class="pui-datagrid-column ' + PUI.getGridColumn(this.options.columns) + '"></div>').appendTo(gridRow),
                         markup = this.options.content.call(this, dataValue);
-                        
                         gridColumn.append(markup);
                     }
                 }
