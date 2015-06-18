@@ -261,11 +261,29 @@ $(function() {
             }
             else {
                 this.data.sort(function(data1, data2) {
-                    var value1 = data1[field],
-                    value2 = data2[field],
-                    result = (value1 < value2) ? -1 : (value1 > value2) ? 1 : 0;
+                    var value1 = data1[field], value2 = data2[field];
+                    
+                    if (typeof value1 == 'string' || value1 instanceof String) {
+                    	if ( value1.localeCompare ) {
+                    		return (order * value1.localeCompare(value2));
+                    	}
+                    	else {
+                        	if (value1.toLowerCase) {
+                            	value1 = value1.toLowerCase();
+                            }
+                            if (value2.toLowerCase) {
+                            	value2 = value2.toLowerCase();
+                            }
+                            result = (value1 < value2) ? -1 : (value1 > value2) ? 1 : 0;
+                            
+                            return (order * result);
+                    	}
+                    }
+                    else {
+                        result = (value1 < value2) ? -1 : (value1 > value2) ? 1 : 0;
 
-                    return (order * result);
+                        return (order * result);
+                    }                    
                 });
 
                 if(this.options.selectionMode) {
