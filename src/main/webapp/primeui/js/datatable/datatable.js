@@ -40,8 +40,7 @@ $(function() {
             
             if(this.options.datasource) {
                 if($.isArray(this.options.datasource)) {
-                    this.data = this.options.datasource;
-                    this._initialize();
+                    this._onDataInit(this.options.datasource);
                 }
                 else if($.type(this.options.datasource) === 'function') {
                     if(this.options.lazy)
@@ -112,7 +111,7 @@ $(function() {
                     $this.paginate();
                 };
                 
-                this.options.paginator.totalRecords = this.options.paginator.totalRecords||this.data.length;
+                this.options.paginator.totalRecords = this.options.lazy ? this.options.paginator.totalRecords : this.data.length;
                 this.paginator = $('<div></div>').insertAfter(this.tableWrapper).puipaginator(this.options.paginator);
             }
 
