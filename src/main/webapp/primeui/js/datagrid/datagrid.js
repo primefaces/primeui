@@ -52,12 +52,23 @@ $(function() {
             if(!this.data) {
                 this.data = [];
             }
+            
+            this.reset();
                 
             this._renderData();
         },
         
         _onLazyLoad: function(data) {
             this._onDataUpdate(data);
+        },
+        
+        reset: function() {            
+            if(this.paginator) {
+                this.paginator.puipaginator('setState', {
+                    page: 0,
+                    totalRecords: this.data.length
+                });
+            }
         },
                 
         paginate: function() {
@@ -148,10 +159,6 @@ $(function() {
                 
         _updateDatasource: function(datasource) {
             this.options.datasource = datasource;
-            
-            if(this.paginator) {
-                this.paginator.puipaginator('page', 0, true);
-            }
             
             if($.isArray(this.options.datasource)) {
                 this._onDataUpdate(this.options.datasource);
