@@ -156,7 +156,7 @@ $(function() {
                 return element;
             },
                     
-            update: function(element, state) {
+            update: function(element, state, paginator) {
                 var pageLinks = element.children(),
                 boundaries = this.calculateBoundaries({
                     page: state.page,
@@ -164,22 +164,29 @@ $(function() {
                     pageCount: state.pageCount
                 }),
                 start = boundaries[0],
-                end = boundaries[1],
-                p = 0;
-        
-                pageLinks.filter('.ui-state-active').removeClass('ui-state-active');
+                end = boundaries[1];
                 
+                pageLinks.remove();
+        
                 for(var i = start; i <= end; i++) {
                     var pageLinkNumber = (i + 1),
-                    pageLink = pageLinks.eq(p);
-            
+                    pageLinkElement = $('<span class="pui-paginator-page pui-paginator-element ui-state-default ui-corner-all">' + pageLinkNumber + "</span>");
+                    
                     if(i === state.page) {
-                        pageLink.addClass('ui-state-active');
+                        pageLinkElement.addClass('ui-state-active');
                     }
                     
-                    pageLink.text(pageLinkNumber);
-            
-                    p++;
+                    pageLinkElement.on('click.puipaginator', function(e){
+                        var link = $(this);
+
+                        if(!link.hasClass('ui-state-disabled')&&!link.hasClass('ui-state-active')) {
+                            paginator.option('page', parseInt(link.text(), 10) - 1);
+                        }
+                    });
+                    
+                    paginator._bindHover(pageLinkElement);
+                    
+                    element.append(pageLinkElement);
                 }
             },
                     
@@ -233,8 +240,11 @@ $(function() {
         },
                 
         _bindEvents: function() {
-            this.element.find('span.pui-paginator-element')
-                    .on('mouseover.puipaginator', function() {
+            this._bindHover(this.element.find('span.pui-paginator-element'));
+        },
+        
+        _bindHover: function(elements) {
+            elements.on('mouseover.puipaginator', function() {
                         var el = $(this);
                         if(!el.hasClass('ui-state-active')&&!el.hasClass('ui-state-disabled')) {
                             el.addClass('ui-state-hover');
@@ -259,8 +269,8 @@ $(function() {
                 
         setPage: function(p, silent) {
             var pc = this.getPageCount();
-            
-            if(p >= 0 && p < pc && this.options.page !== p) {        
+
+            if(p >= 0 && p < pc) {
                 var newState = {
                     first: this.options.rows * p,
                     rows: this.options.rows,
@@ -278,10 +288,16 @@ $(function() {
                 this.updateUI(newState);
             }
         },
+        
+        //state contains page and totalRecords
+        setState: function(state) {
+            this.options.totalRecords = state.totalRecords;
+            this.setPage(state.page, true);
+        },
                 
         updateUI: function(state) {
             for(var paginatorElementKey in this.paginatorElements) {
-                ElementHandlers[paginatorElementKey].update(this.paginatorElements[paginatorElementKey], state);
+                ElementHandlers[paginatorElementKey].update(this.paginatorElements[paginatorElementKey], state, this);
             }
         },
                 
