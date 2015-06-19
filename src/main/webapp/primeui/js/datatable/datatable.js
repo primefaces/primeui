@@ -569,7 +569,7 @@ $(function() {
             scrollBarWidth = this.getScrollbarWidth() + 'px';
 
             if(this.options.scrollHeight) {
-                this.scrollBody.height(this.options.scrollHeight);
+                this.scrollBody.css('max-height', this.options.scrollHeight + 'px');
                 this.scrollHeaderBox.css('margin-right', scrollBarWidth);
 
                 if(this.percentageScrollHeight) {
