@@ -17,7 +17,8 @@ $(function() {
             sortOrder: null,
             keepSelectionInLazyMode: false,
             scrollable: false,
-            responsive: false
+            responsive: false,
+            sortChange : null
         },
         
         _create: function() {
@@ -214,7 +215,7 @@ $(function() {
                 if(!column.hasClass('ui-state-active'))
                     column.removeClass('ui-state-hover');
             })
-            .on('click.puidatatable', function() {
+            .on('click.puidatatable', function(event) {
                 var column = $(this),
                 sortField = column.data('field'),
                 order = column.data('order'),
@@ -236,6 +237,9 @@ $(function() {
                     sortIcon.removeClass('fa-sort fa-sort-asc').addClass('fa-sort-desc');
                 else if(sortOrder === 1)
                     sortIcon.removeClass('fa-sort fa-sort-desc').addClass('fa-sort-asc');
+                
+                
+                $this._trigger('sortChange', event, { sortOrder : sortOrder, sortField : sortField });
             });
         },
                 
