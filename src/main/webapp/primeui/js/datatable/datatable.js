@@ -17,7 +17,8 @@ $(function() {
             sortOrder: null,
             keepSelectionInLazyMode: false,
             scrollable: false,
-            responsive: false
+            responsive: false,
+            sortChange : null
         },
         
         _create: function() {
@@ -214,7 +215,7 @@ $(function() {
                 if(!column.hasClass('ui-state-active'))
                     column.removeClass('ui-state-hover');
             })
-            .on('click.puidatatable', function() {
+            .on('click.puidatatable', function(event) {
                 var column = $(this),
                 sortField = column.data('field'),
                 order = column.data('order'),
@@ -236,6 +237,9 @@ $(function() {
                     sortIcon.removeClass('fa-sort fa-sort-asc').addClass('fa-sort-desc');
                 else if(sortOrder === 1)
                     sortIcon.removeClass('fa-sort fa-sort-desc').addClass('fa-sort-asc');
+                
+                
+                $this._trigger('sortChange', event, { sortOrder : sortOrder, sortField : sortField });
             });
         },
                 
@@ -261,11 +265,29 @@ $(function() {
             }
             else {
                 this.data.sort(function(data1, data2) {
-                    var value1 = data1[field],
-                    value2 = data2[field],
-                    result = (value1 < value2) ? -1 : (value1 > value2) ? 1 : 0;
+                    var value1 = data1[field], value2 = data2[field];
+                    
+                    if (typeof value1 == 'string' || value1 instanceof String) {
+                    	if ( value1.localeCompare ) {
+                    		return (order * value1.localeCompare(value2));
+                    	}
+                    	else {
+                        	if (value1.toLowerCase) {
+                            	value1 = value1.toLowerCase();
+                            }
+                            if (value2.toLowerCase) {
+                            	value2 = value2.toLowerCase();
+                            }
+                            result = (value1 < value2) ? -1 : (value1 > value2) ? 1 : 0;
+                            
+                            return (order * result);
+                    	}
+                    }
+                    else {
+                        result = (value1 < value2) ? -1 : (value1 > value2) ? 1 : 0;
 
-                    return (order * result);
+                        return (order * result);
+                    }                    
                 });
 
                 if(this.options.selectionMode) {
@@ -551,7 +573,7 @@ $(function() {
             scrollBarWidth = this.getScrollbarWidth() + 'px';
 
             if(this.options.scrollHeight) {
-                this.scrollBody.height(this.options.scrollHeight);
+                this.scrollBody.css('max-height', this.options.scrollHeight + 'px');
                 this.scrollHeaderBox.css('margin-right', scrollBarWidth);
 
                 if(this.percentageScrollHeight) {
