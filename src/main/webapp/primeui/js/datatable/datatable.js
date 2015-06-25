@@ -17,6 +17,8 @@ $(function() {
             sortOrder: null,
             keepSelectionInLazyMode: false,
             scrollable: false,
+            scrollHeight: null,
+            scrollWidth: null,
             responsive: false
         },
         
@@ -58,29 +60,21 @@ $(function() {
             this.tbody = this.table.children('tbody').addClass('pui-datatable-data');
         },
         
-        _createScrollableDatatable: function() {
-            var $this = this;
-            
+        _createScrollableDatatable: function() {            
             this.element.append('<div class="ui-widget-header pui-datatable-scrollable-header"><div class="pui-datatable-scrollable-header-box"><table><thead></thead></table></div></div>')
-                        .append('<div class="pui-datatable-scrollable-body"><table><colgroup></colgroup><tbody></tbody></table></div></div>');
-                
-            this.thead = this.element.find('> .pui-datatable-scrollable-header thead');
-            this.tbody = this.element.find('> .pui-datatable-scrollable-body tbody');
-            this.colgroup = this.tbody.prev();
-            
-            if(this.options.columns) {
-                $.each(this.options.columns, function(i, col) {
-                    $('<col></col>').appendTo($this.colgroup);
-                });
-            }
+                        .append('<div class="pui-datatable-scrollable-body"><table><tbody></tbody></table></div></div>');
+        
+            this.thead = this.element.find('> .pui-datatable-scrollable-header > .pui-datatable-scrollable-header-box > table > thead');
+            this.tbody = this.element.find('> .pui-datatable-scrollable-body > table > tbody');
         },
                 
         _initialize: function() {
             var $this = this;
             
             if(this.options.columns) {
+                var headerRow = $('<tr></tr>').appendTo($this.thead);
                 $.each(this.options.columns, function(i, col) {
-                    var header = $('<th class="ui-state-default"><span class="pui-column-title"></span></th>').data('field', col.field).appendTo($this.thead);
+                    var header = $('<th class="ui-state-default"><span class="pui-column-title"></span></th>').data('field', col.field).appendTo(headerRow);
                     
                     if(col.headerClass) {
                         header.addClass(col.headerClass);
@@ -136,9 +130,10 @@ $(function() {
         },
 
         _indicateInitialSortColumn: function() {
-            var sortableColumns = this.thead.children('th.pui-sortable-column'),
-                $this = this;
-            $.each(sortableColumns, function(i, column) {
+            this.sortableColumns = this.thead.children('th.pui-sortable-column');
+            var $this = this;
+            
+            $.each(this.sortableColumns, function(i, column) {
                 var $column = $(column),
                     data = $column.data();
                 if ($this.options.sortField === data.field) {
@@ -538,11 +533,11 @@ $(function() {
                 $.Widget.prototype._setOption.apply(this, arguments);
             }
         },
-                        
+        
         _initScrolling: function() {
             this.scrollHeader = this.element.children('.pui-datatable-scrollable-header');
             this.scrollBody = this.element.children('.pui-datatable-scrollable-body');
-            this.scrollHeaderBox = this.scrollHeader.children('div.pui-datatable-scrollable-header-box');
+            this.scrollHeaderBox = this.scrollHeader.children('.pui-datatable-scrollable-header-box');
             this.headerTable = this.scrollHeaderBox.children('table');
             this.bodyTable = this.scrollBody.children('table');
             this.percentageScrollHeight = this.options.scrollHeight && (this.options.scrollHeight.indexOf('%') !== -1);
@@ -551,11 +546,13 @@ $(function() {
             scrollBarWidth = this.getScrollbarWidth() + 'px';
 
             if(this.options.scrollHeight) {
-                this.scrollBody.height(this.options.scrollHeight);
-                this.scrollHeaderBox.css('margin-right', scrollBarWidth);
-
-                if(this.percentageScrollHeight) {
+                if(this.percentageScrollHeight)
                     this.adjustScrollHeight();
+                else
+                    this.scrollBody.height(this.options.scrollHeight);
+
+                if(this.hasVerticalOverflow()) {
+                    this.scrollHeaderBox.css('margin-right', scrollBarWidth);
                 }
             }
 
@@ -565,20 +562,22 @@ $(function() {
                 if(this.percentageScrollWidth)
                     this.adjustScrollWidth();
                 else
-                    this.setScrollWidth(this.options.scrollWidth);
+                    this.setScrollWidth(parseInt(this.cfg.scrollWidth));
             }
+
+            this.cloneHead();
 
             this.scrollBody.on('scroll.dataTable', function() {
                 var scrollLeft = $this.scrollBody.scrollLeft();
                 $this.scrollHeaderBox.css('margin-left', -scrollLeft);
             });
 
-            this.scrollHeader.on('scroll.dataTable', function() {
+            this.scrollHeader.on('scroll.dataTable', function() {
                 $this.scrollHeader.scrollLeft(0);
             });
 
             var resizeNS = 'resize.' + this.id;
-            $(window).unbind(resizeNS).bind(resizeNS, function() {
+            $(window).off(resizeNS).on(resizeNS, function() {
                 if($this.element.is(':visible')) {
                     if($this.percentageScrollHeight)
                         $this.adjustScrollHeight();
@@ -589,12 +588,47 @@ $(function() {
             });
         },
 
+        cloneHead: function() {
+            this.theadClone = this.thead.clone();
+            this.theadClone.find('th').each(function() {
+                var header = $(this);
+                header.attr('id', header.attr('id') + '_clone');
+                $(this).children().not('.pui-column-title').remove();
+            });
+            this.theadClone.removeAttr('id').addClass('pui-datatable-scrollable-theadclone').height(0).prependTo(this.bodyTable);
+
+            //align horizontal scroller on keyboard tab
+            if(this.options.scrollWidth) {
+                var clonedSortableColumns = this.theadClone.find('> tr > th.pui-sortable-column');
+                clonedSortableColumns.each(function() {
+                    $(this).data('original', $(this).attr('id').split('_clone')[0]);
+                });
+
+                clonedSortableColumns.on('blur.dataTable', function() {
+                    $(PrimeFaces.escapeClientId($(this).data('original'))).removeClass('ui-state-focus');
+                })
+                .on('focus.dataTable', function() {
+                    $(PrimeFaces.escapeClientId($(this).data('original'))).addClass('ui-state-focus');
+                })
+                .on('keydown.dataTable', function(e) {
+                    var key = e.which,
+                    keyCode = $.ui.keyCode;
+
+                    if((key === keyCode.ENTER||key === keyCode.NUMPAD_ENTER) && $(e.target).is(':not(:input)')) {
+                        $(PrimeFaces.escapeClientId($(this).data('original'))).trigger('click.dataTable', (e.metaKey||e.ctrlKey));
+                        e.preventDefault();
+                    }
+                });
+            }
+        },
+
         adjustScrollHeight: function() {
-            var relativeHeight = this.element.parent().innerHeight() * (parseInt(this.options.scrollHeight) / 100),
-            tableHeaderHeight = this.element.children('.pui-datatable-caption').outerHeight(true),
-            scrollersHeight = this.scrollHeader.outerHeight(true),
+            var relativeHeight = this.element.parent().innerHeight() * (parseInt(this.cfg.scrollHeight) / 100),
+            tableHeaderHeight = this.element.children('.pui-datatable-header').outerHeight(true),
+            tableFooterHeight = this.element.children('.pui-datatable-footer').outerHeight(true),
+            scrollersHeight = (this.scrollHeader.outerHeight(true) + this.scrollFooter.outerHeight(true)),
             paginatorsHeight = this.paginator ? this.paginator.getContainerHeight(true) : 0,
-            height = (relativeHeight - (scrollersHeight + paginatorsHeight + tableHeaderHeight));
+            height = (relativeHeight - (scrollersHeight + paginatorsHeight + tableHeaderHeight + tableFooterHeight));
 
             this.scrollBody.height(height);
         },
@@ -604,10 +638,24 @@ $(function() {
             this.setScrollWidth(width);
         },
 
+        setOuterWidth: function(element, width) {
+            var diff = element.outerWidth() - element.width();
+            element.width(width - diff);
+        },
+
         setScrollWidth: function(width) {
+            var $this = this;
+            this.element.children('.ui-widget-header').each(function() {
+                $this.setOuterWidth($(this), width);
+            });
             this.scrollHeader.width(width);
             this.scrollBody.css('margin-right', 0).width(width);
-            this.element.width(width);
+        },
+
+        alignScrollBody: function() {
+            var marginRight = this.hasVerticalOverflow() ? this.getScrollbarWidth() + 'px' : '0px';
+
+            this.scrollHeaderBox.css('margin-right', marginRight);
         },
 
         getScrollbarWidth: function() {
@@ -618,24 +666,39 @@ $(function() {
             return this.scrollbarWidth;
         },
 
-        fixColumnWidths: function() {
-            var $this = this;
+        hasVerticalOverflow: function() {
+            return (this.options.scrollHeight && this.bodyTable.outerHeight() > this.scrollBody.outerHeight())
+        },
 
+        restoreScrollState: function() {
+            var scrollState = this.scrollStateHolder.val(),
+            scrollValues = scrollState.split(',');
+
+            this.scrollBody.scrollLeft(scrollValues[0]);
+            this.scrollBody.scrollTop(scrollValues[1]);
+        },
+
+        saveScrollState: function() {
+            var scrollState = this.scrollBody.scrollLeft() + ',' + this.scrollBody.scrollTop();
+
+            this.scrollStateHolder.val(scrollState);
+        },
+
+        clearScrollState: function() {
+            this.scrollStateHolder.val('0,0');
+        },
+
+        fixColumnWidths: function() {
             if(!this.columnWidthsFixed) {
                 if(this.options.scrollable) {
-                    this.thead.children('th').each(function() {
+                    this.scrollHeaderBox.find('> table > thead > tr > th').each(function() {
                         var headerCol = $(this),
-                        colIndex = headerCol.index(),
-                        width = headerCol.width(),
-                        innerWidth = headerCol.innerWidth(),
-                        cellWidth = innerWidth + 1;
-
+                        width = headerCol.width();
                         headerCol.width(width);
-                        $this.colgroup.children().eq(colIndex).width(cellWidth);
                     });
                 }
                 else {
-                    this.element.find('> .pui-datatable-tablewrapper > table > thead > tr > th').each(function() {
+                    this.options.find('> .pui-datatable-tablewrapper > table > thead > tr > th').each(function() {
                         var col = $(this);
                         col.width(col.width());
                     });
@@ -644,5 +707,6 @@ $(function() {
                 this.columnWidthsFixed = true;
             }
         }
+    
     });
 });
