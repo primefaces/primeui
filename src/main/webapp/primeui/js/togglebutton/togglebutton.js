@@ -116,7 +116,7 @@ $(function() {
 
         uncheck: function(silent) {
             this.container.removeClass('ui-state-active')
-            this.label.html(this.options.offLabel);
+            this.label.text(this.options.offLabel);
             this.element.prop('checked', false);
 
             if(this.options.offIcon) {
