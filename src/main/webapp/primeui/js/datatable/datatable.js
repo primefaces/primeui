@@ -63,7 +63,7 @@ $(function() {
             var $this = this;
             
             this.element.append('<div class="ui-widget-header pui-datatable-scrollable-header"><div class="pui-datatable-scrollable-header-box"><table><thead></thead></table></div></div>')
-                        .append('<div class="pui-datatable-scrollable-body"><table><colgroup></colgroup><tbody></tbody></table></div></div>');
+                        .append('<div class="pui-datatable-scrollable-body"><table><colgroup></colgroup><tbody></tbody></table></div>');
                 
             this.thead = this.element.find('> .pui-datatable-scrollable-header thead');
             this.tbody = this.element.find('> .pui-datatable-scrollable-body tbody');
