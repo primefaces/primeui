@@ -1,0 +1,92 @@
+.pui-carousel {
+    position: relative;
+    padding: 1px;
+}
+
+.pui-carousel .pui-carousel-viewport .pui-carousel-items {
+    list-style: none outside none;
+    margin: 0;
+    padding:0;
+    position: relative;
+    width: 32000px;
+    left: 0;
+}
+
+.pui-carousel .pui-carousel-viewport .pui-carousel-items .pui-carousel-item {
+    margin: 1px;
+    padding: 0;
+    float: left;
+}
+
+.pui-carousel .pui-carousel-viewport {
+    overflow: hidden;
+    position: relative;
+    border: 0;
+}
+
+.pui-carousel .pui-carousel-footer {
+    margin: 1px 1px 0px 1px;
+    padding-top: 9px;
+    padding-bottom: 6px;
+    padding-right: 10px;
+    padding-left: 10px;
+    overflow: hidden;
+}
+
+.pui-carousel .pui-carousel-header {
+    margin: 0 1px;
+    overflow: hidden;
+    padding-top: 7px;
+    padding-bottom: 8px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.pui-carousel .pui-carousel-header .pui-carousel-header-title {
+    display: inline-block;
+    width: 30%;
+    padding-top: 2px;
+    overflow: hidden;
+}
+
+.pui-carousel .pui-carousel-dropdown,
+.pui-carousel .pui-carousel-mobiledropdown {
+    float: right;
+    margin: 0px 10px;
+    background-image: none;
+}
+
+.pui-carousel .pui-carousel-dropdown option,
+.pui-carousel .pui-carousel-mobiledropdown option{
+    background-image: none;
+    border:0 none;
+    box-shadow:none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+.pui-carousel .pui-carousel-button {
+    float: right;
+    margin: 2px;
+}
+
+.pui-carousel .pui-carousel-page-link {
+    float: left;
+    margin: 0 2px;
+}
+
+.pui-carousel .pui-carousel-page-link, 
+.pui-carousel .pui-carousel-button {
+    cursor: pointer;
+}
+
+.pui-carousel .pui-carousel-page-links {
+    margin: 0px 9px;
+    margin-top: 1px;
+    display: inline-table;
+    float: right;
+}
+
+.pui-carousel .pui-carousel-mobiledropdown {
+    display: none;
+}
