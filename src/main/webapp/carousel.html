@@ -1,0 +1,156 @@
+<div>
+    <link rel="stylesheet" href="primeui/css/grid/grid.css" />
+    <link rel="stylesheet" href="primeui/css/carousel/carousel.css" />
+    <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
+    <script type="text/javascript" src="resources/js/easing.js"></script>
+    <script type="text/javascript" src="primeui/plugins/touchswipe.js"></script>
+    <script type="text/javascript" src="primeui/js/carousel/carousel.js"></script>
+    <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            var cars = [
+                {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
+                {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
+                {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
+                {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
+                {'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
+                {'brand': 'Jaguar', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
+                {'brand': 'BMW', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
+                {'brand': 'Fiat', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
+                {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'}
+            ];
+                
+            $('#cars1').puicarousel({
+                headerText: 'Cars',
+                datasource:cars,
+                itemContent: function(car) {
+                    var content = $('<div class="pui-grid pui-grid-responsive"></div>');
+                    content.append('<div class="pui-grid-row"><div class="pui-grid-col-12"><img src="resources/demo/images/car/' + car.brand +  '.gif" /></div>')
+                            .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Vin</div><div class="pui-grid-col-6">' + car.vin + ' </div></div>')
+                            .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Year</div><div class="pui-grid-col-6">' + car.year + ' </div></div>')
+                            .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Color</div><div class="pui-grid-col-6">' + car.color + ' </div></div>');
+                    
+                    return content;
+                }
+            });
+            
+            $('#doc').puitabview();
+        });
+    </script>
+    <style type="text/css">
+        .pui-carousel .pui-grid-row{
+            text-align: center;
+        }
+        
+        .pui-carousel .pui-grid {
+            margin: 10px 0px;
+        }
+        
+        .pui-carousel .pui-grid-row > div {
+            padding: 4px 10px;
+        }
+    </style>
+
+    <div class="ContentSideSections">
+        <div class="Content100 overHidden TextShadow">
+            <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">Carousel</span>
+            <span class="defaultText dispTable">Carousel displays content using a slide effect feauturing responsive mode, swipe support for touch enabled devices and various customization options.</span>
+        </div>
+    </div>
+
+    <div class="ContentSideSections Implementation">
+        <ul id="cars1"></ul>
+    </div>
+
+    <div id="SourceContentSide" class="ContentSideSections Source">
+        <div class="Content100 overHidden TextShadow">
+            <span class="defaultText">
+                <span class="fontSize18 logoBlueText">
+                    <div id="doc">
+                        <ul>
+                            <li><a href="#doc-overview">Overview</a></li>
+                            <li><a href="#doc-options">Options</a></li>
+                            <li><a href="#doc-events">Events</a></li>
+                            <li><a href="#doc-methods">Methods</a></li>
+                            <li><a href="#doc-methods">Source</a></li>
+                        </ul>
+                        <div>
+                            <div id="doc-overview">
+                                <pre class="brush: html">
+$('#default').puiinputtext(); 
+                                </pre>
+
+                                <pre class="brush: js">
+&lt;input id="default" type="text" /&gt;
+                                </pre>
+
+                            </div>
+
+                            <div id="doc-options">
+                                <h3>No options.</h3>
+                            </div>
+
+                            <div id="doc-events">
+                                <h3>No events.</h3>
+                            </div>
+
+                            <div id="doc-methods">
+                                <table class="doc-table">
+                                    <thead>
+                                        <th>Name</th>
+                                        <th>Parameters</th>
+                                        <th>Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>enable</td>
+                                            <td>-</td>
+                                            <td>Enable the widget</td>
+                                        </tr>
+                                        <tr>
+                                            <td>disable</td>
+                                            <td>-</td>
+                                            <td>Disable the widget.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>option</td>
+                                            <td>name: Name of the option</td>
+                                            <td>Returns the value of the option.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>option</td>
+                                            <td>name: Name of the option, value: Value of the option</td>
+                                            <td>Set the value of the option.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div id="doc-source">
+
+                                <pre class="brush:js">
+&lt;script type="text/javascript"&gt;
+    $(function() {
+        $('#in').puiinputtext();
+    });
+&lt;/script&gt; 
+                                </pre>
+
+                                <pre class="brush:xml">
+&lt;input id="in" type="text" /&gt;             
+                                </pre>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </span>
+            </span>
+        </div>
+    </div>
+
+    <script language="javascript">
+        SyntaxHighlighter.highlight();
+    </script>
+
+</div>
