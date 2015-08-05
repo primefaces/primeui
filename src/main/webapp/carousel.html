@@ -21,8 +21,34 @@
             ];
                 
             $('#cars1').puicarousel({
-                headerText: 'Cars',
-                datasource:cars,
+                headerText: 'Local Javascript Array',
+                datasource: cars,
+                responsive: true,
+                itemContent: function(car) {
+                    var content = $('<div class="pui-grid pui-grid-responsive"></div>');
+                    content.append('<div class="pui-grid-row"><div class="pui-grid-col-12"><img src="resources/demo/images/car/' + car.brand +  '.gif" /></div>')
+                            .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Vin</div><div class="pui-grid-col-6">' + car.vin + ' </div></div>')
+                            .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Year</div><div class="pui-grid-col-6">' + car.year + ' </div></div>')
+                            .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Color</div><div class="pui-grid-col-6">' + car.color + ' </div></div>');
+                    
+                    return content;
+                }
+            });
+            
+            $('#cars2').puicarousel({
+                headerText: 'Remote DataSource',
+                datasource: function(callback) {
+                    $.ajax({
+                        type: "GET",
+                        url: 'rest/cars/list',
+                        dataType: "json",
+                        context: this,
+                        success: function(response) {
+                            callback.call(this, response.slice(0,15));
+                        }
+                    });
+                },
+                responsive: true,
                 itemContent: function(car) {
                     var content = $('<div class="pui-grid pui-grid-responsive"></div>');
                     content.append('<div class="pui-grid-row"><div class="pui-grid-col-12"><img src="resources/demo/images/car/' + car.brand +  '.gif" /></div>')
@@ -60,6 +86,10 @@
 
     <div class="ContentSideSections Implementation">
         <ul id="cars1"></ul>
+        
+        <br /><br />
+        
+        <ul id="cars2"></ul>
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">

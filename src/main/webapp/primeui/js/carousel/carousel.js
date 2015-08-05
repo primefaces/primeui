@@ -17,7 +17,8 @@ $(function() {
             itemContent: null,
             responsive: false,
             autoplayInterval: 0,
-            easing: 'easeInOutCirc'
+            easing: 'easeInOutCirc',
+            pageLinks: 3
         },
        
         _create: function() {
@@ -31,8 +32,7 @@ $(function() {
             this.container = this.element.parent().parent();
             this.element.addClass('pui-carousel-items');
             this.container.prepend('<div class="pui-carousel-header ui-widget-header"><div class="pui-carousel-header-title"></div></div>');
-            
-            //header
+            this.viewport = this.element.parent();
             this.header = this.container.children('.pui-carousel-header');
             this.header.append('<span class="pui-carousel-button pui-carousel-next-button ui-icon ui-icon-circle-triangle-e"></span>' + 
                                 '<span class="pui-carousel-button pui-carousel-prev-button ui-icon ui-icon-circle-triangle-w"></span>');
@@ -54,7 +54,7 @@ $(function() {
         
         _render: function(data) {
             this.data = data;
-            this.viewport = this.element.parent();
+            
             
             for(var i = 0; i < data.length; i++) {
                 var itemContent = this.options.itemContent.call(this, data[i]);
@@ -66,16 +66,18 @@ $(function() {
             
             this.items = this.element.children('li');
             this.itemsCount = this.data.length;
-            this.prevNav = this.header.children('.pui-carousel-prev-button');
-            this.nextNav = this.header.children('.pui-carousel-next-button');
-            this.pageLinks = this.header.find('> .pui-carousel-page-links > .ui-carousel-page-link');
-            this.dropdown = this.header.children('.pui-carousel-dropdown');
-            this.mobileDropdown = this.header.children('.pui-carousel-mobiledropdown');
-            
             this.columns = this.options.numVisible;
             this.first = this.options.firstVisible;
             this.page = parseInt(this.first/this.columns);
             this.totalPages = Math.ceil(this.itemsCount/this.options.numVisible);
+            
+            this._renderPageLinks();
+            
+            this.prevNav = this.header.children('.pui-carousel-prev-button');
+            this.nextNav = this.header.children('.pui-carousel-next-button');
+            this.pageLinks = this.header.find('> .pui-carousel-page-links > .pui-carousel-page-link');
+            this.dropdown = this.header.children('.pui-carousel-dropdown');
+            this.mobileDropdown = this.header.children('.pui-carousel-mobiledropdown');
             
             this.bindEvents();
 
@@ -87,6 +89,33 @@ $(function() {
                 this.container.width(this.container.width());
                 this.updateNavigators();
             }        
+        },
+        
+        _renderPageLinks: function() {
+            if(this.totalPages <= this.options.pageLinks) {
+                this.pageLinksContainer = $('<div class="pui-carousel-page-links"></div>');
+                for(var i = 0; i < this.options.pageLinks; i++) {
+                    this.pageLinksContainer.append('<a href="#" class="ui-icon pui-carousel-page-link ui-icon-radio-off"></a>');
+                }
+                this.header.append(this.pageLinksContainer);
+            }
+            else {
+                this.dropdown = $('<select class="pui-carousel-dropdown ui-widget ui-state-default ui-corner-left"></select>');
+                for(var i = 0; i < this.totalPages; i++) {
+                    var pageNumber = (i+1);
+                    this.dropdown.append('<option value="' + pageNumber + '">' + pageNumber + '</option>');
+                }
+                this.header.append(this.dropdown);
+            }
+            
+            if(this.options.responsive) {
+                this.mobileDropdown = $('<select class="pui-carousel-mobiledropdown ui-widget ui-state-default ui-corner-left"></select>');
+                for(var i = 0; i < this.totalPages; i++) {
+                    var pageNumber = (i+1);
+                    this.mobileDropdown.append('<option value="' + pageNumber + '">' + pageNumber + '</option>');
+                }
+                this.header.append(this.mobileDropdown);
+            }
         },
         
         calculateItemWidths: function() {
