@@ -35,7 +35,7 @@ $(function() {
             //header
             this.header = this.container.children('.pui-carousel-header');
             this.header.append('<span class="pui-carousel-button pui-carousel-next-button ui-icon ui-icon-circle-triangle-e"></span>' + 
-                                '<span class="pui-carousel-button pui-carousel-next-button ui-icon ui-icon-circle-triangle-w"></span>');
+                                '<span class="pui-carousel-button pui-carousel-prev-button ui-icon ui-icon-circle-triangle-w"></span>');
                 
             if(this.options.headerText) {
                 this.header.children('.pui-carousel-header-title').html(this.options.headerText);
@@ -56,14 +56,12 @@ $(function() {
             this.data = data;
             this.viewport = this.element.parent();
             
-            //render items
             for(var i = 0; i < data.length; i++) {
                 var itemContent = this.options.itemContent.call(this, data[i]);
                 if($.type(itemContent) === 'string')
                     this.element.append('<li class="pui-carousel-item ui-widget-content ui-corner-all">' + itemContent + '</li>');
-                else {
+                else
                     this.element.append($('<li class="pui-carousel-item ui-widget-content ui-corner-all"></li>').wrapInner(itemContent));
-                }
             }
             
             this.items = this.element.children('li');
@@ -85,8 +83,8 @@ $(function() {
                 this.refreshDimensions();
             }
             else {
-                this.calculateItemWidths(this.columns);
-                this.container.width(this.element.width());
+                this.calculateItemWidths();
+                this.container.width(this.container.width());
                 this.updateNavigators();
             }        
         },
