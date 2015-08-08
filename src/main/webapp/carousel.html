@@ -36,6 +36,7 @@
             
             $('#cars2').puicarousel({
                 headerText: 'Remote DataSource',
+                pageLinks: 5,
                 datasource: function(callback) {
                     $.ajax({
                         type: "GET",
