@@ -115,7 +115,7 @@ $(function() {
             
             if(this.options.responsive) {
                 this.mobileDropdown = $('<select class="pui-carousel-mobiledropdown ui-widget ui-state-default ui-corner-left"></select>');
-                for(var i = 0; i < this.totalPages; i++) {
+                for(var i = 0; i < this.itemsCount; i++) {
                     var pageNumber = (i+1);
                     this.mobileDropdown.append('<option value="' + pageNumber + '">' + pageNumber + '</option>');
                 }
