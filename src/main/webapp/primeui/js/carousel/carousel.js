@@ -15,7 +15,7 @@ $(function() {
             circular :false,
             breakpoint: 560,
             itemContent: null,
-            responsive: false,
+            responsive: true,
             autoplayInterval: 0,
             easing: 'easeInOutCirc',
             pageLinks: 3
@@ -50,22 +50,27 @@ $(function() {
                     this.options.datasource.call(this, this._render);
                 }
             }
+            else {
+                this._render(null);
+            }
         },
         
         _render: function(data) {
             this.data = data;
             
-            
-            for(var i = 0; i < data.length; i++) {
-                var itemContent = this.options.itemContent.call(this, data[i]);
-                if($.type(itemContent) === 'string')
-                    this.element.append('<li class="pui-carousel-item ui-widget-content ui-corner-all">' + itemContent + '</li>');
-                else
-                    this.element.append($('<li class="pui-carousel-item ui-widget-content ui-corner-all"></li>').wrapInner(itemContent));
+            if(this.data) {
+                for(var i = 0; i < data.length; i++) {
+                    var itemContent = this.options.itemContent.call(this, data[i]);
+                    if($.type(itemContent) === 'string')
+                        this.element.append('<li>' + itemContent + '</li>');
+                    else
+                        this.element.append($('<li></li>').wrapInner(itemContent));
+                }
             }
             
             this.items = this.element.children('li');
-            this.itemsCount = this.data.length;
+            this.items.addClass('pui-carousel-item ui-widget-content ui-corner-all');
+            this.itemsCount = this.items.length;
             this.columns = this.options.numVisible;
             this.first = this.options.firstVisible;
             this.page = parseInt(this.first/this.columns);

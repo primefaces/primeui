@@ -23,7 +23,6 @@
             $('#cars1').puicarousel({
                 headerText: 'Local Javascript Array',
                 datasource: cars,
-                responsive: true,
                 itemContent: function(car) {
                     var content = $('<div class="pui-grid pui-grid-responsive"></div>');
                     content.append('<div class="pui-grid-row"><div class="pui-grid-col-12"><img src="resources/demo/images/car/' + car.brand +  '.gif" /></div>')
@@ -48,7 +47,6 @@
                         }
                     });
                 },
-                responsive: true,
                 itemContent: function(car) {
                     var content = $('<div class="pui-grid pui-grid-responsive"></div>');
                     content.append('<div class="pui-grid-row"><div class="pui-grid-col-12"><img src="resources/demo/images/car/' + car.brand +  '.gif" /></div>')
@@ -58,6 +56,10 @@
                     
                     return content;
                 }
+            });
+            
+            $('#cars3').puicarousel({
+                headerText: 'Enhanced Markup'
             });
             
             $('#doc').puitabview();
@@ -90,6 +92,190 @@
         <br /><br />
         
         <ul id="cars2"></ul>
+        
+        <br /><br/>
+        <ul id="cars3">
+            <li>
+                <div class="pui-grid pui-grid-responsive">
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-12"><img src="resources/demo/images/car/Volkswagen.gif">
+                        </div>
+                    </div>
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-6">Vin</div>
+                        <div class="pui-grid-col-6">dsad231ff </div>
+                    </div>
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-6">Year</div>
+                        <div class="pui-grid-col-6">2012 </div>
+                    </div>
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-6">Color</div>
+                        <div class="pui-grid-col-6">White </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="pui-grid pui-grid-responsive">
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-12"><img src="resources/demo/images/car/Audi.gif">
+                        </div>
+                    </div>
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-6">Vin</div>
+                        <div class="pui-grid-col-6">gwregre345 </div>
+                    </div>
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-6">Year</div>
+                        <div class="pui-grid-col-6">2011 </div>
+                    </div>
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-6">Color</div>
+                        <div class="pui-grid-col-6">Black </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="pui-grid pui-grid-responsive">
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-12"><img src="resources/demo/images/car/Renault.gif">
+                        </div>
+                    </div>
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-6">Vin</div>
+                        <div class="pui-grid-col-6">h354htr </div>
+                    </div>
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-6">Year</div>
+                        <div class="pui-grid-col-6">2005 </div>
+                    </div>
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-6">Color</div>
+                        <div class="pui-grid-col-6">Gray </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="pui-grid pui-grid-responsive">
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-12"><img src="resources/demo/images/car/BMW.gif">
+                        </div>
+                    </div>
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-6">Vin</div>
+                        <div class="pui-grid-col-6">j6w54qgh </div>
+                    </div>
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-6">Year</div>
+                        <div class="pui-grid-col-6">2003 </div>
+                    </div>
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-6">Color</div>
+                        <div class="pui-grid-col-6">Blue </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="pui-grid pui-grid-responsive">
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-12"><img src="resources/demo/images/car/Mercedes.gif">
+                        </div>
+                    </div>
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-6">Vin</div>
+                        <div class="pui-grid-col-6">hrtwy34 </div>
+                    </div>
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-6">Year</div>
+                        <div class="pui-grid-col-6">1995 </div>
+                    </div>
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-6">Color</div>
+                        <div class="pui-grid-col-6">White </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="pui-grid pui-grid-responsive">
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-12"><img src="resources/demo/images/car/Jaguar.gif">
+                        </div>
+                    </div>
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-6">Vin</div>
+                        <div class="pui-grid-col-6">jejtyj </div>
+                    </div>
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-6">Year</div>
+                        <div class="pui-grid-col-6">2005 </div>
+                    </div>
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-6">Color</div>
+                        <div class="pui-grid-col-6">Black </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="pui-grid pui-grid-responsive">
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-12"><img src="resources/demo/images/car/BMW.gif">
+                        </div>
+                    </div>
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-6">Vin</div>
+                        <div class="pui-grid-col-6">g43gr </div>
+                    </div>
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-6">Year</div>
+                        <div class="pui-grid-col-6">2012 </div>
+                    </div>
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-6">Color</div>
+                        <div class="pui-grid-col-6">Yellow </div>
+                    </div>
+                </div>
+            </li>
+            <li class="pui-carousel-item ui-widget-content ui-corner-all" style="width: 349px;">
+                <div class="pui-grid pui-grid-responsive">
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-12"><img src="resources/demo/images/car/Fiat.gif">
+                        </div>
+                    </div>
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-6">Vin</div>
+                        <div class="pui-grid-col-6">greg34 </div>
+                    </div>
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-6">Year</div>
+                        <div class="pui-grid-col-6">2013 </div>
+                    </div>
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-6">Color</div>
+                        <div class="pui-grid-col-6">White </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="pui-grid pui-grid-responsive">
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-12"><img src="resources/demo/images/car/Ford.gif">
+                        </div>
+                    </div>
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-6">Vin</div>
+                        <div class="pui-grid-col-6">h54hw5 </div>
+                    </div>
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-6">Year</div>
+                        <div class="pui-grid-col-6">2000 </div>
+                    </div>
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-6">Color</div>
+                        <div class="pui-grid-col-6">Black </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">
