@@ -41,18 +41,25 @@ $(function() {
                 this.header.children('.pui-carousel-header-title').html(this.options.headerText);
             }
             
-            //init
-            if(this.options.datasource) {
-                if($.isArray(this.options.datasource)) {
-                    this._render(this.options.datasource);
-                }
-                else if($.type(this.options.datasource) === 'function') {
-                    this.options.datasource.call(this, this._render);
-                }
-            }
-            else {
-                this._render(null);
-            }
+            if(this.options.datasource)
+                this._loadData();
+            else
+                this._render();
+        },
+        
+        _loadData: function() {
+            if($.isArray(this.options.datasource))
+                this._render(this.options.datasource);
+            else if($.type(this.options.datasource) === 'function')
+                this.options.datasource.call(this, this._render);
+        },
+        
+        _updateDatasource: function(value) {
+            this.options.datasource = value;
+            this.element.children().remove();
+            this.header.children('.pui-carousel-page-links').remove();
+            this.header.children('select').remove();
+            this._loadData();
         },
         
         _render: function(data) {
@@ -84,8 +91,8 @@ $(function() {
             this.dropdown = this.header.children('.pui-carousel-dropdown');
             this.mobileDropdown = this.header.children('.pui-carousel-mobiledropdown');
             
-            this.bindEvents();
-
+            this._bindEvents();
+            
             if(this.options.responsive) {
                 this.refreshDimensions();
             }
@@ -99,7 +106,7 @@ $(function() {
         _renderPageLinks: function() {
             if(this.totalPages <= this.options.pageLinks) {
                 this.pageLinksContainer = $('<div class="pui-carousel-page-links"></div>');
-                for(var i = 0; i < this.options.pageLinks; i++) {
+                for(var i = 0; i < this.totalPages; i++) {
                     this.pageLinksContainer.append('<a href="#" class="ui-icon pui-carousel-page-link ui-icon-radio-off"></a>');
                 }
                 this.header.append(this.pageLinksContainer);
@@ -153,10 +160,14 @@ $(function() {
             this.element.css('left', (-1 * (this.viewport.innerWidth() * this.page)));
         },
 
-        bindEvents: function() {
+        _bindEvents: function() {
             var $this = this;
+            
+            if(this.eventsBound) {
+                return;
+            }
 
-            this.prevNav.on('click', function() {
+            this.prevNav.on('click.puicarousel', function() {
                 if($this.page !== 0) {
                     $this.setPage($this.page - 1);
                 }
@@ -165,7 +176,7 @@ $(function() {
                 }
             });
 
-            this.nextNav.on('click', function() {
+            this.nextNav.on('click.puicarousel', function() {
                 var lastPage = ($this.page === ($this.totalPages - 1));
 
                 if(!lastPage) {
@@ -221,6 +232,8 @@ $(function() {
                     $this.refreshDimensions();
                 });
             }
+            
+            this.eventsBound = true;
         },
 
         updateNavigators: function() {
@@ -287,12 +300,18 @@ $(function() {
         stopAutoplay: function() {
             clearInterval(this.interval);
         },
+                
+        _setOption: function(key, value) {
+            if(key === 'datasource')
+                this._updateDatasource(value);
+            else
+                $.Widget.prototype._setOption.apply(this, arguments);
+        },
         
         _destroy: function() {
 
         }
 
-        
     });
     
 });
