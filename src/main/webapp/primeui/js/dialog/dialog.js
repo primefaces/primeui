@@ -513,8 +513,10 @@ $(function() {
         
         _bindResizeListener: function() {
             var $this = this;
-            $(window).on(this.resizeNS, function() {
-                $this._initPosition();
+            $(window).on(this.resizeNS, function(e) {
+                if(e.target === window) {
+                    $this._initPosition();
+                }
             });
         },
 
