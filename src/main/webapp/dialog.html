@@ -8,13 +8,14 @@
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript">
         $(function() {
+            setTimeout(function() {
             $('#dlg').puidialog({
                 showEffect: 'fade',
                 hideEffect: 'fade',
                 minimizable: true,
                 maximizable: true,
-                draggable: false,
                 responsive: true,
+                minWidth: 200,
                 modal: true,
                 buttons: [{
                         text: 'Yes',
@@ -32,6 +33,7 @@
                     }
                 ]
             });
+        }, 100);
 
             $('#btn-show').puibutton({
                 icon: 'fa-external-link-square',
@@ -325,8 +327,8 @@ $(function() {
         hideEffect: 'fade',
         minimizable: true,
         maximizable: true,
-        draggable: false,
         responsive: true,
+        minWidth: 200,
         modal: true,
         buttons: [{
                 text: 'Yes',
