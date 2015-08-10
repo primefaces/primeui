@@ -551,7 +551,7 @@ $(function() {
                 if(this.percentageScrollHeight)
                     this.adjustScrollHeight();
                 else
-                    this.scrollBody.height(this.options.scrollHeight);
+                    this.scrollBody.css('max-height', this.options.scrollHeight + 'px');
 
                 if(this.hasVerticalOverflow()) {
                     this.scrollHeaderBox.css('margin-right', scrollBarWidth);
@@ -632,7 +632,7 @@ $(function() {
             paginatorsHeight = this.paginator ? this.paginator.getContainerHeight(true) : 0,
             height = (relativeHeight - (scrollersHeight + paginatorsHeight + tableHeaderHeight + tableFooterHeight));
 
-            this.scrollBody.height(height);
+            this.scrollBody.css('max-height', height + 'px');
         },
 
         adjustScrollWidth: function() {
