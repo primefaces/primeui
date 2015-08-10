@@ -34,8 +34,8 @@ $(function() {
             this.container.prepend('<div class="pui-carousel-header ui-widget-header"><div class="pui-carousel-header-title"></div></div>');
             this.viewport = this.element.parent();
             this.header = this.container.children('.pui-carousel-header');
-            this.header.append('<span class="pui-carousel-button pui-carousel-next-button ui-icon ui-icon-circle-triangle-e"></span>' + 
-                                '<span class="pui-carousel-button pui-carousel-prev-button ui-icon ui-icon-circle-triangle-w"></span>');
+            this.header.append('<span class="pui-carousel-button pui-carousel-next-button fa fa-arrow-circle-right"></span>' + 
+                                '<span class="pui-carousel-button pui-carousel-prev-button fa fa-arrow-circle-left"></span>');
                 
             if(this.options.headerText) {
                 this.header.children('.pui-carousel-header-title').html(this.options.headerText);
@@ -111,7 +111,7 @@ $(function() {
             if(this.totalPages <= this.options.pageLinks) {
                 this.pageLinksContainer = $('<div class="pui-carousel-page-links"></div>');
                 for(var i = 0; i < this.totalPages; i++) {
-                    this.pageLinksContainer.append('<a href="#" class="ui-icon pui-carousel-page-link ui-icon-radio-off"></a>');
+                    this.pageLinksContainer.append('<a href="#" class="pui-carousel-page-link fa fa-circle-o"></a>');
                 }
                 this.header.append(this.pageLinksContainer);
             }
@@ -257,8 +257,8 @@ $(function() {
             }
 
             if(this.pageLinks.length) {
-                this.pageLinks.filter('.ui-icon-radio-on').removeClass('ui-icon-radio-on');
-                this.pageLinks.eq(this.page).addClass('ui-icon-radio-on');
+                this.pageLinks.filter('.fa-dot-circle-o').removeClass('fa-dot-circle-o');
+                this.pageLinks.eq(this.page).addClass('fa-dot-circle-o');
             }
 
             if(this.dropdown.length) {

@@ -8,6 +8,9 @@
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript">
         $(function() {
+            setTimeout(function() {
+                
+            
             var cars = [
                 {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
                 {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
@@ -62,12 +65,13 @@
             $('#cars3').puicarousel({
                 headerText: 'Enhanced Markup'
             });
+        }, 100);
             
             $('#doc').puitabview();
         });
     </script>
     <style type="text/css">
-        .pui-carousel .pui-grid-row{
+        .pui-carousel .pui-grid-row {
             text-align: center;
         }
         
@@ -475,11 +479,11 @@ $(function() {
         headerText: 'Local Javascript Array',
         datasource: cars,
         itemContent: function(car) {
-            var content = $('<div class="pui-grid pui-grid-responsive"></div>');
-            content.append('<div class="pui-grid-row"><div class="pui-grid-col-12"><img src="resources/demo/images/car/' + car.brand +  '.gif" /></div>')
-                    .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Vin</div><div class="pui-grid-col-6">' + car.vin + ' </div></div>')
-                    .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Year</div><div class="pui-grid-col-6">' + car.year + ' </div></div>')
-                    .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Color</div><div class="pui-grid-col-6">' + car.color + ' </div></div>');
+            var content = $('&lt;div class="pui-grid pui-grid-responsive"&gt;&lt;/div&gt;');
+            content.append('&lt;div class="pui-grid-row"&gt;&lt;div class="pui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/' + car.brand +  '.gif" /&gt;&lt;/div&gt;')
+                    .append('&lt;div class="pui-grid-row"&gt;&lt;div class="pui-grid-col-6"&gt;Vin&lt;/div&gt;&lt;div class="pui-grid-col-6"&gt;' + car.vin + ' &lt;/div&gt;&lt;/div&gt;')
+                    .append('&lt;div class="pui-grid-row"&gt;&lt;div class="pui-grid-col-6"&gt;Year&lt;/div&gt;&lt;div class="pui-grid-col-6"&gt;' + car.year + ' &lt;/div&gt;&lt;/div&gt;')
+                    .append('&lt;div class="pui-grid-row"&gt;&lt;div class="pui-grid-col-6"&gt;Color&lt;/div&gt;&lt;div class="pui-grid-col-6"&gt;' + car.color + ' &lt;/div&gt;&lt;/div&gt;');
 
             return content;
         }
