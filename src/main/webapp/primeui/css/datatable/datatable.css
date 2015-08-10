@@ -109,9 +109,9 @@
   height: 0px;
 }
 
-.pui-datatable .pui-paginator,
 .pui-datatable .pui-paginator {
     padding: 2px;
+    border-top: 0 none;
 }
 
 .pui-datatable-rtl {
