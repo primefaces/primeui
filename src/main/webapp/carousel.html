@@ -293,22 +293,134 @@
                         </ul>
                         <div>
                             <div id="doc-overview">
+                                <p>Carousel's content can be defined either programmatically or declaratively. For programmatic way, define
+                                provide the data using the datasource option where the value can be a javascript array or a function that returns
+                                data usually by connecting to a remote source. Declarative approach simply requires a list element with "li" items as children.</p>
                                 <pre class="brush: html">
-$('#default').puiinputtext(); 
+$('#list').puicarousel(); 
                                 </pre>
 
                                 <pre class="brush: js">
-&lt;input id="default" type="text" /&gt;
+&lt;ul id="list"&gt;&lt;/ul&gt;
                                 </pre>
 
                             </div>
 
                             <div id="doc-options">
-                                <h3>No options.</h3>
+                                <table class="doc-table">
+                                    <thead>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>datasource</td>
+                                            <td>Array/Function</td>
+                                            <td>null</td>
+                                            <td>Datasource for the carousel, valid options are an array and a function to load data.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>numVisible</td>
+                                            <td>Integer</td>
+                                            <td>3</td>
+                                            <td>Number of visible items per page.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>firstVisible</td>
+                                            <td>Integer</td>
+                                            <td>0</td>
+                                            <td>Index of the first visible item.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>headerText</td>
+                                            <td>String</td>
+                                            <td>null</td>
+                                            <td>Text of the header section.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>footerText</td>
+                                            <td>String</td>
+                                            <td>null</td>
+                                            <td>Text of the footer section.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>effectDuration</td>
+                                            <td>Integer</td>
+                                            <td>500</td>
+                                            <td>Duration of the scrolling animation in milliseconds.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>circular</td>
+                                            <td>Boolean</td>
+                                            <td>false</td>
+                                            <td>Defines continuous scrolling.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>breakpoint</td>
+                                            <td>Integer</td>
+                                            <td>560</td>
+                                            <td>Breakpoint value in pixels to switch between small and large viewport.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>itemContent</td>
+                                            <td>Function</td>
+                                            <td>null</td>
+                                            <td>Function to provide item content as string or jQuery object.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>responsive</td>
+                                            <td>Boolean</td>
+                                            <td>true</td>
+                                            <td>Breakpoint value in pixels to switch between small and large viewport.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>autoplayInterval</td>
+                                            <td>Integer</td>
+                                            <td>0</td>
+                                            <td>Time in milliseconds to have carousel start scrolling automatically.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>easing</td>
+                                            <td>String</td>
+                                            <td>easeInOutCirc</td>
+                                            <td>Easing animation to use for scrolling.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>pageLinks</td>
+                                            <td>String</td>
+                                            <td>3</td>
+                                            <td>Number of maximum page links to display. If total page count exceeds this value a dropdown is displayed instead.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
 
                             <div id="doc-events">
-                                <h3>No events.</h3>
+                                <table class="doc-table">
+                                    <thead>
+                                    <th>Name</th>
+                                    <th>Parameters</th>
+                                    <th>Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>pageChange</td>
+                                            <td>ui.page: index of the new page</td>
+                                            <td>Fired when carousel page changes.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <h3>Example</h3>
+                                <pre name="code" class="brush:js">
+$('#default').puicarousel({
+    pageChange: function(event, ui) {
+        //...
+    }
+});
+                                </pre>
                             </div>
 
                             <div id="doc-methods">
@@ -320,15 +432,11 @@ $('#default').puiinputtext();
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>enable</td>
-                                            <td>-</td>
+                                            <td>setPage</td>
+                                            <td>index: Index of the page to navigate to.</td>
                                             <td>Enable the widget</td>
                                         </tr>
-                                        <tr>
-                                            <td>disable</td>
-                                            <td>-</td>
-                                            <td>Disable the widget.</td>
-                                        </tr>
+ 
                                         <tr>
                                             <td>option</td>
                                             <td>name: Name of the option</td>
@@ -341,20 +449,262 @@ $('#default').puiinputtext();
                                         </tr>
                                     </tbody>
                                 </table>
+                                
+                                <h3>Example</h3>
+                                <pre name="code" class="brush:js">
+$('#default').puicarousel('setPage', 3);
+                                </pre>
                             </div>
 
                             <div id="doc-source">
-
                                 <pre class="brush:js">
-&lt;script type="text/javascript"&gt;
-    $(function() {
-        $('#in').puiinputtext();
+$(function() {
+    var cars = [
+        {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
+        {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
+        {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
+        {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
+        {'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
+        {'brand': 'Jaguar', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
+        {'brand': 'BMW', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
+        {'brand': 'Fiat', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
+        {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'}
+    ];
+
+    $('#cars1').puicarousel({
+        headerText: 'Local Javascript Array',
+        datasource: cars,
+        itemContent: function(car) {
+            var content = $('<div class="pui-grid pui-grid-responsive"></div>');
+            content.append('<div class="pui-grid-row"><div class="pui-grid-col-12"><img src="resources/demo/images/car/' + car.brand +  '.gif" /></div>')
+                    .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Vin</div><div class="pui-grid-col-6">' + car.vin + ' </div></div>')
+                    .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Year</div><div class="pui-grid-col-6">' + car.year + ' </div></div>')
+                    .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Color</div><div class="pui-grid-col-6">' + car.color + ' </div></div>');
+
+            return content;
+        }
     });
-&lt;/script&gt; 
+
+    $('#cars2').puicarousel({
+        headerText: 'Remote DataSource',
+        pageLinks: 5,
+        datasource: function(callback) {
+            $.ajax({
+                type: "GET",
+                url: 'rest/cars/list',
+                dataType: "json",
+                context: this,
+                success: function(response) {
+                    callback.call(this, response.slice(0,15));
+                }
+            });
+        },
+        itemContent: function(car) {
+            var content = $('&lt;div class="pui-grid pui-grid-responsive"&gt;&lt;/div&gt;');
+            content.append('&lt;div class="pui-grid-row"&gt;&lt;div class="pui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/' + car.brand +  '.gif" /&gt;&lt;/div&gt;')
+                    .append('&lt;div class="pui-grid-row"&gt;&lt;div class="pui-grid-col-6"&gt;Vin&lt;/div&gt;&lt;div class="pui-grid-col-6"&gt;' + car.vin + ' &lt;/div&gt;&lt;/div&gt;')
+                    .append('&lt;div class="pui-grid-row"&gt;&lt;div class="pui-grid-col-6"&gt;Year&lt;/div&gt;&lt;div class="pui-grid-col-6"&gt;' + car.year + ' &lt;/div&gt;&lt;/div&gt;')
+                    .append('&lt;div class="pui-grid-row"&gt;&lt;div class="pui-grid-col-6"&gt;Color&lt;/div&gt;&lt;div class="pui-grid-col-6"&gt;' + car.color + ' &lt;/div&gt;&lt;/div&gt;');
+
+            return content;
+        }
+    });
+
+    $('#cars3').puicarousel({
+        headerText: 'Enhanced Markup'
+    });
+
+    $('#doc').puitabview();
+});
                                 </pre>
 
                                 <pre class="brush:xml">
-&lt;input id="in" type="text" /&gt;             
+&lt;ul id="cars1"&gt;&lt;/ul&gt;
+        
+&lt;ul id="cars2"&gt;&lt;/ul&gt;
+
+&lt;ul id="cars3"&gt;
+    &lt;li&gt;
+        &lt;div class="pui-grid pui-grid-responsive"&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/Volkswagen.gif"&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="pui-grid-col-6"&gt;dsad231ff &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="pui-grid-col-6"&gt;2012 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="pui-grid-col-6"&gt;White &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div class="pui-grid pui-grid-responsive"&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/Audi.gif"&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="pui-grid-col-6"&gt;gwregre345 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="pui-grid-col-6"&gt;2011 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="pui-grid-col-6"&gt;Black &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div class="pui-grid pui-grid-responsive"&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/Renault.gif"&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="pui-grid-col-6"&gt;h354htr &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="pui-grid-col-6"&gt;2005 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="pui-grid-col-6"&gt;Gray &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div class="pui-grid pui-grid-responsive"&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/BMW.gif"&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="pui-grid-col-6"&gt;j6w54qgh &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="pui-grid-col-6"&gt;2003 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="pui-grid-col-6"&gt;Blue &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div class="pui-grid pui-grid-responsive"&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/Mercedes.gif"&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="pui-grid-col-6"&gt;hrtwy34 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="pui-grid-col-6"&gt;1995 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="pui-grid-col-6"&gt;White &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div class="pui-grid pui-grid-responsive"&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/Jaguar.gif"&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="pui-grid-col-6"&gt;jejtyj &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="pui-grid-col-6"&gt;2005 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="pui-grid-col-6"&gt;Black &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div class="pui-grid pui-grid-responsive"&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/BMW.gif"&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="pui-grid-col-6"&gt;g43gr &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="pui-grid-col-6"&gt;2012 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="pui-grid-col-6"&gt;Yellow &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li class="pui-carousel-item ui-widget-content ui-corner-all" style="width: 349px;"&gt;
+        &lt;div class="pui-grid pui-grid-responsive"&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/Fiat.gif"&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="pui-grid-col-6"&gt;greg34 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="pui-grid-col-6"&gt;2013 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="pui-grid-col-6"&gt;White &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div class="pui-grid pui-grid-responsive"&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/Ford.gif"&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="pui-grid-col-6"&gt;h54hw5 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="pui-grid-col-6"&gt;2000 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="pui-grid-col-6"&gt;Black &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;            
                                 </pre>
 
                             </div>

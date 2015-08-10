@@ -6,7 +6,7 @@ $(function() {
     $.widget("primeui.puicarousel", {
        
        options: {
-           datasource: null,
+            datasource: null,
             numVisible: 3,
             firstVisible: 0,
             headerText: null,
