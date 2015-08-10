@@ -285,6 +285,7 @@ $(function() {
                         $this.page = p;
                         $this.first = $this.page * $this.columns;
                         $this.updateNavigators();
+                        $this._trigger('pageChange', null, {'page':p});
                     }
                 });
             }
