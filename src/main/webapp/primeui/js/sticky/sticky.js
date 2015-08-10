@@ -6,63 +6,63 @@ $(function() {
     $.widget("primeui.puisticky", {
        
         _create: function() {
-           
-            var element = this.element;
-
             this.initialState = {
-                    top: element.offset().top,
-                    width: element.width(),
-                    height: element.height()
+                top: this.element.offset().top,
+                height: this.element.height()
             };
-           
-            var win = $(window),
-            $this = this;
+                        
+            this.id = this.element.attr('id');
+            if(!this.id) {
+                this.id = this.element.uniqueId().attr('id');
+            }
             
-            win.on('scroll',function(){
-                if(win.scrollTop() > $this.initialState.top) {
+            this._bindEvents();          
+        },
+        
+        _bindEvents: function() {
+            var $this = this,
+            win = $(window),
+            scrollNS = 'scroll.' + this.id,
+            resizeNS = 'resize.' + this.id;
+
+            win.off(scrollNS).on(scrollNS, function() {
+                if(win.scrollTop() > $this.initialState.top)
                     $this._fix();
-                }
-                else {
+                else
                     $this._restore();
+            })
+            .off(resizeNS).on(resizeNS, function() {
+                if($this.fixed) {
+                    $this.element.width($this.ghost.outerWidth() - ($this.element.outerWidth() - $this.element.width()));
                 }
             });
-          
         },
                 
-        _refresh: function() {
-            $(window).off('scroll');
-
-            this._create();
-        },          
-
         _fix: function() {
             if(!this.fixed) {
                 this.element.css({
                     'position': 'fixed',
                     'top': 0,
-                    'z-index': 10000,
-                    'width': this.initialState.width
+                    'z-index': 10000
                 })
-                .addClass('pui-shadow ui-sticky');
-
-                $('<div class="ui-sticky-ghost"></div>').height(this.initialState.height).insertBefore(this.element);
-
+                .addClass('pui-shadow pui-sticky');
+        
+                this.ghost = $('<div class="pui-sticky-ghost"></div>').height(this.initialState.height).insertBefore(this.element);
+                this.element.width(this.ghost.outerWidth() - (this.element.outerWidth() - this.element.width()));
                 this.fixed = true;
             }
         },
 
-
         _restore: function() {
-            if(this.fixed) {
-                this.element.css({
+                if(this.fixed) {
+                    this.element.css({
                     position: 'static',
                     top: 'auto',
-                    'width': this.initialState.width
+                    width: 'auto'
                 })
-                .removeClass('pui-shadow ui-sticky');
+                .removeClass('pui-shadow pui-sticky');
 
-                this.element.prev('.ui-sticky-ghost').remove();
-
+                this.ghost.remove();
                 this.fixed = false;
             }
 

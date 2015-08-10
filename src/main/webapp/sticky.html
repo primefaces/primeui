@@ -11,8 +11,10 @@
     <script type="text/javascript">
         $(function() {
             $('#stickymenu').puimenubar();
-
-            $('#stickymenu').parent().puisticky();
+            
+            setTimeout(function() {
+                $('#stickymenu').parent().puisticky();
+            }, 100);
 
             $('#doc').puitabview();
         });
