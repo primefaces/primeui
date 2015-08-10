@@ -69,9 +69,11 @@
                 }
             });
             
-            $('#dlg').puidialog({
-                responsive: true
-            });
+            setTimeout(function() {
+                $('#dlg').puidialog({
+                    responsive: true
+                });
+            }, 100);
             
             $('#dd').puidropdown({
                 appendTo: 'self'
