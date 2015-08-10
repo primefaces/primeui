@@ -74,7 +74,7 @@ $(function() {
             if(this.options.columns) {
                 var headerRow = $('<tr></tr>').appendTo($this.thead);
                 $.each(this.options.columns, function(i, col) {
-                    var header = $('<th class="ui-state-default"><span class="pui-column-title"></span></th>').data('field', col.field).appendTo(headerRow);
+                    var header = $('<th class="ui-state-default"><span class="pui-column-title"></span></th>').data('field', col.field).uniqueId().appendTo(headerRow);
                     
                     if(col.headerClass) {
                         header.addClass(col.headerClass);
