@@ -10,7 +10,6 @@ $(function() {
             numVisible: 3,
             firstVisible: 0,
             headerText: null,
-            footerText: null,
             effectDuration: 500,
             circular :false,
             breakpoint: 560,
@@ -18,7 +17,8 @@ $(function() {
             responsive: true,
             autoplayInterval: 0,
             easing: 'easeInOutCirc',
-            pageLinks: 3
+            pageLinks: 3,
+            styleClass: null
         },
        
         _create: function() {
@@ -39,6 +39,10 @@ $(function() {
                 
             if(this.options.headerText) {
                 this.header.children('.pui-carousel-header-title').html(this.options.headerText);
+            }
+            
+            if(this.options.styleClass) {
+                this.container.addClass(this.options.styleClass);
             }
             
             if(this.options.datasource)
