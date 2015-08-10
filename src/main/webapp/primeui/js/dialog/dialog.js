@@ -314,11 +314,22 @@ $(function() {
         },
 
         _setupResizable: function() {
+            var $this = this;
+            
             this.element.resizable({
                 minWidth : this.options.minWidth,
                 minHeight : this.options.minHeight,
                 alsoResize : this.content,
-                containment: 'document'
+                containment: 'document',
+                start: function(event, ui) {
+                    $this.element.data('offset', $this.element.offset());
+                },
+                stop: function(event, ui) {
+                    var offset = $this.element.data('offset');
+
+                    $this.element.css('position', 'fixed');
+                    $this.element.offset(offset);
+                }
             });
 
             this.resizers = this.element.children('.ui-resizable-handle');
