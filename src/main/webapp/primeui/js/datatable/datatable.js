@@ -132,7 +132,7 @@ $(function() {
         },
 
         _indicateInitialSortColumn: function() {
-            this.sortableColumns = this.thead.children('th.pui-sortable-column');
+            this.sortableColumns = this.thead.find('> tr > th.pui-sortable-column');
             var $this = this;
             
             $.each(this.sortableColumns, function(i, column) {
@@ -197,7 +197,7 @@ $(function() {
                 
         _initSorting: function() {
             var $this = this,
-            sortableColumns = this.thead.children('th.pui-sortable-column');
+            sortableColumns = this.thead.find('> tr > th.pui-sortable-column');
             
             sortableColumns.on('mouseover.puidatatable', function() {
                 var column = $(this);

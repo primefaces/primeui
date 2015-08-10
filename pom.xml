@@ -112,6 +112,7 @@
                                                 <include>${basedir}/src/main/webapp/primeui/js/accordion/accordion.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/autocomplete/autocomplete.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/button/button.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/carousel/carousel.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/checkbox/checkbox.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/datatable/datatable.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/datagrid/datagrid.js</include>
@@ -154,6 +155,7 @@
                                                 <include>${basedir}/src/main/webapp/primeui/css/accordion/accordion.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/autocomplete/autocomplete.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/button/button.css</include>
+                                                <include>${basedir}/src/main/webapp/primeui/css/carousel/carousel.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/checkbox/checkbox.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/datatable/datatable.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/datagrid/datagrid.css</include>
@@ -209,6 +211,7 @@
                                                 <include>${project.build.directory}/primeui/production/js/accordion/accordion.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/autocomplete/autocomplete.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/button/button.js</include>
+                                                <include>${project.build.directory}/primeui/production/js/carousel/carousel.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/checkbox/checkbox.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/datatable/datatable.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/datagrid/datagrid.js</include>
@@ -251,6 +254,7 @@
                                                 <include>${project.build.directory}/primeui/production/css/accordion/accordion.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/autocomplete/autocomplete.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/button/button.css</include>
+                                                <include>${project.build.directory}/primeui/production/css/carousel/carousel.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/checkbox/checkbox.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/datatable/datatable.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/datagrid/datagrid.css</include>
