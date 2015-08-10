@@ -86,6 +86,8 @@ $(function() {
                     
                     if(col.headerText) {
                         header.children('.pui-column-title').text(col.headerText);
+                    } else if(col.headerContent) {
+                        header.children('.pui-column-title').append(col.headerContent.call(this, col));
                     }
                     
                     if(col.sortable) {
