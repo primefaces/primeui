@@ -82,7 +82,7 @@ $(function() {
                    'depth': depth, 
                    'rowkey': rowkey,
                    'parentrowkey': parentRowkey,
-                   'puidata': nodeData,
+                   'puidata': nodeData
                 });
                 
                 if(!expanded) {
