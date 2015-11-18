@@ -19,7 +19,9 @@ $(function() {
             scrollable: false,
             scrollHeight: null,
             scrollWidth: null,
-            responsive: false
+            responsive: false,
+            expandableRows: false,
+            rowExpandMode: 'multiple'
         },
         
         _create: function() {
@@ -117,6 +119,10 @@ $(function() {
             
             if(this.options.selectionMode) {
                 this._initSelection();
+            }
+            
+            if(this.options.expandableRows) {
+                this._initExpandableRows();
             }
 
             if (this.options.sortField && this.options.sortOrder) {
@@ -319,15 +325,18 @@ $(function() {
                                 column.attr('style', columnOptions.bodyStyle);
                             }
                             
-                            if(columnOptions.content) {
+                            if(columnOptions.field) {
+                                column.text(rowData[columnOptions.field]);
+                            }
+                            else if(columnOptions.content) {
                                 var content = columnOptions.content.call(this, rowData);
                                 if($.type(content) === 'string')
                                     column.html(content);
                                 else
                                     column.append(content);
                             }
-                            else {
-                                column.text(rowData[columnOptions.field]);
+                            else if(columnOptions.rowToggler) {
+                                column.append('<div class="pui-row-toggler fa fa-fw fa-chevron-circle-right"></div>');
                             }
                             
                             if(this.options.responsive && columnOptions.headerText) {
@@ -500,6 +509,82 @@ $(function() {
             var index = row.index();
             
             return this.options.paginator ? this._getFirst() + index : index;
+        },
+        
+        _initExpandableRows: function() {
+            var $this = this,
+            togglerSelector = '> tr > td > div.pui-row-toggler';
+
+            this.tbody.off('click', togglerSelector)
+                .on('click', togglerSelector, null, function() {
+                    $this.toggleExpansion($(this));
+                })
+                .on('keydown', togglerSelector, null, function(e) {
+                    var key = e.which,
+                    keyCode = $.ui.keyCode;
+
+                    if((key === keyCode.ENTER||key === keyCode.NUMPAD_ENTER)) {
+                        $this.toggleExpansion($(this));
+                        e.preventDefault();
+                    }
+            });
+        },
+        
+        toggleExpansion: function(toggler) {
+            var row = toggler.closest('tr'),
+            expanded = toggler.hasClass('fa-chevron-circle-down');
+    
+            if(expanded) {
+                toggler.addClass('fa-chevron-circle-right').removeClass('fa-chevron-circle-down').attr('aria-expanded', false);
+
+                this.collapseRow(row);
+                this._trigger('rowCollapse', null, this.data[this._getRowIndex(row)]);
+            }
+            else {
+                if(this.options.rowExpandMode === 'single') {
+                    this.collapseAllRows();
+                }
+
+                toggler.addClass('fa-chevron-circle-down').removeClass('fa-chevron-circle-right').attr('aria-expanded', true);
+
+                this.loadExpandedRowContent(row);
+            }
+        },
+        
+        loadExpandedRowContent: function(row) {
+            var rowIndex = this._getRowIndex(row),
+            expandedRow = $('<tr class="pui-expanded-row-content ui-widget-content"><td colspan="' + this.options.columns.length + '"></td></tr>');
+            expandedRow.children('td').append(this.options.expandedContent.call(this, this.data[rowIndex]));
+
+            row.addClass('pui-expanded-row').after(expandedRow);
+            this._trigger('rowExpand', null, this.data[this._getRowIndex(row)]);
+        },
+        
+        collapseRow: function(row) {
+            row.removeClass('pui-expanded-row').next('.pui-expanded-row-content').remove();
+        },
+        
+        collapseAllRows: function() {
+            var $this = this;
+
+            this.getExpandedRows().each(function () {
+                var expandedRow = $(this);
+                $this.collapseRow(expandedRow);
+
+                var columns = expandedRow.children('td');
+                for (var i = 0; i < columns.length; i++) {
+                    var column = columns.eq(i),
+                    toggler = column.children('.pui-row-toggler');
+
+                    if (toggler.length) {
+                        toggler.addClass('fa-chevron-circle-right').removeClass('fa-chevron-circle-down');
+                    }
+                }
+            });
+        },
+        
+        getExpandedRows: function () {
+            return this.tbody.children('.pui-expanded-row');
         },
                 
         _createStateMeta: function() {

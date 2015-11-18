@@ -4,12 +4,26 @@
     <link rel="stylesheet" href="primeui/css/paginator/paginator.css" />
     <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
     <link rel="stylesheet" href="primeui/css/growl/growl.css" />
+    <link rel="stylesheet" href="primeui/css/grid/grid.css" />
     <script type="text/javascript" src="primeui/js/datatable/datatable.js"></script>
     <script type="text/javascript" src="primeui/js/paginator/paginator.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript" src="primeui/js/growl/growl.js"></script>
     <script type="text/javascript">
         $(function() {
+            var localData = [
+                    {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
+                    {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
+                    {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
+                    {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
+                    {'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
+                    {'brand': 'Opel', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
+                    {'brand': 'Honda', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
+                    {'brand': 'Chevrolet', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
+                    {'brand': 'Opel', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'},
+                    {'brand': 'Mazda', 'year': 2013, 'color': 'Red', 'vin': '245t2s'}
+                ];
+                
             $('#tbllocal').puidatatable({
                 caption: 'Local Datasource',
                 paginator: {
@@ -21,18 +35,7 @@
                     {field: 'year', headerText: 'Year', sortable: true},
                     {field: 'color', headerText: 'Color', sortable: true}
                 ],
-                datasource: [
-                    {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
-                    {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
-                    {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
-                    {'brand': 'Bmw', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
-                    {'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
-                    {'brand': 'Opel', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
-                    {'brand': 'Honda', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
-                    {'brand': 'Chevrolet', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
-                    {'brand': 'Opel', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'},
-                    {'brand': 'Mazda', 'year': 2013, 'color': 'Red', 'vin': '245t2s'}
-                ],
+                datasource: localData,
                 selectionMode: 'single',
                 rowSelect: function(event, data) {
                     $('#messages').puigrowl('show', [{severity: 'info', summary: 'Row Selected', detail: (data.brand + ' ' + data.vin)}]);
@@ -113,18 +116,7 @@
                     {field: 'year', headerText: 'Year'},
                     {field: 'color', headerText: 'Color'}
                 ],
-                datasource: [
-                    {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
-                    {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
-                    {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
-                    {'brand': 'Bmw', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
-                    {'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
-                    {'brand': 'Opel', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
-                    {'brand': 'Honda', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
-                    {'brand': 'Chevrolet', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
-                    {'brand': 'Opel', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'},
-                    {'brand': 'Mazda', 'year': 2013, 'color': 'Red', 'vin': '245t2s'}
-                ]
+                datasource: localData
             });
 
             $('#tblscrollable').puidatatable({
@@ -148,6 +140,29 @@
                             callback.call(this, response);
                         }
                     });
+                }
+            });
+            
+            $('#tblexpandable').puidatatable({
+                caption: 'Expandable Rows',
+                columns: [
+                    {rowToggler: true, bodyStyle: 'width:18px',headerStyle: 'width:18px'},
+                    {field: 'vin', headerText: 'Vin'},
+                    {field: 'brand', headerText: 'Brand'},
+                    {field: 'year', headerText: 'Year'},
+                    {field: 'color', headerText: 'Color'}
+                ],
+                datasource: localData,
+                expandableRows: true,
+                rowExpandMode: 'single',
+                expandedContent: function(car) {
+                    return $('<div class="pui-grid" style="width:200px"></div>')
+                            .append('<div class="pui-grid-row"><div class="pui-grid-col-12"><img src="resources/demo/images/car/' + car.brand + '-big.gif"/></div>')
+                            .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Vin</div><div class="pui-grid-col-6">' + car.vin +'</div></div>')
+                            .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Brand</div><div class="pui-grid-col-6">' + car.brand +'</div></div>')
+                            .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Year</div><div class="pui-grid-col-6">' + car.color +'</div></div>')
+                            .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Color</div><div class="pui-grid-col-6">' + car.year +'</div></div>');
+                        
                 }
             });
 
@@ -180,6 +195,8 @@
         <div id="tblresponsive"></div>
 
         <div id="tblscrollable"></div>
+        
+        <div id="tblexpandable"></div>
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">

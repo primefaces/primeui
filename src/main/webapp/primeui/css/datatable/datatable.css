@@ -123,6 +123,11 @@
     text-align: right;
 }
 
+/* Row Toggler */
+.pui-row-toggler {
+    cursor: pointer;
+}
+
 /** Reflow **/
 .pui-datatable-reflow .pui-datatable-data td .pui-column-title {
     display: none;
