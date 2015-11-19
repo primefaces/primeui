@@ -22,7 +22,8 @@ $(function() {
             responsive: false,
             expandableRows: false,
             expandedRowContent: null,
-            rowExpandMode: 'multiple'
+            rowExpandMode: 'multiple',
+            draggableColumns: false
         },
         
         _create: function() {
@@ -61,6 +62,10 @@ $(function() {
             this.table = $('<table><thead></thead><tbody></tbody></table>').appendTo(this.tableWrapper);
             this.thead = this.table.children('thead');
             this.tbody = this.table.children('tbody').addClass('pui-datatable-data');
+
+            if(this.containsFooter()) {
+                this.tfoot = this.thead.after('<tfoot></tfoot>').next();
+            }
         },
         
         _createScrollableDatatable: function() {            
@@ -69,6 +74,11 @@ $(function() {
         
             this.thead = this.element.find('> .pui-datatable-scrollable-header > .pui-datatable-scrollable-header-box > table > thead');
             this.tbody = this.element.find('> .pui-datatable-scrollable-body > table > tbody');
+            
+            if(this.containsFooter()) {
+                this.element.append('<div class="ui-widget-header pui-datatable-scrollable-footer"><div class="pui-datatable-scrollable-footer-box"><table><tfoot></tfoot></table></div></div>');
+                this.tfoot = this.element.find('> .pui-datatable-scrollable-footer > .pui-datatable-scrollable-footer-box > table > tfoot');
+            }
         },
                 
         _initialize: function() {
@@ -81,7 +91,7 @@ $(function() {
                     
                     if(col.headerClass) {
                         header.addClass(col.headerClass);
-                    } 
+                    }
                     
                     if(col.headerStyle) {
                         header.attr('style', col.headerStyle);
@@ -99,6 +109,18 @@ $(function() {
                                 .append('<span class="pui-sortable-column-icon fa fa-fw fa-sort"></span>');
                     }
                 });
+                
+                if(this.containsFooter()) {
+                    var footerRow = $('<tr></tr>').appendTo(this.tfoot);
+                    $.each(this.options.columns, function(i, col) {
+                        var footerCell = $('<td class="ui-state-default"></td>');
+                        if(col.footerText) {
+                            footerCell.text(col.footerText);
+                        }
+                        
+                        footerCell.appendTo(footerRow);
+                    });
+                }
             }
             
             if(this.options.caption) {
@@ -124,6 +146,10 @@ $(function() {
             
             if(this.options.expandableRows) {
                 this._initExpandableRows();
+            }
+            
+            if(this.options.draggableColumns) {
+                this._initDraggableColumns();
             }
 
             if (this.options.sortField && this.options.sortOrder) {
@@ -794,6 +820,171 @@ $(function() {
 
                 this.columnWidthsFixed = true;
             }
+        },
+        
+        _initDraggableColumns: function() {
+            var $this = this;
+            
+            this.dragIndicatorTop = $('<span class="fa fa-arrow-down" style="position:absolute"/></span>').hide().appendTo(this.element);
+            this.dragIndicatorBottom = $('<span class="fa fa-arrow-up" style="position:absolute"/></span>').hide().appendTo(this.element);
+
+            this.thead.find('> tr > th').draggable({
+                appendTo: 'body',
+                opacity: 0.75,
+                cursor: 'move',
+                scope: this.id,
+                cancel: ':input,.ui-column-resizer',
+                drag: function(event, ui) {
+                    var droppable = ui.helper.data('droppable-column');
+
+                    if(droppable) {
+                        var droppableOffset = droppable.offset(),
+                        topArrowY = droppableOffset.top - 10,
+                        bottomArrowY = droppableOffset.top + droppable.height() + 8,
+                        arrowX = null;
+
+                        //calculate coordinates of arrow depending on mouse location
+                        if(event.originalEvent.pageX >= droppableOffset.left + (droppable.width() / 2)) {
+                            var nextDroppable = droppable.next();
+                            if(nextDroppable.length == 1)
+                                arrowX = nextDroppable.offset().left - 9;
+                            else
+                                arrowX = droppable.offset().left + droppable.innerWidth() - 9;
+
+                            ui.helper.data('drop-location', 1);     //right
+                        }
+                        else {
+                            arrowX = droppableOffset.left  - 9;
+                            ui.helper.data('drop-location', -1);    //left
+                        }
+
+                        $this.dragIndicatorTop.offset({
+                            'left': arrowX, 
+                            'top': topArrowY - 3
+                        }).show();
+
+                        $this.dragIndicatorBottom.offset({
+                            'left': arrowX, 
+                            'top': bottomArrowY - 3
+                        }).show();
+                    }
+                },
+                stop: function(event, ui) {
+                    //hide dnd arrows
+                    $this.dragIndicatorTop.css({
+                        'left':0, 
+                        'top':0
+                    }).hide();
+
+                    $this.dragIndicatorBottom.css({
+                        'left':0, 
+                        'top':0
+                    }).hide();
+                },
+                helper: function() {
+                    var header = $(this),
+                    helper = $('<div class="ui-widget ui-state-default" style="padding:4px 10px;text-align:center;"></div>');
+
+                    helper.width(header.width());
+                    helper.height(header.height());
+
+                    helper.html(header.html());
+
+                    return helper.get(0);
+                }
+            }).droppable({
+                hoverClass:'ui-state-highlight',
+                tolerance:'pointer',
+                scope: this.id,
+                over: function(event, ui) {
+                    ui.helper.data('droppable-column', $(this));
+                },
+                drop: function(event, ui) {
+                    var draggedColumnHeader = ui.draggable,
+                    dropLocation = ui.helper.data('drop-location'),
+                    droppedColumnHeader =  $(this),
+                    draggedColumnFooter = null,
+                    droppedColumnFooter = null;
+
+                    var draggedCells = $this.tbody.find('> tr:not(.ui-expanded-row-content) > td:nth-child(' + (draggedColumnHeader.index() + 1) + ')'),
+                    droppedCells = $this.tbody.find('> tr:not(.ui-expanded-row-content) > td:nth-child(' + (droppedColumnHeader.index() + 1) + ')');
+
+                    if($this.containsFooter()) {
+                        var footerColumns = $this.tfoot.find('> tr > td'),
+                        draggedColumnFooter = footerColumns.eq(draggedColumnHeader.index()),
+                        droppedColumnFooter = footerColumns.eq(droppedColumnHeader.index());
+                    }
+
+                    //drop right
+                    if(dropLocation > 0) {
+                        /* TODO :Resizable columns
+                         * if($this.options.resizableColumns) {
+                            if(droppedColumnHeader.next().length) {
+                                droppedColumnHeader.children('span.ui-column-resizer').show();
+                                draggedColumnHeader.children('span.ui-column-resizer').hide();
+                            }
+                        }*/
+
+                        draggedColumnHeader.insertAfter(droppedColumnHeader);
+
+                        draggedCells.each(function(i, item) {
+                            $(this).insertAfter(droppedCells.eq(i));
+                        });
+
+                        if(draggedColumnFooter && droppedColumnFooter) {
+                            draggedColumnFooter.insertAfter(droppedColumnFooter);
+                        }
+
+                        //sync clone
+                        if($this.options.scrollable) {
+                            var draggedColumnClone = $(document.getElementById(draggedColumnHeader.attr('id') + '_clone')),
+                            droppedColumnClone = $(document.getElementById(droppedColumnHeader.attr('id') + '_clone'));
+                            draggedColumnClone.insertAfter(droppedColumnClone);
+                        }
+                    }
+                    //drop left
+                    else {
+                        draggedColumnHeader.insertBefore(droppedColumnHeader);
+
+                        draggedCells.each(function(i, item) {
+                            $(this).insertBefore(droppedCells.eq(i));
+                        });
+
+                        if(draggedColumnFooter && droppedColumnFooter) {
+                            draggedColumnFooter.insertBefore(droppedColumnFooter);
+                        }
+
+                        //sync clone
+                        if($this.options.scrollable) {
+                            var draggedColumnClone = $(document.getElementById(draggedColumnHeader.attr('id') + '_clone')),
+                            droppedColumnClone = $(document.getElementById(droppedColumnHeader.attr('id') + '_clone'));
+                            draggedColumnClone.insertBefore(droppedColumnClone);
+                        }
+                    }
+
+                    //fire colReorder event
+                    $this._trigger('colReorder', null, {
+                        dragIndex: draggedColumnHeader.index(),
+                        dropIndex: droppedColumnHeader.index()
+                    });
+                }
+            });
+        },
+        
+        containsFooter: function() {
+            if(this.hasFooter === undefined) {
+                this.hasFooter = false;
+                if(this.options.columns) {
+                    for(var i = 0; i  < this.options.columns.length; i++) {
+                        if(this.options.columns[i].footerText !== undefined) {
+                            this.hasFooter = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            return this.hasFooter;
         }
     
     });

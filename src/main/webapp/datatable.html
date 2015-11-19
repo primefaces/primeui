@@ -143,8 +143,8 @@
                 }
             });
             
-            $('#tblexpandable').puidatatable({
-                caption: 'Expandable Rows',
+            $('#tblexpanddragdrop').puidatatable({
+                caption: 'Expandable Rows, Draggable Columns and Rows',
                 columns: [
                     {rowToggler: true, bodyStyle: 'width:18px',headerStyle: 'width:18px'},
                     {field: 'vin', headerText: 'Vin'},
@@ -164,9 +164,7 @@
                             .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Color</div><div class="pui-grid-col-6">' + car.year +'</div></div>');
                         
                 },
-                rowExpand: function(e, data) {
-                    console.log(e);
-                }
+                draggableColumns:true
             });
 
             $('#messages').puigrowl();
@@ -199,7 +197,7 @@
 
         <div id="tblscrollable"></div>
         
-        <div id="tblexpandable"></div>
+        <div id="tblexpanddragdrop"></div>
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">
