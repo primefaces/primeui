@@ -21,6 +21,7 @@ $(function() {
             scrollWidth: null,
             responsive: false,
             expandableRows: false,
+            expandedRowContent: null,
             rowExpandMode: 'multiple'
         },
         
@@ -554,7 +555,7 @@ $(function() {
         loadExpandedRowContent: function(row) {
             var rowIndex = this._getRowIndex(row),
             expandedRow = $('<tr class="pui-expanded-row-content ui-widget-content"><td colspan="' + this.options.columns.length + '"></td></tr>');
-            expandedRow.children('td').append(this.options.expandedContent.call(this, this.data[rowIndex]));
+            expandedRow.children('td').append(this.options.expandedRowContent.call(this, this.data[rowIndex]));
 
             row.addClass('pui-expanded-row').after(expandedRow);
             this._trigger('rowExpand', null, this.data[this._getRowIndex(row)]);

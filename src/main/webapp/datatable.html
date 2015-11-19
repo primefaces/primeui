@@ -155,7 +155,7 @@
                 datasource: localData,
                 expandableRows: true,
                 rowExpandMode: 'single',
-                expandedContent: function(car) {
+                expandedRowContent: function(car) {
                     return $('<div class="pui-grid" style="width:200px"></div>')
                             .append('<div class="pui-grid-row"><div class="pui-grid-col-12"><img src="resources/demo/images/car/' + car.brand + '-big.gif"/></div>')
                             .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Vin</div><div class="pui-grid-col-6">' + car.vin +'</div></div>')
@@ -331,6 +331,24 @@ $('#tbl').puidatatable({
                                             <td>false</td>
                                             <td>When enabled, columns for a row are displayed as stacked in small screens.</td>
                                         </tr>
+                                        <tr>
+                                            <td>expandableRows</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>Allows row expansion to display detailed content.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>expandedRowContent</td>
+                                            <td>function</td>
+                                            <td>null</td>
+                                            <td>Callback that receives the row data and returns the content for the expansion.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>rowExpandMode</td>
+                                            <td>string</td>
+                                            <td>multiple</td>
+                                            <td>Defines whether one row at a time can be toggled or not. Valid values are "multiple" and "single".</td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -358,6 +376,20 @@ $('#tbl').puidatatable({
                                                 <br />
                                                 data: Unselected data</td>
                                             <td>Fired when a row is unselected.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>rowExpand</td>
+                                            <td>event: puidatatablerowexpand event
+                                                <br />
+                                                data: Expanded row data</td>
+                                            <td>Fired when a row is expanded.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>rowCollapse</td>
+                                            <td>event: puidatatablerowcollapsed event
+                                                <br />
+                                                data: Collapsed row data</td>
+                                            <td>Fired when a row is collapsed.</td>
                                         </tr>
                                     </tbody>
                                 </table>
