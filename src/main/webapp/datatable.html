@@ -143,8 +143,8 @@
                 }
             });
             
-            $('#tblexpanddragdrop').puidatatable({
-                caption: 'Expandable Rows, Draggable Columns and Rows',
+            $('#tblexpandable').puidatatable({
+                caption: 'Expandable Rows',
                 columns: [
                     {rowToggler: true, bodyStyle: 'width:18px',headerStyle: 'width:18px'},
                     {field: 'vin', headerText: 'Vin'},
@@ -163,8 +163,32 @@
                             .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Year</div><div class="pui-grid-col-6">' + car.color +'</div></div>')
                             .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Color</div><div class="pui-grid-col-6">' + car.year +'</div></div>');
                         
-                },
-                draggableColumns:true
+                }
+            });
+            
+            $('#tbldragdrop').puidatatable({
+                caption: 'Draggable Columns and Rows',
+                columns: [
+                    {field: 'vin', headerText: 'Vin'},
+                    {field: 'brand', headerText: 'Brand'},
+                    {field: 'year', headerText: 'Year'},
+                    {field: 'color', headerText: 'Color'}
+                ],
+                datasource: localData,
+                draggableColumns:true,
+                draggableRows:true
+            });
+            
+            $('#tblresizable').puidatatable({
+                caption: 'Resizable Columns',
+                columns: [
+                    {field: 'vin', headerText: 'Vin'},
+                    {field: 'brand', headerText: 'Brand'},
+                    {field: 'year', headerText: 'Year'},
+                    {field: 'color', headerText: 'Color'}
+                ],
+                datasource: localData,
+                resizableColumns: true
             });
 
             $('#messages').puigrowl();
@@ -197,7 +221,11 @@
 
         <div id="tblscrollable"></div>
         
-        <div id="tblexpanddragdrop"></div>
+        <div id="tblexpandable"></div>
+        
+        <div id="tbldragdrop"></div>
+        
+        <div id="tblresizable"></div>
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">
@@ -350,6 +378,18 @@ $('#tbl').puidatatable({
                                             <td>multiple</td>
                                             <td>Defines whether one row at a time can be toggled or not. Valid values are "multiple" and "single".</td>
                                         </tr>
+                                        <tr>
+                                            <td>resizableColumns</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>Makes columns resizable using drag drop.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>columnResizeMode</td>
+                                            <td>string</td>
+                                            <td>fit</td>
+                                            <td>Defines if overall table width should change or not, valid values are "fit" and "expand".</td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -391,6 +431,22 @@ $('#tbl').puidatatable({
                                                 <br />
                                                 data: Collapsed row data</td>
                                             <td>Fired when a row is collapsed.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>colReorder</td>
+                                            <td>event: puidatatablecolreorder event
+                                                <br />
+                                                dragIndex: Index of dragged column
+                                                <br />
+                                                dropIndex: Index of dropped column</td>
+                                            <td>Fired when a row is collapsed.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>colResize</td>
+                                            <td>event: puidatatablecolresize event
+                                                <br />
+                                                element: Resized column header</td>
+                                            <td>Fired when a column is resized.</td>
                                         </tr>
                                     </tbody>
                                 </table>

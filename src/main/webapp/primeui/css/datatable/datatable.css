@@ -128,6 +128,43 @@
     cursor: pointer;
 }
 
+/* Resizable */
+.pui-datatable .pui-column-resizer {
+    position: absolute !important;
+    top: 0px;
+    right: 0px;
+    margin: 0;
+    width:8px;
+    height:20px;
+    padding:0px;
+    cursor:col-resize;
+    background-image: url("#{resource['primefaces:spacer/dot_clear.gif']}");
+    border: 1px solid transparent;
+}
+
+.pui-datatable .pui-column-resizer-helper {
+    width: 1px;
+    position: absolute;
+    z-index: 10;
+    display: none;
+}
+
+.pui-datatable-resizable {
+    padding-bottom:1px;     /*fix for webkit overlow*/
+    overflow:auto;
+}
+
+.pui-datatable-resizable thead th,
+.pui-datatable-resizable tbody td,
+.pui-datatable-resizable tfoot td {
+    white-space: nowrap;
+}
+
+.pui-datatable-resizable th.pui-resizable-column {
+    background-clip: padding-box;
+    position: relative;
+}
+
 /** Reflow **/
 .pui-datatable-reflow .pui-datatable-data td .pui-column-title {
     display: none;

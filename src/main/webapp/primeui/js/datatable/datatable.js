@@ -23,7 +23,9 @@ $(function() {
             expandableRows: false,
             expandedRowContent: null,
             rowExpandMode: 'multiple',
-            draggableColumns: false
+            draggableColumns: false,
+            resizableColumns: false,
+            columnResizeMode: 'fit'
         },
         
         _create: function() {
@@ -161,6 +163,10 @@ $(function() {
             
             if(this.options.scrollable) {
                 this._initScrolling();
+            }
+            
+            if(this.options.resizableColumns) {
+                this._initResizableColumns();
             }
         },
 
@@ -676,7 +682,7 @@ $(function() {
                 if(this.percentageScrollWidth)
                     this.adjustScrollWidth();
                 else
-                    this.setScrollWidth(parseInt(this.cfg.scrollWidth));
+                    this.setScrollWidth(parseInt(this.options.scrollWidth));
             }
 
             this.cloneHead();
@@ -737,7 +743,7 @@ $(function() {
         },
 
         adjustScrollHeight: function() {
-            var relativeHeight = this.element.parent().innerHeight() * (parseInt(this.cfg.scrollHeight) / 100),
+            var relativeHeight = this.element.parent().innerHeight() * (parseInt(this.options.scrollHeight) / 100),
             tableHeaderHeight = this.element.children('.pui-datatable-header').outerHeight(true),
             tableFooterHeight = this.element.children('.pui-datatable-footer').outerHeight(true),
             scrollersHeight = (this.scrollHeader.outerHeight(true) + this.scrollFooter.outerHeight(true)),
@@ -812,7 +818,7 @@ $(function() {
                     });
                 }
                 else {
-                    this.options.find('> .pui-datatable-tablewrapper > table > thead > tr > th').each(function() {
+                    this.element.find('> .pui-datatable-tablewrapper > table > thead > tr > th').each(function() {
                         var col = $(this);
                         col.width(col.width());
                     });
@@ -985,6 +991,140 @@ $(function() {
             }
 
             return this.hasFooter;
+        },
+        
+        _initResizableColumns: function() {
+            this.element.addClass('pui-datatable-resizable');
+            this.thead.find('> tr > th').addClass('pui-resizable-column');
+            this.resizerHelper = $('<div class="pui-column-resizer-helper ui-state-highlight"></div>').appendTo(this.element);
+            this.addResizers();
+            var resizers = this.thead.find('> tr > th > span.pui-column-resizer'),
+            $this = this;
+
+            setTimeout(function() {
+                $this.fixColumnWidths();
+            }, 5);
+
+            resizers.draggable({
+                axis: 'x',
+                start: function(event, ui) {
+                    ui.helper.data('originalposition', ui.helper.offset());
+
+                    var height = $this.options.scrollable ? $this.scrollBody.height() : $this.thead.parent().height() - $this.thead.height() - 1;
+                    $this.resizerHelper.height(height);
+                    $this.resizerHelper.show();
+                },
+                drag: function(event, ui) {
+                    $this.resizerHelper.offset({
+                        left: ui.helper.offset().left + ui.helper.width() / 2, 
+                        top: $this.thead.offset().top + $this.thead.height()
+                    });                
+                },
+                stop: function(event, ui) {                
+                    ui.helper.css({
+                        'left': '',
+                        'top': '0px',
+                        'right': '0px'
+                    });
+
+                    $this.resize(event, ui);
+                    $this.resizerHelper.hide();
+
+                    if($this.options.columnResizeMode === 'expand') {
+                        setTimeout(function() {
+                            $this._trigger('colResize', null, {element: ui.helper.parent()});
+                        }, 5);
+                    }
+                    else {
+                        $this._trigger('colResize', null, {element: ui.helper.parent()});
+                    }
+
+                    /*
+                     * TODO: Enable when sticky header is implemented
+                     * if($this.cfg.stickyHeader) {
+                        $this.thead.find('.ui-column-filter').prop('disabled', false);
+                        $this.clone = $this.thead.clone(true);
+                        $this.cloneContainer.find('thead').remove();
+                        $this.cloneContainer.children('table').append($this.clone);
+                        $this.thead.find('.ui-column-filter').prop('disabled', true);
+                    }*/
+                },
+                containment: this.element
+            });
+        },
+        
+        resize: function(event, ui) {
+            var columnHeader, nextColumnHeader, change = null, newWidth = null, nextColumnWidth = null, 
+            expandMode = (this.options.columnResizeMode === 'expand'),
+            table = this.thead.parent(),
+            columnHeader = ui.helper.parent(),
+            nextColumnHeader = columnHeader.next();
+
+            change = (ui.position.left - ui.originalPosition.left),
+            newWidth = (columnHeader.width() + change),
+            nextColumnWidth = (nextColumnHeader.width() - change);
+
+            if((newWidth > 15 && nextColumnWidth > 15) || (expandMode && newWidth > 15)) {          
+                if(expandMode) {
+                    table.width(table.width() + change);
+                    setTimeout(function() {
+                        columnHeader.width(newWidth);
+                    }, 1);
+                }
+                else {
+                    columnHeader.width(newWidth);
+                    nextColumnHeader.width(nextColumnWidth);
+                }
+
+                if(this.options.scrollable) {
+                    var cloneTable = this.theadClone.parent(),
+                    colIndex = columnHeader.index();
+
+                    if(expandMode) {
+                        var $this = this;
+
+                        //body
+                        cloneTable.width(cloneTable.width() + change);
+
+                        //footer
+                        this.footerTable.width(this.footerTable.width() + change);
+
+                        setTimeout(function() {
+                            if($this.hasColumnGroup) {
+                                $this.theadClone.find('> tr:first').children('th').eq(colIndex).width(newWidth);            //body
+                                $this.footerTable.find('> tfoot > tr:first').children('th').eq(colIndex).width(newWidth);   //footer
+                            }
+                            else {
+                                $this.theadClone.find(PrimeFaces.escapeClientId(columnHeader.attr('id') + '_clone')).width(newWidth);   //body
+                                $this.footerCols.eq(colIndex).width(newWidth);                                                          //footer
+                            }
+                        }, 1);
+                    }
+                    else {
+                        //body
+                        this.theadClone.find(PrimeFaces.escapeClientId(columnHeader.attr('id') + '_clone')).width(newWidth);
+                        this.theadClone.find(PrimeFaces.escapeClientId(nextColumnHeader.attr('id') + '_clone')).width(nextColumnWidth);
+
+                        //footer
+                        /*if(this.footerCols.length > 0) {
+                            var footerCol = this.footerCols.eq(colIndex),
+                            nextFooterCol = footerCol.next();
+
+                            footerCol.width(newWidth);
+                            nextFooterCol.width(nextColumnWidth);
+                        }*/
+                    }
+                }            
+            }
+        },
+        
+        addResizers: function() {
+            var resizableColumns = this.thead.find('> tr > th.pui-resizable-column');
+            resizableColumns.prepend('<span class="pui-column-resizer">&nbsp;</span>');
+
+            if(this.options.columnResizeMode === 'fit') {
+                resizableColumns.filter(':last-child').children('span.pui-column-resizer').hide();
+            }
         }
     
     });
