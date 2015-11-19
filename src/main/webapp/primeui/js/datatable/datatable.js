@@ -25,7 +25,8 @@ $(function() {
             rowExpandMode: 'multiple',
             draggableColumns: false,
             resizableColumns: false,
-            columnResizeMode: 'fit'
+            columnResizeMode: 'fit',
+            draggableRows: false
         },
         
         _create: function() {
@@ -167,6 +168,10 @@ $(function() {
             
             if(this.options.resizableColumns) {
                 this._initResizableColumns();
+            }
+            
+            if(this.options.draggableRows) {
+                this._initDraggableRows();
             }
         },
 
@@ -1124,6 +1129,60 @@ $(function() {
 
             if(this.options.columnResizeMode === 'fit') {
                 resizableColumns.filter(':last-child').children('span.pui-column-resizer').hide();
+            }
+        },
+        
+        _initDraggableRows: function() {
+            var $this = this;
+
+            this.tbody.sortable({
+                placeholder: 'pui-datatable-rowordering ui-state-active',
+                cursor: 'move',
+                handle: 'td,span:not(.ui-c)',
+                appendTo: document.body,
+                helper: function(event, ui) {
+                    var cells = ui.children(),
+                    helper = $('<div class="pui-datatable ui-widget"><table><tbody></tbody></table></div>'),
+                    helperRow = ui.clone(),
+                    helperCells = helperRow.children();
+
+                    for(var i = 0; i < helperCells.length; i++) {
+                        helperCells.eq(i).width(cells.eq(i).width());
+                    }
+
+                    helperRow.appendTo(helper.find('tbody'));
+
+                    return helper;
+                },
+                update: function(event, ui) {
+                    $this.syncRowParity();
+
+                    this._trigger('rowReorder', null, {
+                        fromIndex: ui.item.data('ri'),
+                        toIndex: $this._getFirst() + ui.item.index()
+                    });
+                },
+                change: function(event, ui) {
+                    if($this.cfg.scrollable) {
+                        PUI.scrollInView($this.scrollBody, ui.placeholder);
+                    }
+                }
+            });
+        },
+
+        syncRowParity: function() {
+            var rows = this.tbody.children('tr.ui-widget-content');
+
+            for(var i = this._getFirst(); i < rows.length; i++) {
+                var row = rows.eq(i);
+
+                row.data('ri', i).removeClass('pui-datatable-even pui-datatable-odd');
+
+                if(i % 2 === 0)
+                    row.addClass('pui-datatable-even');
+                else
+                    row.addClass('pui-datatable-odd');
+
             }
         }
     

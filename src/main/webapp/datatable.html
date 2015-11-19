@@ -390,6 +390,12 @@ $('#tbl').puidatatable({
                                             <td>fit</td>
                                             <td>Defines if overall table width should change or not, valid values are "fit" and "expand".</td>
                                         </tr>
+                                        <tr>
+                                            <td>draggableRows</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>Makes rows draggable for reorder.</td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -446,6 +452,15 @@ $('#tbl').puidatatable({
                                             <td>event: puidatatablecolresize event
                                                 <br />
                                                 element: Resized column header</td>
+                                            <td>Fired when a column is resized.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>rowReorder</td>
+                                            <td>event: puidatatablerowreorder event
+                                                <br />
+                                                fromIndex: Original index of row
+                                                <br />
+                                                toIndex: New index of row</td>
                                             <td>Fired when a column is resized.</td>
                                         </tr>
                                     </tbody>
