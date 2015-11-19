@@ -476,6 +476,23 @@ $(function() {
                 PUI.clearSelection();
             }
         },
+        
+        onRowRightClick: function(event, rowElement) {
+            var row = $(rowElement),
+            rowIndex = this._getRowIndex(row),
+            selectedData = this.data[rowIndex],
+            selected = row.hasClass('ui-state-highlight');
+    
+            if(this._isSingleSelection() || !selected) {
+                this.unselectAllRows();
+            }
+            
+            this.selectRow(row, true);
+            this.dataSelectedByContextMenu = selectedData;
+            this._trigger('rowSelectContextMenu', event, selectedData);
+
+            PUI.clearSelection();
+        },
                 
         _isSingleSelection: function() {
             return this.options.selectionMode === 'single';
@@ -503,7 +520,7 @@ $(function() {
                 
         selectRow: function(row, silent, event) {
             var rowIndex = this._getRowIndex(row),
-                selectedData = this.data[rowIndex];
+            selectedData = this.data[rowIndex];
             row.removeClass('ui-state-hover').addClass('ui-state-highlight').attr('aria-selected', true);
 
             this._addSelection(rowIndex);
@@ -1184,6 +1201,10 @@ $(function() {
                     row.addClass('pui-datatable-odd');
 
             }
+        },
+        
+        getContextMenuSelection: function(data) {
+            return this.dataSelectedByContextMenu;
         }
     
     });

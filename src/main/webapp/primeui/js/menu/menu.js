@@ -613,9 +613,14 @@ $(function() {
                 this.element.parent().appendTo('body');
             }
             
-            this.options.target.on(this.options.event + '.pui-contextmenu' , function(e){
+            if(this.options.target.hasClass('pui-datatable')) {
+                $this._bindDataTable();
+            }
+            else {
+                this.options.target.on(this.options.event + '.pui-contextmenu' , function(e){
                     $this.show(e);
-            });   
+                });   
+            }
         },        
 
         _bindItemEvents: function() {
@@ -633,7 +638,7 @@ $(function() {
             var $this = this;
 
             //hide overlay when document is clicked
-            $(document.body).bind('click.pui-contextmenu', function (e) {
+            $(document.body).on('click.pui-contextmenu', function (e) {
                 if($this.element.parent().is(":hidden")) {
                     return;
                 }
@@ -641,7 +646,20 @@ $(function() {
                 $this._hide();
             });
         },
+        
+        _bindDataTable: function() {
+            var rowSelector = '#' + this.options.target.attr('id') + ' tbody.pui-datatable-data > tr.ui-widget-content:not(.pui-datatable-empty-message)',
+            event = this.options.event + '.pui-datatable',
+            $this = this;
 
+            $(document).off(event, rowSelector)
+                        .on(event, rowSelector, null, function(e) {
+                            $this.options.target.puidatatable('onRowRightClick', event, $(this));
+                            $this.show(e);
+                        });
+
+        },
+        
         show: function(e) {  
             //hide other contextmenus if any
             $(document.body).children('.pui-contextmenu:visible').hide();

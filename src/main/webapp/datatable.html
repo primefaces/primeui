@@ -5,10 +5,12 @@
     <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
     <link rel="stylesheet" href="primeui/css/growl/growl.css" />
     <link rel="stylesheet" href="primeui/css/grid/grid.css" />
+    <link rel="stylesheet" href="primeui/css/menu/menu.css" />
     <script type="text/javascript" src="primeui/js/datatable/datatable.js"></script>
     <script type="text/javascript" src="primeui/js/paginator/paginator.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript" src="primeui/js/growl/growl.js"></script>
+    <script type="text/javascript" src="primeui/js/menu/menu.js"></script>
     <script type="text/javascript">
         $(function() {
             var localData = [
@@ -190,9 +192,47 @@
                 datasource: localData,
                 resizableColumns: true
             });
+            
+            $('#tblcm').puidatatable({
+                caption: 'Context Menu Integration',
+                columns: [
+                    {field: 'vin', headerText: 'Vin'},
+                    {field: 'brand', headerText: 'Brand'},
+                    {field: 'year', headerText: 'Year'},
+                    {field: 'color', headerText: 'Color'}
+                ],
+                selectionMode: 'single',
+                datasource: localData.slice(0)
+            });
+            
+            $('#cm').puicontextmenu({
+                target: $('#tblcm')
+            });
 
             $('#messages').puigrowl();
             $('#doc').puitabview();
+            
+            window.ContextMenuDemo = {
+                
+                view: function() {
+                    var data = $('#tblcm').puidatatable('getContextMenuSelection');
+                    $('#messages').puigrowl('show', [{severity: 'info', summary: 'Row Selected', detail: (data.brand + ' ' + data.vin)}]);
+                },
+                
+                remove: function() {
+                    var data = $('#tblcm').puidatatable('getContextMenuSelection'),
+                    datasource = $('#tblcm').puidatatable('option','datasource');
+
+                    for(var i = 0 ; i < datasource.length; i++) {
+                        if(datasource[i].vin === data.vin) {
+                            datasource.splice(i,1);
+                            break;
+                        }
+                    }
+                    
+                    $('#tblcm').puidatatable('option','datasource', datasource);
+                }
+            }
         });
     </script>
     <style type="text/css">
@@ -226,6 +266,13 @@
         <div id="tbldragdrop"></div>
         
         <div id="tblresizable"></div>
+        
+        <div id="tblcm"></div>
+        
+        <ul id="cm">
+            <li><a data-icon="fa-search" onclick="ContextMenuDemo.view()">View</a></li>
+            <li><a data-icon="fa-close" onclick="ContextMenuDemo.remove()">Delete</a></li>
+        </ul>
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">
@@ -463,6 +510,14 @@ $('#tbl').puidatatable({
                                                 toIndex: New index of row</td>
                                             <td>Fired when a column is resized.</td>
                                         </tr>
+                                        <tr>
+                                            <td>rowSelectContextMenu</td>
+                                            <td>event: puidatatablerowselectcontext event
+                                                <br />
+                                                data: Selected data</td>
+                                            <td>Fired when a row is selected with context menu.</td>
+                                        </tr>
+                                        
                                     </tbody>
                                 </table>
 
@@ -513,6 +568,11 @@ $('#tbl').puidatatable({
                                             <td>getSelection</td>
                                             <td>-</td>
                                             <td>Retrieves selected data. Warning: In Lazy loading mode, it retrieves only the selected rows on the current page of the paginator.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>getContextMenuSelection</td>
+                                            <td>-</td>
+                                            <td>Retrieves selected data by context menu.</td>
                                         </tr>
                                     </tbody>
                                 </table>
