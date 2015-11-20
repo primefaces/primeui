@@ -8,13 +8,18 @@
     overflow: auto;
 }
 
-.pui-datatable .pui-datatable-caption {
+.pui-datatable .pui-datatable-caption,
+.pui-datatable .pui-datatable-footer {
     text-align: center;
     padding: 4px 10px;
 }
 
 .pui-datatable .pui-datatable-caption {
     border-bottom: 0px none;
+}
+
+.pui-datatable .pui-datatable-footer {
+    border-top: 0px none;
 }
 
 .pui-datatable thead th, .pui-datatable tfoot td {

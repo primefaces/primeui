@@ -13,6 +13,7 @@ $(function() {
             rowSelect: null,
             rowUnselect: null,
             caption: null,
+            footer: null,
             sortField: null,
             sortOrder: null,
             keepSelectionInLazyMode: false,
@@ -86,50 +87,14 @@ $(function() {
                 
         _initialize: function() {
             var $this = this;
-            
-            if(this.options.columns) {
-                var headerRow = $('<tr></tr>').appendTo($this.thead);
-                $.each(this.options.columns, function(i, col) {
-                    var header = $('<th class="ui-state-default"><span class="pui-column-title"></span></th>').data('field', col.field).uniqueId().appendTo(headerRow);
-                    
-                    if(col.headerClass) {
-                        header.addClass(col.headerClass);
-                    }
-                    
-                    if(col.headerStyle) {
-                        header.attr('style', col.headerStyle);
-                    }
-                    
-                    if(col.headerText) {
-                        header.children('.pui-column-title').text(col.headerText);
-                    } else if(col.headerContent) {
-                        header.children('.pui-column-title').append(col.headerContent.call(this, col));
-                    }
-                    
-                    if(col.sortable) {
-                        header.addClass('pui-sortable-column')
-                                .data('order', 0)
-                                .append('<span class="pui-sortable-column-icon fa fa-fw fa-sort"></span>');
-                    }
-                });
-                
-                if(this.containsFooter()) {
-                    var footerRow = $('<tr></tr>').appendTo(this.tfoot);
-                    $.each(this.options.columns, function(i, col) {
-                        var footerCell = $('<td class="ui-state-default"></td>');
-                        if(col.footerText) {
-                            footerCell.text(col.footerText);
-                        }
-                        
-                        footerCell.appendTo(footerRow);
-                    });
-                }
-            }
-            
+
+            this._initHeader();
+            this._initFooter();
+
             if(this.options.caption) {
                 this.element.prepend('<div class="pui-datatable-caption ui-widget-header">' + this.options.caption + '</div>');
             }
-
+            
             if(this.options.paginator) {
                 this.options.paginator.paginate = function(event, state) {
                     $this.paginate();
@@ -137,6 +102,10 @@ $(function() {
                 
                 this.options.paginator.totalRecords = this.options.lazy ? this.options.paginator.totalRecords : this.data.length;
                 this.paginator = $('<div></div>').insertAfter(this.tableWrapper).puipaginator(this.options.paginator);
+            }
+            
+            if(this.options.footer) {
+                this.element.append('<div class="pui-datatable-footer ui-widget-header">' + this.options.footer + '</div>');
             }
 
             if(this._isSortingEnabled()) {
@@ -173,6 +142,84 @@ $(function() {
             if(this.options.draggableRows) {
                 this._initDraggableRows();
             }
+        },
+        
+        _initHeader: function() {
+            if(this.options.headerRows) {
+                for(var i = 0; i < this.options.headerRows.length; i++) {
+                    this._initHeaderColumns(this.options.headerRows[i].columns);
+                }
+            }            
+            else if(this.options.columns) {
+                this._initHeaderColumns(this.options.columns);
+            }
+        },
+        
+        _initFooter: function() {
+            if(this.containsFooter()) {
+                if(this.options.footerRows) {
+                    for(var i = 0; i < this.options.footerRows.length; i++) {
+                        this._initFooterColumns(this.options.footerRows[i].columns);
+                    }
+                }            
+                else if(this.options.columns) {
+                    this._initFooterColumns(this.options.columns);
+                }
+            }
+        },
+        
+        _initHeaderColumns: function(columns) {
+            var headerRow = $('<tr></tr>').appendTo(this.thead);
+            $.each(columns, function(i, col) {
+                var cell = $('<th class="ui-state-default"><span class="pui-column-title"></span></th>').data('field', col.field).uniqueId().appendTo(headerRow);
+
+                if(col.headerClass) {
+                    cell.addClass(col.headerClass);
+                }
+
+                if(col.headerStyle) {
+                    cell.attr('style', col.headerStyle);
+                }
+
+                if(col.headerText)
+                    cell.children('.pui-column-title').text(col.headerText);
+                else if(col.headerContent)
+                    cell.children('.pui-column-title').append(col.headerContent.call(this, col));
+                
+                if(col.rowspan) {
+                    cell.attr('rowspan', col.rowspan);
+                }
+                
+                if(col.colspan) {
+                    cell.attr('colspan', col.colspan);
+                }
+
+                if(col.sortable) {
+                    cell.addClass('pui-sortable-column')
+                            .data('order', 0)
+                            .append('<span class="pui-sortable-column-icon fa fa-fw fa-sort"></span>');
+                }
+            });
+        },
+        
+        _initFooterColumns: function(columns) {
+            var footerRow = $('<tr></tr>').appendTo(this.tfoot);
+            $.each(columns, function(i, col) {
+                var cell = $('<td class="ui-state-default"></td>');
+                if(col.footerText) {
+                    cell.text(col.footerText);
+                }
+                
+                if(col.rowspan) {
+                    cell.attr('rowspan', col.rowspan);
+                }
+                
+                if(col.colspan) {
+                    cell.attr('colspan', col.colspan);
+                }
+
+                cell.appendTo(footerRow);
+            });
         },
 
         _indicateInitialSortColumn: function() {
@@ -1001,12 +1048,14 @@ $(function() {
         
         containsFooter: function() {
             if(this.hasFooter === undefined) {
-                this.hasFooter = false;
-                if(this.options.columns) {
-                    for(var i = 0; i  < this.options.columns.length; i++) {
-                        if(this.options.columns[i].footerText !== undefined) {
-                            this.hasFooter = true;
-                            break;
+                this.hasFooter = this.options.footerRows !== undefined;
+                if(!this.hasFooter) {
+                    if(this.options.columns) {
+                        for(var i = 0; i  < this.options.columns.length; i++) {
+                            if(this.options.columns[i].footerText !== undefined) {
+                                this.hasFooter = true;
+                                break;
+                            }
                         }
                     }
                 }
