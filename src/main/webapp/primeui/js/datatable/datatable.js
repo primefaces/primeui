@@ -132,7 +132,8 @@ $(function() {
             if (this.options.sortField && this.options.sortOrder) {
                 this._indicateInitialSortColumn();
                 this.sort(this.options.sortField, this.options.sortOrder);
-            } else {
+            } 
+            else {
                 this._renderData();
             }
             
@@ -210,10 +211,16 @@ $(function() {
                 if(col.filter) {
                     $this.hasFiltering = true;
                     
-                    $('<input type="text" class="pui-column-filter" />').puiinputtext().data({
+                    var filterElement = $('<input type="text" class="pui-column-filter" />').puiinputtext().data({
                         'field': col.field,
                         'filtermatchmode': col.filterMatchMode||'startsWith'
                     }).appendTo(cell);
+                    
+                    if(col.filterFunction) {
+                        filterElement.on('filter', function(event, dataValue, filterValue) {
+                            return col.filterFunction.call($this, dataValue, filterValue);
+                        });
+                    }
                 }
             });
         },
@@ -1302,7 +1309,12 @@ $(function() {
                     filterElementValue = filterElement.val();
             
                     if(filterElementValue && $.trim(filterElementValue) !== '') {
-                        this.filterMetaMap.push({field: filterElement.data('field'), filterMatchMode: filterElement.data('filtermatchmode'), value: filterElementValue.toLowerCase()});
+                        this.filterMetaMap.push({
+                            field: filterElement.data('field'), 
+                            filterMatchMode: filterElement.data('filtermatchmode'), 
+                            value: filterElementValue.toLowerCase(),
+                            element: filterElement
+                        });
                     }
                 }
                 
@@ -1316,11 +1328,16 @@ $(function() {
                             var filterMeta = this.filterMetaMap[j],
                             filterValue = filterMeta.value,
                             filterField = filterMeta.field,
-                            dataFieldValue = this.data[i][filterField],
-                            filterConstraint = this.filterConstraints[filterMeta.filterMatchMode];
-
-                            if(!filterConstraint(dataFieldValue, filterValue)) {
-                                localMatch = false;
+                            dataFieldValue = this.data[i][filterField];
+                    
+                            if(filterMeta.filterMatchMode === 'custom') {
+                                localMatch = filterMeta.element.triggerHandler('filter', [dataFieldValue, filterValue]);
+                            }
+                            else {
+                                var filterConstraint = this.filterConstraints[filterMeta.filterMatchMode];
+                                if(!filterConstraint(dataFieldValue, filterValue)) {
+                                    localMatch = false;
+                                }
                             }
 
                             if(!localMatch) {
