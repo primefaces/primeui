@@ -175,6 +175,13 @@
     display: none;
 }
 
+/* Filter */
+.pui-datatable .pui-column-filter {
+    display: block;
+    width:100px;
+    margin:auto;
+}
+
 @media ( max-width: 35em ) {
     .pui-datatable-reflow thead th,
     .pui-datatable-reflow tfoot td {

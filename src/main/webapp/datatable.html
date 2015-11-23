@@ -11,6 +11,7 @@
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript" src="primeui/js/growl/growl.js"></script>
     <script type="text/javascript" src="primeui/js/menu/menu.js"></script>
+    <script type="text/javascript" src="primeui/js/inputtext/inputtext.js"></script>
     <script type="text/javascript">
         $(function() {
             var localData = [
@@ -177,6 +178,17 @@
                 ],
                 datasource: localData
             });
+            
+            $('#tblfilter').puidatatable({
+                caption: 'Filtering',
+                columns: [
+                    {field: 'vin', headerText: 'Vin', filter: true},
+                    {field: 'brand', headerText: 'Brand', filter: true},
+                    {field: 'year', headerText: 'Year', filter: true},
+                    {field: 'color', headerText: 'Color', filter: true}
+                ],
+                datasource: localData
+            });
 
             $('#tblscrollable').puidatatable({
                 caption: 'Scrollable',
@@ -315,6 +327,8 @@
         <div id="tblremotelazy"></div>
         
         <div id="tblgroup"></div>
+        
+        <div id="tblfilter"></div>
         
         <div id="tblresponsive"></div>
 

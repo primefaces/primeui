@@ -27,7 +27,8 @@ $(function() {
             draggableColumns: false,
             resizableColumns: false,
             columnResizeMode: 'fit',
-            draggableRows: false
+            draggableRows: false,
+            filterDelay: 300
         },
         
         _create: function() {
@@ -112,6 +113,10 @@ $(function() {
                 this._initSorting();
             }
             
+            if(this.hasFiltering) {
+                this._initFiltering();
+            }
+            
             if(this.options.selectionMode) {
                 this._initSelection();
             }
@@ -169,7 +174,9 @@ $(function() {
         },
         
         _initHeaderColumns: function(columns) {
-            var headerRow = $('<tr></tr>').appendTo(this.thead);
+            var headerRow = $('<tr></tr>').appendTo(this.thead),
+            $this = this;
+    
             $.each(columns, function(i, col) {
                 var cell = $('<th class="ui-state-default"><span class="pui-column-title"></span></th>').data('field', col.field).uniqueId().appendTo(headerRow);
 
@@ -198,6 +205,15 @@ $(function() {
                     cell.addClass('pui-sortable-column')
                             .data('order', 0)
                             .append('<span class="pui-sortable-column-icon fa fa-fw fa-sort"></span>');
+                }
+                
+                if(col.filter) {
+                    $this.hasFiltering = true;
+                    
+                    $('<input type="text" class="pui-column-filter" />').puiinputtext().data({
+                        'field': col.field,
+                        'filtermatchmode': col.filterMatchMode||'startsWith'
+                    }).appendTo(cell);
                 }
             });
         },
@@ -375,7 +391,8 @@ $(function() {
         },
                 
         _renderData: function() {
-            if(this.data) {
+            var dataToRender = this.filteredData||this.data;
+            if(dataToRender) {
                 this.tbody.html('');
                 
                 var firstNonLazy = this._getFirst(),
@@ -383,7 +400,7 @@ $(function() {
                 rows = this._getRows();
 
                 for(var i = first; i < (first + rows); i++) {
-                    var rowData = this.data[i];
+                    var rowData = dataToRender[i];
                     
                     if(rowData) {
                         var row = $('<tr class="ui-widget-content" />').appendTo(this.tbody),
@@ -1254,6 +1271,104 @@ $(function() {
         
         getContextMenuSelection: function(data) {
             return this.dataSelectedByContextMenu;
+        },
+        
+        _initFiltering: function() {
+            var $this = this;
+            this.filterElements = this.thead.find('.pui-column-filter');
+            
+            this.filterElements.on('keyup', function() {
+                        if($this.filterTimeout) {
+                            clearTimeout($this.filterTimeout);
+                        }
+
+                        $this.filterTimeout = setTimeout(function() {
+                            $this.filter();
+                            $this.filterTimeout = null;
+                        },
+                        $this.options.filterDelay);
+                    });
+        },
+        
+        filter: function() {
+            if(this.options.lazy) {
+                this.options.datasource.call(this, this._onLazyLoad, this._createStateMeta());
+            }
+            else {
+                this.filterMetaMap = [];
+                
+                for(var i = 0; i < this.filterElements.length; i++) {
+                    var filterElement = this.filterElements.eq(i),
+                    filterElementValue = filterElement.val();
+            
+                    if(filterElementValue && $.trim(filterElementValue) !== '') {
+                        this.filterMetaMap.push({field: filterElement.data('field'), filterMatchMode: filterElement.data('filtermatchmode'), value: filterElementValue.toLowerCase()});
+                    }
+                }
+                
+                if(this.filterMetaMap.length) {
+                    this.filteredData = [];
+                    
+                    for(var i = 0; i < this.data.length; i++) {
+                        var localMatch = true;
+
+                        for(var j = 0; j < this.filterMetaMap.length; j++) {
+                            var filterMeta = this.filterMetaMap[j],
+                            filterValue = filterMeta.value,
+                            filterField = filterMeta.field,
+                            dataFieldValue = this.data[i][filterField],
+                            filterConstraint = this.filterConstraints[filterMeta.filterMatchMode];
+
+                            if(!filterConstraint(dataFieldValue, filterValue)) {
+                                localMatch = false;
+                            }
+
+                            if(!localMatch) {
+                                break;
+                            }
+                        }
+
+                        if(localMatch) {
+                            this.filteredData.push(this.data[i]);
+                        }
+                    }
+                }
+                else {
+                    this.filteredData = null;
+                }
+
+                this._renderData();
+                
+                //todo: pagination
+            }
+        },
+        
+        filterConstraints: {
+            
+            startsWith: function(value, filter) {
+                if(filter === undefined || filter === null || $.trim(filter) === '') {
+                    return true;
+                }
+                
+                if(value === undefined || value === null) {
+                    return false;
+                }
+                
+                return value.toString().toLowerCase().slice(0, filter.length) === filter;
+            },
+            
+            contains: function(value, filter) {
+                if(filter === undefined || filter === null || $.trim(filter) === '') {
+                    return true;
+                }
+                
+                if(value === undefined || value === null) {
+                    return false;
+                }
+                
+                return value.toString().toLowerCase().indexOf(filter) !== -1;
+            }
+            
         }
     
     });
