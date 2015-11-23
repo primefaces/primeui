@@ -31,206 +31,6 @@
                 {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'},
                 {'brand': 'Fiat', 'year': 2013, 'color': 'Red', 'vin': '245t2s'}
             ];
-                
-            var salesData = [
-                {brand: 'Apple', lastYearSale: '51%', thisYearSale: '40%', lastYearProfit: '$54,406.00', thisYearProfit: '$43,342'},
-                {brand: 'Samsung', lastYearSale: '83%', thisYearSale: '96%', lastYearProfit: '$423,132', thisYearProfit: '$312,122'},
-                {brand: 'Microsoft', lastYearSale: '38%', thisYearSale: '5%', lastYearProfit: '$12,321', thisYearProfit: '$8,500'},
-                {brand: 'Philips', lastYearSale: '49%', thisYearSale: '22%', lastYearProfit: '$745,232', thisYearProfit: '$650,323,'},
-                {brand: 'Song', lastYearSale: '17%', thisYearSale: '79%', lastYearProfit: '$643,242', thisYearProfit: '500,332'},
-                {brand: 'LG', lastYearSale: '52%', thisYearSale: ' 65%', lastYearProfit: '$421,132', thisYearProfit: '$150,005'},
-                {brand: 'Sharp', lastYearSale: '82%', thisYearSale: '12%', lastYearProfit: '$131,211', thisYearProfit: '$100,214'},
-                {brand: 'Panasonic', lastYearSale: '44%', thisYearSale: '45%', lastYearProfit: '$66,442', thisYearProfit: '$53,322'},
-                {brand: 'HTC', lastYearSale: '90%', thisYearSale: '56%', lastYearProfit: '$765,442', thisYearProfit: '$296,232'},
-                {brand: 'Toshiba', lastYearSale: '75%', thisYearSale: '54%', lastYearProfit: '$21,212', thisYearProfit: '$12,533'}
-            ];
-                
-            $('#tbllocal').puidatatable({
-                caption: 'Local Datasource',
-                paginator: {
-                    rows: 5
-                },
-                columns: [
-                    {field: 'vin', headerText: 'Vin', sortable: true},
-                    {field: 'brand', headerText: 'Brand', sortable: true},
-                    {field: 'year', headerText: 'Year', sortable: true},
-                    {field: 'color', headerText: 'Color', sortable: true}
-                ],
-                datasource: localData,
-                selectionMode: 'single',
-                rowSelect: function(event, data) {
-                    $('#messages').puigrowl('show', [{severity: 'info', summary: 'Row Selected', detail: (data.brand + ' ' + data.vin)}]);
-                },
-                rowUnselect: function(event, data) {
-                    $('#messages').puigrowl('show', [{severity: 'info', summary: 'Row Unselected', detail: (data.brand + ' ' + data.vin)}]);
-                }
-            });
-
-            $('#tblremoteeager').puidatatable({
-                caption: 'Remote Restful Webservice - Eager',
-                paginator: {
-                    rows: 5
-                },
-                columns: [
-                    {field: 'vin', headerText: 'Vin', sortable: true},
-                    {field: 'brand', headerText: 'Brand', sortable: true},
-                    {field: 'year', headerText: 'Year', sortable: true, headerStyle: 'width:15%'},
-                    {field: 'color', headerText: 'Color', sortable: true, headerStyle: 'width:15%'}
-                ],
-                datasource: function(callback) {
-                    $.ajax({
-                        type: "GET",
-                        url: 'rest/cars/list',
-                        dataType: "json",
-                        context: this,
-                        success: function(response) {
-                            callback.call(this, response);
-                        }
-                    });
-                },
-                selectionMode: 'multiple',
-                rowSelect: function(event, data) {
-                    $('#messages').puigrowl('show', [{severity: 'info', summary: 'Row Selected', detail: (data.brand + ' ' + data.vin)}]);
-                },
-                rowUnselect: function(event, data) {
-                    $('#messages').puigrowl('show', [{severity: 'info', summary: 'Row Unselected', detail: (data.brand + ' ' + data.vin)}]);
-                }
-            });
-
-            $('#tblremotelazy').puidatatable({
-                lazy: true,
-                caption: 'Remote Restful Webservice - Lazy',
-                paginator: {
-                    rows: 5,
-                    totalRecords: 200
-                },
-                columns: [
-                    {field: 'vin', headerText: 'Vin'},
-                    {field: 'brand', headerText: 'Brand'},
-                    {field: 'year', headerText: 'Year'},
-                    {field: 'color', headerText: 'Color'}
-                ],
-                datasource: function(callback, ui) {
-                    var uri = 'rest/cars/lazylist/' + ui.first;
-                    if (ui.sortField) {
-                        uri += '/' + ui.sortField + '/' + ui.sortOrder;
-                    }
-
-                    $.ajax({
-                        type: "GET",
-                        url: uri,
-                        dataType: "json",
-                        context: this,
-                        success: function(response) {
-                            callback.call(this, response);
-                        }
-                    });
-                }
-            });
-            
-            $('#tblgroup').puidatatable({
-                caption: 'Grouping',
-                footer: 'Summary',
-                headerRows: [
-                    {
-                        columns: [
-                            {headerText: 'Brand', rowspan: 3},
-                            {headerText: 'Sale Rate', colspan: 4}
-                        ]
-                    },
-                    {
-                        columns: [
-                            {headerText: 'Brand', colspan: 2},
-                            {headerText: 'Sale Rate', colspan: 2}
-                        ]
-                    },
-                    {
-                        columns: [
-                            {headerText: 'Last Year'},
-                            {headerText: 'This Year'},
-                            {headerText: 'Last Year'},
-                            {headerText: 'This Year'}
-                        ]
-                    }
-                ],
-                footerRows: [
-                    {
-                        columns: [
-                            {footerText: 'Totals:', colspan: 3},
-                            {footerText: '$506,202'},
-                            {footerText: '$531,020'}
-                        ]
-                    }
-                ],
-                columns: [
-                    {field: 'brand'},
-                    {field: 'lastYearSale'},
-                    {field: 'thisYearSale'},
-                    {field: 'lastYearProfit'},
-                    {field: 'thisYearProfit'}
-                ],
-                datasource: salesData
-            });
-            
-            $('#tblresponsive').puidatatable({
-                caption: 'Responsive',
-                responsive: true,
-                columns: [
-                    {field: 'vin', headerText: 'Vin'},
-                    {field: 'brand', headerText: 'Brand'},
-                    {field: 'year', headerText: 'Year'},
-                    {field: 'color', headerText: 'Color'}
-                ],
-                datasource: localData
-            });
-            
-            $('#tblfilter').puidatatable({
-                caption: 'Filtering',
-                columns: [
-                    {field: 'vin', headerText: 'Vin', filter: true},
-                    {field: 'brand', headerText: 'Brand', filter: true},
-                    {field: 'year', headerText: 'Year', filter: true},
-                    {field: 'color', headerText: 'Color', filter: true}
-                ],
-                datasource: function(callback) {
-                    $.ajax({
-                        type: "GET",
-                        url: 'rest/cars/list',
-                        dataType: "json",
-                        context: this,
-                        success: function(response) {
-                            callback.call(this, response);
-                        }
-                    });
-                },
-                paginator: {
-                    rows: 5
-                }
-            });
-
-            $('#tblscrollable').puidatatable({
-                caption: 'Scrollable',
-                scrollable: true,
-                scrollHeight: '200',
-                scrollWidth: '75%',
-                columns: [
-                    {field: 'vin', headerText: 'Vin'},
-                    {field: 'brand', headerText: 'Brand'},
-                    {field: 'year', headerText: 'Year'},
-                    {field: 'color', headerText: 'Color'}
-                ],
-                datasource: function(callback) {
-                    $.ajax({
-                        type: "GET",
-                        url: 'rest/cars/list',
-                        dataType: "json",
-                        context: this,
-                        success: function(response) {
-                            callback.call(this, response);
-                        }
-                    });
-                }
-            });
             
             $('#tblexpandable').puidatatable({
                 caption: 'Expandable Rows',
@@ -255,71 +55,6 @@
                 }
             });
             
-            $('#tbldragdrop').puidatatable({
-                caption: 'Draggable Columns and Rows',
-                columns: [
-                    {field: 'vin', headerText: 'Vin'},
-                    {field: 'brand', headerText: 'Brand'},
-                    {field: 'year', headerText: 'Year'},
-                    {field: 'color', headerText: 'Color'}
-                ],
-                datasource: localData,
-                draggableColumns:true,
-                draggableRows:true
-            });
-            
-            $('#tblresizable').puidatatable({
-                caption: 'Resizable Columns',
-                columns: [
-                    {field: 'vin', headerText: 'Vin'},
-                    {field: 'brand', headerText: 'Brand'},
-                    {field: 'year', headerText: 'Year'},
-                    {field: 'color', headerText: 'Color'}
-                ],
-                datasource: localData,
-                resizableColumns: true
-            });
-            
-            $('#tblcm').puidatatable({
-                caption: 'Context Menu Integration',
-                columns: [
-                    {field: 'vin', headerText: 'Vin'},
-                    {field: 'brand', headerText: 'Brand'},
-                    {field: 'year', headerText: 'Year'},
-                    {field: 'color', headerText: 'Color'}
-                ],
-                selectionMode: 'single',
-                datasource: localData.slice(0)
-            });
-            
-            $('#cm').puicontextmenu({
-                target: $('#tblcm')
-            });
-
-            $('#messages').puigrowl();
-            $('#doc').puitabview();
-            
-            window.ContextMenuDemo = {
-                
-                view: function() {
-                    var data = $('#tblcm').puidatatable('getContextMenuSelection');
-                    $('#messages').puigrowl('show', [{severity: 'info', summary: 'Row Selected', detail: (data.brand + ' ' + data.vin)}]);
-                },
-                
-                remove: function() {
-                    var data = $('#tblcm').puidatatable('getContextMenuSelection'),
-                    datasource = $('#tblcm').puidatatable('option','datasource');
-
-                    for(var i = 0 ; i < datasource.length; i++) {
-                        if(datasource[i].vin === data.vin) {
-                            datasource.splice(i,1);
-                            break;
-                        }
-                    }
-                    
-                    $('#tblcm').puidatatable('option','datasource', datasource);
-                }
-            }
         });
     </script>
     <style type="text/css">
@@ -331,17 +66,7 @@
     <div id="datatable-submenu" class="ContentSideSections SubSubMenu clearfix">
         <ul>
             <li><a href="datatable.html">&bull; DataSource</a></li>
-            <li><a href="datatablePaginator.html">&bull; Paginator</a></li>
-            <li><a href="datatableSort.html">&bull; Sort</a></li>
-            <li><a href="datatableFilter.html">&bull; Filter</a></li>
-            <li><a href="datatableSelection.html">&bull; Selection</a></li>
-            <li><a href="datatableReorder.html">&bull; Reorder</a></li>
-            <li><a href="datatableResize.html">&bull; Resize</a></li>
-            <li><a href="datatableExpansion.html">&bull; Expansion</a></li>
-            <li><a href="datatableScroll.html">&bull; Scroll</a></li>
-            <li><a href="datatableGroup.html">&bull; Group</a></li>
-            <li><a href="datatableResponsive.html">&bull; Responsive</a></li>
-            <li><a href="datatableContextMenu.html">&bull; ContextMenu</a></li>
+            <li><a href="datatablePaginator.html">&bull; Expansion</a></li>
         </ul>
     </div>
 
@@ -353,34 +78,7 @@
     </div>
 
     <div class="ContentSideSections Implementation">
-        <div id="messages"></div>
-
-        <div id="tbllocal"></div>
-
-        <div id="tblremoteeager"></div>
-
-        <div id="tblremotelazy"></div>
-        
-        <div id="tblgroup"></div>
-        
-        <div id="tblfilter"></div>
-        
-        <div id="tblresponsive"></div>
-
-        <div id="tblscrollable"></div>
-        
         <div id="tblexpandable"></div>
-        
-        <div id="tbldragdrop"></div>
-        
-        <div id="tblresizable"></div>
-        
-        <div id="tblcm"></div>
-        
-        <ul id="cm">
-            <li><a data-icon="fa-search" onclick="ContextMenuDemo.view()">View</a></li>
-            <li><a data-icon="fa-close" onclick="ContextMenuDemo.remove()">Delete</a></li>
-        </ul>
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">
@@ -389,11 +87,8 @@
                 <span class="fontSize18 logoBlueText">
                     <div id="doc">
                         <ul>
-                            <li><a href="#doc-overview">Overview</a></li>
-                            <li><a href="#doc-options">Options</a></li>
-                            <li><a href="#doc-events">Events</a></li>
-                            <li><a href="#doc-methods">Methods</a></li>
-                            <li><a href="#doc-methods">Source</a></li>
+                            <li><a href="#doc-overview">Markup</a></li>
+                            <li><a href="#doc-options">Script</a></li>
                         </ul>
                         <div>
                             <div id="doc-overview" class="defaultText">
