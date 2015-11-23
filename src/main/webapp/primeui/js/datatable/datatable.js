@@ -1354,9 +1354,11 @@ $(function() {
                     this.filteredData = null;
                 }
 
-                this._renderData();
+                if(this.paginator) {
+                    this.paginator.puipaginator('option', 'totalRecords', this.filteredData ? this.filteredData.length : this.data ? this.data.length : 0);
+                }
                 
-                //todo: pagination
+                this._renderData();
             }
         },
         

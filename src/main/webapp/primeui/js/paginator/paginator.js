@@ -259,12 +259,12 @@ $(function() {
         },
         
         _setOption: function(key, value) {
-            if(key === 'page') {
+            if(key === 'page')
                 this.setPage(value);
-            }
-            else {
+            else if(key === 'totalRecords')
+                this.setTotalRecords(value);
+            else
                 $.Widget.prototype._setOption.apply(this, arguments);
-            }
         },
                 
         setPage: function(p, silent) {
@@ -303,6 +303,11 @@ $(function() {
                 
         getPageCount: function() {
             return Math.ceil(this.options.totalRecords / this.options.rows)||1;
+        },
+        
+        setTotalRecords: function(value) {
+            this.options.totalRecords = value;
+            this.setPage(0, true);
         }
     });
 });

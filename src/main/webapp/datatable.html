@@ -187,7 +187,20 @@
                     {field: 'year', headerText: 'Year', filter: true},
                     {field: 'color', headerText: 'Color', filter: true}
                 ],
-                datasource: localData
+                datasource: function(callback) {
+                    $.ajax({
+                        type: "GET",
+                        url: 'rest/cars/list',
+                        dataType: "json",
+                        context: this,
+                        success: function(response) {
+                            callback.call(this, response);
+                        }
+                    });
+                },
+                paginator: {
+                    rows: 5
+                }
             });
 
             $('#tblscrollable').puidatatable({
