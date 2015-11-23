@@ -718,7 +718,8 @@ $(function() {
                 first: this._getFirst(),
                 rows: this._getRows(),
                 sortField: this.options.sortField,
-                sortOrder: this.options.sortOrder
+                sortOrder: this.options.sortOrder,
+                filters: this.filterMetaMap
             };
             
             return state;
@@ -1298,26 +1299,26 @@ $(function() {
         },
         
         filter: function() {
+            this.filterMetaMap = [];
+                
+            for(var i = 0; i < this.filterElements.length; i++) {
+                var filterElement = this.filterElements.eq(i),
+                filterElementValue = filterElement.val();
+
+                if(filterElementValue && $.trim(filterElementValue) !== '') {
+                    this.filterMetaMap.push({
+                        field: filterElement.data('field'), 
+                        filterMatchMode: filterElement.data('filtermatchmode'), 
+                        value: filterElementValue.toLowerCase(),
+                        element: filterElement
+                    });
+                }
+            }
+                
             if(this.options.lazy) {
                 this.options.datasource.call(this, this._onLazyLoad, this._createStateMeta());
             }
             else {
-                this.filterMetaMap = [];
-                
-                for(var i = 0; i < this.filterElements.length; i++) {
-                    var filterElement = this.filterElements.eq(i),
-                    filterElementValue = filterElement.val();
-            
-                    if(filterElementValue && $.trim(filterElementValue) !== '') {
-                        this.filterMetaMap.push({
-                            field: filterElement.data('field'), 
-                            filterMatchMode: filterElement.data('filtermatchmode'), 
-                            value: filterElementValue.toLowerCase(),
-                            element: filterElement
-                        });
-                    }
-                }
-                
                 if(this.filterMetaMap.length) {
                     this.filteredData = [];
                     
