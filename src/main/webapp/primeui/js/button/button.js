@@ -93,9 +93,10 @@ $(function() {
         },
         
         enable: function() {
-            this._bindEvents();
-            
-            this.element.removeAttr('disabled').attr('aria-disabled', false).removeClass('ui-state-disabled');
+            if(this.element.prop("disabled")) {
+                this._bindEvents();
+                this.element.removeAttr('disabled').attr('aria-disabled', false).removeClass('ui-state-disabled');
+            }
         }
     });
 });
