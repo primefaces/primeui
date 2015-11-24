@@ -505,7 +505,7 @@ $(function() {
                             element.removeClass('ui-state-hover');
                         }
                     })
-                    .on('click.datatable', this.rowSelector, null, function(e) {
+                    .on('click.datatable touchstart', this.rowSelector, null, function(e) {
                         $this._onRowClick(e, this);
                     });
         },
