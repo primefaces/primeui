@@ -1,0 +1,86 @@
+.pui-orderlist {
+    display: table;
+}
+
+.pui-orderlist .pui-orderlist-caption {
+    width:200px;
+}
+
+.pui-orderlist .pui-orderlist-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow:auto;
+    height:200px;
+    width:200px;
+}
+
+.pui-orderlist .pui-orderlist-list li {
+    margin: 1px;
+    padding: 2px;
+}
+
+.pui-orderlist .pui-button {
+    display:block;
+    margin-bottom:0.3em;
+}
+
+.pui-orderlist .pui-orderlist-button.pui-button-text-icon-primary {
+    width:100%;
+}
+
+.pui-orderlist .pui-orderlist-item {
+    cursor:pointer;
+    border:0px none;
+    font-weight: inherit;
+}
+
+.pui-orderlist .pui-orderlist-caption {
+    text-align: center;
+    padding:4px 0px;
+    border-bottom:0px none;
+}
+
+.pui-orderlist table {
+    width:100%;
+    border-collapse:collapse;
+}
+
+.pui-orderlist.ui-state-disabled .pui-orderlist-item,
+.pui-orderlist.ui-state-disabled .pui-button {
+    cursor: default;
+}
+
+.pui-orderlist.ui-state-disabled .pui-orderlist-list {
+    overflow:hidden;
+}
+
+/* Responsive */
+.pui-orderlist.pui-grid-responsive {
+    display: block;
+    width: 100%;
+}
+
+.pui-orderlist.pui-grid-responsive .pui-orderlist-controls {
+    margin-right: 10px;
+}
+
+.pui-orderlist.pui-grid-responsive .pui-orderlist-list,
+.pui-orderlist.pui-grid-responsive .pui-orderlist-caption {
+    width: 100%;
+}  
+
+.pui-orderlist.pui-grid-responsive .pui-orderlist-controls .pui-button {
+    width: 100%;
+}
+
+@media (max-width: 640px) { 
+    .pui-orderlist.pui-grid-responsive .pui-orderlist-controls {
+        text-align: center;
+    }
+
+    .pui-orderlist.pui-grid-responsive .pui-orderlist-controls .pui-button {
+        display: inline;
+        width: 20%;
+    }
+}
