@@ -47,7 +47,7 @@ public class CarService {
     public Collection<Car> lazyLoadCars(@PathParam("first") int first) {
         List<Car> cars = (List<Car>) ((Map<String,Object>) context.getAttribute("puicache")).get("lazyCars");
         
-        return cars.subList(first, (first + 5));
+        return cars.subList(first, (first + 10));
     }
     
     @GET
@@ -74,6 +74,6 @@ public class CarService {
             Collections.sort(cars, new LazySorter(sortField, order));
         }
         
-        return cars.subList(first, (first + 5));
+        return cars.subList(first, (first + 10));
     }
 }

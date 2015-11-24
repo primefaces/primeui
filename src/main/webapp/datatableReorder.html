@@ -31,73 +31,20 @@
                 {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'},
                 {'brand': 'Fiat', 'year': 2013, 'color': 'Red', 'vin': '245t2s'}
             ];
-
-            $('#tbllocal').puidatatable({
-                caption: 'Local Datasource',
+            
+            $('#tblreorder').puidatatable({
+                caption: 'Draggable Columns and Rows',
                 columns: [
                     {field: 'vin', headerText: 'Vin'},
                     {field: 'brand', headerText: 'Brand'},
                     {field: 'year', headerText: 'Year'},
                     {field: 'color', headerText: 'Color'}
                 ],
-                datasource: localData
+                datasource: localData,
+                draggableColumns:true,
+                draggableRows:true
             });
-
-            $('#tblremoteeager').puidatatable({
-                caption: 'Remote Restful Webservice - Eager',
-                paginator: {
-                    rows: 10
-                },
-                columns: [
-                    {field: 'vin', headerText: 'Vin'},
-                    {field: 'brand', headerText: 'Brand'},
-                    {field: 'year', headerText: 'Year'},
-                    {field: 'color', headerText: 'Color'}
-                ],
-                datasource: function(callback) {
-                    $.ajax({
-                        type: "GET",
-                        url: 'rest/cars/list',
-                        dataType: "json",
-                        context: this,
-                        success: function(response) {
-                            callback.call(this, response);
-                        }
-                    });
-                }
-            });
-
-            $('#tblremotelazy').puidatatable({
-                lazy: true,
-                caption: 'Remote Restful Webservice - Lazy',
-                paginator: {
-                    rows: 10,
-                    totalRecords: 200
-                },
-                columns: [
-                    {field: 'vin', headerText: 'Vin'},
-                    {field: 'brand', headerText: 'Brand'},
-                    {field: 'year', headerText: 'Year'},
-                    {field: 'color', headerText: 'Color'}
-                ],
-                datasource: function(callback, ui) {
-                    var uri = 'rest/cars/lazylist/' + ui.first;
-                    if (ui.sortField) {
-                        uri += '/' + ui.sortField + '/' + ui.sortOrder;
-                    }
-
-                    $.ajax({
-                        type: "GET",
-                        url: uri,
-                        dataType: "json",
-                        context: this,
-                        success: function(response) {
-                            callback.call(this, response);
-                        }
-                    });
-                }
-            });
-
+           
             $('#doc').puitabview();
         });
     </script>
@@ -109,7 +56,7 @@
     
     <div id="datatable-submenu" class="ContentSideSections SubSubMenu clearfix">
         <ul>
-            <li><a href="datatable.html">&bull; DataSource</li>
+            <li><a href="datatable.html">&bull; DataSource</a></li>
             <li><a href="datatablePaginator.html">&bull; Paginator</a></li>
             <li><a href="datatableSort.html">&bull; Sort</a></li>
             <li><a href="datatableFilter.html">&bull; Filter</a></li>
@@ -126,19 +73,14 @@
 
     <div class="ContentSideSections">
         <div class="Content100 overHidden TextShadow">
-            <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">Datatable - <span class="subitem">DataSource</span></span> </a>
-            <span class="defaultText dispTable">DataTable has 3 initialization modes; local, remote eager and remote lazy. Data type should be a array of JSON objects for all cases. In local mode, data is represented as a local variable,
-                in remote eager mode, datasource is a function to fetch the data only once from the server and in remote lazy mode datasource function is called whenever necessary
-                such as initialization, paging, sorting and filtering.</span>
+            <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">Datatable</span>
+            <span class="defaultText dispTable">Datatable displays data in tabular format. Pagination, Sorting, Selection are built-in features supporting both local and remote data.</span>
         </div>
     </div>
 
     <div class="ContentSideSections Implementation">
-        <div id="tbllocal"></div>
-
-        <div id="tblremoteeager"></div>
-
-        <div id="tblremotelazy"></div>
+        
+        <div id="tblreorder"></div>
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">
@@ -147,11 +89,8 @@
                 <span class="fontSize18 logoBlueText">
                     <div id="doc">
                         <ul>
-                            <li><a href="#doc-overview">Overview</a></li>
-                            <li><a href="#doc-options">Options</a></li>
-                            <li><a href="#doc-events">Events</a></li>
-                            <li><a href="#doc-methods">Methods</a></li>
-                            <li><a href="#doc-methods">Source</a></li>
+                            <li><a href="#doc-overview">Markup</a></li>
+                            <li><a href="#doc-options">Script</a></li>
                         </ul>
                         <div>
                             <div id="doc-overview" class="defaultText">
@@ -453,40 +392,48 @@ $('#default').puidatatable('unselectAllRows');
                                 <pre name="code" class="brush:js">
 &lt;script type="text/javascript"&gt;
     $(function() {
-        var localData = [
-            {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
-            {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
-            {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
-            {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
-            {'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
-            {'brand': 'Volvo', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
-            {'brand': 'Honda', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
-            {'brand': 'Jaguar', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
-            {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'},
-            {'brand': 'Fiat', 'year': 2013, 'color': 'Red', 'vin': '245t2s'}
-        ];
-
         $('#tbllocal').puidatatable({
             caption: 'Local Datasource',
+            paginator: {
+                rows: 5
+            },
             columns: [
-                {field: 'vin', headerText: 'Vin'},
-                {field: 'brand', headerText: 'Brand'},
-                {field: 'year', headerText: 'Year'},
-                {field: 'color', headerText: 'Color'}
+                {field:'vin', headerText: 'Vin', sortable:true},
+                {field:'brand', headerText: 'Brand', sortable:true},
+                {field:'year', headerText: 'Year', sortable:true},
+                {field:'color', headerText: 'Color', sortable:true}
             ],
-            datasource: localData
+            datasource: [
+                {'brand':'Volkswagen','year': 2012, 'color':'White', 'vin':'dsad231ff'},
+                {'brand':'Audi','year': 2011, 'color':'Black', 'vin':'gwregre345'},
+                {'brand':'Renault','year': 2005, 'color':'Gray', 'vin':'h354htr'},
+                {'brand':'Bmw','year': 2003, 'color':'Blue', 'vin':'j6w54qgh'},
+                {'brand':'Mercedes','year': 1995, 'color':'White', 'vin':'hrtwy34'},
+                {'brand':'Opel','year': 2005, 'color':'Black', 'vin':'jejtyj'},
+                {'brand':'Honda','year': 2012, 'color':'Yellow', 'vin':'g43gr'},
+                {'brand':'Chevrolet','year': 2013, 'color':'White', 'vin':'greg34'},
+                {'brand':'Opel','year': 2000, 'color':'Black', 'vin':'h54hw5'},
+                {'brand':'Mazda','year': 2013, 'color':'Red', 'vin':'245t2s'}
+            ],
+            selectionMode: 'single',
+            rowSelect: function(event, data) {
+                $('#messages').puigrowl('show', [{severity:'info', summary: 'Row Selected', detail: (data.brand + ' ' + data.vin)}]);
+            },
+            rowUnselect: function(event, data) {
+                $('#messages').puigrowl('show', [{severity:'info', summary: 'Row Unselected', detail: (data.brand + ' ' + data.vin)}]);
+            }
         });
 
         $('#tblremoteeager').puidatatable({
-            caption: 'Remote Restful Webservice - Eager',
+            caption: 'Remote Restful Webservice',
             paginator: {
-                rows: 10
+                rows: 5
             },
             columns: [
-                {field: 'vin', headerText: 'Vin'},
-                {field: 'brand', headerText: 'Brand'},
-                {field: 'year', headerText: 'Year'},
-                {field: 'color', headerText: 'Color'}
+                {field:'vin', headerText: 'Vin', sortable:true},
+                {field:'brand', headerText: 'Brand', sortable:true},
+                {field:'year', headerText: 'Year', sortable:true},
+                {field:'color', headerText: 'Color', sortable:true}
             ],
             datasource: function(callback) {
                 $.ajax({
@@ -498,6 +445,13 @@ $('#default').puidatatable('unselectAllRows');
                         callback.call(this, response);
                     }
                 });
+            },
+            selectionMode: 'multiple',
+            rowSelect: function(event, data) {
+                $('#messages').puigrowl('show', [{severity:'info', summary: 'Row Selected', detail: (data.brand + ' ' + data.vin)}]);
+            },
+            rowUnselect: function(event, data) {
+                $('#messages').puigrowl('show', [{severity:'info', summary: 'Row Unselected', detail: (data.brand + ' ' + data.vin)}]);
             }
         });
 
@@ -505,18 +459,18 @@ $('#default').puidatatable('unselectAllRows');
             lazy: true,
             caption: 'Remote Restful Webservice - Lazy',
             paginator: {
-                rows: 10,
+                rows: 5,
                 totalRecords: 200
             },
             columns: [
-                {field: 'vin', headerText: 'Vin'},
-                {field: 'brand', headerText: 'Brand'},
-                {field: 'year', headerText: 'Year'},
-                {field: 'color', headerText: 'Color'}
+                {field:'vin', headerText: 'Vin', sortable:true},
+                {field:'brand', headerText: 'Brand', sortable:true},
+                {field:'year', headerText: 'Year', sortable:true},
+                {field:'color', headerText: 'Color', sortable:true}
             ],
             datasource: function(callback, ui) {
                 var uri = 'rest/cars/lazylist/' + ui.first;
-                if (ui.sortField) {
+                if(ui.sortField) {
                     uri += '/' + ui.sortField + '/' + ui.sortOrder;
                 }
 
@@ -531,16 +485,46 @@ $('#default').puidatatable('unselectAllRows');
                 });
             }
         });
+
+        $('#tblscrollable').puidatatable({
+                    caption: 'Scrollable',
+                    scrollable: true,
+                    scrollHeight: '200',
+                    scrollWidth: '75%',
+                    columns: [
+                        {field:'vin', headerText: 'Vin'},
+                        {field:'brand', headerText: 'Brand'},
+                        {field:'year', headerText: 'Year'},
+                        {field:'color', headerText: 'Color'}
+                    ],
+                    datasource: function(callback) {
+                        $.ajax({
+                            type: "GET",
+                            url: 'rest/cars/list',
+                            dataType: "json",
+                            context: this,
+                            success: function(response) {
+                                callback.call(this, response);
+                            }
+                        });
+                    }
+                });
+
+        $('#messages').puigrowl();
     });
 &lt;/script&gt;
                                 </pre>
 
-                                <pre name="code" class="brush:xml">                            
+                                <pre name="code" class="brush:xml">
+&lt;div id="messages"&gt;&lt;/div&gt;
+                            
 &lt;div id="tbllocal"&gt;&lt;/div&gt;
 
 &lt;div id="tblremoteeager"&gt;&lt;/div&gt;
 
 &lt;div id="tblremotelazy"&gt;&lt;/div&gt;
+
+&lt;div id="tblscrollable"&gt;&lt;/div&gt;
                                 </pre>
                             </div>
                         </div>
