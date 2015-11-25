@@ -29,7 +29,8 @@ $(function() {
             columnResizeMode: 'fit',
             draggableRows: false,
             filterDelay: 300,
-            stickyHeader: false
+            stickyHeader: false,
+            editMode: null
         },
         
         _create: function() {
@@ -152,6 +153,10 @@ $(function() {
             
             if(this.options.draggableRows) {
                 this._initDraggableRows();
+            }
+            
+            if(this.options.editMode) {
+                this._initEditing();
             }
         },
         
@@ -437,6 +442,14 @@ $(function() {
 
                             if(columnOptions.bodyStyle) {
                                 column.attr('style', columnOptions.bodyStyle);
+                            }
+                            
+                            if(columnOptions.editor) {
+                                column.addClass('pui-editable-column').data({
+                                    'editor': columnOptions.editor,
+                                    'rowdata': rowData,
+                                    'field': columnOptions.field
+                                });
                             }
                             
                             if(columnOptions.field) {
@@ -1445,6 +1458,95 @@ $(function() {
 
             //filter support
             this.thead.find('.pui-column-filter').prop('disabled', true);
+        },
+        
+        _initEditing: function() {
+            var cellSelector = '> tr > td.pui-editable-column',
+            $this = this;
+            
+            this.tbody.off('click', cellSelector)
+                        .on('click', cellSelector, null, function(e) {
+                            var cell = $(this);
+                            if(!cell.hasClass('pui-cell-editing')) {
+                                $this._showCellEditor(cell);
+                            }
+                        });
+        },
+        
+        _showCellEditor: function(cell) {
+            var editor = this.editors[cell.data('editor')].call(),
+            $this = this;
+    
+            editor.val(cell.data('rowdata')[cell.data('field')]);
+            
+            cell.addClass('pui-cell-editing').html('').append(editor);
+            
+            editor.focus().on('change', function() {
+                $this._onCellEditorChange(cell);
+            })
+            .on('blur', function() {
+                $this._onCellEditorBlur(cell);
+            })
+            .on('keydown', function(e) {
+                var key = e.which,
+                keyCode = $.ui.keyCode;
+
+                if((key === keyCode.ENTER||key === keyCode.NUMPAD_ENTER)) {
+                    $(this).trigger('change').trigger('blur');
+                    e.preventDefault();
+                }
+                else if(key === keyCode.TAB) {
+                    if(e.shiftKey) {
+                        var prevCell = cell.prevAll('td.pui-editable-column').eq(0);
+                        if(!prevCell.length) {
+                            prevCell = cell.parent().prev('tr').children('td.pui-editable-column:last');
+                        }
+                        if(prevCell.length) {
+                            $this._showCellEditor(prevCell);
+                        }
+                    }
+                    else {
+                        var nextCell = cell.nextAll('td.pui-editable-column').eq(0);
+                        if(!nextCell.length) {
+                            nextCell = cell.parent().next('tr').children('td.pui-editable-column').eq(0);
+                        }
+                        if(nextCell.length) {
+                            $this._showCellEditor(nextCell);
+                        }
+                    }
+                    
+                    e.preventDefault();
+                } else if(key === keyCode.ESCAPE) {
+                    $this._onCellEditorBlur(cell);
+                }
+            });
+        },
+        
+        _onCellEditorChange: function(cell) {
+            var newCellValue = cell.children('.pui-cell-editor').val();
+            
+            var retVal = this._trigger('cellEdit', null, {
+                oldValue: cell.data('rowdata')[cell.data('field')],
+                newValue: newCellValue,
+                data: cell.data('rowdata'),
+                field: cell.data('field')
+            });
+            
+            if(retVal !== false) {
+                cell.data('rowdata')[cell.data('field')] = newCellValue;
+            }
+        },
+        
+        _onCellEditorBlur: function(cell) {
+            cell.removeClass('pui-cell-editing').text(cell.data('rowdata')[cell.data('field')])
+                    .children('.pui-cell-editor').remove();
+        },
+        
+        editors: {
+            
+            'input': function() {
+                return $('<input type="text" class="pui-cell-editor"/>');
+            }
         }
     
     });

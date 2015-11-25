@@ -182,6 +182,18 @@
     margin:auto;
 }
 
+/* Editing */
+.pui-datatable td.pui-cell-editing {
+    padding: 0px;
+}
+
+.pui-datatable td.pui-cell-editing input {
+    box-sizing: border-box;
+    width: 100%;
+    border: 0px none;
+    outline: 0;
+}
+
 @media ( max-width: 35em ) {
     .pui-datatable-reflow thead th,
     .pui-datatable-reflow tfoot td {
