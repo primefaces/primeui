@@ -18,33 +18,29 @@
                 Showcase.changePageWithLink($(this).attr('href'));
                 e.preventDefault();
             });
-        
-            var localData = [
-                {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
-                {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
-                {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
-                {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
-                {'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
-                {'brand': 'Volvo', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
-                {'brand': 'Honda', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
-                {'brand': 'Jaguar', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
-                {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'},
-                {'brand': 'Fiat', 'year': 2013, 'color': 'Red', 'vin': '245t2s'}
-            ];
-            
-            $('#tblreorder').puidatatable({
-                caption: 'Draggable Columns and Rows',
+
+            $('#tblsticky').puidatatable({
+                caption: 'Sticky Header',
                 columns: [
                     {field: 'vin', headerText: 'Vin'},
                     {field: 'brand', headerText: 'Brand'},
                     {field: 'year', headerText: 'Year'},
                     {field: 'color', headerText: 'Color'}
                 ],
-                datasource: localData,
-                draggableColumns:true,
-                draggableRows:true
+                stickyHeader: true,
+                datasource: function(callback) {
+                    $.ajax({
+                        type: "GET",
+                        url: 'rest/cars/list',
+                        dataType: "json",
+                        context: this,
+                        success: function(response) {
+                            callback.call(this, response);
+                        }
+                    });
+                }
             });
-           
+
             $('#doc').puitabview();
         });
     </script>
@@ -74,14 +70,13 @@
 
     <div class="ContentSideSections">
         <div class="Content100 overHidden TextShadow">
-            <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">Datatable - <span class="subitem">Reorder</span></span>
-            <span class="defaultText dispTable">Both columns and rows can be reordered using dragdrop.</span>
+            <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">Datatable - <span class="subitem">Sticky Header</span></span>
+            <span class="defaultText dispTable">Header of datatable can be made sticky to be kept inside viewport during scrolling.</span>
         </div>
     </div>
 
-    <div class="ContentSideSections Implementation">
-        
-        <div id="tblreorder"></div>
+    <div class="ContentSideSections Implementation">        
+        <div id="tblsticky"></div>
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">
@@ -97,37 +92,35 @@
 
                             <div id="doc-markup">                               
                                 <pre name="code" class="brush:xml">
-&lt;div id="tblreorder"&gt;/&lt;/div&gt;
+&lt;div id="tblfilter"&gt;/&lt;/div&gt;
                                 </pre>
                             </div>
 
                             <div id="doc-script">
                                 <pre name="code" class="brush:js">
 $(function() {
-    var localData = [
-        {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
-        {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
-        {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
-        {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
-        {'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
-        {'brand': 'Volvo', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
-        {'brand': 'Honda', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
-        {'brand': 'Jaguar', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
-        {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'},
-        {'brand': 'Fiat', 'year': 2013, 'color': 'Red', 'vin': '245t2s'}
-    ];
-
-    $('#tblreorder').puidatatable({
-        caption: 'Draggable Columns and Rows',
+    $('#tblfilter').puidatatable({
+        caption: 'Filtering',
         columns: [
-            {field: 'vin', headerText: 'Vin'},
-            {field: 'brand', headerText: 'Brand'},
-            {field: 'year', headerText: 'Year'},
-            {field: 'color', headerText: 'Color'}
+            {field: 'vin', headerText: 'Vin', filter: true},
+            {field: 'brand', headerText: 'Brand', filter: true},
+            {field: 'year', headerText: 'Year', filter: true},
+            {field: 'color', headerText: 'Color', filter: true}
         ],
-        datasource: localData,
-        draggableColumns:true,
-        draggableRows:true
+        datasource: function(callback) {
+            $.ajax({
+                type: "GET",
+                url: 'rest/cars/list',
+                dataType: "json",
+                context: this,
+                success: function(response) {
+                    callback.call(this, response);
+                }
+            });
+        },
+        paginator: {
+            rows: 10
+        }
     });
 });
                                 </pre>

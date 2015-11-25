@@ -28,7 +28,8 @@ $(function() {
             resizableColumns: false,
             columnResizeMode: 'fit',
             draggableRows: false,
-            filterDelay: 300
+            filterDelay: 300,
+            stickyHeader: false
         },
         
         _create: function() {
@@ -127,6 +128,10 @@ $(function() {
             
             if(this.options.draggableColumns) {
                 this._initDraggableColumns();
+            }
+            
+            if(this.options.stickyHeader) {
+                this._initStickyHeader();
             }
 
             if (this.options.sortField && this.options.sortOrder) {
@@ -1135,15 +1140,13 @@ $(function() {
                         $this._trigger('colResize', null, {element: ui.helper.parent()});
                     }
 
-                    /*
-                     * TODO: Enable when sticky header is implemented
-                     * if($this.cfg.stickyHeader) {
-                        $this.thead.find('.ui-column-filter').prop('disabled', false);
+                    if($this.options.stickyHeader) {
+                        $this.thead.find('.pui-column-filter').prop('disabled', false);
                         $this.clone = $this.thead.clone(true);
                         $this.cloneContainer.find('thead').remove();
                         $this.cloneContainer.children('table').append($this.clone);
                         $this.thead.find('.ui-column-filter').prop('disabled', true);
-                    }*/
+                    }
                 },
                 containment: this.element
             });
@@ -1389,6 +1392,59 @@ $(function() {
                 return value.toString().toLowerCase().indexOf(filter) !== -1;
             }
             
+        },
+        
+        _initStickyHeader: function() {
+            var table = this.thead.parent(),
+            offset = table.offset(),
+            win = $(window),
+            $this = this,
+            stickyNS = 'scroll.' + this.id,
+            resizeNS = 'resize.sticky-' + this.id; 
+
+            this.cloneContainer = $('<div class="pui-datatable pui-datatable-sticky ui-widget"><table></table></div>');
+            this.clone = this.thead.clone(true);
+            this.cloneContainer.children('table').append(this.clone);
+
+            this.cloneContainer.css({
+                position: 'absolute',
+                width: table.outerWidth(),
+                top: offset.top,
+                left: offset.left,
+                'z-index': ++PUI.zindex
+            })
+            .appendTo(this.element);
+
+            win.off(stickyNS).on(stickyNS, function() {
+                var scrollTop = win.scrollTop(),
+                tableOffset = table.offset();
+
+                if(scrollTop > tableOffset.top) {
+                    $this.cloneContainer.css({
+                                            'position': 'fixed',
+                                            'top': '0px'
+                                        })
+                                        .addClass('pui-shadow pui-sticky');
+
+                    if(scrollTop >= (tableOffset.top + $this.tbody.height()))
+                        $this.cloneContainer.hide();
+                    else
+                        $this.cloneContainer.show();
+                }
+                else {
+                    $this.cloneContainer.css({
+                                            'position': 'absolute',
+                                            'top': tableOffset.top
+                                        })
+                                        .removeClass('pui-shadow pui-sticky');
+                }
+            })
+            .off(resizeNS).on(resizeNS, function() {
+                $this.cloneContainer.width(table.outerWidth());
+            });
+
+            //filter support
+            this.thead.find('.pui-column-filter').prop('disabled', true);
         }
     
     });
