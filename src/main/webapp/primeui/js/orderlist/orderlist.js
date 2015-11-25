@@ -11,7 +11,7 @@ $(function() {
             effect: 'fade',
             caption: null,
             responsive: false,
-            sourceData: null,
+            datasource: null,
             content: null
         },
 
@@ -25,7 +25,7 @@ $(function() {
             this.element.parent().wrap('<div class="pui-orderlist pui-grid ui-widget"><div class="pui-grid-row"></div></div>')
             this.container = this.element.closest('.pui-orderlist');
             
-            if(this.options.sourceData) {
+            if(this.options.datasource) {
                 this._generateOptionElements();
             }
             
@@ -45,8 +45,8 @@ $(function() {
         },
         
         _generateOptionElements: function() {
-            for(var i = 0; i < this.options.sourceData.length; i++) {
-                var choice = this.options.sourceData[i];
+            for(var i = 0; i < this.options.datasource.length; i++) {
+                var choice = this.options.datasource[i];
                 if(choice.label)
                     this.element.append('<option value="' + choice.value + '">' + choice.label + '</option>');
                 else
