@@ -16,6 +16,24 @@ $(function() {
         },
 
         _create: function() {
+            this._createDom();
+            
+            if(this.options.datasource) {
+                if($.isArray(this.options.datasource)) {
+                    this._generateOptionElements(this.options.datasource);
+                }
+                else if($.type(this.options.datasource) === 'function') {
+                    this.options.datasource.call(this, this._generateOptionElements);
+                }
+            }
+            
+            this.optionElements = this.element.children('option');
+            this._createListElement();
+
+            this._bindEvents();
+        },
+        
+        _createDom: function() {
             this.element.addClass('ui-helper-hidden');
             if(this.options.controlsLocation !== 'none')
                 this.element.wrap('<div class="pui-grid-col-10"></div>');
@@ -25,13 +43,6 @@ $(function() {
             this.element.parent().wrap('<div class="pui-orderlist pui-grid ui-widget"><div class="pui-grid-row"></div></div>')
             this.container = this.element.closest('.pui-orderlist');
             
-            if(this.options.datasource) {
-                this._generateOptionElements();
-            }
-            
-            this.optionElements = this.element.children('option');
-            this._createListElement();
-            
             if(this.options.controlsLocation !== 'none') {
                 this.element.parent().before('<div class="pui-orderlist-controls pui-grid-col-2"></div>');
                 this._createButtons();
@@ -40,13 +51,11 @@ $(function() {
             if(this.options.responsive) {
                 this.container.addClass('pui-grid-responsive');
             }
-            
-            this._bindEvents();
         },
         
-        _generateOptionElements: function() {
-            for(var i = 0; i < this.options.datasource.length; i++) {
-                var choice = this.options.datasource[i];
+        _generateOptionElements: function(data) {
+            for(var i = 0; i < data.length; i++) {
+                var choice = data[i];
                 if(choice.label)
                     this.element.append('<option value="' + choice.value + '">' + choice.label + '</option>');
                 else
