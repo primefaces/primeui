@@ -311,7 +311,7 @@ $(function() {
             if(this.paginator) {
                 this.paginator.puipaginator('setState', {
                     page: 0,
-                    totalRecords: this.data.length
+                    totalRecords: this.options.lazy ? this.options.paginator.totalRecords : this.data.length
                 });
             }
             
