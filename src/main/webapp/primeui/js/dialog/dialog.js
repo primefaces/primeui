@@ -93,6 +93,8 @@ $(function() {
 
             //events
             this._bindEvents();
+            
+            
 
             if(this.options.draggable) {
                 this._setupDraggable();
@@ -262,7 +264,11 @@ $(function() {
 
         _bindEvents: function() {   
             var $this = this;
-
+            this.element.mousedown(function(e) {
+                if(!$(e.target).data('ui-widget-overlay')) { 
+                  $this._moveToTop();
+                }
+             });
             this.icons.mouseover(function() {
                 $(this).addClass('ui-state-hover');
             }).mouseout(function() {
