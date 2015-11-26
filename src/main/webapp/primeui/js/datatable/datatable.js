@@ -507,15 +507,15 @@ $(function() {
         _initSelection: function() {
             var $this = this;
             this.selection = [];
-            this.rowSelector = '#' + this.id + ' tbody.pui-datatable-data > tr.ui-widget-content:not(.ui-datatable-empty-message)';
+            this.rowSelector = '> tr.ui-widget-content:not(.ui-datatable-empty-message)';
             
             //shift key based range selection
             if(this._isMultipleSelection()) {
                 this.originRowIndex = 0;
                 this.cursorIndex = null;
             }
-            
-            $(document).off('mouseover.puidatatable mouseout.puidatatable click.puidatatable', this.rowSelector)
+                        
+            this.tbody.off('mouseover.puidatatable mouseout.puidatatable click.puidatatable', this.rowSelector)
                     .on('mouseover.datatable', this.rowSelector, null, function() {
                         var element = $(this);
 
