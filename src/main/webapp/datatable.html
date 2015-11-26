@@ -161,13 +161,21 @@
                                     definition has the following properties;</p>
                                 <ul>
                                     <li>field: Name of field.</li>
-                                    <li>headerText: Column header.</li>
+                                    <li>headerText: Column header value.</li>
+                                    <li>headerText: Column footer value.</li>
                                     <li>sortable: Controls sorting.</li>
                                     <li>content: A function that takes row data and expects a string or a jQuery object to customize the cell.</li>
                                     <li>headerStyle: Inline style of the header cell.</li>
                                     <li>headerClass: Style class of the header cell.</li>
                                     <li>bodyStyle: Inline style of the body cell.</li>
                                     <li>bodyClass: Style class of the body cell.</li>
+                                    <li>colspan: Column span value for grouping.</li>
+                                    <li>rowspan: Row span value for grouping.</li>
+                                    <li>filter: Defines if filtering is enabled.</li>
+                                    <li>filterMatchMode: Built-in filter algorithm, valid values are "startsWith" and "contains".</li>
+                                    <li>filterFunction: Custom filter function that takes the cell value and filter value to return a boolean.</li>
+                                    <li>editor: Boolean value that controls if this column is editable.</li>
+                                    <li>rowToggler: Boolean value that controls if this column displayed a toggle icon.</li>
                                 </ul>
 
                                 <p>Datasource on the other hand, can either be a javascript array or a function to load
@@ -311,6 +319,30 @@ $('#tbl').puidatatable({
                                             <td>false</td>
                                             <td>Makes rows draggable for reorder.</td>
                                         </tr>
+                                        <tr>
+                                            <td>draggableColumns</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>Makes columns draggable for reorder.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>filterDelay</td>
+                                            <td>integer</td>
+                                            <td>500</td>
+                                            <td>Delay in milliseconds to trigger filtering.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>stickyHeader</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>When enabled, header is kept inside the viewport during page scroll.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>editMode</td>
+                                            <td>boolean</td>
+                                            <td>cell</td>
+                                            <td>Defines edit mode of data, only valid value is cell.</td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -385,7 +417,19 @@ $('#tbl').puidatatable({
                                                 data: Selected data</td>
                                             <td>Fired when a row is selected with context menu.</td>
                                         </tr>
-                                        
+                                        <tr>
+                                            <td>cellEdit</td>
+                                            <td>event: puidatatablecelledit event
+                                                <br />
+                                                oldValue: Old value of cell
+                                                <br />
+                                                newValue: New value of cell
+                                                <br />
+                                                data: Row data
+                                                <br />
+                                                field: Field of the cell</td>
+                                            <td>Fired when a row is selected with context menu. Returning false rejects the edit.</td>
+                                        </tr>
                                     </tbody>
                                 </table>
 
