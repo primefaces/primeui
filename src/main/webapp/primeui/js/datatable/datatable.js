@@ -543,7 +543,8 @@ $(function() {
         },
                 
         _onRowClick: function(event, rowElement) {
-            if(!$(event.target).is(':input,:button,a')) {
+            alert(event.target);
+            if(!$(event.target).is(':input,:button,a,.pui-c')) {
                 var row = $(rowElement),
                 selected = row.hasClass('ui-state-highlight'),
                 metaKey = event.metaKey||event.ctrlKey,
