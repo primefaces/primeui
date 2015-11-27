@@ -36,6 +36,10 @@
     border-style: solid;
 }
 
+.pui-datatable tbody {
+    outline: 0;
+}
+
 .pui-datatable tbody td {
     border-color: inherit;
 }

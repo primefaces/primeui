@@ -30,7 +30,8 @@ $(function() {
             draggableRows: false,
             filterDelay: 300,
             stickyHeader: false,
-            editMode: null
+            editMode: null,
+            tabindex: 0
         },
         
         _create: function() {
@@ -515,7 +516,7 @@ $(function() {
                 this.cursorIndex = null;
             }
                         
-            this.tbody.off('mouseover.puidatatable mouseout.puidatatable click.puidatatable', this.rowSelector)
+            this.tbody.off('mouseover.puidatatable mouseout.puidatatable mousedown.puidatatable click.puidatatable', this.rowSelector)
                     .on('mouseover.datatable', this.rowSelector, null, function() {
                         var element = $(this);
 
@@ -530,9 +531,15 @@ $(function() {
                             element.removeClass('ui-state-hover');
                         }
                     })
+                    .on('mousedown.datatable', this.rowSelector, null, function() {
+                        $this.mousedownOnRow = true;
+                    })
                     .on('click.datatable', this.rowSelector, null, function(e) {
                         $this._onRowClick(e, this);
+                        $this.mousedownOnRow = false;
                     });
+                    
+            this._bindSelectionKeyEvents();
         },
                 
         _onRowClick: function(event, rowElement) {
@@ -541,6 +548,8 @@ $(function() {
                 selected = row.hasClass('ui-state-highlight'),
                 metaKey = event.metaKey||event.ctrlKey,
                 shiftKey = event.shiftKey;
+        
+                this.focusedRow = row;
 
                 //unselect a selected row if metakey is on
                 if(selected && metaKey) {
@@ -581,6 +590,64 @@ $(function() {
             this._trigger('rowSelectContextMenu', event, selectedData);
 
             PUI.clearSelection();
+        },
+        
+        _bindSelectionKeyEvents: function() {
+            var $this = this;
+
+            this.tbody.attr('tabindex', this.options.tabindex).on('focus', function(e) {
+                //ignore mouse click on row
+                if(!$this.mousedownOnRow) {
+                    $this.focusedRow = $this.tbody.children('tr.ui-widget-content').eq(0);
+                    $this.focusedRow.addClass('ui-state-hover');
+                }
+            })
+            .on('blur', function() {
+                if($this.focusedRow) {
+                    $this.focusedRow.removeClass('ui-state-hover');
+                    $this.focusedRow = null;
+                }
+            })
+            .on('keydown', function(e) {
+                var keyCode = $.ui.keyCode,
+                key = e.which;
+
+                if($this.focusedRow) {
+                    switch(key) {
+                        case keyCode.UP:
+                            var prevRow = $this.focusedRow.prev('tr.ui-widget-content');
+                            if(prevRow.length) {
+                                $this.focusedRow.removeClass('ui-state-hover');
+                                $this.focusedRow = prevRow;
+                                $this.focusedRow.addClass('ui-state-hover');
+                            }
+                            e.preventDefault();
+                        break;
+
+                        case keyCode.DOWN:
+                            var nextRow = $this.focusedRow.next('tr.ui-widget-content');
+                            if(nextRow.length) {
+                                $this.focusedRow.removeClass('ui-state-hover');
+                                $this.focusedRow = nextRow;
+                                $this.focusedRow.addClass('ui-state-hover');
+                            }
+                            e.preventDefault();
+                        break;
+
+                        case keyCode.ENTER:
+                        case keyCode.NUMPAD_ENTER:
+                        case keyCode.SPACE:
+                            e.target = $this.focusedRow.children().eq(0).get(0);
+                            $this._onRowClick(e, $this.focusedRow.get(0));
+                            e.preventDefault();
+                        break;
+
+                        default:
+                        break;
+                    };
+                }
+            });
+
         },
                 
         _isSingleSelection: function() {
