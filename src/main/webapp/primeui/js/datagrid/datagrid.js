@@ -59,14 +59,19 @@ $(function() {
         },
         
         _onLazyLoad: function(data) {
-            this._onDataUpdate(data);
+            this.data = data;
+            if(!this.data) {
+                this.data = [];
+            }
+            
+            this._renderData();
         },
         
         reset: function() {            
             if(this.paginator) {
                 this.paginator.puipaginator('setState', {
                     page: 0,
-                    totalRecords: this.data.length
+                    totalRecords: this.options.lazy ? this.options.paginator.totalRecords : this.data.length
                 });
             }
         },
@@ -140,7 +145,7 @@ $(function() {
                     $this.paginate();
                 };
                 
-                this.options.paginator.totalRecords = this.options.paginator.totalRecords||this.data.length;
+                this.options.paginator.totalRecords = this.options.lazy ? this.options.paginator.totalRecords : this.data.length;
                 this.paginator = $('<div></div>').insertAfter(this.content).puipaginator(this.options.paginator);
             }
         },

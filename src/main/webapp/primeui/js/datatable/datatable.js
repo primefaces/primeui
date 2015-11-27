@@ -101,6 +101,7 @@ $(function() {
             
             if(this.options.paginator) {
                 this.options.paginator.paginate = function(event, state) {
+                    alert('x');
                     $this.paginate();
                 };
                 
