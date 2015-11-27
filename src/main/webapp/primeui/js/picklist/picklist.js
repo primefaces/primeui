@@ -90,10 +90,15 @@ $(function() {
             for(var i = 0; i < choices.length; i++) {
                 var choice = choices.eq(i),
                     content = this.options.content ? this.options.content.call(this, data[i]) : choice.text(),
-                    item = $('<li class="pui-picklist-item ui-corner-all">' + content + '</li>').data({
+                    item = $('<li class="pui-picklist-item ui-corner-all"></li>').data({
                         'item-label': choice.text(),
                         'item-value': choice.val()
                     });
+                    
+                    if($.type(content) === 'string')
+                        item.html(content);
+                    else
+                        item.append(content);
 
                 this.items = this.items.add(item);
                 listContainer.append(item);

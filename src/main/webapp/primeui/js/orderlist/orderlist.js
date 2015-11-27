@@ -71,7 +71,12 @@ $(function() {
                 itemContent = this.options.content ? this.options.content.call(this, optionElement) : optionElement.text(),
                 listItem = $('<li class="pui-orderlist-item ui-corner-all"></li>');
         
-                listItem.data('item-value', optionElement.attr('value')).append(itemContent).appendTo(this.list);
+                if($.type(itemContent) === 'string')
+                    listItem.html(itemContent);
+                else
+                    listItem.append(itemContent);
+        
+                listItem.data('item-value', optionElement.attr('value')).appendTo(this.list);
             }
             
             this.items = this.list.children('.pui-orderlist-item');
