@@ -1,7 +1,7 @@
 /**
  * PrimeFaces Fieldset Widget
  */
-$(function() {
+(function() {
 
     $.widget("primeui.puifieldset", {
        
@@ -65,4 +65,4 @@ $(function() {
         }
         
     });
-});
+})();

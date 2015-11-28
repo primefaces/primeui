@@ -1,7 +1,7 @@
 /**
  * PrimeUI Dialog Widget
  */
-$(function() {
+(function() {
 
     $.widget("primeui.puidialog", {
        
@@ -530,4 +530,4 @@ $(function() {
             $(window).off(this.resizeNS);
         }
     });
-});
+})();

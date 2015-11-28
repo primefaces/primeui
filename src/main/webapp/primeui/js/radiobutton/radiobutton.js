@@ -1,7 +1,7 @@
 /**
  * PrimeUI radiobutton widget
  */
-$(function() {
+(function() {
 
     var checkedRadios = {};
 
@@ -109,4 +109,4 @@ $(function() {
         }
     });
     
-});
+})();

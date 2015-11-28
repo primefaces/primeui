@@ -1,7 +1,7 @@
 /**
  * PrimeUI Panel Widget
  */
-$(function() {
+(function() {
 
     $.widget("primeui.puipanel", {
        
@@ -171,4 +171,4 @@ $(function() {
             });
         }
     });
-});
+})();

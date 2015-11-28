@@ -1,7 +1,7 @@
 /**
  * PrimeUI Paginator Widget
  */
-$(function() {
+(function() {
 
     var ElementHandlers = {
         
@@ -310,4 +310,4 @@ $(function() {
             this.setPage(0, true);
         }
     });
-});
+})();

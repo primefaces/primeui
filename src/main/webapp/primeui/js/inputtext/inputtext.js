@@ -1,7 +1,7 @@
 /**
  * PrimeUI inputtext widget
  */
-$(function() {
+(function() {
 
     $.widget("primeui.puiinputtext", {
        
@@ -63,4 +63,4 @@ $(function() {
         
     });
     
-});
+})();

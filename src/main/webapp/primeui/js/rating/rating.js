@@ -1,7 +1,7 @@
 /**
  * PrimeUI rating widget
  */
-$(function() {
+(function() {
 
     $.widget("primeui.puirating", {
        
@@ -100,4 +100,4 @@ $(function() {
         }
     });
     
-});
+})();

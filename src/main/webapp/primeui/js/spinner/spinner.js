@@ -1,7 +1,7 @@
 /**
  * PrimeUI spinner widget
  */
-$(function() {
+(function() {
 
     $.widget("primeui.puispinner", {
        
@@ -260,4 +260,4 @@ $(function() {
             this._unbindEvents();
         }
     });
-});
+})();

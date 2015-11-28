@@ -1,7 +1,7 @@
 /**
  * PrimeUI Datagrid Widget
  */
-$(function() {
+(function() {
 
     $.widget("primeui.puidatagrid", {
        
@@ -186,4 +186,4 @@ $(function() {
         }
         
     });
-});
+})();

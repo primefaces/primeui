@@ -1,7 +1,7 @@
 /**
  * PrimeUI Lightbox Widget
  */
-$(function() {
+(function() {
 
     $.widget("primeui.puilightbox", {
        
@@ -343,4 +343,4 @@ $(function() {
             this.show();
         }
     });
-});
+})();

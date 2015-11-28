@@ -1,7 +1,7 @@
 /**
  * PrimeUI password widget
  */
-$(function() {
+(function() {
 
     $.widget("primeui.puipassword", {
         
@@ -170,4 +170,4 @@ $(function() {
         }
     });
     
-});
+})();

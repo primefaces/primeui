@@ -1,7 +1,7 @@
 /**
  * PrimeUI togglebutton widget
  */
-$(function() {
+(function() {
 
     $.widget("primeui.puitogglebutton", {
        
@@ -148,4 +148,4 @@ $(function() {
         
     });
     
-});
+})();

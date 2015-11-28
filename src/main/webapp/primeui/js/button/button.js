@@ -1,7 +1,7 @@
 /**
  * PrimeFaces Button Widget
  */
-$(function() {
+(function() {
 
     $.widget("primeui.puibutton", {
        
@@ -99,4 +99,4 @@ $(function() {
             }
         }
     });
-});
+})();

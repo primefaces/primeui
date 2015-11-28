@@ -1,7 +1,7 @@
 /**
  * PrimeUI inputtextarea widget
  */
-$(function() {
+(function() {
 
     $.widget("primeui.puiinputtextarea", {
        
@@ -371,4 +371,4 @@ $(function() {
         }
     });
     
-});
+})();

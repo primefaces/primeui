@@ -1,7 +1,7 @@
 /**
  * PrimeFaces Tooltip Widget
  */
-$(function() {
+(function() {
 
     $.widget("primeui.puitooltip", {
        
@@ -121,4 +121,4 @@ $(function() {
             });
         }
     });
-});
+})();

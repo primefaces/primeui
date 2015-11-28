@@ -1,7 +1,7 @@
 /**
  * PrimeUI Messages widget
  */
-$(function() {
+(function() {
 
     $.widget("primeui.puimessages", {
        
@@ -58,4 +58,4 @@ $(function() {
         
     });
     
-});
+})();

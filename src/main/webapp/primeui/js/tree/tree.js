@@ -1,7 +1,7 @@
 /**
  * PrimeUI Tree widget
  */
-$(function() {
+(function() {
 
     $.widget("primeui.puitree", {
        
@@ -286,4 +286,4 @@ $(function() {
         }
     });
     
-});
+})();

@@ -1,7 +1,7 @@
 /**
  * PrimeUI picklist widget
  */
-$(function() {
+(function() {
 
     $.widget("primeui.puipicklist", {
        
@@ -549,4 +549,4 @@ $(function() {
         }
     });
         
-});
+})();

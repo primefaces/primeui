@@ -1,7 +1,7 @@
 /**
  * PrimeFaces Growl Widget
  */
-$(function() {
+(function() {
 
     $.widget("primeui.puigrowl", {
        
@@ -95,4 +95,4 @@ $(function() {
             message.data('timeout', timeout);
         }
     });
-});
+})();

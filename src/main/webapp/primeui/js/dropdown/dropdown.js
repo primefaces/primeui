@@ -1,7 +1,7 @@
 /**
  * PrimeUI dropdown widget
  */
-$(function() {
+(function() {
 
     $.widget("primeui.puidropdown", {
        
@@ -620,4 +620,4 @@ $(function() {
         }
     });
     
-});
+})();

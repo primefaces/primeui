@@ -1,7 +1,7 @@
 /**
  * PrimeUI checkbox widget
  */
-$(function() {
+(function() {
 
     $.widget("primeui.puicheckbox", {
        
@@ -135,4 +135,4 @@ $(function() {
         }
     });
     
-});
+})();

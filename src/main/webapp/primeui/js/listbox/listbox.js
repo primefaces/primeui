@@ -1,7 +1,7 @@
 /**
  * PrimeUI listvox widget
  */
-$(function() {
+(function() {
 
     $.widget("primeui.puilistbox", {
        
@@ -217,4 +217,4 @@ $(function() {
         }
     });
         
-});
+})();

@@ -1,7 +1,7 @@
 /**
  * PrimeUI progressbar widget
  */
-$(function() {
+(function() {
 
     $.widget("primeui.puiprogressbar", {
        
@@ -89,4 +89,4 @@ $(function() {
         
     });
     
-});
+})();

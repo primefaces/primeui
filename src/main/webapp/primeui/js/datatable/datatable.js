@@ -1,7 +1,7 @@
 /**
  * PrimeUI Datatable Widget
  */
-$(function() {
+(function() {
 
     $.widget("primeui.puidatatable", {
        
@@ -1618,4 +1618,4 @@ $(function() {
         }
     
     });
-});
+})();

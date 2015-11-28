@@ -1,7 +1,7 @@
 /**
  * PrimeUI Terminal widget
  */
-$(function() {
+(function() {
 
     $.widget("primeui.puiterminal", {
        
@@ -88,4 +88,4 @@ $(function() {
             this.input.val('');
         }                       
     });
-});
+})();

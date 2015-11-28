@@ -1,7 +1,7 @@
 /**
  * PrimeUI sticky widget
  */
-$(function() {
+(function() {
 
     $.widget("primeui.puisticky", {
        
@@ -70,4 +70,4 @@ $(function() {
         
     });
     
-});
+})();

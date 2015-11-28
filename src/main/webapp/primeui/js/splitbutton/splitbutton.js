@@ -1,7 +1,7 @@
 /**
  * PrimeFaces SplitButton Widget
  */
-$(function() {
+(function() {
 
     $.widget("primeui.puisplitbutton", {
        
@@ -137,4 +137,4 @@ $(function() {
             this.menuButton.puibutton('enable');
         }
     });
-});
+})();

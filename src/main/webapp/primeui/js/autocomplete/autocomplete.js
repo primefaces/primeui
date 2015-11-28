@@ -1,7 +1,7 @@
 /**
  * PrimeUI autocomplete widget
  */
-$(function() {
+(function() {
 
     $.widget("primeui.puiautocomplete", {
        
@@ -441,4 +441,4 @@ $(function() {
         }
     });
     
-});
+})();

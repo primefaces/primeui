@@ -1,7 +1,7 @@
 /**
  * PrimeUI Lightbox Widget
  */
-$(function() {
+(function() {
 
     $.widget("primeui.puigalleria", {
        
@@ -221,4 +221,4 @@ $(function() {
             return this.strip.is(':animated');
         }
     });
-});
+})();

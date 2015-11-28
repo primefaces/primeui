@@ -1,7 +1,7 @@
 /**
  * PrimeFaces Notify Widget
  */
-$(function() {
+(function() {
 
     $.widget("primeui.puinotify", {
        
@@ -76,4 +76,4 @@ $(function() {
             this.content.html(content);
         }
     });
-});
+})();

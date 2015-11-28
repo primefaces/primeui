@@ -1,7 +1,7 @@
 /**
  * PrimeUI BaseMenu widget
  */
-$(function() {
+(function() {
 
     $.widget("primeui.puibasemenu", {
        
@@ -86,12 +86,12 @@ $(function() {
             this.element.closest('.pui-menu').css({left:'', top:''}).position(this.positionConfig);
         }
     });
-});
+})();
 
 /**
  * PrimeUI Menu widget
  */
-$(function() {
+(function() {
 
     $.widget("primeui.puimenu", $.primeui.puibasemenu, {
        
@@ -146,12 +146,12 @@ $(function() {
             }   
         }
     });
-});
+})();
 
 /**
  * PrimeUI BreadCrumb Widget
  */
-$(function() {
+(function() {
 
     $.widget("primeui.puibreadcrumb", {
         
@@ -174,15 +174,12 @@ $(function() {
             });
         }
     });
-});
-
-
-
+})();
 
 /*
  * PrimeUI TieredMenu Widget
  */
-$(function() {
+(function() {
 
     $.widget("primeui.puitieredmenu", $.primeui.puibasemenu, {
         
@@ -366,13 +363,12 @@ $(function() {
             
     });
 
-});
+})();
 
 /**
  * PrimeUI Menubar Widget
  */
-
-$(function() {
+(function() {
 
     $.widget("primeui.puimenubar", $.primeui.puitieredmenu, {
         
@@ -419,13 +415,12 @@ $(function() {
         }
     });
 
-});
+})();
 
 /*
  * PrimeUI SlideMenu Widget
  */
-
-$(function() {
+(function() {
 
     $.widget("primeui.puislidemenu", $.primeui.puibasemenu, {
                 
@@ -583,14 +578,12 @@ $(function() {
         }        
     });
 
-});
-
+})();
 
 /**
  * PrimeUI Context Menu Widget
  */
-
-$(function() {
+(function() {
 
     $.widget("primeui.puicontextmenu", $.primeui.puitieredmenu, {
         
@@ -713,4 +706,4 @@ $(function() {
               
     });
 
-});
+})();

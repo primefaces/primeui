@@ -1,7 +1,7 @@
 /**
  * PrimeUI Carousel widget
  */
-$(function() {
+(function() {
 
     $.widget("primeui.puicarousel", {
        
@@ -319,4 +319,4 @@ $(function() {
 
     });
     
-});
+})();

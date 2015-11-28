@@ -1,7 +1,7 @@
 /**
  * PrimeUI tabview widget
  */
-$(function() {
+(function() {
 
     $.widget("primeui.puitabview", {
        
@@ -150,4 +150,4 @@ $(function() {
        }
 
     });
-});
+})();

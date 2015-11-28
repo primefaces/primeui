@@ -1,7 +1,7 @@
 /**
  * PrimeUI Accordion widget
  */
-$(function() {
+(function() {
 
     $.widget("primeui.puiaccordion", {
        
@@ -132,4 +132,4 @@ $(function() {
         }
         
     });
-});
+})();
