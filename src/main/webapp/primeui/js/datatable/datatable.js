@@ -78,7 +78,7 @@
         
         _createScrollableDatatable: function() {            
             this.element.append('<div class="ui-widget-header pui-datatable-scrollable-header"><div class="pui-datatable-scrollable-header-box"><table><thead></thead></table></div></div>')
-                        .append('<div class="pui-datatable-scrollable-body"><table><tbody></tbody></table></div></div>');
+                        .append('<div class="pui-datatable-scrollable-body"><table><tbody></tbody></table></div>');
         
             this.thead = this.element.find('> .pui-datatable-scrollable-header > .pui-datatable-scrollable-header-box > table > thead');
             this.tbody = this.element.find('> .pui-datatable-scrollable-body > table > tbody');
@@ -336,7 +336,7 @@
                 if(!column.hasClass('ui-state-active'))
                     column.removeClass('ui-state-hover');
             })
-            .on('click.puidatatable', function() {
+            .on('click.puidatatable', function(event) {
                 var column = $(this),
                 sortField = column.data('field'),
                 order = column.data('order'),
@@ -358,6 +358,8 @@
                     sortIcon.removeClass('fa-sort fa-sort-asc').addClass('fa-sort-desc');
                 else if(sortOrder === 1)
                     sortIcon.removeClass('fa-sort fa-sort-desc').addClass('fa-sort-asc');
+                
+                $this._trigger('sort', event, {'sortOrder' : sortOrder, 'sortField' : sortField});
             });
         },
                 
@@ -383,10 +385,29 @@
             }
             else {
                 this.data.sort(function(data1, data2) {
-                    var value1 = data1[field],
-                    value2 = data2[field],
-                    result = (value1 < value2) ? -1 : (value1 > value2) ? 1 : 0;
-
+                    var value1 = data1[field], value2 = data2[field],
+                    result = null;
+                    
+                    if (typeof value1 == 'string' || value1 instanceof String) {
+                    	if ( value1.localeCompare ) {
+                    		return (order * value1.localeCompare(value2));
+                    	}
+                    	else {
+                        	if (value1.toLowerCase) {
+                            	value1 = value1.toLowerCase();
+                            }
+                            if (value2.toLowerCase) {
+                            	value2 = value2.toLowerCase();
+                            }
+                            result = (value1 < value2) ? -1 : (value1 > value2) ? 1 : 0;
+                            
+                            
+                    	}
+                    }
+                    else {
+                        result = (value1 < value2) ? -1 : (value1 > value2) ? 1 : 0;
+                    }  
+                    
                     return (order * result);
                 });
 
