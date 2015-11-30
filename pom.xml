@@ -129,6 +129,7 @@
                                                 <include>${basedir}/src/main/webapp/primeui/js/menu/menu.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/messages/messages.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/notify/notify.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/orderlist/orderlist.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/paginator/paginator.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/panel/panel.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/password/password.js</include>
@@ -173,6 +174,7 @@
                                                 <include>${basedir}/src/main/webapp/primeui/css/menu/menu.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/messages/messages.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/notify/notify.css</include>
+                                                <include>${basedir}/src/main/webapp/primeui/css/orderlist/orderlist.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/paginator/paginator.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/panel/panel.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/password/password.css</include>
@@ -228,6 +230,7 @@
                                                 <include>${project.build.directory}/primeui/production/js/menu/menu.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/messages/messages.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/notify/notify.js</include>
+                                                <include>${project.build.directory}/primeui/production/js/orderlist/orderlist.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/paginator/paginator.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/panel/panel.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/password/password.js</include>
@@ -272,6 +275,7 @@
                                                 <include>${project.build.directory}/primeui/production/css/menu/menu.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/messages/messages.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/notify/notify.css</include>
+                                                <include>${project.build.directory}/primeui/production/css/orderlist/orderlist.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/paginator/paginator.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/panel/panel.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/password/password.css</include>
