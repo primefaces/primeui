@@ -564,7 +564,6 @@
         },
                 
         _onRowClick: function(event, rowElement) {
-            alert(event.target);
             if(!$(event.target).is(':input,:button,a,.pui-c')) {
                 var row = $(rowElement),
                 selected = row.hasClass('ui-state-highlight'),
