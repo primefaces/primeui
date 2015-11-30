@@ -134,12 +134,8 @@
             var $this = this,
             doc = $(document);
 
-            this.modality = $('<div id="' + this.element.attr('id') + '_modal" class="ui-widget-overlay"></div>').appendTo(document.body)
-                                .css({
-                                    'width' : doc.width(),
-                                    'height' : doc.height(),
-                                    'z-index' : this.element.css('z-index') - 1
-                                });
+            this.modality = $('<div id="' + this.element.attr('id') + '_modal" class="ui-widget-overlay pui-dialog-mask"></div>').appendTo(document.body)
+                                .css('z-index', this.element.css('z-index') - 1);
 
             //Disable tabbing out of modal dialog and stop events from targets outside of dialog
             doc.bind('keydown.puidialog',
@@ -298,15 +294,6 @@
                     if(e.which === keyCode.ESCAPE && $this.element.is(':visible') && active) {
                         $this.hide();
                     }
-                });
-            }
-            
-            if(this.options.modal) {
-                $(window).on('resize.puidialog', function() {
-                    $(document.body).children('.ui-widget-overlay').css({
-                        'width': $(document).width(),
-                        'height': $(document).height()
-                    });
                 });
             }
         },
