@@ -1,5 +1,5 @@
 /*
- * PrimeUI 2.2-SNAPSHOT
+ * PrimeUI ${project.version}
  * 
  * Copyright 2009-2015 PrimeTek.
  *

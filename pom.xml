@@ -30,6 +30,13 @@
     </developers>
 	
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        
         <plugins>
             <plugin>
 				<groupId>org.mortbay.jetty</groupId>
@@ -108,7 +115,7 @@
                                         <aggregation>
                                             <output>${project.build.directory}/primeui/development/primeui-${project.version}.js</output>
                                             <includes>
-                                                <include>${basedir}/src/main/resources/copyright.txt</include>
+                                                <include>${project.build.directory}/classes/copyright.txt</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/core/core.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/accordion/accordion.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/autocomplete/autocomplete.js</include>
@@ -152,7 +159,7 @@
                                         <aggregation>
                                             <output>${project.build.directory}/primeui/development/primeui-${project.version}.css</output>
                                             <includes>
-                                                <include>${basedir}/src/main/resources/copyright.txt</include>
+                                                <include>${project.build.directory}/classes/copyright.txt</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/core/core.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/accordion/accordion.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/autocomplete/autocomplete.css</include>
@@ -209,7 +216,7 @@
                                         <aggregation>
                                             <output>${project.build.directory}/primeui/production/primeui-${project.version}-min.js</output>
                                             <includes>
-                                                <include>${basedir}/src/main/resources/copyright.txt</include>
+                                                <include>${project.build.directory}/classes/copyright.txt</include>
                                                 <include>${project.build.directory}/primeui/production/js/core/core.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/accordion/accordion.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/autocomplete/autocomplete.js</include>
@@ -253,7 +260,7 @@
                                         <aggregation>
                                             <output>${project.build.directory}/primeui/production/primeui-${project.version}-min.css</output>
                                             <includes>
-                                                <include>${basedir}/src/main/resources/copyright.txt</include>
+                                                <include>${project.build.directory}/classes/copyright.txt</include>
                                                 <include>${project.build.directory}/primeui/production/css/core/core.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/accordion/accordion.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/autocomplete/autocomplete.css</include>
