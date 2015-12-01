@@ -14,7 +14,7 @@
   ],
   "license": "Apache*",
   "ignore": [
-    "**/.*",
+    "pom.xml",
     "nbactions.xml",
     "src/assemble",
     "src/assemble",
@@ -24,8 +24,6 @@
     "src/main/webapp/WEB-INF",
     "src/main/webapp/resources",
     "src/main/webapp/themes",
-    "src/main/webapp/*.html",
-    "test",
-    "tests"
+    "src/main/webapp/*.html"
   ]
 }
