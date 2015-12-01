@@ -1,0 +1,31 @@
+{
+  "name": "primeui",
+  "description": "jQuery Plugins",
+  "dependencies": {
+    "jquery": ">=1.11.0",
+    "jqueryui": ">1.11.0"
+  },
+  "keywords": [
+    "jquery",
+    "ui"
+  ],
+  "authors": [
+    "PrimeTek"
+  ],
+  "license": "Apache*",
+  "ignore": [
+    "**/.*",
+    "nbactions.xml",
+    "src/assemble",
+    "src/assemble",
+    "src/main/java",
+    "src/main/resources",
+    "src/main/webapp/META-INF",
+    "src/main/webapp/WEB-INF",
+    "src/main/webapp/resources",
+    "src/main/webapp/themes",
+    "src/main/webapp/*.html",
+    "test",
+    "tests"
+  ]
+}
