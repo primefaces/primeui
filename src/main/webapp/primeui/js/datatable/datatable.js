@@ -443,16 +443,20 @@
                     
                     if(rowData) {
                         var row = $('<tr class="ui-widget-content" />').appendTo(this.tbody),
-                            zebraStyle = (i%2 === 0) ? 'pui-datatable-even' : 'pui-datatable-odd',
-                            rowIndex = i;
+                        zebraStyle = (i%2 === 0) ? 'pui-datatable-even' : 'pui-datatable-odd',
+                        rowIndex = i;
 
                         row.addClass(zebraStyle);
+                        
                         if(this.options.lazy) {
                             rowIndex += firstNonLazy; // Selection is kept as it is non lazy data
                         }
+
                         if(this.options.selectionMode && PUI.inArray(this.selection, rowIndex)) {
                             row.addClass("ui-state-highlight");
                         }
+                        
+                        row.data('rowindex', rowIndex);
 
                         for(var j = 0; j < this.options.columns.length; j++) {
                             var column = $('<td />').appendTo(row),
@@ -482,7 +486,7 @@
                                     column.append(content);
                             }
                             else if(columnOptions.rowToggler) {
-                                column.append('<div class="pui-row-toggler fa fa-fw fa-chevron-circle-right"></div>');
+                                column.append('<div class="pui-row-toggler fa fa-fw fa-chevron-circle-right pui-c"></div>');
                             }
                             else if(columnOptions.field) {
                                 column.text(rowData[columnOptions.field]);
@@ -529,7 +533,7 @@
         _initSelection: function() {
             var $this = this;
             this.selection = [];
-            this.rowSelector = '> tr.ui-widget-content:not(.ui-datatable-empty-message)';
+            this.rowSelector = '> tr.ui-widget-content:not(.pui-datatable-empty-message,.pui-datatable-unselectable)';
             
             //shift key based range selection
             if(this._isMultipleSelection()) {
@@ -706,6 +710,7 @@
                 if (this.options.lazy) {
                     selectedData = this.data[rowIndex - this._getFirst()];
                 }
+                
                 this._trigger('rowSelect', event, selectedData);
             }
         },
@@ -738,9 +743,7 @@
         },
                 
         _getRowIndex: function(row) {
-            var index = row.index();
-            
-            return this.options.paginator ? this._getFirst() + index : index;
+            return row.data('rowindex');
         },
         
         _initExpandableRows: function() {
@@ -785,7 +788,7 @@
         
         loadExpandedRowContent: function(row) {
             var rowIndex = this._getRowIndex(row),
-            expandedRow = $('<tr class="pui-expanded-row-content ui-widget-content"><td colspan="' + this.options.columns.length + '"></td></tr>');
+            expandedRow = $('<tr class="pui-expanded-row-content pui-datatable-unselectable ui-widget-content"><td colspan="' + this.options.columns.length + '"></td></tr>');
             expandedRow.children('td').append(this.options.expandedRowContent.call(this, this.data[rowIndex]));
 
             row.addClass('pui-expanded-row').after(expandedRow);
