@@ -468,16 +468,13 @@
                             
                             if(columnOptions.editor) {
                                 column.addClass('pui-editable-column').data({
-                                    'editor': columnOptions.editor,
+                                    'editor': columnOptions.editor, 
                                     'rowdata': rowData,
                                     'field': columnOptions.field
                                 });
                             }
                             
-                            if(columnOptions.field) {
-                                column.text(rowData[columnOptions.field]);
-                            }
-                            else if(columnOptions.content) {
+                            if(columnOptions.content) {
                                 var content = columnOptions.content.call(this, rowData);
                                 if($.type(content) === 'string')
                                     column.html(content);
@@ -486,6 +483,9 @@
                             }
                             else if(columnOptions.rowToggler) {
                                 column.append('<div class="pui-row-toggler fa fa-fw fa-chevron-circle-right"></div>');
+                            }
+                            else if(columnOptions.field) {
+                                column.text(rowData[columnOptions.field]);
                             }
                             
                             if(this.options.responsive && columnOptions.headerText) {
