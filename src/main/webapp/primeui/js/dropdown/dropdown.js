@@ -562,11 +562,14 @@
             this._selectItem(this.items.eq(option.index()), true);
         },
 
-        addOption: function(label, value) {
-            var item = $('<li data-label="' + label + '" class="pui-dropdown-item pui-dropdown-list-item ui-corner-all">' + label + '</li>'),
-            choice = $('<option value="' + value + '">' + label + '</option>');
-    
-            choice.appendTo(this.element);
+        addOption: function(option) {
+            var value = option.value ? option.value : option,
+            label = option.label ? option.label : option,
+            content = this.options.content ? this.options.content.call(this, option) : label,
+            item = $('<li data-label="' + label + '" class="pui-dropdown-item pui-dropdown-list-item ui-corner-all">' + content + '</li>'),
+            optionElement = $('<option value="' + value + '">' + label + '</option>');
+
+            optionElement.appendTo(this.element);
             this._bindItemEvents(item);
             item.appendTo(this.itemsContainer);
             this.items.push(item[0]);
@@ -593,14 +596,11 @@
             $.Widget.prototype._setOption.apply(this, arguments);
             if (key === 'data') {
                 this.removeAllOptions();
+                
                 for(var i = 0; i < this.options.data.length; i++) {
-                    var choice = this.options.data[i];
-                    if(choice.label)  {
-                        this.addOption(choice.label, choice.value);
-                    } else {
-                        this.addOption(choice, choice);
-                    }
+                    this.addOption(this.options.data[i]);
                 }
+                
                 if(this.options.scrollHeight && this.panel.outerHeight() > this.options.scrollHeight) {
                     this.itemsWrapper.height(this.options.scrollHeight);
                 }
