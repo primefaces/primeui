@@ -219,8 +219,7 @@
                 this.element.find('> .pui-picklist-listwrapper > ul.pui-picklist-list').sortable({
                     cancel: '.ui-state-disabled',
                     connectWith: '#' + this.element.attr('id') + ' .pui-picklist-list',
-                    revert: true,
-                    containment: this.element,
+                    revert: 1,
                     update: function(event, ui) {
                         $this.unselectItem(ui.item);
 
