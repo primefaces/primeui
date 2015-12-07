@@ -528,21 +528,25 @@
        },
 
        _back: function() {
-            var $this = this,
-            last = this._pop(),
-            depth = this._depth();
+            if(!this.rootList.is(':animated')) {
+                var $this = this,
+                last = this._pop(),
+                depth = this._depth();
 
-            var rootLeft = -1 * (depth * this.jqWidth);
+                var rootLeft = -1 * (depth * this.jqWidth);
 
-            this.rootList.animate({
-                left: rootLeft
-            }, 500, 'easeInOutCirc', function() {
-                last.hide();
+                this.rootList.animate({
+                    left: rootLeft
+                }, 500, 'easeInOutCirc', function() {
+                    if(last !== null) {
+                        last.hide();
+                    }
 
-                if(depth === 0) {
-                    $this.backward.fadeOut('fast');
-                }
-            });
+                    if(depth === 0) {
+                        $this.backward.fadeOut('fast');
+                    }
+                });
+            }
        },
 
        _push: function(submenu) {
