@@ -102,7 +102,7 @@
                     }
                     
                     if(j === 0) {
-                        var toggler = $('<span class="pui-treetable-toggler pui-icon fa fa-fw fa-caret-right"></span>');
+                        var toggler = $('<span class="pui-treetable-toggler pui-icon fa fa-fw fa-caret-right pui-c"></span>');
                         
                         toggler.css('margin-left', depth * 16 + 'px');
                         if(leaf) {
@@ -248,7 +248,7 @@
         },
         
         onRowClick: function(event, row) {
-            if($(event.target).is('td,span:not(.ui-c)')) {
+            if(!$(event.target).is(':input,:button,a,.pui-c')) {
                 var selected = row.hasClass('ui-state-highlight'),
                 metaKey = event.metaKey||event.ctrlKey;
 
