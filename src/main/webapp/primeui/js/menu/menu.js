@@ -538,7 +538,7 @@
                 this.rootList.animate({
                     left: rootLeft
                 }, 500, 'easeInOutCirc', function() {
-                    if(last !== null) {
+                    if(last) {
                         last.hide();
                     }
 
