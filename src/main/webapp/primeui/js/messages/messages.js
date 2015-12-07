@@ -14,7 +14,7 @@
             if(this.options.closable) {
                 this.closer = $('<a href="#" class="pui-messages-close"><i class="fa fa-close"></i></a>').appendTo(this.element);
             }
-            this.element.append('<span class="pui-messages-icon fa fa-info-circle fa-2x"></span>');
+            this.element.append('<span class="pui-messages-icon fa fa-2x"></span>');
             
             this.msgContainer = $('<ul></ul>').appendTo(this.element);
             
@@ -35,6 +35,8 @@
             this.clear();
             this.element.removeClass('pui-messages-info pui-messages-warn pui-messages-error').addClass('pui-messages-' + severity);
             
+            this.element.children('.pui-messages-icon').removeClass('fa-info-circle fa-close fa-warning').addClass(this._getIcon(severity));
+            
             if($.isArray(msgs)) {
                 for(var i = 0; i < msgs.length; i++) {
                     this._showMessage(msgs[i]);
@@ -54,6 +56,26 @@
         clear: function() {
             this.msgContainer.children().remove();
             this.element.hide();
+        },
+        
+        _getIcon: function(severity) {
+            switch(severity) {
+                case 'info':
+                    return 'fa-info-circle';
+                break;
+                
+                case 'warn':
+                    return 'fa-warning';
+                break;
+                
+                case 'error':
+                    return 'fa-close';
+                break;
+                
+                default:
+                    return 'fa-info-circle';
+                break;
+            }
         }
         
     });

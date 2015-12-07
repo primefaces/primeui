@@ -36,7 +36,7 @@
             var markup = '<div class="pui-growl-item-container ui-state-highlight ui-corner-all ui-helper-hidden" aria-live="polite">';
             markup += '<div class="pui-growl-item pui-shadow">';
             markup += '<div class="pui-growl-icon-close fa fa-close" style="display:none"></div>';
-            markup += '<span class="pui-growl-image fa fa-info-circle fa-2x" />';
+            markup += '<span class="pui-growl-image fa fa-2x ' + this._getIcon(msg.severity) + '" />';
             markup += '<div class="pui-growl-message">';
             markup += '<span class="pui-growl-title">' + msg.summary + '</span>';
             markup += '<p>' + (msg.detail||'') + '</p>';
@@ -93,6 +93,26 @@
             }, this.options.life);
 
             message.data('timeout', timeout);
+        },
+        
+        _getIcon: function(severity) {
+            switch(severity) {
+                case 'info':
+                    return 'fa-info-circle';
+                break;
+                
+                case 'warn':
+                    return 'fa-warning';
+                break;
+                
+                case 'error':
+                    return 'fa-close';
+                break;
+                
+                default:
+                    return 'fa-info-circle';
+                break;
+            }
         }
     });
 })();
