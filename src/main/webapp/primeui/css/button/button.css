@@ -74,10 +74,10 @@ button.pui-button::-moz-focus-inner {
     border: 0; padding: 0; /* reset extra padding in Firefox */
 }
 
-.pui-fluid .pui-button {
-    width: 100%;
-}
-
+.pui-fluid .pui-button,
 .pui-fluid .ui-buttonset {
     width: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing: border-box;
 }

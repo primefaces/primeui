@@ -99,8 +99,14 @@
 /** Dropdown **/
 .pui-fluid .pui-dropdown {
     width: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing: border-box;
 }
 .pui-fluid .pui-dropdown .pui-dropdown-trigger {
     width: 32px;
     padding: 0 6px;
+    box-sizing: border-box;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing: border-box;
 }

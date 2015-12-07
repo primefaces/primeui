@@ -4,12 +4,6 @@
     box-shadow: 0px 5px 10px rgba(0,0,0,0.8);
 }
 
-.pui-fluid * {
-    box-sizing: border-box;
-    -webkit-box-sizing:border-box;
-    -moz-box-sizing: border-box;
-} 
-
 /* FontAwesome Support */
 .ui-widget .ui-icon.fa, 
 .ui-icon.fa {
