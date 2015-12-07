@@ -1355,13 +1355,13 @@
                 update: function(event, ui) {
                     $this.syncRowParity();
 
-                    this._trigger('rowReorder', null, {
+                    $this._trigger('rowReorder', null, {
                         fromIndex: ui.item.data('ri'),
                         toIndex: $this._getFirst() + ui.item.index()
                     });
                 },
                 change: function(event, ui) {
-                    if($this.cfg.scrollable) {
+                    if($this.options.scrollable) {
                         PUI.scrollInView($this.scrollBody, ui.placeholder);
                     }
                 }
