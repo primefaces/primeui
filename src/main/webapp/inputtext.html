@@ -2,6 +2,7 @@
     <link rel="stylesheet" href="primeui/css/inputtext/inputtext.css" />
     <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
     <script type="text/javascript" src="primeui/js/inputtext/inputtext.js"></script>
+    <script type="text/javascript" src="primeui/js/inputtext/inputtext-element.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript">
         $(function() {
@@ -19,7 +20,11 @@
     </div>
 
     <div class="ContentSideSections Implementation">
-        <input id="in" type="text" />
+        <h3 class="first">Basic</h3>
+        <input id="in" type="text" size="30"/>
+        
+        <h3>Element</h3>
+        <input type="text" is="p-inputtext" value="I am an HTML Element" size="30" />
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">
