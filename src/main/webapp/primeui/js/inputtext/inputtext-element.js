@@ -6,6 +6,14 @@
         $(this).puiinputtext();
     };
     
+    InputTextPrototype.disable = function() {
+        $(this).puiinputtext('disable');
+    };
+    
+    InputTextPrototype.enable = function() {
+        $(this).puiinputtext('enable');
+    };
+    
     document.registerElement('p-inputtext', {
         extends: 'input',
         prototype: InputTextPrototype
