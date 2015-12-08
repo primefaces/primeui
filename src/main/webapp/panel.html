@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
     <link rel="stylesheet" href="primeui/css/inputtext/inputtext.css" />
     <script type="text/javascript" src="primeui/js/panel/panel.js"></script>
+    <script type="text/javascript" src="primeui/js/panel/panel-element.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript">
         $(function() {
@@ -12,7 +13,7 @@
                 toggleable: true
                 ,closable: true
             });
-
+            
             $('#doc').puitabview();
         });
     </script>
@@ -40,6 +41,14 @@
             kind and benevolent to those who give respect, 
             but given to ruthless violence whenever anything stands against the good of the family.
         </div>
+        
+        <p-panel title="PrimeElement" toggleable>
+            The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
+            His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. 
+            Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, 
+            kind and benevolent to those who give respect, 
+            but given to ruthless violence whenever anything stands against the good of the family.
+        </p-panel>
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">
@@ -77,6 +86,12 @@ $('#default').puipanel();
                                     <th>Description</th>
                                     </thead>
                                     <tbody>
+                                        <tr>
+                                            <td>title</td>
+                                            <td>String</td>
+                                            <td>null</td>
+                                            <td>Text of header, defaults to title attribute of the element.</td>
+                                        </tr>
                                         <tr>
                                             <td>toggleable</td>
                                             <td>Boolean</td>

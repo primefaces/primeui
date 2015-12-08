@@ -11,14 +11,15 @@
             toggleOrientation : 'vertical',
             collapsed: false,
             closable: false,
-            closeDuration: 'normal'
+            closeDuration: 'slow',
+            title: null
         },
         
         _create: function() {
             this.element.addClass('pui-panel ui-widget ui-widget-content ui-corner-all')
                 .contents().wrapAll('<div class="pui-panel-content ui-widget-content" />');
                 
-            var title = this.element.attr('title');
+            var title = this.element.attr('title')||this.options.title;
             if(title) {
                 this.element.prepend('<div class="pui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all"><span class="ui-panel-title">' +
                         title + "</span></div>").removeAttr('title');
