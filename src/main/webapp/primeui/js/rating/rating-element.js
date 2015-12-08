@@ -25,7 +25,7 @@ xtag.register('p-rating', {
             var onrate = this.getAttribute('onrate'),
             oncancel = this.getAttribute('oncancel')
             options = {
-                stars: this.stars||undefined,
+                stars: this.stars||5,
                 cancel: this.cancel === null ? true : JSON.parse(this.cancel),
                 readonly: this.readonly !== null,
                 disabled: this.disabled !== null
