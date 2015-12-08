@@ -14,17 +14,19 @@ xtag.register('p-rating', {
         },
         disabled: {
             attribute: {}
+        },
+        name: {
+            attribute: {}
         }
     },
     
     lifecycle: {
         created: function () {  
-            var $this = this,
-            onrate = this.getAttribute('onrate'),
+            var onrate = this.getAttribute('onrate'),
             oncancel = this.getAttribute('oncancel')
             options = {
-                stars: this.stars,
-                cancel: this.cancel,
+                stars: this.stars||undefined,
+                cancel: this.cancel === null ? true : JSON.parse(this.cancel),
                 readonly: this.readonly !== null,
                 disabled: this.disabled !== null
             };
@@ -41,7 +43,11 @@ xtag.register('p-rating', {
                 };
             }
             
-            $(this).children('input').puirating(options);
+            if(this.name) {
+                this.children[0].name = this.name;
+            }
+            
+            $(this.children[0]).puirating(options);
         }
     },
     
