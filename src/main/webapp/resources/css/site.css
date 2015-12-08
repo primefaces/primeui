@@ -301,7 +301,7 @@ input.searchInput {
     background-color: #FBFCFD;
 }
 
-.doc-table tbody nth-child(odd) {
+.doc-table tbody tr:nth-child(odd){
     background-color: #F3F6F9;
 }
 
