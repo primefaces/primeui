@@ -30,11 +30,11 @@ xtag.register('p-panel', {
             var options = {
                 title: this.title,
                 toggleable: this.toggleable !== null,
-                toggleDuration: this.toggleDuration === null ? undefined : this.toggleDuration,
-                toggleOrientation: this.toggleOrientation === null ? undefined: this.toggleOrientation,
+                toggleDuration: this.toggleDuration||'normal',
+                toggleOrientation: this.toggleOrientation||'vertical',
                 collapsed: this.collapsed !== null,
                 closable: this.closable !== null,
-                closeDuration: this.closeDuration === null ? undefined: this.closeDuration
+                closeDuration: this.closeDuration||'slow'
             },
             beforeClose = this.getAttribute('beforeclose'),
             afterClose = this.getAttribute('afterclose'),
