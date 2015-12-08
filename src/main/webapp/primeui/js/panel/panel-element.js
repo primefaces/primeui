@@ -5,10 +5,14 @@ xtag.register('p-panel', {
             attribute: {}
         },
         toggleDuration: {
-            attribute: {}
+            attribute: {
+                name: 'toggleduration'
+            }
         },
         toggleOrientation: {
-            attribute: {}
+            attribute: {
+                name: 'toggleorientation'
+            }
         },
         collapsed: {
             attribute: {}
@@ -17,7 +21,9 @@ xtag.register('p-panel', {
             attribute: {}
         },
         closeDuration: {
-            attribute: {}
+            attribute: {
+                name: 'closeduration'
+            }
         },
         title: {
             attribute: {}
