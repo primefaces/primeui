@@ -1,22 +1,30 @@
-(function() {
+xtag.register('p-inputtext', {
     
-    var InputTextPrototype = Object.create(HTMLInputElement.prototype);
+    extends: 'input',
     
-    InputTextPrototype.createdCallback = function() {
-        $(this).puiinputtext();
-    };
+    accessors: {
+    },
     
-    InputTextPrototype.disable = function() {
-        $(this).puiinputtext('disable');
-    };
+    lifecycle: {
+        
+        created: function() {
+            $(this).puiinputtext();
+        }
+        
+    },
     
-    InputTextPrototype.enable = function() {
-        $(this).puiinputtext('enable');
-    };
+    methods: {
+        
+        disable: function() {
+            $(this).puiinputtext('disable');
+        },
+        
+        enable: function() {
+            $(this).puiinputtext('enable');
+        }
+        
+    },
     
-    document.registerElement('p-inputtext', {
-        extends: 'input',
-        prototype: InputTextPrototype
-    });
-    
-})();
+    events: {
+    }
+});
