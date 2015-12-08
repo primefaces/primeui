@@ -189,6 +189,16 @@ var PUI = {
     
     getGridColumn: function(number) {
         return this.gridColumns[number + ''];
+    },
+    
+    executeFunctionByName: function(functionName, context /*, args */) {
+        var args = [].slice.call(arguments).splice(2),
+        namespaces = functionName.split("."),
+        func = namespaces.pop();
+        for(var i = 0; i < namespaces.length; i++) {
+          context = context[namespaces[i]];
+        }
+        return context[func].apply(this, args);
     }
 };
 

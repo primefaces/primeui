@@ -7,7 +7,9 @@
        
         options: {
             stars: 5,
-            cancel: true
+            cancel: true,
+            readonly: false,
+            disabled: false
         },
         
         _create: function() {
@@ -32,10 +34,10 @@
             
             this.stars = this.container.children('.pui-rating-star');
 
-            if(input.prop('disabled')) {
+            if(input.prop('disabled')||this.options.disabled) {
                 this.container.addClass('ui-state-disabled');
             }
-            else if(!input.prop('readonly')){
+            else if(!input.prop('readonly')&&!this.options.readonly){
                 this._bindEvents();
             }
         },
