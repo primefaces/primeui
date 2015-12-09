@@ -2,7 +2,9 @@ xtag.register('p-panel', {
             
     accessors: {
         toggleable: {
-            attribute: {}
+            attribute: {
+                boolean: true
+            }
         },
         toggleDuration: {
             attribute: {
@@ -15,10 +17,14 @@ xtag.register('p-panel', {
             }
         },
         collapsed: {
-            attribute: {}
+            attribute: {
+                boolean: true
+            }
         },
         closable: {
-            attribute: {}
+            attribute: {
+                boolean: true
+            }
         },
         closeDuration: {
             attribute: {
@@ -27,34 +33,60 @@ xtag.register('p-panel', {
         },
         title: {
             attribute: {}
+        },
+        onBeforeClose: {
+            attribute: {
+                name: 'onbeforeclose'
+            }
+        },
+        onAfterClose: {
+            attribute: {
+                name: 'onafterclose'
+            }
+        },
+        onBeforeCollapse: {
+            attribute: {
+                name: 'onbeforecollapse'
+            }
+        },
+        onAfterCollapse: {
+            attribute: {
+                name: 'onaftercollapse'
+            }
+        },
+        onBeforeExpand: {
+            attribute: {
+                name: 'onbeforeexpand'
+            }
+        },
+        onAfterExpand: {
+            attribute: {
+                name: 'onafterexpand'
+            }
         }
+        
     },
     
     lifecycle: {
         
         created: function() {
-            var options = {
+            var $this = this,
+            options = {
                 title: this.title,
-                toggleable: this.toggleable !== null,
+                toggleable: this.toggleable,
                 toggleDuration: this.toggleDuration||'normal',
                 toggleOrientation: this.toggleOrientation||'vertical',
-                collapsed: this.collapsed !== null,
-                closable: this.closable !== null,
+                collapsed: this.collapsed,
+                closable: this.closable,
                 closeDuration: this.closeDuration||'slow'
-            },
-            beforeClose = this.getAttribute('beforeclose'),
-            afterClose = this.getAttribute('afterclose'),
-            beforeCollapse= this.getAttribute('beforecollapse'),
-            afterCollapse = this.getAttribute('aftercollapse'),
-            beforeExpand = this.getAttribute('beforeexpand'),
-            afterExpand = this.getAttribute('afterexpand');
+            };
     
-            if(beforeClose) options.beforeClose = function(event) {PUI.executeFunctionByName(beforeClose, window, event);};
-            if(afterClose) options.afterClose = function(event) {PUI.executeFunctionByName(afterClose, window, event);};
-            if(beforeCollapse) options.beforeCollapse = function(event) {PUI.executeFunctionByName(beforeCollapse, window, event);};
-            if(afterCollapse) options.afterCollapse = function(event) {PUI.executeFunctionByName(afterCollapse, window, event);};
-            if(beforeExpand) options.beforeExpand = function(event) {PUI.executeFunctionByName(beforeExpand, window, event);};
-            if(afterExpand) options.afterExpand = function(event) {PUI.executeFunctionByName(afterExpand, window, event);};
+            if(this.beforeClose) options.beforeClose = function(event) {PUI.executeFunctionByName($this.beforeClose, window, event);};
+            if(this.afterClose) options.afterClose = function(event) {PUI.executeFunctionByName($this.afterClose, window, event);};
+            if(this.beforeCollapse) options.beforeCollapse = function(event) {PUI.executeFunctionByName($this.beforeCollapse, window, event);};
+            if(this.afterCollapse) options.afterCollapse = function(event) {PUI.executeFunctionByName($this.afterCollapse, window, event);};
+            if(this.beforeExpand) options.beforeExpand = function(event) {PUI.executeFunctionByName($this.beforeExpand, window, event);};
+            if(this.afterExpand) options.afterExpand = function(event) {PUI.executeFunctionByName($this.afterExpand, window, event);};
             
             $(this).contents().wrap('<div></div>');
             $(this.children[0]).puipanel(options);
