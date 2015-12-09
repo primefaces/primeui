@@ -88,7 +88,7 @@ xtag.register('p-panel', {
             if(this.beforeExpand) options.beforeExpand = function(event) {PUI.executeFunctionByName($this.beforeExpand, window, event);};
             if(this.afterExpand) options.afterExpand = function(event) {PUI.executeFunctionByName($this.afterExpand, window, event);};
             
-            $(this).contents().wrap('<div></div>');
+            $(this).contents().wrapAll('<div></div>');
             $(this.children[0]).puipanel(options);
         }
         
