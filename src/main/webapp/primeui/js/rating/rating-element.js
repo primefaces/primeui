@@ -10,38 +10,37 @@ xtag.register('p-rating', {
             attribute: {}
         },
         readonly: {
-            attribute: {}
+            attribute: {
+                boolean: true
+            }
         },
         disabled: {
-            attribute: {}
+            attribute: {
+                boolean: true
+            }
         },
         name: {
+            attribute: {}
+        },
+        onrate: {
+            attribute: {}
+        },
+        oncancel: {
             attribute: {}
         }
     },
     
     lifecycle: {
         created: function () {  
-            var onrate = this.getAttribute('onrate'),
-            oncancel = this.getAttribute('oncancel')
+            var $this = this,
             options = {
                 stars: this.stars||5,
-                cancel: this.cancel === null ? true : JSON.parse(this.cancel),
-                readonly: this.readonly !== null,
-                disabled: this.disabled !== null
+                cancel: this.cancel ? JSON.parse(this.cancel) : true,
+                readonly: this.readonly,
+                disabled: this.disabled,
+                rate: this.onrate ? function(event, value){PUI.executeFunctionByName($this.onrate, window, event, value);} : null,
+                oncancel: this.oncancel ? function(event, value){PUI.executeFunctionByName($this.oncancel, window);} : null
             };
-            
-            if(onrate !== null) {
-                options.rate = function(event, value) {
-                    PUI.executeFunctionByName(onrate, window, event, value);
-                };
-            }
-            
-            if(oncancel !== null) {
-                options.cancel = function(event) {
-                    PUI.executeFunctionByName(oncancel, window, event);
-                };
-            }
             
             if(this.name) {
                 this.children[0].name = this.name;
@@ -49,13 +48,5 @@ xtag.register('p-rating', {
             
             $(this.children[0]).puirating(options);
         }
-    },
-    
-    events: {
-        
-        onrate: function() {
-            alert('x');
-        }
     }
-    
 });

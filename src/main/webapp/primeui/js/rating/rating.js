@@ -64,7 +64,7 @@
         
             this.stars.filter('.pui-rating-star-on').removeClass('pui-rating-star-on');
             
-            this._trigger('cancel', null);
+            this._trigger('oncancel', null);
         },
         
         getValue: function() {
