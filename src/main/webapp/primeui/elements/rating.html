@@ -1,0 +1,36 @@
+<dom-module id="p-rating">
+
+    <template>
+        <input type="hidden" />
+    </template>
+
+    <script>
+        Polymer({
+            is: "p-rating",
+            properties: {
+                stars: {
+                    type: Number,
+                    value: 5
+                },
+                cancel: {
+                    type: String
+                },
+                readonly: {
+                    type: Boolean
+                },
+                disabled: {
+                    type: Boolean
+                }
+            },
+            ready: function () {
+                $(this.children[0]).puirating({
+                    stars: this.stars,
+                    cancel: this.cancel === 'false' ? false: true,
+                    readonly: this.readonly,
+                    disabled: this.disabled
+                });
+            }
+        });
+    </script>
+
+</dom-module>
