@@ -38,8 +38,8 @@ xtag.register('p-rating', {
                 cancel: this.cancel ? JSON.parse(this.cancel) : true,
                 readonly: this.readonly,
                 disabled: this.disabled,
-                rate: this.onrate ? function(event, value){PUI.executeFunctionByName($this.onrate, window, event, value);} : null,
-                oncancel: this.oncancel ? function(event, value){PUI.executeFunctionByName($this.oncancel, window);} : null
+                rate: this.onrate ? function(event, value){PUI.executeFunctionByName($this.onrate, event, value);} : null,
+                oncancel: this.oncancel ? function(event, value){PUI.executeFunctionByName($this.oncancel);} : null
             };
             
             if(this.name) {

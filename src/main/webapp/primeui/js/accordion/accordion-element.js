@@ -36,7 +36,7 @@ xtag.register('p-accordion', {
             this.xtag.container.puiaccordion({
                 activeIndex: this.activeindex||0,
                 orientation: this.orientation||'top',
-                change: this.onchange ? function(event, panel){PUI.executeFunctionByName($this.onchange, window, event, panel);} : null
+                change: this.onchange ? function(event, panel){PUI.executeFunctionByName($this.onchange, event, panel);} : null
             });
         }
         

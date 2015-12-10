@@ -43,7 +43,7 @@ xtag.register('p-tabview', {
             container.puitabview({
                 activeIndex: this.activeindex||0,
                 orientation: this.orientation||'top',
-                change: this.onchange ? function(event, index){PUI.executeFunctionByName($this.onchange, window, event, index);} : null
+                change: this.onchange ? function(event, index){PUI.executeFunctionByName($this.onchange, event, index);} : null
             });
         }
         

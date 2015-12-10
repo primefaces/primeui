@@ -34,8 +34,8 @@ xtag.register('p-fieldset', {
                 toggleable: this.toggleable,
                 toggleDuration: this.toggleDuration||'normal',
                 collapsed: this.collapsed,
-                beforeToggle: this.beforeToggle ? function(event) {PUI.executeFunctionByName($this.beforeToggle, window, event);} : null,
-                afterToggle: this.afterToggle ? function(event) {PUI.executeFunctionByName($this.afterToggle, window, event);} : null
+                beforeToggle: this.beforeToggle ? function(event) {PUI.executeFunctionByName($this.beforeToggle, event);} : null,
+                afterToggle: this.afterToggle ? function(event) {PUI.executeFunctionByName($this.afterToggle, event);} : null
             });
         }
         
