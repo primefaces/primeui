@@ -191,14 +191,28 @@ var PUI = {
         return this.gridColumns[number + ''];
     },
     
-    executeFunctionByName: function(functionName, context /*, args */) {
+    executeFunctionByName: function(functionName /*, args */) {
         var args = [].slice.call(arguments).splice(2),
+        context = window,
         namespaces = functionName.split("."),
         func = namespaces.pop();
         for(var i = 0; i < namespaces.length; i++) {
           context = context[namespaces[i]];
         }
         return context[func].apply(this, args);
+    },
+    
+    resolveObjectByName: function(name) {
+        if(name) {
+            var parts = name.split(".");
+            for(var i = 0, len = parts.length, obj = window; i < len; ++i) {
+                obj = obj[parts[i]];
+            }
+            return obj;
+        }
+        else {
+            return null;
+        }
     }
 };
 
