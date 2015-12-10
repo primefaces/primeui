@@ -4,15 +4,15 @@
     <link rel="stylesheet" href="primeui/css/button/button.css" />
     <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
     <link rel="stylesheet" href="primeui/css/grid/grid.css" />
-    <link rel="stylesheet" href="primeui/css/onebutton/onebutton.css" />
+    <link rel="stylesheet" href="primeui/css/manybutton/manybutton.css" />
     <script type="text/javascript" src="primeui/js/checkbox/checkbox.js"></script>
-    <script type="text/javascript" src="primeui/js/onebutton/onebutton.js"></script>
+    <script type="text/javascript" src="primeui/js/manybutton/manybutton.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript">
         $(function() {
             
 
-            $('#xxx').selectonebutton({
+            $('#xxx').selectmanybutton({
                 formfield: 'xxx-input',
                 choices: [
                    {label:'Xbox One', value:0},
@@ -20,7 +20,7 @@
                    {label:'Wii', value:2},
                    {label:'PS3',value:3}
                 ],
-                unselectable: false
+                unselectable: true
             });
 
             $('#doc').puitabview();
@@ -35,7 +35,7 @@
 
     <div class="ContentSideSections">
         <div class="Content100 overHidden TextShadow">
-            <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">SelectOneButton</span>
+            <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">SelectManyButton</span>
             <span class="defaultText dispTable">ToggleButton is used to select a boolean value using a button.</span>
         </div>
     </div>
