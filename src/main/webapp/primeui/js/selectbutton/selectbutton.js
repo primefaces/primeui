@@ -1,6 +1,6 @@
 (function() {
 
-    $.widget("primeui.selectbutton", {
+    $.widget("primeui.puiselectbutton", {
        
        options: {
             choices: null,

@@ -11,23 +11,21 @@
     <script type="text/javascript">
         $(function() {
            
-            $('#single').selectbutton({
+            $('#single').puiselectbutton({
                 formfield: 'single_input',
                 choices: [
                    {label:'Xbox One', value:0},
                    {label:'PS4', value:1},
-                   {label:'Wii', value:2},
-                   {label:'PS3',value:3}
+                   {label:'Wii', value:2}
                 ]
             });
             
-            $('#multiple').selectbutton({
+            $('#multiple').puiselectbutton({
                 formfield: 'multiple_input',
                 choices: [
                    {label:'Xbox One', value:0},
                    {label:'PS4', value:1},
-                   {label:'Wii', value:2},
-                   {label:'PS3',value:3}
+                   {label:'Wii', value:2}
                 ],
                 multiple: true,
                 unselectable: true
@@ -41,7 +39,7 @@
     <div class="ContentSideSections">
         <div class="Content100 overHidden TextShadow">
             <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">SelectButton</span>
-            <span class="defaultText dispTable">ToggleButton is used to select a boolean value using a button.</span>
+            <span class="defaultText dispTable">SelectButton is used to choose single or multiple items from a list using buttons.</span>
         </div>
     </div>
 
@@ -70,11 +68,18 @@
                         <div>
                             <div id="doc-overview">
                                 <pre name="code" class="brush:xml">
-            &lt;input type="checkbox" name="chk" id="chk1" value="1"/&gt;
+                        &lt;div id="single" /&gt;&lt;/div&gt;   
                                 </pre>
 
                                 <pre name="code" class="brush:js">
-            $('#chk1').puitogglebutton();
+
+            $('#single').puiselectbutton({
+                choices: [
+                   {label:'Xbox One', value:0},
+                   {label:'PS4', value:1},
+                   {label:'Wii', value:2}
+                ]
+            });
                                 </pre>
 
                             </div>
@@ -89,40 +94,34 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>onLabel</td>
-                                            <td>string</td>
-                                            <td>yes</td>
-                                            <td>Label for the on state.</td>
+                                            <td>choices</td>
+                                            <td>string , number</td>
+                                            <td>null</td>
+                                            <td>Choices for the buttons.</td>
                                         </tr>
                                         <tr>
-                                            <td>offLabel</td>
-                                            <td>string</td>
-                                            <td>no</td>
-                                            <td>Label for the pff state.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>onIcon</td>
+                                            <td>formfield</td>
                                             <td>string</td>
                                             <td>null</td>
-                                            <td>Icon for the on state.</td>
+                                            <td>Name for the form.</td>
                                         </tr>
                                         <tr>
-                                            <td>offIcon</td>
-                                            <td>string</td>
-                                            <td>null</td>
-                                            <td>Icon for the off state.</td>
+                                            <td>unselectable</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>State for the unselectable buttons.</td>
                                         </tr>
                                         <tr>
-                                            <td>style</td>
+                                            <td>tabindex</td>
                                             <td>string</td>
-                                            <td>null</td>
-                                            <td>Inline style of the element.</td>
+                                            <td>'0'</td>
+                                            <td>Order of elements in tabbing.</td>
                                         </tr>
                                         <tr>
-                                            <td>styleClass</td>
-                                            <td>string</td>
-                                            <td>null</td>
-                                            <td>Style class of the element.</td>
+                                            <td>multiple</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>State for multiple button selection.</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -138,9 +137,8 @@
                                     <tbody>
                                         <tr>
                                             <td>change</td>
-                                            <td>event: puitogglebuttonchange event
+                                            <td>event: puiselectbuttonchange event
                                                 <br />
-                                                checked: Boolean value of the state.
                                             </td>
                                             <td>Fires when value changes.</td>
                                         </tr>
@@ -149,8 +147,8 @@
 
                                 <h3>Example</h3>
                                 <pre name="code" class="brush:js">
-            $(':checkbox').puitogglebutton({
-                change: function(event, checked) {
+            $('div').puiselectbutton({
+                change: function(event) {
                     //..
             }});
                                 </pre>
@@ -165,51 +163,21 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>check</td>
-                                            <td>-</td>
-                                            <td>Selects value.</td>
+                                            <td>selectOption</td>
+                                            <td>value</td>
+                                            <td>Selects the clicked option.</td>
                                         </tr>
                                         <tr>
-                                            <td>unselect</td>
-                                            <td>-</td>
-                                            <td>Unselects value.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>toggle</td>
-                                            <td>-</td>
-                                            <td>Toggles checked state.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>isChecked</td>
-                                            <td>value: Boolean value representing checked state.</td>
-                                            <td>Returns checked state.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>enable</td>
-                                            <td>-</td>
-                                            <td>Enable the widget.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>disable</td>
-                                            <td>-</td>
-                                            <td>Disable the widget.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>option</td>
-                                            <td>name: Name of the option</td>
-                                            <td>Returns the value of the option.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>option</td>
-                                            <td>name: Name of the option, value: Value of the option</td>
-                                            <td>Set the value of the option.</td>
+                                            <td>unselectOption</td>
+                                            <td>value</td>
+                                            <td>Unelects the clicked option.</td>
                                         </tr>
                                     </tbody>
                                 </table>
 
                                 <h3>Example</h3>
                                 <pre name="code" class="brush:js">
-            $('#default').puitogglebutton('check');  
+            $('#single').puiselectbutton('selectOption',0);
                                 </pre>
                             </div>
 
@@ -217,23 +185,35 @@
 
                                 <pre name="code" class="brush:js">
 $(function() {
-    $('#basic').puitogglebutton();
-
-    $('#icons').puitogglebutton({
-        onLabel: 'I agree',
-        offLabel: 'I disagree',
-        onIcon: 'fa-check-square',
-        offIcon: 'fa-square'
-    });
+    $('#single').selectbutton({
+                formfield: 'single_input',
+                choices: [
+                   {label:'Xbox One', value:0},
+                   {label:'PS4', value:1},
+                   {label:'Wii', value:2},
+                   {label:'PS3',value:3}
+                ]
+            });
+            
+            $('#multiple').selectbutton({
+                formfield: 'multiple_input',
+                choices: [
+                   {label:'Xbox One', value:0},
+                   {label:'PS4', value:1},
+                   {label:'Wii', value:2},
+                   {label:'PS3',value:3}
+                ],
+                multiple: true,
+                unselectable: true
+            });
 });
                                 </pre>
-
                                 <pre name="code" class="brush:xml">
-&lt;h3 class="first"&gt;Basic&lt;/h3&gt;
-&lt;input id="basic" type="checkbox" /&gt;
+&lt;h3 class="first"&gt;Single&lt;/h3&gt;
+&lt;div id="single" style="margin-bottom:25px" /&gt;&lt;/div&gt;
 
-&lt;h3&gt;Icons&lt;/h3&gt;
-&lt;input id="icons" type="checkbox" /&gt;
+&lt;h3 class="first"&gt;Multiple&lt;/h3&gt;
+&lt;div id="multiple"  /&gt;&lt;/div&gt;
                                 </pre>
 
                             </div>
