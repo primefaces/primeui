@@ -11,7 +11,7 @@
         },
         
         _create: function() {
-            this.element.addClass('pui-selectonebutton pui-buttonset ui-widget ui-corner-all').attr('tabindex');
+            this.element.addClass('pui-selectbutton pui-buttonset ui-widget ui-corner-all').attr('tabindex');
             //create buttons
             if(this.options.choices) {
                 for(var i = 0; i < this.options.choices.length; i++) {
@@ -56,20 +56,24 @@
             .on('mouseout', function() {
                 $(this).removeClass('ui-state-hover');
             })
-            .on('click', function() {
+            .on('click', function(e) {
                 var btn = $(this);
                 if($(this).hasClass("ui-state-active")) {
-                    if($this.options.unselectable)
+                    if($this.options.unselectable) {
                         $this.unselectOption(btn);
+                        $this._trigger('change', e);
+                    }
                 }
                 else {
-                    if($this.options.multiple)
+                    if($this.options.multiple) {
                         $this.selectOption(btn);
+                    }
                     else {
                         $this.unselectOption(btn.siblings('.ui-state-active'));
                         $this.selectOption(btn);
-                    }
+                    } 
                     
+                    $this._trigger('change', e);
                 }
             })
             .on('focus', function() {            
@@ -87,14 +91,16 @@
             })
             .on('keydown', function(e) {
                 var keyCode = $.ui.keyCode;
-                if(e.which === keyCode.SPACE) {
-                    $this.element.trigger('click');
+                if(e.which === keyCode.SPACE||e.which === keyCode.ENTER||e.which === keyCode.NUMPAD_ENTER) {
+                    $(this).trigger('click');
                     e.preventDefault();
                 }
-            }); 
+            });
         },
         
-        selectOption: function(btn) {
+        selectOption: function(value) {
+            var btn = $.isNumeric(value) ? this.element.children('.pui-button').eq(value) : value;
+            
             if(this.options.multiple) {
                 this.selectOptions.eq(btn.index()).prop('selected',true);
             }
@@ -104,7 +110,9 @@
             btn.addClass('ui-state-active');
         },
         
-        unselectOption: function(btn){
+        unselectOption: function(value){
+            var btn = $.isNumeric(value) ? this.element.children('.pui-button').eq(value) : value;
+            
             if(this.options.multiple) {
                 this.selectOptions.eq(btn.index()).prop('selected',false);
             }
@@ -113,7 +121,7 @@
             }
             btn.removeClass('ui-state-active');   
             btn.removeClass('ui-state-focus');         
-        }  
+        }
         
     });
     
