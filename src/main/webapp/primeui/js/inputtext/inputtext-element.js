@@ -21,6 +21,7 @@ if(!xtag.tags['p-inputtext']) {
                 $(this).puiinputtext('enable');
             }
         }
+        
     });
     
 }

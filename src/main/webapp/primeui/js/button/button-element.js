@@ -1,32 +1,36 @@
-xtag.register('p-button', {
-    
-    extends: 'button',
-    
-    accessors: {
-        icon: {
-            attribute: {}
+if(!xtag.tags['p-button']) {
+
+    xtag.register('p-button', {
+
+        extends: 'button',
+
+        accessors: {
+            icon: {
+                attribute: {}
+            },
+            iconPos: {
+                attribute: {}
+            }
         },
-        iconPos: {
-            attribute: {}
-        }
-    },
-    
-    lifecycle: {
-        created: function () {
-            $(this).puibutton({
-                icon: this.icon,
-                iconPos: this.iconPos || 'left'
-            });
-        }
-    },
-    
-    methods: {
-        disable: function () {
-            $(this).puibutton('disable');
+
+        lifecycle: {
+            created: function () {
+                $(this).puibutton({
+                    icon: this.icon,
+                    iconPos: this.iconPos || 'left'
+                });
+            }
         },
-        enable: function () {
-            $(this).puibutton('enable');
+
+        methods: {
+            disable: function () {
+                $(this).puibutton('disable');
+            },
+            enable: function () {
+                $(this).puibutton('enable');
+            }
         }
-    }
-    
-});
+
+    });
+
+}
