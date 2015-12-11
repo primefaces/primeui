@@ -12,7 +12,8 @@
             counter: null,
             counterTemplate: '{0}',
             minQueryLength: 3,
-            queryDelay: 700
+            queryDelay: 700,
+            completeSource: null
         },
 
         _create: function() {
