@@ -70,10 +70,7 @@
                         }
                     });
                 },
-                content: function(car) {
-                    return $('<div title="'+ car.vin + '"><img src="resources/demo/images/car/' + car.brand + 
-                            '.gif" /><div class="car-detail">' + car.year + ' - ' + car.color  +'</div></div>').puipanel();
-                }
+                template: $('#cartemplate')
             });
             
             $('#lazygrid').puidatagrid({
@@ -96,10 +93,7 @@
                         }
                     });
                 },
-                content: function(car) {
-                    return $('<div title="'+ car.vin + '"><img src="resources/demo/images/car/' + car.brand + 
-                            '.gif" /><div class="car-detail">' + car.year + ' - ' + car.color  +'</div></div>').puipanel();
-                }
+                template: $('#cartemplate')
             });
 
             $('#doc').puitabview();
@@ -140,6 +134,17 @@
         <div id="remotegrid"></div>
 
         <div id="lazygrid"></div>
+        
+        <script id="cartemplate" type="x-tmpl-mustache">
+            <div class="pui-panel ui-widget ui-widget-content ui-corner-all">
+                <div class="pui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all">
+                    <span class="ui-panel-title">{{vin}}</span></div>
+                <div class="pui-panel-content ui-widget-content">
+                    <img src="resources/demo/images/car/{{brand}}.gif">
+                    <div class="car-detail">{{year}} - {{color}}</div>
+                </div>
+            </div>
+        </script>
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">
@@ -184,40 +189,46 @@ $('#grid').puidatagrid({
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>onLabel</td>
-                                            <td>string</td>
-                                            <td>yes</td>
-                                            <td>Label for the on state.</td>
+                                            <td>columns</td>
+                                            <td>integer</td>
+                                            <td>3</td>
+                                            <td>Number of items per row.</td>
                                         </tr>
                                         <tr>
-                                            <td>offLabel</td>
-                                            <td>string</td>
-                                            <td>no</td>
-                                            <td>Label for the pff state.</td>
+                                            <td>paginator</td>
+                                            <td>object</td>
+                                            <td>null</td>
+                                            <td>Configuration for paginator, see paginator widget for the options.</td>
                                         </tr>
                                         <tr>
-                                            <td>onIcon</td>
+                                            <td>header</td>
                                             <td>string</td>
                                             <td>null</td>
-                                            <td>Icon for the on state.</td>
+                                            <td>Text for header section.</td>
                                         </tr>
                                         <tr>
-                                            <td>offIcon</td>
+                                            <td>footer</td>
                                             <td>string</td>
                                             <td>null</td>
-                                            <td>Icon for the off state.</td>
+                                            <td>Text for footer section.</td>
                                         </tr>
                                         <tr>
-                                            <td>style</td>
-                                            <td>string</td>
+                                            <td>content</td>
+                                            <td>function</td>
                                             <td>null</td>
-                                            <td>Inline style of the element.</td>
+                                            <td>Function that takes the item to render as a parameter and returns the content for it.</td>
                                         </tr>
                                         <tr>
-                                            <td>styleClass</td>
+                                            <td>lazy</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>Determines if the remote data loading is lazy, only the current page is loaded if true.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>content</td>
                                             <td>string</td>
                                             <td>null</td>
-                                            <td>Style class of the element.</td>
+                                            <td>Template element as jQuery object to be used to generate the content instead of using content function approach.</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -270,8 +281,8 @@ $(function() {
             {'brand': 'Jaguar', 'year': 2009, 'color': 'Red', 'vin': 'g6hehr'},
         ],
         content: function(car) {
-            return $('&lt;div title="'+ car.vin + '"&gt;&lt;img src="resources/demo/images/car/' + car.brand + 
-                    '.gif" /&gt;&lt;div class="car-detail"&gt;' + car.year + ' - ' + car.color  +'&lt;/div&gt;&lt;/div&gt;').puipanel();
+            return $('<div title="'+ car.vin + '"><img src="resources/demo/images/car/' + car.brand + 
+                    '.gif" /><div class="car-detail">' + car.year + ' - ' + car.color  +'</div></div>').puipanel();
         }
     });
 
@@ -291,10 +302,7 @@ $(function() {
                 }
             });
         },
-        content: function(car) {
-            return $('&lt;div title="'+ car.vin + '"&gt;&lt;img src="resources/demo/images/car/' + car.brand + 
-                    '.gif" /&gt;&lt;div class="car-detail"&gt;' + car.year + ' - ' + car.color  +'&lt;/div&gt;&lt;/div&gt;').puipanel();
-        }
+        template: $('#cartemplate')
     });
 
     $('#lazygrid').puidatagrid({
@@ -305,7 +313,7 @@ $(function() {
             totalRecords: 200
         },
         datasource: function(callback, ui) {
-            var uri = 'rest/cars/lazylist/' + ui.first + '/' + 9;
+            var uri = 'rest/cars/lazylist/' + ui.first + '/' + ui.rows;
 
             $.ajax({
                 type: "GET",
@@ -317,12 +325,10 @@ $(function() {
                 }
             });
         },
-        content: function(car) {
-            return $('&lt;div title="'+ car.vin + '"&gt;&lt;img src="resources/demo/images/car/' + car.brand + 
-                    '.gif" /&gt;&lt;div class="car-detail"&gt;' + car.year + ' - ' + car.color  +'&lt;/div&gt;&lt;/div&gt;').puipanel();
-        }
+        template: $('#cartemplate')
     });
 
+    $('#doc').puitabview();
 });
                                 </pre>
 
@@ -332,6 +338,17 @@ $(function() {
 &lt;div id="remotegrid"&gt;&lt;/div&gt;
 
 &lt;div id="lazygrid"&gt;&lt;/div&gt;
+
+&lt;script id="cartemplate" type="x-tmpl-mustache"&gt;
+    &lt;div class="pui-panel ui-widget ui-widget-content ui-corner-all"&gt;
+        &lt;div class="pui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all"&gt;
+            &lt;span class="ui-panel-title"&gt;{{vin}}&lt;/span&gt;&lt;/div&gt;
+        &lt;div class="pui-panel-content ui-widget-content"&gt;
+            &lt;img src="resources/demo/images/car/{{brand}}.gif"&gt;
+            &lt;div class="car-detail"&gt;{{year}} - {{color}}&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/script&gt;
                                 </pre>
                             </div>
                         </div>

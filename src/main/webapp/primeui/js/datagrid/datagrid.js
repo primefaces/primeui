@@ -12,7 +12,8 @@
             header: null,
             footer: null,
             content: null,
-            lazy: false
+            lazy: false,
+            template: null
         },
         
         _create: function() {
@@ -103,7 +104,7 @@
                         }
                         
                         var gridColumn = $('<div class="pui-datagrid-column ' + PUI.getGridColumn(this.options.columns) + '"></div>').appendTo(gridRow),
-                        markup = this.options.content.call(this, dataValue);
+                        markup = this._createItemContent(dataValue);
                         gridColumn.append(markup);
                     }
                 }
@@ -182,6 +183,17 @@
             }
             else {
                 $.Widget.prototype._setOption.apply(this, arguments);
+            }
+        },
+        
+        _createItemContent: function(obj) {
+            if(this.options.template) {
+                var template = this.options.template.html();
+                Mustache.parse(template);
+                return Mustache.render(template, obj);
+            }
+            else {
+                return this.options.content.call(this, obj);
             }
         }
         
