@@ -3,8 +3,10 @@
     <link rel="stylesheet" href="primeui/css/button/button.css" />
     <link rel="stylesheet" href="primeui/css/terminal/terminal.css" />
     <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
+    <script type="text/javascript" src="resources/demo/js/terminal-demo.js"></script>
     <script type="text/javascript" src="primeui/js/button/button.js"></script>
     <script type="text/javascript" src="primeui/js/terminal/terminal.js"></script>
+    <script type="text/javascript" src="primeui/js/terminal/terminal-element.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript">
         $(function() {
@@ -36,7 +38,11 @@
     </div>
 
     <div class="ContentSideSections Implementation">
-        <div id="trmnl"></div>
+        <h3 class="first">Remote Connection</h3>
+        <div id="trmnl" style="margin-bottom:20px"></div>
+        
+        <h3>PrimeElement</h3>
+        <p-terminal handler="TerminalDemo.handler" welcomemessage="Welcome to Terminal Element"></terminal>
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">
@@ -57,7 +63,7 @@
 
                                 <pre name="code" class="brush:js">
 $('#trmnl').puiterminal({
-    commandHandler: // function
+    handler: // function
 });
                                 </pre>
 
@@ -122,24 +128,27 @@ $('#trmnl').puiterminal({
                             <div id="doc-source">
                                 <pre name="code" class="brush:js">
 $('#trmnl').puiterminal({
-        welcomeMessage:'Welcome to PrimeFaces Terminal, how are you today?',
-        handler: function(request, response) {
-            $.ajax({
-                type: "GET",
-                url: 'rest/terminal/' + request,
-                dataType: "text",
-                context: this,
-                success: function(data) {
-                    response.call(this, data);
-                }
-            });
-        }
+    welcomeMessage: 'Welcome to PrimeUI Terminal, how are you today?',
+    handler: function(request, response) {
+        $.ajax({
+            type: "GET",
+            url: 'rest/terminal/' + request,
+            dataType: "text",
+            context: this,
+            success: function(data) {
+                response.call(this, data);
+            }
+        });
+    }
 });
                                 </pre>
 
                                 <pre name="code" class="brush:xml">
-&lt;div id="trmnl"&gt&lt;/div&gt;
+&lt;h3 class="first"&gt;Remote Connection&lt;/h3&gt;
+&lt;div id="trmnl" style="margin-bottom:20px"&gt;&lt;/div&gt;
 
+&lt;h3&gt;PrimeElement&lt;/h3&gt;
+&lt;p-terminal handler="TerminalDemo.handler" welcomemessage="Welcome to Terminal Element"&gt;&lt;/terminal&gt;
                                 </pre>
 
                             </div>
