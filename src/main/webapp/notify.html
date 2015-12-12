@@ -2,9 +2,9 @@
     <link rel="stylesheet" href="primeui/css/button/button.css" />
     <link rel="stylesheet" href="primeui/css/notify/notify.css" />
     <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
-    <link rel="stylesheet" href="primeui/css/inputtext/inputtext.css" />
     <script type="text/javascript" src="primeui/js/button/button.js"></script>
     <script type="text/javascript" src="primeui/js/notify/notify.js"></script>
+    <script type="text/javascript" src="primeui/js/notify/notify-element.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript">
         $(function() {
@@ -16,7 +16,7 @@
 
             $('#b-btn-show').puibutton({
                 click: function() {
-                    $('#notifybottom').puinotify('show', '<h1>PrimeUI Notify Widget</h1> <p>Notify is a notification bar that can be positioned at the top or bottom of screen.</p>');
+                    document.getElementById('notifybottom').show('<h1>PrimeElement</h1> <p>The bottom notify is defined as a PrimeElement.</p>');
                 }
             });
 
@@ -24,10 +24,6 @@
                 easing: 'easeInOutCirc'
             });
 
-            $('#notifybottom').puinotify({
-                easing: 'easeInOutCirc',
-                position: 'bottom'
-            });
             $('#doc').puitabview();
         });
     </script>
@@ -43,8 +39,8 @@
         <button id="b-btn-show" type="button">Bottom</button>
 
         <div id="notifytop"></div>
-
-        <div id="notifybottom"></div>
+        
+        <p-notify id="notifybottom" position="bottom" easing="easeInOutCirc"></p-notify>
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">
@@ -202,23 +198,18 @@ $('#default').puinotify('show');
 $(function() {                
     $('#t-btn-show').puibutton({
         click: function() {
-            $('#notifytop').puinotify('show', '&lt;h1&gt;PrimeUI Notify Widget&lt;/h1&gt; &lt;p&gt;Notify is a notification bar that can be positioned at the top or bottom of screen.&lt;/p&gt;');
+            $('#notifytop').puinotify('show', '<h1>PrimeUI Notify Widget</h1> <p>Notify is a notification bar that can be positioned at the top or bottom of screen.</p>');
         }
     });
 
     $('#b-btn-show').puibutton({
         click: function() {
-            $('#notifybottom').puinotify('show', '&lt;h1&gt;PrimeUI Notify Widget&lt;/h1&gt; &lt;p&gt;Notify is a notification bar that can be positioned at the top or bottom of screen.&lt;/p&gt;');
+            document.getElementById('notifybottom').show('<h1>PrimeElement</h1> <p>The bottom notify is defined as a PrimeElement.</p>');
         }
     });
 
     $('#notifytop').puinotify({
         easing: 'easeInOutCirc'
-    });
-
-    $('#notifybottom').puinotify({
-        easing: 'easeInOutCirc',
-        position: 'bottom'
     });
 });
                                 </pre>
@@ -228,7 +219,8 @@ $(function() {
 &lt;button id="b-btn-show" type="button"&gt;Bottom&lt;/button&gt;
 
 &lt;div id="notifytop"&gt;&lt;/div&gt;
-&lt;div id="notifybottom"&gt;&lt;/div&gt;
+
+&lt;p-notify id="notifybottom" position="bottom" easing="easeInOutCirc"&gt;&lt;/p-notify&gt;
                                 </pre>
                             </div>
                         </div>
