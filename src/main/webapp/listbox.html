@@ -143,6 +143,12 @@ $('#basic').puilistbox();
                                             <td>200</td>
                                             <td>Maximum height boundary of the content, if total height of items exceed this value, scrollbar is displayed.</td>
                                         </tr>
+                                        <tr>
+                                            <td>template</td>
+                                            <td>jQuery Object</td>
+                                            <td>null</td>
+                                            <td>Mustache script tag as jQuery object that represents the template.</td>
+                                        </tr>
                                     </tbody>
                                 </table>
 
@@ -258,7 +264,7 @@ $(function() {
     $('#custom').puilistbox({
         data: themes,
         content: function(option) {
-            return '&lt;img src="resources/demo/images/themes/' + option + '.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;' + option + '&lt;/span&gt;';
+            return '&lt;img src="resources/demo/images/themes/' + option.label + '.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;' + option.label + '&lt;/span&gt;';
         }
     });
 });
@@ -286,7 +292,27 @@ $(function() {
 
 &lt;h3&gt;Custom&lt;/h3&gt;
 &lt;select id="custom"&gt;&lt;/select&gt;
-                                            
+
+&lt;h3&gt;PrimeElement&lt;/h3&gt;
+&lt;p-listbox multiple&gt;
+    &lt;option value="1"&gt;Option 1&lt;/option&gt;
+    &lt;option value="2"&gt;Option 2&lt;/option&gt;
+    &lt;option value="3"&gt;Option 3&lt;/option&gt;
+    &lt;option value="4"&gt;Option 4&lt;/option&gt;
+    &lt;option value="5"&gt;Option 5&lt;/option&gt;
+&lt;/p-listbox&gt;
+
+&lt;h3&gt;PrimeElement Template&lt;/h3&gt;
+&lt;p-listbox multiple&gt;
+    &lt;option value="1"&gt;afterdark&lt;/option&gt;
+    &lt;option value="2"&gt;bootstrap&lt;/option&gt;
+    &lt;option value="3"&gt;cupertino&lt;/option&gt;
+    &lt;option value="4"&gt;rocket&lt;/option&gt;
+    &lt;option value="5"&gt;vader&lt;/option&gt;
+    &lt;script type="x-tmpl-mustache"&gt;
+        &lt;img src="resources/demo/images/themes/{{label}}.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;{{label}}&lt;/span&gt;
+    &lt;/script&gt;
+&lt;/p-listbox&gt;                                   
                                 </pre>
 
                             </div>
