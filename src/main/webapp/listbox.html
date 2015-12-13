@@ -6,6 +6,7 @@
     <script type="text/javascript" src="primeui/js/inputtext/inputtext.js"></script>
     <script type="text/javascript" src="primeui/js/button/button.js"></script>
     <script type="text/javascript" src="primeui/js/listbox/listbox.js"></script>
+    <script type="text/javascript" src="primeui/js/listbox/listbox-element.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript">
         $(function() {
@@ -21,7 +22,7 @@
             $('#custom').puilistbox({
                 data: themes,
                 content: function(option) {
-                    return '<img src="resources/demo/images/themes/' + option + '.png" alt="" /><span style="float:right;font-size:14px">' + option + '</span>';
+                    return '<img src="resources/demo/images/themes/' + option.label + '.png" alt="" /><span style="float:right;font-size:14px">' + option.label + '</span>';
                 }
             });
 
@@ -57,6 +58,27 @@
 
         <h3>Custom</h3>
         <select id="custom"></select>
+        
+        <h3>PrimeElement</h3>
+        <p-listbox multiple>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+            <option value="5">Option 5</option>
+        </p-listbox>
+        
+        <h3>PrimeElement Template</h3>
+        <p-listbox multiple>
+            <option value="1">afterdark</option>
+            <option value="2">bootstrap</option>
+            <option value="3">cupertino</option>
+            <option value="4">rocket</option>
+            <option value="5">vader</option>
+            <script type="x-tmpl-mustache">
+                <img src="resources/demo/images/themes/{{label}}.png" alt="" /><span style="float:right;font-size:14px">{{label}}</span>
+            </script>
+        </p-listbox>
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">

@@ -6,7 +6,10 @@
     $.widget("primeui.puilistbox", {
        
         options: {
-            scrollHeight: 200
+            scrollHeight: 200,
+            content: null,
+            data: null,
+            template: null
         },
 
         _create: function() {
@@ -40,9 +43,8 @@
         _populateContainerFromOptions: function() {
             this.choices = this.element.children('option');
             for(var i = 0; i < this.choices.length; i++) {
-                var choice = this.choices.eq(i),
-                    content = this.options.content ? this.options.content.call(this, this.options.data[i]) : choice.text();
-                this.listContainer.append('<li class="pui-listbox-item ui-corner-all">' + content + '</li>');
+                var choice = this.choices.eq(i);
+                this.listContainer.append('<li class="pui-listbox-item ui-corner-all">' + this._createItemContent(choice.get(0)) + '</li>');
             }
             this.items = this.listContainer.find('.pui-listbox-item:not(.ui-state-disabled)');
         },
@@ -214,6 +216,20 @@
         enable: function () {
             this._bindEvents();
             this.items.removeClass('ui-state-disabled');
+        },
+        
+        _createItemContent: function(choice) {
+            if(this.options.template) {
+                var template = this.options.template.html();
+                Mustache.parse(template);
+                return Mustache.render(template, choice);
+            }
+            else if(this.options.content) {
+                return this.options.content.call(this, choice);
+            }
+            else {
+                return choice.label;
+            }
         }
     });
         
