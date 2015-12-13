@@ -36,37 +36,24 @@ if(!xtag.tags['p-panel']) {
             title: {
                 attribute: {}
             },
-            onBeforeClose: {
-                attribute: {
-                    name: 'onbeforeclose'
-                }
+            onbeforeclose: {
+                attribute: {}
             },
-            onAfterClose: {
-                attribute: {
-                    name: 'onafterclose'
-                }
+            onafterclose: {
+                attribute: {}
             },
-            onBeforeCollapse: {
-                attribute: {
-                    name: 'onbeforecollapse'
-                }
+            onbeforecollapse: {
+                attribute: {}
             },
-            onAfterCollapse: {
-                attribute: {
-                    name: 'onaftercollapse'
-                }
+            onaftercollapse: {
+                attribute: {}
             },
-            onBeforeExpand: {
-                attribute: {
-                    name: 'onbeforeexpand'
-                }
+            onbeforeexpand: {
+                attribute: {}
             },
-            onAfterExpand: {
-                attribute: {
-                    name: 'onafterexpand'
-                }
+            onafterexpand: {
+                attribute: {}
             }
-
         },
 
         lifecycle: {
@@ -83,12 +70,12 @@ if(!xtag.tags['p-panel']) {
                     closeDuration: this.closeDuration||'slow'
                 };
 
-                if(this.beforeClose) options.beforeClose = function(event) {PUI.executeFunctionByName($this.beforeClose, event);};
-                if(this.afterClose) options.afterClose = function(event) {PUI.executeFunctionByName($this.afterClose, event);};
-                if(this.beforeCollapse) options.beforeCollapse = function(event) {PUI.executeFunctionByName($this.beforeCollapse, event);};
-                if(this.afterCollapse) options.afterCollapse = function(event) {PUI.executeFunctionByName($this.afterCollapse, event);};
-                if(this.beforeExpand) options.beforeExpand = function(event) {PUI.executeFunctionByName($this.beforeExpand, event);};
-                if(this.afterExpand) options.afterExpand = function(event) {PUI.executeFunctionByName($this.afterExpand, event);};
+                if(this.beforeClose) options.beforeClose = function(event) {PUI.executeFunctionByName($this.onbeforeclose, event);};
+                if(this.afterClose) options.afterClose = function(event) {PUI.executeFunctionByName($this.onafterclose, event);};
+                if(this.beforeCollapse) options.beforeCollapse = function(event) {PUI.executeFunctionByName($this.onbeforecollapse, event);};
+                if(this.afterCollapse) options.afterCollapse = function(event) {PUI.executeFunctionByName($this.onaftercollapse, event);};
+                if(this.beforeExpand) options.beforeExpand = function(event) {PUI.executeFunctionByName($this.onbeforeexpand, event);};
+                if(this.afterExpand) options.afterExpand = function(event) {PUI.executeFunctionByName($this.onafterexpand, event);};
 
                 $(this).contents().wrapAll('<div></div>');
                 $(this.children[0]).puipanel(options);
