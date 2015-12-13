@@ -83,10 +83,13 @@ if(!xtag.tags['p-dialog']) {
 
         lifecycle: {
             created: function() {
-                $(this).contents().wrapAll('<div></div>');
+                var element = $(this),
+                $this = this,
+                buttonsFacet = element.children('script[type="x-facet-buttons"]');
+
+                element.contents(':not(script)').wrapAll('<div></div>');
                 this.xtag.container = $(this).children('div');
-                
-                var $this = this;
+                        
                 $(this.xtag.container).puidialog({
                     title: this.title,
                     draggable: this.draggable ? JSON.parse(this.draggable) : true,
@@ -99,7 +102,7 @@ if(!xtag.tags['p-dialog']) {
                     visible: this.visible,
                     modal: this.modal,
                     showEffect: this.showeffect,
-                    hideeffect: this.hideeffect,
+                    hideEffect: this.hideeffect,
                     effectSpeed: this.effectspeed||'normal',
                     closeOnEscape: this.closeoneescape ? JSON.parse(this.closeoneescape) : true,
                     rtl: this.rtl,
@@ -113,6 +116,11 @@ if(!xtag.tags['p-dialog']) {
                     minimize: this.minimize ? function(event){PUI.executeFunctionByName($this.minimize, event);} : null,
                     maximize: this.maximize ? function(event){PUI.executeFunctionByName($this.maximize, event);} : null
                 });
+                
+                if(buttonsFacet.length) {
+                    $('<div class="pui-dialog-buttonpane ui-widget-content ui-helper-clearfix"></div>').append(buttonsFacet.html())
+                            .insertAfter($(this.xtag.container).children('div.pui-dialog-content'));
+                }      
             }
         },
 
