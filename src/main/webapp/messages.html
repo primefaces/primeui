@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
     <script type="text/javascript" src="primeui/js/button/button.js"></script>
     <script type="text/javascript" src="primeui/js/messages/messages.js"></script>
+    <script type="text/javascript" src="primeui/js/messages/messages-element.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript">
         $(function() {
@@ -32,6 +33,7 @@
 
             addMessage = function(severity, msg) {
                 $('#default').puimessages('show', severity, msg);
+                document.getElementById('msgs').show(severity, msg);
             }
 
             $('#doc').puitabview();
@@ -45,7 +47,13 @@
     </div>
 
     <div class="ContentSideSections Implementation">
+        <h3>Basic</h3>
         <div id="default"></div>
+        
+        <h3>PrimeElement</h3>
+        <p-messages id="msgs"></p-messages>
+        
+        <hr />
 
         <button id="btn-info" type="button">Info</button>
         <button id="btn-warn" type="button">Warn</button>
@@ -161,11 +169,18 @@ $('#btn-multiple').puibutton().click(function() {
 
 addMessage = function(severity, msg) {
     $('#default').puimessages('show', severity, msg);
+    document.getElementById('msgs').show(severity, msg);
 }
                                 </pre>
 
                                 <pre name="code" class="brush:xml">
-&lt;div id="default" /&gt;
+&lt;h3&gt;Basic&lt;/h3&gt;
+&lt;div id="default"&gt;&lt;/div&gt;
+
+&lt;h3&gt;PrimeElement&lt;/h3&gt;
+&lt;p-messages id="msgs"&gt;&lt;/p-messages&gt;
+
+&lt;hr /&gt;
 
 &lt;button id="btn-info" type="button"&gt;Info&lt;/button&gt;
 &lt;button id="btn-warn" type="button"&gt;Warn&lt;/button&gt;
