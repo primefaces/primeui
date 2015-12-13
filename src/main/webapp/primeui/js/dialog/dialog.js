@@ -26,7 +26,8 @@
             maximizable: false,
             appendTo: null,
             buttons: null,
-            responsive: false
+            responsive: false,
+            title: null
         },
         
         _create: function() {
@@ -40,8 +41,9 @@
                         .contents().wrapAll('<div class="pui-dialog-content ui-widget-content" />');
                     
             //header
+            var title = this.options.title||this.element.attr('title');
             this.element.prepend('<div class="pui-dialog-titlebar ui-widget-header ui-helper-clearfix ui-corner-top">' +
-                                '<span id="' + this.element.attr('id') + '_label" class="pui-dialog-title">' + this.element.attr('title') + '</span>')
+                                '<span id="' + this.element.attr('id') + '_label" class="pui-dialog-title">' + title + '</span>')
                                 .removeAttr('title');
             
             //footer
