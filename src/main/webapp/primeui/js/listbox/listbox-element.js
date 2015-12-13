@@ -10,12 +10,20 @@ if(!xtag.tags['p-listbox']) {
             },
             name: {
                 attribute: {}
+            },
+            onitemselect: {
+                attribute: {}
+            },
+            onitemunselect: {
+                attribute: {}
             }
         },
 
         lifecycle: {
             created: function() {
-                var element = $(this);
+                var element = $(this),
+                $this = this;
+        
                 element.children('option').wrapAll('<select></select>');
                 this.xtag.select = element.children('select');
                 if(this.name) {
@@ -26,7 +34,9 @@ if(!xtag.tags['p-listbox']) {
                 
                 this.xtag.select.puilistbox({
                     multiple: this.multiple,
-                    template: itemTemplate.length ? itemTemplate : null
+                    template: itemTemplate.length ? itemTemplate : null,
+                    itemSelect: function(event, option) {PUI.executeFunctionByName($this.onitemselect, event);},
+                    itemUnselect: function(event, option) {PUI.executeFunctionByName($this.onitemunselect, event);}
                 });
             }
         },
