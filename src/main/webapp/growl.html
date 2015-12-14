@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
     <script type="text/javascript" src="primeui/js/button/button.js"></script>
     <script type="text/javascript" src="primeui/js/growl/growl.js"></script>
+        <script type="text/javascript" src="primeui/js/growl/growl-element.js"></script> 
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript">
         $(function() {
@@ -45,12 +46,19 @@
     </div>
 
     <div class="ContentSideSections Implementation">
+        <h3>Basic</h3>
         <div id="default"></div>
+
+        <h3>PrimeElement</h3>
+        <p-growl id="growlDef"></p-growl>
 
         <button id="btn-info" type="button">Info</button>
         <button id="btn-warn" type="button">Warn</button>
         <button id="btn-error" type="button">Error</button>
         <button id="btn-multiple" type="button">Multiple</button>
+
+        
+
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">
