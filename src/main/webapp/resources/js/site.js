@@ -86,11 +86,7 @@ Showcase = {
             Showcase.hashChangeByLink = true;
             Showcase.openPage(page);
             window.location.hash = page.substring(page.lastIndexOf('/'), page.indexOf('.html'));
-
-            //clear notify
-            $(document.body).children('.pui-notify,.pui-shadow,.pui-growl').remove();
         }
-        
     },
     
     initMenuState: function() {
@@ -166,6 +162,11 @@ Showcase = {
     },
 
     openPage: function(url) {
+        //cleanup spa
+        $(document.body).children('.pui-notify,.pui-shadow,.pui-growl').remove();
+        if(this.pbinterval1) {clearInterval(this.pbinterval1); this.pbinterval1 = null;}
+        if(this.pbinterval2) {clearInterval(this.pbinterval2); this.pbinterval2 = null;}
+        
         $.get(url, function(content) {
             $('#widgetdemo').html(content);
         });
