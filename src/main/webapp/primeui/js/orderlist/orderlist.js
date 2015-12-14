@@ -12,7 +12,8 @@
             caption: null,
             responsive: false,
             datasource: null,
-            content: null
+            content: null,
+            template: null
         },
 
         _create: function() {
@@ -68,7 +69,7 @@
                     
             for(var i = 0; i < this.optionElements.length; i++) {
                 var optionElement = this.optionElements.eq(i),
-                itemContent = this.options.content ? this.options.content.call(this, optionElement) : optionElement.text(),
+                itemContent = this._createItemContent(optionElement.get(0)),
                 listItem = $('<li class="pui-orderlist-item ui-corner-all"></li>');
         
                 if($.type(itemContent) === 'string')
@@ -292,6 +293,20 @@
 
                 $this.element.append('<option value="' + itemValue + '" selected="selected">' + itemValue + '</option>');
             });
+        },
+        
+        _createItemContent: function(choice) {
+            if(this.options.template) {
+                var template = this.options.template.html();
+                Mustache.parse(template);
+                return Mustache.render(template, choice);
+            }
+            else if(this.options.content) {
+                return this.options.content.call(this, choice);
+            }
+            else {
+                return choice.label;
+            }
         }
         
     });

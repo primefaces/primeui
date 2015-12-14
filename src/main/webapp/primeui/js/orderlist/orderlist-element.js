@@ -22,13 +22,18 @@ if(!xtag.tags['p-orderlist']) {
                 attribute: {
                     boolean: true
                 }
+            },
+            onreorder: {
+                attribute: {}
             }
         },
 
         lifecycle: {
             created: function() {
-                var element = $(this);
-                element.children('option').wrapAll('<select></select>');
+                var $this = this,
+                element = $(this),
+                itemTemplate = element.children('script');
+                element.children('option').wrapAll('<select></select>'),
                 
                 this.xtag.select = element.children('select');
                 if(this.name) {
@@ -40,7 +45,9 @@ if(!xtag.tags['p-orderlist']) {
                     dragdrop: this.dragdrop ? JSON.parse(this.dragdrop) : true,
                     effect: this.effect||'fade',
                     caption: this.caption,
-                    responsive: this.responsive
+                    responsive: this.responsive,
+                    template: itemTemplate.length ? itemTemplate : null,
+                    reorder: function(event) {PUI.executeFunctionByName($this.reorder, event);}
                 });
             }
         },

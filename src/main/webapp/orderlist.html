@@ -28,7 +28,7 @@
                 responsive: true,
                 datasource: themes,
                 content: function(option) {
-                    return $('<div class="ui-helper-clearfix"><img src="resources/demo/images/themes/' + option.text() + '.png" alt="" style="float:left"/><span style="float:left; margin-left:15px; font-size:20px">' + option.text() + '</span></div>');
+                    return $('<div class="ui-helper-clearfix"><img src="resources/demo/images/themes/' + option.label + '.png" alt="" style="float:left"/><span style="float:left; margin-left:15px; font-size:20px">' + option.label + '</span></div>');
                 }
             });
 
@@ -82,20 +82,20 @@
                 </div>
                 <div class="pui-grid-col-6">
                     <h3>PrimeElement with Template</h3>
-                    <!--<p-orderlist>
+                    <p-orderlist responsive controlslocation="left">
                         <option value="1">Volkswagen</option>
                         <option value="2">Ford</option>
                         <option value="3">Mercedes</option>
                         <option value="4">Audi</option>
                         <option value="5">BMW</option>
                         <option value="6">Honda</option>
-                        <option value="7">Porsche</option>
-                        <option value="8">Chevrolet</option>
-                        <option value="9">Jaguar</option>
+                        <option value="7">Jaguar</option>
+                        <option value="8">Volvo</option>
+                        <option value="9">Fiat</option>
                         <script type="x-tmpl-mustache">
-                            <div class="ui-helper-clearfix"><img src="resources/demo/images/themes/{{label}}.png" alt="" style="float:left"/><span style="float:left; margin-left:15px; font-size:20px">{{label}}</span></div>
+                            <div class="ui-helper-clearfix"><img src="resources/demo/images/car/{{label}}.gif" alt="" style="float:left"/><span style="float:left; margin-left:15px; font-size:20px">{{label}}</span></div>
                         </script>
-                    <p-orderlist>-->
+                    <p-orderlist>
                 </div>
             </div>
         </div>
@@ -181,6 +181,12 @@ $('#list').puiorderlist();
                                             <td>function</td>
                                             <td>null</td>
                                             <td>Template of an item to customize content.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>template</td>
+                                            <td>jQuery</td>
+                                            <td>null</td>
+                                            <td>Mustache script element as jQuery object that represents the template.</td>
                                         </tr>
                                     </tbody>
                                 </table>
