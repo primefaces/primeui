@@ -1,0 +1,65 @@
+.pui-inputswitch {
+	display: inline-block;
+	padding: 0;
+	position: relative;
+	overflow: hidden;
+	cursor: pointer;
+	user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    height: 24px;
+}
+
+.pui-inputswitch .pui-inputswitch-on,
+.pui-inputswitch .pui-inputswitch-off {
+	white-space: nowrap;
+    display: block;
+    position: absolute;
+	top: 0;
+    width: auto;
+    overflow: hidden;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+	font-weight: bold;
+	height: 20px;
+	padding-top: 4px;
+}
+
+.pui-inputswitch .pui-inputswitch-off {
+	right: 0;
+	text-align: right;
+}
+
+.pui-inputswitch .pui-inputswitch-off span {
+	display: inline-block;
+	text-align: center;
+	padding-left: 2px;
+	padding-right: 3px;
+}
+
+.pui-inputswitch .pui-inputswitch-on {
+	left: 0;
+	padding-right: 4px;
+    border: 0 none;
+}
+
+.pui-inputswitch .pui-inputswitch-on span {
+	display: inline-block;
+	text-align: center;
+	padding-left: 3px;
+	padding-right: 2px;
+}
+
+.pui-inputswitch .pui-inputswitch-handle {
+	display: block;
+	width: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+    height: 24px;
+    border-top: 0 none;
+    border-bottom: 0 none;
+}

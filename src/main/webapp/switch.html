@@ -1,0 +1,212 @@
+<div>
+    <link rel="stylesheet" href="primeui/css/checkbox/checkbox.css" />
+    <link rel="stylesheet" href="primeui/css/inputtext/inputtext.css" />
+    <link rel="stylesheet" href="primeui/css/button/button.css" />
+    <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
+    <link rel="stylesheet" href="primeui/css/grid/grid.css" />
+    <link rel="stylesheet" href="primeui/css/switch/switch.css" />
+    <script type="text/javascript" src="primeui/js/checkbox/checkbox.js"></script>
+    <script type="text/javascript" src="primeui/js/switch/switch.js"></script>
+    <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            
+            $('#basic').puiswitch();
+            
+
+            $('#doc').puitabview();
+            
+        });
+    </script>
+
+    <div class="ContentSideSections">
+        <div class="Content100 overHidden TextShadow">
+            <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">InputSwitch</span>
+            <span class="defaultText dispTable">SelectButton is used to choose single or multiple items from a list using buttons.</span>
+        </div>
+    </div>
+
+    <div class="ContentSideSections Implementation">
+       
+        <h3>Basic</h3>
+        <input id="basic" type="checkbox"></input>
+
+    </div>
+
+    <div id="SourceContentSide" class="ContentSideSections Source">
+        <div class="Content100 overHidden TextShadow">
+            <span class="defaultText">
+                <span class="fontSize18 logoBlueText">           
+                    <div id="doc">
+                        <ul>
+                            <li><a href="#doc-overview">Overview</a></li>
+                            <li><a href="#doc-options">Options</a></li>
+                            <li><a href="#doc-events">Events</a></li>
+                            <li><a href="#doc-methods">Methods</a></li>
+                            <li><a href="#doc-methods">Source</a></li>
+                        </ul>
+                        <div>
+                            <div id="doc-overview">
+                                <pre name="code" class="brush:xml">
+                        &lt;div id="single" /&gt;&lt;/div&gt;   
+                                </pre>
+
+                                <pre name="code" class="brush:js">
+
+            $('#single').puiselectbutton({
+                choices: [
+                   {label:'Xbox One', value:0},
+                   {label:'PS4', value:1},
+                   {label:'Wii', value:2}
+                ]
+            });
+                                </pre>
+
+                            </div>
+
+                            <div id="doc-options">
+                                <table class="doc-table">
+                                    <thead>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>choices</td>
+                                            <td>string , number</td>
+                                            <td>null</td>
+                                            <td>Choices for the buttons.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>formfield</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Name for the form.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>unselectable</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>State for the unselectable buttons.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>tabindex</td>
+                                            <td>string</td>
+                                            <td>'0'</td>
+                                            <td>Order of elements in tabbing.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>multiple</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>State for multiple button selection.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div id="doc-events">
+                                <table class="doc-table">
+                                    <thead>
+                                    <th>Name</th>
+                                    <th>Parameters</th>
+                                    <th>Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>change</td>
+                                            <td>event: puiselectbuttonchange event
+                                                <br />
+                                            </td>
+                                            <td>Fires when value changes.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <h3>Example</h3>
+                                <pre name="code" class="brush:js">
+            $('div').puiselectbutton({
+                change: function(event) {
+                    //..
+            }});
+                                </pre>
+                            </div>
+
+                            <div id="doc-methods">
+                                <table class="doc-table">
+                                    <thead>
+                                    <th>Name</th>
+                                    <th>Parameters</th>
+                                    <th>Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>selectOption</td>
+                                            <td>value</td>
+                                            <td>Selects the clicked option.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>unselectOption</td>
+                                            <td>value</td>
+                                            <td>Unelects the clicked option.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <h3>Example</h3>
+                                <pre name="code" class="brush:js">
+            $('#single').puiselectbutton('selectOption',0);
+                                </pre>
+                            </div>
+
+                            <div id="doc-source">
+
+                                <pre name="code" class="brush:js">
+$(function() {
+    $('#single').selectbutton({
+                formfield: 'single_input',
+                choices: [
+                   {label:'Xbox One', value:0},
+                   {label:'PS4', value:1},
+                   {label:'Wii', value:2},
+                   {label:'PS3',value:3}
+                ]
+            });
+            
+            $('#multiple').selectbutton({
+                formfield: 'multiple_input',
+                choices: [
+                   {label:'Xbox One', value:0},
+                   {label:'PS4', value:1},
+                   {label:'Wii', value:2},
+                   {label:'PS3',value:3}
+                ],
+                multiple: true,
+                unselectable: true
+            });
+});
+                                </pre>
+                                <pre name="code" class="brush:xml">
+&lt;h3 class="first"&gt;Single&lt;/h3&gt;
+&lt;div id="single" style="margin-bottom:25px" /&gt;&lt;/div&gt;
+
+&lt;h3 class="first"&gt;Multiple&lt;/h3&gt;
+&lt;div id="multiple"  /&gt;&lt;/div&gt;
+                                </pre>
+
+                            </div>
+
+                        </div>
+                    </div>   
+                </span>
+            </span>
+        </div>
+    </div>
+
+    <script language="javascript">
+        SyntaxHighlighter.highlight();
+    </script>
+
+</div>
