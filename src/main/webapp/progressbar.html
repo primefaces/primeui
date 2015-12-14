@@ -17,10 +17,17 @@
 
             $('#doc').puitabview();
 
-            setInterval(function() {
+            Showcase.pbinterval1 = setInterval(function() {
                 var val = $('#pb1').puiprogressbar('option', 'value') + 10;
                 $('#pb1').puiprogressbar('option', 'value', val);
             }, 1000);
+            
+            Showcase.pbinterval2 = setInterval(function() {
+                var progressElement = document.getElementById('pbel');
+                progressElement.setValue(progressElement.getValue() + 10);
+            }, 1000);
+            
+            $('#doc').puitabview();
         });
     </script>
 
@@ -39,8 +46,7 @@
         <div id="pb2" style="margin-bottom:5px"></div>
 
         <h3>Prime Element</h3>
-        <p-progressbar id="elemPb" value="50"></p-progressbar>
-
+        <p-progressbar id="pbel"></p-progressbar>
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">
@@ -164,23 +170,35 @@ $('#default').puiprogressbar({
 
                                 <pre name="code" class="brush:js">
 $(function() {
-     $('#pb1').puiprogressbar();
+    $('#pb1').puiprogressbar();
 
-     $('#pb2').puiprogressbar({
-          value: 50
-     });                
+    $('#pb2').puiprogressbar({
+        value: 50
+    });
 
-     setInterval(function() {
-          var val = $('#pb1').puiprogressbar('option', 'value') + 10;
-          $('#pb1').puiprogressbar('option', 'value', val);
-     }, 1000);
+    $('#doc').puitabview();
+
+    Showcase.pbinterval1 = setInterval(function() {
+        var val = $('#pb1').puiprogressbar('option', 'value') + 10;
+        $('#pb1').puiprogressbar('option', 'value', val);
+    }, 1000);
+
+    Showcase.pbinterval2 = setInterval(function() {
+        var progressElement = document.getElementById('pbel');
+        progressElement.setValue(progressElement.getValue() + 10);
+    }, 1000);
 }); 
                                 </pre>
 
                                 <pre name="code" class="brush:xml">
-&lt;div id="pb1"&gt&lt;/div&gt;
+&lt;h3 class="first"&gt;Dynamic&lt;/h3&gt;
+&lt;div id="pb1" style="margin-bottom:5px"&gt;&lt;/div&gt;
 
-&lt;div id="pb2"&gt&lt;/div&gt;
+&lt;h3&gt;Static&lt;/h3&gt;
+&lt;div id="pb2" style="margin-bottom:5px"&gt;&lt;/div&gt;
+
+&lt;h3&gt;Prime Element&lt;/h3&gt;
+&lt;p-progressbar id="pbel"&gt;&lt;/p-progressbar&gt;
                                 </pre>
 
                             </div>

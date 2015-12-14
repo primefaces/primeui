@@ -6,62 +6,52 @@ if(!xtag.tags['p-progressbar']) {
             value: {
                 attribute:{}
             },
-            labelTemplate: {
+            labeltemplate: {
                 attribute:{}
             },
-            complete: {
+            oncomplete: {
                 attribute:{}
             },
             easing: {
                 attribute:{}
             },
-            effectSpeed: {
+            effectspeed: {
                 attribute:{}
             },
-            showLabel: {
-                attribute:{
-                    boolean: true
-                }
+            showlabel: {
+                attribute:{}
             }
         },
 
         lifecycle: {
             created: function() {
-                console.log(this);
-                this.xtag.progressbar = $('<div></div>').appendTo(this);
+                this.xtag.progressbar = $(this).append('<div></div>').children('div');
 
+                var $this = this;
+                
                 $(this.xtag.progressbar).puiprogressbar({
-                    value: this.value,
-                    labelTemplate: this.labelTemplate,
-                    complete: this.complete,
-                    easing: this.easing,
-                    effectSpeed: this.effectSpeed,
-                    showLabel: this.showLabel
+                    value: this.value||0,
+                    labelTemplate: this.labeltemplate||'{value}%',
+                    easing: this.easing||'easeInOutCirc',
+                    effectSpeed: this.effectSpeed||'normal',
+                    showLabel: this.showlabel ? JSON.parse(this.showlabel) : true,
+                    complete: this.oncomplete ? function() {PUI.executeFunctionByName($this.oncomplete);} : null
                 });
-
-                if(this.value) {
-                    this.xtag.progressbar.attr('value', this.value);
-                }
-
-                if(this.complete) {
-                    this.xtag.progressbar.attr('complete', this.complete);
-                }
-
-                if(this.showLabel) {
-                    this.xtag.progressbar.prop('show', true);
-                }
             }
         },
 
         methods: {
             disable: function() {
-                $(this).puiprogressbar('disable');
+                $(this.xtag.progressbar).puiprogressbar('disable');
             },
             enable: function() {
-                $(this).puiprogressbar('enable');
+                $(this.xtag.progressbar).puiprogressbar('enable');
             },
-            enableARIA: function() {
-                $(this).puiprogressbar();
+            getValue: function() {
+                return $(this.xtag.progressbar).puiprogressbar('option', 'value');
+            },
+            setValue: function(val) {
+                $(this.xtag.progressbar).puiprogressbar('option', 'value', val);
             }
         }
         
