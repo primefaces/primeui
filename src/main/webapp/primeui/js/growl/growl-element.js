@@ -26,7 +26,7 @@ if(!xtag.tags['p-growl']) {
 
         methods: {
             show: function(messages) {
-                $(this.xtag.growl).puigrowl('show', severity, messages);
+                $(this.xtag.growl).puigrowl('show', messages);
             },
             clear: function() {
                 $(this.xtag.growl).puigrowl('clear');

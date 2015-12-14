@@ -4,8 +4,9 @@
     <link rel="stylesheet" href="primeui/css/growl/growl.css" />
     <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
     <script type="text/javascript" src="primeui/js/button/button.js"></script>
+    <script type="text/javascript" src="primeui/js/button/button-element.js"></script>
     <script type="text/javascript" src="primeui/js/growl/growl.js"></script>
-        <script type="text/javascript" src="primeui/js/growl/growl-element.js"></script> 
+    <script type="text/javascript" src="primeui/js/growl/growl-element.js"></script> 
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript">
         $(function() {
@@ -33,7 +34,25 @@
 
             addMessage = function(msg) {
                 $('#default').puigrowl('show', msg);
-            }
+            };
+            
+            addInfoViaElement = function() {
+                document.getElementById('growlel').show([{severity: 'info', summary: 'Message Title', detail: 'Created With PrimeElement'}])
+            };
+            
+            addWarnViaElement = function() {
+                document.getElementById('growlel').show([{severity: 'warn', summary: 'Message Title', detail: 'Created With PrimeElement'}])
+            };
+            
+            addErrorViaElement = function() {
+                document.getElementById('growlel').show([{severity: 'error', summary: 'Message Title', detail: 'Created With PrimeElement'}])
+            };
+            
+            addMultiViaElement = function() {
+                document.getElementById('growlel').show([{severity: 'info', summary: 'Message Title', detail: 'Created With PrimeElement'}
+                    , {severity: 'warn', summary: 'Message Title', detail: 'Created With PrimeElement'}
+                    , {severity: 'error', summary: 'Message Title', detail: 'Created With PrimeElement'}]);
+            };
 
             $('#doc').puitabview();
         });
@@ -48,17 +67,19 @@
     <div class="ContentSideSections Implementation">
         <h3>Basic</h3>
         <div id="default"></div>
-
-        <h3>PrimeElement</h3>
-        <p-growl id="growlDef"></p-growl>
-
+        
         <button id="btn-info" type="button">Info</button>
         <button id="btn-warn" type="button">Warn</button>
         <button id="btn-error" type="button">Error</button>
         <button id="btn-multiple" type="button">Multiple</button>
 
+        <h3>PrimeElement</h3>
+        <p-growl id="growlel"></p-growl>
         
-
+        <button type="button" is="p-button" onclick="addInfoViaElement()">Info</button>
+        <button type="button" is="p-button" onclick="addWarnViaElement()">Warn</button>
+        <button type="button" is="p-button" onclick="addErrorViaElement()">Error</button>
+        <button type="button" is="p-button" onclick="addMultiViaElement()">Multiple</button>
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">
@@ -128,6 +149,16 @@ $('#default').puigrowl('show', [{severity: 'info', summary: 'Message Summary', d
                                     </thead>
                                     <tbody>
                                         <tr>
+                                            <td>show</td>
+                                            <td>messages: Array of messages</td>
+                                            <td>Displays an array of messages.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>clear</td>
+                                            <td>-</td>
+                                            <td>Hides the growl and clears the displayed messages.</td>
+                                        </tr>
+                                        <tr>
                                             <td>option</td>
                                             <td>name: Name of the option</td>
                                             <td>Returns the value of the option.</td>
@@ -143,44 +174,69 @@ $('#default').puigrowl('show', [{severity: 'info', summary: 'Message Summary', d
 
                             <div id="doc-source">
                                 <pre name="code" class="brush:js">
-&lt;script type="text/javascript"&gt;
-    $(function() {
-        $('#default').puigrowl();                
+$(function() {
+    $('#default').puigrowl();
 
-        $('#btn-info').click(function() {
-            addMessage([{severity: 'info', summary: 'Message Title', detail: 'Message Detail here.'}]);
-        });
+    $('#doc').puitabview();
 
-        $('#btn-warn').click(function() {
-            addMessage([{severity: 'warn', summary: 'Message Title', detail: 'Message Detail here.'}]);
-        });
-
-        $('#btn-error').click(function() {
-            addMessage([{severity: 'error', summary: 'Message Title', detail: 'Message Detail here.'}]);
-        });
-
-        $('#btn-multiple').click(function() {
-            addMessage([{severity: 'info', summary: 'Message Title', detail: 'Message Detail here.'}
-                ,{severity: 'warn', summary: 'Message Title', detail: 'Message Detail here.'}
-                ,{severity: 'error', summary: 'Message Title', detail: 'Message Detail here.'}]);
-        });
-
-        addMessage = function(msg) {
-            $('#default').puigrowl('show', msg);
-        }
-
-        $('#content button').puibutton();
+    $('#btn-info').puibutton().click(function() {
+        addMessage([{severity: 'info', summary: 'Message Title', detail: 'Message Detail here.'}]);
     });
-&lt;/script&gt;
-                                </pre>
+
+    $('#btn-warn').puibutton().click(function() {
+        addMessage([{severity: 'warn', summary: 'Message Title', detail: 'Message Detail here.'}]);
+    });
+
+    $('#btn-error').puibutton().click(function() {
+        addMessage([{severity: 'error', summary: 'Message Title', detail: 'Message Detail here.'}]);
+    });
+
+    $('#btn-multiple').puibutton().click(function() {
+        addMessage([{severity: 'info', summary: 'Message Title', detail: 'Message Detail here.'}
+            , {severity: 'warn', summary: 'Message Title', detail: 'Message Detail here.'}
+            , {severity: 'error', summary: 'Message Title', detail: 'Message Detail here.'}]);
+    });
+
+    addMessage = function(msg) {
+        $('#default').puigrowl('show', msg);
+    };
+
+    addInfoViaElement = function() {
+        document.getElementById('growlel').show([{severity: 'info', summary: 'Message Title', detail: 'Created With PrimeElement'}])
+    };
+
+    addWarnViaElement = function() {
+        document.getElementById('growlel').show([{severity: 'warn', summary: 'Message Title', detail: 'Created With PrimeElement'}])
+    };
+
+    addErrorViaElement = function() {
+        document.getElementById('growlel').show([{severity: 'error', summary: 'Message Title', detail: 'Created With PrimeElement'}])
+    };
+
+    addMultiViaElement = function() {
+        document.getElementById('growlel').show([{severity: 'info', summary: 'Message Title', detail: 'Created With PrimeElement'}
+            , {severity: 'warn', summary: 'Message Title', detail: 'Created With PrimeElement'}
+            , {severity: 'error', summary: 'Message Title', detail: 'Created With PrimeElement'}]);
+    };
+});
+                    </pre>
 
                                 <pre name="code" class="brush:xml">
-&lt;div id="default" /&gt;
+&lt;h3&gt;Basic&lt;/h3&gt;
+&lt;div id="default"&gt;&lt;/div&gt;
 
 &lt;button id="btn-info" type="button"&gt;Info&lt;/button&gt;
 &lt;button id="btn-warn" type="button"&gt;Warn&lt;/button&gt;
 &lt;button id="btn-error" type="button"&gt;Error&lt;/button&gt;
 &lt;button id="btn-multiple" type="button"&gt;Multiple&lt;/button&gt;
+
+&lt;h3&gt;PrimeElement&lt;/h3&gt;
+&lt;p-growl id="growlel"&gt;&lt;/p-growl&gt;
+
+&lt;button type="button" is="p-button" onclick="addInfoViaElement()"&gt;Info&lt;/button&gt;
+&lt;button type="button" is="p-button" onclick="addWarnViaElement()"&gt;Warn&lt;/button&gt;
+&lt;button type="button" is="p-button" onclick="addErrorViaElement()"&gt;Error&lt;/button&gt;
+&lt;button type="button" is="p-button" onclick="addMultiViaElement()"&gt;Multiple&lt;/button&gt;
                                 </pre>
                             </div>
                         </div>
