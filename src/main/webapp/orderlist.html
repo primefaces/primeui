@@ -7,6 +7,7 @@
     <script type="text/javascript" src="primeui/js/inputtext/inputtext.js"></script>
     <script type="text/javascript" src="primeui/js/button/button.js"></script>
     <script type="text/javascript" src="primeui/js/orderlist/orderlist.js"></script>
+    <script type="text/javascript" src="primeui/js/orderlist/orderlist-element.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <style type="text/css">
         
@@ -46,7 +47,7 @@
         <div class="pui-grid pui-grid-responsive">
             <div class="pui-grid-row">
                 <div class="pui-grid-col-6">
-                    <h3 class="first">Basic</h3>
+                    <h3>Basic</h3>
                     <select id="basic">
                         <option value="1">Volkswagen</option>
                         <option value="2">Ford</option>
@@ -62,6 +63,39 @@
                 <div class="pui-grid-col-6">
                     <h3>Advanced</h3>
                     <select id="advanced"></select>
+                </div>
+            </div>
+            <div class="pui-grid-row">
+                <div class="pui-grid-col-6">
+                    <h3 class="first">PrimeElement</h3>
+                    <p-orderlist>
+                        <option value="1">Volkswagen</option>
+                        <option value="2">Ford</option>
+                        <option value="3">Mercedes</option>
+                        <option value="4">Audi</option>
+                        <option value="5">BMW</option>
+                        <option value="6">Honda</option>
+                        <option value="7">Porsche</option>
+                        <option value="8">Chevrolet</option>
+                        <option value="9">Jaguar</option>
+                    <p-orderlist>
+                </div>
+                <div class="pui-grid-col-6">
+                    <h3>PrimeElement with Template</h3>
+                    <!--<p-orderlist>
+                        <option value="1">Volkswagen</option>
+                        <option value="2">Ford</option>
+                        <option value="3">Mercedes</option>
+                        <option value="4">Audi</option>
+                        <option value="5">BMW</option>
+                        <option value="6">Honda</option>
+                        <option value="7">Porsche</option>
+                        <option value="8">Chevrolet</option>
+                        <option value="9">Jaguar</option>
+                        <script type="x-tmpl-mustache">
+                            <div class="ui-helper-clearfix"><img src="resources/demo/images/themes/{{label}}.png" alt="" style="float:left"/><span style="float:left; margin-left:15px; font-size:20px">{{label}}</span></div>
+                        </script>
+                    <p-orderlist>-->
                 </div>
             </div>
         </div>
