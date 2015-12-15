@@ -4,68 +4,69 @@
     <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
     <script type="text/javascript" src="primeui/plugins/easing.js"></script>
     <script type="text/javascript" src="primeui/plugins/touchswipe.js"></script>
+    <script type="text/javascript" src="resources/demo/js/carousel-demo.js"></script>
     <script type="text/javascript" src="primeui/js/carousel/carousel.js"></script>
+    <script type="text/javascript" src="primeui/js/carousel/carousel-element.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript">
         $(function() {
             setTimeout(function() {
-                
-            
-            var cars = [
-                {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
-                {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
-                {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
-                {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
-                {'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
-                {'brand': 'Jaguar', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
-                {'brand': 'BMW', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
-                {'brand': 'Fiat', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
-                {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'}
-            ];
-                
-            $('#cars1').puicarousel({
-                headerText: 'Local Javascript Array',
-                datasource: cars,
-                itemContent: function(car) {
-                    var content = $('<div class="pui-grid pui-grid-responsive"></div>');
-                    content.append('<div class="pui-grid-row"><div class="pui-grid-col-12"><img src="resources/demo/images/car/' + car.brand +  '.gif" /></div>')
-                            .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Vin</div><div class="pui-grid-col-6">' + car.vin + ' </div></div>')
-                            .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Year</div><div class="pui-grid-col-6">' + car.year + ' </div></div>')
-                            .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Color</div><div class="pui-grid-col-6">' + car.color + ' </div></div>');
-                    
-                    return content;
-                }
-            });
-            
-            $('#cars2').puicarousel({
-                headerText: 'Remote DataSource',
-                pageLinks: 5,
-                datasource: function(callback) {
-                    $.ajax({
-                        type: "GET",
-                        url: 'rest/cars/list',
-                        dataType: "json",
-                        context: this,
-                        success: function(response) {
-                            callback.call(this, response.slice(0,15));
-                        }
-                    });
-                },
-                itemContent: function(car) {
-                    var content = $('<div class="pui-grid pui-grid-responsive"></div>');
-                    content.append('<div class="pui-grid-row"><div class="pui-grid-col-12"><img src="resources/demo/images/car/' + car.brand +  '.gif" /></div>')
-                            .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Vin</div><div class="pui-grid-col-6">' + car.vin + ' </div></div>')
-                            .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Year</div><div class="pui-grid-col-6">' + car.year + ' </div></div>')
-                            .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Color</div><div class="pui-grid-col-6">' + car.color + ' </div></div>');
-                    
-                    return content;
-                }
-            });
-            
-            $('#cars3').puicarousel({
-                headerText: 'Enhanced Markup'
-            });
-        }, 100);
+
+                var cars = [
+                    {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
+                    {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
+                    {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
+                    {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
+                    {'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
+                    {'brand': 'Jaguar', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
+                    {'brand': 'BMW', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
+                    {'brand': 'Fiat', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
+                    {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'}
+                ];
+
+                $('#cars1').puicarousel({
+                    headerText: 'Local Javascript Array',
+                    datasource: cars,
+                    itemContent: function(car) {
+                        var content = $('<div class="pui-grid pui-grid-responsive"></div>');
+                        content.append('<div class="pui-grid-row"><div class="pui-grid-col-12"><img src="resources/demo/images/car/' + car.brand +  '.gif" /></div>')
+                                .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Vin</div><div class="pui-grid-col-6">' + car.vin + ' </div></div>')
+                                .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Year</div><div class="pui-grid-col-6">' + car.year + ' </div></div>')
+                                .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Color</div><div class="pui-grid-col-6">' + car.color + ' </div></div>');
+
+                        return content;
+                    }
+                });
+
+                $('#cars2').puicarousel({
+                    headerText: 'Remote DataSource',
+                    pageLinks: 5,
+                    datasource: function(callback) {
+                        $.ajax({
+                            type: "GET",
+                            url: 'rest/cars/list',
+                            dataType: "json",
+                            context: this,
+                            success: function(response) {
+                                callback.call(this, response.slice(0,15));
+                            }
+                        });
+                    },
+                    itemContent: function(car) {
+                        var content = $('<div class="pui-grid pui-grid-responsive"></div>');
+                        content.append('<div class="pui-grid-row"><div class="pui-grid-col-12"><img src="resources/demo/images/car/' + car.brand +  '.gif" /></div>')
+                                .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Vin</div><div class="pui-grid-col-6">' + car.vin + ' </div></div>')
+                                .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Year</div><div class="pui-grid-col-6">' + car.year + ' </div></div>')
+                                .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Color</div><div class="pui-grid-col-6">' + car.color + ' </div></div>');
+
+                        return content.html();
+                    }
+                });
+
+                $('#cars3').puicarousel({
+                    headerText: 'Enhanced Markup'
+                });
+            }, 100);
             
             $('#doc').puitabview();
         });
@@ -82,6 +83,10 @@
         .pui-carousel .pui-grid-row > div {
             padding: 4px 10px;
         }
+        
+        .pui-carousel {
+            margin-bottom: 30px;
+        }
     </style>
 
     <div class="ContentSideSections">
@@ -93,12 +98,31 @@
 
     <div class="ContentSideSections Implementation">
         <ul id="cars1"></ul>
-        
-        <br /><br />
-        
+               
         <ul id="cars2"></ul>
         
-        <br /><br/>
+                <p-carousel datasource="CarouselDemo.cars" headertext="PrimeElement">
+            <script type="x-tmpl-mustache" >
+                <div class="pui-grid pui-grid-responsive">
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-12"><img src="resources/demo/images/car/{{brand}}.gif" /></div>
+                    </div>
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-6">Vin</div>
+                        <div class="pui-grid-col-6">{{vin}}</div>
+                    </div>
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-6">Year</div>
+                        <div class="pui-grid-col-6">{{year}}</div>
+                    </div>
+                    <div class="pui-grid-row">
+                        <div class="pui-grid-col-6">Color</div>
+                        <div class="pui-grid-col-6">{{color}}</div>
+                    </div>
+                </div>
+            </script>
+        </p-carousel>
+        
         <ul id="cars3">
             <li>
                 <div class="pui-grid pui-grid-responsive">
@@ -281,6 +305,7 @@
                 </div>
             </li>
         </ul>
+        
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">
@@ -397,6 +422,12 @@ $('#list').puicarousel();
                                             <td>null</td>
                                             <td>Style class for the main wrapper element.</td>
                                         </tr>
+                                        <tr>
+                                            <td>template</td>
+                                            <td>jQuery</td>
+                                            <td>null</td>
+                                            <td>Mustache script element as jQuery object that represents the template.</td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -510,15 +541,13 @@ $(function() {
                     .append('&lt;div class="pui-grid-row"&gt;&lt;div class="pui-grid-col-6"&gt;Year&lt;/div&gt;&lt;div class="pui-grid-col-6"&gt;' + car.year + ' &lt;/div&gt;&lt;/div&gt;')
                     .append('&lt;div class="pui-grid-row"&gt;&lt;div class="pui-grid-col-6"&gt;Color&lt;/div&gt;&lt;div class="pui-grid-col-6"&gt;' + car.color + ' &lt;/div&gt;&lt;/div&gt;');
 
-            return content;
+            return content.html();
         }
     });
 
     $('#cars3').puicarousel({
         headerText: 'Enhanced Markup'
     });
-
-    $('#doc').puitabview();
 });
                                 </pre>
 
@@ -526,6 +555,28 @@ $(function() {
 &lt;ul id="cars1"&gt;&lt;/ul&gt;
         
 &lt;ul id="cars2"&gt;&lt;/ul&gt;
+
+&lt;p-carousel datasource="CarouselDemo.cars" headertext="PrimeElement"&gt;
+    &lt;script type="x-tmpl-mustache" &gt;
+        &lt;div class="pui-grid pui-grid-responsive"&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/{{brand}}.gif" /&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="pui-grid-col-6"&gt;{{vin}}&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="pui-grid-col-6"&gt;{{year}}&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="pui-grid-row"&gt;
+                &lt;div class="pui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="pui-grid-col-6"&gt;{{color}}&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/script&gt;
+&lt;/p-carousel&gt; 
 
 &lt;ul id="cars3"&gt;
     &lt;li&gt;
@@ -708,7 +759,7 @@ $(function() {
             &lt;/div&gt;
         &lt;/div&gt;
     &lt;/li&gt;
-&lt;/ul&gt;            
+&lt;/ul&gt;           
                                 </pre>
 
                             </div>

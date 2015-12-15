@@ -18,7 +18,8 @@
             autoplayInterval: 0,
             easing: 'easeInOutCirc',
             pageLinks: 3,
-            styleClass: null
+            styleClass: null,
+            template: null
         },
        
         _create: function() {
@@ -71,7 +72,7 @@
             
             if(this.data) {
                 for(var i = 0; i < data.length; i++) {
-                    var itemContent = this.options.itemContent.call(this, data[i]);
+                    var itemContent = this._createItemContent(data[i]);
                     if($.type(itemContent) === 'string')
                         this.element.append('<li>' + itemContent + '</li>');
                     else
@@ -313,8 +314,15 @@
                 $.Widget.prototype._setOption.apply(this, arguments);
         },
         
-        _destroy: function() {
-
+        _createItemContent: function(obj) {
+            if(this.options.template) {
+                var template = this.options.template.html();
+                Mustache.parse(template);
+                return Mustache.render(template, obj);
+            }
+            else {
+                return this.options.itemContent.call(this, obj);
+            }
         }
 
     });
