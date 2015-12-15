@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="primeui/css/switch/switch.css" />
     <script type="text/javascript" src="primeui/js/checkbox/checkbox.js"></script>
     <script type="text/javascript" src="primeui/js/switch/switch.js"></script>
+    <script type="text/javascript" src="primeui/js/switch/switch-element.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript">
         $(function() {
@@ -14,6 +15,9 @@
                 $('#basic').puiswitch();
             }, 10); 
 
+            setTimeout(function() {
+                document.getElementById('pSwitch').innerHTML += '<p-switch name="inputSwitch"/> ';
+            }, 10)
             $('#doc').puitabview();
         });
     </script>
@@ -27,7 +31,10 @@
 
     <div class="ContentSideSections Implementation">
       
-        <input id="basic" type="checkbox"></input>
+        <input id="basic" type="checkbox" name="inputSwitch" style="margin-bottom:20px;"></input>
+
+        <h3 id="pSwitch">Prime Element</h3>
+        
 
     </div>
 
@@ -46,18 +53,12 @@
                         <div>
                             <div id="doc-overview">
                                 <pre name="code" class="brush:xml">
-                        &lt;div id="single" /&gt;&lt;/div&gt;   
+                        &lt;input id="basic" type="checkbox" /&gt;&lt;/input&gt;   
                                 </pre>
 
                                 <pre name="code" class="brush:js">
 
-            $('#single').puiselectbutton({
-                choices: [
-                   {label:'Xbox One', value:0},
-                   {label:'PS4', value:1},
-                   {label:'Wii', value:2}
-                ]
-            });
+            $('#basic').puiswitch();
                                 </pre>
 
                             </div>
@@ -72,34 +73,22 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>choices</td>
-                                            <td>string , number</td>
-                                            <td>null</td>
-                                            <td>Choices for the buttons.</td>
+                                            <td>onLabel</td>
+                                            <td>string </td>
+                                            <td>On</td>
+                                            <td>Displays On.</td>
                                         </tr>
                                         <tr>
-                                            <td>formfield</td>
+                                            <td>offLabel</td>
                                             <td>string</td>
+                                            <td>Off</td>
+                                            <td>Displays Off.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>change</td>
+                                            <td>event</td>
                                             <td>null</td>
-                                            <td>Name for the form.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>unselectable</td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>State for the unselectable buttons.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>tabindex</td>
-                                            <td>string</td>
-                                            <td>'0'</td>
-                                            <td>Order of elements in tabbing.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>multiple</td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>State for multiple button selection.</td>
+                                            <td>Change event.</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -115,7 +104,7 @@
                                     <tbody>
                                         <tr>
                                             <td>change</td>
-                                            <td>event: puiselectbuttonchange event
+                                            <td>event: puiswitchchange event
                                                 <br />
                                             </td>
                                             <td>Fires when value changes.</td>
@@ -125,7 +114,7 @@
 
                                 <h3>Example</h3>
                                 <pre name="code" class="brush:js">
-            $('div').puiselectbutton({
+            $('input').puiswitch({
                 change: function(event) {
                     //..
             }});
@@ -141,21 +130,26 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>selectOption</td>
-                                            <td>value</td>
-                                            <td>Selects the clicked option.</td>
+                                            <td>toggle</td>
+                                            <td>-</td>
+                                            <td>Slides the element.</td>
                                         </tr>
                                         <tr>
-                                            <td>unselectOption</td>
-                                            <td>value</td>
-                                            <td>Unelects the clicked option.</td>
+                                            <td>check</td>
+                                            <td>-</td>
+                                            <td>Mark Checked to the checkbox.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>uncheck</td>
+                                            <td>-</td>
+                                            <td>Mark Unchecked to the checkbox.</td>
                                         </tr>
                                     </tbody>
                                 </table>
 
                                 <h3>Example</h3>
                                 <pre name="code" class="brush:js">
-            $('#single').puiselectbutton('selectOption',0);
+            $('#basic').puiswitch('check');
                                 </pre>
                             </div>
 
@@ -163,35 +157,13 @@
 
                                 <pre name="code" class="brush:js">
 $(function() {
-    $('#single').selectbutton({
-                formfield: 'single_input',
-                choices: [
-                   {label:'Xbox One', value:0},
-                   {label:'PS4', value:1},
-                   {label:'Wii', value:2},
-                   {label:'PS3',value:3}
-                ]
-            });
-            
-            $('#multiple').selectbutton({
-                formfield: 'multiple_input',
-                choices: [
-                   {label:'Xbox One', value:0},
-                   {label:'PS4', value:1},
-                   {label:'Wii', value:2},
-                   {label:'PS3',value:3}
-                ],
-                multiple: true,
-                unselectable: true
-            });
+    $('#basic').puiswitch();
 });
                                 </pre>
                                 <pre name="code" class="brush:xml">
-&lt;h3 class="first"&gt;Single&lt;/h3&gt;
-&lt;div id="single" style="margin-bottom:25px" /&gt;&lt;/div&gt;
 
-&lt;h3 class="first"&gt;Multiple&lt;/h3&gt;
-&lt;div id="multiple"  /&gt;&lt;/div&gt;
+&lt;input id="basic" type="checkbox" &gt;&lt;/input&gt;
+
                                 </pre>
 
                             </div>
