@@ -3,10 +3,10 @@ if(!xtag.tags['p-lightbox']) {
     xtag.register('p-lightbox', {
     
         accessors: {
-            iframeWidth: {
+            iframewidth: {
                 attribute:{}
             },
-            iframeHeight: {
+            iframeheight: {
                 attribute:{}
             },
             iframe: {
@@ -18,15 +18,15 @@ if(!xtag.tags['p-lightbox']) {
 
         lifecycle: {
             created: function() {
-                if(!this.iframe)
-                    this.xtag.lightbox = $(this).wrapInner('<div></div>').children('div');
-               // else 
-                   // this.xtag.lightbox = $(this).prepend('<div></div>');
+                if(this.iframe)
+                    this.xtag.container = $(this).children('a');
+                else 
+                    this.xtag.container = $(this).wrapInner('<div></div>').children('div');
 
-                $(this.xtag.lightbox).puilightbox({
-                    iframeWidth: this.iframeWidth || 640,
-                    iframeHeight: this.iframeHeight || 480,
-                    iframe: this.iframe || false
+                $(this.xtag.container).puilightbox({
+                    iframeWidth: this.iframewidth ? parseInt(this.iframewidth) : 640,
+                    iframeHeight: this.iframeheight ? parseInt(this.iframeheight) : 480,
+                    iframe: this.iframe
                 });
             }
         },
