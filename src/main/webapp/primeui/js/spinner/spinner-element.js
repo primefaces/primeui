@@ -2,6 +2,8 @@ if(!xtag.tags['p-spinner']) {
  
     xtag.register('p-spinner', {
 
+        extends: 'input',
+
         accessors: {
             step:{
                 attribute:{}
@@ -10,9 +12,7 @@ if(!xtag.tags['p-spinner']) {
 
         lifecycle: {
             created: function() {
-                this.xtag.spinner = $('<input type="text" />').appendTo(this);
-                
-                $(this.xtag.spinner).puispinner({
+                $(this).puispinner({
                     step: this.step || 1.0
                 });
             }
