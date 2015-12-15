@@ -6,6 +6,7 @@
     <script type="text/javascript" src="primeui/js/inputtext/inputtext.js"></script>
     <script type="text/javascript" src="primeui/js/button/button.js"></script>
     <script type="text/javascript" src="primeui/js/picklist/picklist.js"></script>
+    <script type="text/javascript" src="primeui/js/picklist/picklist-element.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <style type="text/css">
         #advanced .pui-picklist-buttons {
@@ -30,7 +31,7 @@
                 filter: true,
                 sourceData: themes,
                 content: function(option) {
-                    return '<img src="resources/demo/images/themes/' + option + '.png" alt="" /><span style="float:right;font-size:14px">' + option + '</span>';
+                    return '<img src="resources/demo/images/themes/' + option.label + '.png" alt="" /><span style="float:right;font-size:14px">' + option.label + '</span>';
                 }
             });
 
@@ -48,7 +49,7 @@
     <div class="ContentSideSections Implementation">
         <h3 class="first">Basic</h3>
         <div id="basic">
-            <select name="source">
+            <select name="source1">
                 <option value="1">Volkswagen</option>
                 <option value="2">Ford</option>
                 <option value="3">Mercedes</option>
@@ -59,17 +60,37 @@
                 <option value="8">Chevrolet</option>
                 <option value="9">Jaguar</option>
             </select>
-            <select name="target">
+            <select name="target1">
             </select>
         </div>
 
         <h3>Advanced</h3>
         <div id="advanced">
-            <select name="source">
+            <select name="source2">
             </select>
-            <select name="target">
+            <select name="target2">
             </select>
         </div>
+        
+        <h3>PrimeElement</h3>
+        <p-picklist sourcecaption="Source" targetcaption="Target" showsourcecontrols showtargetcontrols filter>
+            <select name="source3">
+                <option value="1">Volkswagen</option>
+                <option value="2">Ford</option>
+                <option value="3">Mercedes</option>
+                <option value="4">Audi</option>
+                <option value="5">BMW</option>
+                <option value="6">Honda</option>
+                <option value="7">Jaguar</option>
+                <option value="8">Volvo</option>
+                <option value="9">Fiat</option>
+            </select>
+            <select name="target3">
+            </select>
+            <script type="x-tmpl-mustache">
+                <div class="ui-helper-clearfix"><img src="resources/demo/images/car/{{label}}.gif" width="32" alt="" style="float:left"/><span style="float:left; margin-left:10px;margin-top:10px">{{label}}</span></div>
+            </script>
+        </p-picklist>
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">
@@ -197,6 +218,12 @@ $('#pick').puipicklist();
                                             <td>false</td>
                                             <td>Show the command buttons to reorder the target list.</td>
                                         </tr>
+                                        <tr>
+                                            <td>template</td>
+                                            <td>jQuery</td>
+                                            <td>null</td>
+                                            <td>Mustache script element as jQuery object that represents the template.</td>
+                                        </tr>
                                     </tbody>
                                 </table>
 
@@ -297,51 +324,71 @@ $('#basic').puipicklist('selectItem', item);
 
                                 <pre name="code" class="brush:js">
 var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
-        'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
-        'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
-        'ui-darkness', 'ui-lightness', 'vader');
+                'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
+                'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
+                'ui-darkness', 'ui-lightness', 'vader');
 
-$('#basic').puipicklist();
+    $('#basic').puipicklist();
 
-$('#advanced').puipicklist({
-    effect: 'clip',
-    showSourceControls: true,
-    showTargetControls: true,
-    sourceCaption: 'Available',
-    targetCaption: 'Selected',
-    filter: true,
-    sourceData: themes,
-    content: function(option) {
-        return '&lt;img src="resources/demo/images/themes/' + option + '.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;' + option + '&lt;/span&gt;';
-    }
-});
+    $('#advanced').puipicklist({
+        effect: 'clip',
+        showSourceControls: true,
+        showTargetControls: true,
+        sourceCaption: 'Available',
+        targetCaption: 'Selected',
+        filter: true,
+        sourceData: themes,
+        content: function(option) {
+            return '&lt;img src="resources/demo/images/themes/' + option.label + '.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;' + option.label + '&lt;/span&gt;';
+        }
+    });
                                 </pre>
 
                                 <pre name="code" class="brush:xml">
-&lt;h3&gt;Basic&lt;/h3&gt;
+&lt;h3 class="first"&gt;Basic&lt;/h3&gt;
 &lt;div id="basic"&gt;
-    &lt;select name="source"&gt;
+    &lt;select name="source1"&gt;
         &lt;option value="1"&gt;Volkswagen&lt;/option&gt;
         &lt;option value="2"&gt;Ford&lt;/option&gt;
         &lt;option value="3"&gt;Mercedes&lt;/option&gt;
         &lt;option value="4"&gt;Audi&lt;/option&gt;
         &lt;option value="5"&gt;BMW&lt;/option&gt;
         &lt;option value="6"&gt;Honda&lt;/option&gt;
-        &lt;option value="6"&gt;Porsche&lt;/option&gt;
-        &lt;option value="6"&gt;Chevrolet&lt;/option&gt;
-        &lt;option value="6"&gt;Jaguar&lt;/option&gt;
+        &lt;option value="7"&gt;Porsche&lt;/option&gt;
+        &lt;option value="8"&gt;Chevrolet&lt;/option&gt;
+        &lt;option value="9"&gt;Jaguar&lt;/option&gt;
     &lt;/select&gt;
-    &lt;select name="target"&gt;
+    &lt;select name="target1"&gt;
     &lt;/select&gt;
 &lt;/div&gt;
 
 &lt;h3&gt;Advanced&lt;/h3&gt;
 &lt;div id="advanced"&gt;
-    &lt;select name="source"&gt;
+    &lt;select name="source2"&gt;
     &lt;/select&gt;
-    &lt;select name="target"&gt;
+    &lt;select name="target2"&gt;
     &lt;/select&gt;
 &lt;/div&gt;
+
+&lt;h3&gt;PrimeElement&lt;/h3&gt;
+&lt;p-picklist sourcecaption="Source" targetcaption="Target" showsourcecontrols showtargetcontrols filter&gt;
+    &lt;select name="source3"&gt;
+        &lt;option value="1"&gt;Volkswagen&lt;/option&gt;
+        &lt;option value="2"&gt;Ford&lt;/option&gt;
+        &lt;option value="3"&gt;Mercedes&lt;/option&gt;
+        &lt;option value="4"&gt;Audi&lt;/option&gt;
+        &lt;option value="5"&gt;BMW&lt;/option&gt;
+        &lt;option value="6"&gt;Honda&lt;/option&gt;
+        &lt;option value="7"&gt;Jaguar&lt;/option&gt;
+        &lt;option value="8"&gt;Volvo&lt;/option&gt;
+        &lt;option value="9"&gt;Fiat&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;select name="target3"&gt;
+    &lt;/select&gt;
+    &lt;script type="x-tmpl-mustache"&gt;
+        &lt;div class="ui-helper-clearfix"&gt;&lt;img src="resources/demo/images/car/{{label}}.gif" width="32" alt="" style="float:left"/&gt;&lt;span style="float:left; margin-left:10px;margin-top:10px"&gt;{{label}}&lt;/span&gt;&lt;/div&gt;
+    &lt;/script&gt;
+&lt;/p-picklist&gt;
                                             
                                 </pre>
 
