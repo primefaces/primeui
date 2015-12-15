@@ -24,7 +24,7 @@ if(!xtag.tags['p-password']) {
 
         lifecycle: {
             created: function() {
-                this.xtag.password = $('<input type="text" />').appendTo(this);
+                this.xtag.password = $('<input type="password" />').appendTo(this);
 
                 $(this.xtag.password).puipassword({
                     promptLabel: this.promptLabel || 'Please enter a password',
