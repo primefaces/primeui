@@ -16,7 +16,8 @@
             dragdrop: true,
             sourceData: null,
             targetData: null,
-            content: null
+            content: null,
+            template: null
         },
 
         _create: function() {
@@ -34,9 +35,9 @@
                 this._populateInputFromData(this.targetInput, this.options.targetData);
             }
                         
-            this.sourceList = this._createList(this.sourceInput, 'pui-picklist-source', this.options.sourceCaption, this.options.sourceData);
+            this.sourceList = this._createList(this.sourceInput, 'pui-picklist-source', this.options.sourceCaption);
             this._createButtons();
-            this.targetList = this._createList(this.targetInput, 'pui-picklist-target', this.options.targetCaption, this.options.targetData);
+            this.targetList = this._createList(this.targetInput, 'pui-picklist-target', this.options.targetCaption);
             
             if(this.options.showSourceControls) {
                 this.element.prepend(this._createListControls(this.sourceList));
@@ -59,7 +60,7 @@
             }
         },
                 
-        _createList: function(input, cssClass, caption, data) {
+        _createList: function(input, cssClass, caption) {
             input.wrap('<div class="ui-helper-hidden"></div>');
                         
             var listWrapper = $('<div class="pui-picklist-listwrapper ' + cssClass + '"></div>'),
@@ -78,7 +79,7 @@
                 listContainer.addClass('ui-corner-all');
             }
 
-            this._populateContainerFromOptions(input, listContainer, data);
+            this._populateContainerFromOptions(input, listContainer);
             
             listWrapper.append(listContainer).appendTo(this.element);
             
@@ -89,16 +90,16 @@
             var choices = input.children('option');
             for(var i = 0; i < choices.length; i++) {
                 var choice = choices.eq(i),
-                    content = this.options.content ? this.options.content.call(this, data[i]) : choice.text(),
-                    item = $('<li class="pui-picklist-item ui-corner-all"></li>').data({
-                        'item-label': choice.text(),
-                        'item-value': choice.val()
-                    });
-                    
-                    if($.type(content) === 'string')
-                        item.html(content);
-                    else
-                        item.append(content);
+                content = this._createItemContent(choice.get(0)),
+                item = $('<li class="pui-picklist-item ui-corner-all"></li>').data({
+                    'item-label': choice.text(),
+                    'item-value': choice.val()
+                });
+
+                if($.type(content) === 'string')
+                    item.html(content);
+                else
+                    item.append(content);
 
                 this.items = this.items.add(item);
                 listContainer.append(item);
@@ -545,6 +546,20 @@
             this.element.find('.pui-picklist-buttons > button').each(function (idx, btn) {
                 $(btn).puibutton('enable');
             });
+        },
+        
+        _createItemContent: function(choice) {
+            if(this.options.template) {
+                var template = this.options.template.html();
+                Mustache.parse(template);
+                return Mustache.render(template, choice);
+            }
+            else if(this.options.content) {
+                return this.options.content.call(this, choice);
+            }
+            else {
+                return choice.label;
+            }
         }
     });
         
