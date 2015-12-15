@@ -9,11 +9,11 @@
         
         _create: function() {
             //Dom of the switch
-            this.element.wrap('<div class="pui-inputswitch ui-widget ui-widget-content ui-corner-all" style="width: 54px;"></div>');
+            this.element.wrap('<div class="pui-inputswitch ui-widget ui-widget-content ui-corner-all" "></div>');
             this.container = this.element.parent();
 
             this.element.wrap('<div class="ui-helper-hidden-accessible"></div>');
-            this.container.append('<div class="pui-inputswitch-handle ui-state-default " style="width: 24px; left: 0px;"> </div>'+
+            this.container.append('<div class="pui-inputswitch-handle ui-state-default " > </div>'+
                                   '<div class="pui-inputswitch-on "></div>'+
                                   '<div class="pui-inputswitch-off "></div>');
             
@@ -23,14 +23,47 @@
             this.onLabel = this.container.children('.pui-inputswitch-on');
             this.offLabel = this.container.children('.pui-inputswitch-off');
 
-            //initalization
-            if(this.element.prop('checked')) {
-                this.check(true);
-            } else {
-                this.uncheck(true);
+            this.onContainer = this.element.children('.pui-inputswitch-on');
+            //this.onLabel = this.onContainer.children('span');
+            this.offContainer = this.element.children('.pui-inputswitch-off');
+            //this.offLabel = this.offContainer.children('span');
+
+            this.handle = this.element.children('.pui-inputswitch-handle');
+            this.input = $(this.elementId + '_input');
+
+            var onContainerWidth = this.onContainer.width(),
+            offContainerWidth = this.offContainer.width(),
+            spanPadding = this.offLabel.innerWidth() - this.offLabel.width(),
+            handleMargins = this.handle.outerWidth() - this.handle.innerWidth();
+            var containerWidth = (onContainerWidth > offContainerWidth) ? onContainerWidth : offContainerWidth,
+            handleWidth = containerWidth;
+
+            this.handle.css({'width':handleWidth});
+            handleWidth = this.handle.width();
+
+            containerWidth = containerWidth + handleWidth + 6;
+
+            var labelWidth = containerWidth - handleWidth - spanPadding - handleMargins;
+
+            this.element.css({'width': containerWidth });
+            this.onLabel.width(labelWidth);
+            this.offLabel.width(labelWidth);
+            
+            //position
+            this.offContainer.css({ width: this.element.width() - 5 });
+            this.offset = this.element.width() - this.handle.outerWidth();
+
+            if(this.input.prop('checked')) {
+                this.handle.css({ 'left': this.offset});
+                this.onContainer.css({ 'width': this.offset});
+                this.offLabel.css({ 'margin-right': -this.offset});
+            }
+            else {
+                this.onContainer.css({ 'width': 0 });
+                this.onLabel.css({'margin-left': -this.offset});
             }
             
-            if(!this.element.prop('disabled')) {
+            if(!this.input.prop('disabled')) {
                 this._bindEvents();
             }
         },
@@ -112,7 +145,21 @@
 
         isChecked: function() {
             return this.element.prop('checked');
-        }  
+        },
+
+        _checkUI: function() {
+            this.onContainer.animate({width:this.offset}, 200);
+            this.onLabel.animate({marginLeft:0}, 200);
+            this.offLabel.animate({marginRight:-this.offset}, 200);
+            this.handle.animate({left:this.offset}, 200);
+        },
+    
+        _uncheckUI: function() {
+            this.onContainer.animate({width:0}, 200);
+            this.onLabel.animate({marginLeft:-this.offset}, 200);
+            this.offLabel.animate({marginRight:0}, 200);
+            this.handle.animate({left:0}, 200);
+        }      
     });
     
 })();
