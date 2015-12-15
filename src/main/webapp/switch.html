@@ -10,12 +10,11 @@
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript">
         $(function() {
-            
-            $('#basic').puiswitch();
-            
+            setTimeout(function() {
+                $('#basic').puiswitch();
+            }, 10); 
 
             $('#doc').puitabview();
-            
         });
     </script>
 
@@ -27,8 +26,7 @@
     </div>
 
     <div class="ContentSideSections Implementation">
-       
-        <h3>Basic</h3>
+      
         <input id="basic" type="checkbox"></input>
 
     </div>
