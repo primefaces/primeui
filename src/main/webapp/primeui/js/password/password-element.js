@@ -2,6 +2,8 @@ if(!xtag.tags['p-password']) {
  
     xtag.register('p-password', {
 
+        extends: 'input',
+
         accessors: {
             promptLabel:{
                 attribute:{}
@@ -24,9 +26,7 @@ if(!xtag.tags['p-password']) {
 
         lifecycle: {
             created: function() {
-                this.xtag.password = $('<input type="password" />').appendTo(this);
-
-                $(this.xtag.password).puipassword({
+                $(this).puipassword({
                     promptLabel: this.promptLabel || 'Please enter a password',
                     weakLabel: this.weakLabel || 'Weak',
                     goodLabel: this.goodLabel || 'Medium',
