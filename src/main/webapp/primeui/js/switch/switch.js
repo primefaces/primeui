@@ -68,6 +68,7 @@
         
             this.container.on('click.inputSwitch', function(e) {
                 $this.toggle();
+                $this.element.trigger('focus');
             });
 
             this.element.on('focus.inputSwitch', function(e) {
