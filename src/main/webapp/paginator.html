@@ -3,12 +3,13 @@
     <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
     <link rel="stylesheet" href="primeui/css/inputtext/inputtext.css" />
     <script type="text/javascript" src="primeui/js/paginator/paginator.js"></script>
+    <script type="text/javascript" src="primeui/js/paginator/paginator-element.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript">
         $(function() {
             $('#pag').puipaginator({
                 totalRecords: 50,
-                rows: "5"
+                rows: 5
             });
 
             $('#doc').puitabview();
@@ -23,7 +24,11 @@
     </div>
 
     <div class="ContentSideSections Implementation">
+        <h3 class="first">Default</h3>
         <div id="pag"></div>
+        
+        <h3>PrimeElement</h3>
+        <p-paginator totalrecords="100" rows="5" template="{FirstPageLink} {PreviousPageLink} {NextPageLink} {LastPageLink} {PageLinks}"></p-paginator>
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">
@@ -170,7 +175,11 @@ $(function() {
                                 </pre>
 
                                 <pre name="code" class="brush:xml">
+&lt;h3 class="first"&gt;Default&lt;/h3&gt;
 &lt;div id="pag"&gt;&lt;/div&gt;
+
+&lt;h3&gt;PrimeElement&lt;/h3&gt;
+&lt;p-paginator totalrecords="100" rows="5" template="{FirstPageLink} {PreviousPageLink} {NextPageLink} {LastPageLink} {PageLinks}"&gt;&lt;/p-paginator&gt;
                                 </pre>
 
                             </div>
