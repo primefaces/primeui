@@ -27,22 +27,15 @@ if(!xtag.tags['p-selectbutton']) {
         lifecycle: {
             created: function() {
                 this.xtag.selectbutton = $('<div></div>').appendTo(this);
-                
+
                 var element = $(this),
-                $this = this;
-                if(element.children('option')) {
-                    var i = 0;
-                    element.each(function(){
-                        var $choices = element.children('option').eq(i).val();
-                        console.log($choices);
-                        i++;
-                    });
-
-                }
-                else {
-                    $(this).append('<input></input>');
-                }
-
+                $this = this,
+                elementOptions = element.children('option');
+                var choices = [];
+                for (var i = 0 ; i < elementOptions.length; i++) {
+                    var elementOption = elementOptions.eq(i);
+                    choices.push({label:elementOption.text(),value:elementOption.val()});
+                };
                 this.xtag.selectbutton.puiselectbutton({
                     choices: this.choices || null,
                     formfield: this.formfield || null,
