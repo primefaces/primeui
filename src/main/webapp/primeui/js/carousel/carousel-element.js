@@ -59,7 +59,7 @@ if(!xtag.tags['p-carousel']) {
                     easing: this.easing||'easeInOutCirc',
                     pageLinks: this.pagelinks ? parseInt(this.pagelinks): 3,
                     template: $(this).children('script'),
-                    pageChange: this.onpagechange ? function(event, param) {PUI.executeFunctionByName(onpagechange.beforeToggle, event, param);} : null,
+                    pageChange: this.onpagechange ? function(event, param) {PUI.executeFunctionByName($this.onpagechange, event, param);} : null
                 });
             }
         }
