@@ -35,7 +35,7 @@
             else {
                 this.input = $('<select class="ui-helper-hidden-accessible" multiple></select>').appendTo(this.element);
                 for (var i = 0; i < this.options.choices.length; i++) {
-                    var selectOption = '<option value = "'+ this.options.choices[i].value +'" data-value = "'+ this.options.choices[i].label +'"></option>';
+                    var selectOption = '<option value = "'+ this.options.choices[i].value +'"></option>';
                     this.input.append(selectOption);
                 }
                 this.selectOptions = this.input.children('option');
@@ -105,24 +105,22 @@
         selectOption: function(value) {
             var btn = $.isNumeric(value) ? this.element.children('.pui-button').eq(value) : value;
             
-            if(this.options.multiple) {
+            if(this.options.multiple)
                 this.selectOptions.eq(btn.index()).prop('selected',true);
-            }
-            else {
+            else
                 this.input.val(btn.data('value'));
-            }
+            
             btn.addClass('ui-state-active');
         },
         
         unselectOption: function(value){
             var btn = $.isNumeric(value) ? this.element.children('.pui-button').eq(value) : value;
             
-            if(this.options.multiple) {
+            if(this.options.multiple)
                 this.selectOptions.eq(btn.index()).prop('selected',false);
-            }
-            else {
+            else
                 this.input.val('');
-            }
+
             btn.removeClass('ui-state-active');   
             btn.removeClass('ui-state-focus');         
         }
