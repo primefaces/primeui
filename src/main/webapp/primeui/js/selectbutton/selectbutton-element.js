@@ -6,7 +6,7 @@ if(!xtag.tags['p-selectbutton']) {
             choices:{
                 attribute:{}
             },
-            formfield:{
+            name:{
                 attribute:{}
             },
             unselectable:{
@@ -26,24 +26,26 @@ if(!xtag.tags['p-selectbutton']) {
 
         lifecycle: {
             created: function() {
-                this.xtag.selectbutton = $('<div></div>').appendTo(this);
-
                 var element = $(this),
-                $this = this,
                 elementOptions = element.children('option');
+        
+                this.xtag.container = $('<div></div>').appendTo(element);
+
                 var choices = [];
                 for (var i = 0 ; i < elementOptions.length; i++) {
                     var elementOption = elementOptions.eq(i);
                     choices.push({label:elementOption.text(),value:elementOption.val()});
                 };
-                this.xtag.selectbutton.puiselectbutton({
-                    choices: this.choices || null,
-                    formfield: this.formfield || null,
-                    unselectable: this.unselectable || false,
-                    tabindex: this.tabindex || '0',
-                    multiple: this.multiple || false
-                })
-               
+                
+                elementOptions.remove();
+                
+                $(this.xtag.container).puiselectbutton({
+                    choices: choices,
+                    formfield: element.attr('name'),
+                    unselectable: this.unselectable,
+                    tabindex: this.tabindex||'0',
+                    multiple: this.multiple
+                });
 
             }
         },

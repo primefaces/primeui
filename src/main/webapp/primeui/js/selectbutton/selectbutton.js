@@ -29,16 +29,20 @@
             this.buttons.filter(':last-child').addClass('ui-corner-right');
             
             //Single Select Button Or Multiple Select Button Decision
-            if(!(this.options.multiple))  {         
+            if(!this.options.multiple)  {         
                 this.input = $('<input type="hidden"></input>').appendTo(this.element);
             } 
             else {
-                this.select = $('<select name = "'+ this.options.formfield +'"  class="ui-helper-hidden-accessible" multiple></select>').appendTo(this.element);
+                this.input = $('<select class="ui-helper-hidden-accessible" multiple></select>').appendTo(this.element);
                 for (var i = 0; i < this.options.choices.length; i++) {
                     var selectOption = '<option value = "'+ this.options.choices[i].value +'" data-value = "'+ this.options.choices[i].label +'"></option>';
-                    this.select.append(selectOption);
+                    this.input.append(selectOption);
                 }
-                this.selectOptions = this.select.children('option');
+                this.selectOptions = this.input.children('option');
+            }
+            
+            if(this.options.formfield) {
+                this.input.attr('name', this.options.formfield);
             }
 
             this._bindEvents();
