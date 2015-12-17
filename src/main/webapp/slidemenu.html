@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
     <link rel="stylesheet" href="primeui/css/inputtext/inputtext.css" />
     <script type="text/javascript" src="primeui/js/menu/menu.js"></script>
+    <script type="text/javascript" src="primeui/js/menu/menu-element.js"></script>
     <script type="text/javascript" src="primeui/js/button/button.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript">
@@ -83,6 +84,41 @@
                 <a data-icon="ui-icon-close">Quit</a>
             </li>
         </ul>
+        
+        <h3>PrimeElement</h3>
+        <p-slidemenu>
+            <p-submenu value="File" icon="fa-file-o">
+                <p-submenu value="New" icon="fa-plus">
+                    <p-menuitem value="Project"></p-menuitem>
+                    <p-menuitem value="Other"></p-menuitem>
+                </p-submenu>
+                <p-menuitem value="Open"></p-menuitem>
+                <p-menuitem value="Quit"></p-menuitem>
+            </p-submenu>
+            <p-submenu value="Edit" icon="fa-edit">
+                <p-menuitem value="Undo" icon="fa-mail-forward"></p-menuitem>
+                <p-menuitem value="Redo" icon="fa-mail-reply"></p-menuitem>
+            </p-submenu>
+            <p-submenu value="Help" icon="fa-question">
+                <p-menuitem value="Contents"></p-menuitem>
+                <p-submenu value="Search" icon="fa-search">
+                    <p-submenu value="Text">
+                        <p-menuitem value="Workspace"></p-menuitem>
+                    </p-submenu>
+                    <p-menuitem value="File"></p-menuitem>
+                </p-submenu>
+            </p-submenu>
+            <p-submenu value="Action" icon="fa-gear">
+                <p-submenu value="Edit" icon="fa-refresh">
+                    <p-menuitem value="Save" icon="fa-save"></p-menuitem>
+                    <p-menuitem value="Update" icon="fa-save"></p-menuitem>
+                </p-submenu>
+                <p-submenu value="Other" icon="fa-phone">
+                    <p-menuitem value="Delete" icon="fa-minus"></p-menuitem>
+                </p-submenu>
+            </p-submenu>
+            <p-menuitem value="Quit" icon="fa-close"></p-menuitem>
+        </p-slidemenu>
 
     </div>
 

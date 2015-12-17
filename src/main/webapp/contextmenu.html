@@ -6,12 +6,11 @@
     <script type="text/javascript" src="primeui/js/button/button.js"></script>
     <script type="text/javascript" src="primeui/js/inputtext/inputtext.js"></script>
     <script type="text/javascript" src="primeui/js/menu/menu.js"></script>
+    <script type="text/javascript" src="primeui/js/menu/menu-element.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript">
         $(function() {
-            $('#cm1').puicontextmenu();
-
-            $('#cm2').puicontextmenu({
+            $('#cm').puicontextmenu({
                 target: $('#img1')
             });
 
@@ -30,69 +29,44 @@
         <h3 class="first">Specific Target</h3>                            
         <img id="img1" src="resources/demo/images/galleria/galleria1.jpg" />
 
-        <ul id="cm2">
+        <ul id="cm">
             <li><a data-icon="fa-caret-right">Next</a></li>
             <li><a data-icon="fa-caret-left">Prev</a></li>
         </ul>
 
-        <ul id="cm1">
-            <li> <a data-icon="fa-file-o">File</a>
-                <ul> 
-                    <li><a data-icon="fa-plus">New</a>
-                        <ul>
-                            <li><a>Project</a></li>
-                            <li><a>Other</a></li>
-                        </ul>
-                    </li> 
-                    <li><a>Open</a></li> 
-                    <li><a>Quit</a></li> 
-                </ul>
-            </li>
-            <li> <a data-icon="fa-edit">Edit</a>
-                <ul>
-                    <li><a data-icon="fa-mail-forward">Undo</a></li>
-                    <li><a data-icon="fa-mail-reply">Redo</a></li>
-                </ul>
-            </li>
-            <li>
-                <a data-icon="fa-question">Help</a>
-                <ul>
-                    <li><a>Contents</a></li>
-                    <li>
-                        <a data-icon="fa-search">Search</a>
-                        <ul>
-                            <li><a>Text</a>
-                                <ul>
-                                    <li><a>Workspace</a></li>
-                                </ul>
-                            </li>
-                            <li><a>File</a></li>
-                        </ul>
-                    </li>
-
-                </ul>
-
-            </li>
-            <li>
-                <a data-icon="fa-gear">Actions</a>
-                <ul>
-                    <li><a data-icon="fa-refresh">Edit</a>
-                        <ul>
-                            <li><a data-icon="fa-save">Save</a></li>
-                            <li><a data-icon="fa-save">Update</a></li>
-                        </ul>
-                    </li>
-                    <li><a data-icon="fa-phone">Other</a>
-                        <ul>
-                            <li><a data-icon="fa-minus">Delete</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a data-icon="ui-icon-close">Quit</a>
-            </li>
-        </ul>
+        <p-contextmenu>
+            <p-submenu value="File" icon="fa-file-o">
+                <p-submenu value="New" icon="fa-plus">
+                    <p-menuitem value="Project"></p-menuitem>
+                    <p-menuitem value="Other"></p-menuitem>
+                </p-submenu>
+                <p-menuitem value="Open"></p-menuitem>
+                <p-menuitem value="Quit"></p-menuitem>
+            </p-submenu>
+            <p-submenu value="Edit" icon="fa-edit">
+                <p-menuitem value="Undo" icon="fa-mail-forward"></p-menuitem>
+                <p-menuitem value="Redo" icon="fa-mail-reply"></p-menuitem>
+            </p-submenu>
+            <p-submenu value="Help" icon="fa-question">
+                <p-menuitem value="Contents"></p-menuitem>
+                <p-submenu value="Search" icon="fa-search">
+                    <p-submenu value="Text">
+                        <p-menuitem value="Workspace"></p-menuitem>
+                    </p-submenu>
+                    <p-menuitem value="File"></p-menuitem>
+                </p-submenu>
+            </p-submenu>
+            <p-submenu value="Action" icon="fa-gear">
+                <p-submenu value="Edit" icon="fa-refresh">
+                    <p-menuitem value="Save" icon="fa-save"></p-menuitem>
+                    <p-menuitem value="Update" icon="fa-save"></p-menuitem>
+                </p-submenu>
+                <p-submenu value="Other" icon="fa-phone">
+                    <p-menuitem value="Delete" icon="fa-minus"></p-menuitem>
+                </p-submenu>
+            </p-submenu>
+            <p-menuitem value="Quit" icon="fa-close"></p-menuitem>
+        </p-contextmenu>
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">

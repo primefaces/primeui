@@ -1,3 +1,39 @@
+PUI.createNestedMenuDom = function(tag, element) {
+    var children = tag.children();
+
+    for(var i = 0; i < children.length; i++) {
+        var childTag = children.eq(i),
+        childTagname = childTag.get(0).tagName.toLowerCase();
+
+        if(childTagname === 'p-submenu') {
+            var submenuDom = $('<li></li>'),
+            submenuLink = $('<a></a>'),
+            value = childTag.attr('value'),
+            icon = childTag.attr('icon');
+
+            if(value) submenuLink.text(value);
+            if(icon) submenuLink.data('icon', icon);
+
+            submenuDom.append(submenuLink).append('<ul></ul>').appendTo(element);
+
+            PUI.createNestedMenuDom.call(this, childTag, submenuDom.children('ul'));
+        }
+        else if(childTagname === 'p-menuitem') {
+            var menuitemDom = $('<a></a>'),
+            icon = childTag.attr('icon'),
+            value = childTag.attr('value');
+
+            if(icon) 
+                menuitemDom.data('icon', icon);
+
+            if(value) 
+                menuitemDom.text(value);
+
+            element.append($('<li></li').append(menuitemDom));
+        }
+    }
+};
+
 if(!xtag.tags['p-submenu']) {
  
     xtag.register('p-submenu', {
@@ -154,44 +190,8 @@ if(!xtag.tags['p-menubar']) {
             created: function() {
                 var element = $(this);
                 this.xtag.container = $('<ul></ul>').appendTo(this);
-                
-                var iterateChildren = function(tag, element) {
-                    var children = tag.children();
-
-                    for(var i = 0; i < children.length; i++) {
-                        var childTag = children.eq(i),
-                        childTagname = childTag.get(0).tagName.toLowerCase();
-
-                        if(childTagname === 'p-submenu') {
-                            var submenuDom = $('<li></li>'),
-                            submenuLink = $('<a></a>'),
-                            value = childTag.attr('value'),
-                            icon = childTag.attr('icon');
-                    
-                            if(value) submenuLink.text(value);
-                            if(icon) submenuLink.data('icon', icon);
-                            
-                            submenuDom.append(submenuLink).append('<ul></ul>').appendTo(element);
-   
-                            iterateChildren.call(this, childTag, submenuDom.children('ul'));
-                        }
-                        else if(childTagname === 'p-menuitem') {
-                            var menuitemDom = $('<a></a>'),
-                            icon = childTag.attr('icon'),
-                            value = childTag.attr('value');
-
-                            if(icon) 
-                                menuitemDom.data('icon', icon);
-                            
-                            if(value) 
-                                menuitemDom.text(value);
-
-                            element.append($('<li></li').append(menuitemDom));
-                        }
-                    }
-                };
-                
-                iterateChildren.call(this, element, this.xtag.container);
+                                
+                PUI.createNestedMenuDom.call(this, element, this.xtag.container);
                 element.children('p-submenu,p-menuitem').remove();
 
                 $(this.xtag.container).puimenubar();
@@ -201,3 +201,76 @@ if(!xtag.tags['p-menubar']) {
     });
     
 }
+
+if(!xtag.tags['p-tieredmenu']) {
+ 
+    xtag.register('p-tieredmenu', {
+    
+        accessors: {
+
+        },
+
+        lifecycle: {
+            created: function() {
+                var element = $(this);
+                this.xtag.container = $('<ul></ul>').appendTo(this);
+                                
+                PUI.createNestedMenuDom.call(this, element, this.xtag.container);
+                element.children('p-submenu,p-menuitem').remove();
+
+                $(this.xtag.container).puitieredmenu();
+            }
+        }
+        
+    });
+    
+}
+
+if(!xtag.tags['p-slidemenu']) {
+ 
+    xtag.register('p-slidemenu', {
+    
+        accessors: {
+
+        },
+
+        lifecycle: {
+            created: function() {
+                var element = $(this);
+                this.xtag.container = $('<ul></ul>').appendTo(this);
+                                
+                PUI.createNestedMenuDom.call(this, element, this.xtag.container);
+                element.children('p-submenu,p-menuitem').remove();
+
+                $(this.xtag.container).puislidemenu();
+            }
+        }
+        
+    });
+    
+}
+
+if(!xtag.tags['p-contextmenu']) {
+ 
+    xtag.register('p-contextmenu', {
+    
+        accessors: {
+
+        },
+
+        lifecycle: {
+            created: function() {
+                var element = $(this);
+                this.xtag.container = $('<ul></ul>').appendTo(this);
+                                
+                PUI.createNestedMenuDom.call(this, element, this.xtag.container);
+                element.children('p-submenu,p-menuitem').remove();
+
+                $(this.xtag.container).puicontextmenu();
+            }
+        }
+        
+    });
+    
+}
+
