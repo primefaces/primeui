@@ -6,6 +6,7 @@
     <script type="text/javascript" src="primeui/js/button/button.js"></script>
     <script type="text/javascript" src="primeui/js/inputtext/inputtext.js"></script>
     <script type="text/javascript" src="primeui/js/menu/menu.js"></script>
+    <script type="text/javascript" src="primeui/js/menu/menu-element.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript">
         $(function() {
@@ -83,7 +84,7 @@
                 </ul>
             </li>
             <li>
-                <a data-icon="ui-icon-close">Quit</a>
+                <a data-icon="fa-close">Quit</a>
             </li>
         </ul>
 
@@ -145,9 +146,45 @@
                 </ul>
             </li>
             <li>
-                <a data-icon="ui-icon-close">Quit</a>
+                <a data-icon="fa-close">Quit</a>
             </li>
         </ul>
+        
+        <br /><br />
+        <h3>PrimeElement</h3>
+        <p-menubar>
+            <p-submenu value="File" icon="fa-file-o">
+                <p-submenu value="New" icon="fa-plus">
+                    <p-menuitem value="Project"></p-menuitem>
+                    <p-menuitem value="Other"></p-menuitem>
+                </p-submenu>
+                <p-menuitem value="Open"></p-menuitem>
+                <p-menuitem value="Quit"></p-menuitem>
+            </p-submenu>
+            <p-submenu value="Edit" icon="fa-edit">
+                <p-menuitem value="Undo" icon="fa-mail-forward"></p-menuitem>
+                <p-menuitem value="Redo" icon="fa-mail-reply"></p-menuitem>
+            </p-submenu>
+            <p-submenu value="Help" icon="fa-question">
+                <p-menuitem value="Contents"></p-menuitem>
+                <p-submenu value="Search" icon="fa-search">
+                    <p-submenu value="Text">
+                        <p-menuitem value="Workspace"></p-menuitem>
+                    </p-submenu>
+                    <p-menuitem value="File"></p-menuitem>
+                </p-submenu>
+            </p-submenu>
+            <p-submenu value="Action" icon="fa-gear">
+                <p-submenu value="Edit" icon="fa-refresh">
+                    <p-menuitem value="Save" icon="fa-save"></p-menuitem>
+                    <p-menuitem value="Update" icon="fa-save"></p-menuitem>
+                </p-submenu>
+                <p-submenu value="Other" icon="fa-phone">
+                    <p-menuitem value="Delete" icon="fa-minus"></p-menuitem>
+                </p-submenu>
+            </p-submenu>
+            <p-menuitem value="Quit" icon="fa-close"></p-menuitem>
+        </p-menubar>
 
     </div>
 
@@ -301,7 +338,7 @@ $('#mb2').puimenubar({
         &lt;/ul&gt;
     &lt;/li&gt;
     &lt;li&gt;
-        &lt;a data-icon="ui-icon-close"&gt;Quit&lt;/a&gt;
+        &lt;a data-icon="fa-close"&gt;Quit&lt;/a&gt;
     &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -363,9 +400,44 @@ $('#mb2').puimenubar({
         &lt;/ul&gt;
     &lt;/li&gt;
     &lt;li&gt;
-        &lt;a data-icon="ui-icon-close"&gt;Quit&lt;/a&gt;
+        &lt;a data-icon="fa-close"&gt;Quit&lt;/a&gt;
     &lt;/li&gt;
 &lt;/ul&gt;   
+
+&lt;h3&gt;PrimeElement&lt;/h3&gt;
+&lt;p-menubar&gt;
+    &lt;p-submenu value="File" icon="fa-file-o"&gt;
+        &lt;p-submenu value="New" icon="fa-plus"&gt;
+            &lt;p-menuitem value="Project"&gt;&lt;/p-menuitem&gt;
+            &lt;p-menuitem value="Other"&gt;&lt;/p-menuitem&gt;
+        &lt;/p-submenu&gt;
+        &lt;p-menuitem value="Open"&gt;&lt;/p-menuitem&gt;
+        &lt;p-menuitem value="Quit"&gt;&lt;/p-menuitem&gt;
+    &lt;/p-submenu&gt;
+    &lt;p-submenu value="Edit" icon="fa-edit"&gt;
+        &lt;p-menuitem value="Undo" icon="fa-mail-forward"&gt;&lt;/p-menuitem&gt;
+        &lt;p-menuitem value="Redo" icon="fa-mail-reply"&gt;&lt;/p-menuitem&gt;
+    &lt;/p-submenu&gt;
+    &lt;p-submenu value="Help" icon="fa-question"&gt;
+        &lt;p-menuitem value="Contents"&gt;&lt;/p-menuitem&gt;
+        &lt;p-submenu value="Search" icon="fa-search"&gt;
+            &lt;p-submenu value="Text"&gt;
+                &lt;p-menuitem value="Workspace"&gt;&lt;/p-menuitem&gt;
+            &lt;/p-submenu&gt;
+            &lt;p-menuitem value="File"&gt;&lt;/p-menuitem&gt;
+        &lt;/p-submenu&gt;
+    &lt;/p-submenu&gt;
+    &lt;p-submenu value="Action" icon="fa-gear"&gt;
+        &lt;p-submenu value="Edit" icon="fa-refresh"&gt;
+            &lt;p-menuitem value="Save" icon="fa-save"&gt;&lt;/p-menuitem&gt;
+            &lt;p-menuitem value="Update" icon="fa-save"&gt;&lt;/p-menuitem&gt;
+        &lt;/p-submenu&gt;
+        &lt;p-submenu value="Other" icon="fa-phone"&gt;
+            &lt;p-menuitem value="Delete" icon="fa-minus"&gt;&lt;/p-menuitem&gt;
+        &lt;/p-submenu&gt;
+    &lt;/p-submenu&gt;
+    &lt;p-menuitem value="Quit" icon="fa-close"&gt;&lt;/p-menuitem&gt;
+&lt;/p-menubar&gt;
                                 </pre>
 
                             </div>
