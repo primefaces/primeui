@@ -45,7 +45,7 @@ if(!xtag.tags['p-menu']) {
                 
                 var iterateChildren = function(parent) {
                     var children = parent.children();
-                    
+
                     for(var i = 0; i < children.length; i++) {
                         var childElement = children.eq(i),
                         tagname = childElement.get(0).tagName.toLowerCase();
@@ -83,6 +83,44 @@ if(!xtag.tags['p-menu']) {
             },
             
             
+        }
+        
+    });
+    
+}
+
+if(!xtag.tags['p-breadcrumb']) {
+ 
+    xtag.register('p-breadcrumb', {
+    
+        accessors: {
+
+        },
+
+        lifecycle: {
+            created: function() {
+                this.xtag.container = $('<ul></ul>').appendTo(this);
+
+                var element = $(this),
+                elementLists = element.children();
+
+                for (var i = 0; i < elementLists.length; i++) {
+                    var elementList = elementLists.eq(i);
+                    tagname = elementList.get(0).tagName.toLowerCase(); 
+                    if (tagname === 'p-menuitem') {
+                        var menuitem = $('<a></a>'),
+                        role = elementList.attr('role');
+
+                        if(role) 
+                            menuitem.data('role', role);
+
+                        this.xtag.container.append($('<li></li').append(menuitem));
+
+                    };
+                }; 
+                //elementLists.remove();
+                $(this.xtag.container).puibreadcrumb();
+            }
         }
         
     });
