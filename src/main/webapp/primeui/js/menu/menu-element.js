@@ -3,6 +3,9 @@ if(!xtag.tags['p-submenu']) {
     xtag.register('p-submenu', {
     
         accessors: {
+            value: {
+                attribute:{}
+            }
         },
 
         lifecycle: {
@@ -20,6 +23,15 @@ if(!xtag.tags['p-menuitem']) {
     xtag.register('p-menuitem', {
     
         accessors: {
+            value: {
+                attribute: {}
+            },
+            icon: {
+                attribute: {}
+            },
+            href: {
+                attribute: {}
+            }
         },
 
         lifecycle: {
@@ -102,23 +114,27 @@ if(!xtag.tags['p-breadcrumb']) {
                 this.xtag.container = $('<ul></ul>').appendTo(this);
 
                 var element = $(this),
-                elementLists = element.children();
+                menuitems = element.children('p-menuitem');
 
-                for (var i = 0; i < elementLists.length; i++) {
-                    var elementList = elementLists.eq(i);
-                    tagname = elementList.get(0).tagName.toLowerCase(); 
-                    if (tagname === 'p-menuitem') {
-                        var menuitem = $('<a></a>'),
-                        role = elementList.attr('role');
-
-                        if(role) 
-                            menuitem.data('role', role);
-
-                        this.xtag.container.append($('<li></li').append(menuitem));
-
-                    };
+                for (var i = 0; i < menuitems.length; i++) {
+                    var menuitem = menuitems.eq(i),
+                    anchor = $('<a></a>'),
+                    value = menuitem.attr('value'),
+                    href = menuitem.attr('href');
+                    
+                    if(value) {
+                        anchor.text(value);
+                    }
+                    
+                    if(href) {
+                        anchor.attr('href', href);
+                    }
+            
+                    this.xtag.container.append($('<li></li').append(anchor));
                 }; 
-                //elementLists.remove();
+                
+                menuitems.remove();
+                
                 $(this.xtag.container).puibreadcrumb();
             }
         }
