@@ -85,6 +85,23 @@ if(!xtag.tags['p-menu']) {
     xtag.register('p-menu', {
     
         accessors: {
+            popup: {
+                attribute: {
+                    boolean: true
+                }
+            },
+            trigger: {
+                attribute: {}
+            },
+            my: {
+                attribute: {}
+            },
+            at: {
+                attribute: {}
+            },
+            triggerevent: {
+                attribute: {}
+            }
         },
 
         lifecycle: {
@@ -127,7 +144,13 @@ if(!xtag.tags['p-menu']) {
                 
                 iterateChildren.call(this, $(this));
 
-                $(this.xtag.container).puimenu();
+                $(this.xtag.container).puimenu({
+                    popup: this.popup,
+                    trigger: this.trigger,
+                    my: this.my||'left top',
+                    at: this.at||'left bottom',
+                    triggerEvent: this.triggerEvent||'click'
+                });
             }
 
         }

@@ -24,12 +24,16 @@
 
             this.element.closest('.pui-menu').addClass('pui-menu-dynamic pui-shadow').appendTo(document.body);
 
+            if($.type(this.options.trigger) === 'string') {
+                this.options.trigger =  $(this.options.trigger);
+            }
+            
             this.positionConfig = {
                 my: this.options.my,
                 at: this.options.at,
                 of: this.options.trigger
             };
-
+            
             this.options.trigger.on(this.options.triggerEvent + '.pui-menu', function(e) {
                 if($this.element.is(':visible')) {
                     $this.hide();
