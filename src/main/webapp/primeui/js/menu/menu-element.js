@@ -206,7 +206,9 @@ if(!xtag.tags['p-menubar']) {
     xtag.register('p-menubar', {
     
         accessors: {
-
+            autodisplay: {
+                attribute: {}
+            }
         },
 
         lifecycle: {
@@ -217,7 +219,9 @@ if(!xtag.tags['p-menubar']) {
                 PUI.createNestedMenuDom.call(this, element, this.xtag.container);
                 element.children('p-submenu,p-menuitem').remove();
 
-                $(this.xtag.container).puimenubar();
+                $(this.xtag.container).puimenubar({
+                    autoDisplay: this.autodisplay ? JSON.parse(this.autodisplay): true
+                });
             }
         }
         
@@ -230,7 +234,26 @@ if(!xtag.tags['p-tieredmenu']) {
     xtag.register('p-tieredmenu', {
     
         accessors: {
-
+            popup: {
+                attribute: {
+                    boolean: true
+                }
+            },
+            trigger: {
+                attribute: {}
+            },
+            my: {
+                attribute: {}
+            },
+            at: {
+                attribute: {}
+            },
+            triggerevent: {
+                attribute: {}
+            },
+            autodisplay: {
+                attribute: {}
+            }
         },
 
         lifecycle: {
@@ -241,7 +264,14 @@ if(!xtag.tags['p-tieredmenu']) {
                 PUI.createNestedMenuDom.call(this, element, this.xtag.container);
                 element.children('p-submenu,p-menuitem').remove();
 
-                $(this.xtag.container).puitieredmenu();
+                $(this.xtag.container).puitieredmenu({
+                    popup: this.popup,
+                    trigger: this.trigger,
+                    my: this.my||'left top',
+                    at: this.at||'left bottom',
+                    triggerEvent: this.triggerEvent||'click',
+                    autoDisplay: this.autodisplay ? JSON.parse(this.autodisplay): true
+                });
             }
         }
         
@@ -254,7 +284,23 @@ if(!xtag.tags['p-slidemenu']) {
     xtag.register('p-slidemenu', {
     
         accessors: {
-
+            popup: {
+                attribute: {
+                    boolean: true
+                }
+            },
+            trigger: {
+                attribute: {}
+            },
+            my: {
+                attribute: {}
+            },
+            at: {
+                attribute: {}
+            },
+            triggerevent: {
+                attribute: {}
+            }
         },
 
         lifecycle: {
@@ -265,7 +311,13 @@ if(!xtag.tags['p-slidemenu']) {
                 PUI.createNestedMenuDom.call(this, element, this.xtag.container);
                 element.children('p-submenu,p-menuitem').remove();
 
-                $(this.xtag.container).puislidemenu();
+                $(this.xtag.container).puislidemenu({
+                    popup: this.popup,
+                    trigger: this.trigger,
+                    my: this.my||'left top',
+                    at: this.at||'left bottom',
+                    triggerEvent: this.triggerEvent||'click'
+                });
             }
         }
         
@@ -278,7 +330,15 @@ if(!xtag.tags['p-contextmenu']) {
     xtag.register('p-contextmenu', {
     
         accessors: {
-
+            autodisplay: {
+                attribute: {}
+            },
+            target: {
+                attribute: {}
+            },
+            event: {
+                attribute: {}
+            }
         },
 
         lifecycle: {
@@ -289,7 +349,11 @@ if(!xtag.tags['p-contextmenu']) {
                 PUI.createNestedMenuDom.call(this, element, this.xtag.container);
                 element.children('p-submenu,p-menuitem').remove();
 
-                $(this.xtag.container).puicontextmenu();
+                $(this.xtag.container).puicontextmenu({
+                    autoDisplay: this.autodisplay ? JSON.parse(this.autodisplay): true,
+                    target: this.target,
+                    event: this.event||'contextmenu'
+                });
             }
         }
         

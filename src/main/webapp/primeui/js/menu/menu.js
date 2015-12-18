@@ -607,9 +607,16 @@
                     addClass('pui-contextmenu pui-menu-dynamic pui-shadow');
             
             var $this = this;
-
-            this.options.target = this.options.target||$(document);
-
+            
+            if(this.options.target) {
+                if($.type(this.options.trigger) === 'string') {
+                    this.options.trigger =  $(this.options.trigger);
+                }
+            }
+            else {
+                this.options.target = $(document);
+            }
+                
             if(!this.element.parent().parent().is(document.body)) {
                 this.element.parent().appendTo('body');
             }
