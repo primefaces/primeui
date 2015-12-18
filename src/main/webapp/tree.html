@@ -3,7 +3,9 @@
     <link rel="stylesheet" href="primeui/css/inputtext/inputtext.css" />
     <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
     <link rel="stylesheet" href="primeui/css/growl/growl.css" />
+    <script type="text/javascript" src="resources/demo/js/tree-demo.js"></script>
     <script type="text/javascript" src="primeui/js/tree/tree.js"></script>
+    <script type="text/javascript" src="primeui/js/tree/tree-element.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript" src="primeui/js/growl/growl.js"></script>
     <script type="text/javascript">
@@ -119,6 +121,12 @@
 
         <h3>Remote - Lazy</h3>
         <div id="remotelazy"></div>
+        
+        <h3>PrimeElement - Local</h3>
+        <p-tree nodes="TreeDemo.localData" animate></p-tree>
+        
+        <h3>PrimeElement - Remote</h3>
+        <p-tree nodes="TreeDemo.remoteData" animate></p-tree>
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">
