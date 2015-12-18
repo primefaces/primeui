@@ -123,7 +123,12 @@
         <div id="remotelazy"></div>
         
         <h3>PrimeElement - Local</h3>
-        <p-tree nodes="TreeDemo.localData" animate></p-tree>
+        <p-tree nodes="TreeDemo.localData" animate>
+            <p-treeicon type="def" expanded="fa-folder-open" collapsed="fa-folder"></p-treeicon>
+            <p-treeicon type="picture" value="fa-file-image-o"></p-treeicon>
+            <p-treeicon type="doc" value="fa-file-word-o"></p-treeicon>
+            <p-treeicon type="video" value="fa-file-video-o"></p-treeicon>
+        </p-tree>
         
         <h3>PrimeElement - Remote</h3>
         <p-tree nodes="TreeDemo.remoteData" animate></p-tree>
@@ -450,6 +455,17 @@ $(function() {
 
 &lt;h3&gt;Remote - Lazy&lt;/h3&gt;
 &lt;div id="remotelazy"&gt;&lt;/div&gt;
+
+&lt;h3&gt;PrimeElement - Local&lt;/h3&gt;
+&lt;p-tree nodes="TreeDemo.localData" animate&gt;
+    &lt;p-treeicon type="def" expanded="fa-folder-open" collapsed="fa-folder"&gt;&lt;/p-treeicon&gt;
+    &lt;p-treeicon type="picture" value="fa-file-image-o"&gt;&lt;/p-treeicon&gt;
+    &lt;p-treeicon type="doc" value="fa-file-word-o"&gt;&lt;/p-treeicon&gt;
+    &lt;p-treeicon type="video" value="fa-file-video-o"&gt;&lt;/p-treeicon&gt;
+&lt;/p-tree&gt;
+
+&lt;h3&gt;PrimeElement - Remote&lt;/h3&gt;
+&lt;p-tree nodes="TreeDemo.remoteData" animate&gt;&lt;/p-tree&gt;
                                 </pre>
 
                             </div>

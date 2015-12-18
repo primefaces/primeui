@@ -1,3 +1,32 @@
+if(!xtag.tags['p-treeicon']) {
+ 
+    xtag.register('p-treeicon', {
+    
+        accessors: {
+            type: {
+                attribute:{}
+            },
+            expanded: {
+                attribute:{}
+            },
+            collapsed: {
+                attribute:{}
+            },
+            value: {
+                attribute:{}
+            }
+        },
+
+        lifecycle: {
+            created: function() {
+                
+            }
+        }
+        
+    });
+    
+}
+
 if(!xtag.tags['p-tree']) {
  
     xtag.register('p-tree', {
@@ -26,13 +55,39 @@ if(!xtag.tags['p-tree']) {
 
         lifecycle: {
             created: function() {
+                var element = $(this),
+                treeIconElements = element.children('p-treeicon'),
+                treeIcons = null;
+                
                 this.xtag.container = $(this).append('<div></div>').children('div');
+                
+                if(treeIconElements.length) {
+                    treeIcons = {}; 
+                
+                    for(var i = 0; i < treeIconElements.length; i++) {
+                        var treeIcon = treeIconElements.eq(i),
+                        value = treeIcon.attr('value');
+
+                        if(value) {
+                            treeIcons[treeIcon.attr('type')] = value;
+                        }
+                        else {
+                            treeIcons[treeIcon.attr('type')] = {
+                                expanded: treeIcon.attr('expanded'),
+                                collapsed: treeIcon.attr('collapsed')
+                            };
+                        }
+                    }
+                } 
+                
+                console.log(treeIcons);
                 
                 $(this.xtag.container).puitree({
                     nodes: PUI.resolveObjectByName(this.nodes),
                     lazy: this.lazy,
                     animate: this.animate,
-                    selectionMode: this.selectionmode
+                    selectionMode: this.selectionmode,
+                    icons: treeIcons
                 });
             }
         },
