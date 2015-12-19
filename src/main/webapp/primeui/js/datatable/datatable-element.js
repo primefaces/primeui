@@ -124,7 +124,7 @@ if(!xtag.tags['p-datatable']) {
                     datasource: PUI.resolveObjectByName(this.datasource),
                     columns: cols,
                     paginator: this.paginator ? {rows: this.rows ? parseInt(this.rows) : 0} : null,
-                    selectionMode: this.selectionMode,
+                    selectionMode: this.selectionmode,
                     caption: this.caption,
                     footer: this.footer,
                     sortField: this.sortfield,
