@@ -6,7 +6,10 @@
     <link rel="stylesheet" href="primeui/css/growl/growl.css" />
     <link rel="stylesheet" href="primeui/css/grid/grid.css" />
     <link rel="stylesheet" href="primeui/css/menu/menu.css" />
+    <script type="text/javascript" src="resources/demo/js/data-demo.js"></script>
+    <script type="text/javascript" src="primeui/js/column/column-element.js"></script>
     <script type="text/javascript" src="primeui/js/datatable/datatable.js"></script>
+    <script type="text/javascript" src="primeui/js/datatable/datatable-element.js"></script>
     <script type="text/javascript" src="primeui/js/paginator/paginator.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript" src="primeui/js/growl/growl.js"></script>
@@ -19,85 +22,6 @@
                 e.preventDefault();
             });
         
-            var localData = [
-                {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
-                {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
-                {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
-                {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
-                {'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
-                {'brand': 'Volvo', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
-                {'brand': 'Honda', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
-                {'brand': 'Jaguar', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
-                {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'},
-                {'brand': 'Fiat', 'year': 2013, 'color': 'Red', 'vin': '245t2s'}
-            ];
-
-            $('#tbllocal').puidatatable({
-                caption: 'Local Datasource',
-                columns: [
-                    {field: 'vin', headerText: 'Vin'},
-                    {field: 'brand', headerText: 'Brand'},
-                    {field: 'year', headerText: 'Year'},
-                    {field: 'color', headerText: 'Color'}
-                ],
-                datasource: localData
-            });
-
-            $('#tblremoteeager').puidatatable({
-                caption: 'Remote Restful Webservice - Eager',
-                paginator: {
-                    rows: 10
-                },
-                columns: [
-                    {field: 'vin', headerText: 'Vin'},
-                    {field: 'brand', headerText: 'Brand'},
-                    {field: 'year', headerText: 'Year'},
-                    {field: 'color', headerText: 'Color'}
-                ],
-                datasource: function(callback) {
-                    $.ajax({
-                        type: "GET",
-                        url: 'rest/cars/list',
-                        dataType: "json",
-                        context: this,
-                        success: function(response) {
-                            callback.call(this, response);
-                        }
-                    });
-                }
-            });
-
-            $('#tblremotelazy').puidatatable({
-                lazy: true,
-                caption: 'Remote Restful Webservice - Lazy',
-                paginator: {
-                    rows: 10,
-                    totalRecords: 200
-                },
-                columns: [
-                    {field: 'vin', headerText: 'Vin'},
-                    {field: 'brand', headerText: 'Brand'},
-                    {field: 'year', headerText: 'Year'},
-                    {field: 'color', headerText: 'Color'}
-                ],
-                datasource: function(callback, ui) {
-                    var uri = 'rest/cars/lazylist/' + ui.first;
-                    if (ui.sortField) {
-                        uri += '/' + ui.sortField + '/' + ui.sortOrder;
-                    }
-
-                    $.ajax({
-                        type: "GET",
-                        url: uri,
-                        dataType: "json",
-                        context: this,
-                        success: function(response) {
-                            callback.call(this, response);
-                        }
-                    });
-                }
-            });
-
             $('#doc').puitabview();
         });
     </script>
@@ -123,24 +47,26 @@
             <li><a href="datatableResponsive.html">&bull; Responsive</a></li>
             <li><a href="datatableContextMenu.html">&bull; ContextMenu</a></li>
             <li><a href="datatableSticky.html">&bull; Sticky</a></li>
+            <li><a href="datatableElement.html">&bull; Sticky</a></li>
         </ul>
     </div>
 
     <div class="ContentSideSections">
         <div class="Content100 overHidden TextShadow">
-            <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">Datatable - <span class="subitem">DataSource</span></span>
-            <span class="defaultText dispTable">DataTable has 3 initialization modes; local, remote eager and remote lazy. Data type should be a array of JSON objects for all cases. In local mode, data is represented as a local variable,
-                in remote eager mode, datasource is a function to fetch the data only once from the server and in remote lazy mode datasource function is called whenever necessary
-                such as initialization, paging, sorting and filtering.</span>
+            <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">Datatable - <span class="subitem">Element</span></span>
+            <span class="defaultText dispTable">DataTable can be defined declaratively using p-datatable and p-column elements.</span>
         </div>
     </div>
 
     <div class="ContentSideSections Implementation">
-        <div id="tbllocal"></div>
-
-        <div id="tblremoteeager"></div>
-
-        <div id="tblremotelazy"></div>
+        
+        <p-datatable datasource="DataDemo.loadAllCars" paginator rows="10">
+            <p-column field="vin" headertext="Vin" sortable filter></p-column>
+            <p-column field="year" headertext="Year" sortable filter></p-column>
+            <p-column field="brand" headertext="Brand" sortable filter></p-column>
+            <p-column field="color" headertext="Color" sortable filter></p-column>
+        </p-datatable>
+            
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">
@@ -512,96 +438,11 @@ $('#default').puidatatable('unselectAllRows');
 
                             <div id="doc-source">
                                 <pre name="code" class="brush:js">
-&lt;script type="text/javascript"&gt;
-    $(function() {
-        var localData = [
-            {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
-            {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
-            {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
-            {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
-            {'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
-            {'brand': 'Volvo', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
-            {'brand': 'Honda', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
-            {'brand': 'Jaguar', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
-            {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'},
-            {'brand': 'Fiat', 'year': 2013, 'color': 'Red', 'vin': '245t2s'}
-        ];
 
-        $('#tbllocal').puidatatable({
-            caption: 'Local Datasource',
-            columns: [
-                {field: 'vin', headerText: 'Vin'},
-                {field: 'brand', headerText: 'Brand'},
-                {field: 'year', headerText: 'Year'},
-                {field: 'color', headerText: 'Color'}
-            ],
-            datasource: localData
-        });
-
-        $('#tblremoteeager').puidatatable({
-            caption: 'Remote Restful Webservice - Eager',
-            paginator: {
-                rows: 10
-            },
-            columns: [
-                {field: 'vin', headerText: 'Vin'},
-                {field: 'brand', headerText: 'Brand'},
-                {field: 'year', headerText: 'Year'},
-                {field: 'color', headerText: 'Color'}
-            ],
-            datasource: function(callback) {
-                $.ajax({
-                    type: "GET",
-                    url: 'rest/cars/list',
-                    dataType: "json",
-                    context: this,
-                    success: function(response) {
-                        callback.call(this, response);
-                    }
-                });
-            }
-        });
-
-        $('#tblremotelazy').puidatatable({
-            lazy: true,
-            caption: 'Remote Restful Webservice - Lazy',
-            paginator: {
-                rows: 10,
-                totalRecords: 200
-            },
-            columns: [
-                {field: 'vin', headerText: 'Vin'},
-                {field: 'brand', headerText: 'Brand'},
-                {field: 'year', headerText: 'Year'},
-                {field: 'color', headerText: 'Color'}
-            ],
-            datasource: function(callback, ui) {
-                var uri = 'rest/cars/lazylist/' + ui.first;
-                if (ui.sortField) {
-                    uri += '/' + ui.sortField + '/' + ui.sortOrder;
-                }
-
-                $.ajax({
-                    type: "GET",
-                    url: uri,
-                    dataType: "json",
-                    context: this,
-                    success: function(response) {
-                        callback.call(this, response);
-                    }
-                });
-            }
-        });
-    });
-&lt;/script&gt;
                                 </pre>
 
                                 <pre name="code" class="brush:xml">                            
-&lt;div id="tbllocal"&gt;&lt;/div&gt;
 
-&lt;div id="tblremoteeager"&gt;&lt;/div&gt;
-
-&lt;div id="tblremotelazy"&gt;&lt;/div&gt;
                                 </pre>
                             </div>
                         </div>
