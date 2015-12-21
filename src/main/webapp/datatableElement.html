@@ -11,6 +11,8 @@
     <script type="text/javascript" src="primeui/js/datatable/datatable.js"></script>
     <script type="text/javascript" src="primeui/js/datatable/datatable-element.js"></script>
     <script type="text/javascript" src="primeui/js/paginator/paginator.js"></script>
+    <script type="text/javascript" src="primeui/js/growl/growl.js"></script>
+    <script type="text/javascript" src="primeui/js/growl/growl-element.js"></script> 
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript" src="primeui/js/growl/growl.js"></script>
     <script type="text/javascript" src="primeui/js/menu/menu.js"></script>
@@ -21,6 +23,10 @@
                 Showcase.changePageWithLink($(this).attr('href'));
                 e.preventDefault();
             });
+            
+            handleRowSelect = function(event, data) {
+                document.getElementById('messages').show([{severity: 'info', summary: 'Row Selected', detail: data.vin + ' ' + data.year}]);
+            };
         
             $('#doc').puitabview();
         });
@@ -47,7 +53,7 @@
             <li><a href="datatableResponsive.html">&bull; Responsive</a></li>
             <li><a href="datatableContextMenu.html">&bull; ContextMenu</a></li>
             <li><a href="datatableSticky.html">&bull; Sticky</a></li>
-            <li><a href="datatableElement.html">&bull; Sticky</a></li>
+            <li><a href="datatableElement.html">&bull; Element</a></li>
         </ul>
     </div>
 
@@ -59,6 +65,8 @@
     </div>
 
     <div class="ContentSideSections Implementation">
+        
+        <p-growl id="messages"></p-growl>
         
         <p-datatable datasource="DataDemo.loadAllCars" paginator rows="10" selectionmode="single" onrowselect="handleRowSelect">
             <p-column field="vin" headertext="Vin" sortable filter></p-column>
@@ -75,374 +83,30 @@
                 <span class="fontSize18 logoBlueText">
                     <div id="doc">
                         <ul>
-                            <li><a href="#doc-overview">Overview</a></li>
-                            <li><a href="#doc-options">Options</a></li>
-                            <li><a href="#doc-events">Events</a></li>
-                            <li><a href="#doc-methods">Methods</a></li>
-                            <li><a href="#doc-methods">Source</a></li>
+                            <li><a href="#doc-overview">Markup</a></li>
+                            <li><a href="#doc-options">Script</a></li>
                         </ul>
                         <div>
-                            <div id="doc-overview" class="defaultText">
-                                <p>DataTable requires column metadata and a datasource as requires options. A column
-                                    definition has the following properties;</p>
-                                <ul>
-                                    <li>field: Name of field.</li>
-                                    <li>headerText: Column header value.</li>
-                                    <li>headerText: Column footer value.</li>
-                                    <li>sortable: Controls sorting.</li>
-                                    <li>content: A function that takes row data and expects a string or a jQuery object to customize the cell.</li>
-                                    <li>headerStyle: Inline style of the header cell.</li>
-                                    <li>headerClass: Style class of the header cell.</li>
-                                    <li>bodyStyle: Inline style of the body cell.</li>
-                                    <li>bodyClass: Style class of the body cell.</li>
-                                    <li>colspan: Column span value for grouping.</li>
-                                    <li>rowspan: Row span value for grouping.</li>
-                                    <li>filter: Defines if filtering is enabled.</li>
-                                    <li>filterMatchMode: Built-in filter algorithm, valid values are "startsWith" and "contains".</li>
-                                    <li>filterFunction: Custom filter function that takes the cell value and filter value to return a boolean.</li>
-                                    <li>editor: Boolean value that controls if this column is editable.</li>
-                                    <li>rowToggler: Boolean value that controls if this column displayed a toggle icon.</li>
-                                </ul>
 
-                                <p>Datasource on the other hand, can either be a javascript array or a function to load
-                                    data from a remote location. In eager mode, datasource is loaded only once and in lazy mode
-                                    ,invoked everytime whenever the state changes like paging or sorting. To update the datasource
-                                    use $('#example').puidatatable('option', 'datasource', newdatasource).</p>
-
-                                <pre name="code" class="brush:js">
-$('#tbl').puidatatable({
-    columns: [],
-    datasource: [],
-    ...
-});
-                                </pre>
-
+                            <div id="doc-markup">                               
                                 <pre name="code" class="brush:xml">
-&lt;div id="tbl"&gt;&lt;/div&gt;
+&lt;p-growl id="messages"&gt;&lt;/p-growl&gt;
+
+&lt;p-datatable datasource="DataDemo.loadAllCars" paginator rows="10" selectionmode="single" onrowselect="handleRowSelect"&gt;
+    &lt;p-column field="vin" headertext="Vin" sortable filter&gt;&lt;/p-column&gt;
+    &lt;p-column field="year" headertext="Year" sortable filter&gt;&lt;/p-column&gt;
+    &lt;p-column field="brand" headertext="Brand" sortable filter&gt;&lt;/p-column&gt;
+    &lt;p-column field="color" headertext="Color" sortable filter&gt;&lt;/p-column&gt;
+&lt;/p-datatable&gt;
                                 </pre>
                             </div>
 
-                            <div id="doc-options">
-                                <table class="doc-table">
-                                    <thead>
-                                    <th>Name</th>
-                                    <th>Type</th>
-                                    <th>Default</th>
-                                    <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>columns</td>
-                                            <td>Array</td>
-                                            <td>null</td>
-                                            <td>An array of columns definition instances.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>datasource</td>
-                                            <td>Array/Function</td>
-                                            <td>null</td>
-                                            <td>Datasource to load the data, valid options are a local javascript array or a function.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>paginator</td>
-                                            <td>Object</td>
-                                            <td>null</td>
-                                            <td>Configuration for paginator, see paginator widget for the options.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>selectionMode</td>
-                                            <td>string</td>
-                                            <td>null</td>
-                                            <td>Selection mode for datatable, valid values are single and multiple.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>caption</td>
-                                            <td>String</td>
-                                            <td>null</td>
-                                            <td>Caption text of the datatable.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>lazy</td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>Determines if the remote data loading is lazy, only the current page is loaded if true.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>sortField</td>
-                                            <td>String</td>
-                                            <td>null</td>
-                                            <td>Determines the column on which the rows are initially sorted.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>sortOrder</td>
-                                            <td>int</td>
-                                            <td>null</td>
-                                            <td>Determines the order of the initial sorting 1 is up, -1 is down.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>keepSelectionInLazyMode</td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>When true, the pagination in lazy mode will keep the selected rows. Developer is responsible for the fact that always the same rows in the same order needs to be returned in order to make the selection behave correctly.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>scrollable</td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>In scrollable mode, data in body is scrollable with fixed header and footer.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>scrollHeight</td>
-                                            <td>boolean</td>
-                                            <td>null</td>
-                                            <td>Height of the scrollable body section, can be a fixed value in pixels like 50 or a percentage 50%.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>scrollWidth</td>
-                                            <td>boolean</td>
-                                            <td>null</td>
-                                            <td>Width of the scrollable body section, can be a fixed value in pixels like 50 or a percentage 50%.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>responsive</td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>When enabled, columns for a row are displayed as stacked in small screens.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>expandableRows</td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>Allows row expansion to display detailed content.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>expandedRowContent</td>
-                                            <td>function</td>
-                                            <td>null</td>
-                                            <td>Callback that receives the row data and returns the content for the expansion.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>rowExpandMode</td>
-                                            <td>string</td>
-                                            <td>multiple</td>
-                                            <td>Defines whether one row at a time can be toggled or not. Valid values are "multiple" and "single".</td>
-                                        </tr>
-                                        <tr>
-                                            <td>resizableColumns</td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>Makes columns resizable using drag drop.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>columnResizeMode</td>
-                                            <td>string</td>
-                                            <td>fit</td>
-                                            <td>Defines if overall table width should change or not, valid values are "fit" and "expand".</td>
-                                        </tr>
-                                        <tr>
-                                            <td>draggableRows</td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>Makes rows draggable for reorder.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>draggableColumns</td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>Makes columns draggable for reorder.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>filterDelay</td>
-                                            <td>integer</td>
-                                            <td>500</td>
-                                            <td>Delay in milliseconds to trigger filtering.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>stickyHeader</td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>When enabled, header is kept inside the viewport during page scroll.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>editMode</td>
-                                            <td>boolean</td>
-                                            <td>cell</td>
-                                            <td>Defines edit mode of data, only valid value is cell.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>tabindex</td>
-                                            <td>integer</td>
-                                            <td>0</td>
-                                            <td>tabindex to be used at keyboard support such as row navigation.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <div id="doc-events">
-                                <table class="doc-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Parameters</th>
-                                            <th>Description</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>sort</td>
-                                            <td>event: puidatatablesort event
-                                                <br />
-                                                sortOrder: Order as integer value
-                                                <br />
-                                                sortField: Field of column</td>
-                                            <td>Fired when a row is selected.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>rowSelect</td>
-                                            <td>event: puidatatablerowselect event
-                                                <br />
-                                                data: Selected data</td>
-                                            <td>Fired when a row is selected.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>rowUnselect</td>
-                                            <td>event: puidatatablerowunselect event
-                                                <br />
-                                                data: Unselected data</td>
-                                            <td>Fired when a row is unselected.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>rowExpand</td>
-                                            <td>event: puidatatablerowexpand event
-                                                <br />
-                                                data: Expanded row data</td>
-                                            <td>Fired when a row is expanded.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>rowCollapse</td>
-                                            <td>event: puidatatablerowcollapsed event
-                                                <br />
-                                                data: Collapsed row data</td>
-                                            <td>Fired when a row is collapsed.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>colReorder</td>
-                                            <td>event: puidatatablecolreorder event
-                                                <br />
-                                                dragIndex: Index of dragged column
-                                                <br />
-                                                dropIndex: Index of dropped column</td>
-                                            <td>Fired when a row is collapsed.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>colResize</td>
-                                            <td>event: puidatatablecolresize event
-                                                <br />
-                                                element: Resized column header</td>
-                                            <td>Fired when a column is resized.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>rowReorder</td>
-                                            <td>event: puidatatablerowreorder event
-                                                <br />
-                                                fromIndex: Original index of row
-                                                <br />
-                                                toIndex: New index of row</td>
-                                            <td>Fired when a column is resized.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>rowSelectContextMenu</td>
-                                            <td>event: puidatatablerowselectcontext event
-                                                <br />
-                                                data: Selected data</td>
-                                            <td>Fired when a row is selected with context menu.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>cellEdit</td>
-                                            <td>event: puidatatablecelledit event
-                                                <br />
-                                                oldValue: Old value of cell
-                                                <br />
-                                                newValue: New value of cell
-                                                <br />
-                                                data: Row data
-                                                <br />
-                                                field: Field of the cell</td>
-                                            <td>Fired when a row is selected with context menu. Returning false rejects the edit.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                                <h3>Example</h3>
+                            <div id="doc-script">
                                 <pre name="code" class="brush:js">
-$('#tbl').puidatatable({
-    rowSelect: function(event, data) {
-        //...
-    }
-});
-                                </pre>
-                            </div>
-
-                            <div id="doc-methods">
-                                <table class="doc-table">
-                                    <thead>
-                                    <th>Name</th>
-                                    <th>Parameters</th>
-                                    <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>sort</td>
-                                            <td>field: Name of the sort field, order: 1 or -1 for sort order.</td>
-                                            <td>Sorts the data.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>unselectAllRows</td>
-                                            <td>-</td>
-                                            <td>Cleans datatable selection.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>selectRow(row, silent)</td>
-                                            <td>row: tr element as jquery, silent: Flag not to trigger select event.</td>
-                                            <td>Selects a given row.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>unselectRow(row, silent)</td>
-                                            <td>row: tr element as jquery, silent: Flag not to trigger select event.</td>
-                                            <td>Unselects a given row.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>reset</td>
-                                            <td>-</td>
-                                            <td>Resets the datatable state.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>getSelection</td>
-                                            <td>-</td>
-                                            <td>Retrieves selected data. Warning: In Lazy loading mode, it retrieves only the selected rows on the current page of the paginator.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>getContextMenuSelection</td>
-                                            <td>-</td>
-                                            <td>Retrieves selected data by context menu.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                                <h3>Example</h3>
-                                <pre name="code" class="brush:js">
-$('#default').puidatatable('unselectAllRows');
-                                </pre>
-                            </div>
-
-                            <div id="doc-source">
-                                <pre name="code" class="brush:js">
-
-                                </pre>
-
-                                <pre name="code" class="brush:xml">                            
-
+            
+handleRowSelect = function(event, data) {
+    document.getElementById('messages').show([{severity: 'info', summary: 'Row Selected', detail: data.vin + ' ' + data.year}]);
+};
                                 </pre>
                             </div>
                         </div>
