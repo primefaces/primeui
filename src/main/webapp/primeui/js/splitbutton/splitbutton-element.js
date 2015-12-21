@@ -9,6 +9,9 @@ if(!xtag.tags['p-splitbutton']) {
             },
             iconPos: {
                 attribute:{}
+            },
+            value: {
+                attribute:{}
             }
             
         },
@@ -19,7 +22,8 @@ if(!xtag.tags['p-splitbutton']) {
                 menuitems = element.children('p-menuitem');
                 var items = [];
                 this.xtag.container.on('click.p-splitbutton', function() {
-                    alert('Saved!')
+                    $('#messages').puigrowl('show', [{severity: 'info', summary: 'Saved'}]);
+                    
                 });
                 for (var i = 0; i < menuitems.length; i++) {
                     var menuitem = menuitems.eq(i),
