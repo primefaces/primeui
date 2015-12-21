@@ -31,7 +31,8 @@
             filterDelay: 300,
             stickyHeader: false,
             editMode: null,
-            tabindex: 0
+            tabindex: 0,
+            isEmptySource: false
         },
         
         _create: function() {
@@ -158,6 +159,10 @@
             
             if(this.options.editMode) {
                 this._initEditing();
+            }
+
+            if(this.options.isEmptySource) {
+                this._initEmptyMessage();
             }
         },
         
@@ -1562,6 +1567,12 @@
                                 $this._showCellEditor(cell);
                             }
                         });
+        },
+
+        _initEmptyMessage: function() {
+            if(this.options.datasource) {
+                alert("Datasource is empty.");
+            }
         },
         
         _showCellEditor: function(cell) {
