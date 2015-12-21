@@ -1576,6 +1576,7 @@
                             var cell = $(this);
                             if(!cell.hasClass('pui-cell-editing')) {
                                 $this._showCellEditor(cell);
+                                e.stopPropagation();
                             }
                         });
         },
@@ -1626,6 +1627,7 @@
                 } else if(key === keyCode.ESCAPE) {
                     $this._onCellEditorBlur(cell);
                 }
+                
             });
         },
         
