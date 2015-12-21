@@ -192,7 +192,7 @@ var PUI = {
     },
     
     executeFunctionByName: function(functionName /*, args */) {
-        var args = [].slice.call(arguments).splice(2),
+        var args = [].slice.call(arguments).splice(1),
         context = window,
         namespaces = functionName.split("."),
         func = namespaces.pop();
