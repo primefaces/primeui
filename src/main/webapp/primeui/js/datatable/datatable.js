@@ -505,9 +505,6 @@
                 var emptyRow = $('<tr class="ui-widget-content" />').appendTo(this.tbody);
                 emptyRow.html(this.options.emptyMessage);
             }
-
-
-
         },
                                 
         _getFirst: function() {
