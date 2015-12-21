@@ -502,8 +502,10 @@
                 }
             }
             else {
-                var emptyRow = $('<tr class="ui-widget-content" />').appendTo(this.tbody);
-                emptyRow.html(this.options.emptyMessage);
+                    this.tbody.html('');
+                    var emptyRow = $('<tr class="ui-widget-content" />').appendTo(this.tbody);
+                    var emptyColumn = $('<td colspan="4" />').appendTo(emptyRow);
+                    emptyColumn.html(this.options.emptyMessage);
             }
         },
                                 
