@@ -32,7 +32,7 @@
             stickyHeader: false,
             editMode: null,
             tabindex: 0,
-            isEmptySource: false
+            emptyMessage: 'No records found'
         },
         
         _create: function() {
@@ -161,9 +161,6 @@
                 this._initEditing();
             }
 
-            if(this.options.isEmptySource) {
-                this._initEmptyMessage();
-            }
         },
         
         _initHeader: function() {
@@ -436,7 +433,7 @@
                 
         _renderData: function() {
             var dataToRender = this.filteredData||this.data;
-            if(dataToRender) {
+            if(dataToRender.length) {
                 this.tbody.html('');
                 
                 var firstNonLazy = this._getFirst(),
@@ -504,6 +501,13 @@
                     }
                 }
             }
+            else {
+                var emptyRow = $('<tr class="ui-widget-content" />').appendTo(this.tbody);
+                emptyRow.html(this.options.emptyMessage);
+            }
+
+
+
         },
                                 
         _getFirst: function() {
@@ -1568,13 +1572,7 @@
                             }
                         });
         },
-
-        _initEmptyMessage: function() {
-            if(this.options.datasource) {
-                alert("Datasource is empty.");
-            }
-        },
-        
+  
         _showCellEditor: function(cell) {
             var editor = this.editors[cell.data('editor')].call(),
             $this = this;
