@@ -87,6 +87,36 @@ if(!xtag.tags['p-datatable']) {
             },
             tabindex: {
                 attribute: {}
+            },
+            onsort: {
+                attribute: {}
+            },
+            onrowselect: {
+                attribute: {}
+            },
+            onrowunselect: {
+                attribute: {}
+            },
+            onrowselectcontextmenu: {
+                attribute: {}
+            },
+            onrowcollapse: {
+                attribute: {}
+            },
+            onrowexpand: {
+                attribute: {}
+            },
+            oncolreorder: {
+                attribute: {}
+            },
+            oncolresize: {
+                attribute: {}
+            },
+            onrowreorder: {
+                attribute: {}
+            },
+            oncelledit: {
+                attribute: {}
             }
         },
 
@@ -94,7 +124,9 @@ if(!xtag.tags['p-datatable']) {
             created: function() {
                 var element = $(this),
                 columnElements = element.children('p-column'),
-                cols = [];
+                cols = [],
+                $this = this;
+        
                 this.xtag.container = $(this).append('<div></div>').children('div');
                 
                 for(var i = 0; i < columnElements.length; i++) {
@@ -143,7 +175,17 @@ if(!xtag.tags['p-datatable']) {
                     filterDelay: this.filterDelay ? parseInt(this.filterDelay) : 300,
                     stickyHeader: this.stickyheader,
                     editMode: this.editmode,
-                    tabindex: this.tabindex||0
+                    tabindex: this.tabindex||0,
+                    sort: this.onsort ? function(event, ui) {PUI.executeFunctionByName($this.onsort, event, ui);} : null,
+                    rowSelect: this.onrowselect ? function(event, ui) {PUI.executeFunctionByName($this.onrowselect, event, ui);} : null,
+                    rowUnselect: this.onrowunselect ? function(event, ui) {PUI.executeFunctionByName($this.onrowunselect, event, ui);} : null,
+                    rowSelectContextMenu: this.onrowselectcontextmenu ? function(event, ui) {PUI.executeFunctionByName($this.onrowselectcontextmenu, event, ui);} : null,
+                    rowExpand: this.onrowexpand ? function(event, ui) {PUI.executeFunctionByName($this.onrowexpand, event, ui);} : null,
+                    rowCollapse: this.onrowcollapse ? function(event, ui) {PUI.executeFunctionByName($this.onrowcollapse, event, ui);} : null,
+                    colReorder: this.oncolreorder ? function(event, ui) {PUI.executeFunctionByName($this.oncolreorder, event, ui);} : null,
+                    colResize: this.oncolresize ? function(event, ui) {PUI.executeFunctionByName($this.oncolresize, event, ui);} : null,
+                    rowReorder: this.onrowreorder ? function(event, ui) {PUI.executeFunctionByName($this.onrowreorder, event, ui);} : null,
+                    cellEdit: this.oncelledit ? function(event, ui) {PUI.executeFunctionByName($this.oncelledit, event, ui);} : null,
                 });
             }
         }

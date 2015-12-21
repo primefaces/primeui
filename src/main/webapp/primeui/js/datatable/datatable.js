@@ -10,8 +10,6 @@
             datasource: null,
             paginator: null,
             selectionMode: null,
-            rowSelect: null,
-            rowUnselect: null,
             caption: null,
             footer: null,
             sortField: null,
@@ -32,7 +30,17 @@
             stickyHeader: false,
             editMode: null,
             tabindex: 0,
-            emptyMessage: 'No records found'
+            emptyMessage: 'No records found',
+            sort: null,
+            rowSelect: null,
+            rowUnselect: null,
+            rowSelectContextMenu: null,
+            rowCollapse: null,
+            rowExpand: null,
+            colReorder: null,
+            colResize: null,
+            rowReorder: null,
+            cellEdit: null,
         },
         
         _create: function() {
@@ -594,7 +602,7 @@
                         if (this._isMultipleSelection()) {
                             var selections = this.getSelection();
                             for (var i = 0; i < selections.length; i++) {
-                                this._trigger('rowUnselect', null, selections[i]);
+                                this.row('rowUnselect', null, selections[i]);
                             }
                         }
 
