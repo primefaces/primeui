@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="primeui/css/inputtext/inputtext.css" />
     <script type="text/javascript" src="primeui/js/button/button.js"></script>
     <script type="text/javascript" src="primeui/js/splitbutton/splitbutton.js"></script>
+    <script type="text/javascript" src="primeui/js/splitbutton/splitbutton-element.js"></script>
+    <script type="text/javascript" src="primeui/js/menu/menu-element.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript" src="primeui/js/growl/growl.js"></script>
 
@@ -58,6 +60,13 @@
         <div id="messages"></div>
 
         <button id="btn" type="button">Save</button>
+
+        <h3>Prime Element</h3>
+        <p-splitbutton icon="fa-check" text="Save">
+            <p-menuitem icon='fa-edit' text='Update' ></p-menuitem>
+            <p-menuitem icon='fa-minus' text='Delete'></p-menuitem>
+            <p-menuitem icon='fa-home' text='Homepage'></p-menuitem>
+        </p-splitbutton>
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">
