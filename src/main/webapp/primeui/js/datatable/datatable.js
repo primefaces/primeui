@@ -440,10 +440,10 @@
         },
                 
         _renderData: function() {
+            this.tbody.html('');
+            
             var dataToRender = this.filteredData||this.data;
-            if(dataToRender.length) {
-                this.tbody.html('');
-                
+            if(dataToRender && dataToRender.length) {
                 var firstNonLazy = this._getFirst(),
                 first = this.options.lazy ? 0 : firstNonLazy,
                 rows = this._getRows();
@@ -510,10 +510,9 @@
                 }
             }
             else {
-                    this.tbody.html('');
-                    var emptyRow = $('<tr class="ui-widget-content" />').appendTo(this.tbody);
-                    var emptyColumn = $('<td colspan="4" />').appendTo(emptyRow);
-                    emptyColumn.html(this.options.emptyMessage);
+                var emptyRow = $('<tr class="ui-widget-content"></tr>').appendTo(this.tbody);
+                var emptyColumn = $('<td colspan="4"></td>').appendTo(emptyRow);
+                emptyColumn.html(this.options.emptyMessage);
             }
         },
                                 
