@@ -511,7 +511,7 @@
             }
             else {
                 var emptyRow = $('<tr class="ui-widget-content"></tr>').appendTo(this.tbody);
-                var emptyColumn = $('<td colspan="4"></td>').appendTo(emptyRow);
+                var emptyColumn = $('<td></td>').attr('colspan',this.options.columns.length).appendTo(emptyRow);
                 emptyColumn.html(this.options.emptyMessage);
             }
         },
