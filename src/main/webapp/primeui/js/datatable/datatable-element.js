@@ -118,6 +118,7 @@ if(!xtag.tags['p-datatable']) {
             oncelledit: {
                 attribute: {}
             }
+
         },
 
         lifecycle: {
@@ -148,6 +149,14 @@ if(!xtag.tags['p-datatable']) {
                     col.filterFunction = PUI.resolveObjectByName(columnElement.prop('filterfunction'))
                     col.editor = columnElement.prop('editor') !== undefined;
                     col.rowToggler = columnElement.prop('rowToggler') !== undefined;
+                    
+                    if(columnElement.children('script').length) {
+                        col.content = function(data){
+                            var template =  columnElement.children('script').text();
+                            Mustache.parse(template);
+                            return Mustache.render(template, data);
+                        };
+                    }
 
                     cols.push(col);
                 }
