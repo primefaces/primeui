@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
     <link rel="stylesheet" href="primeui/css/inputtext/inputtext.css" />
     <link rel="stylesheet" href="primeui/css/button/button.css" />
+    <link rel="stylesheet" href="primeui/css/grid/grid.css" />
     <script type="text/javascript" src="primeui/js/radiobutton/radiobutton.js"></script>
     <script type="text/javascript" src="primeui/js/button/button.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
@@ -22,21 +23,37 @@
     </div>
 
     <div class="ContentSideSections Implementation">
-
-        <table>
-            <tr>
-                <td><input type="radio" name="rd" id="rd1" value="1"/></td>
-                <td><label for="rd1">Option 1</label></td>
-            </tr>
-            <tr>
-                <td><input type="radio" name="rd" id="rd2" value="2"/></td>
-                <td><label for="rd2">Option 2</label></td>
-            </tr>
-            <tr>
-                <td><input type="radio" name="rd" id="rd3" value="3" disabled="disabled"/></td>
-                <td><label for="rd3">Option 3</label></td>
-            </tr>
-        </table>
+        <h3 class="first">Basic</h3>
+        <div class="pui-grid pui-grid-responsive" style="width:250px">
+            <div class="pui-grid-row">
+                <div class="pui-grid-col-1"><input type="radio" name="rd2" value="1"/></div>
+                <div class="pui-grid-col-11"><label for="rd1">Option 1</label></div>
+            </div>
+            <div class="pui-grid-row">
+                <div class="pui-grid-col-1"><input type="radio" name="rd2" value="2"/></div>
+                <div class="pui-grid-col-11"><label for="rd1">Option 2</label></div>
+            </div>
+            <div class="pui-grid-row">
+                <div class="pui-grid-col-1"><input type="radio" name="rd2" value="3"/></div>
+                <div class="pui-grid-col-11"><label for="rd1">Option 3</label></div>
+            </div>
+        </div>
+        
+        <h3>PrimeElement</h3>
+        <div class="pui-grid pui-grid-responsive" style="width:250px">
+            <div class="pui-grid-row">
+                <div class="pui-grid-col-1"><input type="radio" name="rd2" value="1" is="p-radiobutton"/></div>
+                <div class="pui-grid-col-11"><label for="rd1">Option 1</label></div>
+            </div>
+            <div class="pui-grid-row">
+                <div class="pui-grid-col-1"><input type="radio" name="rd2" value="2" is="p-radiobutton"/></div>
+                <div class="pui-grid-col-11"><label for="rd1">Option 2</label></div>
+            </div>
+            <div class="pui-grid-row">
+                <div class="pui-grid-col-1"><input type="radio" name="rd2" value="3" is="p-radiobutton"/></div>
+                <div class="pui-grid-col-11"><label for="rd1">Option 3</label></div>
+            </div>
+        </div>
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">
@@ -136,20 +153,37 @@ $(function() {
                                 </pre>
 
                                 <pre name="code" class="brush:xml">
-&lt;table&gt;
-    &lt;tr&gt;
-        &lt;td&gt;&lt;input type="radio" name="rd" id="rd1" value="1"/&gt;&lt;/td&gt;
-        &lt;td&gt;&lt;label for="rd1"&gt;Option 1&lt;/label&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;&lt;input type="radio" name="rd" id="rd2" value="2"/&gt;&lt;/td&gt;
-        &lt;td&gt;&lt;label for="rd2"&gt;Option 2&lt;/label&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;&lt;input type="radio" name="rd" id="rd3" value="3" disabled="disabled"/&gt;&lt;/td&gt;
-        &lt;td&gt;&lt;label for="rd3"&gt;Option 3&lt;/label&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-&lt;/table&gt;
+&lt;h3 class="first"&gt;Basic&lt;/h3&gt;
+&lt;div class="pui-grid pui-grid-responsive" style="width:250px"&gt;
+    &lt;div class="pui-grid-row"&gt;
+        &lt;div class="pui-grid-col-1"&gt;&lt;input type="radio" name="rd2" value="1"/&gt;&lt;/div&gt;
+        &lt;div class="pui-grid-col-11"&gt;&lt;label for="rd1"&gt;Option 1&lt;/label&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="pui-grid-row"&gt;
+        &lt;div class="pui-grid-col-1"&gt;&lt;input type="radio" name="rd2" value="2"/&gt;&lt;/div&gt;
+        &lt;div class="pui-grid-col-11"&gt;&lt;label for="rd1"&gt;Option 2&lt;/label&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="pui-grid-row"&gt;
+        &lt;div class="pui-grid-col-1"&gt;&lt;input type="radio" name="rd2" value="3"/&gt;&lt;/div&gt;
+        &lt;div class="pui-grid-col-11"&gt;&lt;label for="rd1"&gt;Option 3&lt;/label&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3&gt;PrimeElement&lt;/h3&gt;
+&lt;div class="pui-grid pui-grid-responsive" style="width:250px"&gt;
+    &lt;div class="pui-grid-row"&gt;
+        &lt;div class="pui-grid-col-1"&gt;&lt;input type="radio" name="rd2" value="1" is="p-radiobutton"/&gt;&lt;/div&gt;
+        &lt;div class="pui-grid-col-11"&gt;&lt;label for="rd1"&gt;Option 1&lt;/label&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="pui-grid-row"&gt;
+        &lt;div class="pui-grid-col-1"&gt;&lt;input type="radio" name="rd2" value="2" is="p-radiobutton"/&gt;&lt;/div&gt;
+        &lt;div class="pui-grid-col-11"&gt;&lt;label for="rd1"&gt;Option 2&lt;/label&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="pui-grid-row"&gt;
+        &lt;div class="pui-grid-col-1"&gt;&lt;input type="radio" name="rd2" value="3" is="p-radiobutton"/&gt;&lt;/div&gt;
+        &lt;div class="pui-grid-col-11"&gt;&lt;label for="rd1"&gt;Option 3&lt;/label&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
 
                                 </pre>
 
