@@ -21,7 +21,9 @@ if(!xtag.tags['p-dropdown']) {
                 attribute: {}
             },
             casesensitivefilter: {
-                attribute: {}
+                attribute: {
+                    boolean: true
+                }
             },
             filterfunction: {
                 attribute: {}
@@ -53,7 +55,7 @@ if(!xtag.tags['p-dropdown']) {
                     effect: this.effect,
                     effectSpeed: this.effectspeed,
                     filter: this.filter,
-                    filterMatchMode: this.filtermatchmode,
+                    filterMatchMode: this.filtermatchmode||'startsWith',
                     caseSensitiveFilter: this.casesensitivefilter,
                     filterfunction: this.filterfunction,
                     scrollHeight: this.scrollheight ? parseInt(this.scrollheight) : 200,
