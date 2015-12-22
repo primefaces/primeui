@@ -14,7 +14,8 @@
             hideEffectSpeed: 'normal',
             my: 'left top',
             at: 'right bottom',
-            showDelay: 150
+            showDelay: 150,
+            content: null
         },
         
         _create: function() {

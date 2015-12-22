@@ -7,6 +7,7 @@
     <script type="text/javascript" src="primeui/js/button/button.js"></script>
     <script type="text/javascript" src="primeui/js/inputtext/inputtext.js"></script>
     <script type="text/javascript" src="primeui/js/tooltip/tooltip.js"></script>
+    <script type="text/javascript" src="primeui/js/tooltip/tooltip-element.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>        
     <script type="text/javascript">
         $(function() {
@@ -46,6 +47,12 @@
 
         <h3>Customized</h3>
         <input type="text" id="in" name="in"  value="Focus me!"/>
+        
+        <h3>PrimeElement</h3>
+        <input type="text" id="el" name="el" title="PrimeElement"/>
+        <p-tooltip target="el">
+            <img src="./resources/demo/images/galleria/galleria3.jpg" />
+        </p-tooltip>
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">
@@ -200,6 +207,12 @@ $(function() {
 
 &lt;h3&gt;Customized&lt;/h3&gt;
 &lt;input type="text" id="in" name="in"  value="Focus me!"/&gt;
+
+&lt;h3&gt;PrimeElement&lt;/h3&gt;
+&lt;input type="text" id="el" name="el" title="PrimeElement"/&gt;
+&lt;p-tooltip target="el"&gt;
+    &lt;img src="./resources/demo/images/galleria/galleria3.jpg" /&gt;
+&lt;/p-tooltip&gt;
                                 </pre>
                             </div>
                         </div>
