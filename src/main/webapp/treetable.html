@@ -3,7 +3,9 @@
     <link rel="stylesheet" href="primeui/css/inputtext/inputtext.css" />
     <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
     <link rel="stylesheet" href="primeui/css/growl/growl.css" />
+    <script type="text/javascript" src="resources/demo/js/tree-demo.js"></script>
     <script type="text/javascript" src="primeui/js/treetable/treetable.js"></script>
+    <script type="text/javascript" src="primeui/js/treetable/treetable-element.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript" src="primeui/js/growl/growl.js"></script>
     <script type="text/javascript">
@@ -132,6 +134,13 @@
 
         <h3>Remote - Lazy Data</h3>
         <div id="remoteinfinite"></div>
+        
+        <h3>PrimeElement</h3>
+        <p-treetable nodes="TreeDemo.treetableData">
+            <p-column field="name" headertext="Name"></p-column>
+            <p-column field="size" headertext="Size"></p-column>
+            <p-column field="type" headertext="Type"></p-column>
+        </p-treetable>
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">
@@ -455,6 +464,13 @@ $(function() {
 
 &lt;h3&gt;Remote - Lazy Data&lt;/h3&gt;
 &lt;div id="remoteinfinite"&gt;&lt;/div&gt;
+
+&lt;h3&gt;PrimeElement&lt;/h3&gt;
+&lt;p-treetable nodes="TreeDemo.treetableData"&gt;
+    &lt;p-column field="name" headertext="Name"&gt;&lt;/p-column&gt;
+    &lt;p-column field="size" headertext="Size"&gt;&lt;/p-column&gt;
+    &lt;p-column field="type" headertext="Type"&gt;&lt;/p-column&gt;
+&lt;/p-treetable&gt;
                                 </pre>
 
                             </div>
