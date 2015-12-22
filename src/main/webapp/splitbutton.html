@@ -41,7 +41,7 @@
                     }
                 ]
             });
-
+            
             $('#messages').puigrowl();
 
             $('#doc').puitabview();
@@ -62,10 +62,10 @@
         <button id="btn" type="button">Save</button>
 
         <h3>Prime Element</h3>
-        <p-splitbutton icon="fa-check" text="Save">
-            <p-menuitem icon='fa-edit' text='Update' ></p-menuitem>
-            <p-menuitem icon='fa-minus' text='Delete'></p-menuitem>
-            <p-menuitem icon='fa-home' text='Homepage'></p-menuitem>
+        <p-splitbutton icon="fa-check" label="Save" name="save-btn">
+            <p-menuitem icon="fa-edit" text="Update"></p-menuitem>
+            <p-menuitem icon="fa-minus" text="Delete"></p-menuitem>
+            <p-menuitem icon="fa-home" text="Homepage"></p-menuitem>
         </p-splitbutton>
     </div>
 
@@ -248,6 +248,12 @@ $('#messages').puigrowl();
 
 &lt;div id="messages"&gt;&lt;/div&gt;
 
+&lt;h3&gt;Prime Element&lt;/h3&gt;
+&lt;p-splitbutton icon="fa-check" label="Save" name="save-btn"&gt;
+    &lt;p-menuitem icon="fa-edit" text="Update"&gt;&lt;/p-menuitem&gt;
+    &lt;p-menuitem icon="fa-minus" text="Delete"&gt;&lt;/p-menuitem&gt;
+    &lt;p-menuitem icon="fa-home" text="Homepage"&gt;&lt;/p-menuitem&gt;
+&lt;/p-splitbutton&gt;
                                 </pre>
                             </div>
                         </div>
