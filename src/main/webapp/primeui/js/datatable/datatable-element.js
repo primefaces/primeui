@@ -185,7 +185,7 @@ if(!xtag.tags['p-datatable']) {
                     colReorder: this.oncolreorder ? function(event, ui) {PUI.executeFunctionByName($this.oncolreorder, event, ui);} : null,
                     colResize: this.oncolresize ? function(event, ui) {PUI.executeFunctionByName($this.oncolresize, event, ui);} : null,
                     rowReorder: this.onrowreorder ? function(event, ui) {PUI.executeFunctionByName($this.onrowreorder, event, ui);} : null,
-                    cellEdit: this.oncelledit ? function(event, ui) {PUI.executeFunctionByName($this.oncelledit, event, ui);} : null,
+                    cellEdit: this.oncelledit ? function(event, ui) {PUI.executeFunctionByName($this.oncelledit, event, ui);} : null
                 });
             }
         }
