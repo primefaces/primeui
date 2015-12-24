@@ -15,7 +15,8 @@
             data: null,
             content: null,
             scrollHeight: 200,
-            appendTo: 'body'
+            appendTo: 'body',
+            editable:false
         },
 
         _create: function() {
