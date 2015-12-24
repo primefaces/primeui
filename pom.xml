@@ -141,6 +141,7 @@
                                                 <include>${basedir}/src/main/webapp/primeui/js/listbox/listbox.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/menu/menu.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/messages/messages.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/multiselectlistbox/multiselectlistbox.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/notify/notify.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/orderlist/orderlist.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/paginator/paginator.js</include>
@@ -150,9 +151,11 @@
                                                 <include>${basedir}/src/main/webapp/primeui/js/progressbar/progressbar.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/radiobutton/radiobutton.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/rating/rating.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/selectbutton/selectbutton.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/spinner/spinner.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/splitbutton/splitbutton.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/sticky/sticky.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/switch/switch.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/tabview/tabview.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/terminal/terminal.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/togglebutton/togglebutton.js</include>
@@ -186,6 +189,7 @@
                                                 <include>${basedir}/src/main/webapp/primeui/css/listbox/listbox.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/menu/menu.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/messages/messages.css</include>
+                                                <include>${basedir}/src/main/webapp/primeui/css/multiselectlistbox/multiselectlistbox.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/notify/notify.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/orderlist/orderlist.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/paginator/paginator.css</include>
@@ -195,8 +199,10 @@
                                                 <include>${basedir}/src/main/webapp/primeui/css/progressbar/progressbar.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/radiobutton/radiobutton.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/rating/rating.css</include>
+                                                <include>${basedir}/src/main/webapp/primeui/css/selectbutton/selectbutton.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/spinner/spinner.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/splitbutton/splitbutton.css</include>
+                                                <include>${basedir}/src/main/webapp/primeui/css/switch/switch.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/tabview/tabview.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/terminal/terminal.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/tooltip/tooltip.css</include>
@@ -242,6 +248,7 @@
                                                 <include>${project.build.directory}/primeui/production/js/listbox/listbox.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/menu/menu.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/messages/messages.js</include>
+                                                <include>${project.build.directory}/primeui/production/js/multiselectlistbox/multiselectlistbox.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/notify/notify.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/orderlist/orderlist.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/paginator/paginator.js</include>
@@ -251,9 +258,11 @@
                                                 <include>${project.build.directory}/primeui/production/js/progressbar/progressbar.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/radiobutton/radiobutton.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/rating/rating.js</include>
+                                                <include>${project.build.directory}/primeui/production/js/selectbutton/selectbutton.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/spinner/spinner.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/splitbutton/splitbutton.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/sticky/sticky.js</include>
+                                                <include>${project.build.directory}/primeui/production/js/switch/switch.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/tabview/tabview.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/terminal/terminal.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/togglebutton/togglebutton.js</include>
@@ -287,6 +296,7 @@
                                                 <include>${project.build.directory}/primeui/production/css/listbox/listbox.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/menu/menu.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/messages/messages.css</include>
+                                                <include>${project.build.directory}/primeui/production/css/multiselectlistbox/multiselectlistbox.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/notify/notify.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/orderlist/orderlist.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/paginator/paginator.css</include>
@@ -296,8 +306,10 @@
                                                 <include>${project.build.directory}/primeui/production/css/progressbar/progressbar.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/radiobutton/radiobutton.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/rating/rating.css</include>
+                                                <include>${project.build.directory}/primeui/production/css/selectbutton/selectbutton.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/spinner/spinner.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/splitbutton/splitbutton.css</include>
+                                                <include>${project.build.directory}/primeui/production/css/switch/switch.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/tabview/tabview.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/terminal/terminal.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/tooltip/tooltip.css</include>
