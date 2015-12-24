@@ -224,6 +224,10 @@
                                     <outputDirectory>${project.build.directory}/primeui/production</outputDirectory>
                                     <nosuffix>true</nosuffix>
                                     <insertNewLine>true</insertNewLine>
+                                    <excludes>
+                                        <exclude>**/*-element.js</exclude>
+                                        <exclude>**/*.min.js</exclude>
+                                    </excludes>
                                     <aggregations>
                                         <aggregation>
                                             <output>${project.build.directory}/primeui/production/primeui-${project.version}-min.js</output>
@@ -315,6 +319,70 @@
                                                 <include>${project.build.directory}/primeui/production/css/tooltip/tooltip.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/tree/tree.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/treetable/treetable.css</include>
+                                            </includes>
+                                        </aggregation>
+                                    </aggregations>
+                                </configuration>
+                            </execution>
+                            
+                            <execution>
+                                <id>elements</id>
+                                <goals>
+                                    <goal>compress</goal>
+                                </goals>
+                                <configuration>
+                                    <sourceDirectory>${basedir}/src/main/webapp/primeui</sourceDirectory>
+                                    <outputDirectory>${project.build.directory}/primeui/production</outputDirectory>
+                                    <nosuffix>true</nosuffix>
+                                    <insertNewLine>true</insertNewLine>
+                                    <excludes>
+                                        <exclude>**/*-element.js</exclude>
+                                        <exclude>**/*.min.js</exclude>
+                                    </excludes>
+                                    <aggregations>
+                                        <aggregation>
+                                            <output>${project.build.directory}/primeui/production/primeelements-${project.version}.js</output>
+                                            <includes>
+                                                <include>${project.build.directory}/classes/copyright.txt</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/accordion/accordion-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/autocomplete/autocomplete-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/button/button-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/carousel/carousel-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/checkbox/checkbox-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/datatable/datatable-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/datagrid/datagrid-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/dialog/dialog-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/dropdown/dropdown-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/fieldset/fieldset-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/galleria/galleria-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/growl/growl-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/inputtext/inputtext-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/inputtextarea/inputtextarea-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/lightbox/lightbox-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/listbox/listbox-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/menu/menu-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/messages/messages-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/multiselectlistbox/multiselectlistbox-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/notify/notify-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/orderlist/orderlist-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/paginator/paginator-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/panel/panel-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/password/password-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/picklist/picklist-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/progressbar/progressbar-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/radiobutton/radiobutton-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/rating/rating-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/selectbutton/selectbutton-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/spinner/spinner-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/splitbutton/splitbutton-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/sticky/sticky-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/switch/switch-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/tabview/tabview-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/terminal/terminal-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/togglebutton/togglebutton-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/tooltip/tooltip-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/tree/tree-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/treetable/treetable-element.js</include>
                                             </includes>
                                         </aggregation>
                                     </aggregations>
