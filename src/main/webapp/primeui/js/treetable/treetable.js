@@ -26,8 +26,10 @@
             var $this = this;
             
             if(this.options.columns) {
+                var headerRow = $('<tr></tr>').appendTo(this.thead);
+                
                 $.each(this.options.columns, function(i, col) {
-                    var header = $('<th class="ui-state-default"></th>').data('field', col.field).appendTo($this.thead);
+                    var header = $('<th class="ui-state-default"></th>').data('field', col.field).appendTo(headerRow);
                     
                     if(col.headerClass) {
                         header.addClass(col.headerClass);
