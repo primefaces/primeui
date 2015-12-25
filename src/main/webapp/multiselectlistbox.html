@@ -14,6 +14,8 @@
            
             $('#single').puimultiselectlistbox({
                 caption: 'Categories' ,
+                effect: true,
+                showheader: true,
                 choices: [
                     {
                         label:'Group 1', 
@@ -107,7 +109,7 @@
     <div class="ContentSideSections">
         <div class="Content100 overHidden TextShadow">
             <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">MultiSelectListBox</span>
-            <span class="defaultText dispTable">SelectButton is used to choose single or multiple items from a list using buttons.</span>
+            <span class="defaultText dispTable">MultiSelectListbox is used to select an item from a collection of listboxes that are in parent-child relationship.</span>
         </div>
     </div>
 
@@ -115,7 +117,7 @@
 
         <div id="single"></div>
 
-        <button id="default" type="button" style="margin-top:10px">Default</button>
+        <button id="default" type="button" style="margin-top:10px">Save</button>
 
         <div id="text" style="margin-top:10px"></div>
 
@@ -136,17 +138,93 @@
                         <div>
                             <div id="doc-overview">
                                 <pre name="code" class="brush:xml">
-                        &lt;div id="single" /&gt;&lt;/div&gt;   
+                        &lt;div id="single" &gt;&lt;/div&gt;   
                                 </pre>
 
                                 <pre name="code" class="brush:js">
 
-            $('#single').puiselectbutton({
+            $('#single').puimultiselectlistbox({
+                caption: 'Categories' ,
+                effect: true,
+                showheader: true,
                 choices: [
-                   {label:'Xbox One', value:0},
-                   {label:'PS4', value:1},
-                   {label:'Wii', value:2}
+                    {
+                        label:'Group 1', 
+                        items:[
+                            {
+                                label: 'Group 1.1', 
+                                items:[
+                                    {label: 'Option 1.1.1',value : 'Option 1.1.1'}
+                                ]
+                            },
+                            {
+                                label: 'Group 1.2', 
+                                items:[
+                                    {label: 'Option 1.2.1',value : 'Option 1.2.1'},
+                                    {label: 'Option 1.2.2',value : 'Option 1.2.2'}
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        label:'Group 2', 
+                        items:[
+                            {
+                                label: 'Group 2.1', 
+                                items:[
+                                    {label: 'Option 2.1.1',value : 'Option 2.1.1'}
+                                ]
+                            },
+                            {
+                                label: 'Group 2.2', 
+                                items:[
+                                    {label: 'Option 2.2.1',value : 'Option 2.2.1'},
+                                    {label: 'Option 2.2.2',value : 'Option 2.2.2'}
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        label:'Group 3', 
+                        items:[
+                            {
+                                label: 'Group 3.1', 
+                                items:[
+                                    {label: 'Option 3.1.1',value : 'Option 3.1.1'}
+                                ]
+                            },
+                            {
+                                label: 'Group 3.2', 
+                                items:[
+                                    {label: 'Option 3.2.1',value : 'Option 3.2.1'},
+                                    {label: 'Option 3.2.2',value : 'Option 3.2.2'},
+                                    {label: 'Option 3.2.3',value : 'Option 3.2.3'}
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        label:'Group 4', 
+                        items:[
+                            {
+                                label: 'Group 4.1', 
+                                items:[
+                                    {label: 'Option 4.1.1',value : 'Option 4.1.1'}
+                                ]
+                            },
+                            {
+                                label: 'Group 4.2', 
+                                items:[
+                                    {label: 'Option 4.2.1',value : 'Option 4.2.1'},
+                                    {label: 'Option 4.2.2',value : 'Option 4.2.2'},
+                                    {label: 'Option 4.2.3',value : 'Option 4.2.3'},
+                                    {label: 'Option 4.2.4',value : 'Option 4.2.4'}
+                                ]
+                            }
+                        ]
+                    }
                 ]
+
             });
                                 </pre>
 
@@ -162,64 +240,41 @@
                                     </thead>
                                     <tbody>
                                         <tr>
+                                            <td>caption</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Name for the list.</td>
+                                        </tr>
+                                        <tr>
                                             <td>choices</td>
                                             <td>string , number</td>
                                             <td>null</td>
-                                            <td>Choices for the buttons.</td>
+                                            <td>Choices for the list.</td>
                                         </tr>
                                         <tr>
-                                            <td>formfield</td>
-                                            <td>string</td>
+                                            <td>items</td>
+                                            <td>string , number</td>
                                             <td>null</td>
-                                            <td>Name for the form.</td>
+                                            <td>Pointing the subgroups of choices.</td>
                                         </tr>
                                         <tr>
-                                            <td>unselectable</td>
+                                            <td>effect</td>
                                             <td>boolean</td>
                                             <td>false</td>
-                                            <td>State for the unselectable buttons.</td>
+                                            <td>Effect of subgroups to appear.</td>
                                         </tr>
                                         <tr>
-                                            <td>tabindex</td>
-                                            <td>string</td>
-                                            <td>'0'</td>
-                                            <td>Order of elements in tabbing.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>multiple</td>
+                                            <td>showheader</td>
                                             <td>boolean</td>
                                             <td>false</td>
-                                            <td>State for multiple button selection.</td>
+                                            <td>Headers of subgroups.</td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
 
                             <div id="doc-events">
-                                <table class="doc-table">
-                                    <thead>
-                                    <th>Name</th>
-                                    <th>Parameters</th>
-                                    <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>change</td>
-                                            <td>event: puiselectbuttonchange event
-                                                <br />
-                                            </td>
-                                            <td>Fires when value changes.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                                <h3>Example</h3>
-                                <pre name="code" class="brush:js">
-            $('div').puiselectbutton({
-                change: function(event) {
-                    //..
-            }});
-                                </pre>
+                                <h3>No Events.</h3>
                             </div>
 
                             <div id="doc-methods">
@@ -231,21 +286,16 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>selectOption</td>
-                                            <td>value</td>
-                                            <td>Selects the clicked option.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>unselectOption</td>
-                                            <td>value</td>
-                                            <td>Unelects the clicked option.</td>
+                                            <td>disable</td>
+                                            <td>-</td>
+                                            <td>Disables the list container.</td>
                                         </tr>
                                     </tbody>
                                 </table>
 
                                 <h3>Example</h3>
                                 <pre name="code" class="brush:js">
-            $('#single').puiselectbutton('selectOption',0);
+            $('#single').puimultiselectlistbox('disable');
                                 </pre>
                             </div>
 
@@ -253,35 +303,95 @@
 
                                 <pre name="code" class="brush:js">
 $(function() {
-    $('#single').selectbutton({
-                formfield: 'single_input',
-                choices: [
-                   {label:'Xbox One', value:0},
-                   {label:'PS4', value:1},
-                   {label:'Wii', value:2},
-                   {label:'PS3',value:3}
+    $('#single').puimultiselectlistbox({
+        caption: 'Categories' ,
+        effect: true,
+        showheader: true,
+        choices: [
+            {
+                label:'Group 1', 
+                items:[
+                    {
+                        label: 'Group 1.1', 
+                        items:[
+                            {label: 'Option 1.1.1',value : 'Option 1.1.1'}
+                        ]
+                    },
+                    {
+                        label: 'Group 1.2', 
+                        items:[
+                            {label: 'Option 1.2.1',value : 'Option 1.2.1'},
+                            {label: 'Option 1.2.2',value : 'Option 1.2.2'}
+                        ]
+                    }
                 ]
-            });
-            
-            $('#multiple').selectbutton({
-                formfield: 'multiple_input',
-                choices: [
-                   {label:'Xbox One', value:0},
-                   {label:'PS4', value:1},
-                   {label:'Wii', value:2},
-                   {label:'PS3',value:3}
-                ],
-                multiple: true,
-                unselectable: true
-            });
+            },
+            {
+                label:'Group 2', 
+                items:[
+                    {
+                        label: 'Group 2.1', 
+                        items:[
+                            {label: 'Option 2.1.1',value : 'Option 2.1.1'}
+                        ]
+                    },
+                    {
+                        label: 'Group 2.2', 
+                        items:[
+                            {label: 'Option 2.2.1',value : 'Option 2.2.1'},
+                            {label: 'Option 2.2.2',value : 'Option 2.2.2'}
+                        ]
+                    }
+                ]
+            },
+            {
+                label:'Group 3', 
+                items:[
+                    {
+                        label: 'Group 3.1', 
+                        items:[
+                            {label: 'Option 3.1.1',value : 'Option 3.1.1'}
+                        ]
+                    },
+                    {
+                        label: 'Group 3.2', 
+                        items:[
+                            {label: 'Option 3.2.1',value : 'Option 3.2.1'},
+                            {label: 'Option 3.2.2',value : 'Option 3.2.2'},
+                            {label: 'Option 3.2.3',value : 'Option 3.2.3'}
+                        ]
+                    }
+                ]
+            },
+            {
+                label:'Group 4', 
+                items:[
+                    {
+                        label: 'Group 4.1', 
+                        items:[
+                            {label: 'Option 4.1.1',value : 'Option 4.1.1'}
+                        ]
+                    },
+                    {
+                        label: 'Group 4.2', 
+                        items:[
+                            {label: 'Option 4.2.1',value : 'Option 4.2.1'},
+                            {label: 'Option 4.2.2',value : 'Option 4.2.2'},
+                            {label: 'Option 4.2.3',value : 'Option 4.2.3'},
+                            {label: 'Option 4.2.4',value : 'Option 4.2.4'}
+                        ]
+                    }
+                ]
+            }
+        ]
+
+    });
 });
                                 </pre>
                                 <pre name="code" class="brush:xml">
-&lt;h3 class="first"&gt;Single&lt;/h3&gt;
-&lt;div id="single" style="margin-bottom:25px" /&gt;&lt;/div&gt;
 
-&lt;h3 class="first"&gt;Multiple&lt;/h3&gt;
-&lt;div id="multiple"  /&gt;&lt;/div&gt;
+&lt;div id="single"&gt;&lt;/div&gt;
+
                                 </pre>
 
                             </div>

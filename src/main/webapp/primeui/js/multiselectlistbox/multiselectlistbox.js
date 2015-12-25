@@ -5,7 +5,9 @@
        options: {
             caption: null,
             choices: null,
-            items: null
+            items: null,
+            effect:false,
+            showheader:false
         },
         
         _create: function() {
@@ -23,7 +25,6 @@
                 
                 for(var i = 0; i < choices.length; i++) {
                     this.list.append('<li class="pui-multiselectlistbox-item"><span> '+ this.options.choices[i].label +'</span></li>');
-                    var items = choices[i];
                 }
 
                 var listItems = $('li.pui-multiselectlistbox-item');
@@ -31,7 +32,7 @@
                 for (var i = 0; i < choices.length; i++) {
                     this._createNestedListDom(choices[i],listItems[i]);  
                 }
-
+                this.listitems = $('li.pui-multiselectlistbox-item');
                 this.items = this.element.find('li.pui-multiselectlistbox-item');
                 this._bindEvents();
             }
@@ -49,6 +50,9 @@
                 }
             }
             
+        },
+        _unbindEvents: function() {
+           this.listitems.off('mouseover.multiSelectListbox mouseout.multiSelectListbox click.multiSelectListbox');
         },
         _bindEvents: function() {
            var $this = this;
@@ -70,6 +74,10 @@
                    $this.showOptionGroup(item);
            })
         },
+        _showEffect: function() {
+            this.options.effect = this.options.effect||'fade';
+            this.options.effectSpeed = this.options.effectSpeed||'normal';
+        },
         showOptionGroup: function(item) {
            item.addClass('ui-state-highlight').removeClass('ui-state-hover').siblings().filter('.ui-state-highlight').removeClass('ui-state-highlight');
            item.closest('.pui-multiselectlistbox-listcontainer').nextAll().remove();
@@ -77,15 +85,35 @@
            var childItemsContainer = item.children('ul');
 
            if(childItemsContainer.length) {
-                var groupContainer = $('<div class="pui-multiselectlistbox-listcontainer" style="display:none"></div>');
-                childItemsContainer.clone(true).appendTo(groupContainer).addClass('pui-multiselectlistbox-list pui-inputfield ui-widget-content').removeClass('ui-helper-hidden');
+              var groupContainer = $('<div class="pui-multiselectlistbox-listcontainer" style="display:none"></div>');
+              childItemsContainer.clone(true).appendTo(groupContainer).addClass('pui-multiselectlistbox-list pui-inputfield ui-widget-content').removeClass('ui-helper-hidden');
 
-                groupContainer.prepend('<div class="pui-multiselectlistbox-header ui-widget-header ui-corner-top">' + item.children('span').text() + '</div>')
-                .children('.pui-multiselectlistbox-list').addClass('ui-corner-bottom');
-               
-                groupContainer.children().addClass('ui-corner-all');
-                this.element.append(groupContainer);
-                groupContainer.show();
+              if(this.options.showheader) {
+                  groupContainer.prepend('<div class="pui-multiselectlistbox-header ui-widget-header ui-corner-top">' + item.children('span').text() + '</div>')
+                  .children('.pui-multiselectlistbox-list').addClass('ui-corner-bottom');
+              }
+              else {
+                  groupContainer.children().addClass('ui-corner-all');
+                  groupContainer.children().css('margin-top', '22px');
+              }
+
+              this.element.append(groupContainer);
+              //Effects
+              if (this.options.effect) {
+                  this._showEffect
+                  groupContainer.show(this.options.effect);
+              }
+              else {
+                  groupContainer.show();
+              }
+            }
+        },
+        disable: function() {
+           if(!this.options.disabled) {
+               this.options.disabled = true;
+               this.element.addClass('ui-state-disabled');
+               this._unbindEvents();
+               this.container.nextAll().remove();
            }
         }
     });
