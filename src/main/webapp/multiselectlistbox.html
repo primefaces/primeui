@@ -10,99 +10,97 @@
     <script type="text/javascript" src="primeui/js/button/button.js" />
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript">
-        $(function() {
-           
-            $('#single').puimultiselectlistbox({
-                caption: 'Categories' ,
+        $(function () {
+            $('#multilistbox').puimultiselectlistbox({
+                caption: 'Categories',
                 effect: true,
                 showheader: true,
                 choices: [
                     {
-                        label:'Group 1', 
-                        items:[
+                        label: 'Group 1',
+                        items: [
                             {
-                                label: 'Group 1.1', 
-                                items:[
-                                    {label: 'Option 1.1.1',value : 'Option 1.1.1'}
+                                label: 'Group 1.1',
+                                items: [
+                                    {label: 'Option 1.1.1', value: 'Option 1.1.1'}
                                 ]
                             },
                             {
-                                label: 'Group 1.2', 
-                                items:[
-                                    {label: 'Option 1.2.1',value : 'Option 1.2.1'},
-                                    {label: 'Option 1.2.2',value : 'Option 1.2.2'}
+                                label: 'Group 1.2',
+                                items: [
+                                    {label: 'Option 1.2.1', value: 'Option 1.2.1'},
+                                    {label: 'Option 1.2.2', value: 'Option 1.2.2'}
                                 ]
                             }
                         ]
                     },
                     {
-                        label:'Group 2', 
-                        items:[
+                        label: 'Group 2',
+                        items: [
                             {
-                                label: 'Group 2.1', 
-                                items:[
-                                    {label: 'Option 2.1.1',value : 'Option 2.1.1'}
+                                label: 'Group 2.1',
+                                items: [
+                                    {label: 'Option 2.1.1', value: 'Option 2.1.1'}
                                 ]
                             },
                             {
-                                label: 'Group 2.2', 
-                                items:[
-                                    {label: 'Option 2.2.1',value : 'Option 2.2.1'},
-                                    {label: 'Option 2.2.2',value : 'Option 2.2.2'}
+                                label: 'Group 2.2',
+                                items: [
+                                    {label: 'Option 2.2.1', value: 'Option 2.2.1'},
+                                    {label: 'Option 2.2.2', value: 'Option 2.2.2'}
                                 ]
                             }
                         ]
                     },
                     {
-                        label:'Group 3', 
-                        items:[
+                        label: 'Group 3',
+                        items: [
                             {
-                                label: 'Group 3.1', 
-                                items:[
-                                    {label: 'Option 3.1.1',value : 'Option 3.1.1'}
+                                label: 'Group 3.1',
+                                items: [
+                                    {label: 'Option 3.1.1', value: 'Option 3.1.1'}
                                 ]
                             },
                             {
-                                label: 'Group 3.2', 
-                                items:[
-                                    {label: 'Option 3.2.1',value : 'Option 3.2.1'},
-                                    {label: 'Option 3.2.2',value : 'Option 3.2.2'},
-                                    {label: 'Option 3.2.3',value : 'Option 3.2.3'}
+                                label: 'Group 3.2',
+                                items: [
+                                    {label: 'Option 3.2.1', value: 'Option 3.2.1'},
+                                    {label: 'Option 3.2.2', value: 'Option 3.2.2'},
+                                    {label: 'Option 3.2.3', value: 'Option 3.2.3'}
                                 ]
                             }
                         ]
                     },
                     {
-                        label:'Group 4', 
-                        items:[
+                        label: 'Group 4',
+                        items: [
                             {
-                                label: 'Group 4.1', 
-                                items:[
-                                    {label: 'Option 4.1.1',value : 'Option 4.1.1'}
+                                label: 'Group 4.1',
+                                items: [
+                                    {label: 'Option 4.1.1', value: 'Option 4.1.1'}
                                 ]
                             },
                             {
-                                label: 'Group 4.2', 
-                                items:[
-                                    {label: 'Option 4.2.1',value : 'Option 4.2.1'},
-                                    {label: 'Option 4.2.2',value : 'Option 4.2.2'},
-                                    {label: 'Option 4.2.3',value : 'Option 4.2.3'},
-                                    {label: 'Option 4.2.4',value : 'Option 4.2.4'}
+                                label: 'Group 4.2',
+                                items: [
+                                    {label: 'Option 4.2.1', value: 'Option 4.2.1'},
+                                    {label: 'Option 4.2.2', value: 'Option 4.2.2'},
+                                    {label: 'Option 4.2.3', value: 'Option 4.2.3'},
+                                    {label: 'Option 4.2.4', value: 'Option 4.2.4'}
                                 ]
                             }
                         ]
                     }
                 ]
+            });
 
+            $('#btn').puibutton({
+                click: function (event) {
+                    $('#text').text($('#single').children('input').val());
+                }
             });
-            $('#default').puibutton({
-                click: function(event) {
-                $('#text').text($('#single').children('input').val());
-            }
-                
-            });
+
             $('#doc').puitabview();
-            
         });
     </script>
 
@@ -115,12 +113,11 @@
 
     <div class="ContentSideSections Implementation">
 
-        <div id="single"></div>
+        <div id="multilistbox"></div>
 
-        <button id="default" type="button" style="margin-top:10px">Save</button>
+        <button id="btn" type="button" style="margin-top:10px">Save</button>
 
-        <div id="text" style="margin-top:10px"></div>
-
+        <div style="margin-top:10px"></div>
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">
@@ -302,8 +299,8 @@
                             <div id="doc-source">
 
                                 <pre name="code" class="brush:js">
-$(function() {
-    $('#single').puimultiselectlistbox({
+$(function() {           
+    $('#multilistbox').puimultiselectlistbox({
         caption: 'Categories' ,
         effect: true,
         showheader: true,
@@ -314,14 +311,14 @@ $(function() {
                     {
                         label: 'Group 1.1', 
                         items:[
-                            {label: 'Option 1.1.1',value : 'Option 1.1.1'}
+                            {label: 'Option 1.1.1',value: 'Option 1.1.1'}
                         ]
                     },
                     {
                         label: 'Group 1.2', 
                         items:[
-                            {label: 'Option 1.2.1',value : 'Option 1.2.1'},
-                            {label: 'Option 1.2.2',value : 'Option 1.2.2'}
+                            {label: 'Option 1.2.1',value: 'Option 1.2.1'},
+                            {label: 'Option 1.2.2',value: 'Option 1.2.2'}
                         ]
                     }
                 ]
@@ -332,14 +329,14 @@ $(function() {
                     {
                         label: 'Group 2.1', 
                         items:[
-                            {label: 'Option 2.1.1',value : 'Option 2.1.1'}
+                            {label: 'Option 2.1.1',value: 'Option 2.1.1'}
                         ]
                     },
                     {
                         label: 'Group 2.2', 
                         items:[
-                            {label: 'Option 2.2.1',value : 'Option 2.2.1'},
-                            {label: 'Option 2.2.2',value : 'Option 2.2.2'}
+                            {label: 'Option 2.2.1',value: 'Option 2.2.1'},
+                            {label: 'Option 2.2.2',value: 'Option 2.2.2'}
                         ]
                     }
                 ]
@@ -350,15 +347,15 @@ $(function() {
                     {
                         label: 'Group 3.1', 
                         items:[
-                            {label: 'Option 3.1.1',value : 'Option 3.1.1'}
+                            {label: 'Option 3.1.1',value: 'Option 3.1.1'}
                         ]
                     },
                     {
                         label: 'Group 3.2', 
                         items:[
-                            {label: 'Option 3.2.1',value : 'Option 3.2.1'},
-                            {label: 'Option 3.2.2',value : 'Option 3.2.2'},
-                            {label: 'Option 3.2.3',value : 'Option 3.2.3'}
+                            {label: 'Option 3.2.1',value: 'Option 3.2.1'},
+                            {label: 'Option 3.2.2',value: 'Option 3.2.2'},
+                            {label: 'Option 3.2.3',value: 'Option 3.2.3'}
                         ]
                     }
                 ]
@@ -369,28 +366,28 @@ $(function() {
                     {
                         label: 'Group 4.1', 
                         items:[
-                            {label: 'Option 4.1.1',value : 'Option 4.1.1'}
+                            {label: 'Option 4.1.1',value: 'Option 4.1.1'}
                         ]
                     },
                     {
                         label: 'Group 4.2', 
                         items:[
-                            {label: 'Option 4.2.1',value : 'Option 4.2.1'},
-                            {label: 'Option 4.2.2',value : 'Option 4.2.2'},
-                            {label: 'Option 4.2.3',value : 'Option 4.2.3'},
-                            {label: 'Option 4.2.4',value : 'Option 4.2.4'}
+                            {label: 'Option 4.2.1',value: 'Option 4.2.1'},
+                            {label: 'Option 4.2.2',value: 'Option 4.2.2'},
+                            {label: 'Option 4.2.3',value: 'Option 4.2.3'},
+                            {label: 'Option 4.2.4',value: 'Option 4.2.4'}
                         ]
                     }
                 ]
             }
         ]
-
     });
+
+    $('#doc').puitabview();
 });
                                 </pre>
                                 <pre name="code" class="brush:xml">
-
-&lt;div id="single"&gt;&lt;/div&gt;
+&lt;div id="multilistbox"&gt;&lt;/div&gt;
 
                                 </pre>
 

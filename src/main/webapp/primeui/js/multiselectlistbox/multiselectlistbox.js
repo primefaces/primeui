@@ -6,8 +6,9 @@
             caption: null,
             choices: null,
             items: null,
-            effect:false,
-            showheader:false
+            effect: false||'fade',
+            showHeaders: false,
+            name: null
         },
         
         _create: function() {
@@ -17,27 +18,34 @@
             this.container = this.element.children('div');
             this.input = this.element.children('input');
             var choices = this.options.choices;
+            if(this.options.name) {
+                this.input.attr('name', this.options.name);
+            }
 
             if(choices) {
-                this.container.append('<div class="pui-multiselectlistbox-header ui-widget-header ui-corner-top">'+ this.options.caption +'</div>');
+                if(this.options.caption) {
+                    this.container.append('<div class="pui-multiselectlistbox-header ui-widget-header ui-corner-top">'+ this.options.caption +'</div>');
+                }
+                
                 this.container.append('<ul class="pui-multiselectlistbox-list pui-inputfield ui-widget-content ui-corner-bottom"></ul>');
-                this.list = this.container.children('ul');
+                this.rootList = this.container.children('ul');
                 
                 for(var i = 0; i < choices.length; i++) {
-                    this.list.append('<li class="pui-multiselectlistbox-item"><span> '+ this.options.choices[i].label +'</span></li>');
+                    this.rootList.append('<li class="pui-multiselectlistbox-item"><span> '+ this.options.choices[i].label +'</span></li>');
                 }
 
                 var listItems = $('li.pui-multiselectlistbox-item');
 
                 for (var i = 0; i < choices.length; i++) {
-                    this._createNestedListDom(choices[i],listItems[i]);  
+                    this._createNestedListDom(choices[i], listItems[i]);  
                 }
-                this.listitems = $('li.pui-multiselectlistbox-item');
+                
                 this.items = this.element.find('li.pui-multiselectlistbox-item');
                 this._bindEvents();
             }
         },
-        _createNestedListDom: function(choices,element) {
+        
+        _createNestedListDom: function(choices, element) {
             if(choices && choices.items) {
                 var listElements = $(element);
                 listElements.append('<ul class="ui-helper-hidden"></ul>');
@@ -48,14 +56,16 @@
                     ulElements.append('<li class="pui-multiselectlistbox-item" data-value= "'+ item.value +'"><span> '+ item.label +'</span></li>');
                     this._createNestedListDom(choices.items[j],ulElements.children('li').get(j)); 
                 }
-            }
-            
+            }            
         },
+        
         _unbindEvents: function() {
-           this.listitems.off('mouseover.multiSelectListbox mouseout.multiSelectListbox click.multiSelectListbox');
+           this.items.off('mouseover.multiSelectListbox mouseout.multiSelectListbox click.multiSelectListbox');
         },
+        
         _bindEvents: function() {
            var $this = this;
+           
            this.items.on('mouseover.multiSelectListbox', function() {
                var item = $(this);
 
@@ -72,12 +82,9 @@
                var item = $(this);
                if(!item.hasClass('ui-state-highlight'))
                    $this.showOptionGroup(item);
-           })
+           });
         },
-        _showEffect: function() {
-            this.options.effect = this.options.effect||'fade';
-            this.options.effectSpeed = this.options.effectSpeed||'normal';
-        },
+        
         showOptionGroup: function(item) {
            item.addClass('ui-state-highlight').removeClass('ui-state-hover').siblings().filter('.ui-state-highlight').removeClass('ui-state-highlight');
            item.closest('.pui-multiselectlistbox-listcontainer').nextAll().remove();
@@ -98,16 +105,14 @@
               }
 
               this.element.append(groupContainer);
-              //Effects
-              if (this.options.effect) {
-                  this._showEffect
+
+              if (this.options.effect)
                   groupContainer.show(this.options.effect);
-              }
-              else {
+              else
                   groupContainer.show();
-              }
             }
         },
+        
         disable: function() {
            if(!this.options.disabled) {
                this.options.disabled = true;
