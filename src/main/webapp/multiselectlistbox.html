@@ -13,8 +13,7 @@
         $(function () {
             $('#multilistbox').puimultiselectlistbox({
                 caption: 'Categories',
-                effect: true,
-                showheader: true,
+                effect: 'slide',
                 choices: [
                     {
                         label: 'Group 1',
@@ -22,14 +21,14 @@
                             {
                                 label: 'Group 1.1',
                                 items: [
-                                    {label: 'Option 1.1.1', value: 'Option 1.1.1'}
+                                    {label: 'Option 1.1.1', value: '1.1.1'}
                                 ]
                             },
                             {
                                 label: 'Group 1.2',
                                 items: [
-                                    {label: 'Option 1.2.1', value: 'Option 1.2.1'},
-                                    {label: 'Option 1.2.2', value: 'Option 1.2.2'}
+                                    {label: 'Option 1.2.1', value: '1.2.1'},
+                                    {label: 'Option 1.2.2', value: '1.2.2'}
                                 ]
                             }
                         ]
@@ -40,14 +39,14 @@
                             {
                                 label: 'Group 2.1',
                                 items: [
-                                    {label: 'Option 2.1.1', value: 'Option 2.1.1'}
+                                    {label: 'Option 2.1.1', value: '2.1.1'}
                                 ]
                             },
                             {
                                 label: 'Group 2.2',
                                 items: [
-                                    {label: 'Option 2.2.1', value: 'Option 2.2.1'},
-                                    {label: 'Option 2.2.2', value: 'Option 2.2.2'}
+                                    {label: 'Option 2.2.1', value: '2.2.1'},
+                                    {label: 'Option 2.2.2', value: '2.2.2'}
                                 ]
                             }
                         ]
@@ -58,15 +57,15 @@
                             {
                                 label: 'Group 3.1',
                                 items: [
-                                    {label: 'Option 3.1.1', value: 'Option 3.1.1'}
+                                    {label: 'Option 3.1.1', value: '3.1.1'}
                                 ]
                             },
                             {
                                 label: 'Group 3.2',
                                 items: [
-                                    {label: 'Option 3.2.1', value: 'Option 3.2.1'},
-                                    {label: 'Option 3.2.2', value: 'Option 3.2.2'},
-                                    {label: 'Option 3.2.3', value: 'Option 3.2.3'}
+                                    {label: 'Option 3.2.1', value: '3.2.1'},
+                                    {label: 'Option 3.2.2', value: '3.2.2'},
+                                    {label: 'Option 3.2.3', value: '3.2.3'}
                                 ]
                             }
                         ]
@@ -77,16 +76,16 @@
                             {
                                 label: 'Group 4.1',
                                 items: [
-                                    {label: 'Option 4.1.1', value: 'Option 4.1.1'}
+                                    {label: 'Option 4.1.1', value: '4.1.1'}
                                 ]
                             },
                             {
                                 label: 'Group 4.2',
                                 items: [
-                                    {label: 'Option 4.2.1', value: 'Option 4.2.1'},
-                                    {label: 'Option 4.2.2', value: 'Option 4.2.2'},
-                                    {label: 'Option 4.2.3', value: 'Option 4.2.3'},
-                                    {label: 'Option 4.2.4', value: 'Option 4.2.4'}
+                                    {label: 'Option 4.2.1', value: '4.2.1'},
+                                    {label: 'Option 4.2.2', value: '4.2.2'},
+                                    {label: 'Option 4.2.3', value: '4.2.3'},
+                                    {label: 'Option 4.2.4', value: '4.2.4'}
                                 ]
                             }
                         ]
@@ -96,7 +95,7 @@
 
             $('#btn').puibutton({
                 click: function (event) {
-                    $('#text').text($('#single').children('input').val());
+                    $('#output').html($('#multilistbox').puimultiselectlistbox('getVal'));
                 }
             });
 
@@ -117,7 +116,7 @@
 
         <button id="btn" type="button" style="margin-top:10px">Save</button>
 
-        <div style="margin-top:10px"></div>
+        <div id="output" style="margin-top:10px"></div>
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">
@@ -135,94 +134,91 @@
                         <div>
                             <div id="doc-overview">
                                 <pre name="code" class="brush:xml">
-                        &lt;div id="single" &gt;&lt;/div&gt;   
+&lt;div id="mbx" &gt;&lt;/div&gt;   
                                 </pre>
 
                                 <pre name="code" class="brush:js">
+$('#mbx').puimultiselectlistbox({
+    caption: 'Categories' ,
+    choices: [
+        {
+            label:'Group 1', 
+            items:[
+                {
+                    label: 'Group 1.1', 
+                    items:[
+                        {label: 'Option 1.1.1',value : 'Option 1.1.1'}
+                    ]
+                },
+                {
+                    label: 'Group 1.2', 
+                    items:[
+                        {label: 'Option 1.2.1',value : 'Option 1.2.1'},
+                        {label: 'Option 1.2.2',value : 'Option 1.2.2'}
+                    ]
+                }
+            ]
+        },
+        {
+            label:'Group 2', 
+            items:[
+                {
+                    label: 'Group 2.1', 
+                    items:[
+                        {label: 'Option 2.1.1',value : 'Option 2.1.1'}
+                    ]
+                },
+                {
+                    label: 'Group 2.2', 
+                    items:[
+                        {label: 'Option 2.2.1',value : 'Option 2.2.1'},
+                        {label: 'Option 2.2.2',value : 'Option 2.2.2'}
+                    ]
+                }
+            ]
+        },
+        {
+            label:'Group 3', 
+            items:[
+                {
+                    label: 'Group 3.1', 
+                    items:[
+                        {label: 'Option 3.1.1',value : 'Option 3.1.1'}
+                    ]
+                },
+                {
+                    label: 'Group 3.2', 
+                    items:[
+                        {label: 'Option 3.2.1',value : 'Option 3.2.1'},
+                        {label: 'Option 3.2.2',value : 'Option 3.2.2'},
+                        {label: 'Option 3.2.3',value : 'Option 3.2.3'}
+                    ]
+                }
+            ]
+        },
+        {
+            label:'Group 4', 
+            items:[
+                {
+                    label: 'Group 4.1', 
+                    items:[
+                        {label: 'Option 4.1.1',value : 'Option 4.1.1'}
+                    ]
+                },
+                {
+                    label: 'Group 4.2', 
+                    items:[
+                        {label: 'Option 4.2.1',value : 'Option 4.2.1'},
+                        {label: 'Option 4.2.2',value : 'Option 4.2.2'},
+                        {label: 'Option 4.2.3',value : 'Option 4.2.3'},
+                        {label: 'Option 4.2.4',value : 'Option 4.2.4'}
+                    ]
+                }
+            ]
+        }
+    ]
 
-            $('#single').puimultiselectlistbox({
-                caption: 'Categories' ,
-                effect: true,
-                showheader: true,
-                choices: [
-                    {
-                        label:'Group 1', 
-                        items:[
-                            {
-                                label: 'Group 1.1', 
-                                items:[
-                                    {label: 'Option 1.1.1',value : 'Option 1.1.1'}
-                                ]
-                            },
-                            {
-                                label: 'Group 1.2', 
-                                items:[
-                                    {label: 'Option 1.2.1',value : 'Option 1.2.1'},
-                                    {label: 'Option 1.2.2',value : 'Option 1.2.2'}
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        label:'Group 2', 
-                        items:[
-                            {
-                                label: 'Group 2.1', 
-                                items:[
-                                    {label: 'Option 2.1.1',value : 'Option 2.1.1'}
-                                ]
-                            },
-                            {
-                                label: 'Group 2.2', 
-                                items:[
-                                    {label: 'Option 2.2.1',value : 'Option 2.2.1'},
-                                    {label: 'Option 2.2.2',value : 'Option 2.2.2'}
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        label:'Group 3', 
-                        items:[
-                            {
-                                label: 'Group 3.1', 
-                                items:[
-                                    {label: 'Option 3.1.1',value : 'Option 3.1.1'}
-                                ]
-                            },
-                            {
-                                label: 'Group 3.2', 
-                                items:[
-                                    {label: 'Option 3.2.1',value : 'Option 3.2.1'},
-                                    {label: 'Option 3.2.2',value : 'Option 3.2.2'},
-                                    {label: 'Option 3.2.3',value : 'Option 3.2.3'}
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        label:'Group 4', 
-                        items:[
-                            {
-                                label: 'Group 4.1', 
-                                items:[
-                                    {label: 'Option 4.1.1',value : 'Option 4.1.1'}
-                                ]
-                            },
-                            {
-                                label: 'Group 4.2', 
-                                items:[
-                                    {label: 'Option 4.2.1',value : 'Option 4.2.1'},
-                                    {label: 'Option 4.2.2',value : 'Option 4.2.2'},
-                                    {label: 'Option 4.2.3',value : 'Option 4.2.3'},
-                                    {label: 'Option 4.2.4',value : 'Option 4.2.4'}
-                                ]
-                            }
-                        ]
-                    }
-                ]
-
-            });
+});
                                 </pre>
 
                             </div>
@@ -230,41 +226,31 @@
                             <div id="doc-options">
                                 <table class="doc-table">
                                     <thead>
-                                    <th>Name</th>
-                                    <th>Type</th>
-                                    <th>Default</th>
-                                    <th>Description</th>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Default</th>
+                                            <th>Description</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>caption</td>
                                             <td>string</td>
                                             <td>null</td>
-                                            <td>Name for the list.</td>
+                                            <td>Header of root listbox.</td>
                                         </tr>
                                         <tr>
                                             <td>choices</td>
-                                            <td>string , number</td>
+                                            <td>array</td>
                                             <td>null</td>
                                             <td>Choices for the list.</td>
                                         </tr>
                                         <tr>
-                                            <td>items</td>
-                                            <td>string , number</td>
-                                            <td>null</td>
-                                            <td>Pointing the subgroups of choices.</td>
-                                        </tr>
-                                        <tr>
                                             <td>effect</td>
-                                            <td>boolean</td>
-                                            <td>false</td>
+                                            <td>string</td>
+                                            <td>slide</td>
                                             <td>Effect of subgroups to appear.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>showheader</td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>Headers of subgroups.</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -277,9 +263,11 @@
                             <div id="doc-methods">
                                 <table class="doc-table">
                                     <thead>
-                                    <th>Name</th>
-                                    <th>Parameters</th>
-                                    <th>Description</th>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Parameters</th>
+                                            <th>Description</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
@@ -287,12 +275,17 @@
                                             <td>-</td>
                                             <td>Disables the list container.</td>
                                         </tr>
+                                        <tr>
+                                            <td>getValue</td>
+                                            <td>-</td>
+                                            <td>Returns the value of selected option.</td>
+                                        </tr>
                                     </tbody>
                                 </table>
 
                                 <h3>Example</h3>
                                 <pre name="code" class="brush:js">
-            $('#single').puimultiselectlistbox('disable');
+$('#single').puimultiselectlistbox('getValue');
                                 </pre>
                             </div>
 
@@ -301,81 +294,80 @@
                                 <pre name="code" class="brush:js">
 $(function() {           
     $('#multilistbox').puimultiselectlistbox({
-        caption: 'Categories' ,
-        effect: true,
-        showheader: true,
+        caption: 'Categories',
+        effect: 'slide',
         choices: [
             {
-                label:'Group 1', 
-                items:[
+                label: 'Group 1',
+                items: [
                     {
-                        label: 'Group 1.1', 
-                        items:[
-                            {label: 'Option 1.1.1',value: 'Option 1.1.1'}
+                        label: 'Group 1.1',
+                        items: [
+                            {label: 'Option 1.1.1', value: '1.1.1'}
                         ]
                     },
                     {
-                        label: 'Group 1.2', 
-                        items:[
-                            {label: 'Option 1.2.1',value: 'Option 1.2.1'},
-                            {label: 'Option 1.2.2',value: 'Option 1.2.2'}
+                        label: 'Group 1.2',
+                        items: [
+                            {label: 'Option 1.2.1', value: '1.2.1'},
+                            {label: 'Option 1.2.2', value: '1.2.2'}
                         ]
                     }
                 ]
             },
             {
-                label:'Group 2', 
-                items:[
+                label: 'Group 2',
+                items: [
                     {
-                        label: 'Group 2.1', 
-                        items:[
-                            {label: 'Option 2.1.1',value: 'Option 2.1.1'}
+                        label: 'Group 2.1',
+                        items: [
+                            {label: 'Option 2.1.1', value: '2.1.1'}
                         ]
                     },
                     {
-                        label: 'Group 2.2', 
-                        items:[
-                            {label: 'Option 2.2.1',value: 'Option 2.2.1'},
-                            {label: 'Option 2.2.2',value: 'Option 2.2.2'}
+                        label: 'Group 2.2',
+                        items: [
+                            {label: 'Option 2.2.1', value: '2.2.1'},
+                            {label: 'Option 2.2.2', value: '2.2.2'}
                         ]
                     }
                 ]
             },
             {
-                label:'Group 3', 
-                items:[
+                label: 'Group 3',
+                items: [
                     {
-                        label: 'Group 3.1', 
-                        items:[
-                            {label: 'Option 3.1.1',value: 'Option 3.1.1'}
+                        label: 'Group 3.1',
+                        items: [
+                            {label: 'Option 3.1.1', value: '3.1.1'}
                         ]
                     },
                     {
-                        label: 'Group 3.2', 
-                        items:[
-                            {label: 'Option 3.2.1',value: 'Option 3.2.1'},
-                            {label: 'Option 3.2.2',value: 'Option 3.2.2'},
-                            {label: 'Option 3.2.3',value: 'Option 3.2.3'}
+                        label: 'Group 3.2',
+                        items: [
+                            {label: 'Option 3.2.1', value: '3.2.1'},
+                            {label: 'Option 3.2.2', value: '3.2.2'},
+                            {label: 'Option 3.2.3', value: '3.2.3'}
                         ]
                     }
                 ]
             },
             {
-                label:'Group 4', 
-                items:[
+                label: 'Group 4',
+                items: [
                     {
-                        label: 'Group 4.1', 
-                        items:[
-                            {label: 'Option 4.1.1',value: 'Option 4.1.1'}
+                        label: 'Group 4.1',
+                        items: [
+                            {label: 'Option 4.1.1', value: '4.1.1'}
                         ]
                     },
                     {
-                        label: 'Group 4.2', 
-                        items:[
-                            {label: 'Option 4.2.1',value: 'Option 4.2.1'},
-                            {label: 'Option 4.2.2',value: 'Option 4.2.2'},
-                            {label: 'Option 4.2.3',value: 'Option 4.2.3'},
-                            {label: 'Option 4.2.4',value: 'Option 4.2.4'}
+                        label: 'Group 4.2',
+                        items: [
+                            {label: 'Option 4.2.1', value: '4.2.1'},
+                            {label: 'Option 4.2.2', value: '4.2.2'},
+                            {label: 'Option 4.2.3', value: '4.2.3'},
+                            {label: 'Option 4.2.4', value: '4.2.4'}
                         ]
                     }
                 ]
@@ -383,7 +375,11 @@ $(function() {
         ]
     });
 
-    $('#doc').puitabview();
+    $('#btn').puibutton({
+        click: function (event) {
+            $('#output').html($('#multilistbox').puimultiselectlistbox('getVal'));
+        }
+    });
 });
                                 </pre>
                                 <pre name="code" class="brush:xml">

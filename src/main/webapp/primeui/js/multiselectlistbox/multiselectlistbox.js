@@ -5,9 +5,7 @@
        options: {
             caption: null,
             choices: null,
-            items: null,
             effect: false||'fade',
-            showHeaders: false,
             name: null
         },
         
@@ -31,13 +29,7 @@
                 this.rootList = this.container.children('ul');
                 
                 for(var i = 0; i < choices.length; i++) {
-                    this.rootList.append('<li class="pui-multiselectlistbox-item"><span> '+ this.options.choices[i].label +'</span></li>');
-                }
-
-                var listItems = $('li.pui-multiselectlistbox-item');
-
-                for (var i = 0; i < choices.length; i++) {
-                    this._createNestedListDom(choices[i], listItems[i]);  
+                    this._createItemNode(choices[i], this.rootList);
                 }
                 
                 this.items = this.element.find('li.pui-multiselectlistbox-item');
@@ -45,20 +37,22 @@
             }
         },
         
-        _createNestedListDom: function(choices, element) {
-            if(choices && choices.items) {
-                var listElements = $(element);
-                listElements.append('<ul class="ui-helper-hidden"></ul>');
-                var ulElements = listElements.children('ul');
-
-                for (var j = 0; j < choices.items.length; j++) {
-                    var item = choices.items[j];
-                    ulElements.append('<li class="pui-multiselectlistbox-item" data-value= "'+ item.value +'"><span> '+ item.label +'</span></li>');
-                    this._createNestedListDom(choices.items[j],ulElements.children('li').get(j)); 
+        _createItemNode: function(choice, parent) {
+            var listItem = $('<li class="pui-multiselectlistbox-item"><span>'+ choice.label + '</span></li>');
+            listItem.appendTo(parent);
+            
+            if(choice.items) {
+                listItem.append('<ul class="ui-helper-hidden"></ul>');
+                var sublistContainer = listItem.children('ul');
+                for(var i = 0; i < choice.items.length; i++) {
+                    this._createItemNode(choice.items[i], sublistContainer);
                 }
-            }            
+            }
+            else {
+                listItem.attr('data-value', choice.value);
+            }
         },
-        
+                
         _unbindEvents: function() {
            this.items.off('mouseover.multiSelectListbox mouseout.multiSelectListbox click.multiSelectListbox');
         },
@@ -80,29 +74,28 @@
            })
            .on('click.multiSelectListbox', function() {
                var item = $(this);
-               if(!item.hasClass('ui-state-highlight'))
+               if(!item.hasClass('ui-state-highlight')) {
                    $this.showOptionGroup(item);
+               }
            });
         },
         
         showOptionGroup: function(item) {
            item.addClass('ui-state-highlight').removeClass('ui-state-hover').siblings().filter('.ui-state-highlight').removeClass('ui-state-highlight');
            item.closest('.pui-multiselectlistbox-listcontainer').nextAll().remove();
-           this.input.val(item.attr('data-value'));
-           var childItemsContainer = item.children('ul');
+           var childItemsContainer = item.children('ul'),
+           itemValue = item.attr('data-value');
+   
+           if(itemValue) {
+               this.input.val(itemValue);
+           }
 
            if(childItemsContainer.length) {
               var groupContainer = $('<div class="pui-multiselectlistbox-listcontainer" style="display:none"></div>');
               childItemsContainer.clone(true).appendTo(groupContainer).addClass('pui-multiselectlistbox-list pui-inputfield ui-widget-content').removeClass('ui-helper-hidden');
 
-              if(this.options.showheader) {
-                  groupContainer.prepend('<div class="pui-multiselectlistbox-header ui-widget-header ui-corner-top">' + item.children('span').text() + '</div>')
+              groupContainer.prepend('<div class="pui-multiselectlistbox-header ui-widget-header ui-corner-top">' + item.children('span').text() + '</div>')
                   .children('.pui-multiselectlistbox-list').addClass('ui-corner-bottom');
-              }
-              else {
-                  groupContainer.children().addClass('ui-corner-all');
-                  groupContainer.children().css('margin-top', '22px');
-              }
 
               this.element.append(groupContainer);
 
@@ -114,13 +107,19 @@
         },
         
         disable: function() {
+            alert('xx');
            if(!this.options.disabled) {
                this.options.disabled = true;
                this.element.addClass('ui-state-disabled');
                this._unbindEvents();
                this.container.nextAll().remove();
            }
+        },
+        
+        getValue: function() {
+            return this.input.val();
         }
     });
+    
 })();
 
