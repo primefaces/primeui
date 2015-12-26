@@ -37,3 +37,18 @@
 .pui-spinner-down {
     bottom: 0;
 }
+
+/* Fluid */
+.pui-fluid .pui-spinner {
+    width: 100%;
+}
+.pui-fluid .pui-spinner .pui-spinner-input {
+    padding-right: 36px;
+    width: 100%;
+}
+.pui-fluid .pui-spinner .pui-spinner-button {
+    width: auto;
+}
+.pui-fluid .pui-spinner .pui-spinner-button .pui-icon {
+    left: 6px;
+}
