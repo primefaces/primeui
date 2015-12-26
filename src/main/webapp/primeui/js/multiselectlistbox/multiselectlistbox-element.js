@@ -3,9 +3,13 @@ if(!xtag.tags['p-option']) {
     xtag.register('p-option', {
     
         accessors: {
+            label: {
+                attribute:{}
+            },
             value: {
                 attribute:{}
             }
+
         },
 
         lifecycle: {
@@ -22,7 +26,14 @@ if(!xtag.tags['p-optgroup']) {
     xtag.register('p-optgroup', {
     
         accessors: {
+            label: {
+                attribute:{}
+            },
+            items: {
+                    attribute:{}
+            }
         },
+            
 
         lifecycle: {
             created: function() {
@@ -64,20 +75,20 @@ if(!xtag.tags['p-multiselectlistbox']) {
                     var children = parent.children();
                     for(var i = 0; i < children.length; i++) {
                         var childElement = children.eq(i),
-                        item = {};
+                        item = {},
+                        item2 = {};
                         tagname = childElement.get(0).tagName.toLowerCase();
 
                         if(tagname === 'p-optgroup') {
                            item.label = children.eq(i).attr('label')||null;
                            item.items = children.eq(i).attr('items')||null;
                            choices.push(item);
-                           
                            iterateChildren.call(this, childElement);
                         }
                         else if(tagname === 'p-option') {
                             item.label = children.eq(i).attr('label')||null;
                             item.value = children.attr('value')||null;
-                            choices.push(item)
+                            choices.push(item);
                         }
                     }
                 };
