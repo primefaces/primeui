@@ -12,8 +12,10 @@
         
         _create: function() {
             this.element.addClass('pui-selectbutton pui-buttonset ui-widget ui-corner-all').attr('tabindex');
+            
             //create buttons
             if(this.options.choices) {
+                this.element.addClass('pui-buttonset-' + this.options.choices.length);
                 for(var i = 0; i < this.options.choices.length; i++) {
                     this.element.append('<div class="pui-button ui-widget ui-state-default pui-button-text-only" tabindex="' + this.options.tabindex + '" data-value="' 
                                         + this.options.choices[i].value + '">' +
