@@ -1,15 +1,34 @@
-.pui-fluid .pui-splitbutton .pui-button {
-    width: 96%;
-}
-.pui-fluid .pui-splitbutton .pui-button.pui-splitbutton-menubutton {
-    width: 4%;
+.pui-splitbutton {
+    position: relative;
+    padding-right: 2em;
 }
 
-@media (max-width: 35em) {
-    .pui-fluid .pui-splitbutton .pui-button {
-        width: 90%;
-    }
-    .pui-fluid .pui-splitbutton .pui-button.pui-splitbutton-menubutton {
-        width: 10%;
-    }
+.pui-splitbutton .pui-button.pui-splitbutton-menubutton {
+    width: 32px;
+    position: absolute;
+    top: 0px;
+    margin-left: -1px;
+}
+
+.pui-splitbutton {
+    display: inline-block;
+    zoom: 1;
+}
+
+.pui-fluid .pui-splitbutton {
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing: border-box;
+}
+
+.pui-fluid .pui-splitbutton .pui-button {
+    width: 100%;
+}
+
+.pui-fluid .pui-splitbutton .pui-button.pui-splitbutton-menubutton {
+    width: 32px;
+    box-sizing: border-box;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing: border-box;
 }

@@ -59,7 +59,7 @@
             this.options.position = {
                 my: 'left top',
                 at: 'left bottom',
-                of: this.element
+                of: this.element.parent()
             };
         },
                 
@@ -111,9 +111,9 @@
         },
                 
         show: function() {
-            this._alignPanel();
             this.menuButton.trigger('focus');
             this.menu.show();
+            this._alignPanel();
             this._trigger('show', null);
         },
 
