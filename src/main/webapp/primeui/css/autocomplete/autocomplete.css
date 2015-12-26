@@ -11,11 +11,8 @@
 
 .pui-autocomplete .pui-autocomplete-dropdown {
     position: absolute;
-    top: 0;
-    bottom: 0;
     height: 100%;
     width: 2.4em;
-    right: -2.4em;
 }
 
 .pui-autocomplete-query {
@@ -66,7 +63,10 @@
     min-height: 1px;
     overflow: hidden;
     width: 400px;
-    padding: 0px;
+}
+
+.pui-autocomplete-multiple-container.pui-inputfield {
+    padding:0;
 }
 
 .pui-autocomplete-token {
@@ -104,7 +104,36 @@
     width: 140px;
     outline: medium none;
     background-color: transparent;
-    margin: 0px;
-    padding: 4px;
+    margin: 0;
+    padding: 0;
     box-shadow: none;
+}
+
+.pui-autocomplete-itemtip-content {
+    display:none;
+}
+
+.pui-autocomplete-itemtip {
+    position: absolute;
+    display: none;
+    padding: 0.4em;
+}
+
+.pui-autocomplete-emptyMessage {
+    padding:3px 5px;
+}
+
+.pui-autocomplete-panel .pui-autocomplete-group {
+    font-weight: bold;
+    cursor: default;
+}
+
+/** AutoComplete **/
+.pui-fluid .pui-autocomplete,
+.pui-fluid .pui-autocomplete-input {
+    width: 100%;
+}
+
+.pui-fluid .pui-autocomplete .pui-autocomplete-dropdown.pui-button {
+    width: 2.4em;
 }
