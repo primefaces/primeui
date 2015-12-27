@@ -100,7 +100,8 @@ if(!xtag.tags['p-multiselectlistbox']) {
                     choices: choices,
                     effect: this.effect || 'fade',
                     name: this.name,
-                    triggerEvent: this.triggerEvent||'click'
+                    triggerEvent: this.triggerEvent||'click',
+                    preselect: this.preselect
                 });
 
                 
@@ -119,6 +120,9 @@ if(!xtag.tags['p-multiselectlistbox']) {
             },
             getValue : function() {
                 $(this).puimultiselectlistbox('getValue');
+            },
+            preselect : function() {
+                $(this).puimultiselectlistbox('preselect');
             }
         }
         
