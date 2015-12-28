@@ -17,11 +17,15 @@
             sourceData: null,
             targetData: null,
             content: null,
-            template: null
+            template: null,
+            responsive: false
         },
 
         _create: function() {
             this.element.uniqueId().addClass('pui-picklist ui-widget ui-helper-clearfix');
+            if(this.options.responsive) {
+                this.element.addClass('pui-picklist-responsive');
+            }
             this.inputs = this.element.children('select');
             this.items = $();
             this.sourceInput = this.inputs.eq(0);
@@ -40,11 +44,11 @@
             this.targetList = this._createList(this.targetInput, 'pui-picklist-target', this.options.targetCaption);
             
             if(this.options.showSourceControls) {
-                this.element.prepend(this._createListControls(this.sourceList));
+                this.element.prepend(this._createListControls(this.sourceList, 'pui-picklist-source-controls'));
             }
             
             if(this.options.showTargetControls) {
-                this.element.append(this._createListControls(this.targetList));
+                this.element.append(this._createListControls(this.targetList, 'pui-picklist-target-controls'));
             }
             
             this._bindEvents();
@@ -60,11 +64,9 @@
             }
         },
                 
-        _createList: function(input, cssClass, caption) {
-            input.wrap('<div class="ui-helper-hidden"></div>');
-                        
-            var listWrapper = $('<div class="pui-picklist-listwrapper ' + cssClass + '"></div>'),
-                listContainer = $('<ul class="ui-widget-content pui-picklist-list pui-inputtext"></ul>');
+        _createList: function(input, cssClass, caption) {                        
+            var listWrapper = $('<div class="pui-picklist-listwrapper"></div>'),
+                listContainer = $('<ul class="ui-widget-content pui-picklist-list "' + cssClass + '></ul>');
 
             if(this.options.filter) {
                 listWrapper.append('<div class="pui-picklist-filter-container"><input type="text" class="pui-picklist-filter" /><span class="pui-icon fa fa-fw fa-search"></span></div>');
@@ -81,7 +83,10 @@
 
             this._populateContainerFromOptions(input, listContainer);
             
-            listWrapper.append(listContainer).appendTo(this.element);
+            
+            listWrapper.append(listContainer);
+            input.addClass('ui-helper-hidden').appendTo(listWrapper);
+            listWrapper.appendTo(this.element);
             
             return listContainer;
         },
@@ -108,9 +113,9 @@
 
         _createButtons: function() {
             var $this = this,
-            buttonContainer = $('<ul class="pui-picklist-buttons"></ul>');
+            buttonContainer = $('<div class="pui-picklist-buttons"><div class="pui-picklist-buttons-cell"></div>');
             
-            buttonContainer.append(this._createButton('fa-angle-right', 'pui-picklist-button-add', function(){$this._add();}))
+            buttonContainer.children('div').append(this._createButton('fa-angle-right', 'pui-picklist-button-add', function(){$this._add();}))
                             .append(this._createButton('fa-angle-double-right', 'pui-picklist-button-addall', function(){$this._addAll();}))
                             .append(this._createButton('fa-angle-left', 'pui-picklist-button-remove', function(){$this._remove();}))
                             .append(this._createButton('fa-angle-double-left', 'pui-picklist-button-removeall', function(){$this._removeAll();}));
@@ -118,11 +123,11 @@
             this.element.append(buttonContainer);
         },
                 
-        _createListControls: function(list) {
+        _createListControls: function(list, cssClass) {
             var $this = this,
-            buttonContainer = $('<ul class="pui-picklist-buttons"></ul>');
+            buttonContainer = $('<div class="' + cssClass + ' pui-picklist-buttons"><div class="pui-picklist-buttons-cell"></div>');
             
-            buttonContainer.append(this._createButton('fa-angle-up', 'pui-picklist-button-move-up', function(){$this._moveUp(list);}))
+            buttonContainer.children('div').append(this._createButton('fa-angle-up', 'pui-picklist-button-move-up', function(){$this._moveUp(list);}))
                             .append(this._createButton('fa-angle-double-up', 'pui-picklist-button-move-top', function(){$this._moveTop(list);}))
                             .append(this._createButton('fa-angle-down', 'pui-picklist-button-move-down', function(){$this._moveDown(list);}))
                             .append(this._createButton('fa-angle-double-down', 'pui-picklist-button-move-bottom', function(){$this._moveBottom(list);}));

@@ -8,11 +8,6 @@
     <script type="text/javascript" src="primeui/js/picklist/picklist.js"></script>
     <script type="text/javascript" src="primeui/js/picklist/picklist-element.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
-    <style type="text/css">
-        #advanced .pui-picklist-buttons {
-            margin-top: 90px;
-        }
-    </style>
     <script type="text/javascript">
         $(function() {
             var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
@@ -29,6 +24,7 @@
                 sourceCaption: 'Available',
                 targetCaption: 'Selected',
                 filter: true,
+                responsive: true,
                 sourceData: themes,
                 content: function(option) {
                     return '<img src="resources/demo/images/themes/' + option.label + '.png" alt="" /><span style="float:right;font-size:14px">' + option.label + '</span>';
@@ -64,7 +60,7 @@
             </select>
         </div>
 
-        <h3>Advanced</h3>
+        <h3>Advanced with Filtering, Custom Content and Responsive</h3>
         <div id="advanced">
             <select name="source2">
             </select>
@@ -224,6 +220,12 @@ $('#pick').puipicklist();
                                             <td>null</td>
                                             <td>Mustache script element as jQuery object that represents the template.</td>
                                         </tr>
+                                        <tr>
+                                            <td>responsie</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>When enabled, picklist layout adjusts itself according to screen size.</td>
+                                        </tr>
                                     </tbody>
                                 </table>
 
@@ -337,6 +339,7 @@ var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-t
         sourceCaption: 'Available',
         targetCaption: 'Selected',
         filter: true,
+        responsive: true,
         sourceData: themes,
         content: function(option) {
             return '&lt;img src="resources/demo/images/themes/' + option.label + '.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;' + option.label + '&lt;/span&gt;';
