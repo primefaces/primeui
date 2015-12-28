@@ -6,8 +6,7 @@
             caption: null,
             choices: null,
             effect: false||'fade',
-            name: null,
-            preselect: null
+            name: null
         },
         
         _create: function() {

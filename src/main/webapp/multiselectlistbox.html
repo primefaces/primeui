@@ -120,50 +120,49 @@
         <div id="output" style="margin-top:10px"></div>
 
         <h3>Prime Element</h3>
-        
         <p-multiselectlistbox caption="Categories">
-            <p-optgroup label="Group 1" >
-                <p-optgroup label="Group 1.1" >
-                    <p-option label="Option 1.1.1" value="1.1.1"></p-option>
-                </p-optgroup>
-                <p-optgroup label="Group 1.2" >
-                    <p-option label="Option 1.2.1" value="1.2.1"></p-option>
-                    <p-option label="Option 1.2.2" value="1.2.2"></p-option>
-                </p-optgroup>
-            </p-optgroup>
+            <optgroup label="Group 1">
+            <optgroup label="Group 1.1">
+                <option value="1.1.1">Option 1.1.1</option>
+            </optgroup>
+            <optgroup label="Group 1.2" >
+                <option value="1.2.1">Option 1.2.1</option>
+                <option value="1.2.2">Option 1.2.2</option>
+            </optgroup>
+            </optgroup>
 
-            <p-optgroup label="Group 2" >
-                <p-optgroup label="Group 2.1" >
-                    <p-option label="Option 2.1.1" value="2.1.1"></p-option>
-                </p-optgroup>
-                <p-optgroup label="Group 2.2" >
-                    <p-option label="Option 2.2.1" value="2.2.1"></p-option>
-                    <p-option label="Option 2.2.2" value="2.2.2"></p-option>
-                </p-optgroup>
-            </p-optgroup>
+            <optgroup label="Group 2">
+            <optgroup label="Group 2.1">
+                <option value="2.1.1">Option 2.1.1</option>
+            </optgroup>
+            <optgroup label="Group 2.2" >
+                <option value="2.2.1">Option 2.2.1</option>
+                <option value="2.2.2">Option 2.2.2</option>
+            </optgroup>
+            </optgroup>
 
-            <p-optgroup label="Group 3" >
-                <p-optgroup label="Group 3.1" >
-                    <p-option label="Option 3.1.1" value="3.1.1"></p-option>
-                </p-optgroup>
-                <p-optgroup label="Group 3.2" >
-                    <p-option label="Option 3.2.1" value="3.2.1"></p-option>
-                    <p-option label="Option 3.2.2" value="3.2.2"></p-option>
-                    <p-option label="Option 3.2.3" value="3.2.3"></p-option>
-                </p-optgroup>
-            </p-optgroup>
+            <optgroup label="Group 3">
+            <optgroup label="Group 3.1">
+                <option value="3.1.1">Option 3.1.1</option>
+            </optgroup>
+            <optgroup label="Group 3.2">
+                <option value="3.2.1">Option 3.2.1</option>
+                <option value="3.2.2">Option 3.2.2</option>
+                <option value="3.2.3">Option 3.2.3</option>
+            </optgroup>
+            </optgroup>
 
-            <p-optgroup label="Group 4" >
-                <p-optgroup label="Group 4.1" >
-                    <p-option label="Option 4.1.1" value="4.1.1"></p-option>
-                </p-optgroup>
-                <p-optgroup label="Group 4.2" >
-                    <p-option label="Option 4.2.1" value="4.2.1"></p-option>
-                    <p-option label="Option 4.2.2" value="4.2.2"></p-option>
-                    <p-option label="Option 4.2.3" value="4.2.3"></p-option>
-                    <p-option label="Option 4.2.4" value="4.2.4"></p-option>
-                </p-optgroup>
-            </p-optgroup>
+            <optgroup label="Group 4">
+            <optgroup label="Group 4.1">
+                <option value="4.1.1">Option 4.1.1</option>
+            </optgroup>
+            <optgroup label="Group 4.2">
+                <option value="4.2.1">Option 4.2.1</option>
+                <option value="4.2.2">Option 4.2.2</option>
+                <option value="4.2.3">Option 4.2.3</option>
+                <option value="4.2.4">Option 4.2.4</option>
+            </optgroup>
+            </optgroup>
         </p-multiselectlistbox>
 
     </div>
@@ -434,6 +433,55 @@ $(function() {
                                 <pre name="code" class="brush:xml">
 &lt;div id="multilistbox"&gt;&lt;/div&gt;
 
+&lt;button id="btn" type="button" style="margin-top:10px"&gt;Save&lt;/button&gt;
+
+&lt;div id="output" style="margin-top:10px"&gt;&lt;/div&gt;
+
+&lt;h3&gt;Prime Element&lt;/h3&gt;
+&lt;p-multiselectlistbox caption="Categories"&gt;
+    &lt;optgroup label="Group 1"&gt;
+        &lt;optgroup label="Group 1.1"&gt;
+            &lt;option value="1.1.1"&gt;Option 1.1.1&lt;/option&gt;
+        &lt;/optgroup&gt;
+        &lt;optgroup label="Group 1.2" &gt;
+            &lt;option value="1.2.1"&gt;Option 1.2.1&lt;/option&gt;
+            &lt;option value="1.2.2"&gt;Option 1.2.2&lt;/option&gt;
+        &lt;/optgroup&gt;
+    &lt;/optgroup&gt;
+
+    &lt;optgroup label="Group 2"&gt;
+        &lt;optgroup label="Group 2.1"&gt;
+            &lt;option value="2.1.1"&gt;Option 2.1.1&lt;/option&gt;
+        &lt;/optgroup&gt;
+        &lt;optgroup label="Group 2.2" &gt;
+            &lt;option value="2.2.1"&gt;Option 2.2.1&lt;/option&gt;
+            &lt;option value="2.2.2"&gt;Option 2.2.2&lt;/option&gt;
+        &lt;/optgroup&gt;
+    &lt;/optgroup&gt;
+
+    &lt;optgroup label="Group 3"&gt;
+        &lt;optgroup label="Group 3.1"&gt;
+            &lt;option value="3.1.1"&gt;Option 3.1.1&lt;/option&gt;
+        &lt;/optgroup&gt;
+        &lt;optgroup label="Group 3.2"&gt;
+            &lt;option value="3.2.1"&gt;Option 3.2.1&lt;/option&gt;
+            &lt;option value="3.2.2"&gt;Option 3.2.2&lt;/option&gt;
+            &lt;option value="3.2.3"&gt;Option 3.2.3&lt;/option&gt;
+        &lt;/optgroup&gt;
+    &lt;/optgroup&gt;
+
+    &lt;optgroup label="Group 4"&gt;
+        &lt;optgroup label="Group 4.1"&gt;
+            &lt;option value="4.1.1"&gt;Option 4.1.1&lt;/option&gt;
+        &lt;/optgroup&gt;
+        &lt;optgroup label="Group 4.2"&gt;
+            &lt;option value="4.2.1"&gt;Option 4.2.1&lt;/option&gt;
+            &lt;option value="4.2.2"&gt;Option 4.2.2&lt;/option&gt;
+            &lt;option value="4.2.3"&gt;Option 4.2.3&lt;/option&gt;
+            &lt;option value="4.2.4"&gt;Option 4.2.4&lt;/option&gt;
+        &lt;/optgroup&gt;
+    &lt;/optgroup&gt;
+&lt;/p-multiselectlistbox&gt;
                                 </pre>
 
                             </div>
