@@ -17,6 +17,9 @@ if(!xtag.tags['p-multiselectlistbox']) {
             },
             triggerevent: {
                 attribute: {}
+            },
+            value: {
+                attribute: {}
             }
         },
 
@@ -56,7 +59,8 @@ if(!xtag.tags['p-multiselectlistbox']) {
                     choices: items,
                     effect: this.effect||'fade',
                     name: this.name,
-                    triggerEvent: this.triggerEvent||'click'
+                    triggerEvent: this.triggerEvent||'click',
+                    value: this.value
                 });
             }
         },

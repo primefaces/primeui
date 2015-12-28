@@ -120,7 +120,7 @@
         <div id="output" style="margin-top:10px"></div>
 
         <h3>Prime Element</h3>
-        <p-multiselectlistbox caption="Categories">
+        <p-multiselectlistbox caption="Categories" value="1.2.2">
             <optgroup label="Group 1">
             <optgroup label="Group 1.1">
                 <option value="1.1.1">Option 1.1.1</option>
@@ -298,7 +298,19 @@ $('#mbx').puimultiselectlistbox({
                                             <td>effect</td>
                                             <td>string</td>
                                             <td>slide</td>
-                                            <td>Effect of subgroups to appear.</td>
+                                            <td>Effect to use when showing subgroups.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>name</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Name of the request parameter map key to be used when enclosing form is submitted.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>value</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Value to show as preselected.</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -438,7 +450,7 @@ $(function() {
 &lt;div id="output" style="margin-top:10px"&gt;&lt;/div&gt;
 
 &lt;h3&gt;Prime Element&lt;/h3&gt;
-&lt;p-multiselectlistbox caption="Categories"&gt;
+&lt;p-multiselectlistbox caption="Categories" value="1.2.2"&gt;
     &lt;optgroup label="Group 1"&gt;
         &lt;optgroup label="Group 1.1"&gt;
             &lt;option value="1.1.1"&gt;Option 1.1.1&lt;/option&gt;
