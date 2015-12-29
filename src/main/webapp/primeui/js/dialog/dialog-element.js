@@ -78,11 +78,35 @@ if(!xtag.tags['p-dialog']) {
             },
             maximize: {
                 attribute: {}
+            },
+            renderdelay: {
+                attribute: {}
             }
         },
 
         lifecycle: {
             created: function() {
+                var $this = this;
+                
+                if(this.renderdelay) {
+                    setTimeout(function() {
+                        $this.render();
+                    }, parseInt(this.renderdelay));
+                }
+                else {
+                    this.render();
+                }
+            }
+        },
+
+        methods: {
+            show: function() {
+                $(this.xtag.container).puidialog('show');
+            },
+            hide: function() {
+                $(this.xtag.container).puidialog('hide');
+            },
+            render: function() {
                 var element = $(this),
                 $this = this,
                 buttonsFacet = element.children('script[type="x-facet-buttons"]');
@@ -121,15 +145,6 @@ if(!xtag.tags['p-dialog']) {
                     $('<div class="pui-dialog-buttonpane ui-widget-content ui-helper-clearfix"></div>').append(buttonsFacet.html())
                             .insertAfter($(this.xtag.container).children('div.pui-dialog-content'));
                 }      
-            }
-        },
-
-        methods: {
-            show: function() {
-                $(this.xtag.container).puidialog('show');
-            },
-            hide: function() {
-                $(this.xtag.container).puidialog('hide');
             }
         }
         
