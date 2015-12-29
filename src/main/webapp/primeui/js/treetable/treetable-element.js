@@ -14,6 +14,9 @@ if(!xtag.tags['p-treetable']) {
             selectionmode: {
                 attribute: {}
             },
+            header: {
+                attribute: {}
+            },
             onbeforeexpand: {
                 attribute: {}
             },
@@ -65,6 +68,7 @@ if(!xtag.tags['p-treetable']) {
                     columns: cols,
                     nodes: PUI.resolveObjectByName(this.nodes),
                     lazy: this.lazy,
+                    header: this.header,
                     selectionMode: this.selectionmode,
                     beforeExpand: this.onbeforeexpand ? function(event, ui) {PUI.executeFunctionByName($this.onbeforeexpand, event, ui);} : null,
                     afterExpand: this.onafterexpand ? function(event, ui) {PUI.executeFunctionByName($this.onbeforeexpand, event, ui);} : null,

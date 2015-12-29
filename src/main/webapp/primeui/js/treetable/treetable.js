@@ -8,7 +8,8 @@
         options: {
              nodes: null,
              lazy: false,
-             selectionMode: null
+             selectionMode: null,
+             header: null
         },
         
         _create: function() {
