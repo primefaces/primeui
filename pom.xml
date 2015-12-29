@@ -349,6 +349,7 @@
                                                 <include>${basedir}/src/main/webapp/primeui/js/button/button-element.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/carousel/carousel-element.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/checkbox/checkbox-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/column/column-element.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/datatable/datatable-element.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/datagrid/datagrid-element.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/dialog/dialog-element.js</include>
