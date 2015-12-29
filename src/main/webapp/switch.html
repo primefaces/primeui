@@ -14,10 +14,6 @@
             setTimeout(function() {
                 $('#basic').puiswitch();
             }, 10); 
-
-            setTimeout(function() {
-                document.getElementById('pSwitch').innerHTML += '<p-switch name="inputSwitch"/> ';
-            }, 10)
             $('#doc').puitabview();
         });
     </script>
@@ -30,11 +26,11 @@
     </div>
 
     <div class="ContentSideSections Implementation">
-      
+        <h3>Basic</h3>
         <input id="basic" type="checkbox" name="inputSwitch" style="margin-bottom:20px;"></input>
 
-        <h3 id="pSwitch">Prime Element</h3>
-        
+        <h3>Prime Element</h3>
+        <p-switch name="inputSwitch" renderdelay="10"></p-switch>
 
     </div>
 
@@ -53,12 +49,23 @@
                         <div>
                             <div id="doc-overview">
                                 <pre name="code" class="brush:xml">
-                        &lt;input id="basic" type="checkbox" /&gt;&lt;/input&gt;   
+                        Basic        
+
+                        &lt;input id="basic" type="checkbox" /&gt;&lt;/input&gt;
+
                                 </pre>
 
                                 <pre name="code" class="brush:js">
 
             $('#basic').puiswitch();
+                                </pre>
+
+                                <pre name="code" class="brush:xml">
+
+                        Prime Element
+
+                        &lt;p-switch name="inputSwitch" renderdelay="10"&gt;&lt;/p-switch&gt;
+
                                 </pre>
 
                             </div>

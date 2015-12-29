@@ -38,12 +38,29 @@ if(!xtag.tags['p-carousel']) {
             },
             onpagechange: {
                 attribute: {}
+            },
+            renderdelay: {
+                attribute: {}
             }
         },
 
         lifecycle: {
             created: function() {
-                this.xtag.container = $(this).prepend('<ul></ul>').children('ul');
+                var $this = this;
+                
+                if(this.renderdelay) {
+                    setTimeout(function() {
+                        $this.render();
+                    }, parseInt(this.renderdelay));
+                }
+                else {
+                    this.render();
+                }
+            }
+        },
+        methods: {
+            render: function() {
+                 this.xtag.container = $(this).prepend('<ul></ul>').children('ul');
                 
                 var $this = this;
                 $(this.xtag.container).puicarousel({
@@ -60,7 +77,7 @@ if(!xtag.tags['p-carousel']) {
                     pageLinks: this.pagelinks ? parseInt(this.pagelinks): 3,
                     template: $(this).children('script'),
                     pageChange: this.onpagechange ? function(event, param) {PUI.executeFunctionByName($this.onpagechange, event, param);} : null
-                });
+                });     
             }
         }
     });

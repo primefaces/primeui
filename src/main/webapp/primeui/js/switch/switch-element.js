@@ -20,18 +20,24 @@ if(!xtag.tags['p-switch']) {
                 attribute: {
                     boolean: true
                 }
+            },
+            renderdelay: {
+                attribute: {}
             }
         },
 
         lifecycle: {
             created: function() {
-                this.xtag.switchel = $('<input type="checkbox" />').appendTo(this);
-                $(this.xtag.switchel).puiswitch({
-                    onLabel: this.onlabel || 'On',
-                    offLabel: this.offlabel || 'Off',
-                    change :this.change || null,
-                    name: this.name
-                });
+                var $this = this;
+                
+                if(this.renderdelay) {
+                    setTimeout(function() {
+                        $this.render();
+                    }, parseInt(this.renderdelay));
+                }
+                else {
+                    this.render();
+                }
             }
         },
 
@@ -44,6 +50,15 @@ if(!xtag.tags['p-switch']) {
             },
             uncheck: function() {
                 $(this).puiswitch('uncheck');
+            },
+            render: function() {
+                this.xtag.switchel = $('<input type="checkbox" />').appendTo(this);
+                $(this.xtag.switchel).puiswitch({
+                    onLabel: this.onlabel || 'On',
+                    offLabel: this.offlabel || 'Off',
+                    change :this.change || null,
+                    name: this.name
+                });
             }
         }
         
