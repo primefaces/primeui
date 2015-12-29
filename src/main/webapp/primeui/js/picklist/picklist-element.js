@@ -41,6 +41,11 @@ if(!xtag.tags['p-picklist']) {
                 attribute: {
                     boolean: true
                 }
+            },
+            responsive: {
+                attribute: {
+                    boolean: true
+                }
             }
         },
 
@@ -61,6 +66,7 @@ if(!xtag.tags['p-picklist']) {
                     showSourceControls: this.showsourcecontrols,
                     showTargetControls: this.showtargetcontrols,
                     filter: this.filter,
+                    responsive: this.responsive,
                     filterFunction: this.filterfunction ? PUI.resolveObjectByName(this.filterfunction): null,
                     dragdrop: this.dragdrop ? JSON.parse(this.dragdrop) : true,
                     template: itemTemplate.length ? itemTemplate : null,
