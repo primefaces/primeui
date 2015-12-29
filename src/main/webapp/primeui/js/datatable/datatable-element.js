@@ -137,7 +137,7 @@ if(!xtag.tags['p-datatable']) {
                     col.field = columnElement.attr('field');
                     col.headerText = columnElement.attr('headertext');
                     col.footerText = columnElement.attr('footertext');
-                    col.sortable = columnElement.prop('sortable')  !== undefined;
+                    col.sortable = columnElement.attr('sortable')  !== undefined;
                     col.headerStyle = columnElement.attr('headerstyle');
                     col.headerClass = columnElement.attr('headerclass');
                     col.bodyStyle = columnElement.attr('bodystyle');
@@ -145,11 +145,11 @@ if(!xtag.tags['p-datatable']) {
                     col.colspan = columnElement.attr('colspan');
                     col.rowspan = columnElement.attr('rowspan');
                     col.filter = columnElement.attr('filter') !== undefined;
-                    col.filterMatchMode = columnElement.prop('filtermatchmode');
-                    col.filterFunction = PUI.resolveObjectByName(columnElement.prop('filterfunction'))
-                    col.editor = columnElement.prop('editor') !== undefined;
-                    col.rowToggler = columnElement.prop('rowToggler') !== undefined;
-                    
+                    col.filterMatchMode = columnElement.attr('filtermatchmode');
+                    col.filterFunction = PUI.resolveObjectByName(columnElement.attr('filterfunction'))
+                    col.editor = columnElement.attr('editor') !== undefined;
+                    col.rowToggler = columnElement.attr('rowToggler') !== undefined;
+
                     if(columnElement.children('script').length) {
                         col.content = function(data){
                             var template =  columnElement.children('script').text();
