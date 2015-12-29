@@ -35,8 +35,8 @@ if(!xtag.tags['p-listbox']) {
                 this.xtag.select.puilistbox({
                     multiple: this.multiple,
                     template: itemTemplate.length ? itemTemplate : null,
-                    itemSelect: function(event, option) {PUI.executeFunctionByName($this.onitemselect, event);},
-                    itemUnselect: function(event, option) {PUI.executeFunctionByName($this.onitemunselect, event);}
+                    itemSelect: this.onitemselect ? function(event, option) {PUI.executeFunctionByName($this.onitemselect, event);} : null,
+                    itemUnselect: this.onitemunselect ? function(event, option) {PUI.executeFunctionByName($this.onitemunselect, event);} : null
                 });
             }
         },

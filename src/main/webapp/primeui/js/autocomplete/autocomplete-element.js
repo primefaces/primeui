@@ -69,8 +69,8 @@ if(!xtag.tags['p-autocomplete']) {
                     effect: this.effect,
                     effectSpeed: this.effectspeed||'normal',
                     caseSensitive: this.casesensitive,
-                    select: this.select ? function(event, item){PUI.executeFunctionByName($this.select, event, item);} : null,
-                    unselect: this.unselect ? function(event, item){PUI.executeFunctionByName($this.unselect, event, item);} : null,
+                    select: this.onselect ? function(event, item){PUI.executeFunctionByName($this.onselect, event, item);} : null,
+                    unselect: this.onunselect ? function(event, item){PUI.executeFunctionByName($this.onunselect, event, item);} : null,
                 });
             }
         }

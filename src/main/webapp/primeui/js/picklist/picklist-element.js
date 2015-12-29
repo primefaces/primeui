@@ -64,7 +64,7 @@ if(!xtag.tags['p-picklist']) {
                     filterFunction: this.filterfunction ? PUI.resolveObjectByName(this.filterfunction): null,
                     dragdrop: this.dragdrop ? JSON.parse(this.dragdrop) : true,
                     template: itemTemplate.length ? itemTemplate : null,
-                    transfer: function(event, param) {PUI.executeFunctionByName($this.ontransfer, param);}
+                    transfer: this.ontransfer ? function(event, param) {PUI.executeFunctionByName($this.ontransfer, param);} : null
                 });
             }
         },
