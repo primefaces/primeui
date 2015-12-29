@@ -80,8 +80,6 @@ if(!xtag.tags['p-tree']) {
                     }
                 } 
                 
-                console.log(treeIcons);
-                
                 $(this.xtag.container).puitree({
                     nodes: PUI.resolveObjectByName(this.nodes),
                     lazy: this.lazy,
