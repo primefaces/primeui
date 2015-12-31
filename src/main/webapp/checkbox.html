@@ -9,7 +9,7 @@
     <script type="text/javascript" src="primeui/js/button/button.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript">
-        $(function() {
+        $(function () {
             $(':checkbox').puicheckbox();
 
             $('#doc').puitabview();
@@ -40,7 +40,7 @@
                 <div class="pui-grid-col-11"><label for="cb1_3">Option 3</label></div>
             </div>
         </div>
-        
+
         <h3>PrimeElement</h3>
         <div class="pui-grid pui-grid-responsive" style="width:250px">
             <div class="pui-grid-row">
@@ -69,6 +69,7 @@
                             <li><a href="#doc-events">Events</a></li>
                             <li><a href="#doc-methods">Methods</a></li>
                             <li><a href="#doc-methods">Source</a></li>
+                            <li class="tab-primeelement"><a href="#doc-element">PrimeElement</a></li>
                         </ul>
                         <div>
                             <div id="doc-overview">
@@ -216,6 +217,14 @@
 
                                 </pre>
 
+                            </div>
+
+                            <div id="doc-element">
+                                <h3>Usage</h3>
+                                Checkbox extends standard checkbox element and applied using is="p-checkbox" attribute.
+                                <pre name="code" class="brush:xml">
+&lt;input type="checkbox" name="cb" id="cb" value="0" is="p-checkbox"/&gt;
+                                </pre>
                             </div>
 
                         </div>
