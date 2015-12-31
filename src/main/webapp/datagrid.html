@@ -14,7 +14,7 @@
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript" src="primeui/js/growl/growl.js"></script>
     <script type="text/javascript">
-        $(function() {
+        $(function () {
             $('#localgrid').puidatagrid({
                 paginator: {
                     rows: 9
@@ -50,31 +50,31 @@
                     {'brand': 'Jaguar', 'year': 2010, 'color': 'White', 'vin': 'dsf4frt'},
                     {'brand': 'Jaguar', 'year': 2009, 'color': 'Red', 'vin': 'g6hehr'},
                 ],
-                content: function(car) {
-                    return $('<div title="'+ car.vin + '"><img src="resources/demo/images/car/' + car.brand + 
-                            '.gif" /><div class="car-detail">' + car.year + ' - ' + car.color  +'</div></div>').puipanel();
+                content: function (car) {
+                    return $('<div title="' + car.vin + '"><img src="resources/demo/images/car/' + car.brand +
+                            '.gif" /><div class="car-detail">' + car.year + ' - ' + car.color + '</div></div>').puipanel();
                 }
             });
-            
+
             $('#remotegrid').puidatagrid({
                 header: 'Remote Restful Webservice',
                 paginator: {
                     rows: 9
                 },
-                datasource: function(callback) {
+                datasource: function (callback) {
                     $.ajax({
                         type: "GET",
                         url: 'rest/cars/list',
                         dataType: "json",
                         context: this,
-                        success: function(response) {
+                        success: function (response) {
                             callback.call(this, response);
                         }
                     });
                 },
                 template: $('#cartemplate')
             });
-            
+
             $('#lazygrid').puidatagrid({
                 header: 'Remote Restful Webservice - Lazy',
                 lazy: true,
@@ -82,7 +82,7 @@
                     rows: 9,
                     totalRecords: 200
                 },
-                datasource: function(callback, ui) {
+                datasource: function (callback, ui) {
                     var uri = 'rest/cars/lazylist/' + ui.first + '/' + ui.rows;
 
                     $.ajax({
@@ -90,7 +90,7 @@
                         url: uri,
                         dataType: "json",
                         context: this,
-                        success: function(response) {
+                        success: function (response) {
                             callback.call(this, response);
                         }
                     });
@@ -105,7 +105,7 @@
         .pui-datagrid {
             margin-bottom: 40px;
         }
-        
+
         .pui-datagrid .pui-datagrid-header {
             font-size: 18px;
         }
@@ -113,11 +113,11 @@
         .pui-datagrid .pui-datagrid-column {
             text-align: center; 
         }
-        
+
         .pui-datagrid .pui-datagrid-column .pui-panel-content {
             padding: 20px 0px;
         }
-        
+
         .pui-datagrid .pui-datagrid-column .pui-panel-content .car-detail {
             margin-top: 10px;
         }
@@ -132,32 +132,32 @@
 
     <div class="ContentSideSections Implementation">
         <div id="localgrid"></div>
-        
+
         <div id="remotegrid"></div>
 
         <div id="lazygrid"></div>
-        
+
         <script id="cartemplate" type="x-tmpl-mustache">
             <div class="pui-panel ui-widget ui-widget-content ui-corner-all">
-                <div class="pui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all">
-                    <span class="ui-panel-title">{{vin}}</span></div>
-                <div class="pui-panel-content ui-widget-content">
-                    <img src="resources/demo/images/car/{{brand}}.gif">
-                    <div class="car-detail">{{year}} - {{color}}</div>
-                </div>
+            <div class="pui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all">
+            <span class="ui-panel-title">{{vin}}</span></div>
+            <div class="pui-panel-content ui-widget-content">
+            <img src="resources/demo/images/car/{{brand}}.gif">
+            <div class="car-detail">{{year}} - {{color}}</div>
+            </div>
             </div>
         </script>
-        
+
         <p-datagrid datasource="DataDemo.loadAllCars" header="PrimeElement" paginator rows="9">
             <script type="x-tmpl-mustache">
                 <div class="pui-panel ui-widget ui-widget-content ui-corner-all">
-                    <div class="pui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all">
-                        <span class="ui-panel-title">{{vin}}</span>
-                    </div>
-                    <div class="pui-panel-content ui-widget-content">
-                        <img src="resources/demo/images/car/{{brand}}.gif" />
-                        <div class="car-detail">{{year}} - {{color}}</div>
-                    </div>
+                <div class="pui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all">
+                <span class="ui-panel-title">{{vin}}</span>
+                </div>
+                <div class="pui-panel-content ui-widget-content">
+                <img src="resources/demo/images/car/{{brand}}.gif" />
+                <div class="car-detail">{{year}} - {{color}}</div>
+                </div>
                 </div>
             </script>
         </p-datagrid>
@@ -174,13 +174,14 @@
                             <li><a href="#doc-events">Events</a></li>
                             <li><a href="#doc-methods">Methods</a></li>
                             <li><a href="#doc-methods">Source</a></li>
+                            <li class="tab-primeelement"><a href="#doc-element">PrimeElement</a></li>
                         </ul>
                         <div>
                             <div id="doc-overview">
                                 <p class="defaultText">Datasource of Datagrid can either be a javascript array or a function to load
-                                data from a remote location. In eager mode, datasource is loaded only once and in lazy mode
-                                ,invoked everytime whenever the state changes like paging or sorting. To update the datasource
-                                use $('#example').puidatatable('option', 'datasource', newdatasource).</p>
+                                    data from a remote location. In eager mode, datasource is loaded only once and in lazy mode
+                                    ,invoked everytime whenever the state changes like paging or sorting. To update the datasource
+                                    use $('#example').puidatatable('option', 'datasource', newdatasource).</p>
 
                                 <pre name="code" class="brush:js">
 $('#grid').puidatagrid({
@@ -384,6 +385,112 @@ $(function() {
     &lt;/script&gt;
 &lt;/p-datagrid&gt;
                                 </pre>
+                            </div>
+                            <div id="doc-element">
+                                <h3>Usage</h3>
+                                DataGrid's datasource can either be a name of an array or a function to load the array. Content for each item is defined
+                                as a mustache template where properties of an object can be access via {{}} syntax.
+                                <pre name="code" class="brush:xml">
+&lt;p-datagrid datasource="DataDemo.cars" rows="9" paginator&gt;
+     &lt;script type="x-tmpl-mustache"&gt;
+        Access color of a car using {{color}}
+     &lt;/script&gt;
+&lt;/p-datagrid&gt;
+                                </pre>
+
+                                <h4>Array</h4>
+                                <pre name="code" class="brush:js">
+var DataDemo = {
+    
+    cars: [
+        {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
+        {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
+        {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
+        {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
+        {'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
+        {'brand': 'Jaguar', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
+        {'brand': 'BMW', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
+        {'brand': 'Fiat', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
+        {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'}
+    ]
+    
+};             
+                                </pre>
+
+                                <h4>Function</h4>
+                                <pre name="code" class="brush:js">
+var DataDemo = {
+    
+    cars: function(callback) {
+        $.ajax({
+            type: "GET",
+            url: 'rest/cars/list',
+            dataType: "json",
+            context: this,
+            success: function (response) {
+                callback.call(this, response);
+            }
+        });
+    }
+    
+}
+                                </pre>
+
+                                <h3>Attributes</h3>
+                                <table class="doc-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Default</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>id</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Identifier of the element.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>columns</td>
+                                            <td>integer</td>
+                                            <td>3</td>
+                                            <td>Number of items per row.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>rows</td>
+                                            <td>integer</td>
+                                            <td>null</td>
+                                            <td>Number of items per page.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>paginator</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>Boolean value to specify if pagination is enabled.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>header</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Text for header section.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>footer</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Text for footer section.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>lazy</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>Determines if the remote data loading is lazy, only the current page is loaded if true.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
