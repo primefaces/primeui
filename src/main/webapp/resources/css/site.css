@@ -497,3 +497,7 @@ input.searchInput {
 .ui-theme.ui-theme-ui-darkness{ background-position: -80px -691px; width: 30px; height: 27px; } 
 .ui-theme.ui-theme-ui-lightness{ background-position: -80px -768px; width: 30px; height: 27px; } 
 .ui-theme.ui-theme-vader{ background-position: -80px -845px; width: 30px; height: 27px; }
+
+.pui-tabview .tab-primeelement {
+    float: right !important;
+}
