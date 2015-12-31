@@ -6,7 +6,7 @@
     <script type="text/javascript" src="primeui/js/fieldset/fieldset-element.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript">
-        $(function() {
+        $(function () {
             $('#default').puifieldset();
 
             $('#toggle').puifieldset({
@@ -42,7 +42,7 @@
             kind and benevolent to those who give respect, 
             but given to ruthless violence whenever anything stands against the good of the family.
         </fieldset>
-        
+
         <p-fieldset toggleable>
             <legend>PrimeElement</legend>
             The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
@@ -64,6 +64,7 @@
                             <li><a href="#doc-events">Events</a></li>
                             <li><a href="#doc-methods">Methods</a></li>
                             <li><a href="#doc-methods">Source</a></li>
+                            <li class="tab-primeelement"><a href="#doc-element">PrimeElement</a></li>
                         </ul>
                         <div>
                             <div id="doc-overview">
@@ -207,6 +208,85 @@ $('#default').puifieldset({
     but given to ruthless violence whenever anything stands against the good of the family.
 &lt;/fieldset&gt;
                                 </pre>
+                            </div>
+
+                            <div id="doc-element">
+                                <h3>Usage</h3>
+                                <p>Fieldset is a container element having a legend and content as children.</p>
+                                <pre name="code" class="brush:xml">
+&lt;p-fieldset toggleable&gt;
+    &lt;legend&gt;PrimeElement&lt;/legend&gt;
+    Content
+&lt;/p-fieldset&gt;
+                                </pre>
+
+                                <h3>Attributes</h3>
+                                <table class="doc-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Default</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>id</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Identifier of the element.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>toggleable</td>
+                                            <td>Boolean</td>
+                                            <td>false</td>
+                                            <td>Defines if content of fieldset can be expanded and collapsed.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>toggleduration</td>
+                                            <td>Number/String</td>
+                                            <td>normal</td>
+                                            <td>Defines the duration of the toggle effect, valid values are "slow", "normal", "fast" or a number in milliseconds.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>collapsed</td>
+                                            <td>Boolean</td>
+                                            <td>false</td>
+                                            <td>Displays the fieldset as collapsed initially.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>onbeforetoggle</td>
+                                            <td>function</td>
+                                            <td>null</td>
+                                            <td>Name of the function to invoke before fieldset gets toggled.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>onaftertoggle</td>
+                                            <td>function</td>
+                                            <td>null</td>
+                                            <td>Name of the function to invoke after fieldset gets toggled.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                
+                                <h3>Methods</h3>
+                                <table class="doc-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Parameters</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>toggle()</td>
+                                            <td>-</td>
+                                            <td>Toggles the content.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
