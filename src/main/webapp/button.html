@@ -61,6 +61,7 @@
                             <li><a href="#doc-events">Events</a></li>
                             <li><a href="#doc-methods">Methods</a></li>
                             <li><a href="#doc-methods">Source</a></li>
+                            <li class="tab-primeelement"><a href="#doc-element">PrimeElement</a></li>
                         </ul>
                         <div>
                             <div id="doc-overview">
@@ -191,7 +192,43 @@ $('#disabled').puibutton();
             &lt;button id="icononly" type="button"&gt;&lt;/button&gt;
 
             &lt;button id="disabled" type="button" disabled="disabled"&gt;Disabled&lt;/button&gt;
+
+            &lt;button is="p-button" icon="fa-home"&gt;PrimeElement&lt;/button&gt;
                                 </pre>
+                            </div>
+                            <div id="doc-element">
+                                <h3>Usage</h3>
+                                Button is applied on a regular button element using is="p-button" attribute.
+                                <pre name="code" class="brush:xml">
+&lt;button is="p-button" icon="fa-home"&gt;PrimeElement&lt;/button&gt;
+                                </pre>
+                                <h3>Attributes</h3>
+                                <p>As p-button is an extension, all attributes of standard button element is available. Additional attributes are listed below.</p>
+                                <table class="doc-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Default</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>icon</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Defines the icon of the button.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>iconPos</td>
+                                            <td>string</td>
+                                            <td>left</td>
+                                            <td>Position of the icon, valid values are "left" and "right".</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                             </div>
                         </div>
                     </div>
