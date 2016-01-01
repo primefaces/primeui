@@ -10,24 +10,24 @@
     <script type="text/javascript" src="primeui/js/orderlist/orderlist-element.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <style type="text/css">
-        
+
     </style>
     <script type="text/javascript">
-        $(function() {
+        $(function () {
             var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
-                        'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
-                        'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
-                        'ui-darkness', 'ui-lightness', 'vader');
-                        
+                    'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
+                    'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
+                    'ui-darkness', 'ui-lightness', 'vader');
+
             $('#basic').puiorderlist();
-            
+
             $('#advanced').puiorderlist({
                 controlsLocation: 'left',
                 caption: 'Themes',
                 effect: 'bounce',
                 responsive: true,
                 datasource: themes,
-                content: function(option) {
+                content: function (option) {
                     return $('<div class="ui-helper-clearfix"><img src="resources/demo/images/themes/' + option.label + '.png" alt="" style="float:left"/><span style="float:left; margin-left:15px; font-size:20px">' + option.label + '</span></div>');
                 }
             });
@@ -42,7 +42,7 @@
             <span class="defaultText dispTable"> OrderList is used to sort a collection via Drag and Drop based reordering feturing transition effects, custom content support and more.</span>
         </div>
     </div>
-    
+
     <div class="ContentSideSections Implementation">
         <div class="pui-grid pui-grid-responsive">
             <div class="pui-grid-row">
@@ -78,7 +78,7 @@
                         <option value="7">Porsche</option>
                         <option value="8">Chevrolet</option>
                         <option value="9">Jaguar</option>
-                    <p-orderlist>
+                    </p-orderlist>
                 </div>
                 <div class="pui-grid-col-6">
                     <h3>PrimeElement with Template</h3>
@@ -95,7 +95,7 @@
                         <script type="x-tmpl-mustache">
                             <div class="ui-helper-clearfix"><img src="resources/demo/images/car/{{label}}.gif" alt="" style="float:left"/><span style="float:left; margin-left:15px; font-size:20px">{{label}}</span></div>
                         </script>
-                    <p-orderlist>
+                    </p-orderlist>
                 </div>
             </div>
         </div>
@@ -112,6 +112,7 @@
                             <li><a href="#doc-events">Events</a></li>
                             <li><a href="#doc-methods">Methods</a></li>
                             <li><a href="#doc-methods">Source</a></li>
+                            <li class="tab-primeelement"><a href="#doc-element">PrimeElement</a></li>
                         </ul>
                         <div>
                             <div id="doc-overview">
@@ -279,6 +280,102 @@ $(function() {
 &lt;/div&gt;                                       
                                 </pre>
 
+                            </div>
+
+
+                            <div id="doc-element">
+                                <h3>Usage</h3>
+                                Orderlist requires a select tag with options as a child element. Content for each item can be defined
+                                as a mustache template where properties of an object can be access via {{}} syntax.
+
+                                <h4>Basic</h4>
+                                <pre name="code" class="brush:xml">
+&lt;p-orderlist&gt;
+    &lt;option value="1"&gt;Volkswagen&lt;/option&gt;
+    &lt;option value="2"&gt;Ford&lt;/option&gt;
+    &lt;option value="3"&gt;Mercedes&lt;/option&gt;
+    &lt;option value="4"&gt;Audi&lt;/option&gt;
+    &lt;option value="5"&gt;BMW&lt;/option&gt;
+    &lt;option value="6"&gt;Honda&lt;/option&gt;
+    &lt;option value="7"&gt;Porsche&lt;/option&gt;
+    &lt;option value="8"&gt;Chevrolet&lt;/option&gt;
+    &lt;option value="9"&gt;Jaguar&lt;/option&gt;
+&lt;/p-orderlist&gt;
+                                </pre>
+
+                                <h4>Custom Content</h4>
+                                <pre name="code" class="brush:xml">
+&lt;p-orderlist responsive controlslocation="left"&gt;
+    &lt;option value="1"&gt;Volkswagen&lt;/option&gt;
+    &lt;option value="2"&gt;Ford&lt;/option&gt;
+    &lt;option value="3"&gt;Mercedes&lt;/option&gt;
+    &lt;option value="4"&gt;Audi&lt;/option&gt;
+    &lt;option value="5"&gt;BMW&lt;/option&gt;
+    &lt;option value="6"&gt;Honda&lt;/option&gt;
+    &lt;option value="7"&gt;Jaguar&lt;/option&gt;
+    &lt;option value="8"&gt;Volvo&lt;/option&gt;
+    &lt;option value="9"&gt;Fiat&lt;/option&gt;
+    &lt;script type="x-tmpl-mustache"&gt;
+        &lt;div class="ui-helper-clearfix"&gt;&lt;img src="resources/demo/images/car/{{label}}.gif" alt="" style="float:left"/&gt;&lt;span style="float:left; margin-left:15px; font-size:20px"&gt;{{label}}&lt;/span&gt;&lt;/div&gt;
+    &lt;/script&gt;
+&lt;/p-orderlist&gt;
+                                </pre>
+
+                                <h3>Attributes</h3>
+                                <table class="doc-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Default</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>id</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Identifier of the element.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>controlslocation</td>
+                                            <td>string</td>
+                                            <td>none</td>
+                                            <td>Location of buttons, valid values are none, left and right.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>dragdrop</td>
+                                            <td>boolean</td>
+                                            <td>true</td>
+                                            <td>Defines if items can be reordered usign dragdrop.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>effect</td>
+                                            <td>string</td>
+                                            <td>fade</td>
+                                            <td>Name of the jQuery UI effect.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>caption</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Caption text for the list.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>responsive</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>When enabled, orderlist layout adjusts itself according to screen size.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>onreorder</td>
+                                            <td>function</td>
+                                            <td>null</td>
+                                            <td>Name of the function to invoke when list is reordered.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

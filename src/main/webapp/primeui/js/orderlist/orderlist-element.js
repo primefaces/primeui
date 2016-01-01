@@ -50,15 +50,6 @@ if(!xtag.tags['p-orderlist']) {
                     reorder: function(event) {PUI.executeFunctionByName($this.reorder, event);}
                 });
             }
-        },
-
-        methods: {
-            disable: function() {
-                $(this).puiinputtext('disable');
-            },
-            enable: function() {
-                $(this).puiinputtext('enable');
-            }
         }
         
     });
