@@ -232,26 +232,22 @@ $('#list').puiorderlist();
                             <div id="doc-source">
 
                                 <pre name="code" class="brush:js">
-$(function() {
-    var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
-                'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
-                'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
-                'ui-darkness', 'ui-lightness', 'vader');
+var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
+                    'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
+                    'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
+                    'ui-darkness', 'ui-lightness', 'vader');
 
-    $('#basic').puiorderlist();
+$('#basic').puiorderlist();
 
-    $('#advanced').puiorderlist({
-        controlsLocation: 'left',
-        caption: 'Themes',
-        effect: 'bounce',
-        responsive: true,
-        datasource: themes,
-        content: function(option) {
-            return $('&lt;div class="ui-helper-clearfix"&gt;&lt;img src="resources/demo/images/themes/' + option.text() + '.png" alt="" style="float:left"/&gt;&lt;span style="float:left; margin-left:15px; font-size:20px"&gt;' + option.text() + '&lt;/span&gt;&lt;/div&gt;');
-        }
-    });
-
-    $('#doc').puitabview();
+$('#advanced').puiorderlist({
+    controlsLocation: 'left',
+    caption: 'Themes',
+    effect: 'bounce',
+    responsive: true,
+    datasource: themes,
+    content: function (option) {
+        return $('&lt;div class="ui-helper-clearfix"&gt;&lt;img src="resources/demo/images/themes/' + option.label + '.png" alt="" style="float:left"/&gt;&lt;span style="float:left; margin-left:15px; font-size:20px"&gt;' + option.label + '&lt;/span&gt;&lt;/div&gt;');
+    }
 });
                                 </pre>
 
@@ -259,7 +255,7 @@ $(function() {
 &lt;div class="pui-grid pui-grid-responsive"&gt;
     &lt;div class="pui-grid-row"&gt;
         &lt;div class="pui-grid-col-6"&gt;
-            &lt;h3 class="first"&gt;Basic&lt;/h3&gt;
+            &lt;h3&gt;Basic&lt;/h3&gt;
             &lt;select id="basic"&gt;
                 &lt;option value="1"&gt;Volkswagen&lt;/option&gt;
                 &lt;option value="2"&gt;Ford&lt;/option&gt;
@@ -277,7 +273,40 @@ $(function() {
             &lt;select id="advanced"&gt;&lt;/select&gt;
         &lt;/div&gt;
     &lt;/div&gt;
-&lt;/div&gt;                                       
+    &lt;div class="pui-grid-row"&gt;
+        &lt;div class="pui-grid-col-6"&gt;
+            &lt;h3 class="first"&gt;PrimeElement&lt;/h3&gt;
+            &lt;p-orderlist&gt;
+                &lt;option value="1"&gt;Volkswagen&lt;/option&gt;
+                &lt;option value="2"&gt;Ford&lt;/option&gt;
+                &lt;option value="3"&gt;Mercedes&lt;/option&gt;
+                &lt;option value="4"&gt;Audi&lt;/option&gt;
+                &lt;option value="5"&gt;BMW&lt;/option&gt;
+                &lt;option value="6"&gt;Honda&lt;/option&gt;
+                &lt;option value="7"&gt;Porsche&lt;/option&gt;
+                &lt;option value="8"&gt;Chevrolet&lt;/option&gt;
+                &lt;option value="9"&gt;Jaguar&lt;/option&gt;
+            &lt;/p-orderlist&gt;
+        &lt;/div&gt;
+        &lt;div class="pui-grid-col-6"&gt;
+            &lt;h3&gt;PrimeElement with Template&lt;/h3&gt;
+            &lt;p-orderlist responsive controlslocation="left"&gt;
+                &lt;option value="1"&gt;Volkswagen&lt;/option&gt;
+                &lt;option value="2"&gt;Ford&lt;/option&gt;
+                &lt;option value="3"&gt;Mercedes&lt;/option&gt;
+                &lt;option value="4"&gt;Audi&lt;/option&gt;
+                &lt;option value="5"&gt;BMW&lt;/option&gt;
+                &lt;option value="6"&gt;Honda&lt;/option&gt;
+                &lt;option value="7"&gt;Jaguar&lt;/option&gt;
+                &lt;option value="8"&gt;Volvo&lt;/option&gt;
+                &lt;option value="9"&gt;Fiat&lt;/option&gt;
+                &lt;script type="x-tmpl-mustache"&gt;
+                    &lt;div class="ui-helper-clearfix"&gt;&lt;img src="resources/demo/images/car/{{label}}.gif" alt="" style="float:left"/&gt;&lt;span style="float:left; margin-left:15px; font-size:20px"&gt;{{label}}&lt;/span&gt;&lt;/div&gt;
+                &lt;/script&gt;
+            &lt;/p-orderlist&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;                                     
                                 </pre>
 
                             </div>
