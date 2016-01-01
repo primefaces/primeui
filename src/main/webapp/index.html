@@ -35,7 +35,7 @@
                         <img alt="logo" src="resources/images/logo.svg" />
                         <img id="BlueLogo" alt="logo" src="resources/images/logoBlue.svg" class="hiddenLogo"/>
                     </span>
-                    <span id="SubMenu-PrimeElements" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.changePageWithLink('primeelements.html')"><img src="resources/images/mono/input.svg" /><img class="hiddenIcons" src="resources/images/mono/inputBlue.svg" /><span class="MainLinkText">Web Components</span></span>
+                    <span id="SubMenu-PrimeElements" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.changePageWithLink('primeelements.html')"><img src="resources/images/mono/components.svg" /><img class="hiddenIcons" src="resources/images/mono/componentsBlue.svg" /><span class="MainLinkText">Web Components</span></span>
                     <span id="SubMenu-Input" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><img src="resources/images/mono/input.svg" /><img class="hiddenIcons" src="resources/images/mono/inputBlue.svg" /><span class="MainLinkText">Input</span></span>
                     <div class="SubMenuLinkContainer">
                         <a class="SubMenuLink" href="autocomplete.html">&#9679; AutoComplete</a>
@@ -184,14 +184,28 @@
                         <a href="http://forum.primefaces.org/viewforum.php?f=16" class="PFTopLinks floatRight boldFont"><img alt="mockosx" src="resources/images/community.svg" /><span class="PFDarkText">Forum</span></a>
                         <a href="https://github.com/primefaces/primeui/releases" class="PFTopLinks floatRight boldFont hashed"><img alt="mockosx" src="resources/images/download.svg" /><span class="PFDarkText">Download</span></a>
                         <a href="setup.html" class="PFTopLinks floatRight boldFont marginRight20 hashed"><img alt="mockosx" src="resources/images/setup.svg" /><span class="PFDarkText">QuickStart</span></a>
+                        
+                        <span class="PFTopLinks floatRight boldFont cursorPointer" id="themeSwitcher">
+                            <img src="resources/images/layouts.svg" /><span class="PFDarkText">Premium Layouts</span>
+                            <div id="GlobalThemeSwitcher" class="navOverlay">
+                                <a href="#"><span class="ui-theme ui-theme-afterdark"></span><span class="ui-text">Modena</span></a>
+                                <a href="#"><span class="ui-theme ui-theme-afternoon"></span><span class="ui-text">Rio</span></a>
+                                <a href="#"><span class="ui-theme ui-theme-afterwork"></span><span class="ui-text">Adamantium</span></a>
+                            </div>
+                        </span>
 
                         <div class="mobileLogoCover">
-                            <img src="resources/images/logoBlue.svg" style="height:40px;" class="floatLeft marginRight10" />
+                            <img src="resources/images/logoDark.svg" style="height:40px;" class="floatLeft marginRight10" />
                             <span class="dispBlock logoDarkText fontSize16 floatLeft">PrimeUI <span class="dispBlock logoBlueText fontSize18 mediumFont">SHOWCASE</span></span> 
                         </div>
                         <select id="mobilemenu" class="selectmenu mediumFont">
                             <optgroup label="Menu" class="LEVEL1">
                                 <option value="#">Home</option>
+                                <optgroup label="Premium Layouts" class="LEVEL1">
+                                    <option value="#">Modena</option>
+                                    <option value="#">Rio</option>
+                                    <option value="#">Adamantium</option>
+                                </optgroup>
                                 <option value="setup.html">Quickstart</option>
                                 <option value="https://github.com/primefaces/primeui/releases">Download</option>
                             </optgroup>
