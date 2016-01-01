@@ -59,6 +59,9 @@ if(!xtag.tags['p-notify']) {
             },
             hide: function(content) {
                 $(this.xtag.container).puinotify('show', content);
+            },
+            update: function(content) {
+                $(this.xtag.container).puinotify('update', content);
             }
         }
         
