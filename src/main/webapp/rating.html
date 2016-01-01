@@ -9,12 +9,12 @@
     <script type="text/javascript" src="primeui/js/core/core.js"></script>
     <script type="text/javascript" src="primeui/js/button/button.js"></script>
     <script type="text/javascript">
-        $(function() {
+        $(function () {
             $('#rating').puirating();
 
             $('#default').puirating();
 
-            $('#callback').puirating({rate: function(event, value) {
+            $('#callback').puirating({rate: function (event, value) {
                     alert(value);
                 }});
 
@@ -54,10 +54,10 @@
         <h3>ReadOnly</h3> 
         <input id="readonly" type="hidden" value="3" readonly="readonly"/>
         <br />
-        
+
         <h3>PrimeElement</h3> 
         <p-rating stars="10"></p-rating>
-  
+
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">
@@ -71,6 +71,7 @@
                             <li><a href="#doc-events">Events</a></li>
                             <li><a href="#doc-methods">Methods</a></li>
                             <li><a href="#doc-methods">Source</a></li>
+                            <li class="tab-primeelement"><a href="#doc-element">PrimeElement</a></li>
                         </ul>
                         <div>
                             <div id="doc-overview">
@@ -97,7 +98,7 @@ $('#default').puirating();
                                             <td>stars</td>
                                             <td>Integer</td>
                                             <td>5</td>
-                                            <td>Rating stars number.</td>
+                                            <td>Number of stars.</td>
                                         </tr>
                                         <tr>
                                             <td>cancel</td>
@@ -228,6 +229,106 @@ $('#default').puirating('cancel');
 &lt;input id="readonly" type="hidden" value="3" readonly="readonly"/&gt; 
                                             
                                 </pre>
+                            </div>
+
+
+                            <div id="doc-element">
+                                <h3>Usage</h3>
+                                Rating is used as an input component.
+
+                                <pre name="code" class="brush:xml">
+&lt;p-rating stars="10" name="rating-param"&gt;&lt;/p-rating&gt;
+                                </pre>
+
+                                <h3>Attributes</h3>
+                                <table class="doc-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Default</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>id</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Identifier of the element.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>stars</td>
+                                            <td>integer</td>
+                                            <td>5</td>
+                                            <td>Number of stars.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>cancel</td>
+                                            <td>boolean</td>
+                                            <td>true</td>
+                                            <td>Defines if user can cancel rating.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>name</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Name of the request parameter to be used in a form submission.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>onrate</td>
+                                            <td>function</td>
+                                            <td>null</td>
+                                            <td>Name of the function to invoke when rating changes.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>oncancel</td>
+                                            <td>function</td>
+                                            <td>null</td>
+                                            <td>Name of the function to invoke when rating is cleared by cancel option.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                                <h3>Methods</h3>
+                                <table class="doc-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Parameters</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>cancel</td>
+                                            <td>-</td>
+                                            <td>Clears selection.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>getValue</td>
+                                            <td>-</td>
+                                            <td>Returns current value.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>setValue</td>
+                                            <td>value: Value to update.</td>
+                                            <td>Updates current value.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>enable</td>
+                                            <td>-</td>
+                                            <td>Enable the element.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>disable</td>
+                                            <td>-</td>
+                                            <td>Disables the element.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
                             </div>
                         </div>
                     </div>

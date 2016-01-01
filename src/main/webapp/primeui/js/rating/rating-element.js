@@ -50,6 +50,24 @@ if(!xtag.tags['p-rating']) {
 
                 $(this.children[0]).puirating(options);
             }
+        },
+        
+        methods: {
+            getValue: function() {
+                return $(this.children[0]).puirating('getValue');
+            },
+            setValue: function(value) {
+                $(this.children[0]).puirating('setValue', value);
+            },
+            cancel: function() {
+                $(this.children[0]).puirating('cancel');
+            },
+            enable: function() {
+                $(this.children[0]).puirating('enable');
+            },
+            disable: function() {
+                $(this.children[0]).puirating('disable');
+            }
         }
         
     });
