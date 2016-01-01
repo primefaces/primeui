@@ -9,12 +9,12 @@
     <script type="text/javascript" src="primeui/js/picklist/picklist-element.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript">
-        $(function() {
+        $(function () {
             var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
-                        'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
-                        'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
-                        'ui-darkness', 'ui-lightness', 'vader');
-                        
+                    'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
+                    'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
+                    'ui-darkness', 'ui-lightness', 'vader');
+
             $('#basic').puipicklist();
 
             $('#advanced').puipicklist({
@@ -26,7 +26,7 @@
                 filter: true,
                 responsive: true,
                 sourceData: themes,
-                content: function(option) {
+                content: function (option) {
                     return '<img src="resources/demo/images/themes/' + option.label + '.png" alt="" /><span style="float:right;font-size:14px">' + option.label + '</span>';
                 }
             });
@@ -67,7 +67,7 @@
             <select name="target2">
             </select>
         </div>
-        
+
         <h3>PrimeElement</h3>
         <p-picklist sourcecaption="Source" targetcaption="Target" showsourcecontrols showtargetcontrols filter>
             <select name="source3">
@@ -100,6 +100,7 @@
                             <li><a href="#doc-events">Events</a></li>
                             <li><a href="#doc-methods">Methods</a></li>
                             <li><a href="#doc-methods">Source</a></li>
+                            <li class="tab-primeelement"><a href="#doc-element">PrimeElement</a></li>
                         </ul>
                         <div>
                             <div id="doc-overview">
@@ -221,7 +222,7 @@ $('#pick').puipicklist();
                                             <td>Mustache script element as jQuery object that represents the template.</td>
                                         </tr>
                                         <tr>
-                                            <td>responsie</td>
+                                            <td>responsive</td>
                                             <td>boolean</td>
                                             <td>false</td>
                                             <td>When enabled, picklist layout adjusts itself according to screen size.</td>
@@ -279,12 +280,12 @@ $('#pick').puipicklist();
                                         <tr>
                                             <td>selectItem</td>
                                             <td>item: Item to select.</td>
-                                            <td>Selects item with given index.</td>
+                                            <td>Selects the given item.</td>
                                         </tr>
                                         <tr>
                                             <td>unselectItem</td>
                                             <td>item: Item to unselect.</td>
-                                            <td>Unselects item with given index.</td>
+                                            <td>Unselects the given item.</td>
                                         </tr>
                                         <tr>
                                             <td>unselectAll</td>
@@ -395,6 +396,152 @@ var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-t
                                             
                                 </pre>
 
+                            </div>
+
+                            <div id="doc-element">
+                                <h3>Usage</h3>
+                                PickList element consists of two select elements as children. Content for each item can be defined
+                                as a mustache template where properties of an object can be access via {{}} syntax.
+
+                                <h4>Basic</h4>
+                                <pre name="code" class="brush:xml">
+&lt;p-picklist sourcecaption="Source" targetcaption="Target" showsourcecontrols showtargetcontrols filter&gt;
+    &lt;select name="source"&gt;
+        &lt;option value="1"&gt;Volkswagen&lt;/option&gt;
+        &lt;option value="2"&gt;Ford&lt;/option&gt;
+        &lt;option value="3"&gt;Mercedes&lt;/option&gt;
+        &lt;option value="4"&gt;Audi&lt;/option&gt;
+        &lt;option value="5"&gt;BMW&lt;/option&gt;
+        &lt;option value="6"&gt;Honda&lt;/option&gt;
+        &lt;option value="7"&gt;Jaguar&lt;/option&gt;
+        &lt;option value="8"&gt;Volvo&lt;/option&gt;
+        &lt;option value="9"&gt;Fiat&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;select name="target"&gt;
+    &lt;/select&gt;
+&lt;/p-picklist&gt;
+                                </pre>
+
+                                <h4>Custom Content</h4>
+                                <pre name="code" class="brush:xml">
+&lt;p-picklist sourcecaption="Source" targetcaption="Target" showsourcecontrols showtargetcontrols filter&gt;
+    &lt;select name="source"&gt;
+        &lt;option value="1"&gt;Volkswagen&lt;/option&gt;
+        &lt;option value="2"&gt;Ford&lt;/option&gt;
+        &lt;option value="3"&gt;Mercedes&lt;/option&gt;
+        &lt;option value="4"&gt;Audi&lt;/option&gt;
+        &lt;option value="5"&gt;BMW&lt;/option&gt;
+        &lt;option value="6"&gt;Honda&lt;/option&gt;
+        &lt;option value="7"&gt;Jaguar&lt;/option&gt;
+        &lt;option value="8"&gt;Volvo&lt;/option&gt;
+        &lt;option value="9"&gt;Fiat&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;select name="target"&gt;
+    &lt;/select&gt;
+    &lt;script type="x-tmpl-mustache"&gt;
+        &lt;div class="ui-helper-clearfix"&gt;&lt;img src="resources/demo/images/car/{{label}}.gif" width="32" alt="" style="float:left"/&gt;&lt;span style="float:left; margin-left:10px;margin-top:10px"&gt;{{label}}&lt;/span&gt;&lt;/div&gt;
+    &lt;/script&gt;
+&lt;/p-picklist&gt;
+                                </pre>
+
+                                <h3>Attributes</h3>
+                                <table class="doc-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Default</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>id</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Identifier of the element.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>effect</td>
+                                            <td>string</td>
+                                            <td>fade</td>
+                                            <td>Name of the jQuery UI effect.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>effectspeed</td>
+                                            <td>string/number</td>
+                                            <td>fast</td>
+                                            <td>Speed of the jQuery UI effect, valid values are "slow","normal", "fast" or value in milliseconds.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>sourcecaption</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Caption text for source list.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>targetcaption</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Caption text for target list.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>dragdrop</td>
+                                            <td>boolean</td>
+                                            <td>true</td>
+                                            <td>When enabled, items can be reordered using dragdrop.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>filter</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>Boolean value to control filtering feature.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>filtermatchmode</td>
+                                            <td>string</td>
+                                            <td>startsWith</td>
+                                            <td>Defines built-in filtering mode, valid values are "startsWith", "contains", "endsWith" and "custom".</td>
+                                        </tr>
+                                        <tr>
+                                            <td>filter</td>
+                                            <td>function</td>
+                                            <td>null</td>
+                                            <td>Filter function to use in case filterMatchMode is custom. This function gets item label and filter value as parameters and required
+                                                to return a boolean value to implement filtering. true accepts the item and false rejects it.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>content</td>
+                                            <td>function</td>
+                                            <td>null</td>
+                                            <td>Template of an item to customize content.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>showSourceControls</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>Show the command buttons to reorder the source list.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>showtargetcontrols</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>Show the command buttons to reorder the target list.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>responsive</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>When enabled, picklist layout adjusts itself according to screen size.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>ontransfer</td>
+                                            <td>function</td>
+                                            <td>null</td>
+                                            <td>Name of the function to invoke on transfer between lists.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
