@@ -72,14 +72,8 @@ if(!xtag.tags['p-multiselectlistbox']) {
             enable: function() {
                 $(this).puimultiselectlistbox('enable');
             },
-            showOptionGroup: function() {
-                $(this).puimultiselectlistbox('showOptionGroup');
-            },
             getValue : function() {
                 $(this).puimultiselectlistbox('getValue');
-            },
-            preselect : function() {
-                $(this).puimultiselectlistbox('preselect');
             }
         }
         
