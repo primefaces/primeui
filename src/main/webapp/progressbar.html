@@ -8,7 +8,7 @@
     <script type="text/javascript" src="primeui/js/progressbar/progressbar-element.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript">
-        $(function() {
+        $(function () {
             $('#pb1').puiprogressbar();
 
             $('#pb2').puiprogressbar({
@@ -17,16 +17,16 @@
 
             $('#doc').puitabview();
 
-            Showcase.pbinterval1 = setInterval(function() {
+            Showcase.pbinterval1 = setInterval(function () {
                 var val = $('#pb1').puiprogressbar('option', 'value') + 10;
                 $('#pb1').puiprogressbar('option', 'value', val);
             }, 1000);
-            
-            Showcase.pbinterval2 = setInterval(function() {
+
+            Showcase.pbinterval2 = setInterval(function () {
                 var progressElement = document.getElementById('pbel');
                 progressElement.setValue(progressElement.getValue() + 10);
             }, 1000);
-            
+
             $('#doc').puitabview();
         });
     </script>
@@ -60,6 +60,7 @@
                             <li><a href="#doc-events">Events</a></li>
                             <li><a href="#doc-methods">Methods</a></li>
                             <li><a href="#doc-methods">Source</a></li>
+                            <li class="tab-primeelement"><a href="#doc-element">PrimeElement</a></li>
                         </ul>
                         <div>
                             <div id="doc-overview">
@@ -200,6 +201,96 @@ $(function() {
 &lt;h3&gt;Prime Element&lt;/h3&gt;
 &lt;p-progressbar id="pbel"&gt;&lt;/p-progressbar&gt;
                                 </pre>
+
+                            </div>
+
+                            <div id="doc-element">
+                                <h3>Usage</h3>
+                                Value of progressbar is updated usign setValue(value) method.
+
+                                <pre name="code" class="brush:xml">
+&lt;p-progressbar id="pbel"&gt;&lt;/p-progressbar&gt;
+                                </pre>
+
+                                <h3>Attributes</h3>
+                                <table class="doc-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Default</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>id</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Identifier of the element.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>value</td>
+                                            <td>number</td>
+                                            <td>0</td>
+                                            <td>Progress Bar value</td>
+                                        </tr>
+                                        <tr>
+                                            <td>labeltemplate</td>
+                                            <td>string</td>
+                                            <td>{value}%</td>
+                                            <td>Progress Bar label template</td>
+                                        </tr>
+                                        <tr>
+                                            <td>showlabel</td>
+                                            <td>boolean</td>
+                                            <td>true</td>
+                                            <td>Shows label on ProgressBar</td>
+                                        </tr>
+                                        <tr>
+                                            <td>easing</td>
+                                            <td>string</td>
+                                            <td>swing</td>
+                                            <td>Optional easing to use in animation.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>effectspeed</td>
+                                            <td>int/string</td>
+                                            <td>normal</td>
+                                            <td>Speed in milliseconds or keywords like slow, normal and fast.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>oncomplete</td>
+                                            <td>function</td>
+                                            <td>null</td>
+                                            <td>Name of the function to invoke when progress reaches 100%.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                                <h3>Methods</h3>
+                                <table class="doc-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Parameters</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>getValue()</td>
+                                            <td>-</td>
+                                            <td>Returns the current value of progressbar.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>setValue(value)</td>
+                                            <td>-</td>
+                                            <td>Assigns the value of progressbar and updates ui if necessary.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
 
                             </div>
 

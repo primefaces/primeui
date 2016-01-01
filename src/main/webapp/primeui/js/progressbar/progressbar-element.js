@@ -41,12 +41,6 @@ if(!xtag.tags['p-progressbar']) {
         },
 
         methods: {
-            disable: function() {
-                $(this.xtag.progressbar).puiprogressbar('disable');
-            },
-            enable: function() {
-                $(this.xtag.progressbar).puiprogressbar('enable');
-            },
             getValue: function() {
                 return $(this.xtag.progressbar).puiprogressbar('option', 'value');
             },
