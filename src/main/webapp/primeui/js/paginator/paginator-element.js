@@ -17,6 +17,9 @@ if(!xtag.tags['p-paginator']) {
             },
             template: {
                 attribute: {}
+            },
+            onpaginate: {
+                attribute: {}
             }
         },
 
@@ -33,6 +36,12 @@ if(!xtag.tags['p-paginator']) {
                     template: this.template||'{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}',
                     paginate: this.onpaginate ? function(event, param) {PUI.executeFunctionByName($this.onpaginate, event, param);} : null
                 });
+            }
+        },
+        
+        methods: {
+            setPage: function(page, silent) {
+                $(this.xtag.container).puipaginator('setPage', page, silent);
             }
         }
         

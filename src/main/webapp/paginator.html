@@ -6,7 +6,7 @@
     <script type="text/javascript" src="primeui/js/paginator/paginator-element.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript">
-        $(function() {
+        $(function () {
             $('#pag').puipaginator({
                 totalRecords: 50,
                 rows: 5
@@ -26,7 +26,7 @@
     <div class="ContentSideSections Implementation">
         <h3 class="first">Default</h3>
         <div id="pag"></div>
-        
+
         <h3>PrimeElement</h3>
         <p-paginator totalrecords="100" rows="5" template="{FirstPageLink} {PreviousPageLink} {NextPageLink} {LastPageLink} {PageLinks}"></p-paginator>
     </div>
@@ -42,6 +42,7 @@
                             <li><a href="#doc-events">Events</a></li>
                             <li><a href="#doc-methods">Methods</a></li>
                             <li><a href="#doc-methods">Source</a></li>
+                            <li class="tab-primeelement"><a href="#doc-element">PrimeElement</a></li>
                         </ul>
                         <div>
                             <div id="doc-overview">
@@ -70,31 +71,31 @@ $('#pag').puipaginator({
                                     <tbody>
                                         <tr>
                                             <td>page</td>
-                                            <td>Integer</td>
+                                            <td>integer</td>
                                             <td>0</td>
                                             <td>Index of the active page.</td>
                                         </tr>
                                         <tr>
                                             <td>rows</td>
-                                            <td>Integer</td>
+                                            <td>integer</td>
                                             <td>false</td>
                                             <td>Defines number of data on a page.</td>
                                         </tr>
                                         <tr>
                                             <td>totalRecords</td>
-                                            <td>Integer</td>
+                                            <td>integer</td>
                                             <td>0</td>
                                             <td>Total number of records.</td>
                                         </tr>
                                         <tr>
                                             <td>pageLinks</td>
-                                            <td>Integer</td>
+                                            <td>integer</td>
                                             <td>false</td>
                                             <td>Defines number of page links.</td>
                                         </tr>
                                         <tr>
                                             <td>template</td>
-                                            <td>String</td>
+                                            <td>integer</td>
                                             <td>{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}</td>
                                             <td>Customizable paginator template using paginator element keys.</td>
                                         </tr>
@@ -154,9 +155,15 @@ $('#pag').puipaginator({
                                             <td>name: Name of the option, value: Value of the option</td>
                                             <td>Set the value of the option.</td>
                                         </tr>
+                                        <tr>
+                                            <td>setPage(page, silent)</td>
+                                            <td>page: New page number<br />
+                                                silent: Updates ui without calling paginate callback</td>
+                                            <td>Sets the new page and updates the ui.</td>
+                                        </tr>
                                     </tbody>
                                 </table>
-                                
+
                                 <h3>Example</h3>
                                 <pre name="code" class="brush:js">
 $('#default').puipaginator('page', 2);
@@ -182,6 +189,84 @@ $(function() {
 &lt;p-paginator totalrecords="100" rows="5" template="{FirstPageLink} {PreviousPageLink} {NextPageLink} {LastPageLink} {PageLinks}"&gt;&lt;/p-paginator&gt;
                                 </pre>
 
+                            </div>
+
+
+                            <div id="doc-element">
+                                <h3>Usage</h3>
+
+                                <pre name="code" class="brush:xml">
+&lt;p-paginator totalrecords="100" rows="5" template="{FirstPageLink} {PreviousPageLink} {NextPageLink} {LastPageLink} {PageLinks}"&gt;&lt;/p-paginator&gt;
+                                </pre>
+
+                                <h3>Attributes</h3>
+                                <table class="doc-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Default</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>page</td>
+                                            <td>integer</td>
+                                            <td>0</td>
+                                            <td>Index of the active page.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>rows</td>
+                                            <td>integer</td>
+                                            <td>false</td>
+                                            <td>Defines number of data on a page.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>totalrecords</td>
+                                            <td>integer</td>
+                                            <td>0</td>
+                                            <td>Total number of records.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>pagelinks</td>
+                                            <td>integer</td>
+                                            <td>false</td>
+                                            <td>Defines number of page links.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>template</td>
+                                            <td>String</td>
+                                            <td>{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}</td>
+                                            <td>Customizable paginator template using paginator element keys.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>onpaginate</td>
+                                            <td>function</td>
+                                            <td>null</td>
+                                            <td>Name of the function to invoke on page change.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <h3>Methods</h3>
+                                <table class="doc-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Parameters</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>setPage(page, silent)</td>
+                                            <td>page: New page number<br />
+                                                silent: Updates ui without calling paginate callback</td>
+                                            <td>Sets the new page and updates the ui.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
 
                         </div>
