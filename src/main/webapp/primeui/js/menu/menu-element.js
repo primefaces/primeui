@@ -146,7 +146,7 @@ if(!xtag.tags['p-menu']) {
 
                 $(this.xtag.container).puimenu({
                     popup: this.popup,
-                    trigger: this.trigger,
+                    trigger: '#' + this.trigger,
                     my: this.my||'left top',
                     at: this.at||'left bottom',
                     triggerEvent: this.triggerEvent||'click'
