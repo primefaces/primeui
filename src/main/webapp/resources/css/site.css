@@ -60,7 +60,7 @@ body{margin:0px; height:100%; overflow-x:hidden; overflow-y:auto; background-col
 	/* menu side style*/
 	#MENUSIDE{width:85px; float:left; background-color:#313b3f; border-right:solid 1px #151d21; overflow:hidden; width: 299px; position: fixed;}
 		#MENUSIDEindent{width:100%; height:auto;}
-			#LOGO{height:57px; display:block; padding:40px 0 5px 0px; z-index:997; background-color:#313b3f;margin-left:45px}
+			#LOGO{height:64px; display:block; padding:50px 0 5px 0px; z-index:997; background-color:#313b3f;margin-left:45px}
 				#LOGO img{width:180px; height:auto; position:absolute;}
 			.MenuSideMainLink{width:100%; height:45px; display:block; padding:15px 0px 0px 27px; cursor:pointer;}
 				.MenuSideMainLink input{ padding:6px; background-color:#354044; outline:none; border:0px; border:none; color:#9ba5ac; border-radius:20px;
