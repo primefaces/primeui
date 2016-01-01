@@ -38,6 +38,7 @@
                             <li><a href="#doc-events">Events</a></li>
                             <li><a href="#doc-methods">Methods</a></li>
                             <li><a href="#doc-methods">Source</a></li>
+                            <li class="tab-primeelement"><a href="#doc-element">PrimeElement</a></li>
                         </ul>
                         <div>
                             <div id="doc-overview">
@@ -94,17 +95,27 @@ $('#default').puiinputtext();
                             <div id="doc-source">
 
                                 <pre class="brush:js">
-&lt;script type="text/javascript"&gt;
-    $(function() {
-        $('#in').puiinputtext();
-    });
-&lt;/script&gt; 
+$(function() {
+    $('#in').puiinputtext();
+});
                                 </pre>
 
                                 <pre class="brush:xml">
-&lt;input id="in" type="text" /&gt;             
+&lt;h3 class="first"&gt;Basic&lt;/h3&gt;
+&lt;input id="in" type="text" size="30"/&gt;
+
+&lt;h3&gt;PrimeElement&lt;/h3&gt;
+&lt;input type="text" is="p-inputtext" value="" size="30" /&gt;           
                                 </pre>
 
+                            </div>
+                            
+                            <div id="doc-element">
+                                <h3>Usage</h3>
+                                Inputtext is an extension to standard input element so applied using is="p-inputtext" attribute.
+                                <pre name="code" class="brush:xml">
+&lt;input type="text" is="p-inputtext" value="" size="30" /&gt;
+                                </pre>
                             </div>
 
                         </div>
