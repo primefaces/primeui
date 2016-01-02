@@ -6,7 +6,11 @@
     $.widget("primeui.puispinner", {
        
         options: {
-            step: 1.0
+            step: 1.0,
+            min: undefined,
+            max: undefined,
+            prefix: null,
+            suffix: null
         },
         
         _create: function() {
