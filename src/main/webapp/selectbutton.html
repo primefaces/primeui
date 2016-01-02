@@ -10,30 +10,30 @@
     <script type="text/javascript" src="primeui/js/selectbutton/selectbutton-element.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript">
-        $(function() {
-           
+        $(function () {
+
             $('#single').puiselectbutton({
                 formfield: 'single_input',
                 choices: [
-                   {label:'Xbox One', value:0},
-                   {label:'PS4', value:1},
-                   {label:'Wii', value:2}
+                    {label: 'Xbox One', value: 0},
+                    {label: 'PS4', value: 1},
+                    {label: 'Wii', value: 2}
                 ]
             });
-            
+
             $('#multiple').puiselectbutton({
                 formfield: 'multiple_input',
                 choices: [
-                   {label:'Xbox One', value:0},
-                   {label:'PS4', value:1},
-                   {label:'Wii', value:2}
+                    {label: 'Xbox One', value: 0},
+                    {label: 'PS4', value: 1},
+                    {label: 'Wii', value: 2}
                 ],
                 multiple: true,
                 unselectable: true
             });
 
             $('#doc').puitabview();
-            
+
         });
     </script>
 
@@ -45,10 +45,10 @@
     </div>
 
     <div class="ContentSideSections Implementation">
-       
+
         <h3 class="first">Single</h3>
         <div id="single" style="margin-bottom:25px"></div>
-        
+
         <h3 class="first">Multiple</h3>
         <div id="multiple"></div>
 
@@ -74,6 +74,7 @@
                             <li><a href="#doc-events">Events</a></li>
                             <li><a href="#doc-methods">Methods</a></li>
                             <li><a href="#doc-methods">Source</a></li>
+                            <li class="tab-primeelement"><a href="#doc-element">PrimeElement</a></li>
                         </ul>
                         <div>
                             <div id="doc-overview">
@@ -105,7 +106,7 @@
                                     <tbody>
                                         <tr>
                                             <td>choices</td>
-                                            <td>string , number</td>
+                                            <td>string,number</td>
                                             <td>null</td>
                                             <td>Choices for the buttons.</td>
                                         </tr>
@@ -124,7 +125,7 @@
                                         <tr>
                                             <td>tabindex</td>
                                             <td>string</td>
-                                            <td>'0'</td>
+                                            <td>0</td>
                                             <td>Order of elements in tabbing.</td>
                                         </tr>
                                         <tr>
@@ -175,12 +176,12 @@
                                         <tr>
                                             <td>selectOption</td>
                                             <td>value</td>
-                                            <td>Selects the clicked option.</td>
+                                            <td>Selects the given option.</td>
                                         </tr>
                                         <tr>
                                             <td>unselectOption</td>
                                             <td>value</td>
-                                            <td>Unelects the clicked option.</td>
+                                            <td>Unelects the given option.</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -224,7 +225,101 @@ $(function() {
 
 &lt;h3 class="first"&gt;Multiple&lt;/h3&gt;
 &lt;div id="multiple"  /&gt;&lt;/div&gt;
+
+&lt;h3&gt;Prime Element&lt;/h3&gt;
+&lt;p-selectbutton&gt;
+    &lt;option value="1"&gt;Option 1&lt;/option&gt;
+    &lt;option value="2"&gt;Option 2&lt;/option&gt;
+    &lt;option value="3"&gt;Option 3&lt;/option&gt;
+    &lt;option value="4"&gt;Option 4&lt;/option&gt;
+    &lt;option value="5"&gt;Option 5&lt;/option&gt;
+&lt;/p-selectbutton&gt;
                                 </pre>
+
+                            </div>
+
+
+                            <div id="doc-element">
+                                <h3>Usage</h3>
+                                SelectButton is similar to a select element that requires options as children.
+
+                                <pre name="code" class="brush:xml">
+&lt;p-selectbutton&gt;
+    &lt;option value="1"&gt;Option 1&lt;/option&gt;
+    &lt;option value="2"&gt;Option 2&lt;/option&gt;
+    &lt;option value="3"&gt;Option 3&lt;/option&gt;
+    &lt;option value="4"&gt;Option 4&lt;/option&gt;
+    &lt;option value="5"&gt;Option 5&lt;/option&gt;
+&lt;/p-selectbutton&gt;
+                                </pre>
+
+                                <h3>Attributes</h3>
+                                <table class="doc-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Default</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>id</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Identifier of the element.</td>
+                                        </tr>
+                                         <tr>
+                                            <td>name</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Name of the request parameter to be used in a form submission.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>unselectable</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>State for the unselectable buttons.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>tabindex</td>
+                                            <td>string</td>
+                                            <td>0</td>
+                                            <td>Order of elements in tabbing.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>multiple</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>State for multiple button selection.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                                <h3>Methods</h3>
+                                <table class="doc-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Parameters</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>selectOption</td>
+                                            <td>value</td>
+                                            <td>Selects the given option.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>unselectOption</td>
+                                            <td>value</td>
+                                            <td>Unelects the given option.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
 
                             </div>
 

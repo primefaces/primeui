@@ -3,9 +3,6 @@ if(!xtag.tags['p-selectbutton']) {
     xtag.register('p-selectbutton', {
     
         accessors: {
-            choices:{
-                attribute:{}
-            },
             name:{
                 attribute:{}
             },
@@ -51,17 +48,11 @@ if(!xtag.tags['p-selectbutton']) {
         },
 
         methods: {
-            disable: function() {
-                $(this).puiselectbutton('disable');
-            },
-            enable: function() {
-                $(this).puiselectbutton('enable');
-            },
-            selectOption: function() {
-                $(this).puiselectbutton('selectOption');
+            selectOption: function(value) {
+                $(this).puiselectbutton('selectOption', value);
             },
             unselectOption: function() {
-                $(this).puiselectbutton('unselectOption');
+                $(this).puiselectbutton('unselectOption', value);
             }
         }
         
