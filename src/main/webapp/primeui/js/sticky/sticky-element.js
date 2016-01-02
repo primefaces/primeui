@@ -5,6 +5,9 @@ if(!xtag.tags['p-sticky']) {
         accessors: {
             target: {
                 attribute: {}
+            },
+            renderdelay: {
+                attribute: {}
             }
         },
 
