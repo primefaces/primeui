@@ -146,7 +146,7 @@ if(!xtag.tags['p-menu']) {
 
                 $(this.xtag.container).puimenu({
                     popup: this.popup,
-                    trigger: '#' + this.trigger,
+                    trigger: this.trigger ? '#' + this.trigger : null,
                     my: this.my||'left top',
                     at: this.at||'left bottom',
                     triggerEvent: this.triggerEvent||'click'
@@ -266,7 +266,7 @@ if(!xtag.tags['p-tieredmenu']) {
 
                 $(this.xtag.container).puitieredmenu({
                     popup: this.popup,
-                    trigger: this.trigger,
+                    trigger: this.trigger ? '#' + this.trigger : null,
                     my: this.my||'left top',
                     at: this.at||'left bottom',
                     triggerEvent: this.triggerEvent||'click',
@@ -313,7 +313,7 @@ if(!xtag.tags['p-slidemenu']) {
 
                 $(this.xtag.container).puislidemenu({
                     popup: this.popup,
-                    trigger: this.trigger,
+                    trigger: this.trigger ? '#' + this.trigger : null,
                     my: this.my||'left top',
                     at: this.at||'left bottom',
                     triggerEvent: this.triggerEvent||'click'
