@@ -22,9 +22,10 @@ if(!xtag.tags['p-tabview']) {
 
                 element.append('<div><ul></ul><div></div></div>');
 
-                var container = element.children('div'),
-                headerContainer = container.children('ul'),
-                bodyContainer = container.children('div');
+                this.xtag.container = element.children('div');
+                
+                var headerContainer = this.xtag.container.children('ul'),
+                bodyContainer = this.xtag.container.children('div');
 
                 //headers
                 for(var i = 0; i < tabs.length; i++) {
@@ -41,7 +42,7 @@ if(!xtag.tags['p-tabview']) {
                     $('<div></div>').append(tab.contents()).appendTo(bodyContainer);
                 }
 
-                container.puitabview({
+                this.xtag.container.puitabview({
                     activeIndex: this.activeindex||0,
                     orientation: this.orientation||'top',
                     change: this.onchange ? function(event, index){PUI.executeFunctionByName($this.onchange, event, index);} : null
@@ -50,7 +51,21 @@ if(!xtag.tags['p-tabview']) {
         },
         
         methods: {
-            
+            select: function(index) {
+                this.xtag.container.puitabview('select', index);
+            },
+            remove: function(index) {
+                this.xtag.container.puitabview('remove', index);
+            },
+            enable: function(index) {
+                this.xtag.container.puitabview('enable', index);
+            },
+            disable: function(index) {
+                this.xtag.container.puitabview('disable', index);
+            },
+            getActiveIndex: function(index) {
+                return this.xtag.container.puitabview('getActiveIndex');
+            }
         }
 
     });
