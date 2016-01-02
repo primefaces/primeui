@@ -71,7 +71,7 @@ if(!xtag.tags['p-togglebutton']) {
             },
             isChecked: function() {
                $(this.xtag.checkbox).puitogglebutton('isChecked');
-            },
+            }
         }
         
     });
