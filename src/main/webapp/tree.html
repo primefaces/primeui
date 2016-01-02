@@ -9,7 +9,7 @@
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript" src="primeui/js/growl/growl.js"></script>
     <script type="text/javascript">
-        $(function() {
+        $(function () {
             $('#local').puitree({
                 animate: true,
                 selectionMode: 'single',
@@ -60,22 +60,22 @@
                     doc: 'fa-file-word-o',
                     video: 'fa-file-video-o'
                 },
-                nodeSelect: function(event, ui) {
+                nodeSelect: function (event, ui) {
                     $('#messages').puigrowl('show', [{severity: 'info', summary: 'Node Selected', detail: 'Data: ' + ui.data}]);
                 },
-                nodeUnselect: function(event, ui) {
+                nodeUnselect: function (event, ui) {
                     $('#messages').puigrowl('show', [{severity: 'info', summary: 'Node Unselected', detail: 'Data: ' + ui.data}]);
                 }
             });
 
             $('#remoteeager').puitree({
-                nodes: function(ui, response) {
+                nodes: function (ui, response) {
                     $.ajax({
                         type: "GET",
                         url: 'rest/tree/all',
                         dataType: "json",
                         context: this,
-                        success: function(data) {
+                        success: function (data) {
                             response.call(this, data);
                         }
                     });
@@ -84,13 +84,13 @@
 
             $('#remotelazy').puitree({
                 lazy: true,
-                nodes: function(ui, response) {
+                nodes: function (ui, response) {
                     $.ajax({
                         type: "GET",
                         url: 'rest/tree/' + (ui.data ? ui.data : 'root'),
                         dataType: "json",
                         context: this,
-                        success: function(data) {
+                        success: function (data) {
                             response.call(this, data, ui.node);
                         }
                     });
@@ -98,7 +98,7 @@
             });
 
             $('#messages').puigrowl();
-            
+
             $('#doc').puitabview();
         });
     </script>
@@ -121,7 +121,7 @@
 
         <h3>Remote - Lazy</h3>
         <div id="remotelazy"></div>
-        
+
         <h3>PrimeElement - Local</h3>
         <p-tree nodes="TreeDemo.localData" animate>
             <p-treeicon type="def" expanded="fa-folder-open" collapsed="fa-folder"></p-treeicon>
@@ -129,7 +129,7 @@
             <p-treeicon type="doc" value="fa-file-word-o"></p-treeicon>
             <p-treeicon type="video" value="fa-file-video-o"></p-treeicon>
         </p-tree>
-        
+
         <h3>PrimeElement - Remote</h3>
         <p-tree nodes="TreeDemo.remoteData" animate></p-tree>
     </div>
@@ -145,6 +145,7 @@
                             <li><a href="#doc-events">Events</a></li>
                             <li><a href="#doc-methods">Methods</a></li>
                             <li><a href="#doc-methods">Source</a></li>
+                            <li class="tab-primeelement"><a href="#doc-element">PrimeElement</a></li>
                         </ul>
                         <div>
                             <div id="doc-overview">
@@ -470,6 +471,227 @@ $(function() {
 
                             </div>
 
+                            <div id="doc-element">
+                                <h3>Usage</h3>
+                                Data of the tree is provided using nodes attribute that can either be a local array or a function to load remote data. Icons can be 
+                                customized using p-treeicon element.
+
+                                <h4>Local Nodes with Icons</h4>
+                                <pre name="code" class="brush:xml">
+&lt;p-tree nodes="TreeDemo.localData" animate&gt;
+    &lt;p-treeicon type="def" expanded="fa-folder-open" collapsed="fa-folder"&gt;&lt;/p-treeicon&gt;
+    &lt;p-treeicon type="picture" value="fa-file-image-o"&gt;&lt;/p-treeicon&gt;
+    &lt;p-treeicon type="doc" value="fa-file-word-o"&gt;&lt;/p-treeicon&gt;
+    &lt;p-treeicon type="video" value="fa-file-video-o"&gt;&lt;/p-treeicon&gt;
+&lt;/p-tree&gt;
+                                </pre>
+
+                                <h4>Remote Data</h4>
+                                <pre name="code" class="brush:xml">
+&lt;p-tree nodes="TreeDemo.remoteData" animate&gt;&lt;/p-tree&gt;
+                                </pre>
+
+                                <pre name="code" class="brush:js">
+var TreeDemo = {
+  
+    localData: [
+            {
+                label: 'Documents',
+                data: 'Documents Folder',
+                children: [{
+                        label: 'Work',
+                        data: 'Work Folder',
+                        children: [{label: 'Expenses.doc', iconType: 'doc', data: 'Expenses Document'}, {label: 'Resume.doc', iconType: 'doc', data: 'Resume Document'}]
+                    },
+                    {
+                        label: 'Home',
+                        data: 'Home Folder',
+                        children: [{label: 'Invoices.txt', iconType: 'doc', data: 'Invoices for this month'}]
+                    }]
+            },
+            {
+                label: 'Pictures',
+                data: 'Pictures Folder',
+                children: [
+                    {label: 'barcelona.jpg', iconType: 'picture', data: 'Barcelona Photo'},
+                    {label: 'logo.jpg', iconType: 'picture', data: 'PrimeFaces Logo'},
+                    {label: 'primeui.png', iconType: 'picture', data: 'PrimeUI Logo'}]
+            },
+            {
+                label: 'Movies',
+                data: 'Movies Folder',
+                children: [{
+                        label: 'Al Pacino',
+                        data: 'Pacino Movies',
+                        children: [{label: 'Scarface', iconType: 'video', data: 'Scarface Movie'}, {label: 'Serpico', iconType: 'video', data: 'Serpico Movie'}]
+                    },
+                    {
+                        label: 'Robert De Niro',
+                        data: 'De Niro Movies',
+                        children: [{label: 'Goodfellas', iconType: 'video', data: 'Goodfellas Movie'}, {label: 'Untouchables', iconType: 'video', data: 'Untouchables Movie'}]
+                    }]
+            }
+        ],
+        
+        remoteData: function(ui, response) {
+            $.ajax({
+                type: "GET",
+                url: 'rest/tree/all',
+                dataType: "json",
+                context: this,
+                success: function(data) {
+                    response.call(this, data);
+                }
+            });
+        }
+};
+                                </pre>
+
+                                <h3>Attributes</h3>
+                                <table class="doc-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Default</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>id</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Identifier of the element.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>nodes</td>
+                                            <td>array/function</td>
+                                            <td>null</td>
+                                            <td>DataSource for tree, can either be an array of TreeNodes or a function
+                                                to provide an array of TreeNodes.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>lazy</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>In lazy mode, children nodes are loaded on demand. Prefer this option
+                                                when dealing with large datasets.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>animate</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>Displays a slide animation when enabled.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>selectionmode</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Defines selection type, valid values are single and multiple. Multiple is used with metakey.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>onnodeselect</td>
+                                            <td>function</td>
+                                            <td>event: puitreenodeselect event
+                                                <br />
+                                                node: Node object.
+                                                <br />
+                                                data: Node data.</td>
+                                            <td>Name of the function to invoke when a node is selected.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>onnodeunselect</td>
+                                            <td>function</td>
+                                            <td>event: puitreenodenodeunselect event
+                                                <br />
+                                                node: Node object.
+                                                <br />
+                                                data: Node data.</td>
+                                            <td>Name of the function to invoke when a node is unselected.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>onbeforecollapse</td>
+                                            <td>function</td>
+                                            <td>event: puitreenodebeforecollapse event
+                                                <br />
+                                                node: Node object.
+                                                <br />
+                                                data: Node data.</td>
+                                            <td>Name of the function to invoke before a node is collapsed.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>onaftercollapse</td>
+                                            <td>function</td>
+                                            <td>event: puitreenodeaftercollapse event
+                                                <br />
+                                                node: Node object.
+                                                <br />
+                                                data: Node data.</td>
+                                            <td>Name of the function to invoke after a node is collapsed.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>onbeforeexand</td>
+                                            <td>function</td>
+                                            <td>event: puitreenodebeforeexpand event
+                                                <br />
+                                                node: Node object.
+                                                <br />
+                                                data: Node data.</td>
+                                            <td>Name of the function to invoke before a node is expanded.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>onafterexpand</td>
+                                            <td>function</td>
+                                            <td>event: puitreenodeafterexpand event
+                                                <br />
+                                                node: Node object.
+                                                <br />
+                                                data: Node data.</td>
+                                            <td>Name of the function to invoke after a node is expanded.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <h3>Methods</h3>
+                                <table class="doc-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Parameters</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>expandNode</td>
+                                            <td>node: Node element as jQuery object to expand.</td>
+                                            <td>Expands the given node.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>collapseNode</td>
+                                            <td>node: Node element as jQuery object to collapse.</td>
+                                            <td>Collapses the given node.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>selectNode</td>
+                                            <td>node: Node element as jQuery object to collapse.</td>
+                                            <td>Activates the tab with given index.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>unselectNode</td>
+                                            <td>node: Node element as jQuery object to collapse.</td>
+                                            <td>Deactivates the tab with given index.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>unselectAllNodes</td>
+                                            <td></td>
+                                            <td>Clears selection.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
                         </div>
                     </div>
                 </span>

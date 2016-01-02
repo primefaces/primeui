@@ -48,8 +48,23 @@ if(!xtag.tags['p-tree']) {
             selectionmode: {
                 attribute:{}
             },
-            icons: {
-                attribute:{}
+            onnodeselect: {
+                attribute: {}
+            },
+            onnodeunselect: {
+                attribute: {}
+            },
+            onbeforecollapse: {
+                attribute: {}
+            },
+            onaftercollapse: {
+                attribute: {}
+            },
+            onbeforeexpand: {
+                attribute: {}
+            },
+            onafterexpand: {
+                attribute: {}
             }
         },
 
@@ -57,7 +72,8 @@ if(!xtag.tags['p-tree']) {
             created: function() {
                 var element = $(this),
                 treeIconElements = element.children('p-treeicon'),
-                treeIcons = null;
+                treeIcons = null,
+                $this = this;
                 
                 this.xtag.container = $(this).append('<div></div>').children('div');
                 
@@ -85,7 +101,13 @@ if(!xtag.tags['p-tree']) {
                     lazy: this.lazy,
                     animate: this.animate,
                     selectionMode: this.selectionmode,
-                    icons: treeIcons
+                    icons: treeIcons,
+                    nodeSelect: this.onnodeselect ? function(event, ui) {PUI.executeFunctionByName($this.onnodeselect, event, ui);} : null,
+                    nodeUnselect: this.onnodeunselect ? function(event, ui) {PUI.executeFunctionByName($this.onnodeunselect, event, ui);} : null,
+                    beforeCollapse: this.onbeforecollapse ? function(event, ui) {PUI.executeFunctionByName($this.onbeforecollapse, event, ui);} : null,
+                    afterCollapse: this.onaftercollapse ? function(event, ui) {PUI.executeFunctionByName($this.onaftercollapse, event, ui);} : null,
+                    beforeExpand: this.onbeforeexpand ? function(event, ui) {PUI.executeFunctionByName($this.onbeforeexpand, event, ui);} : null,
+                    afterExpand: this.onafterexpand ? function(event, ui) {PUI.executeFunctionByName($this.onafterexpand, event, ui);} : null
                 });
             }
         },
