@@ -9,16 +9,16 @@
     <script type="text/javascript" src="primeui/js/terminal/terminal-element.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript">
-        $(function() {
+        $(function () {
             $('#trmnl').puiterminal({
                 welcomeMessage: 'Welcome to PrimeUI Terminal, how are you today?',
-                handler: function(request, response) {
+                handler: function (request, response) {
                     $.ajax({
                         type: "GET",
                         url: 'rest/terminal/' + request,
                         dataType: "text",
                         context: this,
-                        success: function(data) {
+                        success: function (data) {
                             response.call(this, data);
                         }
                     });
@@ -40,7 +40,7 @@
     <div class="ContentSideSections Implementation">
         <h3 class="first">Remote Connection</h3>
         <div id="trmnl" style="margin-bottom:20px"></div>
-        
+
         <h3>PrimeElement</h3>
         <p-terminal handler="TerminalDemo.handler" welcomemessage="Welcome to Terminal Element"></terminal>
     </div>
@@ -56,6 +56,7 @@
                             <li><a href="#doc-events">Events</a></li>
                             <li><a href="#doc-methods">Methods</a></li>
                             <li><a href="#doc-methods">Source</a></li>
+                            <li class="tab-primeelement"><a href="#doc-element">PrimeElement</a></li>
                         </ul>
                         <div>
                             <div id="doc-overview">
@@ -111,9 +112,9 @@ $('#trmnl').puiterminal({
                             <div id="doc-methods">
                                 <table class="doc-table">
                                     <thead>
-                                        <th>Name</th>
-                                        <th>Parameters</th>
-                                        <th>Description</th>
+                                    <th>Name</th>
+                                    <th>Parameters</th>
+                                    <th>Description</th>
                                     </thead>
                                     <tbody>
                                         <tr>
@@ -150,6 +151,95 @@ $('#trmnl').puiterminal({
 &lt;h3&gt;PrimeElement&lt;/h3&gt;
 &lt;p-terminal handler="TerminalDemo.handler" welcomemessage="Welcome to Terminal Element"&gt;&lt;/terminal&gt;
                                 </pre>
+
+                            </div>
+
+                            <div id="doc-element">
+                                <h3>Usage</h3>
+                                Terminal requires a handler to process the commands.
+
+                                <pre name="code" class="brush:xml">
+&lt;p-terminal handler="TerminalDemo.handler" welcomemessage="Welcome to Terminal Element"&gt;&lt;/terminal&gt;
+                                </pre>
+
+                                <pre name="code" class="brush:js">
+var TerminalDemo = {
+  
+    handler: function(request, response) {
+        $.ajax({
+            type: "GET",
+            url: 'rest/terminal/' + request,
+            dataType: "text",
+            context: this,
+            success: function(data) {
+                response.call(this, data);
+            }
+        });
+    }
+    
+};
+                                </pre>
+
+                                <h3>Attributes</h3>
+                                <table class="doc-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Default</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>id</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Identifier of the element.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>welcomemessage</td>
+                                            <td>string</td>
+                                            <td>''</td>
+                                            <td>Welcome message to be displayed on initial load.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>prompt</td>
+                                            <td>string</td>
+                                            <td>prime $</td>
+                                            <td>Primary prompt text.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>handler</td>
+                                            <td>function</td>
+                                            <td>null</td>
+                                            <td>Function to handle commands.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                
+                                <h3>Methods</h3>
+                                <table class="doc-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Parameters</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>enable()</td>
+                                            <td>-</td>
+                                            <td>Enables the element.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>disable()</td>
+                                            <td>-</td>
+                                            <td>Disables the element.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
 
                             </div>
 
