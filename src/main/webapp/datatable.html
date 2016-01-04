@@ -13,12 +13,12 @@
     <script type="text/javascript" src="primeui/js/menu/menu.js"></script>
     <script type="text/javascript" src="primeui/js/inputtext/inputtext.js"></script>
     <script type="text/javascript">
-        $(function() {
-            $('#datatable-submenu a').on('click', function(e) {
+        $(function () {
+            $('#datatable-submenu a').on('click', function (e) {
                 Showcase.changePageWithLink($(this).attr('href'));
                 e.preventDefault();
             });
-        
+
             var localData = [
                 {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
                 {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
@@ -54,13 +54,13 @@
                     {field: 'year', headerText: 'Year'},
                     {field: 'color', headerText: 'Color'}
                 ],
-                datasource: function(callback) {
+                datasource: function (callback) {
                     $.ajax({
                         type: "GET",
                         url: 'rest/cars/list',
                         dataType: "json",
                         context: this,
-                        success: function(response) {
+                        success: function (response) {
                             callback.call(this, response);
                         }
                     });
@@ -80,7 +80,7 @@
                     {field: 'year', headerText: 'Year'},
                     {field: 'color', headerText: 'Color'}
                 ],
-                datasource: function(callback, ui) {
+                datasource: function (callback, ui) {
                     var uri = 'rest/cars/lazylist/' + ui.first;
                     if (ui.sortField) {
                         uri += '/' + ui.sortField + '/' + ui.sortOrder;
@@ -91,7 +91,7 @@
                         url: uri,
                         dataType: "json",
                         context: this,
-                        success: function(response) {
+                        success: function (response) {
                             callback.call(this, response);
                         }
                     });
@@ -106,7 +106,7 @@
             margin-bottom: 40px;
         }
     </style>
-    
+
     <div id="datatable-submenu" class="ContentSideSections SubSubMenu clearfix">
         <ul>
             <li><a href="datatable.html">&bull; DataSource</a></li>
@@ -155,6 +155,7 @@
                             <li><a href="#doc-events">Events</a></li>
                             <li><a href="#doc-methods">Methods</a></li>
                             <li><a href="#doc-methods">Source</a></li>
+                            <li class="tab-primeelement"><a href="#doc-element">PrimeElement</a></li>
                         </ul>
                         <div>
                             <div id="doc-overview" class="defaultText">
@@ -468,9 +469,11 @@ $('#tbl').puidatatable({
                             <div id="doc-methods">
                                 <table class="doc-table">
                                     <thead>
-                                    <th>Name</th>
-                                    <th>Parameters</th>
-                                    <th>Description</th>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Parameters</th>
+                                            <th>Description</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
@@ -610,6 +613,255 @@ $('#default').puidatatable('unselectAllRows');
 
 &lt;div id="tblremotelazy"&gt;&lt;/div&gt;
                                 </pre>
+
+                            </div>
+
+                            <div id="doc-element">
+                                <h3>Usage</h3>
+                                DataTable requires a datasource and p-column elements to specify each column.
+
+                                <pre name="code" class="brush:xml">
+&lt;p-datatable datasource="DataDemo.cars" paginator rows="10" selectionmode="single" onrowselect="handleRowSelect"&gt;
+    &lt;p-column field="vin" headertext="Vin" sortable filter&gt;&lt;/p-column&gt;
+    &lt;p-column field="year" headertext="Year" sortable filter&gt;&lt;/p-column&gt;
+    &lt;p-column field="brand" headertext="Brand" sortable filter&gt;&lt;/p-column&gt;
+    &lt;p-column field="color" headertext="Color" sortable filter&gt; 
+        &lt;script type="x-tmpl-mustache"&gt;
+            &lt;span style="color:{{color}}"&gt;{{color}}&lt;/span&gt;
+        &lt;/script&gt;
+    &lt;/p-column&gt;
+&lt;/p-datatable&gt;
+                                </pre>
+
+                                <h4>Local Data</h4>
+                                <pre name="code" class="brush:js">
+var DataDemo = { 
+    
+    cars: [
+        {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
+        {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
+        {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
+        {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
+        {'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
+        {'brand': 'Volvo', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
+        {'brand': 'Honda', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
+        {'brand': 'Jaguar', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
+        {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'},
+        {'brand': 'Fiat', 'year': 2013, 'color': 'Red', 'vin': '245t2s'}
+    ]
+
+};                                    
+                                </pre>
+
+                                <h4>Remote Data</h4>
+                                <pre name="code" class="brush:js">
+var DataDemo = {
+    
+    cars: function (callback) {
+        $.ajax({
+            type: "GET",
+            url: 'rest/cars/list',
+            dataType: "json",
+            context: this,
+            success: function (response) {
+                callback.call(this, response);
+            }
+        });
+    }
+    
+}                                    
+                                </pre>
+
+                                <h4>Custom Content</h4>
+                                Value of field per row data is used to display content in column by default, in order to customize the content use a mustache template
+                                where row object is available with {{}} syntax.
+
+                                <pre name="code" class="brush:xml">
+&lt;p-column field="color" headertext="Color" sortable filter&gt; 
+    &lt;script type="x-tmpl-mustache"&gt;
+        &lt;span style="color:{{color}}"&gt;{{color}}&lt;/span&gt;
+    &lt;/script&gt;
+&lt;/p-column&gt;
+                                </pre>
+
+                                <h4>Columns</h4>
+                                A p-column component provides the following attributes for configuration;
+                                <ul>
+                                    <li>field: Name of field.</li>
+                                    <li>headertext: Column header value.</li>
+                                    <li>footertext: Column footer value.</li>
+                                    <li>sortable: Controls sorting.</li>
+                                    <li>content: A function that takes row data and expects a string or a jQuery object to customize the cell.</li>
+                                    <li>headerstyle: Inline style of the header cell.</li>
+                                    <li>headerclass: Style class of the header cell.</li>
+                                    <li>bodystyle: Inline style of the body cell.</li>
+                                    <li>bodyclass: Style class of the body cell.</li>
+                                    <li>colspan: Column span value for grouping.</li>
+                                    <li>rowspan: Row span value for grouping.</li>
+                                    <li>filter: Defines if filtering is enabled.</li>
+                                    <li>filtermatchmode: Built-in filter algorithm, valid values are "startsWith" and "contains".</li>
+                                    <li>filterFunction: Custom filter function that takes the cell value and filter value to return a boolean.</li>
+                                    <li>editor: Boolean value that controls if this column is editable.</li>
+                                    <li>rowtoggler: Boolean value that controls if this column displayed a toggle icon.</li>
+                                </ul>
+
+                                <h3>Attributes</h3>
+                                <table class="doc-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Default</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>id</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Identifier of the element.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>datasource</td>
+                                            <td>Array/Function</td>
+                                            <td>null</td>
+                                            <td>Datasource to load the data, valid options are a local javascript array or a function.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>paginator</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>Boolean value to enable paginator.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>selectionmode</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Selection mode for datatable, valid values are single and multiple.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>caption</td>
+                                            <td>String</td>
+                                            <td>null</td>
+                                            <td>Caption text of the datatable.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>lazy</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>Determines if the remote data loading is lazy, only the current page is loaded if true.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>sortfield</td>
+                                            <td>String</td>
+                                            <td>null</td>
+                                            <td>Determines the column on which the rows are initially sorted.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>sortorder</td>
+                                            <td>int</td>
+                                            <td>null</td>
+                                            <td>Determines the order of the initial sorting 1 is up, -1 is down.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>keepselectioninlazymode</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>When true, the pagination in lazy mode will keep the selected rows. Developer is responsible for the fact that always the same rows in the same order needs to be returned in order to make the selection behave correctly.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>scrollable</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>In scrollable mode, data in body is scrollable with fixed header and footer.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>scrollheight</td>
+                                            <td>boolean</td>
+                                            <td>null</td>
+                                            <td>Height of the scrollable body section, can be a fixed value in pixels like 50 or a percentage 50%.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>scrollwidth</td>
+                                            <td>boolean</td>
+                                            <td>null</td>
+                                            <td>Width of the scrollable body section, can be a fixed value in pixels like 50 or a percentage 50%.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>responsive</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>When enabled, columns for a row are displayed as stacked in small screens.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>expandablerows</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>Allows row expansion to display detailed content.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>rowexpandmode</td>
+                                            <td>string</td>
+                                            <td>multiple</td>
+                                            <td>Defines whether one row at a time can be toggled or not. Valid values are "multiple" and "single".</td>
+                                        </tr>
+                                        <tr>
+                                            <td>resizablecolumns</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>Makes columns resizable using drag drop.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>columnresizemode</td>
+                                            <td>string</td>
+                                            <td>fit</td>
+                                            <td>Defines if overall table width should change or not, valid values are "fit" and "expand".</td>
+                                        </tr>
+                                        <tr>
+                                            <td>draggablerows</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>Makes rows draggable for reorder.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>draggablecolumns</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>Makes columns draggable for reorder.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>filterdelay</td>
+                                            <td>integer</td>
+                                            <td>500</td>
+                                            <td>Delay in milliseconds to trigger filtering.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>stickyheader</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>When enabled, header is kept inside the viewport during page scroll.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>editmode</td>
+                                            <td>boolean</td>
+                                            <td>cell</td>
+                                            <td>Defines edit mode of data, only valid value is cell.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>tabindex</td>
+                                            <td>integer</td>
+                                            <td>0</td>
+                                            <td>tabindex to be used at keyboard support such as row navigation.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>emptymessage</td>
+                                            <td>string</td>
+                                            <td>No records found</td>
+                                            <td>If there are no records in datatable this option displays a message about it.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
