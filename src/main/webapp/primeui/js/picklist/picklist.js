@@ -212,11 +212,11 @@
             if(this.options.filter) {
                 this._setupFilterMatcher();
                 
-                this.element.find('> .pui-picklist-source > .pui-picklist-filter-container > input').on('keyup', function(e) {
+                this.element.find('> .pui-picklist-listwrapper > .pui-picklist-filter-container > input').on('keyup', function(e) {
                     $this._filter(this.value, $this.sourceList);
                 });
 
-                this.element.find('> .pui-picklist-target > .pui-picklist-filter-container > input').on('keyup', function(e) {
+                this.element.find('> .pui-picklist-listwrapper > .pui-picklist-filter-container > input').on('keyup', function(e) {
                     $this._filter(this.value, $this.targetList);
                 });
             }
