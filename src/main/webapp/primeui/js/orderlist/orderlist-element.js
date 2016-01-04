@@ -47,7 +47,7 @@ if(!xtag.tags['p-orderlist']) {
                     caption: this.caption,
                     responsive: this.responsive,
                     template: itemTemplate.length ? itemTemplate : null,
-                    reorder: function(event) {PUI.executeFunctionByName($this.reorder, event);}
+                    onreorder: this.onreorder ? function(event) {PUI.executeFunctionByName($this.onreorder, event);} : null
                 });
             }
         }
