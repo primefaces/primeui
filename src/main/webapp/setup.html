@@ -17,19 +17,35 @@
 
         <h3>Include Resources</h3>
         <p>Although you can include resources of each widget individually, it is suggested to use the prime-ui.js and prime-ui.css file to register all
-            the widgets at once. As PrimeUI is jQuery UI based, you also need to include jQuery and jQuery UI. In addition, PrimeUI uses <a href="http://fortawesome.github.io/Font-Awesome/">FontAwesome</a> for the icons.<</p>
+            the widgets at once. As PrimeUI is jQuery UI based, you also need to include jQuery and jQuery UI. In addition, PrimeUI uses <a href="http://fortawesome.github.io/Font-Awesome/">FontAwesome</a> for the icons.</p>
 
         <pre name="code" class="brush:xml">
             &lt;head&gt;                                    
                 &lt;link rel="stylesheet" href="%PATH%/theme.css" /&gt;
                 &lt;link rel="stylesheet" href="%PATH%/jquery-ui.css" /&gt;
-                &şt;link rel="stylesheet" type="text/css" href="resources/css/fa/font-awesome.css" /&gt;
-                &lt;link rel="stylesheet" href="%PATH%/prime-ui-min.css" /&gt;
+                &lt;link rel="stylesheet" type="text/css" href="resources/css/fa/font-awesome.css" /&gt;
+                &lt;link rel="stylesheet" href="%PATH%/primeui-3.0.css" /&gt;
                 &lt;script type="text/javascript" src="%PATH%/jquery.js"&gt;&lt;/script&gt;
                 &lt;script type="text/javascript" src="%PATH%/jquery-ui.js"&gt;&lt;/script&gt;
-                &lt;script type="text/javascript" src="%PATH%/prime-ui.js"&gt;&lt;/script&gt;
+                &lt;script type="text/javascript" src="%PATH%/primeui-3.0.js"&gt;&lt;/script&gt;
             &lt;/head&gt;
         </pre>
+        
+        <h3>PrimeElements</h3>
+        <p>In order to use PrimeElements, add <a href="https://rawgit.com/x-tag/core/master/dist/x-tag-core.min.js">X-Tag library</a> that also includes the pollyfill for custom elements.</p>
+        
+        <pre name="code" class="brush:xml">
+            &lt;script type="text/javascript" src="%PATH%/x-tag-core.min.js"&gt;&lt;/script&gt;
+            &lt;script type="text/javascript" src="%PATH%/primeelements-3.0.js"&gt;&lt;/script&gt;
+        </pre>
+        
+        <h3>Mustache Templates</h3>
+        <p>Some of the widgets like DataGrid offer an alternative way to define custom content called Mustache.js. Please refer to the <a href="https://github.com/janl/mustache.js/">project homepage</a> to download alternatives.</p>
+        
+        <pre name="code" class="brush:xml">
+            &lt;script type="text/javascript" src="%PATH%/mustache.min.js"&gt;&lt;/script&gt;
+        </pre>
+
     </div>
 
     <script language="javascript">
