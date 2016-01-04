@@ -9,7 +9,7 @@
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript" src="primeui/js/growl/growl.js"></script>
     <script type="text/javascript">
-        $(function() {
+        $(function () {
             $('#local').puitreetable({
                 columns: [
                     {field: 'name', headerText: 'Name'},
@@ -65,25 +65,25 @@
                     {field: 'size', headerText: 'Size'},
                     {field: 'type', headerText: 'Type'}
                 ],
-                nodeSelect: function(event, ui) {
+                nodeSelect: function (event, ui) {
                     $('#messages').puigrowl('show', [{severity: 'info', summary: 'Node Selected', detail: 'Data: ' + ui.data.name}]);
                 },
-                nodeUnselect: function(event, ui) {
+                nodeUnselect: function (event, ui) {
                     $('#messages').puigrowl('show', [{severity: 'info', summary: 'Node Unselected', detail: 'Data: ' + ui.data.name}]);
                 },
-                afterExpand: function(event, ui) {
+                afterExpand: function (event, ui) {
                     $('#messages').puigrowl('show', [{severity: 'info', summary: 'Node Expanded', detail: 'Data: ' + ui.data.name}]);
                 },
-                afterCollapse: function(event, ui) {
+                afterCollapse: function (event, ui) {
                     $('#messages').puigrowl('show', [{severity: 'info', summary: 'Node Collapsed', detail: 'Data: ' + ui.data.name}]);
                 },
-                nodes: function(ui, response) {
+                nodes: function (ui, response) {
                     $.ajax({
                         type: "GET",
                         url: 'rest/tree/documents',
                         dataType: "json",
                         context: this,
-                        success: function(data) {
+                        success: function (data) {
                             response.call(this, data);
                         }
                     });
@@ -98,13 +98,13 @@
                     {field: 'type', headerText: 'Type'}
                 ],
                 header: 'Infinite',
-                nodes: function(ui, response) {
+                nodes: function (ui, response) {
                     $.ajax({
                         type: "GET",
                         url: 'rest/tree/lazydocuments',
                         dataType: "json",
                         context: this,
-                        success: function(data) {
+                        success: function (data) {
                             response.call(this, data, ui.node);
                         }
                     });
@@ -134,7 +134,7 @@
 
         <h3>Remote - Lazy Data</h3>
         <div id="remoteinfinite"></div>
-        
+
         <h3>PrimeElement</h3>
         <p-treetable nodes="TreeDemo.treetableData">
             <p-column field="name" headertext="Name"></p-column>
@@ -154,6 +154,7 @@
                             <li><a href="#doc-events">Events</a></li>
                             <li><a href="#doc-methods">Methods</a></li>
                             <li><a href="#doc-methods">Source</a></li>
+                            <li class="tab-primeelement"><a href="#doc-element">PrimeElement</a></li>
                         </ul>
                         <div>
                             <div id="doc-overview">
@@ -169,6 +170,17 @@
                                         as data is cached on client side.</li>
                                 </ul>
                                 See source tab for examples of each type.
+                                
+                                TreeTables uses the following options for a column definition.
+                                <ul>
+                                    <li>field: Name of field.</li>
+                                    <li>headerText: Column header value.</li>
+                                    <li>content: A function that takes row data and expects a string or a jQuery object to customize the cell.</li>
+                                    <li>headerStyle: Inline style of the header cell.</li>
+                                    <li>headerClass: Style class of the header cell.</li>
+                                    <li>bodyStyle: Inline style of the body cell.</li>
+                                    <li>bodyClass: Style class of the body cell.</li>
+                                </ul> 
 
                                 <pre name="code" class="brush:js">
 $('#container').puitreetable({
@@ -479,6 +491,195 @@ $(function() {
 &lt;/p-treetable&gt;
                                 </pre>
 
+                            </div>
+
+                            <div id="doc-element">
+                                <h3>Usage</h3>
+                                Datasource of treetable can either be an array of nodes or a javascript function that loads this array. In addition p-column elements
+                                are required to define the columns.
+
+                                <pre name="code" class="brush:xml">
+&lt;p-treetable nodes="TreeDemo.nodes"&gt;
+    &lt;p-column field="name" headertext="Name"&gt;&lt;/p-column&gt;
+    &lt;p-column field="size" headertext="Size"&gt;&lt;/p-column&gt;
+    &lt;p-column field="type" headertext="Type"&gt;&lt;/p-column&gt;
+&lt;/p-treetable&gt;
+                                </pre>
+
+                                <h4>Local Data</h4>
+                                <pre name="code" class="brush:js">
+var TreeDemo = {
+          
+        nodes: [
+            {
+                data: {name: 'Documents', size: '75kb', type: 'Folder'},
+                children: [
+                    {
+                        data: {name: 'Work', size: '55kb', type: 'Folder'},
+                        children: [
+                            {
+                                data: {name: 'Expenses.doc', size: '30kb', type: 'Document'}
+                            },
+                            {
+                                data: {name: 'Resume.doc', size: '25kb', type: 'Resume'}
+                            }
+                        ]
+                    },
+                    {
+                        data: {name: 'Home', size: '20kb', type: 'Folder'},
+                        children: [
+                            {
+                                data: {name: 'Invoices', size: '20kb', type: 'Text'}
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                data: {name: 'Pictures', size: '150kb', type: 'Folder'},
+                children: [
+                    {
+                        data: {name: 'barcelona.jpg', size: '90kb', type: 'Picture'}
+                    },
+                    {
+                        data: {name: 'primeui.png', size: '30kb', type: 'Picture'}
+                    },
+                    {
+                        data: {name: 'optimus.jpg', size: '30kb', type: 'Picture'}
+                    }
+                ]
+            }
+        ]
+};
+                                </pre>
+
+                                <h4>Remote Data</h4>
+                                <pre name="code" class="brush:js">
+var TreeDemo = {
+          
+        nodes: function (ui, response) {
+            $.ajax({
+                type: "GET",
+                url: 'rest/tree/documents',
+                dataType: "json",
+                context: this,
+                success: function (data) {
+                    response.call(this, data);
+                }
+            });
+        }
+};
+                                </pre>
+                                
+                                TreeTables uses the following attributes of a p-column element.
+                                <ul>
+                                    <li>field: Name of field.</li>
+                                    <li>headertext: Column header value.</li>
+                                    <li>headerstyle: Inline style of the header cell.</li>
+                                    <li>headerclass: Style class of the header cell.</li>
+                                    <li>bodystyle: Inline style of the body cell.</li>
+                                    <li>bodyclass: Style class of the body cell.</li>
+                                </ul> 
+
+                                <h3>Attributes</h3>
+                                <table class="doc-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Default</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>id</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Identifier of the element.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>nodes</td>
+                                            <td>array/function</td>
+                                            <td>null</td>
+                                            <td>DataSource for treetable, can either be an array of TreeNodes or a function
+                                                to provide an array of TreeNodes.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>lazy</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>In lazy mode, children nodes are loaded on demand. Prefer this option
+                                                when dealing with large datasets.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>selectionMode</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Defines selection type, valid values are single and multiple. Multiple is used with metakey.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>header</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Title of the table.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>onnodeselect</td>
+                                            <td>event: puitreetablenodeselect event
+                                                <br />
+                                                node: Node object.
+                                                <br />
+                                                data: Node data.</td>
+                                            <td>Name of the function to invoke when a node is selected.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>onnodeunselect</td>
+                                            <td>event: puitreetablenodeunselect event
+                                                <br />
+                                                node: Node object.
+                                                <br />
+                                                data: Node data.</td>
+                                            <td>Name of the function to invoke when a node is unselected.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>onbeforeexpand</td>
+                                            <td>event: puitreetablenodebeforeexpand event
+                                                <br />
+                                                node: Node object.
+                                                <br />
+                                                data: Node data.</td>
+                                            <td>Name of the function to invoke before a node is expanded.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>onafterexpand</td>
+                                            <td>event: puitreetablenodeafterexpand event
+                                                <br />
+                                                node: Node object.
+                                                <br />
+                                                data: Node data.</td>
+                                            <td>Name of the function to invoke after a node is expanded.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>onbeforecollapse</td>
+                                            <td>event: puitreetablenodebeforecollapse event
+                                                <br />
+                                                node: Node object.
+                                                <br />
+                                                data: Node data.</td>
+                                            <td>Name of the function to invoke before a node is collapsed.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>onaftercollapse</td>
+                                            <td>event: puitreetableaftercollapse event
+                                                <br />
+                                                node: Node object.
+                                                <br />
+                                                data: Node data.</td>
+                                            <td>Name of the function to invoke after a node is collapsed.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
 
                         </div>
