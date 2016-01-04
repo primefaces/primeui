@@ -253,6 +253,10 @@ input.searchInput {
     margin-top: 0px !important;
 }
 
+.Implementation h4 {
+    color: #5C666A;
+}
+
 .SubSubMenu {
     padding: 15px 30px;
 }
