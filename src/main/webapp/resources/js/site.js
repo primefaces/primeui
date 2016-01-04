@@ -48,6 +48,13 @@ Showcase = {
         .on("mouseleave",function(){
             $("#GlobalThemeSwitcher").slideUp(1);
         });
+        
+        $("#PremiumLayouts").on("click",function(){
+            $("#PremiumLayoutsPanel").slideDown(500);
+        })
+        .on("mouseleave",function(){
+            $("#PremiumLayoutsPanel").slideUp(1);
+        });
 
         $("#GlobalThemeSwitcher > a").on("click", function(e) {
             var theme = $(this).data("theme"),
