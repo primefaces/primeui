@@ -83,8 +83,6 @@
 }
 .syntaxhighlighter table td.code .container {
   position: relative !important;
-  padding: .5em 0 0.5em 0em !important;
-  background-color: #EFF3F6 !important;
 }
 .syntaxhighlighter table td.code .container textarea {
   box-sizing: border-box !important;
@@ -263,11 +261,9 @@
 }
 .syntaxhighlighter .gutter {
   color: #afafaf !important;
-
 }
 .syntaxhighlighter .gutter .line {
   border-right: 3px solid #BCC7CF !important;
-  display: none;
 }
 .syntaxhighlighter .gutter .line.highlighted {
   background-color: #6ce26c !important;
