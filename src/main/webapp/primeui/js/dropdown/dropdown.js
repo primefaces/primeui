@@ -570,6 +570,10 @@
             item = $('<li data-label="' + label + '" class="pui-dropdown-item pui-dropdown-list-item ui-corner-all">' + content + '</li>'),
             optionElement = $('<option value="' + value + '">' + label + '</option>');
 
+            if(option.value === 0) {
+                value = '0';
+            }
+            
             optionElement.appendTo(this.element);
             this._bindItemEvents(item);
             item.appendTo(this.itemsContainer);
