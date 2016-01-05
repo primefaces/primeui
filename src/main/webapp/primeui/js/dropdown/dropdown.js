@@ -618,6 +618,10 @@
             this._bindEvents();
             this.label.removeClass('ui-state-disabled');
             this.menuIcon.removeClass('ui-state-disabled');
+        },
+        
+        getEditableText: function() {
+            return this.label.val();
         }
     });
     
