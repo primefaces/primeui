@@ -1,0 +1,197 @@
+<div>
+    <link rel="stylesheet" href="primeui/css/datascroller/datascroller.css" />
+    <link rel="stylesheet" href="primeui/css/grid/grid.css" />
+    <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
+    <link rel="stylesheet" href="primeui/css/button/button.css" />
+    <script type="text/javascript" src="primeui/js/datascroller/datascroller.js"></script>
+    <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('#datascroller-submenu a').on('click', function(e) {
+                Showcase.changePageWithLink($(this).attr('href'));
+                e.preventDefault();
+            });
+
+            $("#ds").puidatascroller({
+                header:'Scroll Down to Load More Cars',
+                chunkSize: 10,
+                totalSize: 200,
+                scrollHeight: 500,
+                lazy: true,
+                datasource: function (callback, ui) {
+                    var uri = 'rest/cars/lazylist/' + ui.first;
+
+                    $.ajax({
+                        type: "GET",
+                        url: uri,
+                        dataType: "json",
+                        context: this,
+                        success: function (response) {
+                            callback.call(this, response);
+                        }
+                    });
+                },
+                mode: 'self',
+                template: $('#cartemplate')
+            });
+
+            $('#doc').puitabview();
+        });
+    </script>
+    <style type="text/css">
+        .pui-datascroller .pui-datascroller-item {
+            border-bottom: 1px solid #A8A8A8;
+            padding: 25px 10px;
+        }
+    </style>
+    <div id="datascroller-submenu" class="ContentSideSections SubSubMenu clearfix">
+        <ul>
+            <li><a href="datascroller.html">&bull; Document</a></li>
+            <li><a href="datascrollerInline.html">&bull; Inline and Lazy</a></li>
+            <li><a href="datascrollerLoader.html">&bull; Loader</a></li>
+            <li><a href="datascrollerElement.html">&bull; Element</a></li>
+        </ul>
+    </div>
+
+    <div class="ContentSideSections">
+        <div class="Content100 overHidden TextShadow">
+            <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">DataScroller - <span class="subitem">Inline and Lazy</span></span>
+            <span class="defaultText dispTable">DataScroller can listen scroll event of its target rather than document using mode attribute. This example also demonstrates lazy loading where datasource is invoked
+            whenever a load is necessary on scroll.</span>
+        </div>
+    </div>
+
+    <div class="ContentSideSections Implementation">
+        <div id="ds"></div>
+        
+        <script id="cartemplate" type="x-tmpl-mustache">
+            <div class="pui-grid">
+                <div class="pui-grid-row">
+                    <div class="pui-grid-col-3">
+                        <img src="resources/demo/images/car/{{brand}}-big.gif" />
+                    </div>
+                    <div class="pui-grid-col-12" style="padding-top:20px">
+                        <div class="pui-grid">
+                            <div class="pui-grid-row">
+                                <div class="pui-grid-col-2">
+                                    <span style="font-size:24px">Vin:</span>
+                                </div>
+                                <div class="pui-grid-col-10">
+                                    <span style="font-size:24px;font-weight:bold">{{vin}}</span>
+                                </div>
+                            </div>
+                            <div class="pui-grid-row">
+                                <div class="pui-grid-col-2">
+                                    <span style="font-size:24px">Year:</span>
+                                </div>
+                                <div class="pui-grid-col-10">
+                                    <span style="font-size:24px;font-weight:bold">{{year}}</span>
+                                </div>
+                            </div>
+                            <div class="pui-grid-row">
+                                <div class="pui-grid-col-2">
+                                    <span style="font-size:24px">Color:</span>
+                                </div>
+                                <div class="pui-grid-col-10">
+                                    <span style="font-size:24px;font-weight:bold">{{color}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </script>
+    </div>
+
+    <div id="SourceContentSide" class="ContentSideSections Source">
+        <div class="Content100 overHidden TextShadow">
+            <span class="defaultText">
+                <span class="fontSize18 logoBlueText">
+                    <div id="doc">
+                        <ul>
+                            <li><a href="#doc-overview">Markup</a></li>
+                            <li><a href="#doc-options">Script</a></li>
+                        </ul>
+                        <div>
+                            <div id="doc-markup">                               
+                                <pre name="code" class="brush:xml">
+&lt;div id="ds"&gt;&lt;/div&gt;
+
+&lt;script id="cartemplate" type="x-tmpl-mustache"&gt;
+    &lt;div class="pui-grid"&gt;
+        &lt;div class="pui-grid-row"&gt;
+            &lt;div class="pui-grid-col-3"&gt;
+                &lt;img src="resources/demo/images/car/{{brand}}-big.gif" /&gt;
+            &lt;/div&gt;
+            &lt;div class="pui-grid-col-12" style="padding-top:20px"&gt;
+                &lt;div class="pui-grid"&gt;
+                    &lt;div class="pui-grid-row"&gt;
+                        &lt;div class="pui-grid-col-2"&gt;
+                            &lt;span style="font-size:24px"&gt;Vin:&lt;/span&gt;
+                        &lt;/div&gt;
+                        &lt;div class="pui-grid-col-10"&gt;
+                            &lt;span style="font-size:24px;font-weight:bold"&gt;{{vin}}&lt;/span&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class="pui-grid-row"&gt;
+                        &lt;div class="pui-grid-col-2"&gt;
+                            &lt;span style="font-size:24px"&gt;Year:&lt;/span&gt;
+                        &lt;/div&gt;
+                        &lt;div class="pui-grid-col-10"&gt;
+                            &lt;span style="font-size:24px;font-weight:bold"&gt;{{year}}&lt;/span&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class="pui-grid-row"&gt;
+                        &lt;div class="pui-grid-col-2"&gt;
+                            &lt;span style="font-size:24px"&gt;Color:&lt;/span&gt;
+                        &lt;/div&gt;
+                        &lt;div class="pui-grid-col-10"&gt;
+                            &lt;span style="font-size:24px;font-weight:bold"&gt;{{color}}&lt;/span&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/script&gt;
+                                </pre>
+                            </div>
+
+                            <div id="doc-script">
+                                <pre name="code" class="brush:js">
+$("#ds").puidatascroller({
+    header:'Scroll Down to Load More Cars',
+    chunkSize: 10,
+    totalSize: 200,
+    scrollHeight: 500,
+    lazy: true,
+    datasource: function (callback, ui) {
+        var uri = 'rest/cars/lazylist/' + ui.first;
+
+        $.ajax({
+            type: "GET",
+            url: uri,
+            dataType: "json",
+            context: this,
+            success: function (response) {
+                callback.call(this, response);
+            }
+        });
+    },
+    mode: 'self',
+    template: $('#cartemplate')
+});
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </span>
+            </span>
+        </div>
+    </div>
+
+    <script language="javascript">
+        SyntaxHighlighter.highlight();
+    </script>
+
+</div>

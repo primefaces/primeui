@@ -14,7 +14,8 @@
             content: null,
             template: null,
             mode: 'document',
-            loader: null
+            loader: null,
+            scrollHeight: null
         },
         
         _create: function() {
@@ -28,6 +29,8 @@
                 this.header = this.element.append('<div class="pui-datascroller-header ui-widget-header ui-corner-top">' + this.options.header + '</div>').children('.pui-datascroller-header');
             }
             
+
+            
             this.content = this.element.append('<div class="pui-datascroller-content ui-widget-content ui-corner-bottom"></div>').children('.pui-datascroller-content');
             this.list = this.content.append('<ul class="pui-datascroller-list"></ul>').children('.pui-datascroller-list');
             this.loaderContainer = this.content.append('<div class="pui-datascroller-loader"></div>').children('.pui-datascroller-loader');
@@ -35,7 +38,15 @@
             this.loading = false;
             this.allLoaded = false;
             this.offset = 0;
-
+            
+            if(this.options.mode === 'self') {
+                this.element.addClass('pui-datascroller-inline');
+                
+                if(this.options.scrollHeight) {
+                    this.content.css('height', this.options.scrollHeight);
+                }
+            }
+            
             if(this.options.loader) {
                 this.loadTrigger = this.loaderContainer.children();
                 this.bindManualLoader();
