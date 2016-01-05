@@ -1,20 +1,10 @@
 <div>
-    <link rel="stylesheet" href="primeui/css/inputtext/inputtext.css" />
     <link rel="stylesheet" href="primeui/css/datascroller/datascroller.css" />
-    <link rel="stylesheet" href="primeui/css/paginator/paginator.css" />
-    <link rel="stylesheet" href="primeui/css/panel/panel.css" />
-    <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
     <link rel="stylesheet" href="primeui/css/grid/grid.css" />
-    <link rel="stylesheet" href="primeui/css/growl/growl.css" />
+    <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
     <link rel="stylesheet" href="primeui/css/button/button.css" />
-    <script type="text/javascript" src="resources/demo/js/data-demo.js"></script>
-    <script type="text/javascript" src="resources/demo/js/carousel-demo.js"></script>
     <script type="text/javascript" src="primeui/js/datascroller/datascroller.js"></script>
-    <script type="text/javascript" src="primeui/js/paginator/paginator.js"></script>
-    <script type="text/javascript" src="primeui/js/panel/panel.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
-    <script type="text/javascript" src="primeui/js/growl/growl.js"></script>
-    <script type="text/javascript" src="primeui/js/button/button.js"></script>
     <script type="text/javascript">
         $(function() {
             $('#datascroller-submenu a').on('click', function(e) {
@@ -22,81 +12,89 @@
                 e.preventDefault();
             });
 
-            var cars = [
-                    {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
-                    {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
-                    {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
-                    {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
-                    {'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
-                    {'brand': 'Jaguar', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
-                    {'brand': 'BMW', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
-                    {'brand': 'Fiat', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
-                    {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'},
-                    {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
-                    {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
-                    {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
-                    {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
-                    {'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
-                    {'brand': 'Jaguar', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
-                    {'brand': 'BMW', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
-                    {'brand': 'Fiat', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
-                    {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'},
-                    {'brand': 'Jaguar', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
-                    {'brand': 'BMW', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
-                    {'brand': 'Fiat', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
-                    {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'},
-                    {'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
-                    {'brand': 'Jaguar', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
-                    {'brand': 'BMW', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
-                    {'brand': 'Fiat', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
-                    {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'},
-                    {'brand': 'Jaguar', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
-                    {'brand': 'BMW', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
-                    {'brand': 'Fiat', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
-                    {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'},
-                    {'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
-                    {'brand': 'Jaguar', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
-                    {'brand': 'BMW', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
-                    {'brand': 'Fiat', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
-                    {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'},
-                    {'brand': 'Jaguar', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
-                    {'brand': 'BMW', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
-                    {'brand': 'Fiat', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
-                    {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'}
-
-                ];
-
             $("#ds").puidatascroller({
                 header:'Scroll Down to Load More Cars',
-                datasource:cars,
+                chunkSize: 10,
+                datasource: function (callback) {
+                    $.ajax({
+                        type: "GET",
+                        url: 'rest/cars/list',
+                        dataType: "json",
+                        context: this,
+                        success: function (response) {
+                            callback.call(this, response);
+                        }
+                    });
+                },
                 mode:'document',
-                content: function(car) {
-                    return $('<div title="'+ car.vin + '"><img src="resources/demo/images/car/' + car.brand + 
-                            '.gif" /><div class="car-detail">' + car.year + ' - ' + car.color  +'</div></div>').puipanel();
-                }
-
+                template: $('#cartemplate')
             });
 
             $('#doc').puitabview();
         });
     </script>
+    <style type="text/css">
+        .pui-datascroller .pui-datascroller-item {
+            border-bottom: 1px solid #A8A8A8;
+            padding: 25px 10px;
+        }
+    </style>
     <div id="datascroller-submenu" class="ContentSideSections SubSubMenu clearfix">
         <ul>
-            <li><a href="datascroller.html">&bull; Basic</a></li>
-            <li><a href="datascrollerInline.html">&bull; Inline</a></li>
+            <li><a href="datascroller.html">&bull; Document</a></li>
+            <li><a href="datascrollerInline.html">&bull; Inline and Lazy</a></li>
             <li><a href="datascrollerLoader.html">&bull; Loader</a></li>
+            <li><a href="datascrollerElement.html">&bull; Element</a></li>
         </ul>
     </div>
 
     <div class="ContentSideSections">
         <div class="Content100 overHidden TextShadow">
-            <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">Datascroller</span>
-            <span class="defaultText dispTable">DataGrid displays data in a grid layout. Responsive mode is provided to optimize the display for different screen sizes..</span>
+            <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">DataScroller - <span class="subitem">Document</span></span>
+            <span class="defaultText dispTable">DataScroller displays data with on demand loading using scroll.</span>
         </div>
     </div>
 
     <div class="ContentSideSections Implementation">
         <div id="ds"></div>
+        
+        <script id="cartemplate" type="x-tmpl-mustache">
+            <div class="pui-grid">
+                <div class="pui-grid-row">
+                    <div class="pui-grid-col-3">
+                        <img src="resources/demo/images/car/{{brand}}-big.gif" />
+                    </div>
+                    <div class="pui-grid-col-12" style="padding-top:20px">
+                        <div class="pui-grid">
+                            <div class="pui-grid-row">
+                                <div class="pui-grid-col-2">
+                                    <span style="font-size:24px">Vin:</span>
+                                </div>
+                                <div class="pui-grid-col-10">
+                                    <span style="font-size:24px;font-weight:bold">{{vin}}</span>
+                                </div>
+                            </div>
+                            <div class="pui-grid-row">
+                                <div class="pui-grid-col-2">
+                                    <span style="font-size:24px">Year:</span>
+                                </div>
+                                <div class="pui-grid-col-10">
+                                    <span style="font-size:24px;font-weight:bold">{{year}}</span>
+                                </div>
+                            </div>
+                            <div class="pui-grid-row">
+                                <div class="pui-grid-col-2">
+                                    <span style="font-size:24px">Color:</span>
+                                </div>
+                                <div class="pui-grid-col-10">
+                                    <span style="font-size:24px;font-weight:bold">{{color}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </script>
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">
@@ -113,10 +111,9 @@
                         </ul>
                         <div>
                             <div id="doc-overview">
-                                <p class="defaultText">Datasource of Datagrid can either be a javascript array or a function to load
+                                <p class="defaultText">Datasource of Datascroller can either be a javascript array or a function to load
                                 data from a remote location. In eager mode, datasource is loaded only once and in lazy mode
-                                ,invoked everytime whenever the state changes like paging or sorting. To update the datasource
-                                use $('#example').puidatatable('option', 'datasource', newdatasource).</p>
+                                ,invoked everytime whenever a load is necessary.</p>
 
                                 <pre name="code" class="brush:js">
 $('#grid').puidatagrid({
@@ -202,123 +199,11 @@ $('#grid').puidatagrid({
 
                             <div id="doc-source">
                                 <pre name="code" class="brush:js">
-$(function() {
-    $('#localgrid').puidatagrid({
-        paginator: {
-            rows: 9
-        },
-        header: 'Local Javascript Array',
-        datasource: [
-            {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
-            {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
-            {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
-            {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
-            {'brand': 'Ford', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
-            {'brand': 'Fiat', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
-            {'brand': 'Honda', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
-            {'brand': 'Volvo', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
-            {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'},
-            {'brand': 'BMW', 'year': 2013, 'color': 'Red', 'vin': '245t2s'},
-            {'brand': 'Jaguar', 'year': 2011, 'color': 'Blue', 'vin': 'few234'},
-            {'brand': 'Ford', 'year': 2010, 'color': 'White', 'vin': 'bfnt23'},
-            {'brand': 'BMW', 'year': 2011, 'color': 'Green', 'vin': 'aad423'},
-            {'brand': 'Mercedes', 'year': 2012, 'color': 'Black', 'vin': 'vx23f2'},
-            {'brand': 'Fiat', 'year': 2014, 'color': 'Grey', 'vin': 'vxr23fd'},
-            {'brand': 'Renault', 'year': 2015, 'color': 'Blue', 'vin': 'vxc23f'},
-            {'brand': 'Volvo', 'year': 2015, 'color': 'Yellow', 'vin': 'vxcff4'},
-            {'brand': 'Volvo', 'year': 2015, 'color': 'White', 'vin': 'ht3w1d'},
-            {'brand': 'Renault', 'year': 2013, 'color': 'Black', 'vin': 'az12s2'},
-            {'brand': 'Fiat', 'year': 2015, 'color': 'Green', 'vin': 'ds12d1'},
-            {'brand': 'Volkswagen', 'year': 2001, 'color': 'Grey', 'vin': 'vsd3f2'},
-            {'brand': 'Volvo', 'year': 2011, 'color': 'Blue', 'vin': 'dsy4g22'},
-            {'brand': 'BMW', 'year': 1996, 'color': 'Black', 'vin': 'h3g254'},
-            {'brand': 'Audi', 'year': 2005, 'color': 'Red', 'vin': 'g54gwg'},
-            {'brand': 'Ford', 'year': 2011, 'color': 'Blue', 'vin': '14ffqf4'},
-            {'brand': 'BMW', 'year': 2015, 'color': 'Black', 'vin': 'h465he6'},
-            {'brand': 'Jaguar', 'year': 2010, 'color': 'White', 'vin': 'dsf4frt'},
-            {'brand': 'Jaguar', 'year': 2009, 'color': 'Red', 'vin': 'g6hehr'},
-        ],
-        content: function(car) {
-            return $('&lt;div title="'+ car.vin + '"&gt;&lt;img src="resources/demo/images/car/' + car.brand + 
-                    '.gif" /&gt;&lt;div class="car-detail"&gt;' + car.year + ' - ' + car.color  +'&lt;/div&gt;&lt;/div&gt;').puipanel();
-        }
-    });
 
-    $('#remotegrid').puidatagrid({
-        header: 'Remote Restful Webservice',
-        paginator: {
-            rows: 9
-        },
-        datasource: function(callback) {
-            $.ajax({
-                type: "GET",
-                url: 'rest/cars/list',
-                dataType: "json",
-                context: this,
-                success: function(response) {
-                    callback.call(this, response);
-                }
-            });
-        },
-        template: $('#cartemplate')
-    });
-
-    $('#lazygrid').puidatagrid({
-        header: 'Remote Restful Webservice - Lazy',
-        lazy: true,
-        paginator: {
-            rows: 9,
-            totalRecords: 200
-        },
-        datasource: function(callback, ui) {
-            var uri = 'rest/cars/lazylist/' + ui.first + '/' + ui.rows;
-
-            $.ajax({
-                type: "GET",
-                url: uri,
-                dataType: "json",
-                context: this,
-                success: function(response) {
-                    callback.call(this, response);
-                }
-            });
-        },
-        template: $('#cartemplate')
-    });
-});
                                 </pre>
 
                                 <pre name="code" class="brush:xml">
-&lt;div id="localgrid"&gt;&lt;/div&gt;
-        
-&lt;div id="remotegrid"&gt;&lt;/div&gt;
 
-&lt;div id="lazygrid"&gt;&lt;/div&gt;
-
-&lt;script id="cartemplate" type="x-tmpl-mustache"&gt;
-    &lt;div class="pui-panel ui-widget ui-widget-content ui-corner-all"&gt;
-        &lt;div class="pui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all"&gt;
-            &lt;span class="ui-panel-title"&gt;{{vin}}&lt;/span&gt;&lt;/div&gt;
-        &lt;div class="pui-panel-content ui-widget-content"&gt;
-            &lt;img src="resources/demo/images/car/{{brand}}.gif"&gt;
-            &lt;div class="car-detail"&gt;{{year}} - {{color}}&lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/script&gt;
-
-&lt;p-datagrid datasource="DataDemo.loadAllCars" header="PrimeElement" paginator rows="9"&gt;
-    &lt;script type="x-tmpl-mustache"&gt;
-        &lt;div class="pui-panel ui-widget ui-widget-content ui-corner-all"&gt;
-            &lt;div class="pui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all"&gt;
-                &lt;span class="ui-panel-title"&gt;{{vin}}&lt;/span&gt;
-            &lt;/div&gt;
-            &lt;div class="pui-panel-content ui-widget-content"&gt;
-                &lt;img src="resources/demo/images/car/{{brand}}.gif" /&gt;
-                &lt;div class="car-detail"&gt;{{year}} - {{color}}&lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/script&gt;
-&lt;/p-datagrid&gt;
                                 </pre>
                             </div>
                         </div>

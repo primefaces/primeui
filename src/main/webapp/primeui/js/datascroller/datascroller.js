@@ -6,162 +6,162 @@
     $.widget("primeui.puidatascroller", {
        
         options: {
-            header:null,
-            buffer: 10,
-            chunksize: 10,
-            initchunk: 20,
+            header: null,
+            buffer: 0.9,
+            chunkSize: 10,
             datasource: null,
             lazy: false,
             content: null,
             template: null,
-            mode: 'document' || 'self' ,
-            manuelmode: false
+            mode: 'document',
+            loader: null
         },
         
         _create: function() {
-            if(!this.options.manuelmode) {
-                if(this.options.mode === 'document') {
-                    this.element.addClass('pui-datascroller ui-widget');
-                    this.container = $('<div class="pui-datascroller-content ui-widget-content ui-corner-bottom"></div>').appendTo(this.element);
-                    this.container.append('<ul class="pui-datascroller-list"></ul>');
-                    
-                }
-                else  {
-                    this.element.addClass('pui-datascroller pui-datascroller-inline ui-widget');
-                    this.container = $('<div class="pui-datascroller-content ui-widget-content ui-corner-bottom" style="height:500px"></div>').appendTo(this.element);
-                    this.container.append('<ul class="pui-datascroller-list"></ul>');
-                }
+            this.id = this.element.attr('id');
+            if(!this.id) {
+                this.id = this.element.uniqueId().attr('id');
             }
-            else {
-                this.element.addClass('pui-datascroller ui-widget');
-                this.container = $('<div class="pui-datascroller-content ui-widget-content ui-corner-bottom"></div>').appendTo(this.element);
-                this.container.append('<ul class="pui-datascroller-list"></ul>').append('<div class="pui-datascroller-loader"></div>');
-                this.loaderContainer = this.container.children('div.pui-datascroller-loader');
-                this.loaderContainer.append('<button type="button" class="pui-button ui-widget ui-state-default ui-corner-all pui-button-text-icon-left"></button>');
-                this.loadTrigger = this.loaderContainer.children('button');
-                this.loadTrigger.append('<span class="pui-button-icon-left ui-icon ui-c ui-icon-circle-triangle-s"></span>').append('<span class="pui-button-text ui-c">More</span>')
-            }
-            //header
+            
+            this.element.addClass('pui-datascroller ui-widget');
             if(this.options.header) {
-                this.element.prepend('<div class="pui-datascroller-header ui-widget-header ui-corner-top">' + this.options.header + '</div>');
+                this.header = this.element.append('<div class="pui-datascroller-header ui-widget-header ui-corner-top">' + this.options.header + '</div>').children('.pui-datascroller-header');
             }
-
+            
+            this.content = this.element.append('<div class="pui-datascroller-content ui-widget-content ui-corner-bottom"></div>').children('.pui-datascroller-content');
+            this.list = this.content.append('<ul class="pui-datascroller-list"></ul>').children('.pui-datascroller-list');
+            this.loaderContainer = this.content.append('<div class="pui-datascroller-loader"></div>').children('.pui-datascroller-loader');
             this.loadStatus = $('<div class="pui-datascroller-loading"></div>');
             this.loading = false;
             this.allLoaded = false;
-            this.options.buffer = (100 - this.options.buffer) / 100;
-            this.listContainer = this.container.children('ul');
+            this.offset = 0;
 
-            this._render(this.options.datasource);
-            if(!this.options.manuelmode) {
-                this._load();
+            if(this.options.loader) {
+                this.loadTrigger = this.loaderContainer.children();
+                this.bindManualLoader();
             }
-            else
-                this._manuelLoad(); 
-        },
-        _render: function(data) {
-            this.data = data;
-            if(this.data) {
-                if (data.length <= 20) {
-                    if($.isArray(this.options.datasource)) {
-                        for (var i = 0; i < data.length; i++) {
-                            var itemContent = this.options.content.call(this,this.options.datasource[i]);
+            else {
+                this.bindScrollListener();
+            }
 
-                            if($.type(itemContent) === 'string')
-                                this.listContainer.append('<li class="pui-datascroller-item">' + itemContent + '</li>');
-                            else
-                                this.listContainer.append($('<li class="pui-datascroller-item"></li>').wrapInner(itemContent));
-                        }
-                    }
+            if(this.options.datasource) {
+                if($.isArray(this.options.datasource)) {
+                    this._onDataInit(this.options.datasource);
                 }
-                else {
-                    if($.isArray(this.options.datasource)) {
-                        for (var i = 0; i < this.options.initchunk; i++) {
-                            var itemContent = this.options.content.call(this,this.options.datasource[i]);
-
-                            if($.type(itemContent) === 'string')
-                                this.listContainer.append('<li class="pui-datascroller-item">' + itemContent + '</li>');
-                            else
-                                this.listContainer.append($('<li class="pui-datascroller-item"></li>').wrapInner(itemContent));
-                        }
-                    }
+                else if($.type(this.options.datasource) === 'function') {
+                    if(this.options.lazy)
+                        this.options.datasource.call(this, this._onLazyLoad, {first:this.offset});
+                    else
+                        this.options.datasource.call(this, this._onDataInit);
                 }
-
             }
         },
-        _load: function() { 
-            var $this = this,
-            offset = $this.options.initchunk,
-            totalSize = $this.options.datasource.length;
+        
+        _onDataInit: function(data) {
+            this.data = data||[];
+            this.options.totalSize = this.data.length;
+            
+            this._load();
+        },
+        
+        _onLazyLoad: function(data) {
+            this._renderData(data, 0, this.options.chunkSize);
+            
+            this._onloadComplete();
+        },
+        
+        bindScrollListener: function() {
+            var $this = this;
+
             if(this.options.mode === 'document') {
                 var win = $(window),
                 doc = $(document),
+                $this = this,
                 NS = 'scroll.' + this.id;
-                
+
                 win.off(NS).on(NS, function () {
                     if(win.scrollTop() >= ((doc.height() * $this.options.buffer) - win.height()) && $this.shouldLoad()) {
-                        for (var i = offset; i < offset + $this.options.chunksize; i++) {
-                            var itemContent = $this.options.content.call(this,$this.options.datasource[i]);
-                            if($.type(itemContent) === 'string')
-                                $this.listContainer.append('<li class="pui-datascroller-item">' + itemContent + '</li>');
-                            else
-                                $this.listContainer.append($('<li class="pui-datascroller-item"></li>').wrapInner(itemContent));
-                        }
-                        offset += $this.options.chunksize;
-                        if(offset === totalSize) {
-                            $this.allLoaded = true;
-                            $this.loading = false;
-                            $this.loadStatus.remove();
-                        }  
+                        $this._load();
                     }
                 });
             }
             else {
-                this.container.on('scroll', function () {
+                this.content.on('scroll', function () {
                     var scrollTop = this.scrollTop,
                     scrollHeight = this.scrollHeight,
                     viewportHeight = this.clientHeight;
 
                     if((scrollTop >= ((scrollHeight * $this.options.buffer) - (viewportHeight))) && $this.shouldLoad()) {
-                        for (var i = offset; i < offset + $this.options.chunksize; i++) {
-                            var itemContent = $this.options.content.call(this,$this.options.datasource[i]);
-                            if($.type(itemContent) === 'string')
-                                $this.listContainer.append('<li class="pui-datascroller-item">' + itemContent + '</li>');
-                            else
-                                $this.listContainer.append($('<li class="pui-datascroller-item"></li>').wrapInner(itemContent));
-                        }
-                        offset += $this.options.chunksize;
-                        if(offset === totalSize) {
-                            $this.allLoaded = true;
-                            $this.loading = false;
-                            $this.loadStatus.remove();
-                        } 
+                        $this._load();
                     }
                 });
             }
         },
-        _manuelLoad:function() {
-            var $this = this,
-            offset = $this.options.initchunk,
-            totalSize = $this.options.datasource.length;
-        
+
+        bindManualLoader: function() {
+            var $this = this;
+
             this.loadTrigger.on('click.dataScroller', function(e) {
-                if(offset !== totalSize) {
-                    for (var i = offset; i < offset + $this.options.chunksize; i++) {
-                        var itemContent = $this.options.content.call(this,$this.options.datasource[i]);
-                        if($.type(itemContent) === 'string')
-                            $this.listContainer.append('<li class="pui-datascroller-item">' + itemContent + '</li>');
-                        else
-                            $this.listContainer.append($('<li class="pui-datascroller-item"></li>').wrapInner(itemContent));
-                    }
-                    offset += $this.options.chunksize;
-                }
+                $this.load();
                 e.preventDefault();
             });
         },
+
+        _load: function() {
+            this.loading = true;
+            this.loadStatus.appendTo(this.loaderContainer);
+            if(this.loader) {
+                this.loader.hide();
+            }
+
+            if(this.options.lazy) {
+                this.options.datasource.call(this, this._onLazyLoad, {first: this.offset});
+            }
+            else {
+               this._renderData(this.data, this.offset, (this.offset + this.options.chunkSize));
+               this._onloadComplete();
+            }
+        },
+        
+        _renderData: function(data, start, end) {
+            if(data && data.length) {
+                for(var i = start; i < end; i++) {
+                    var listItem = $('<li class="pui-datascroller-item"></li>'),
+                    content = this._createItemContent(data[i]);
+                    listItem.append(content);
+                    
+                    this.list.append(listItem); 
+                }
+            }
+        },
+        
         shouldLoad: function() {
             return (!this.loading && !this.allLoaded);
+        },
+        
+        _createItemContent: function(obj) {
+            if(this.options.template) {
+                var template = this.options.template.html();
+                Mustache.parse(template);
+                return Mustache.render(template, obj);
+            }
+            else {
+                return this.options.content.call(this, obj);
+            }
+        },
+        
+        _onloadComplete: function() {
+            this.offset += this.options.chunkSize;
+            this.loading = false;
+            this.allLoaded = this.offset >= this.options.totalSize;
+
+            this.loadStatus.remove();
+
+            if(this.loader && !this.allLoaded) {
+                this.loader.show();
+            }
         }
         
     });
+    
 })();
