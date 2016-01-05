@@ -29,8 +29,6 @@
                 this.header = this.element.append('<div class="pui-datascroller-header ui-widget-header ui-corner-top">' + this.options.header + '</div>').children('.pui-datascroller-header');
             }
             
-
-            
             this.content = this.element.append('<div class="pui-datascroller-content ui-widget-content ui-corner-bottom"></div>').children('.pui-datascroller-content');
             this.list = this.content.append('<ul class="pui-datascroller-list"></ul>').children('.pui-datascroller-list');
             this.loaderContainer = this.content.append('<div class="pui-datascroller-loader"></div>').children('.pui-datascroller-loader');
@@ -48,7 +46,6 @@
             }
             
             if(this.options.loader) {
-                this.loadTrigger = this.loaderContainer.children();
                 this.bindManualLoader();
             }
             else {
@@ -112,8 +109,8 @@
         bindManualLoader: function() {
             var $this = this;
 
-            this.loadTrigger.on('click.dataScroller', function(e) {
-                $this.load();
+            this.options.loader.on('click.dataScroller', function(e) {
+                $this._load();
                 e.preventDefault();
             });
         },
@@ -121,8 +118,8 @@
         _load: function() {
             this.loading = true;
             this.loadStatus.appendTo(this.loaderContainer);
-            if(this.loader) {
-                this.loader.hide();
+            if(this.options.loader) {
+                this.options.loader.hide();
             }
 
             if(this.options.lazy) {
@@ -168,8 +165,8 @@
 
             this.loadStatus.remove();
 
-            if(this.loader && !this.allLoaded) {
-                this.loader.show();
+            if(this.options.loader && !this.allLoaded) {
+                this.options.loader.show();
             }
         }
         
