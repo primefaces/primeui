@@ -17,13 +17,14 @@
 
         <h3>Include Resources</h3>
         <p>Although you can include resources of each widget individually, it is suggested to use the prime-ui.js and prime-ui.css file to register all
-            the widgets at once. As PrimeUI is jQuery UI based, you also need to include jQuery and jQuery UI. In addition, PrimeUI uses <a href="http://fortawesome.github.io/Font-Awesome/">FontAwesome</a> for the icons.</p>
+            the widgets at once. As PrimeUI is jQuery UI based, you also need to include jQuery and jQuery UI. In addition, PrimeUI uses <a href="http://fortawesome.github.io/Font-Awesome/">FontAwesome</a> for the icons.
+        Some components have images so place the images folder at the same location with primeui css file.</p>
 
         <pre name="code" class="brush:xml">
             &lt;head&gt;                                    
                 &lt;link rel="stylesheet" href="%PATH%/theme.css" /&gt;
                 &lt;link rel="stylesheet" href="%PATH%/jquery-ui.css" /&gt;
-                &lt;link rel="stylesheet" type="text/css" href="resources/css/fa/font-awesome.css" /&gt;
+                &lt;link rel="stylesheet" type="text/css" href="%PATH%/font-awesome.css" /&gt;
                 &lt;link rel="stylesheet" href="%PATH%/primeui-3.0.css" /&gt;
                 &lt;script type="text/javascript" src="%PATH%/jquery.js"&gt;&lt;/script&gt;
                 &lt;script type="text/javascript" src="%PATH%/jquery-ui.js"&gt;&lt;/script&gt;
