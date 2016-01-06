@@ -28,7 +28,7 @@
 }
 
 .pui-lightbox-loading {
-    background: url("../images/loading.gif") #000000 center center no-repeat;
+    background: url("../../images/loading.gif") #000000 center center no-repeat;
 }
 
 .pui-lightbox-caption {
