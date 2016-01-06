@@ -130,6 +130,7 @@
                                                 <include>${basedir}/src/main/webapp/primeui/js/checkbox/checkbox.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/datatable/datatable.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/datagrid/datagrid.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/datascroller/datascroller.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/dialog/dialog.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/dropdown/dropdown.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/fieldset/fieldset.js</include>
@@ -177,6 +178,7 @@
                                                 <include>${basedir}/src/main/webapp/primeui/css/checkbox/checkbox.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/datatable/datatable.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/datagrid/datagrid.css</include>
+                                                <include>${basedir}/src/main/webapp/primeui/css/datascroller/datascroller.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/dialog/dialog.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/dropdown/dropdown.css</include>
                                                 <include>${basedir}/src/main/webapp/primeui/css/fieldset/fieldset.css</include>
@@ -241,6 +243,7 @@
                                                 <include>${project.build.directory}/primeui/production/js/checkbox/checkbox.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/datatable/datatable.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/datagrid/datagrid.js</include>
+                                                <include>${project.build.directory}/primeui/production/js/datascroller/datascroller.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/dialog/dialog.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/dropdown/dropdown.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/fieldset/fieldset.js</include>
@@ -288,6 +291,7 @@
                                                 <include>${project.build.directory}/primeui/production/css/checkbox/checkbox.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/datatable/datatable.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/datagrid/datagrid.css</include>
+                                                <include>${project.build.directory}/primeui/production/css/datascroller/datascroller.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/dialog/dialog.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/dropdown/dropdown.css</include>
                                                 <include>${project.build.directory}/primeui/production/css/fieldset/fieldset.css</include>
@@ -352,6 +356,7 @@
                                                 <include>${basedir}/src/main/webapp/primeui/js/column/column-element.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/datatable/datatable-element.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/datagrid/datagrid-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/datascroller/datascroller-element.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/dialog/dialog-element.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/dropdown/dropdown-element.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/fieldset/fieldset-element.js</include>
