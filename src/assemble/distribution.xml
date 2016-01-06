@@ -12,6 +12,39 @@
             <source>${basedir}/src/main/resources/LICENSE.txt</source> 
             <outputDirectory>/</outputDirectory> 
         </file>
+        <file>
+            <source>${basedir}/src/main/webapp/primeui/css/datascroller/images/loadingbar.gif</source> 
+            <outputDirectory>/development/images</outputDirectory> 
+        </file>
+        <file>
+            <source>${basedir}/src/main/webapp/primeui/css/lightbox/images/loading.gif</source> 
+            <outputDirectory>/development/images</outputDirectory> 
+        </file>
+        <file>
+            <source>${basedir}/src/main/webapp/primeui/css/password/images/password-meter.png</source> 
+            <outputDirectory>/development/images</outputDirectory> 
+        </file>
+        <file>
+            <source>${basedir}/src/main/webapp/primeui/css/rating/images/rating.png</source> 
+            <outputDirectory>/development/images</outputDirectory> 
+        </file>
+        
+        <file>
+            <source>${basedir}/src/main/webapp/primeui/css/datascroller/images/loadingbar.gif</source> 
+            <outputDirectory>/production/images</outputDirectory> 
+        </file>
+        <file>
+            <source>${basedir}/src/main/webapp/primeui/css/lightbox/images/loading.gif</source> 
+            <outputDirectory>/production/images</outputDirectory> 
+        </file>
+        <file>
+            <source>${basedir}/src/main/webapp/primeui/css/password/images/password-meter.png</source> 
+            <outputDirectory>/production/images</outputDirectory> 
+        </file>
+        <file>
+            <source>${basedir}/src/main/webapp/primeui/css/rating/images/rating.png</source> 
+            <outputDirectory>/production/images</outputDirectory> 
+        </file>
     </files>
 
     <fileSets>

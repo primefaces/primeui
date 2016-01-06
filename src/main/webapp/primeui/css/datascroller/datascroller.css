@@ -31,7 +31,7 @@
 }
 
 .pui-datascroller .pui-datascroller-loading {
-    background: url("../../images/loadingbar.gif") center center no-repeat;
+    background: url("./images/loadingbar.gif") center center no-repeat;
     width: 220px;
     height: 19px;
     padding: 0;
