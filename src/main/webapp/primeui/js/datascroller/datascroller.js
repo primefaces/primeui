@@ -15,7 +15,8 @@
             template: null,
             mode: 'document',
             loader: null,
-            scrollHeight: null
+            scrollHeight: null,
+            totalSize: null
         },
         
         _create: function() {

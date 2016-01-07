@@ -25,6 +25,9 @@ if(!xtag.tags['p-datascroller']) {
             },
             scrollheight: {
                 attribute: {}
+            },
+            totalsize: {
+                attribute: {}
             }
         },
 
@@ -40,7 +43,8 @@ if(!xtag.tags['p-datascroller']) {
                     mode: this.mode||'document',
                     loader: this.loader ? $('#' + loader) : null,
                     scrollHeight: this.scrollheight ? parseInt(this.scrollheight) : null,
-                    template: $(this).children('script')
+                    template: $(this).children('script'),
+                    totalSize: this.totalsize  ? parseInt(this.totalsize) : null
                 });
             }
         }
