@@ -180,7 +180,7 @@
                                     <li>rowToggler: Boolean value that controls if this column displayed a toggle icon.</li>
                                 </ul>
 
-                                <p>Datasource on the other hand, can either be a javascript array or a function to load
+                                <p>Datasource on the other hand, can either be a javascript array, a url as string or a function to load
                                     data from a remote location. In eager mode, datasource is loaded only once and in lazy mode
                                     ,invoked everytime whenever the state changes like paging or sorting. To update the datasource
                                     use $('#example').puidatatable('option', 'datasource', newdatasource).</p>
@@ -620,6 +620,21 @@ $('#default').puidatatable('unselectAllRows');
                                 <h3>Usage</h3>
                                 DataTable requires a datasource and p-column elements to specify each column.
 
+                                <h4>Load from a URL</h4>
+                                <pre name="code" class="brush:xml">
+&lt;p-datatable datasource="rest/cars/list" paginator rows="10" selectionmode="single" onrowselect="handleRowSelect"&gt;
+    &lt;p-column field="vin" headertext="Vin" sortable filter&gt;&lt;/p-column&gt;
+    &lt;p-column field="year" headertext="Year" sortable filter&gt;&lt;/p-column&gt;
+    &lt;p-column field="brand" headertext="Brand" sortable filter&gt;&lt;/p-column&gt;
+    &lt;p-column field="color" headertext="Color" sortable filter&gt; 
+        &lt;script type="x-tmpl-mustache"&gt;
+            &lt;span style="color:{{color}}"&gt;{{color}}&lt;/span&gt;
+        &lt;/script&gt;
+    &lt;/p-column&gt;
+&lt;/p-datatable&gt;
+                                </pre>
+                                
+                                <h4>Load with a Function</h4>
                                 <pre name="code" class="brush:xml">
 &lt;p-datatable datasource="DataDemo.cars" paginator rows="10" selectionmode="single" onrowselect="handleRowSelect"&gt;
     &lt;p-column field="vin" headertext="Vin" sortable filter&gt;&lt;/p-column&gt;
@@ -726,7 +741,7 @@ var DataDemo = {
                                             <td>datasource</td>
                                             <td>Array/Function</td>
                                             <td>null</td>
-                                            <td>Datasource to load the data, valid options are a local javascript array or a function.</td>
+                                            <td>Datasource to load the data, valid options are a local javascript array, a url string or a function.</td>
                                         </tr>
                                         <tr>
                                             <td>paginator</td>
