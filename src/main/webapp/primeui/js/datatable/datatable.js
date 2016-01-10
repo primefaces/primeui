@@ -962,17 +962,17 @@
                 });
 
                 clonedSortableColumns.on('blur.dataTable', function() {
-                    $(PrimeFaces.escapeClientId($(this).data('original'))).removeClass('ui-state-focus');
+                    $(PUI.escapeClientId($(this).data('original'))).removeClass('ui-state-focus');
                 })
                 .on('focus.dataTable', function() {
-                    $(PrimeFaces.escapeClientId($(this).data('original'))).addClass('ui-state-focus');
+                    $(PUI.escapeClientId($(this).data('original'))).addClass('ui-state-focus');
                 })
                 .on('keydown.dataTable', function(e) {
                     var key = e.which,
                     keyCode = $.ui.keyCode;
 
                     if((key === keyCode.ENTER||key === keyCode.NUMPAD_ENTER) && $(e.target).is(':not(:input)')) {
-                        $(PrimeFaces.escapeClientId($(this).data('original'))).trigger('click.dataTable', (e.metaKey||e.ctrlKey));
+                        $(PUI.escapeClientId($(this).data('original'))).trigger('click.dataTable', (e.metaKey||e.ctrlKey));
                         e.preventDefault();
                     }
                 });
@@ -1332,15 +1332,15 @@
                                 $this.footerTable.find('> tfoot > tr:first').children('th').eq(colIndex).width(newWidth);   //footer
                             }
                             else {
-                                $this.theadClone.find(PrimeFaces.escapeClientId(columnHeader.attr('id') + '_clone')).width(newWidth);   //body
+                                $this.theadClone.find(PUI.escapeClientId(columnHeader.attr('id') + '_clone')).width(newWidth);   //body
                                 $this.footerCols.eq(colIndex).width(newWidth);                                                          //footer
                             }
                         }, 1);
                     }
                     else {
                         //body
-                        this.theadClone.find(PrimeFaces.escapeClientId(columnHeader.attr('id') + '_clone')).width(newWidth);
-                        this.theadClone.find(PrimeFaces.escapeClientId(nextColumnHeader.attr('id') + '_clone')).width(nextColumnWidth);
+                        this.theadClone.find(PUI.escapeClientId(columnHeader.attr('id') + '_clone')).width(newWidth);
+                        this.theadClone.find(PUI.escapeClientId(nextColumnHeader.attr('id') + '_clone')).width(nextColumnWidth);
 
                         //footer
                         /*if(this.footerCols.length > 0) {

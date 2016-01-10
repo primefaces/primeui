@@ -44,7 +44,11 @@ var PUI = {
     escapeHTML: function(value) {
         return value.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     },
-            
+    
+    escapeClientId: function(id) {
+        return "#" + id.replace(/:/g,"\\:");
+    },
+    
     clearSelection: function() {
         if(window.getSelection) {
             if(window.getSelection().empty) {
