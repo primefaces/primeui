@@ -11,6 +11,12 @@ if(!xtag.tags['p-listbox']) {
             name: {
                 attribute: {}
             },
+            style: {
+                attribute: {}
+            },
+            styleclass: {
+                attribute: {}
+            },
             onitemselect: {
                 attribute: {}
             },
@@ -35,6 +41,8 @@ if(!xtag.tags['p-listbox']) {
                 this.xtag.select.puilistbox({
                     multiple: this.multiple,
                     template: itemTemplate.length ? itemTemplate : null,
+                    style: this.style,
+                    styleClass: this.styleclass,
                     itemSelect: this.onitemselect ? function(event, option) {PUI.executeFunctionByName($this.onitemselect, event);} : null,
                     itemUnselect: this.onitemunselect ? function(event, option) {PUI.executeFunctionByName($this.onitemunselect, event);} : null
                 });

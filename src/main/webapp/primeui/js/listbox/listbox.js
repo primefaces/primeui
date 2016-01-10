@@ -9,7 +9,9 @@
             scrollHeight: 200,
             content: null,
             data: null,
-            template: null
+            template: null,
+            style: null,
+            styleClass: null
         },
 
         _create: function() {
@@ -17,6 +19,14 @@
             this.container = this.element.parent().parent();
             this.listContainer = $('<ul class="pui-listbox-list"></ul>').appendTo(this.container);
             this.options.multiple = this.element.prop("multiple");
+
+            if(this.options.style) {
+                this.container.attr('style', this.options.style);
+            }
+            
+            if(this.options.styleClass) {
+                this.container.addClass(this.options.styleClass);
+            }
 
             if(this.options.data) {
                 this._populateInputFromData();
