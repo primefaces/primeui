@@ -155,12 +155,31 @@
             if($.isArray(this.options.datasource)) {
                 this._onDataInit(this.options.datasource);
             }
-            else if($.type(this.options.datasource) === 'function') {
-                if(this.options.lazy)
-                    this.options.datasource.call(this, this._onDataInit, {first:0, rows: this._getRows()});
-                else
-                    this.options.datasource.call(this, this._onDataInit);
-            }  
+            else {
+                if($.type(this.options.datasource) === 'string') {
+                    var $this = this,
+                    dataURL = this.options.datasource;
+
+                    this.options.datasource = function() {
+                        $.ajax({
+                            type: 'GET',
+                            url: dataURL,
+                            dataType: "json",
+                            context: $this,
+                            success: function (response) {
+                                this._onDataInit(response);
+                            }
+                        });
+                    };
+                }
+                
+                if($.type(this.options.datasource) === 'function') {
+                    if(this.options.lazy)
+                        this.options.datasource.call(this, this._onDataInit, {first:0, rows: this._getRows()});
+                    else
+                        this.options.datasource.call(this, this._onDataInit);
+                }
+            }
         },
                 
         _updateDatasource: function(datasource) {
