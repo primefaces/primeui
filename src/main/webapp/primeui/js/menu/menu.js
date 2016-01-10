@@ -217,7 +217,7 @@
                     menuitemLink.addClass('pui-menuitem-link ui-corner-all').contents().wrap('<span class="pui-menuitem-text" />');
                     
                     if(icon) {
-                        menuitemLink.prepend('<span class="fa fa-fw ' + icon + '"></span>');
+                        menuitemLink.prepend('<span class="pui-menuitem-icon fa fa-fw ' + icon + '"></span>');
                     }
                     
                     listItem.addClass('pui-menuitem ui-widget ui-corner-all');
