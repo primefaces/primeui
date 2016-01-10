@@ -118,7 +118,7 @@
                     var menuitemLink = listItem.children('a'),
                     icon = menuitemLink.data('icon');
                     
-                    menuitemLink.addClass('pui-menuitem-link ui-corner-all').contents().wrap('<span class="ui-menuitem-text" />');
+                    menuitemLink.addClass('pui-menuitem-link ui-corner-all').contents().wrap('<span class="pui-menuitem-text" />');
                     
                     if(icon) {
                         menuitemLink.prepend('<span class="pui-menuitem-icon fa fa-fw ' + icon + '"></span>');
@@ -167,7 +167,7 @@
                 
                 listItem.attr('role', 'menuitem');
                 var menuitemLink = listItem.children('a');
-                menuitemLink.addClass('pui-menuitem-link ui-corner-all').contents().wrap('<span class="ui-menuitem-text" />');
+                menuitemLink.addClass('pui-menuitem-link ui-corner-all').contents().wrap('<span class="pui-menuitem-text" />');
                     
                 if(index > 0) {
                     listItem.before('<li class="pui-breadcrumb-chevron fa fa-chevron-right"></li>');
@@ -214,7 +214,7 @@
                     menuitemLink = listItem.children('a'),
                     icon = menuitemLink.data('icon');
                     
-                    menuitemLink.addClass('pui-menuitem-link ui-corner-all').contents().wrap('<span class="ui-menuitem-text" />');
+                    menuitemLink.addClass('pui-menuitem-link ui-corner-all').contents().wrap('<span class="pui-menuitem-text" />');
                     
                     if(icon) {
                         menuitemLink.prepend('<span class="fa fa-fw ' + icon + '"></span>');
@@ -473,7 +473,7 @@
                     menuitemLink = listItem.children('a'),
                     icon = menuitemLink.data('icon');
                     
-                    menuitemLink.addClass('pui-menuitem-link ui-corner-all').contents().wrap('<span class="ui-menuitem-text" />');
+                    menuitemLink.addClass('pui-menuitem-link ui-corner-all').contents().wrap('<span class="pui-menuitem-text" />');
                     
                     if(icon) {
                         menuitemLink.prepend('<span class="pui-menuitem-icon fa fa-fw ' + icon + '"></span>');
