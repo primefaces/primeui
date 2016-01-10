@@ -14,6 +14,12 @@
             $('#doc').puitabview();
         });
     </script>
+    <style type="text/css">
+        .pui-grid label {
+            display: inline-block;
+            margin: 2px 0;
+        }
+    </style>
 
     <div class="ContentSideSections">
         <div class="Content100 overHidden TextShadow">
@@ -27,15 +33,15 @@
         <div class="pui-grid pui-grid-responsive" style="width:250px">
             <div class="pui-grid-row">
                 <div class="pui-grid-col-1"><input type="radio" name="rd1" id="rd1_1" value="1"/></div>
-                <div class="pui-grid-col-11"><label for="rd1_1">Option 1</label></div>
+                <div class="pui-grid-col-11"><label for="rd1_1" class="ui-widget">Option 1</label></div>
             </div>
             <div class="pui-grid-row">
                 <div class="pui-grid-col-1"><input type="radio" name="rd1" id="rd1_2" value="2"/></div>
-                <div class="pui-grid-col-11"><label for="rd1_2">Option 2</label></div>
+                <div class="pui-grid-col-11"><label for="rd1_2" class="ui-widget">Option 2</label></div>
             </div>
             <div class="pui-grid-row">
                 <div class="pui-grid-col-1"><input type="radio" name="rd1" id="rd1_3" value="3"/></div>
-                <div class="pui-grid-col-11"><label for="rd1_3">Option 3</label></div>
+                <div class="pui-grid-col-11"><label for="rd1_3" class="ui-widget">Option 3</label></div>
             </div>
         </div>
         
@@ -43,15 +49,15 @@
         <div class="pui-grid pui-grid-responsive" style="width:250px">
             <div class="pui-grid-row">
                 <div class="pui-grid-col-1"><input type="radio" name="rd2" id="rd2_1" value="1" is="p-radiobutton"/></div>
-                <div class="pui-grid-col-11"><label for="rd2_1">Option 1</label></div>
+                <div class="pui-grid-col-11"><label for="rd2_1" class="ui-widget">Option 1</label></div>
             </div>
             <div class="pui-grid-row">
                 <div class="pui-grid-col-1"><input type="radio" name="rd2" id="rd2_2" value="2" is="p-radiobutton"/></div>
-                <div class="pui-grid-col-11"><label for="rd2_2">Option 2</label></div>
+                <div class="pui-grid-col-11"><label for="rd2_2" class="ui-widget">Option 2</label></div>
             </div>
             <div class="pui-grid-row">
                 <div class="pui-grid-col-1"><input type="radio" name="rd2" id="rd2_3" value="3" is="p-radiobutton"/></div>
-                <div class="pui-grid-col-11"><label for="rd2_3">Option 3</label></div>
+                <div class="pui-grid-col-11"><label for="rd2_3" class="ui-widget">Option 3</label></div>
             </div>
         </div>
     </div>
@@ -158,15 +164,15 @@ $(function() {
 &lt;div class="pui-grid pui-grid-responsive" style="width:250px"&gt;
     &lt;div class="pui-grid-row"&gt;
         &lt;div class="pui-grid-col-1"&gt;&lt;input type="radio" name="rd1" id="rd1_1" value="1"/&gt;&lt;/div&gt;
-        &lt;div class="pui-grid-col-11"&gt;&lt;label for="rd1_1"&gt;Option 1&lt;/label&gt;&lt;/div&gt;
+        &lt;div class="pui-grid-col-11"&gt;&lt;label for="rd1_1" class="ui-widget"&gt;Option 1&lt;/label&gt;&lt;/div&gt;
     &lt;/div&gt;
     &lt;div class="pui-grid-row"&gt;
         &lt;div class="pui-grid-col-1"&gt;&lt;input type="radio" name="rd1" id="rd1_2" value="2"/&gt;&lt;/div&gt;
-        &lt;div class="pui-grid-col-11"&gt;&lt;label for="rd1_2"&gt;Option 2&lt;/label&gt;&lt;/div&gt;
+        &lt;div class="pui-grid-col-11"&gt;&lt;label for="rd1_2" class="ui-widget"&gt;Option 2&lt;/label&gt;&lt;/div&gt;
     &lt;/div&gt;
     &lt;div class="pui-grid-row"&gt;
         &lt;div class="pui-grid-col-1"&gt;&lt;input type="radio" name="rd1" id="rd1_3" value="3"/&gt;&lt;/div&gt;
-        &lt;div class="pui-grid-col-11"&gt;&lt;label for="rd1_3"&gt;Option 3&lt;/label&gt;&lt;/div&gt;
+        &lt;div class="pui-grid-col-11"&gt;&lt;label for="rd1_3" class="ui-widget"&gt;Option 3&lt;/label&gt;&lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
 
@@ -174,15 +180,15 @@ $(function() {
 &lt;div class="pui-grid pui-grid-responsive" style="width:250px"&gt;
     &lt;div class="pui-grid-row"&gt;
         &lt;div class="pui-grid-col-1"&gt;&lt;input type="radio" name="rd2" id="rd2_1" value="1" is="p-radiobutton"/&gt;&lt;/div&gt;
-        &lt;div class="pui-grid-col-11"&gt;&lt;label for="rd2_1"&gt;Option 1&lt;/label&gt;&lt;/div&gt;
+        &lt;div class="pui-grid-col-11"&gt;&lt;label for="rd2_1" class="ui-widget"&gt;Option 1&lt;/label&gt;&lt;/div&gt;
     &lt;/div&gt;
     &lt;div class="pui-grid-row"&gt;
         &lt;div class="pui-grid-col-1"&gt;&lt;input type="radio" name="rd2" id="rd2_2" value="2" is="p-radiobutton"/&gt;&lt;/div&gt;
-        &lt;div class="pui-grid-col-11"&gt;&lt;label for="rd2_2"&gt;Option 2&lt;/label&gt;&lt;/div&gt;
+        &lt;div class="pui-grid-col-11"&gt;&lt;label for="rd2_2" class="ui-widget"&gt;Option 2&lt;/label&gt;&lt;/div&gt;
     &lt;/div&gt;
     &lt;div class="pui-grid-row"&gt;
         &lt;div class="pui-grid-col-1"&gt;&lt;input type="radio" name="rd2" id="rd2_3" value="3" is="p-radiobutton"/&gt;&lt;/div&gt;
-        &lt;div class="pui-grid-col-11"&gt;&lt;label for="rd2_3"&gt;Option 3&lt;/label&gt;&lt;/div&gt;
+        &lt;div class="pui-grid-col-11"&gt;&lt;label for="rd2_3" class="ui-widget"&gt;Option 3&lt;/label&gt;&lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
 
