@@ -65,8 +65,8 @@
         },
                 
         _createList: function(input, cssClass, caption) {                        
-            var listWrapper = $('<div class="pui-picklist-listwrapper"></div>'),
-                listContainer = $('<ul class="ui-widget-content pui-picklist-list "' + cssClass + '></ul>');
+            var listWrapper = $('<div class="pui-picklist-listwrapper ' + cssClass + '-wrapper"></div>'),
+                listContainer = $('<ul class="ui-widget-content pui-picklist-list ' + cssClass + '"></ul>');
 
             if(this.options.filter) {
                 listWrapper.append('<div class="pui-picklist-filter-container"><input type="text" class="pui-picklist-filter" /><span class="pui-icon fa fa-fw fa-search"></span></div>');
@@ -212,11 +212,11 @@
             if(this.options.filter) {
                 this._setupFilterMatcher();
                 
-                this.element.find('> .pui-picklist-listwrapper > .pui-picklist-filter-container > input').on('keyup', function(e) {
+                this.element.find('> .pui-picklist-source-wrapper > .pui-picklist-filter-container > input').on('keyup', function(e) {
                     $this._filter(this.value, $this.sourceList);
                 });
 
-                this.element.find('> .pui-picklist-listwrapper > .pui-picklist-filter-container > input').on('keyup', function(e) {
+                this.element.find('> .pui-picklist-target-wrapper > .pui-picklist-filter-container > input').on('keyup', function(e) {
                     $this._filter(this.value, $this.targetList);
                 });
             }
