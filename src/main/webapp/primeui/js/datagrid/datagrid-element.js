@@ -17,6 +17,9 @@ if(!xtag.tags['p-datagrid']) {
             rows: {
                 attribute: {}
             },
+            totalrecords: {
+                attribute: {}
+            },
             header: {
                 attribute: {}
             },
@@ -37,7 +40,7 @@ if(!xtag.tags['p-datagrid']) {
                     footer: this.footer,
                     lazy: this.lazy,
                     columns: this.columns||3,
-                    paginator: this.paginator ? {rows: this.rows ? parseInt(this.rows) : 0} : null,
+                    paginator: this.paginator ? {rows: this.rows ? parseInt(this.rows) : 0, totalRecords: this.totalrecords ? parseInt(this.totalrecords) : 0} : null,
                     datasource: PUI.resolveObjectByName(this.datasource),
                     template: $(this).children('script')
                 });

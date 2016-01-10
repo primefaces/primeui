@@ -14,6 +14,9 @@ if(!xtag.tags['p-datatable']) {
             rows: {
                 attribute: {}
             },
+            totalrecords: {
+                attribute: {}
+            },
             selectionmode: {
                 attribute: {}
             },
@@ -118,7 +121,6 @@ if(!xtag.tags['p-datatable']) {
             oncelledit: {
                 attribute: {}
             }
-
         },
 
         lifecycle: {
@@ -164,7 +166,7 @@ if(!xtag.tags['p-datatable']) {
                 $(this.xtag.container).puidatatable({
                     datasource: PUI.resolveObjectByName(this.datasource),
                     columns: cols,
-                    paginator: this.paginator ? {rows: this.rows ? parseInt(this.rows) : 0} : null,
+                    paginator: this.paginator ? {rows: this.rows ? parseInt(this.rows) : 0, totalRecords: this.totalrecords ? parseInt(this.totalrecords) : 0} : null,
                     selectionMode: this.selectionmode,
                     caption: this.caption,
                     footer: this.footer,
