@@ -61,7 +61,11 @@
                         e.preventDefault();
                     break;
                 }
-            });        
+            });
+            
+            this.element.on('click', function() {
+                $this.input.trigger('focus');
+            });
         },
                 
         _processCommand: function() {
