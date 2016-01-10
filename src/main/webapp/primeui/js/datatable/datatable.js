@@ -620,7 +620,7 @@
                         if (this._isMultipleSelection()) {
                             var selections = this.getSelection();
                             for (var i = 0; i < selections.length; i++) {
-                                this.row('rowUnselect', null, selections[i]);
+                                this._trigger('rowUnselect', null, selections[i]);
                             }
                         }
 
