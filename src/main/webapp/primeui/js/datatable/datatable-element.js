@@ -164,7 +164,7 @@ if(!xtag.tags['p-datatable']) {
                 }
 
                 $(this.xtag.container).puidatatable({
-                    datasource: $.type(this.datasource) === 'string' ? this.datasource: PUI.resolveObjectByName(this.datasource),
+                    datasource: PUI.resolveObjectByName(this.datasource)||this.datasource,
                     columns: cols,
                     paginator: this.paginator ? {rows: this.rows ? parseInt(this.rows) : 0, totalRecords: this.totalrecords ? parseInt(this.totalrecords) : 0} : null,
                     selectionMode: this.selectionmode,

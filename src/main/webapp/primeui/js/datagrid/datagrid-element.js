@@ -41,7 +41,7 @@ if(!xtag.tags['p-datagrid']) {
                     lazy: this.lazy,
                     columns: this.columns||3,
                     paginator: this.paginator ? {rows: this.rows ? parseInt(this.rows) : 0, totalRecords: this.totalrecords ? parseInt(this.totalrecords) : 0} : null,
-                    datasource: $.type(this.datasource) === 'string' ? this.datasource: PUI.resolveObjectByName(this.datasource),
+                    datasource: PUI.resolveObjectByName(this.datasource)||this.datasource,
                     template: $(this).children('script')
                 });
             }
