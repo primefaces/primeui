@@ -366,6 +366,10 @@
                     column.removeClass('ui-state-hover');
             })
             .on('click.puidatatable', function(event) {
+                if(!$(event.target).is('th,span')) {
+                    return;
+                }
+                
                 var column = $(this),
                 sortField = column.data('field'),
                 order = column.data('order'),
@@ -391,7 +395,7 @@
                 $this._trigger('sort', event, {'sortOrder' : sortOrder, 'sortField' : sortField});
             });
         },
-                
+        
         paginate: function() {
             if(this.options.lazy) {
                 if(this.options.selectionMode && ! this.options.keepSelectionInLazyMode) {
