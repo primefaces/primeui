@@ -563,10 +563,21 @@
             this._selectItem(this.items.eq(option.index()), true);
         },
 
-        addOption: function(option) {
-            var value = (option.value !== undefined || option.value !== null) ? option.value : option,
-            label = (option.label !== undefined || option.label !== null) ? option.label : option,
-            content = this.options.content ? this.options.content.call(this, option) : label,
+        addOption: function(option, val) {
+            var value, label;
+            
+            //backward compatibility for key-value parameters
+            if(val !== undefined && val !== null) {
+                value = val;
+                label = option;
+            }
+            //key-value as properties of option object
+            else {
+                value = (option.value !== undefined && option.value !== null) ? option.value : option;
+                label = (option.label !== undefined && option.label !== null) ? option.label : option;
+            }
+            
+            var content = this.options.content ? this.options.content.call(this, option) : label,
             item = $('<li data-label="' + label + '" class="pui-dropdown-item pui-dropdown-list-item ui-corner-all">' + content + '</li>'),
             optionElement = $('<option value="' + value + '">' + label + '</option>');
             
@@ -574,7 +585,6 @@
             this._bindItemEvents(item);
             item.appendTo(this.itemsContainer);
             this.items.push(item[0]);
-            //this.choices.push(choice);  There is an issue when this form is used when selecting an option.
             this.choices = this.element.children('option');
 
             // If this is the first option, it is the default selected one
