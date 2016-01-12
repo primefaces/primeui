@@ -42,9 +42,14 @@ if(!xtag.tags['p-dropdown']) {
         lifecycle: {
             created: function() {
                 var element = $(this),
+                options = element.children('option'),
                 $this = this;
         
-                element.children('option').wrapAll('<select></select>');
+                if(options.length)        
+                    element.children('option').wrapAll('<select></select>');
+                else
+                    element.append('<select></select>');
+        
                 this.xtag.select = element.children('select');
                 
                 if(this.name) {
