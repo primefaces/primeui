@@ -363,9 +363,15 @@
         
         _highlightItem: function(item) {
             this.items.filter('.ui-state-highlight').removeClass('ui-state-highlight');
-            item.addClass('ui-state-highlight');
+            
+            if(item.length) {
+                item.addClass('ui-state-highlight');
 
-            this._setLabel(item.data('label'));
+                this._setLabel(item.data('label'));
+            }
+            else {
+                this._setLabel('&nbsp;');
+            }
         },
         
         _triggerChange: function(edited) {
