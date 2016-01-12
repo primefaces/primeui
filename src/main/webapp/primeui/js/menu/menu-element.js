@@ -21,13 +21,17 @@ PUI.createNestedMenuDom = function(tag, element) {
         else if(childTagname === 'p-menuitem') {
             var menuitemDom = $('<a></a>'),
             icon = childTag.attr('icon'),
-            value = childTag.attr('value');
+            value = childTag.attr('value'),
+            href = childTag.attr('href');
 
             if(icon) 
                 menuitemDom.data('icon', icon);
 
             if(value) 
                 menuitemDom.text(value);
+
+            if(href)
+                menuitemDom.attr('href',href);
 
             element.append($('<li></li').append(menuitemDom));
         }
