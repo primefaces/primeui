@@ -201,7 +201,7 @@
             .on('dblclick.pickList', function() {
                 var item = $(this);
 
-                if($(this).closest('.pui-picklist-listwrapper').hasClass('pui-picklist-source'))
+                if($(this).closest('.pui-picklist-listwrapper').hasClass('pui-picklist-source-wrapper'))
                     $this._transfer(item, $this.sourceList, $this.targetList, 'dblclick');
                 else
                     $this._transfer(item, $this.targetList, $this.sourceList, 'dblclick');
