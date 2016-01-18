@@ -12,12 +12,10 @@
             //visuals
             input.addClass('pui-inputtext ui-widget ui-state-default ui-corner-all');
             
-            if(disabled) {
+            if(disabled)
                 input.addClass('ui-state-disabled');
-            }
-            else {
+            else
                 this._enableMouseEffects();
-            }
 
             //aria
             input.attr('role', 'textbox').attr('aria-disabled', disabled)
@@ -34,16 +32,15 @@
             input.hover(function () {
                 input.toggleClass('ui-state-hover');
             }).focus(function () {
-                    input.addClass('ui-state-focus');
-                }).blur(function () {
-                    input.removeClass('ui-state-focus');
-                });
+                input.addClass('ui-state-focus');
+            }).blur(function () {
+                input.removeClass('ui-state-focus');
+            });
         },
 
         _disableMouseEffects: function () {
             var input = this.element;
             input.off( "mouseenter mouseleave focus blur" );
-
         },
 
         disable: function () {
@@ -59,6 +56,18 @@
             this.element.attr('aria-disabled', false);
             this.element.removeClass('ui-state-disabled');
             this._enableMouseEffects();
+        },
+
+        _setOption: function(key, value) {
+            if(key === 'disabled') {
+                if(value)
+                    this.disable();
+                else
+                    this.enable();
+            }
+            else {
+                $.Widget.prototype._setOption.apply(this, arguments);
+            }
         }
         
     });

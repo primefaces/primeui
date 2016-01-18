@@ -262,6 +262,18 @@
             this.wrapper.addClass('ui-state-disabled');
             this.element.puiinputtext('disable');
             this._unbindEvents();
+        },
+
+        _setOption: function(key, value) {
+            if(key === 'disabled') {
+                if(value)
+                    this.disable();
+                else
+                    this.enable();
+            }
+            else {
+                $.Widget.prototype._setOption.apply(this, arguments);
+            }
         }
     });
 })();

@@ -97,6 +97,19 @@
                 this._bindEvents();           
                 this.element.removeAttr('disabled').attr('aria-disabled', false).removeClass('ui-state-disabled');
             }
+        },
+
+        _setOption: function(key, value) {
+            if(key === 'disabled') {
+                if(value)
+                    this.disable();
+                else
+                    this.enable();
+            }
+            else {
+                $.Widget.prototype._setOption.apply(this, arguments);
+            }
         }
+        
     });
 })();
