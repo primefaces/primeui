@@ -9,7 +9,8 @@
             stars: 5,
             cancel: true,
             readonly: false,
-            disabled: false
+            disabled: false,
+            value: 0
         },
         
         _create: function() {
@@ -20,7 +21,7 @@
             this.container.addClass('pui-rating');
             
             var inputVal = input.val(),
-            value = inputVal === '' ? null : parseInt(inputVal, 10);
+            value = inputVal === '' ? this.options.value : parseInt(inputVal, 10);
             
             if(this.options.cancel) {
                 this.container.append('<div class="pui-rating-cancel"><a></a></div>');
@@ -99,6 +100,28 @@
             this.stars.off('click');
 
             this.container.children('.pui-rating-cancel').off('hover click');
+        },
+
+        _updateValue: function(value) {
+            var stars = this.container.children('div.pui-rating-star');
+            stars.removeClass('pui-rating-star-on');
+            for(var i = 0; i < stars.length; i++) {
+                if(i < value) {
+                    stars.eq(i).addClass('pui-rating-star-on');
+                }
+            }
+
+            this.element.val(value);
+        },
+
+        _setOption: function(key, value) {
+            if(key === 'value') {
+                this.options.value = value;
+                this._updateValue(value);
+            }
+            else {
+                $.Widget.prototype._setOption.apply(this, arguments);
+            }
         }
     });
     
