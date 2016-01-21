@@ -147,6 +147,7 @@
 
         _setOption: function(key, value) {
             if(key === 'checked') {
+                this.options.checked = value;
                 if(value)
                     this.check(true);
                 else
