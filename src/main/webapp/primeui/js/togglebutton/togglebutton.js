@@ -9,7 +9,8 @@
             onLabel: 'Yes',
             offLabel: 'No',
             onIcon: null,
-            offIcon: null
+            offIcon: null,
+            checked: false
         },
        
         _create: function() {
@@ -38,7 +39,7 @@
             this.icon = this.container.children('.pui-icon');
             
             //initial state
-            if(this.element.prop('checked')) {
+            if(this.element.prop('checked')||this.options.checked) {
                 this.check(true);
             } else {
                 this.uncheck(true);
@@ -96,8 +97,6 @@
                 this.uncheck();
             else
                 this.check();
-            
-            this._trigger('change', null, this.element.prop('checked'));
         },
 
         check: function(silent) {
@@ -110,7 +109,7 @@
             }
 
             if(!silent) {
-                this.element.trigger('change');
+                this._trigger('change', null, {checked: true});
             }
         },
 
@@ -124,7 +123,7 @@
             }
 
             if(!silent) {
-                this.element.trigger('change');
+                this._trigger('change', null, {checked: false});
             }
         },
         
@@ -144,6 +143,18 @@
         
         isChecked: function() {
             return this.element.prop('checked');
+        },
+
+        _setOption: function(key, value) {
+            if(key === 'checked') {
+                if(value)
+                    this.check(true);
+                else
+                    this.uncheck(true);
+            }
+            else {
+                $.Widget.prototype._setOption.apply(this, arguments);
+            }
         }
         
     });
