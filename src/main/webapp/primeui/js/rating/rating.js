@@ -97,9 +97,9 @@
         },
 
         _unbindEvents: function() {
-            this.stars.off('click');
+            this.stars.off();
 
-            this.container.children('.pui-rating-cancel').off('hover click');
+            this.container.children('.pui-rating-cancel').off();
         },
 
         _updateValue: function(value) {
@@ -122,6 +122,13 @@
             else {
                 $.Widget.prototype._setOption.apply(this, arguments);
             }
+        },
+
+        _destroy: function() {
+            this._unbindEvents();
+            this.stars.remove();
+            this.container.children('.pui-rating-cancel').remove();
+            this.element.unwrap();
         }
     });
     
