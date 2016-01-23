@@ -46,7 +46,6 @@
 
         disable: function () {
             this.element.prop('disabled', true);
-            this.element.attr('aria-disabled', true);
             this.element.addClass('ui-state-disabled');
             this.element.removeClass('ui-state-focus ui-state-hover');
             this._disableMouseEffects();
@@ -54,7 +53,6 @@
 
         enable: function () {
             this.element.prop('disabled', false);
-            this.element.attr('aria-disabled', false);
             this.element.removeClass('ui-state-disabled');
             this._enableMouseEffects();
         },
