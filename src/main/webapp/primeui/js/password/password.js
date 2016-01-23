@@ -14,6 +14,11 @@
         },
        
         _create: function() {
+            this.id = this.element.attr('id');
+            if(!this.id) {
+                this.id = this.element.uniqueId().attr('id');
+            }
+
             this.element.puiinputtext().addClass('pui-password');
             
             if(!this.element.prop(':disabled')) {
@@ -37,7 +42,10 @@
         },
         
         _destroy: function() {
+            this.element.puiinputtext('destroy').removeClass('pui-password');
+            this._unbindEvents();
             this.panel.remove();
+            $(window).off('resize.' + this.id);
         },
         
         _bindEvents: function() {
@@ -80,8 +88,8 @@
             });
 
             if(!this.options.inline) {
-                var resizeNS = 'resize.' + this.element.attr('id');
-                $(window).unbind(resizeNS).bind(resizeNS, function() {
+                var resizeNS = 'resize.' + this.id;
+                $(window).off(resizeNS).on(resizeNS, function() {
                     if($this.panel.is(':visible')) {
                         $this.align();
                     }
