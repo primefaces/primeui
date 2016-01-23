@@ -19,7 +19,7 @@
         },
         
         _destroy: function() {
-            this.element.removeClass('pui-inputtext ui-widget ui-state-default ui-state-disabled ui-state-hover ui-state-focus ui-corner-all ');
+            this.element.removeClass('pui-inputtext ui-widget ui-state-default ui-state-disabled ui-state-hover ui-state-focus ui-corner-all');
             this._disableMouseEffects();
         },
 
@@ -41,7 +41,7 @@
         },
 
         _disableMouseEffects: function () {
-            this.element.off( "mouseover.puiinputtext mouseout.puiinputtext focus.puiinputtext blur.puiinputtext" );
+            this.element.off( "mouseover.puiinputtext mouseout.puiinputtext focus.puiinputtext blur.puiinputtext");
         },
 
         disable: function () {
