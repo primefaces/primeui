@@ -32,17 +32,17 @@
         
                 this.element.addClass('pui-inputtextarea-resizable');
                 
-                this.element.keyup(function() {
+                this.element.on('keyup.puiinputtextarea-resize', function() {
                     $this._resize();
-                }).focus(function() {
+                }).on('focus.puiinputtextarea-resize', function() {
                     $this._resize();
-                }).blur(function() {
+                }).on('blur.puiinputtextarea-resize', function() {
                     $this._resize();
                 });
             }
             
             if(this.options.maxlength) {
-                this.element.keyup(function(e) {
+                this.element.on('keyup.puiinputtextarea-maxlength', function(e) {
                     var value = $this.element.val(),
                     length = value.length;
 
@@ -62,6 +62,28 @@
             
             if(this.options.autoComplete) {
                 this._initAutoComplete();
+            }
+        },
+
+        _destroy: function() {
+            this.element.puiinputtext('destroy');
+
+            if(this.options.autoResize) {
+                this.element.removeClass('pui-inputtextarea-resizable').off('keyup.puiinputtextarea-resize focus.puiinputtextarea-resize blur.puiinputtextarea-resize');
+            }
+
+            if(this.options.maxlength) {
+                this.element.off('keyup.puiinputtextarea-maxlength');
+            }
+
+            if(this.options.autoComplete) {
+                this.element.off('keyup.puiinputtextarea-autocomplete keydown.puiinputtextarea-autocomplete');
+                $(document.body).off('mousedown.puiinputtextarea-' + this.id);
+                $(window).off('resize.puiinputtextarea-' + this.id);
+                if(this.items) {
+                    this.items.off();
+                }
+                this.panel.remove();
             }
         },
         
@@ -97,7 +119,7 @@
 
             this.panel = $(panelMarkup).appendTo(document.body);
 
-            this.element.keyup(function(e) {
+            this.element.on('keyup.puiinputtextarea-autocomplete', function(e) {
                 var keyCode = $.ui.keyCode;
 
                 switch(e.which) {
@@ -134,7 +156,7 @@
                     break;
                 }
 
-            }).keydown(function(e) {
+            }).on('keydown.puiinputtextarea-autocomplete', function(e) {
                 var overlayVisible = $this.panel.is(':visible'),
                     keyCode = $.ui.keyCode,
                     highlightedItem;
@@ -221,7 +243,7 @@
             });
 
             //hide panel when outside is clicked
-            $(document.body).bind('mousedown.puiinputtextarea', function (e) {
+            $(document.body).on('mousedown.puiinputtextarea-' + this.id, function (e) {
                 if($this.panel.is(":hidden")) {
                     return;
                 }
@@ -239,8 +261,8 @@
             });
 
             //Hide overlay on resize
-            var resizeNS = 'resize.' + this.id;
-            $(window).unbind(resizeNS).bind(resizeNS, function() {
+            var resizeNS = 'resize.puiinputtextarea-' + this.id;
+            $(window).off(resizeNS).on(resizeNS, function() {
                 if($this.panel.is(':visible')) {
                     $this._hide();
                 }
@@ -251,7 +273,7 @@
             var $this = this;
 
             //visuals and click handler for items
-            this.items.bind('mouseover', function() {
+            this.items.on('mouseover', function() {
                 var item = $(this);
 
                 if(!item.hasClass('ui-state-highlight')) {
@@ -259,7 +281,7 @@
                     item.addClass('ui-state-highlight');
                 }
             })
-            .bind('click', function(event) {
+            .on('click', function(event) {
                 var item = $(this),
                 itemValue = item.attr('data-item-value'),
                 insertValue = itemValue.substring($this.query.length);
