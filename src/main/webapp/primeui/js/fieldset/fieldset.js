@@ -8,29 +8,41 @@
         options: {
             toggleable: false,
             toggleDuration: 'normal',
-            collapsed: false
+            collapsed: false,
+            enhanced: false
         },
         
         _create: function() {
-            this.element.addClass('pui-fieldset ui-widget ui-widget-content ui-corner-all').
-                children('legend').addClass('pui-fieldset-legend ui-corner-all ui-state-default');
-            
-            this.element.contents().wrapAll('<div class="pui-fieldset-content" />');            
-            
+            if(!this.options.enhanced) {
+                this.element.addClass('pui-fieldset ui-widget ui-widget-content ui-corner-all').
+                    children('legend').addClass('pui-fieldset-legend ui-corner-all ui-state-default');
+
+                this.element.contents().wrapAll('<div class="pui-fieldset-content" />'); 
+                this.legend = this.content.children('legend.pui-fieldset-legend');
+                this.legend.prependTo(this.element);
+            }
+            else {
+                this.legend = this.element.children('legend');
+            }
+
             this.content = this.element.children('div.pui-fieldset-content');
-            this.legend = this.content.children('legend.pui-fieldset-legend');
-            this.legend.prependTo(this.element);
             
             if(this.options.toggleable) {
-                this.element.addClass('pui-fieldset-toggleable');
-                this.toggler = $('<span class="pui-fieldset-toggler fa fa-fw" />').prependTo(this.legend);
-                
+                if(this.options.enhanced) {
+                    this.toggler = this.legend.children('.pui-fieldset-toggler');
+                }
+                else {
+                    this.element.addClass('pui-fieldset-toggleable');
+                    this.toggler = $('<span class="pui-fieldset-toggler fa fa-fw" />').prependTo(this.legend);
+                }
+
                 this._bindEvents();
                 
                 if(this.options.collapsed) {
                     this.content.hide();
                     this.toggler.addClass('fa-plus');
-                } else {
+                } 
+                else {
                     this.toggler.addClass('fa-minus');
                 }
             }
@@ -69,15 +81,18 @@
         },
 
         _destroy: function() {
-            this.element.removeClass('pui-fieldset ui-widget ui-widget-content ui-corner-all')
-                .children('legend').removeClass('pui-fieldset-legend ui-corner-all ui-state-default ui-state-hover ui-state-active');
-            this.content.contents().unwrap();
-            this._unbindEvents();
+            if(this.enhanced) {
+                this.element.removeClass('pui-fieldset ui-widget ui-widget-content ui-corner-all')
+                            .children('legend').removeClass('pui-fieldset-legend ui-corner-all ui-state-default ui-state-hover ui-state-active');
+                this.content.contents().unwrap();
 
-            if(this.options.toggleable) {
-                this.element.removeClass('pui-fieldset-toggleable');
-                this.toggler.remove();
-            }
+                if(this.options.toggleable) {
+                    this.element.removeClass('pui-fieldset-toggleable');
+                    this.toggler.remove();
+                }
+            }            
+            
+            this._unbindEvents();
         }
         
     });
