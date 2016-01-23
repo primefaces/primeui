@@ -44,12 +44,6 @@
             if(this.options.max !== undefined){
                 input.attr('aria-valuemax', this.options.max);
             }
-            if(input.prop('disabled')) {
-                input.attr('aria-disabled', true);
-            }
-            if(input.prop('readonly')) {
-                input.attr('aria-readonly', true);
-            }
         },
 
         _destroy: function() {
