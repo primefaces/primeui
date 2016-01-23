@@ -41,7 +41,7 @@
         },
 
         _disableMouseEffects: function () {
-            this.element.off( "mouseover.puiinputtext mouseout.puiinputtext focus.puiinputtext blur.puiinputtext");
+            this.element.off('mouseover.puiinputtext mouseout.puiinputtext focus.puiinputtext blur.puiinputtext');
         },
 
         disable: function () {
