@@ -45,6 +45,10 @@
                             .on('mousedown.puifieldset', function() {$this.legend.removeClass('ui-state-hover').addClass('ui-state-active');})
                             .on('mouseup.puifieldset', function() {$this.legend.removeClass('ui-state-active').addClass('ui-state-hover');});
         },
+
+        _unbindEvents: function() {
+            this.legend.off('click.puifieldset mouseover.puifieldset mouseout.puifieldset mousedown.puifieldset mouseup.puifieldset');
+        },
         
         toggle: function(e) {
             var $this = this;
@@ -62,6 +66,18 @@
                 $this._trigger('afterToggle', e);
                 $this.options.collapsed = !$this.options.collapsed;
             });
+        },
+
+        _destroy: function() {
+            this.element.removeClass('pui-fieldset ui-widget ui-widget-content ui-corner-all')
+                .children('legend').removeClass('pui-fieldset-legend ui-corner-all ui-state-default ui-state-hover ui-state-active');
+            this.content.contents().unwrap();
+            this._unbindEvents();
+
+            if(this.options.toggleable) {
+                this.element.removeClass('pui-fieldset-toggleable');
+                this.toggler.remove();
+            }
         }
         
     });
