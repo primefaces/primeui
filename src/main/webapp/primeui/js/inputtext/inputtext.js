@@ -16,31 +16,32 @@
                 input.addClass('ui-state-disabled');
             else
                 this._enableMouseEffects();
-
-            //aria
-            input.attr('role', 'textbox').attr('aria-disabled', disabled)
-                                          .attr('aria-readonly', input.prop('readonly'))
-                                          .attr('aria-multiline', input.is('textarea'));
         },
         
         _destroy: function() {
-
+            this.element.removeClass('pui-inputtext ui-widget ui-state-default ui-state-disabled ui-state-hover ui-state-focus ui-corner-all ');
+            this._disableMouseEffects();
         },
 
         _enableMouseEffects: function () {
             var input = this.element;
-            input.hover(function () {
-                input.toggleClass('ui-state-hover');
-            }).focus(function () {
+
+            input.on('mouseover.puiinputtext', function() {
+                input.addClass('ui-state-hover');
+            })
+            .on('mouseout.puiinputtext', function() {
+                input.removeClass('ui-state-hover');
+            })
+            .on('focus.puiinputtext', function() {
                 input.addClass('ui-state-focus');
-            }).blur(function () {
+            })
+            .on('blur.puiinputtext', function() {
                 input.removeClass('ui-state-focus');
             });
         },
 
         _disableMouseEffects: function () {
-            var input = this.element;
-            input.off( "mouseenter mouseleave focus blur" );
+            this.element.off( "mouseover.puiinputtext mouseout.puiinputtext focus.puiinputtext blur.puiinputtext" );
         },
 
         disable: function () {
