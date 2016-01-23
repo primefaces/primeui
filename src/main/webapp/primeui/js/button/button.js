@@ -13,9 +13,10 @@
         },
         
         _create: function() {
-            var element = this.element,
-            elementText = element.text(),
-            value = this.options.value||(elementText === '' ? 'pui-button' : elementText),
+            var element = this.element;
+            this.elementText = this.element.text();
+            
+            var value = this.options.value||(this.elementText === '' ? 'pui-button' : this.elementText),
             disabled = element.prop('disabled'),
             styleClass = null;
             
@@ -37,13 +38,19 @@
             }
             
             this.element.append('<span class="pui-button-text pui-c">' + value + '</span>');
-            
-            //aria
-            element.attr('role', 'button').attr('aria-disabled', disabled);    
-            
+                        
             if(!disabled) {
                 this._bindEvents();
             }
+        },
+
+        _destroy: function() {
+            this.element.removeClass('pui-button ui-widget ui-state-default ui-state-hover ui-state-active ui-state-disabled ui-state-focus ui-corner-all ' + 
+                                                    'pui-button-text-only pui-button-icon-only pui-button-text-icon-right pui-button-text-icon-left');
+            this._unbindEvents();
+            this.element.children('.pui-icon').remove();
+            this.element.children('.pui-button-text').remove();
+            this.element.text(this.elementText);
         },
         
         _bindEvents: function() {
@@ -85,17 +92,13 @@
         
         disable: function() {
             this._unbindEvents();
-            
-            this.element.attr({
-                'disabled':'disabled',
-                'aria-disabled': true
-            }).addClass('ui-state-disabled');
+            this.addClass('ui-state-disabled');
         },
         
         enable: function() {
             if(this.element.prop('disabled')) {
                 this._bindEvents();           
-                this.element.removeAttr('disabled').attr('aria-disabled', false).removeClass('ui-state-disabled');
+                this.element.prop('disabled', false).removeClass('ui-state-disabled');
             }
         },
 
