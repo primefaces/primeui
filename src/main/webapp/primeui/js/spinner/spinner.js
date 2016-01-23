@@ -37,13 +37,6 @@
             if(disabled) {
                 this.wrapper.addClass('ui-state-disabled');
             }
-
-            //aria
-            input.attr({
-                'role': 'spinner',
-                'aria-multiline': false,
-                'aria-valuenow': this.value
-            });
             
             if(this.options.min !== undefined) {
                 input.attr('aria-valuemin', this.options.min);
@@ -58,7 +51,12 @@
                 input.attr('aria-readonly', true);
             }
         },
-        
+
+        _destroy: function() {
+            this.element.puiinputtext('destroy').removeClass('pui-spinner-input').off('keydown.puispinner keyup.puispinner blur.puispinner focus.puispinner mousewheel.puispinner');
+            this.wrapper.children('.pui-spinner-button').off().remove();
+            this.element.unwrap();
+        },
 
         _bindEvents: function() {
             var $this = this;
@@ -92,7 +90,7 @@
                     e.preventDefault();
             });
 
-            this.element.keydown(function (e) {        
+            this.element.on('keydown.puispinner', function (e) {        
                 var keyCode = $.ui.keyCode;
 
                 switch(e.which) {            
@@ -109,19 +107,19 @@
                     break;
                 }
             })
-            .keyup(function () { 
+            .on('keyup.puispinner', function () { 
                 $this._updateValue();
             })
-            .blur(function () { 
+            .on('blur.puispinner', function () { 
                 $this._format();
             })
-            .focus(function () {
+            .on('focus.puispinner', function () {
                 //remove formatting
                 $this.element.val($this.value);
             });
 
             //mousewheel
-            this.element.bind('mousewheel', function(event, delta) {
+            this.element.on('mousewheel.puispinner', function(event, delta) {
                 if($this.element.is(':focus')) {
                     if(delta > 0) {
                         $this._spin($this.options.step);
@@ -249,7 +247,6 @@
             this.wrapper.children('.pui-spinner-button').off();
 
             this.element.off();
-
         },
 
         enable: function() {
