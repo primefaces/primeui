@@ -55,6 +55,18 @@
                 this.startSlideshow();
             }
         },
+
+        _destroy: function() {
+            this.stopSlideshow();
+            this._unbindEvents();
+            this.element.removeClass('pui-galleria ui-widget ui-widget-content ui-corner-all').removeAttr('style');
+            this.panelWrapper.removeClass('pui-galleria-panel-wrapper').removeAttr('style');
+            this.panels.removeClass('pui-galleria-panel ui-helper-hidden').removeAttr('style');
+            this.strip.remove();
+            this.stripWrapper.remove();
+            this.element.children('.fa').remove();
+            this.caption.remove();
+        },
         
         _renderStrip: function() {
             var frameStyle = 'style="width:' + this.options.frameWidth + "px;height:" + this.options.frameHeight + 'px;"';
@@ -124,6 +136,12 @@
             });
         },
 
+        _unbindEvents: function() {
+            this.element.children('div.pui-galleria-nav-prev').off('click.puigalleria');
+            this.element.children('div.pui-galleria-nav-next').off('click.puigalleria');
+            this.strip.children('li.pui-galleria-frame').off('click.puigalleria');
+        },
+
         startSlideshow: function() {
             var $this = this;
 
@@ -135,7 +153,9 @@
         },
 
         stopSlideshow: function() {
-            window.clearInterval(this.interval);
+            if(this.interval) {
+                window.clearInterval(this.interval);
+            }
 
             this.slideshowActive = false;
         },
