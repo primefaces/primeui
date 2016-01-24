@@ -57,21 +57,30 @@
             
             this._bindEvents();
         },
+
+        _destroy: function() {
+            this._unbindEvents();
+            this.element.removeClass('pui-accordion ui-widget ui-helper-reset');
+            this.headers.removeClass('pui-accordion-header ui-helper-reset ui-state-default ui-state-hover ui-state-active ui-state-disabled ui-corner-all ui-corner-top');
+            this.panels.removeClass('pui-accordion-content ui-helper-reset ui-widget-content ui-helper-hidden');
+            this.headers.children('.pui-icon').remove();
+            this.headers.children('a').contents().unwrap();
+        },
         
         _bindEvents: function() {
             var $this = this;
 
-            this.headers.mouseover(function() {
+            this.headers.on('mouseover.puiaccordion', function() {
                 var element = $(this);
                 if(!element.hasClass('ui-state-active')&&!element.hasClass('ui-state-disabled')) {
                     element.addClass('ui-state-hover');
                 }
-            }).mouseout(function() {
+            }).mouseout('mouseout.puiaccordion', function() {
                 var element = $(this);
                 if(!element.hasClass('ui-state-active')&&!element.hasClass('ui-state-disabled')) {
                     element.removeClass('ui-state-hover');
                 }
-            }).click(function(e) {
+            }).click('click.puiaccordion', function(e) {
                 var element = $(this);
                 if(!element.hasClass('ui-state-disabled')) {
                     var tabIndex = ($this.panelMode === 'native') ? element.index() / 2 : element.parent().index();
@@ -86,6 +95,10 @@
 
                 e.preventDefault();
             });
+        },
+
+        _unbindEvents: function() {
+            this.headers.off('mouseover.puiaccordion mouseout.puiaccordion click.puiaccordion');
         },
 
         /**
