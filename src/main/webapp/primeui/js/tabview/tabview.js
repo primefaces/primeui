@@ -18,9 +18,9 @@
             this.panels = this._findPanels();
 
             element.addClass('pui-tabview ui-widget ui-widget-content ui-corner-all ui-hidden-container pui-tabview-' + this.options.orientation);
-            this.navContainer.addClass('pui-tabview-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all')
+            this.navContainer.addClass('pui-tabview-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all');
             this.tabHeaders.addClass('ui-state-default ui-corner-top');
-            this.panelContainer.addClass('pui-tabview-panels')
+            this.panelContainer.addClass('pui-tabview-panels');
             this.panels.addClass('pui-tabview-panel ui-widget-content ui-corner-bottom');
 
             this.tabHeaders.eq(this.options.activeIndex).addClass('pui-tabview-selected ui-state-active');
@@ -80,7 +80,7 @@
                 });
         },
 
-        _unbindEvents() {
+        _unbindEvents: function() {
             this.tabHeaders.off('mouseover.puitabview mouseout.puitabview click.puitabview');
             this.navContainer.find('li .fa-close').off('click.puitabview');
         },
