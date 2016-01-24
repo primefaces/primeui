@@ -5,6 +5,10 @@
 
     $.widget("primeui.puiinputtext", {
        
+        options: {
+            disabled: false
+        },
+       
         _create: function() {
             var input = this.element,
             disabled = input.prop('disabled');
@@ -12,8 +16,10 @@
             //visuals
             input.addClass('pui-inputtext ui-widget ui-state-default ui-corner-all');
             
-            if(disabled)
+            if(input.prop('disabled'))
                 input.addClass('ui-state-disabled');
+            else if(this.options.disabled)
+                this.disable();
             else
                 this._enableMouseEffects();
         },
