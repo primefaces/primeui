@@ -28,24 +28,34 @@
             
             this._bindEvents();
         },
+
+        _destroy: function() {
+            this.element.removeClass('pui-tabview ui-widget ui-widget-content ui-corner-all ui-hidden-container pui-tabview-' + this.options.orientation);
+            this.navContainer.removeClass('pui-tabview-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all');
+            this.tabHeaders.removeClass('ui-state-default ui-corner-top pui-tabview-selected ui-state-active');
+            this.panelContainer.removeClass('pui-tabview-panels');
+            this.panels.removeClass('pui-tabview-panel ui-widget-content ui-corner-bottom ui-helper-hidden').removeData('loaded');
+
+            this._unbindEvents();
+        },
         
         _bindEvents: function() {
             var $this = this;
 
             //Tab header events
-            this.tabHeaders.on('mouseover.tabview', function(e) {
+            this.tabHeaders.on('mouseover.puitabview', function(e) {
                         var element = $(this);
                         if(!element.hasClass('ui-state-disabled')&&!element.hasClass('ui-state-active')) {
                             element.addClass('ui-state-hover');
                         }
                     })
-                    .on('mouseout.tabview', function(e) {
+                    .on('mouseout.puitabview', function(e) {
                         var element = $(this);
                         if(!element.hasClass('ui-state-disabled')&&!element.hasClass('ui-state-active')) {
                             element.removeClass('ui-state-hover');
                         }
                     })
-                    .on('click.tabview', function(e) {
+                    .on('click.puitabview', function(e) {
                         var element = $(this);
 
                         if($(e.target).is(':not(.fa-close)')) {
@@ -61,13 +71,18 @@
 
             //Closable tabs
             this.navContainer.find('li .fa-close')
-                .on('click.tabview', function(e) {
+                .on('click.puitabview', function(e) {
                     var index = $(this).parent().index();
 
                     $this.remove(index);
 
                     e.preventDefault();
                 });
+        },
+
+        _unbindEvents() {
+            this.tabHeaders.off('mouseover.puitabview mouseout.puitabview click.puitabview');
+            this.navContainer.find('li .fa-close').off('click.puitabview');
         },
         
         select: function(index) {
