@@ -27,7 +27,8 @@
             appendTo: null,
             buttons: null,
             responsive: false,
-            title: null
+            title: null,
+            enhanced: false
         },
         
         _create: function() {
@@ -37,47 +38,51 @@
             }
             
             //container
-            this.element.addClass('pui-dialog ui-widget ui-widget-content ui-helper-hidden ui-corner-all pui-shadow')
+            if(!this.options.enhanced) {
+                this.element.addClass('pui-dialog ui-widget ui-widget-content ui-helper-hidden ui-corner-all pui-shadow')
                         .contents().wrapAll('<div class="pui-dialog-content ui-widget-content" />');
-                    
-            //header
-            var title = this.options.title||this.element.attr('title');
-            this.element.prepend('<div class="pui-dialog-titlebar ui-widget-header ui-helper-clearfix ui-corner-top">' +
+
+                //header
+                var title = this.options.title||this.element.attr('title');
+                this.element.prepend('<div class="pui-dialog-titlebar ui-widget-header ui-helper-clearfix ui-corner-top">' +
                                 '<span id="' + this.element.attr('id') + '_label" class="pui-dialog-title">' + title + '</span>')
                                 .removeAttr('title');
-            
-            //footer
-            if(this.options.buttons) {
-                this.footer = $('<div class="pui-dialog-buttonpane ui-widget-content ui-helper-clearfix"></div>').appendTo(this.element);
-                for(var i = 0; i < this.options.buttons.length; i++) {
-                    var buttonMeta = this.options.buttons[i],
-                    button = $('<button type="button"></button>').appendTo(this.footer);
-                    if(buttonMeta.text) {
-                        button.text(buttonMeta.text);
-                    }
-                    
-                    button.puibutton(buttonMeta);
-                }  
-            }
-            
-            if(this.options.rtl) {
-                this.element.addClass('pui-dialog-rtl');
+
+                //footer
+                if(this.options.buttons) {
+                    this.footer = $('<div class="pui-dialog-buttonpane ui-widget-content ui-helper-clearfix"></div>').appendTo(this.element);
+                    for(var i = 0; i < this.options.buttons.length; i++) {
+                        var buttonMeta = this.options.buttons[i],
+                        button = $('<button type="button"></button>').appendTo(this.footer);
+                        if(buttonMeta.text) {
+                            button.text(buttonMeta.text);
+                        }
+                        
+                        button.puibutton(buttonMeta);
+                    }  
+                }
+
+                if(this.options.rtl) {
+                    this.element.addClass('pui-dialog-rtl');
+                }
             }
             
             //elements
             this.content = this.element.children('.pui-dialog-content');
             this.titlebar = this.element.children('.pui-dialog-titlebar');
             
-            if(this.options.closable) {
-                this._renderHeaderIcon('pui-dialog-titlebar-close', 'fa-close');
-            }
-            
-            if(this.options.maximizable) {
-                this._renderHeaderIcon('pui-dialog-titlebar-maximize', 'fa-sort');
-            }
-            
-            if(this.options.minimizable) {
-                this._renderHeaderIcon('pui-dialog-titlebar-minimize', 'fa-minus');
+            if(!this.options.enhanced) {
+                if(this.options.closable) {
+                    this._renderHeaderIcon('pui-dialog-titlebar-close', 'fa-close');
+                }
+                
+                if(this.options.maximizable) {
+                    this._renderHeaderIcon('pui-dialog-titlebar-maximize', 'fa-sort');
+                }
+                
+                if(this.options.minimizable) {
+                    this._renderHeaderIcon('pui-dialog-titlebar-minimize', 'fa-minus');
+                }
             }
             
             //icons
@@ -95,8 +100,6 @@
 
             //events
             this._bindEvents();
-            
-            
 
             if(this.options.draggable) {
                 this._setupDraggable();
@@ -126,6 +129,58 @@
                 this.show();
             }
         },
+
+        _destroy: function() {
+            //restore dom
+            if(!this.options.enhanced) {
+                this.element.removeClass('pui-dialog ui-widget ui-widget-content ui-helper-hidden ui-corner-all pui-shadow');
+
+                if(this.options.buttons) {
+                    this.footer.children('button').puibutton('destroy');
+                    this.footer.remove();
+                }
+
+                if(this.options.rtl) {
+                    this.element.removeClass('pui-dialog-rtl');
+                }
+            }
+
+            //remove events
+            this._unbindEvents();
+
+            //restore title
+            var title = this.titlebar.children('.pui-dialog-title').text()||this.options.title;
+            if(title) {
+                this.element.attr('title', title);
+            }
+            this.titlebar.remove();
+
+            if(this.options.draggable) {
+                this.element.draggable('destroy');
+            }
+
+            if(this.options.resizable) {
+                this.element.resizable('destroy');
+            }
+
+            if(this.options.appendTo) {
+                this.element.appendTo(this.parent);
+            }
+            
+            this._unbindResizeListener();
+
+            if(this.options.modal) {
+                this._disableModality();
+            }
+
+            this._removeARIA();
+            this.element.css({
+                'width': 'auto',
+                'height': 'auto'
+            });
+
+            this.content.contents().unwrap();
+        },
         
         _renderHeaderIcon: function(styleClass, icon) {
             this.titlebar.append('<a class="pui-dialog-titlebar-icon ' + styleClass + ' ui-corner-all" href="#" role="button">' +
@@ -140,7 +195,7 @@
                                 .css('z-index', this.element.css('z-index') - 1);
 
             //Disable tabbing out of modal dialog and stop events from targets outside of dialog
-            doc.bind('keydown.puidialog',
+            doc.on('keydown.puidialog',
                     function(event) {
                         if(event.keyCode == $.ui.keyCode.TAB) {
                             var tabbables = $this.content.find(':tabbable'), 
@@ -164,10 +219,13 @@
                     });
         },
 
-        _disableModality: function(){
-            this.modality.remove();
-            this.modality = null;
-            $(document).unbind(this.blockEvents).unbind('keydown.dialog');
+        _disableModality: function() {
+            if(this.modality) {
+                this.modality.remove();
+                this.modality = null;
+            }
+            
+            $(document).off(this.blockEvents).off('keydown.dialog');
         },
 
         show: function() {
@@ -262,11 +320,12 @@
 
         _bindEvents: function() {   
             var $this = this;
-            this.element.mousedown(function(e) {
+            this.element.on('mousedown.puidialog', function(e) {
                 if(!$(e.target).data('ui-widget-overlay')) { 
                   $this._moveToTop();
                 }
              });
+
             this.icons.mouseover(function() {
                 $(this).addClass('ui-state-hover');
             }).mouseout(function() {
@@ -289,7 +348,7 @@
             });
 
             if(this.options.closeOnEscape) {
-                $(document).on('keydown.dialog_' + this.element.attr('id'), function(e) {
+                $(document).on('keydown.dialog_' + this.id, function(e) {
                     var keyCode = $.ui.keyCode,
                     active = parseInt($this.element.css('z-index'), 10) === PUI.zindex;
 
@@ -298,6 +357,12 @@
                     }
                 });
             }
+        },
+
+        _unbindEvents: function() {
+            this.element.off('mousedown.puidialog');
+            this.icons.off();
+            $(document).off('keydown.dialog_' + this.id);
         },
 
         _setupDraggable: function() {    
@@ -504,6 +569,11 @@
             });
 
             this.titlebar.children('a.pui-dialog-titlebar-icon').attr('role', 'button');
+        },
+
+        _removeARIA: function() {
+            this.element.removeAttr('role').removeAttr('aria-labelledby').removeAttr('aria-hidden')
+                            .removeAttr('aria-live').removeAttr('aria-hidden');
         },
         
         _bindResizeListener: function() {
