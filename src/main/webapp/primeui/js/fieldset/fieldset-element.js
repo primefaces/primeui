@@ -18,6 +18,11 @@ if(!xtag.tags['p-fieldset']) {
                     boolean: true
                 }
             },
+            enhanced: {
+                attribute: {
+                    boolean: true
+                }
+            },
             beforeToggle: {
                 attribute: {}
             },
@@ -35,6 +40,7 @@ if(!xtag.tags['p-fieldset']) {
                     toggleable: this.toggleable,
                     toggleDuration: this.toggleDuration||'normal',
                     collapsed: this.collapsed,
+                    enhanced: this.enhanced,
                     beforeToggle: this.beforeToggle ? function(event) {PUI.executeFunctionByName($this.beforeToggle, event);} : null,
                     afterToggle: this.afterToggle ? function(event) {PUI.executeFunctionByName($this.afterToggle, event);} : null
                 });
