@@ -106,6 +106,14 @@
         disable: function () {
             this._unbindEvents();
             this.box.addClass('ui-state-disabled');
+        },
+
+        _destroy: function () {
+            this._unbindEvents();
+            this.element.unwrap().unwrap();
+            this.element.parent().removeClass('pui-radiobutton ui-widget');
+            this.box.removeClass('pui-radiobutton-box ui-widget pui-radiobutton-relative ui-state-default');
+            this.icon.removeClass('pui-radiobutton-icon pui-icon').unwrap().remove();
         }
     });
     
