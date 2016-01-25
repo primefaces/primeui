@@ -6,7 +6,7 @@
     $.widget("primeui.puitabview", {
        
         options: {
-            activeIndex:0,
+            activeIndex: 0,
             orientation:'top'
         },
         
@@ -61,7 +61,7 @@
                         if($(e.target).is(':not(.fa-close)')) {
                             var index = element.index();
 
-                            if(!element.hasClass('ui-state-disabled') && index != $this.options.selected) {
+                            if(!element.hasClass('ui-state-disabled') && !element.hasClass('ui-state-active')) {
                                 $this.select(index);
                             }
                         }
@@ -86,7 +86,7 @@
         },
         
         select: function(index) {
-           this.options.selected = index;
+           this.options.activeIndex = index;
 
            var newPanel = this.panels.eq(index),
            oldHeader = this.tabHeaders.filter('.ui-state-active'),
@@ -131,8 +131,8 @@
            panel.remove();
 
            //active next tab if active tab is removed
-           if(index == this.options.selected) {
-               var newIndex = this.options.selected == this.getLength() ? this.options.selected - 1: this.options.selected;
+           if(index == this.options.activeIndex) {
+               var newIndex = (this.options.activeIndex == this.getLength()) ? this.options.activeIndex - 1: this.options.activeIndex;
                this.select(newIndex);
            }
        },
@@ -142,7 +142,7 @@
        },
 
        getActiveIndex: function() {
-           return this.options.selected;
+           return this.options.activeIndex;
        },
 
        _markAsLoaded: function(panel) {
