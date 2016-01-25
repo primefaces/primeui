@@ -132,6 +132,14 @@
             this.box.attr('aria-disabled', false);
             this.box.removeClass('ui-state-disabled');
             this._bindEvents();
+        },
+        _destroy: function() {
+            this._unbindEvents();
+            this.box.parent().removeClass('pui-chkbox ui-widget');
+            this.box.removeClass('pui-chkbox-box ui-widget ui-corner-all ui-state-default');
+            this.icon.removeClass('pui-chkbox-icon pui-c');
+            this.element.unwrap().unwrap();
+            this.icon.unwrap().remove();
         }
     });
     
