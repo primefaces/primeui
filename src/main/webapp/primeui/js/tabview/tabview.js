@@ -172,7 +172,7 @@
             //primeng
             else {
                 this.panelMode = 'wrapped';
-                return containers.find(':first-child');
+                return containers.children(':first-child');
             }
        },
 
