@@ -53,31 +53,31 @@
         _bindEvents: function() {
             var $this = this;
             
-            this.container.on('mouseover', function() {
+            this.container.on('mouseover.puitogglebutton', function() {
                 if(!$this.container.hasClass('ui-state-active')) {
                     $this.container.addClass('ui-state-hover');
                 }
-            }).on('mouseout', function() {
+            }).on('mouseout.puitogglebutton', function() {
                 $this.container.removeClass('ui-state-hover');
             })
-            .on('click', function() {
+            .on('click.puitogglebutton', function() {
                 $this.toggle();
                 $this.element.trigger('focus');
             });
             
-            this.element.on('focus', function() {            
+            this.element.on('focus.puitogglebutton', function() {            
                 $this.container.addClass('ui-state-focus');
             })
-            .on('blur', function() {            
+            .on('blur.puitogglebutton', function() {            
                 $this.container.removeClass('ui-state-focus');
             })
-            .on('keydown', function(e) {
+            .on('keydown.puitogglebutton', function(e) {
                 var keyCode = $.ui.keyCode;
                 if(e.which === keyCode.SPACE) {
                     e.preventDefault();
                 }
             })
-            .on('keyup', function(e) {
+            .on('keyup.puitogglebutton', function(e) {
                 var keyCode = $.ui.keyCode;
                 if(e.which === keyCode.SPACE) {
                     $this.toggle();
@@ -88,8 +88,8 @@
         },
         
         _unbindEvents: function() {
-            this.container.off('mouseover mouseout click');
-            this.element.off('focus blur keydown keyup');
+            this.container.off('mouseover.puitogglebutton mouseout.puitogglebutton click.puitogglebutton');
+            this.element.off('focus.puitogglebutton blur.puitogglebutton keydown.puitogglebutton keyup.puitogglebutton');
         },
         
         toggle: function() {
@@ -160,18 +160,8 @@
 
         _destroy: function() {
             this._unbindEvents();
-            if(this.options.onIcon || this.options.offIcon) {
-                this.element.parent().removeClass('pui-button pui-togglebutton ui-widget ui-state-default ui-corner-all pui-button-text-icon-left');
-                this.element.unwrap();
-                this.element.next().removeClass('pui-button-icon-left pui-icon fa fa-fw fa-square').remove();
-                this.element.next().removeClass('pui-button-text').remove();
-            }
-            else {
-                this.element.parent().removeClass('pui-button pui-togglebutton ui-widget ui-state-default ui-corner-all');
-                this.element.unwrap();
-                this.container.removeClass('pui-button-text-only');
-                this.element.next().removeClass('pui-button-text').remove();
-            }
+            this.container.children('span').remove();
+            this.element.removeClass('ui-helper-hidden-accessible').unwrap();
         }
         
     });

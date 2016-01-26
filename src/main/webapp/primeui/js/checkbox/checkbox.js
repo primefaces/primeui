@@ -39,27 +39,27 @@
                 $this.toggle();
             });
             
-            this.element.focus(function() {
+            this.element.on('focus.puicheckbox', function() {
                 if($this.isChecked()) {
                     $this.box.removeClass('ui-state-active');
                 }
 
                 $this.box.addClass('ui-state-focus');
             })
-            .blur(function() {
+            .on('blur.puicheckbox', function() {
                 if($this.isChecked()) {
                     $this.box.addClass('ui-state-active');
                 }
 
                 $this.box.removeClass('ui-state-focus');
             })
-            .keydown(function(e) {
+            .on('keydown.puicheckbox', function(e) {
                 var keyCode = $.ui.keyCode;
                 if(e.which == keyCode.SPACE) {
                     e.preventDefault();
                 }
             })
-            .keyup(function(e) {
+            .on('keyup.puicheckbox', function(e) {
                 var keyCode = $.ui.keyCode;
                 if(e.which == keyCode.SPACE) {
                     $this.toggle(true);
@@ -114,14 +114,16 @@
         },
 
         _unbindEvents: function() {
-            this.box.off();
-            this.element.off('focus blur keydown keyup');
-            this.label.off();
+            this.box.off('mouseover.puicheckbox mouseout.puicheckbox click.puicheckbox');
+            this.element.off('focus.puicheckbox blur.puicheckbox keydown.puicheckbox keyup.puicheckbox');
+            
+            if (this.label.length) {
+                this.label.off('click.puicheckbox');
+            }
         },
 
         disable: function() {
             this.box.prop('disabled', true);
-
             this.box.attr('aria-disabled', true);
             this.box.addClass('ui-state-disabled').removeClass('ui-state-hover');
             this._unbindEvents();
@@ -133,14 +135,14 @@
             this.box.removeClass('ui-state-disabled');
             this._bindEvents();
         },
+
         _destroy: function() {
             this._unbindEvents();
-            this.box.parent().removeClass('pui-chkbox ui-widget');
-            this.box.removeClass('pui-chkbox-box ui-widget ui-corner-all ui-state-default');
-            this.icon.removeClass('pui-chkbox-icon pui-c');
+            this.container.removeClass('pui-chkbox ui-widget');
+            this.box.remove();
             this.element.unwrap().unwrap();
-            this.icon.unwrap().remove();
         }
+
     });
     
 })();

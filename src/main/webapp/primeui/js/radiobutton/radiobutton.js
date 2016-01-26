@@ -55,21 +55,21 @@
                 });
             }
             
-            this.element.focus(function() {
+            this.element.on('focus.puiradiobutton', function() {
                 if($this._isChecked()) {
                     $this.box.removeClass('ui-state-active');
                 }
 
                 $this.box.addClass('ui-state-focus');
             })
-            .blur(function() {
+            .on('blur.puiradiobutton', function() {
                 if($this._isChecked()) {
                     $this.box.addClass('ui-state-active');
                 }
 
                 $this.box.removeClass('ui-state-focus');
             })
-            .change(function(e) {
+            .on('change.puiradiobutton', function(e) {
                 var name = $this.element.attr('name');
                 if(checkedRadios[name]) {
                     checkedRadios[name].removeClass('ui-state-active ui-state-focus ui-state-hover').children('.pui-radiobutton-icon').removeClass('fa fa-fw fa-circle');
@@ -91,10 +91,11 @@
         },
 
         _unbindEvents: function () {
-            this.box.off();
+            this.box.off('mouseover.puiradiobutton mouseout.puiradiobutton click.puiradiobutton');
+            this.element.off('focus.puiradiobutton blur.puiradiobutton change.puiradiobutton');
 
-            if (this.label.length > 0) {
-                this.label.off();
+            if (this.label.length) {
+                this.label.off('click.puiradiobutton');
             }
         },
 
@@ -110,10 +111,9 @@
 
         _destroy: function () {
             this._unbindEvents();
+            this.container.removeClass('pui-radiobutton ui-widget');
+            this.box.remove();
             this.element.unwrap().unwrap();
-            this.element.parent().removeClass('pui-radiobutton ui-widget');
-            this.box.removeClass('pui-radiobutton-box ui-widget pui-radiobutton-relative ui-state-default');
-            this.icon.removeClass('pui-radiobutton-icon pui-icon').unwrap().remove();
         }
     });
     
