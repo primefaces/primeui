@@ -64,7 +64,7 @@
         toggle: function(e) {
             var $this = this;
 
-            this._trigger('beforeToggle', e);
+            this._trigger('beforeToggle', e, this.options.collapsed);
 
             if(this.options.collapsed) {
                 this.toggler.removeClass('fa-plus').addClass('fa-minus');
@@ -74,8 +74,8 @@
             }
 
             this.content.slideToggle(this.options.toggleSpeed, 'easeInOutCirc', function() {
-                $this._trigger('afterToggle', e);
                 $this.options.collapsed = !$this.options.collapsed;
+                $this._trigger('afterToggle', e, $this.options.collapsed);
             });
         },
 

@@ -123,12 +123,14 @@ $('#default').puifieldset();
                                     <tbody>
                                         <tr>
                                             <td>beforeToggle</td>
-                                            <td>event: puifieldsetbeforeToggle event
+                                            <td>event: puifieldsetbeforetoggle event<br>
+                                                collapsed: Collapsed state as a boolean
                                             <td>Fired before toggling.</td>
                                         </tr>
                                         <tr>
                                             <td>afterToggle</td>
-                                            <td>event: puifieldsetafterToggle event
+                                            <td>event: puifieldsetaftertoggle event<br>
+                                                collapsed: Collapsed state as a boolean
                                             <td>Fired after toggling.</td>
                                         </tr>
                                     </tbody>
@@ -267,13 +269,15 @@ $('#default').puifieldset({
                                         <tr>
                                             <td>onbeforetoggle</td>
                                             <td>function</td>
-                                            <td>null</td>
+                                            <td>event: puifieldsetbeforetoggle event<br>
+                                                collapsed: Collapsed state as a boolean
                                             <td>Name of the function to invoke before fieldset gets toggled.</td>
                                         </tr>
                                         <tr>
                                             <td>onaftertoggle</td>
                                             <td>function</td>
-                                            <td>null</td>
+                                            <td>event: puifieldsetaftertoggle event<br>
+                                                collapsed: Collapsed state as a boolean
                                             <td>Name of the function to invoke after fieldset gets toggled.</td>
                                         </tr>
                                     </tbody>
