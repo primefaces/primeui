@@ -153,6 +153,12 @@
                 else
                     this.uncheck(true);
             }
+            else if(key === 'disabled') {
+                if(value)
+                    this.disable();
+                else
+                    this.enable();
+            }
             else {
                 $.Widget.prototype._setOption.apply(this, arguments);
             }
