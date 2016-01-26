@@ -11,7 +11,7 @@
             toggleOrientation : 'vertical',
             collapsed: false,
             closable: false,
-            closeDuration: 'slow',
+            closeDuration: 'normal',
             title: null,
             enhanced: false
         },
