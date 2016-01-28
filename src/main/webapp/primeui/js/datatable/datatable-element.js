@@ -204,6 +204,9 @@ if(!xtag.tags['p-datatable']) {
         methods: {
             reload: function() {
                 $(this.xtag.container).puidatatable('reload');
+            },
+            setTotalRecords: function(val) {
+                $(this.xtag.container).puidatatable('totalRecords', val);
             }
         }
         

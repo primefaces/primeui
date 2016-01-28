@@ -1676,6 +1676,14 @@
         reload: function() {
             this._updateDatasource(this.options.datasource);
         },
+
+        getPaginator: function() {
+            return this.paginator;
+        },
+
+        setTotalRecords: function(val) {
+            this.paginator.puipaginator('option','totalRecords', 20);
+        },
         
         editors: {
             
