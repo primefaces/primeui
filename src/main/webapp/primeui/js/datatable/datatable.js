@@ -60,7 +60,7 @@
             else {
                 this._createRegularDatatable();
             }
-            
+
             if(this.options.datasource) {
                 if($.isArray(this.options.datasource)) {
                     this._onDataInit(this.options.datasource);
@@ -344,8 +344,8 @@
                     totalRecords: this.options.lazy ? this.options.paginator.totalRecords : this.data.length
                 });
             }
-            
-            this.thead.children('th.pui-sortable-column').data('order', 0).filter('.ui-state-active').removeClass('ui-state-active')
+
+            this.thead.find('> tr > th.pui-sortable-column').data('order', 0).filter('.ui-state-active').removeClass('ui-state-active')
                                 .children('span.pui-sortable-column-icon').removeClass('fa-sort-asc fa-sort-desc').addClass('fa-sort');
         },
                 
@@ -1671,6 +1671,10 @@
         _onCellEditorBlur: function(cell) {
             cell.removeClass('pui-cell-editing').text(cell.data('rowdata')[cell.data('field')])
                     .children('.pui-cell-editor').remove();
+        },
+
+        reload: function() {
+            this._updateDatasource(this.options.datasource);
         },
         
         editors: {

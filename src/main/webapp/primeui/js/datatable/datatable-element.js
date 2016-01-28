@@ -199,6 +199,12 @@ if(!xtag.tags['p-datatable']) {
                     cellEdit: this.oncelledit ? function(event, ui) {PUI.executeFunctionByName($this.oncelledit, event, ui);} : null
                 });
             }
+        },
+
+        methods: {
+            reload: function() {
+                $(this.xtag.container).puidatatable('reload');
+            }
         }
         
     });
