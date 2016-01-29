@@ -3,64 +3,72 @@ if(!xtag.tags['p-slider']) {
     xtag.register('p-slider', {
 
         accessors: {
-            animate:{
+            animate: {
                 attribute:{
                     boolean:true
                 }
             },
-            distance:{
+            distance: {
                 attribute:{}
             },
-            max:{
+            max: {
                 attribute:{}
             },
-            min:{
+            min: {
                 attribute:{}
             },
             orientation:{
                 attribute:{}
             },
-            range:{
+            range: {
                 attribute:{
-                    booelan:true
+                    boolean:true
                 }
             },
-            step:{
+            step: {
                 attribute:{}
             },
-            value:{
+            value: {
                 attribute:{}
             },
-            values:{
+            onchange: {
                 attribute:{}
             },
-            onchange:{
+            onslide: {
                 attribute:{}
             },
-            onslide:{
+            onstart: {
                 attribute:{}
             },
-            onstart:{
+            onstop: {
                 attribute:{}
             },
-            onstop:{
+            style: {
+                attribute:{}
+            },
+            styleclass: {
                 attribute:{}
             }
         },
 
         lifecycle: {
+
             created: function() {
                 var $this = this;
                 this.xtag.container = $(this).append('<div></div>').children('div');
+                if(this.style)
+                    this.xtag.container.attr('style', this.style);
 
-                var myValues = [],
-                isRange = $(this).attr('range') !== undefined;
+                if(this.styleclass)
+                    this.xtag.container.attr('class', this.styleclass);
 
-                if(isRange) {
-                    var values = this.values.split(',');
-                    for (var i = 0; i <=1; i++) {
-                        myValues[i] = parseInt(values[i]);
-                    };
+                var rangeValues;
+                if(this.range && this.value) {
+                    rangeValues = [];
+                    var values = this.value.split(',');
+                    for (var i = 0; i <= 1; i++) {
+                        rangeValues[i] = parseInt(values[i]);
+                    }
                 }
 
                 this.xtag.container.slider({
@@ -69,10 +77,10 @@ if(!xtag.tags['p-slider']) {
                     max: this.max ? parseInt(this.max) : 100,
                     min: this.min ? parseInt(this.min) : 0,
                     orientation: this.orientation || 'horizontal',
-                    range: this.range,
+                    range: this.range ? true : false,
                     step: this.step ? parseInt(this.step) : 1,
                     value: this.value ? parseInt(this.value) : 0,
-                    values: myValues,
+                    values: rangeValues,
                     change: this.onchange ? function(event, value){;PUI.executeFunctionByName($this.onchange, event, value);} : null,
                     slide: this.onslide ? function(event, value){PUI.executeFunctionByName($this.onslide, event, value);} : null,
                     start: this.onstart ? function(event, value){PUI.executeFunctionByName($this.onstart, event, value);} : null,

@@ -6,49 +6,42 @@
     <script type="text/javascript" src="primeui/js/inputtext/inputtext.js"></script>
     <script type="text/javascript" src="resources/js/jquery-ui-slider.js"></script>
     <script type="text/javascript" src="primeui/js/slider/slider-element.js"></script>
-    <script type="text/javascript" src="primeui/js/inputtext/inputtext-element.js"></script>
     <script type="text/javascript" src="primeui/js/button/button.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript">
         slideChange = function(events,value) {
-                        $('#slideChange').val(value.value)
-                    };
+            $('#slideChange').val(value.value)
+        };
+
         $(function () {
-            
             $('#slideChange').puiinputtext();
             $('#doc').puitabview();
         });
     </script>
-    <style type="text/css">
-        .ui-slider-horizontal {
-            width:200px;
-        }
-        .ui-slider-vertical {
-            height:150px;
-        }
-    </style>
 
     <div class="ContentSideSections">
         <div class="Content100 overHidden TextShadow">
             <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">Slider</span>
-            <span class="defaultText dispTable">Slider is used to provide input in various ways.</span>
+            <span class="defaultText dispTable">PrimeUI provides a prime element for jQuery UI slider.</span>
         </div>
     </div>
 
     <div class="ContentSideSections Implementation">
 
         <h3 class="first" >Horizontal Slider</h3>
-        <p-slider></p-slider>
+        <p-slider style="width:200px"></p-slider>
 
         <h3>Vertical Slider</h3>
-        <p-slider orientation="vertical"></p-slider>
+        <p-slider orientation="vertical" style="height:150px"></p-slider>
 
         <h3>Slider Callback</h3>
-        <input id="slideChange" type="text" style="margin-bottom:10px"/>
-        <p-slider onslide="slideChange"></p-slider>
+        <div style="width:200px">
+            <input id="slideChange" type="text" style="width:95%"/>
+            <p-slider onslide="slideChange" style="width:100%"></p-slider>
+        </div>
 
         <h3>Range Slider</h3>
-        <p-slider range values="30,60"></p-slider>
+        <p-slider range value="30,60" style="width:400px"></p-slider>
 
     </div>
 
@@ -64,7 +57,7 @@
                         <div>
                             <div id="doc-element">
                             <h3>Usage</h3>
-                                Slider is an extension to standard jquery ui slider widget using &lt;p-slider&gt;&lt;/p-slider&gt;.
+                                Slider is defined with &lt;p-slider&gt;&lt;/p-slider&gt; element.
 
                                 <pre name="code" class="brush:xml">
 &lt;p-slider&gt;&lt;/p-slider&gt;
