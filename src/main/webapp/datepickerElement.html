@@ -1,0 +1,405 @@
+<div>
+    <link rel="stylesheet" href="primeui/css/inputtext/inputtext.css" />
+    <link rel="stylesheet" href="primeui/css/button/button.css" />
+    <link rel="stylesheet" href="resources/css/jquery-ui-datepicker.css" />
+    <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
+    <link rel="stylesheet" href="primeui/css/growl/growl.css" />
+    <script type="text/javascript" src="primeui/js/inputtext/inputtext.js"></script>
+    <script type="text/javascript" src="resources/js/jquery-ui-datepicker.js"></script>
+    <script type="text/javascript" src="primeui/js/datepicker/datepicker-element.js"></script>
+    <script type="text/javascript" src="primeui/js/inputtext/inputtext-element.js"></script>
+    <script type="text/javascript" src="primeui/js/growl/growl.js"></script>
+    <script type="text/javascript" src="primeui/js/growl/growl-element.js"></script> 
+    <script type="text/javascript" src="primeui/js/button/button.js"></script>
+    <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            handleSelect = function(event, value) {
+                document.getElementById('select').show([{severity: 'info', summary: 'Day Selected', detail: event }]);
+            };
+            $('p-datepicker').children('input').puiinputtext();
+            $('#doc').puitabview();
+        });
+    </script>
+
+    <div class="ContentSideSections">
+        <div class="Content100 overHidden TextShadow">
+            <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">Datepicker</span>
+            <span class="defaultText dispTable">Datepicker is an input component to pick a datetime.</span>
+        </div>
+    </div>
+
+    <div class="ContentSideSections Implementation">
+        <h3 class="first">Inline</h3>
+        <p-datepicker inline></p-datepicker>
+
+        <h3>Popup-ButtonPanel</h3>
+        <p-datepicker showButtonPanel></p-datepicker>
+
+        <h3>DateFormat</h3>
+        <p-datepicker dateFormat="mm-dd-yy"></p-datepicker>
+
+        <h3>Button</h3>
+        <p-datepicker showOn="button"></p-datepicker>
+
+        <h3>Select Event</h3>
+        <p-growl id="select"></p-growl> 
+        <p-datepicker onSelect="handleSelect"></p-datepicker>
+
+    </div>
+
+    <div id="SourceContentSide" class="ContentSideSections Source">
+        <div class="Content100 overHidden TextShadow">
+            <span class="defaultText">
+                <span class="fontSize18 logoBlueText">
+                    <div id="doc">
+                        <ul>
+                            <li><a href="#doc-element">PrimeElement</a></li>
+                            <li><a href="#doc-methods">Source</a></li>
+                        </ul>
+                        <div>
+                            <div id="doc-element">
+                            <h3>Usage</h3>
+                                Datepicker is an input component to pick a datetime with using &lt;p-datepicker&gt;&lt;/p-datepicker&gt;
+
+                                <pre name="code" class="brush:xml">
+&lt;p-datepicker&gt;&lt;/p-datepicker&gt;
+                                </pre>
+
+                                <h3>Attributes</h3>
+                                <table class="doc-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Default</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>weekHeader</td>
+                                            <td>string</td>
+                                            <td>"Wk"</td>
+                                            <td>The text to display for the week of the year column heading.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>dateFormat</td>
+                                            <td>string</td>
+                                            <td>"mm/dd/yy"</td>
+                                            <td>The format for parsed and displayed dates.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>firstDay</td>
+                                            <td>number</td>
+                                            <td>0</td>
+                                            <td>Set the first day of the week.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>isRTL</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>Whether the current language is drawn from right to left.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>showMonthAfterYear</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>Whether to show the month after the year in the header.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>yearSuffix</td>
+                                            <td>string</td>
+                                            <td>""</td>
+                                            <td>Additional text to display after the year in the month headers.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>showOn</td>
+                                            <td>string</td>
+                                            <td>"focus"</td>
+                                            <td>When the datepicker should appear.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>showAnim</td>
+                                            <td>string</td>
+                                            <td>"show"</td>
+                                            <td>The name of the animation used to show and hide the datepicker.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>defaultDate</td>
+                                            <td>data,number,string</td>
+                                            <td>null</td>
+                                            <td>Set the date to highlight on first opening if the field is blank.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>appendText</td>
+                                            <td>string</td>
+                                            <td>""</td>
+                                            <td>The text to display after each date field.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>buttonText</td>
+                                            <td>string</td>
+                                            <td>"..."</td>
+                                            <td>The text to display on the trigger button.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>buttonImage</td>
+                                            <td>string</td>
+                                            <td>""</td>
+                                            <td>A URL of an image to use to display the datepicker when the showOn option is set to "button" or "both".</td>
+                                        </tr>
+                                        <tr>
+                                            <td>buttonImageOnly</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>Whether the button image should be rendered by itself instead of inside a button element.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>hideIfNoPrevNext</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>Normally the previous and next links are disabled when not applicable. You can hide them altogether by setting this attribute to true.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>navigationAsDateFormat</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>Whether the currentText, prevText and nextText options should be parsed as dates by the formatDate function, allowing them to display the target month names for example.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>gotoCurrent</td>
+                                            <td>booelan</td>
+                                            <td>false</td>
+                                            <td>When true, the current day link moves to the currently selected date instead of today.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>changeMonth</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>Whether the month should be rendered as a dropdown instead of text.</td>
+                                        </tr><tr>
+                                            <td>changeYear</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>Whether the year should be rendered as a dropdown instead of text.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>yearRange</td>
+                                            <td>string</td>
+                                            <td>"c-10:c+10"</td>
+                                            <td>The range of years displayed in the year drop-down.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>showOtherMonths</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>Whether to display dates in other months at the start or end of the current month.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>selectOtherMonths</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>Whether days in other months shown before or after the current month are selectable.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>showWeek</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>When true, a column is added to show the week of the year.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>calculateWeek</td>
+                                            <td>function()</td>
+                                            <td>jQuery.datepicker.iso8601Week</td>
+                                            <td>A function to calculate the week of the year for a given date.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>shortYearCutoff</td>
+                                            <td>number,string</td>
+                                            <td>"+10"</td>
+                                            <td>The cutoff year for determining the century for a date.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>minDate</td>
+                                            <td>number,date,string</td>
+                                            <td>null</td>
+                                            <td>The minimum selectable date.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>maxDate</td>
+                                            <td>number,date,string</td>
+                                            <td>null</td>
+                                            <td>The maximum selectable date.</td>
+                                        </tr><tr>
+                                            <td>duration</td>
+                                            <td>string</td>
+                                            <td>"normal"</td>
+                                            <td>Control the speed at which the datepicker appears.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>beforeShowDay</td>
+                                            <td>function(Date date)</td>
+                                            <td>null</td>
+                                            <td>A function that takes a date as a parameter and must return an array.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>beforeShow</td>
+                                            <td> function( Element input, Object inst )</td>
+                                            <td>null</td>
+                                            <td>A function that takes an input field and current datepicker instance and returns an options object to update the datepicker.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>onSelect</td>
+                                            <td> function( String dateText, Object inst )</td>
+                                            <td>null</td>
+                                            <td>Called when the datepicker is selected.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>onChangeMonthYear</td>
+                                            <td>function( Integer year, Integer month, Object inst )</td>
+                                            <td>null</td>
+                                            <td>Called when the datepicker moves to a new month and/or year.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>onClose</td>
+                                            <td> function( String dateText, Object inst )</td>
+                                            <td>false</td>
+                                            <td>Called when the datepicker is closed.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>numberOfMonths</td>
+                                            <td>number,array</td>
+                                            <td>1</td>
+                                            <td>The number of months to show at once.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>showCurrentAtPos</td>
+                                            <td>number</td>
+                                            <td>0</td>
+                                            <td>When displaying multiple months via the numberOfMonths option, the showCurrentAtPos option defines which position to display the current month in.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>stepMonths</td>
+                                            <td>number</td>
+                                            <td>1</td>
+                                            <td>Set how many months to move when clicking the previous/next links.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>stepBigMonths</td>
+                                            <td>number</td>
+                                            <td>null</td>
+                                            <td>-</td>
+                                        </tr>
+                                        <tr>
+                                            <td>altField</td>
+                                            <td>selector,jquery,element</td>
+                                            <td>""</td>
+                                            <td>An input element that is to be updated with the selected date from the datepicker.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>altFormat</td>
+                                            <td>string</td>
+                                            <td>""</td>
+                                            <td>The dateFormat to be used for the altField option.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>constrainInput</td>
+                                            <td>boolean</td>
+                                            <td>true</td>
+                                            <td>When true, entry in the input field is constrained to those characters allowed by the current dateFormat option.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>showButtonPanel</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>Whether to display a button pane underneath the calendar.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>autoSize</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>Set to true to automatically resize the input field to accommodate dates in the current dateFormat.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>disabled</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>-</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                                <h3>Methods</h3>
+                                <table class="doc-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Parameters</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>enable()</td>
+                                            <td>-</td>
+                                            <td>Enables the element.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>disable()</td>
+                                            <td>-</td>
+                                            <td>Disables the element.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>destroy()</td>
+                                            <td>-</td>
+                                            <td>Destroy the selected element.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div id="doc-source">
+                            <pre name="code" class="brush:js">
+<script type="text/javascript">
+    $(function () {
+        handleSelect = function(event, value) {
+            document.getElementById('select').show([{severity: 'info', summary: 'Day Selected', detail: event }]);
+        };
+        $('p-datepicker').children('input').puiinputtext();
+        $('#doc').puitabview();
+    });
+</script>
+                                </pre>
+
+                                <pre name="code" class="brush:xml">
+&lt;h3 class="first"&gt;Inline&lt;/h3&gt;
+&lt;p-datepicker inline&gt;&lt;/p-datepicker&gt;
+
+&lt;h3&gt;Popup-ButtonPanel&lt;/h3&gt;
+&lt;p-datepicker showButtonPanel&gt;&lt;/p-datepicker&gt;
+
+&lt;h3&gt;DateFormat&lt;/h3&gt;
+&lt;p-datepicker dateFormat="mm-dd-yy"&gt;&lt;/p-datepicker&gt;
+
+&lt;h3&gt;Button&lt;/h3&gt;
+&lt;p-datepicker showOn="button"&gt;&lt;/p-datepicker&gt;
+
+&lt;h3&gt;Select Event&lt;/h3&gt;
+&lt;p-growl id="select"&gt;&lt;/p-growl&gt; 
+&lt;p-datepicker onSelect="handleSelect"&gt;&lt;/p-datepicker&gt;
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </span>
+            </span>
+        </div>
+    </div>
+
+    <script language="javascript">
+        SyntaxHighlighter.highlight();
+    </script>
+
+</div>
