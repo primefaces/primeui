@@ -174,14 +174,20 @@
                                 </pre>
 
                                 <pre name="code" class="brush:xml">
-&lt;p-slider&gt;&lt;/p-slider&gt;
+&lt;h3 class="first" &gt;Horizontal Slider&lt;/h3&gt;
+&lt;p-slider style="width:200px"&gt;&lt;/p-slider&gt;
 
-&lt;p-slider orientation="vertical"&gt;&lt;/p-slider&gt;
+&lt;h3&gt;Vertical Slider&lt;/h3&gt;
+&lt;p-slider orientation="vertical" style="height:150px"&gt;&lt;/p-slider&gt;
 
-&lt;input id="slideChange" type="text" style="margin-bottom:10px"/&gt;
-&lt;p-slider onslide="slideChange"&gt;&lt;/p-slider&gt;
+&lt;h3&gt;Slider Callback&lt;/h3&gt;
+&lt;div style="width:200px"&gt;
+    &lt;input id="slideChange" type="text" style="width:95%"/&gt;
+    &lt;p-slider onslide="slideChange" style="width:100%"&gt;&lt;/p-slider&gt;
+&lt;/div&gt;
 
-&lt;p-slider range values="30,60"&gt;&lt;/p-slider&gt;
+&lt;h3&gt;Range Slider&lt;/h3&gt;
+&lt;p-slider range value="30,60" style="width:400px"&gt;&lt;/p-slider&gt;
                                 </pre>
                             </div>
                         </div>
