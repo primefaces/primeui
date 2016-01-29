@@ -85,7 +85,7 @@
                     
                     if($.type(this.options.datasource) === 'function') {
                         if(this.options.lazy)
-                            this.options.datasource.call(this, this._onDataInit, {first:0, sortField:this.options.sortField, sortOrder:this.options.sortOrder, filters: this._createFilterMap()});
+                            this.options.datasource.call(this, this._onDataInit, {first:0, rows:this._getRows(), sortField:this.options.sortField, sortOrder:this.options.sortOrder, filters: this._createFilterMap()});
                         else
                             this.options.datasource.call(this, this._onDataInit);
                     }
@@ -552,7 +552,7 @@
         },
         
         _getRows: function() {
-            return this.paginator ? this.paginator.puipaginator('option', 'rows') : this.data.length;
+            return this.paginator ? this.paginator.puipaginator('option', 'rows') : (this.data ? this.data.length : 0);
         },
                 
         _isSortingEnabled: function() {
@@ -880,7 +880,7 @@
             }
             else if($.type(this.options.datasource) === 'function') {
                 if(this.options.lazy)
-                    this.options.datasource.call(this, this._onDataUpdate, {first:0, sortField:this.options.sortField, sortorder:this.options.sortOrder, filters: this._createFilterMap()});
+                    this.options.datasource.call(this, this._onDataUpdate, {first:0, rows: this._getRows(), sortField:this.options.sortField, sortorder:this.options.sortOrder, filters: this._createFilterMap()});
                 else
                     this.options.datasource.call(this, this._onDataUpdate);
             }
