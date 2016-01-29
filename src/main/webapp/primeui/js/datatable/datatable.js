@@ -512,7 +512,7 @@
                             }
                             
                             if(columnOptions.content) {
-                                var content = columnOptions.content.call(this, rowData);
+                                var content = columnOptions.content.call(this, rowData, columnOptions);
                                 if($.type(content) === 'string')
                                     column.html(content);
                                 else

@@ -153,10 +153,9 @@ if(!xtag.tags['p-datatable']) {
                     col.rowToggler = columnElement.attr('rowToggler') !== undefined;
 
                     if(columnElement.children('script').length) {
-                        col.content = function(data){
-                            var template =  columnElement.children('script').text();
-                            Mustache.parse(template);
-                            return Mustache.render(template, data);
+                        col.contentTemplate = columnElement.children('script').text();
+                        col.content = function(data, _col) {
+                            return Mustache.render(_col.contentTemplate, data);
                         };
                     }
 
