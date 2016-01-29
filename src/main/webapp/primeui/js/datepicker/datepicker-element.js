@@ -233,13 +233,13 @@ if(!xtag.tags['p-datepicker']) {
 
         methods: {
             disable: function() {
-                this.xtag.container.datepicker('disable');
+                this.xtag.datepicker.datepicker('disable');
             },
             enable: function() {
-                this.xtag.container.datepicker('enable');
+                this.xtag.datepicker.datepicker('enable');
             },
             destroy: function() {
-                this.xtag.container.datepicker('destroy');
+                this.xtag.datepicker.datepicker('destroy');
             }
         }
         
