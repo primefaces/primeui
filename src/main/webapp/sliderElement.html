@@ -1,0 +1,205 @@
+<div>
+    <link rel="stylesheet" href="primeui/css/inputtext/inputtext.css" />
+    <link rel="stylesheet" href="primeui/css/button/button.css" />
+    <link rel="stylesheet" href="resources/css/jquery-ui-slider.css" />
+    <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
+    <script type="text/javascript" src="primeui/js/inputtext/inputtext.js"></script>
+    <script type="text/javascript" src="resources/js/jquery-ui-slider.js"></script>
+    <script type="text/javascript" src="primeui/js/slider/slider-element.js"></script>
+    <script type="text/javascript" src="primeui/js/inputtext/inputtext-element.js"></script>
+    <script type="text/javascript" src="primeui/js/button/button.js"></script>
+    <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
+    <script type="text/javascript">
+        slideChange = function(events,value) {
+                        $('#slideChange').val(value.value)
+                    };
+        $(function () {
+            
+            $('#slideChange').puiinputtext();
+            $('#doc').puitabview();
+        });
+    </script>
+    <style type="text/css">
+        .ui-slider-horizontal {
+            width:200px;
+        }
+        .ui-slider-vertical {
+            height:150px;
+        }
+    </style>
+
+    <div class="ContentSideSections">
+        <div class="Content100 overHidden TextShadow">
+            <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">Slider</span>
+            <span class="defaultText dispTable">Slider is used to provide input in various ways.</span>
+        </div>
+    </div>
+
+    <div class="ContentSideSections Implementation">
+
+        <h3 class="first" >Horizontal Slider</h3>
+        <p-slider></p-slider>
+
+        <h3>Vertical Slider</h3>
+        <p-slider orientation="vertical"></p-slider>
+
+        <h3>Slider Callback</h3>
+        <input id="slideChange" type="text" style="margin-bottom:10px"/>
+        <p-slider onslide="slideChange"></p-slider>
+
+        <h3>Range Slider</h3>
+        <p-slider range values="30,60"></p-slider>
+
+    </div>
+
+    <div id="SourceContentSide" class="ContentSideSections Source">
+        <div class="Content100 overHidden TextShadow">
+            <span class="defaultText">
+                <span class="fontSize18 logoBlueText">
+                    <div id="doc">
+                        <ul>
+                            <li><a href="#doc-element">PrimeElement</a></li>
+                            <li><a href="#doc-methods">Source</a></li>
+                        </ul>
+                        <div>
+                            <div id="doc-element">
+                            <h3>Usage</h3>
+                                Spinner is an extension to standard input element so applied using is="p-spinner" attribute.
+
+                                <pre name="code" class="brush:xml">
+&lt;p-slider&gt;&lt;/p-slider&gt;
+                                </pre>
+
+                                <h3>Attributes</h3>
+                                <table class="doc-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Default</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>animate</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>Animation of the element.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>distance</td>
+                                            <td>number</td>
+                                            <td>0</td>
+                                            <td>Distance!!</td>
+                                        </tr>
+                                        <tr>
+                                            <td>min</td>
+                                            <td>number</td>
+                                            <td>0</td>
+                                            <td>Mininum value for slider.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>max</td>
+                                            <td>number</td>
+                                            <td>100</td>
+                                            <td>Maximum value for slider.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>orientation</td>
+                                            <td>string</td>
+                                            <td>horizontal</td>
+                                            <td>Determines whether the slider handles move horizontally or vertically</td>
+                                        </tr>
+                                        <tr>
+                                            <td>range</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>Whether the slider represents a range.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>step</td>
+                                            <td>number</td>
+                                            <td>1</td>
+                                            <td>Determines the size or amount of each interval or step the slider takes between the min and max.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>value</td>
+                                            <td>number</td>
+                                            <td>0</td>
+                                            <td>Determines the value of the slider.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>values</td>
+                                            <td>array</td>
+                                            <td>null</td>
+                                            <td>This option can be used to specify multiple handles.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                                <h3>Methods</h3>
+                                <table class="doc-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Parameters</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>enable()</td>
+                                            <td>-</td>
+                                            <td>Enables the element.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>disable()</td>
+                                            <td>-</td>
+                                            <td>Disables the element.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>destroy()</td>
+                                            <td>-</td>
+                                            <td>Destroy the selected element.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div id="doc-source">
+                            <pre name="code" class="brush:js">
+<script type="text/javascript">
+    slideChange = function(events,value) {
+                    $('#slideChange').val(value.value)
+                };
+    $(function () {
+        $('#slideChange').puiinputtext();
+    });
+</script>
+                                </pre>
+
+                                <pre name="code" class="brush:xml">
+&lt;p-slider&gt;&lt;/p-slider&gt;
+
+&lt;p-slider orientation="vertical"&gt;&lt;/p-slider&gt;
+
+&lt;input id="slideChange" type="text" style="margin-bottom:10px"/&gt;
+&lt;p-slider onslide="slideChange"&gt;&lt;/p-slider&gt;
+
+&lt;p-slider range values="30,60"&gt;&lt;/p-slider&gt;
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </span>
+            </span>
+        </div>
+    </div>
+
+    <script language="javascript">
+        SyntaxHighlighter.highlight();
+    </script>
+
+</div>
