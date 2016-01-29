@@ -185,6 +185,12 @@
                                     ,invoked everytime whenever the state changes like paging or sorting. To update the datasource
                                     use $('#example').puidatatable('option', 'datasource', newdatasource).</p>
 
+                                <h4>Markup</h4>
+                                <pre name="code" class="brush:xml">
+&lt;div id="tbl"&gt;&lt;/div&gt;
+                                </pre>
+
+                                <h4>Local Data</h4>
                                 <pre name="code" class="brush:js">
 $('#tbl').puidatatable({
     columns: [],
@@ -193,9 +199,54 @@ $('#tbl').puidatatable({
 });
                                 </pre>
 
-                                <pre name="code" class="brush:xml">
-&lt;div id="tbl"&gt;&lt;/div&gt;
+                                <h4>Remote Data</h4>
+                                <pre name="code" class="brush:js">
+$('#tbl').puidatatable({
+    columns: [],
+    datasource: function(callback) {
+        $.ajax({
+            type: "GET",
+            url: 'rest/cars/list',
+            dataType: "json",
+            context: this,
+            success: function(response) {
+                callback.call(this, response);
+            }
+        });
+    },
+    ...
+});
                                 </pre>
+
+                                <h4>Lazy Remote Data</h4>
+                                <pre name="code" class="brush:js">
+$('#tbl').puidatatable({
+    columns: [],
+    datasource: function(callback, ui) {
+        //ui.first = Index of the first record
+        //ui.sortField = Field name of the sorted column
+        //ui.sortOrder = Sort order of the sorted column
+        //ui.filters = Filtering information with field-value pairs like ui.filters['fieldname'] = 'filtervalue'
+
+        //builds a url based on parameters
+        var uri = 'rest/cars/lazylist/' + ui.first;
+        if (ui.sortField) {
+            uri += '/' + ui.sortField + '/' + ui.sortOrder;
+        }
+
+        $.ajax({
+            type: "GET",
+            url: uri,
+            dataType: "json",
+            context: this,
+            success: function(response) {
+                callback.call(this, response);
+            }
+        });
+    }
+});
+                                </pre>
+
                             </div>
 
                             <div id="doc-options">

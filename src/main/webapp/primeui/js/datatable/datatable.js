@@ -85,7 +85,7 @@
                     
                     if($.type(this.options.datasource) === 'function') {
                         if(this.options.lazy)
-                            this.options.datasource.call(this, this._onDataInit, {first:0, sortField:this.options.sortField, sortOrder:this.options.sortOrder});
+                            this.options.datasource.call(this, this._onDataInit, {first:0, sortField:this.options.sortField, sortOrder:this.options.sortOrder, filters: this._createFilterMap()});
                         else
                             this.options.datasource.call(this, this._onDataInit);
                     }
@@ -880,7 +880,7 @@
             }
             else if($.type(this.options.datasource) === 'function') {
                 if(this.options.lazy)
-                    this.options.datasource.call(this, this._onDataUpdate, {first:0, sortField:this.options.sortField, sortorder:this.options.sortOrder});
+                    this.options.datasource.call(this, this._onDataUpdate, {first:0, sortField:this.options.sortField, sortorder:this.options.sortOrder, filters: this._createFilterMap()});
                 else
                     this.options.datasource.call(this, this._onDataUpdate);
             }
@@ -1683,6 +1683,22 @@
 
         setTotalRecords: function(val) {
             this.paginator.puipaginator('option','totalRecords', 20);
+        },
+
+        _createFilterMap: function() {
+            var filters = null;
+            if(this.filterElements) {
+                filters = {};
+                for(var i = 0; i < this.filterElements.length; i++) {
+                    var filterElement = this.filterElements.eq(i),
+                    value = filterElement.val();
+                    if($.trim(value).length) {
+                        filters[filterElement.data('field')] = value;
+                    }
+                }
+            }
+
+            return filters;
         },
         
         editors: {
