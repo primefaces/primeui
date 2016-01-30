@@ -354,6 +354,7 @@
                                                 <include>${basedir}/src/main/webapp/primeui/js/carousel/carousel-element.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/checkbox/checkbox-element.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/column/column-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/datepicker/datepicker-element.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/datatable/datatable-element.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/datagrid/datagrid-element.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/datascroller/datascroller-element.js</include>
@@ -379,6 +380,7 @@
                                                 <include>${basedir}/src/main/webapp/primeui/js/radiobutton/radiobutton-element.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/rating/rating-element.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/selectbutton/selectbutton-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/slider/slider-element.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/spinner/spinner-element.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/splitbutton/splitbutton-element.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/sticky/sticky-element.js</include>
