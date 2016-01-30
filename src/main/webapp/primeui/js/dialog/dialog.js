@@ -143,17 +143,18 @@
                 if(this.options.rtl) {
                     this.element.removeClass('pui-dialog-rtl');
                 }
+
+                var title = this.titlebar.children('.pui-dialog-title').text()||this.options.title;
+                if(title) {
+                    this.element.attr('title', title);
+                }
+                this.titlebar.remove();
+
+                this.content.contents().unwrap();
             }
 
             //remove events
             this._unbindEvents();
-
-            //restore title
-            var title = this.titlebar.children('.pui-dialog-title').text()||this.options.title;
-            if(title) {
-                this.element.attr('title', title);
-            }
-            this.titlebar.remove();
 
             if(this.options.draggable) {
                 this.element.draggable('destroy');
@@ -178,8 +179,6 @@
                 'width': 'auto',
                 'height': 'auto'
             });
-
-            this.content.contents().unwrap();
         },
         
         _renderHeaderIcon: function(styleClass, icon) {
