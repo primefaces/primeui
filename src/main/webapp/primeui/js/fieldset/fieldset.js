@@ -80,7 +80,7 @@
         },
 
         _destroy: function() {
-            if(this.enhanced) {
+            if(!this.options.enhanced) {
                 this.element.removeClass('pui-fieldset ui-widget ui-widget-content ui-corner-all')
                             .children('legend').removeClass('pui-fieldset-legend ui-corner-all ui-state-default ui-state-hover ui-state-active');
                 this.content.contents().unwrap();
