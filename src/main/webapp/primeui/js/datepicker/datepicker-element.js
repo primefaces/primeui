@@ -12,7 +12,7 @@ if(!xtag.tags['p-datepicker']) {
             firstday: {
                 attribute:{}
             },
-            isrtl: {
+            rtl: {
                 attribute:{
                     boolean:true
                 }
@@ -172,42 +172,42 @@ if(!xtag.tags['p-datepicker']) {
                 var $this = this;
 
                 if(this.inline) {
-                    this.xtag.datepicker = $(this).append('<div></div>').children('div');
+                    this.xtag.container = $(this).append('<div></div>').children('div');
                 }
                 else {
-                    this.xtag.datepicker = $(this).append('<input></input>').children('input');
+                    this.xtag.container = $(this).append('<input />').children('input');
                 }
 
-                this.xtag.datepicker.datepicker({
-                    weekHeader: this.weekheader || 'Wk',
-                    dateFormat: this.dateformat || 'mm/dd/yy',
+                this.xtag.container.datepicker({
+                    weekHeader: this.weekheader||'Wk',
+                    dateFormat: this.dateformat||'mm/dd/yy',
                     firstDay: this.firstday ? parseInt(this.firstday) : 0,
-                    isRTL: this.isrtl,
+                    isRTL: this.rtl,
                     showMonthAfterYear: this.showmonthafteryear,
-                    yearSuffix: this.yearsuffix || '',
-                    showOn: this.showon || 'focus',
-                    showAnim: this.showanim || 'fadeIn',
-                    defaultDate: this.defaultdate || null,
-                    appendText: this.appendtext || '',
-                    buttonText: this.buttontext || '...',
-                    buttonImage: this.buttonimage || '',
+                    yearSuffix: this.yearsuffix||'',
+                    showOn: this.showon||'focus',
+                    showAnim: this.showanim||'fadeIn',
+                    defaultDate: this.defaultdate||null,
+                    appendText: this.appendtext||'',
+                    buttonText: this.buttontext||'...',
+                    buttonImage: this.buttonimage||'',
                     buttonImageOnly: this.buttonimageonly,
                     hideIfNoPrevNext: this.hideifnoprevnext,
                     navigationAsDateFormat: this.navigationasdateformat,
                     gotoCurrent: this.gotocurrent,
                     changeMonth: this.changemonth,
                     changeYear: this.changeyear,
-                    yearRange: this.yearrange || 'c-10:c+10',
+                    yearRange: this.yearrange||'c-10:c+10',
                     showOtherMonths: this.showothermonths,
                     selectOtherMonths: this.selectothermonths,
                     showWeek: this.showweek,
-                    calculateWeek: this.calculateweek || undefined ,
-                    shortYearCutoff: this.shortyearcutoff || '+10',
-                    minDate: this.mindate || null,
-                    maxDate: this.maxdate || null,
-                    duration: this.duration || 'fast',
-                    beforeShowDay: this.beforeshowday || null,
-                    beforeShow: this.beforeshow || null,
+                    calculateWeek: this.calculateweek||undefined ,
+                    shortYearCutoff: this.shortyearcutoff||'+10',
+                    minDate: this.mindate||null,
+                    maxDate: this.maxdate||null,
+                    duration: this.duration||'fast',
+                    beforeShowDay: this.beforeshowday||null,
+                    beforeShow: this.beforeshow||null,
                     onSelect: this.onselect ? function(event, value){;PUI.executeFunctionByName($this.onselect, event, value);} : null,
                     onChangeMonthYear: this.onchangeMonthYear ? function(event, value){;PUI.executeFunctionByName($this.onchangemonthyear, event, value);} : null,
                     onClose: this.onclose ? function(event, value){;PUI.executeFunctionByName($this.onclose, event, value);} : null,
@@ -216,7 +216,7 @@ if(!xtag.tags['p-datepicker']) {
                     stepMonths: this.stepmonths ? parseInt(this.stepMonths) : 1,
                     stepBigMonths: this.stepbigmonths ? parseInt(this.stepBigMonths) : 12,
                     altField: this.altfield ? document.getElementById(this.altField) : null,
-                    altFormat: this.altformat || '',
+                    altFormat: this.altformat||'',
                     constrainInput: this.constraininput !== null ? JSON.parse(this.constrainInput) : true,
                     showButtonPanel: this.showbuttonpanel,
                     autoSize: this.autosize,
@@ -224,7 +224,7 @@ if(!xtag.tags['p-datepicker']) {
                 });
 
                 if(this.showon == 'button' && !this.inline) {
-                    var triggerButton = this.xtag.datepicker.siblings('.ui-datepicker-trigger:button');
+                    var triggerButton = this.xtag.container.siblings('.ui-datepicker-trigger:button');
                     triggerButton.html('').addClass('pui-button ui-widget ui-state-default ui-corner-all pui-button-icon-only')
                     .append('<span class="pui-button-icon-left pui-icon fa fa-calendar"></span><span class="pui-button-text">ui-button</span>');
                 }
@@ -233,13 +233,13 @@ if(!xtag.tags['p-datepicker']) {
 
         methods: {
             disable: function() {
-                this.xtag.datepicker.datepicker('disable');
+                this.xtag.container.datepicker('disable');
             },
             enable: function() {
-                this.xtag.datepicker.datepicker('enable');
+                this.xtag.container.datepicker('enable');
             },
             destroy: function() {
-                this.xtag.datepicker.datepicker('destroy');
+                this.xtag.container.datepicker('destroy');
             }
         }
         
