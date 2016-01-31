@@ -28,19 +28,19 @@
 
     <div class="ContentSideSections Implementation">
 
-        <h3 class="first" >Horizontal Slider</h3>
+        <h3 class="first" >Horizontal</h3>
         <p-slider style="width:200px"></p-slider>
 
-        <h3>Vertical Slider</h3>
+        <h3>Vertical</h3>
         <p-slider orientation="vertical" style="height:150px"></p-slider>
 
-        <h3>Slider Callback</h3>
+        <h3>Callback</h3>
         <div style="width:200px">
             <input id="slideChange" type="text" style="width:95%"/>
             <p-slider onslide="slideChange" style="width:100%"></p-slider>
         </div>
 
-        <h3>Range Slider</h3>
+        <h3>Range</h3>
         <p-slider range value="30,60" style="width:400px"></p-slider>
 
     </div>
@@ -57,7 +57,7 @@
                         <div>
                             <div id="doc-element">
                             <h3>Usage</h3>
-                                Slider is defined with &lt;p-slider&gt;&lt;/p-slider&gt; element.
+                                Slider is defined with p-slider element.
 
                                 <pre name="code" class="brush:xml">
 &lt;p-slider&gt;&lt;/p-slider&gt;
@@ -78,19 +78,13 @@
                                             <td>animate</td>
                                             <td>boolean</td>
                                             <td>false</td>
-                                            <td>Animation of the element.</td>
+                                            <td>Whether to slide the handle smoothly when the user clicks on the slider track.</td>
                                         </tr>
                                         <tr>
-                                            <td>distance</td>
-                                            <td>number</td>
-                                            <td>0</td>
-                                            <td>Distance!!</td>
-                                        </tr>
-                                        <tr>
-                                            <td>min</td>
-                                            <td>number</td>
-                                            <td>0</td>
-                                            <td>Mininum value for slider.</td>
+                                            <td>disabled</td>
+                                            <td>bollean</td>
+                                            <td>false</td>
+                                            <td>Disables the slider if set to true.</td>
                                         </tr>
                                         <tr>
                                             <td>max</td>
@@ -99,10 +93,16 @@
                                             <td>Maximum value for slider.</td>
                                         </tr>
                                         <tr>
+                                            <td>min</td>
+                                            <td>number</td>
+                                            <td>0</td>
+                                            <td>Mininum value for slider.</td>
+                                        </tr>
+                                        <tr>
                                             <td>orientation</td>
                                             <td>string</td>
                                             <td>horizontal</td>
-                                            <td>Determines whether the slider handles move horizontally or vertically</td>
+                                            <td>Determines whether the slider handles move horizontally (min on left, max on right) or vertically (min on bottom, max on top). Possible values: "horizontal", "vertical".</td>
                                         </tr>
                                         <tr>
                                             <td>range</td>
@@ -114,19 +114,50 @@
                                             <td>step</td>
                                             <td>number</td>
                                             <td>1</td>
-                                            <td>Determines the size or amount of each interval or step the slider takes between the min and max.</td>
+                                            <td>Determines the size or amount of each interval or step the slider takes between the min and max. The full specified value range of the slider (max - min) should be evenly divisible by the step.</td>
                                         </tr>
                                         <tr>
                                             <td>value</td>
                                             <td>number</td>
                                             <td>0</td>
-                                            <td>Determines the value of the slider.</td>
+                                            <td>Determines the value of the slider, if there's only one handle. If there is more than one handle, determines the value of the first handle. It should be
+                                            a comma separated value if range is enabled.</td>
                                         </tr>
                                         <tr>
-                                            <td>values</td>
-                                            <td>array</td>
+                                            <td>style</td>
+                                            <td>string</td>
                                             <td>null</td>
-                                            <td>This option can be used to specify multiple handles.</td>
+                                            <td>Inline style of the element.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>styleClass</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Style class of the element.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>onchange</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Name of the function to invoke when slider value changes.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>onslide</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Name of the function to invoke on mousemove during slide.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>onstart</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Name of the function to invoke before slide begins.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>onstop</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Name of the function to invoke on after slide ends.</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -163,30 +194,31 @@
 
                             <div id="doc-source">
                             <pre name="code" class="brush:js">
-<script type="text/javascript">
+&lt;script type="text/javascript"&gt;
     slideChange = function(events,value) {
-                    $('#slideChange').val(value.value)
-                };
+        $('#slideChange').val(value.value)
+    };
+
     $(function () {
         $('#slideChange').puiinputtext();
     });
-</script>
+&lt;/script&gt;
                                 </pre>
 
                                 <pre name="code" class="brush:xml">
-&lt;h3 class="first" &gt;Horizontal Slider&lt;/h3&gt;
+&lt;h3 class="first" &gt;Horizontal&lt;/h3&gt;
 &lt;p-slider style="width:200px"&gt;&lt;/p-slider&gt;
 
-&lt;h3&gt;Vertical Slider&lt;/h3&gt;
+&lt;h3&gt;Vertical&lt;/h3&gt;
 &lt;p-slider orientation="vertical" style="height:150px"&gt;&lt;/p-slider&gt;
 
-&lt;h3&gt;Slider Callback&lt;/h3&gt;
+&lt;h3&gt;Slider&lt;/h3&gt;
 &lt;div style="width:200px"&gt;
     &lt;input id="slideChange" type="text" style="width:95%"/&gt;
     &lt;p-slider onslide="slideChange" style="width:100%"&gt;&lt;/p-slider&gt;
 &lt;/div&gt;
 
-&lt;h3&gt;Range Slider&lt;/h3&gt;
+&lt;h3&gt;Range&lt;/h3&gt;
 &lt;p-slider range value="30,60" style="width:400px"&gt;&lt;/p-slider&gt;
                                 </pre>
                             </div>

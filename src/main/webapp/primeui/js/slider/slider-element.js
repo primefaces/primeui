@@ -8,9 +8,6 @@ if(!xtag.tags['p-slider']) {
                     boolean:true
                 }
             },
-            distance: {
-                attribute:{}
-            },
             max: {
                 attribute:{}
             },
@@ -73,7 +70,6 @@ if(!xtag.tags['p-slider']) {
 
                 this.xtag.container.slider({
                     animate: this.animate,
-                    distance: this.distance ? parseInt(this.distance) : 0,
                     max: this.max ? parseInt(this.max) : 100,
                     min: this.min ? parseInt(this.min) : 0,
                     orientation: this.orientation || 'horizontal',
