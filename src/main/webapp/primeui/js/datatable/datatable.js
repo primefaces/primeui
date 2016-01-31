@@ -1443,7 +1443,7 @@
                     });
         },
         
-        filter: function() {
+        filter: function() {
             this.filterMetaMap = [];
                 
             for(var i = 0; i < this.filterElements.length; i++) {

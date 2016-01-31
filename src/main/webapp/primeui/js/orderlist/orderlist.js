@@ -54,7 +54,7 @@
             }
         },
         
-        _generateOptionElements: function(data) {
+        _generateOptionElements: function(data) {
             for(var i = 0; i < data.length; i++) {
                 var choice = data[i];
                 if(choice.label)

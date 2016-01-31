@@ -358,7 +358,7 @@
             }
         },
 
-        _unbindEvents: function() {
+        _unbindEvents: function() {
             this.element.off('mousedown.puidialog');
             this.icons.off();
             $(document).off('keydown.dialog_' + this.id);
