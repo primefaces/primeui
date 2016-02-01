@@ -30,7 +30,7 @@
         show: function(msgs) {
             var $this = this;
 
-            //this.jq.css('z-index', ++PrimeFaces.zindex);
+            this.element.css('z-index', ++PUI.zindex);
 
             this.clear();
 
