@@ -10,6 +10,9 @@ if(!xtag.tags['p-growl']) {
             },
             life: {
                 attribute:{}
+            },
+            appendto: {
+                attribute: {}
             }
         },
 
@@ -18,8 +21,9 @@ if(!xtag.tags['p-growl']) {
                 this.xtag.growl = $(this).append('<div></div>').children('div');
 
                 $(this.xtag.growl).puigrowl({
-                    life: this.life || 3000,
-                    sticky: this.sticky
+                    life: this.life||3000,
+                    sticky: this.sticky,
+                    appendTo: this.appendTo ? document.getElementById(this.appendto) : undefined
                 });
             }
         },

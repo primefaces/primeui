@@ -133,6 +133,18 @@ $('#default').puigrowl('show', [{severity: 'info', summary: 'Message Summary', d
                                             <td>3000</td>
                                             <td>Defines timeout in milliseconds to remove messages.</td>
                                         </tr>
+                                        <tr>
+                                            <td>appendTo</td>
+                                            <td>jQuery,Selector,Element</td>
+                                            <td>document.body</td>
+                                            <td>Defines where the growl would be appended.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>messages</td>
+                                            <td>array</td>
+                                            <td>null</td>
+                                            <td>Array of messages to display initially after creating growl.</td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -286,6 +298,12 @@ document.getElementById('growlel').show([{severity: 'info', summary: 'Message Ti
                                             <td>int</td>
                                             <td>3000</td>
                                             <td>Defines timeout in milliseconds to remove messages.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>appendTo</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Id of the element to append the growl, defaults to document.body.</td>
                                         </tr>
                                     </tbody>
                                 </table>
