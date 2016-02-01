@@ -4,34 +4,52 @@
 (function() {
 
     $.widget("primeui.puigrowl", {
-       
+
         options: {
             sticky: false,
-            life: 3000
+            life: 3000,
+            messages: null,
+            appendTo: document.body
         },
-        
+
         _create: function() {
             var container = this.element;
-            
-            container.addClass("pui-growl ui-widget").appendTo(document.body);
+            this.originalParent = this.element.parent();
+
+            container.addClass("pui-growl ui-widget");
+
+            if(this.options.appendTo) {
+                container.appendTo(this.options.appendTo);
+            }
+
+            if(this.options.messages) {
+                this.show(this.options.messages);
+            }
         },
-        
+
         show: function(msgs) {
             var $this = this;
-        
+
             //this.jq.css('z-index', ++PrimeFaces.zindex);
 
             this.clear();
 
-            $.each(msgs, function(i, msg) {
-                $this._renderMessage(msg);
-            }); 
+            if(msgs && msgs.length) {
+                $.each(msgs, function(i, msg) {
+                    $this._renderMessage(msg);
+                });
+            }
         },
-        
+
         clear: function() {
-            this.element.children('div.pui-growl-item-container').remove();
+            var messageElements = this.element.children('div.pui-growl-item-container');
+            for(var i = 0; i < messageElements.length; i++) {
+                this._unbindMessageEvents(messageElements.eq(i));
+            }
+
+            messageElements.remove();
         },
-        
+
         _renderMessage: function(msg) {
             var markup = '<div class="pui-growl-item-container ui-state-highlight ui-corner-all ui-helper-hidden" aria-live="polite">';
             markup += '<div class="pui-growl-item pui-shadow">';
@@ -43,11 +61,11 @@
             markup += '</div><div style="clear: both;"></div></div></div>';
 
             var message = $(markup);
-            
+
             this._bindMessageEvents(message);
             message.appendTo(this.element).fadeIn();
         },
-        
+
         _removeMessage: function(message) {
             message.fadeTo('normal', 0, function() {
                 message.slideUp('normal', 'easeInOutCirc', function() {
@@ -55,21 +73,21 @@
                 });
             });
         },
-        
+
         _bindMessageEvents: function(message) {
             var $this = this,
-            sticky = this.options.sticky;
+                sticky = this.options.sticky;
 
             message.on('mouseover.puigrowl', function() {
-                var msg = $(this);
+                    var msg = $(this);
 
-                if(!msg.is(':animated')) {
-                    msg.find('div.pui-growl-icon-close:first').show();
-                }
-            })
-            .on('mouseout.puigrowl', function() {        
-                $(this).find('div.pui-growl-icon-close:first').hide();
-            });
+                    if(!msg.is(':animated')) {
+                        msg.find('div.pui-growl-icon-close:first').show();
+                    }
+                })
+                .on('mouseout.puigrowl', function() {
+                    $(this).find('div.pui-growl-icon-close:first').hide();
+                });
 
             //remove message on click of close icon
             message.find('div.pui-growl-icon-close').on('click.puigrowl',function() {
@@ -84,7 +102,21 @@
                 this._setRemovalTimeout(message);
             }
         },
-        
+
+        _unbindMessageEvents: function(message) {
+            var $this = this,
+                sticky = this.options.sticky;
+
+            message.off('mouseover.puigrowl mouseout.puigrowl');
+            message.find('div.pui-growl-icon-close').off('click.puigrowl');
+            if(!sticky) {
+                var timeout = message.data('timeout');
+                if(timeout) {
+                    window.clearTimeout(timeout);
+                }
+            }
+        },
+
         _setRemovalTimeout: function(message) {
             var $this = this;
 
@@ -94,24 +126,42 @@
 
             message.data('timeout', timeout);
         },
-        
+
         _getIcon: function(severity) {
             switch(severity) {
                 case 'info':
                     return 'fa-info-circle';
-                break;
-                
+                    break;
+
                 case 'warn':
                     return 'fa-warning';
-                break;
-                
+                    break;
+
                 case 'error':
                     return 'fa-close';
-                break;
-                
+                    break;
+
                 default:
                     return 'fa-info-circle';
-                break;
+                    break;
+            }
+        },
+
+        _setOption: function(key, value) {
+            if(key === 'value' || key === 'messages') {
+                this.show(value);
+            }
+            else {
+                $.Widget.prototype._setOption.apply(this, arguments);
+            }
+        },
+
+        _destroy: function() {
+            this.clear();
+            this.element.removeClass("pui-growl ui-widget");
+
+            if(this.options.appendTo) {
+                this.element.appendTo(this.originalParent);
             }
         }
     });
