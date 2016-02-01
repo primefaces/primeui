@@ -4,38 +4,58 @@
 (function() {
 
     $.widget("primeui.puilistbox", {
-       
+
         options: {
+            value: null,
             scrollHeight: 200,
             content: null,
             data: null,
             template: null,
             style: null,
-            styleClass: null
+            styleClass: null,
+            multiple: false,
+            enhanced: false,
+            change: null
         },
 
         _create: function() {
-            this.element.wrap('<div class="pui-listbox pui-inputtext ui-widget ui-widget-content ui-corner-all"><div class="ui-helper-hidden-accessible"></div></div>');
-            this.container = this.element.parent().parent();
-            this.listContainer = $('<ul class="pui-listbox-list"></ul>').appendTo(this.container);
-            this.options.multiple = this.element.prop("multiple");
+            if(!this.options.enhanced) {
+                this.element.wrap('<div class="pui-listbox pui-inputtext ui-widget ui-widget-content ui-corner-all"><div class="ui-helper-hidden-accessible"></div></div>');
+                this.container = this.element.parent().parent();
+                this.listContainer = $('<ul class="pui-listbox-list"></ul>').appendTo(this.container);
+
+                if(this.options.data) {
+                    this._populateInputFromData();
+                }
+
+                this._populateContainerFromOptions();
+            }
+            else {
+                this.container = this.element.parent().parent();
+                this.listContainer = this.container.children('ul').addClass('pui-listbox-list');
+                this.items = this.listContainer.children('li').addClass('pui-listbox-item ui-corner-all');
+                this.choices = this.element.children('option');
+            }
 
             if(this.options.style) {
                 this.container.attr('style', this.options.style);
             }
-            
+
             if(this.options.styleClass) {
                 this.container.addClass(this.options.styleClass);
             }
 
-            if(this.options.data) {
-                this._populateInputFromData();
+            if(this.options.multiple)
+                this.element.prop('multiple', true);
+            else
+                this.options.multiple = this.element.prop('multiple');
+
+            //preselection
+            if(this.options.value) {
+                this._updateSelection(this.options.value);
             }
 
-            this._populateContainerFromOptions();
-
             this._restrictHeight();
-
             this._bindEvents();
         },
 
@@ -70,28 +90,26 @@
 
             //items
             this.items.on('mouseover.puilistbox', function() {
-                var item = $(this);
-                if(!item.hasClass('ui-state-highlight')) {
-                    item.addClass('ui-state-hover');
-                }
-            })
-            .on('mouseout.puilistbox', function() {
-                $(this).removeClass('ui-state-hover');
-            })
-            .on('dblclick.puilistbox', function(e) {       
-                $this.element.trigger('dblclick');
+                    var item = $(this);
+                    if(!item.hasClass('ui-state-highlight')) {
+                        item.addClass('ui-state-hover');
+                    }
+                })
+                .on('mouseout.puilistbox', function() {
+                    $(this).removeClass('ui-state-hover');
+                })
+                .on('dblclick.puilistbox', function(e) {
+                    $this.element.trigger('dblclick');
 
-                PUI.clearSelection();
-                e.preventDefault();
-            })
-            .on('click.puilistbox', function(e) {       
-                if($this.options.multiple)
-                    $this._clickMultiple(e, $(this));
-                else
-                    $this._clickSingle(e, $(this));
-            
-                
-            });
+                    PUI.clearSelection();
+                    e.preventDefault();
+                })
+                .on('click.puilistbox', function(e) {
+                    if($this.options.multiple)
+                        $this._clickMultiple(e, $(this));
+                    else
+                        $this._clickSingle(e, $(this));
+                });
 
             //input
             this.element.on('focus.puilistbox', function() {
@@ -100,7 +118,7 @@
                 $this.container.removeClass('ui-state-focus');
             });
         },
-        
+
         _clickSingle: function(event, item) {
             var selectedItem = this.items.filter('.ui-state-highlight');
 
@@ -110,20 +128,23 @@
                 }
 
                 this.selectItem(item);
-                this.element.trigger('change');
+                this._trigger('change', event, {
+                    value: this.choices.eq(item.index()).attr('value'),
+                    index: item.index()
+                });
             }
 
             this.element.trigger('click');
 
             PUI.clearSelection();
-            
+
             event.preventDefault();
         },
-                
-        _clickMultiple: function(event, item) {            
+
+        _clickMultiple: function(event, item) {
             var selectedItems = this.items.filter('.ui-state-highlight'),
-            metaKey = (event.metaKey||event.ctrlKey),
-            unchanged = (!metaKey && selectedItems.length === 1 && selectedItems.index() === item.index());
+                metaKey = (event.metaKey||event.ctrlKey),
+                unchanged = (!metaKey && selectedItems.length === 1 && selectedItems.index() === item.index());
 
             if(!event.shiftKey) {
                 if(!metaKey) {
@@ -132,7 +153,7 @@
 
                 if(metaKey && item.hasClass('ui-state-highlight')) {
                     this.unselectItem(item);
-                } 
+                }
                 else {
                     this.selectItem(item);
                     this.cursorItem = item;
@@ -142,24 +163,36 @@
                 //range selection
                 if(this.cursorItem) {
                     this.unselectAll();
- 
+
                     var currentItemIndex = item.index(),
-                    cursorItemIndex = this.cursorItem.index(),
-                    startIndex = (currentItemIndex > cursorItemIndex) ? cursorItemIndex : currentItemIndex,
-                    endIndex = (currentItemIndex > cursorItemIndex) ? (currentItemIndex + 1) : (cursorItemIndex + 1);
-                    
+                        cursorItemIndex = this.cursorItem.index(),
+                        startIndex = (currentItemIndex > cursorItemIndex) ? cursorItemIndex : currentItemIndex,
+                        endIndex = (currentItemIndex > cursorItemIndex) ? (currentItemIndex + 1) : (cursorItemIndex + 1);
+
                     for(var i = startIndex ; i < endIndex; i++) {
                         this.selectItem(this.items.eq(i));
                     }
-                } 
+                }
                 else {
                     this.selectItem(item);
                     this.cursorItem = item;
                 }
             }
-            
+
             if(!unchanged) {
-                this.element.trigger('change');
+                var values = [],
+                    indexes = [];
+                for(var i = 0; i < this.choices.length; i++) {
+                    if(this.choices.eq(i).prop('selected')) {
+                        values.push(this.choices.eq(i).attr('value'));
+                        indexes.push(i);
+                    }
+                }
+
+                this._trigger('change', event, {
+                    value: values,
+                    index: indexes
+                })
             }
 
             this.element.trigger('click');
@@ -194,14 +227,13 @@
             else {
                 item = value;
             }
-            
+
             item.removeClass('ui-state-highlight');
             this.choices.eq(item.index()).prop('selected', false);
             this._trigger('itemUnselect', null, this.choices.eq(item.index()));
         },
 
         _setOption: function (key, value) {
-            $.Widget.prototype._setOption.apply(this, arguments);
             if (key === 'data') {
                 this.element.empty();
                 this.listContainer.empty();
@@ -211,6 +243,12 @@
 
                 this._restrictHeight();
                 this._bindEvents();
+            }
+            else if (key === 'value') {
+                this._updateSelection(value);
+            }
+            else {
+                $.Widget.prototype._setOption.apply(this, arguments);
             }
         },
 
@@ -227,7 +265,7 @@
             this._bindEvents();
             this.items.removeClass('ui-state-disabled');
         },
-        
+
         _createItemContent: function(choice) {
             if(this.options.template) {
                 var template = this.options.template.html();
@@ -240,7 +278,20 @@
             else {
                 return choice.label;
             }
+        },
+
+        _updateSelection: function(value) {
+            this.choices.prop('selected', false);
+            this.items.removeClass('ui-state-highlight')
+
+            for(var i = 0; i < this.choices.length; i++) {
+                var choice = this.choices.eq(i);
+                if(choice.attr('value') == value) {
+                    choice.prop('selected', true);
+                    this.items.eq(i).addClass('ui-state-highlight');
+                }
+            }
         }
     });
-        
+
 })();
