@@ -119,6 +119,11 @@
             });
         },
 
+        _unbindEvents: function() {
+            this.items.off('mouseover.puilistbox mouseout.puilistbox dblclick.puilistbox click.puilistbox');
+            this.element.off('focus.puilistbox blur.puilistbox');
+        },
+
         _clickSingle: function(event, item) {
             var selectedItem = this.items.filter('.ui-state-highlight');
 
@@ -290,6 +295,31 @@
                     choice.prop('selected', true);
                     this.items.eq(i).addClass('ui-state-highlight');
                 }
+            }
+        },
+
+        _destroy: function() {
+            this._unbindEvents();
+
+            if(!this.options.enhanced) {
+                this.listContainer.remove();
+                this.element.unwrap().unwrap();
+            }
+
+            if(this.options.style) {
+                this.container.removeAttr('style');
+            }
+
+            if(this.options.styleClass) {
+                this.container.removeClass(this.options.styleClass);
+            }
+
+            if(this.options.multiple) {
+                this.element.prop('multiple', false);
+            }
+
+            if(this.choices) {
+                this.choices.prop('selected', false);
             }
         }
     });
