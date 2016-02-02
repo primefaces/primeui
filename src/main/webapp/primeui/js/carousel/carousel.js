@@ -20,7 +20,8 @@
             pageLinks: 3,
             style: null,
             styleClass: null,
-            template: null
+            template: null,
+            enhanced: false
         },
        
         _create: function() {
@@ -30,14 +31,20 @@
             }
             
             //create elements
-            this.element.wrap('<div class="pui-carousel ui-widget ui-widget-content ui-corner-all"><div class="pui-carousel-viewport"></div></div>');
-            this.container = this.element.parent().parent();
-            this.element.addClass('pui-carousel-items');
-            this.container.prepend('<div class="pui-carousel-header ui-widget-header"><div class="pui-carousel-header-title"></div></div>');
+            if(!this.options.enhanced) {
+                this.element.wrap('<div class="pui-carousel ui-widget ui-widget-content ui-corner-all"><div class="pui-carousel-viewport"></div></div>');
+                this.container = this.element.parent().parent();
+                this.element.addClass('pui-carousel-items');
+            }
+            else {
+                this.container = this.element.parent().parent();
+            }
+
             this.viewport = this.element.parent();
+            this.container.prepend('<div class="pui-carousel-header ui-widget-header"><div class="pui-carousel-header-title"></div></div>');
             this.header = this.container.children('.pui-carousel-header');
-            this.header.append('<span class="pui-carousel-button pui-carousel-next-button fa fa-arrow-circle-right"></span>' + 
-                                '<span class="pui-carousel-button pui-carousel-prev-button fa fa-arrow-circle-left"></span>');
+            this.header.append('<span class="pui-carousel-button pui-carousel-next-button fa fa-arrow-circle-right"></span>' +
+                '<span class="pui-carousel-button pui-carousel-prev-button fa fa-arrow-circle-left"></span>');
                 
             if(this.options.headerText) {
                 this.header.children('.pui-carousel-header-title').html(this.options.headerText);
@@ -55,6 +62,20 @@
                 this._loadData();
             else
                 this._render();
+        },
+
+        _destroy: function() {
+            this._unbindEvents();
+            this.header.remove();
+
+            if(!this.options.enhanced) {
+                this.items.removeClass('pui-carousel-item ui-widget-content ui-corner-all');
+                this.element.removeClass('pui-carousel-items').removeAttr('style').unwrap().unwrap();
+            }
+
+            if(this.options.datasource) {
+                this.items.remove();
+            }
         },
         
         _loadData: function() {
@@ -223,13 +244,13 @@
             }
 
             if(this.pageLinks.length) {
-                this.pageLinks.on('click', function(e) {
+                this.pageLinks.on('click.puicarousel', function(e) {
                     $this.setPage($(this).index());
                     e.preventDefault();
                 });
             }
 
-            this.header.children('select').on('change', function() {
+            this.header.children('select').on('change.puicarousel', function() {
                 $this.setPage(parseInt($(this).val()) - 1);
             });
 
@@ -246,6 +267,23 @@
             }
             
             this.eventsBound = true;
+        },
+
+        _unbindEvents: function() {
+            this.prevNav.off('click.puicarousel');
+            this.nextNav.off('click.puicarousel');
+            if(this.pageLinks.length) {
+                this.pageLinks.off('click.puicarousel');
+            }
+            this.header.children('select').off('change.puicarousel');
+
+            if(this.options.autoplayInterval) {
+                this.stopAutoplay();
+            }
+
+            if(this.options.responsive) {
+                $(window).off('resize.' + this.id)
+            }
         },
 
         updateNavigators: function() {
