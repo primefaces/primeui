@@ -32,7 +32,6 @@
 
             if(!this.options.enhanced) {
                 this.element.wrap('<div class="pui-carousel ui-widget ui-widget-content ui-corner-all"><div class="pui-carousel-viewport"></div></div>');
-                this.container = this.element.parent().parent();
             }
 
             this.container = this.element.parent().parent();
