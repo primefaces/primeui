@@ -63,11 +63,11 @@
         _destroy: function() {
             this._unbindEvents();
             this.header.remove();
-            this.items.removeClass('pui-carousel-item ui-widget-content ui-corner-all');
-            this.element.removeClass('pui-carousel-items')
+            this.items.removeClass('pui-carousel-item ui-widget-content ui-corner-all').css('width','auto');
+            this.element.removeClass('pui-carousel-items').css('left','auto');
 
             if(!this.options.enhanced) {
-                this.element.removeAttr('style').unwrap().unwrap();
+                this.element.unwrap().unwrap();
             }
 
             if(this.options.datasource) {
