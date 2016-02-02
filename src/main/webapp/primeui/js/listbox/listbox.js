@@ -51,7 +51,7 @@
                 this.options.multiple = this.element.prop('multiple');
 
             //preselection
-            if(this.options.value) {
+            if(this.options.value !== null && this.options.value !== undefined) {
                 this._updateSelection(this.options.value);
             }
 
@@ -291,10 +291,20 @@
 
             for(var i = 0; i < this.choices.length; i++) {
                 var choice = this.choices.eq(i);
-                if(choice.attr('value') == value) {
-                    choice.prop('selected', true);
-                    this.items.eq(i).addClass('ui-state-highlight');
+                if(this.options.multiple) {
+                    if($.inArray(choice.attr('value'), value) >= 0) {
+                        choice.prop('selected', true);
+                        this.items.eq(i).addClass('ui-state-highlight');
+                    }
                 }
+                else {
+                    if(choice.attr('value') == value) {
+                        choice.prop('selected', true);
+                        this.items.eq(i).addClass('ui-state-highlight');
+                        break;
+                    }
+                }
+
             }
         },
 
