@@ -18,6 +18,7 @@
             autoplayInterval: 0,
             easing: 'easeInOutCirc',
             pageLinks: 3,
+            style: null,
             styleClass: null,
             template: null
         },
@@ -44,6 +45,10 @@
             
             if(this.options.styleClass) {
                 this.container.addClass(this.options.styleClass);
+            }
+
+            if(this.options.style) {
+                this.container.attr('style', this.options.style);
             }
             
             if(this.options.datasource)

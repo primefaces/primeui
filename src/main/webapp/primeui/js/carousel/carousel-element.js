@@ -41,6 +41,12 @@ if(!xtag.tags['p-carousel']) {
             },
             renderdelay: {
                 attribute: {}
+            },
+            style: {
+                attribute: {}
+            },
+            styleclass: {
+                attribute: {}
             }
         },
 
@@ -77,7 +83,9 @@ if(!xtag.tags['p-carousel']) {
                     pageLinks: this.pagelinks ? parseInt(this.pagelinks): 3,
                     template: $(this).children('script'),
                     pageChange: this.onpagechange ? function(event, param) {PUI.executeFunctionByName($this.onpagechange, event, param);} : null
-                });     
+                    style: this.style,
+                    styleClass: this.styleClass
+                });
             }
         }
     });
