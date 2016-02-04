@@ -38,7 +38,7 @@
                             this.element.append('<option value="' + choice + '">' + choice + '</option>');
                     }
                 }
-
+                this.choices = this.element.children('option');
                 this.element.wrap('<div class="pui-dropdown ui-widget ui-state-default ui-corner-all ui-helper-clearfix" />')
                     .wrap('<div class="ui-helper-hidden-accessible" />');
 
@@ -69,6 +69,7 @@
                 this._generateItems();
             }
             else {
+                this.choices = this.element.children('option');
                 this.container = this.element.closest('.pui-dropdown');
                 this.focusElementContainer = this.container.children('.ui-helper-hidden-accessible:last');
                 this.focusElement = this.focusElementContainer.children('input');
@@ -95,7 +96,6 @@
             }
 
             this.disabled = this.element.prop('disabled')||this.options.disabled;
-            this.choices = this.element.children('option');
 
             if(this.options.appendTo === 'self')
                 this.panel.appendTo(this.container);
@@ -600,6 +600,8 @@
             else {
                 this.itemsWrapper.height(this.initialHeight);
             }
+
+            this._alignPanel();
         },
 
         _search: function(text, start, end) {
