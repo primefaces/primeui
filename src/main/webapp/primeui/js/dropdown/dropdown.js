@@ -17,7 +17,9 @@
             scrollHeight: 200,
             appendTo: 'body',
             editable: false,
-            value: null
+            value: null,
+            style: null,
+            styleClass: null
         },
 
         _create: function() {
@@ -82,6 +84,14 @@
                     this.filterContainer = this.panel.children('.pui-dropdown-filter-container');
                     this.filterInput = this.filterContainer.children('input');
                 }
+            }
+
+            if(this.options.style) {
+                this.container.attr('style', this.options.style);
+            }
+
+            if(this.options.styleClass) {
+                this.container.addClass(this.options.styleClass);
             }
 
             this.disabled = this.element.prop('disabled')||this.options.disabled;
@@ -713,6 +723,14 @@
             else {
                 if(this.options.appendTo == 'body') {
                     this.panel.appendTo(this.container);
+                }
+
+                if(this.options.style) {
+                    this.container.removeAttr('style');
+                }
+
+                if(this.options.styleClass) {
+                    this.container.removeClass(this.options.styleClass);
                 }
             }
         }

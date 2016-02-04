@@ -36,6 +36,12 @@ if(!xtag.tags['p-dropdown']) {
             },
             onchange: {
                 attribute: {}
+            },
+            style: {
+                attribute: {}
+            },
+            styleclass: {
+                attribute: {}
             }
         },
 
@@ -65,7 +71,9 @@ if(!xtag.tags['p-dropdown']) {
                     filterfunction: this.filterfunction,
                     scrollHeight: this.scrollheight ? parseInt(this.scrollheight) : 200,
                     appendTo: this.appendto||'body',
-                    change: this.onchange ? function(event) {PUI.executeFunctionByName($this.onchange, event);} : null
+                    change: this.onchange ? function(event) {PUI.executeFunctionByName($this.onchange, event);} : null,
+                    style: this.style,
+                    styleClass: this.styleclass
                 });
             }
         },
