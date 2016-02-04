@@ -590,95 +590,6 @@ button.ui-button span {
 	box-shadow: 0px 0px 5px #A6A6AC, inset 0 2px 2px #8f8f8f;
 }
 
-.ui-tabs {
-	position: relative;
-	zoom: 1;
-	border: none !important;
-	background: none;
-}
-
-.ui-tabs .ui-tabs-nav {
-	background: none;
-	border: 0;
-}
-
-.ui-tabs .ui-tabs-nav li {
-	list-style: none;
-	float: left;
-	position: relative;
-	margin: 0 .2em 1px 0;
-	padding: 0;
-	white-space: nowrap;
-}
-
-.ui-tabs .ui-tabs-nav li a {
-	float: left;
-	padding: .5em 1em;
-	text-decoration: none;
-	font-size: 14px;
-	font-weight: bold;
-}
-
-.ui-tabs .ui-tabs-nav li.ui-tabs-selected {
-	margin-bottom: 0;
-}
-
-.ui-tabs .ui-tabs-nav li.ui-tabs-selected a,
-.ui-tabs .ui-tabs-nav li.ui-state-disabled a,
-.ui-tabs .ui-tabs-nav li.ui-state-processing a {
-	cursor: text;
-}
-
-.ui-tabs .ui-tabs-nav li a,
-.ui-tabs.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-selected a {
-	cursor: pointer;
-}
-
-.ui-tabs .ui-tabs-panel {
-	border-width: 0px !important;
-	padding: 1em 1.4em; background: #FFF;
-}
-
-.ui-tabs.ui-tabs-top .ui-tabs-nav {
-	border-bottom: 1px solid #D9D9D9;
-}
-
-.ui-tabs.ui-tabs-top .ui-tabs-nav li.ui-tabs-selected {
-	padding-bottom: 1px;
-}
-
-.ui-tabs.ui-tabs-bottom .ui-tabs-nav {
-	border-top: 1px solid #D9D9D9;
-}
-
-.ui-tabs.ui-tabs-bottom .ui-tabs-nav li.ui-tabs-selected {
-	margin-top: -1px;
-	padding-top: 1px;
-}
-
-.ui-tabs.ui-tabs-left .ui-tabs-nav {
-	border-right: 1px solid #D9D9D9;
-}
-
-.ui-tabs.ui-tabs-left .ui-tabs-nav li.ui-tabs-selected {
-	margin-right: -1px;
-	padding-right: 1px;
-}
-
-.ui-tabs.ui-tabs-right .ui-tabs-nav {
-	border-left: 1px solid #D9D9D9;
-}
-
-.ui-tabs.ui-tabs-right .ui-tabs-nav li.ui-tabs-selected {
-	margin-left: -1px !important;
-	padding-left: 1px !important;
-}
-
-.ui-tabs .ui-tabs-nav {
-	padding: 0px !important;
-	border-radius: 0px !important;
-}
-
 /* Toggle Buttons */
 .pui-selectbutton .pui-button.ui-state-active,
 .pui-togglebutton.pui-button.ui-state-active{
@@ -691,4 +602,9 @@ button.ui-button span {
 .pui-inputswitch-on {
 	background: #14A4FF !important;
 	color: #ffffff;
+}
+
+/* ProgressBar */
+.pui-progressbar-value {
+	background: #14A4FF !important;
 }
