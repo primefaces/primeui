@@ -39,7 +39,7 @@
                     }
                 }
                 this.choices = this.element.children('option');
-                this.element.wrap('<div class="pui-dropdown ui-widget ui-state-default ui-corner-all ui-helper-clearfix" />')
+                this.element.attr('tabindex', '-1').wrap('<div class="pui-dropdown ui-widget ui-state-default ui-corner-all ui-helper-clearfix" />')
                     .wrap('<div class="ui-helper-hidden-accessible" />');
 
                 this.container = this.element.closest('.pui-dropdown');
