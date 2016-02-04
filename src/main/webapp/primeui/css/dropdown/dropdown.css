@@ -79,8 +79,9 @@
 }
 
 .pui-dropdown-panel .pui-dropdown-filter {
-    width: 85%;
+    width: 100%;
     padding-right:18px;
+    box-sizing: border-box;
 }
 
 .pui-dropdown-panel .pui-dropdown-filter-container {
@@ -92,7 +93,7 @@
 
 .pui-dropdown-panel .pui-dropdown-filter-container .pui-icon {
     position: absolute;
-    top: 10px;
+    top: 12px;
     right: 15px;
 }
 
