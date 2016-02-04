@@ -671,7 +671,7 @@
         },
 
         _setOption: function (key, value) {
-            if (key === 'data') {
+            if (key === 'data' || key === 'options') {
                 this.options.data = value;
                 this.removeAllOptions();
 
