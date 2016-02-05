@@ -92,7 +92,7 @@
         
         disable: function() {
             this._unbindEvents();
-            this.addClass('ui-state-disabled');
+            this.element.addClass('ui-state-disabled').prop('disabled',true);
         },
         
         enable: function() {
