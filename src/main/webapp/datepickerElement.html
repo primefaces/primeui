@@ -5,12 +5,12 @@
     <link rel="stylesheet" href="primeui/css/tabview/tabview.css" />
     <link rel="stylesheet" href="primeui/css/growl/growl.css" />
     <script type="text/javascript" src="primeui/js/inputtext/inputtext.js"></script>
+    <script type="text/javascript" src="primeui/js/button/button.js"></script>
     <script type="text/javascript" src="resources/js/jquery-ui-datepicker.js"></script>
     <script type="text/javascript" src="primeui/js/datepicker/datepicker-element.js"></script>
     <script type="text/javascript" src="primeui/js/inputtext/inputtext-element.js"></script>
     <script type="text/javascript" src="primeui/js/growl/growl.js"></script>
-    <script type="text/javascript" src="primeui/js/growl/growl-element.js"></script> 
-    <script type="text/javascript" src="primeui/js/button/button.js"></script>
+    <script type="text/javascript" src="primeui/js/growl/growl-element.js"></script>
     <script type="text/javascript" src="primeui/js/tabview/tabview.js"></script>
     <script type="text/javascript">
         $(function () {
@@ -59,7 +59,7 @@
                         <div>
                             <div id="doc-element">
                             <h3>Usage</h3>
-                                Datepicker element is defined usign p-datepicker tag.
+                                Datepicker element is defined using p-datepicker tag.
 
                                 <pre name="code" class="brush:xml">
 &lt;p-datepicker&gt;&lt;/p-datepicker&gt;
@@ -78,21 +78,15 @@
                                     <tbody>
                                         <tr>
                                             <td>altfield</td>
-                                            <td>selector,jquery,element</td>
-                                            <td>""</td>
-                                            <td>An input element that is to be updated with the selected date from the datepicker. Use the altFormat option to change the format of the date within this field. Leave as blank for no alternate field.</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Id of an input element that is to be updated with the selected date from the datepicker. Use the altFormat option to change the format of the date within this field. Leave as blank for no alternate field.</td>
                                         </tr>
                                         <tr>
                                             <td>altformat</td>
                                             <td>string</td>
                                             <td>""</td>
                                             <td>The dateFormat to be used for the altField option. This allows one date format to be shown to the user for selection purposes, while a different format is actually sent behind the scenes.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>appendtext</td>
-                                            <td>string</td>
-                                            <td>""</td>
-                                            <td>The text to display after each date field, e.g., to show the required format.</td>
                                         </tr>
                                         <tr>
                                             <td>autosize</td>
@@ -102,39 +96,21 @@
                                         </tr>
                                         <tr>
                                             <td>beforeshow</td>
-                                            <td> function( Element input, Object inst )</td>
+                                            <td>function(Element input,Object inst)</td>
                                             <td>null</td>
-                                            <td>A function that takes an input field and current datepicker instance and returns an options object to update the datepicker with. It is called just before the datepicker is displayed.</td>
+                                            <td>Name of the function that takes an input field and current datepicker instance and returns an options object to update the datepicker with. It is called just before the datepicker is displayed.</td>
                                         </tr>
                                         <tr>
                                             <td>beforeshowday</td>
                                             <td>function(Date date)</td>
                                             <td>null</td>
-                                            <td>A function that takes a date as a parameter and must return an array.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>buttonimage</td>
-                                            <td>string</td>
-                                            <td>""</td>
-                                            <td>A URL of an image to use to display the datepicker when the showOn option is set to "button" or "both".</td>
-                                        </tr>
-                                        <tr>
-                                            <td>buttonimageonly</td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>Whether the button image should be rendered by itself instead of inside a button element.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>buttontext</td>
-                                            <td>string</td>
-                                            <td>"..."</td>
-                                            <td>The text to display on the trigger button. Use in conjunction with the showOn option set to "button" or "both".</td>
+                                            <td>Name of the function that takes a date as a parameter and must return an array.</td>
                                         </tr>
                                         <tr>
                                             <td>calculateweek</td>
-                                            <td>function()</td>
+                                            <td>function</td>
                                             <td>jQuery.datepicker.iso8601Week</td>
-                                            <td>A function to calculate the week of the year for a given date. The default implementation uses the ISO 8601 definition: weeks start on a Monday; the first week of the year contains the first Thursday of the year.</td>
+                                            <td>A name of the function to calculate the week of the year for a given date. The default implementation uses the ISO 8601 definition: weeks start on a Monday; the first week of the year contains the first Thursday of the year.</td>
                                         </tr>
                                         <tr>
                                             <td>changemonth</td>
@@ -157,26 +133,20 @@
                                         <tr>
                                             <td>dateformat</td>
                                             <td>string</td>
-                                            <td>"mm/dd/yy"</td>
+                                            <td>mm/dd/yy</td>
                                             <td>The format for parsed and displayed dates.</td>
                                         </tr>
                                         <tr>
                                             <td>defaultdate</td>
-                                            <td>data,number,string</td>
+                                            <td>string</td>
                                             <td>null</td>
-                                            <td>Set the date to highlight on first opening if the field is blank. Specify either an actual date via a Date object or as a string in the current dateFormat, or a number of days from today (e.g. +7) or a string of values and periods ('y' for years, 'm' for months, 'w' for weeks, 'd' for days, e.g. '+1m +7d'), or null for today.</td>
+                                            <td>Set the date to highlight on first opening if the field is blank. Specify a string in the current dateFormat, or a number of days from today (e.g. +7) or a string of values and periods ('y' for years, 'm' for months, 'w' for weeks, 'd' for days, e.g. '+1m +7d'), or null for today.</td>
                                         </tr>
                                         <tr>
                                             <td>duration</td>
                                             <td>string</td>
-                                            <td>"normal"</td>
+                                            <td>normal</td>
                                             <td>Control the speed at which the datepicker appears, it may be a time in milliseconds or a string representing one of the three predefined speeds ("slow", "normal", "fast").</td>
-                                        </tr>
-                                        <tr>
-                                            <td>firstday</td>
-                                            <td>number</td>
-                                            <td>0</td>
-                                            <td>Set the first day of the week: Sunday is 0, Monday is 1, etc.</td>
                                         </tr>
                                         <tr>
                                             <td>gotocurrent</td>
@@ -192,15 +162,15 @@
                                         </tr>
                                         <tr>
                                             <td>maxdate</td>
-                                            <td>number,date,string</td>
+                                            <td>string</td>
                                             <td>null</td>
-                                            <td>The maximum selectable date. When set to null, there is no maximum.</td>
+                                            <td>The maximum selectable date as a string in dateformat.</td>
                                         </tr>
                                         <tr>
                                             <td>mindate</td>
                                             <td>number,date,string</td>
                                             <td>null</td>
-                                            <td>The minimum selectable date. When set to null, there is no minimum.</td>
+                                            <td>The minimum selectable date as a string in dateformat.</td>
                                         </tr>
                                         <tr>
                                             <td>navigationasdateformat</td>
@@ -210,33 +180,27 @@
                                         </tr>
                                         <tr>
                                             <td>numberofmonths</td>
-                                            <td>number,array</td>
+                                            <td>number</td>
                                             <td>1</td>
                                             <td>The number of months to show at once.</td>
                                         </tr>
                                         <tr>
                                             <td>onchangemonthyear</td>
-                                            <td>function( Integer year, Integer month, Object inst )</td>
+                                            <td>function(number year, number month, Object inst)</td>
                                             <td>null</td>
                                             <td>Called when the datepicker moves to a new month and/or year. The function receives the selected year, month (1-12), and the datepicker instance as parameters. this refers to the associated input field.</td>
                                         </tr>
                                         <tr>
                                             <td>onclose</td>
-                                            <td> function( String dateText, Object inst )</td>
+                                            <td>function(String dateText, Object In)</td>
                                             <td>false</td>
                                             <td>Called when the datepicker is closed, whether or not a date is selected. The function receives the selected date as text ("" if none) and the datepicker instance as parameters. this refers to the associated input field.</td>
                                         </tr>
                                         <tr>
                                             <td>onselect</td>
-                                            <td> function( String dateText, Object inst )</td>
+                                            <td>function(String dateText, Object inst)</td>
                                             <td>null</td>
                                             <td>Called when the datepicker is selected. The function receives the selected date as text and the datepicker instance as parameters. this refers to the associated input field.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>rtl</td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>Whether the current language is drawn from right to left.</td>
                                         </tr>
                                         <tr>
                                             <td>selectothermonths</td>
@@ -253,7 +217,7 @@
                                         <tr>
                                             <td>showanim</td>
                                             <td>string</td>
-                                            <td>"show"</td>
+                                            <td>show</td>
                                             <td>The name of the animation used to show and hide the datepicker. Use "show" (the default), "slideDown", "fadeIn", any of the jQuery UI effects. Set to an empty string to disable animation.</td>
                                         </tr>
                                         <tr>
@@ -277,7 +241,7 @@
                                         <tr>
                                             <td>showon</td>
                                             <td>string</td>
-                                            <td>"focus"</td>
+                                            <td>focus</td>
                                             <td>When the datepicker should appear. The datepicker can appear when the field receives focus ("focus"), when a button is clicked ("button"), or when either event occurs ("both").</td>
                                         </tr>
                                         <tr>
@@ -299,15 +263,9 @@
                                             <td>Set how many months to move when clicking the previous/next links.</td>
                                         </tr>
                                         <tr>
-                                            <td>weekheader</td>
-                                            <td>string</td>
-                                            <td>"Wk"</td>
-                                            <td>The text to display for the week of the year column heading.Use the showWeek option to display this column.</td>
-                                        </tr>
-                                        <tr>
                                             <td>yearrange</td>
                                             <td>string</td>
-                                            <td>"c-10:c+10"</td>
+                                            <td>c-10:c+10</td>
                                             <td>The range of years displayed in the year drop-down: either relative to today's year ("-nn:+nn"), relative to the currently selected year ("c-nn:c+nn"), absolute ("nnnn:nnnn"), or combinations of these formats ("nnnn:-nn"). Note that this option only affects what appears in the drop-down, to restrict which dates may be selected use the minDate and/or maxDate options.</td>
                                         </tr>
                                         <tr>
@@ -341,9 +299,9 @@
                                             <td>Disables the element.</td>
                                         </tr>
                                         <tr>
-                                            <td>destroy()</td>
+                                            <td>getDate()</td>
                                             <td>-</td>
-                                            <td>Destroys the element.</td>
+                                            <td>Returns the selected date.</td>
                                         </tr>
                                     </tbody>
                                 </table>
