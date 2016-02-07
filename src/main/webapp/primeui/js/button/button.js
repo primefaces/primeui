@@ -97,7 +97,7 @@
         
         enable: function() {
             if(this.element.prop('disabled')) {
-                this._bindEvents();           
+                this._bindEvents();
                 this.element.prop('disabled', false).removeClass('ui-state-disabled');
             }
         },
