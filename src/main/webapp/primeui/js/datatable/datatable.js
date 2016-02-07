@@ -1682,7 +1682,7 @@
         },
 
         setTotalRecords: function(val) {
-            this.paginator.puipaginator('option','totalRecords', 20);
+            this.paginator.puipaginator('option','totalRecords', val);
         },
 
         _createFilterMap: function() {
