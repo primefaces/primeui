@@ -94,6 +94,18 @@ if(!xtag.tags['p-slider']) {
             },
             destroy: function() {
                 this.xtag.container.slider('destroy');
+            },
+            getValue: function() {
+                if(this.range)
+                    return this.xtag.container.slider('values');
+                else
+                    return this.xtag.container.slider('value');
+            },
+            setValue: function(val) {
+                if(this.range)
+                    this.xtag.container.slider('values', val);
+                else
+                    this.xtag.container.slider('value', val);
             }
         }
         
