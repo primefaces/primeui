@@ -357,6 +357,7 @@
                                                 <include>${basedir}/src/main/webapp/primeui/js/datatable/datatable-element.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/datagrid/datagrid-element.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/datascroller/datascroller-element.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/datepicker/datepicker-element.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/dialog/dialog-element.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/dropdown/dropdown-element.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/fieldset/fieldset-element.js</include>
