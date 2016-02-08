@@ -1,4 +1,4 @@
-.pui-messages {
+.ui-messages {
     border: 1px solid;
     margin: 10px 0px;
     padding: 20px 20px 20px 10px;
@@ -6,7 +6,7 @@
     position: relative;
 }
 
-.pui-messages-icon {
+.ui-messages-icon {
     display:block;
     float:left;
     margin-top:-5px;
@@ -14,44 +14,44 @@
     position: relative;
 }
 
-.pui-messages-summary {
+.ui-messages-summary {
     margin-left:10px;
     font-weight:bold;
 }
 
-.pui-messages-detail {
+.ui-messages-detail {
     margin-left:5px;
 }
 
-.pui-messages-info {
+.ui-messages-info {
     color: #ffffff;
     background-color: #2196f3;
     border-color: #2196f3;
 }
 
-.pui-messages-warn {
+.ui-messages-warn {
     color: #ffffff;
     background-color: #ff9800;
     border-color: #ff9800;
 }
 
-.pui-messages-error {
+.ui-messages-error {
     color: #ffffff;
     background-color: #f44336;
     border-color: #f44336;
 }
 
-.pui-messages ul {
+.ui-messages ul {
     margin: 0 25px;
     padding:0;
     list-style-type:none;
 }
 
-.pui-messages.pui-messages-noicon ul {
+.ui-messages.ui-messages-noicon ul {
     margin: 0 25px 0 0;
 }
 
-.pui-messages .pui-messages-close {
+.ui-messages .ui-messages-close {
     color: #ffffff;
     cursor: pointer;
     position: absolute;

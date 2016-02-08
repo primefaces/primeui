@@ -1,62 +1,62 @@
-.pui-inputfield {
+.ui-inputfield {
     margin: 0;
     outline: medium none;
     padding: 4px;
     font-weight: normal;
 }
 
-.ui-widget-header .pui-inputfield,
-.ui-widget-content .pui-inputfield {
+.ui-widget-header .ui-inputfield,
+.ui-widget-content .ui-inputfield {
     font-weight: normal;
 }
 
-.pui-inputtextarea-resizable {
+.ui-inputtextarea-resizable {
     overflow: hidden;
     resize:none;
 }
 
-.pui-selectonelistbox, 
-.pui-selectmanymenu,
-.pui-multiselectlistbox-listcontainer {
+.ui-selectonelistbox, 
+.ui-selectmanymenu,
+.ui-multiselectlistbox-listcontainer {
     padding: 2px;
     width: 150px;
 }
 
-.pui-selectonelistbox .pui-selectlistbox-listcontainer, 
-.pui-selectmanymenu .pui-selectlistbox-listcontainer,
-.pui-multiselectlistbox-listcontainer {
+.ui-selectonelistbox .ui-selectlistbox-listcontainer, 
+.ui-selectmanymenu .ui-selectlistbox-listcontainer,
+.ui-multiselectlistbox-listcontainer {
     overflow:auto;
 }
 
-.pui-selectonelistbox.pui-state-disabled .pui-selectlistbox-listcontainer, 
-.pui-selectmanymenu.pui-state-disabled .pui-selectlistbox-listcontainer {
+.ui-selectonelistbox.ui-state-disabled .ui-selectlistbox-listcontainer, 
+.ui-selectmanymenu.ui-state-disabled .ui-selectlistbox-listcontainer {
     overflow:hidden;
 }
 
-.pui-selectonelistbox .pui-selectlistbox-list,
-.pui-selectmanymenu .pui-selectlistbox-list,
-.pui-multiselectlistbox .pui-multiselectlistbox-list {
+.ui-selectonelistbox .ui-selectlistbox-list,
+.ui-selectmanymenu .ui-selectlistbox-list,
+.ui-multiselectlistbox .ui-multiselectlistbox-list {
     list-style-type: none; 
     margin: 0;
     padding: 0;
 }
 
-.pui-selectonelistbox .pui-selectlistbox-item,
-.pui-selectmanymenu .pui-selectlistbox-item,
-.pui-multiselectlistbox .pui-multiselectlistbox-item {
+.ui-selectonelistbox .ui-selectlistbox-item,
+.ui-selectmanymenu .ui-selectlistbox-item,
+.ui-multiselectlistbox .ui-multiselectlistbox-item {
     margin: 2px;
     border: 0 none;
     cursor: pointer;
     font-weight: normal;
 }
 
-.pui-selectonelistbox table.pui-selectlistbox-list,
-.pui-selectmanymenu table.pui-selectlistbox-list {
+.ui-selectonelistbox table.ui-selectlistbox-list,
+.ui-selectmanymenu table.ui-selectlistbox-list {
     border-collapse:collapse;
     width:100%;
 }
 
-.pui-selectlistbox-filter.pui-inputfield {
+.ui-selectlistbox-filter.ui-inputfield {
     padding-right: 12%;
     padding-left: 2%;
     width: 85%;
@@ -65,32 +65,32 @@
     box-shadow: none;
 }
 
-.pui-selectlistbox-filter-container {
+.ui-selectlistbox-filter-container {
     position: relative;
     margin: 0.1em 0 0.1em 0;
     padding: 0;
 }
 
-.pui-selectlistbox-filter-container .pui-icon {
+.ui-selectlistbox-filter-container .ui-icon {
     position: absolute;
     top: 5px;
     right: 2px;
 }
 
-.pui-multiselectlistbox .pui-multiselectlistbox-listcontainer {
+.ui-multiselectlistbox .ui-multiselectlistbox-listcontainer {
     float: left;
     margin-right: 4px;
 }
 
-.pui-multiselectlistbox .pui-multiselectlistbox-item {
+.ui-multiselectlistbox .ui-multiselectlistbox-item {
     white-space: nowrap;
 }
 
-.pui-multiselectlistbox.pui-state-disabled .pui-multiselectlistbox-item {
+.ui-multiselectlistbox.ui-state-disabled .ui-multiselectlistbox-item {
     cursor: default;
 }
 
-.pui-multiselectlistbox .pui-multiselectlistbox-header {
+.ui-multiselectlistbox .ui-multiselectlistbox-header {
     text-align: center;
     padding: 2px 10px;
     border-bottom: 0px none;

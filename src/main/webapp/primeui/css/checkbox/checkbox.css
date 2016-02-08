@@ -1,9 +1,9 @@
-.pui-chkbox {
+.ui-chkbox {
     display: inline-block;
     cursor: pointer;
 }
 
-.pui-chkbox .pui-chkbox-box {
+.ui-chkbox .ui-chkbox-box {
     float: left;
     width: 16px;
     height: 16px;
@@ -13,12 +13,12 @@
     margin-right: 3px;
 }
 
-.pui-chkbox .pui-chkbox-icon {
+.ui-chkbox .ui-chkbox-icon {
     margin-top: 1px;
     margin-left: -1px;
 }
 
-.pui-chkbox .pui-chkbox-label {
+.ui-chkbox .ui-chkbox-label {
     cursor: pointer;
     display: block;
     margin: 0 3px;

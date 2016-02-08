@@ -6,10 +6,10 @@
     $.widget("primeui.puicheckbox", {
        
         _create: function() {
-            this.element.wrap('<div class="pui-chkbox ui-widget"><div class="ui-helper-hidden-accessible"></div></div>');
+            this.element.wrap('<div class="ui-chkbox ui-widget"><div class="ui-helper-hidden-accessible"></div></div>');
             this.container = this.element.parent().parent();
-            this.box = $('<div class="pui-chkbox-box ui-widget ui-corner-all ui-state-default">').appendTo(this.container);
-            this.icon = $('<span class="pui-chkbox-icon pui-c"></span>').appendTo(this.box);
+            this.box = $('<div class="ui-chkbox-box ui-widget ui-corner-all ui-state-default">').appendTo(this.container);
+            this.icon = $('<span class="ui-chkbox-icon ui-c"></span>').appendTo(this.box);
             this.disabled = this.element.prop('disabled');
             this.label = $('label[for="' + this.element.attr('id') + '"]');
             
@@ -138,7 +138,7 @@
 
         _destroy: function() {
             this._unbindEvents();
-            this.container.removeClass('pui-chkbox ui-widget');
+            this.container.removeClass('ui-chkbox ui-widget');
             this.box.remove();
             this.element.unwrap().unwrap();
         }

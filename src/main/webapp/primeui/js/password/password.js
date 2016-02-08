@@ -19,22 +19,22 @@
                 this.id = this.element.uniqueId().attr('id');
             }
 
-            this.element.puiinputtext().addClass('pui-password');
+            this.element.puiinputtext().addClass('ui-password');
             
             if(!this.element.prop(':disabled')) {
-                var panelMarkup = '<div class="pui-password-panel ui-widget ui-state-highlight ui-corner-all ui-helper-hidden">';
-                panelMarkup += '<div class="pui-password-meter" style="background-position:0pt 0pt">&nbsp;</div>';
-                panelMarkup += '<div class="pui-password-info">' + this.options.promptLabel + '</div>';
+                var panelMarkup = '<div class="ui-password-panel ui-widget ui-state-highlight ui-corner-all ui-helper-hidden">';
+                panelMarkup += '<div class="ui-password-meter" style="background-position:0pt 0pt">&nbsp;</div>';
+                panelMarkup += '<div class="ui-password-info">' + this.options.promptLabel + '</div>';
                 panelMarkup += '</div>';
 
                 this.panel = $(panelMarkup).insertAfter(this.element);
-                this.meter = this.panel.children('div.pui-password-meter');
-                this.infoText = this.panel.children('div.pui-password-info');
+                this.meter = this.panel.children('div.ui-password-meter');
+                this.infoText = this.panel.children('div.ui-password-info');
 
                 if(this.options.inline) {
-                    this.panel.addClass('pui-password-panel-inline');
+                    this.panel.addClass('ui-password-panel-inline');
                 } else {
-                    this.panel.addClass('pui-password-panel-overlay').appendTo('body');
+                    this.panel.addClass('ui-password-panel-overlay').appendTo('body');
                 }
 
                 this._bindEvents();
@@ -42,7 +42,7 @@
         },
         
         _destroy: function() {
-            this.element.puiinputtext('destroy').removeClass('pui-password');
+            this.element.puiinputtext('destroy').removeClass('ui-password');
             this._unbindEvents();
             this.panel.remove();
             $(window).off('resize.' + this.id);

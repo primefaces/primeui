@@ -14,10 +14,10 @@
         },
         
         _create: function() {
-            this.element.addClass('pui-notify pui-notify-' + this.options.position + ' ui-widget ui-widget-content pui-shadow')
-                    .wrapInner('<div class="pui-notify-content" />').appendTo(document.body);
-            this.content = this.element.children('.pui-notify-content');
-            this.closeIcon = $('<span class="pui-notify-close fa fa-close"></span>').appendTo(this.element);
+            this.element.addClass('ui-notify ui-notify-' + this.options.position + ' ui-widget ui-widget-content ui-shadow')
+                    .wrapInner('<div class="ui-notify-content" />').appendTo(document.body);
+            this.content = this.element.children('.ui-notify-content');
+            this.closeIcon = $('<span class="ui-notify-close fa fa-close"></span>').appendTo(this.element);
             
             this._bindEvents();
             

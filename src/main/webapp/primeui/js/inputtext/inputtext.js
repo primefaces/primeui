@@ -14,7 +14,7 @@
             disabled = input.prop('disabled');
 
             //visuals
-            input.addClass('pui-inputtext ui-widget ui-state-default ui-corner-all');
+            input.addClass('ui-inputtext ui-widget ui-state-default ui-corner-all');
             
             if(input.prop('disabled'))
                 input.addClass('ui-state-disabled');
@@ -25,7 +25,7 @@
         },
         
         _destroy: function() {
-            this.element.removeClass('pui-inputtext ui-widget ui-state-default ui-state-disabled ui-state-hover ui-state-focus ui-corner-all');
+            this.element.removeClass('ui-inputtext ui-widget ui-state-default ui-state-disabled ui-state-hover ui-state-focus ui-corner-all');
             this._disableMouseEffects();
         },
 

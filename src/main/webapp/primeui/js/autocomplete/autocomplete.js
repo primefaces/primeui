@@ -20,20 +20,20 @@
         },
 
         _create: function() {
-            this.element.wrap('<span class="pui-autocomplete ui-widget" />');
+            this.element.wrap('<span class="ui-autocomplete ui-widget" />');
             this.element.puiinputtext();
-            this.panel = $('<div class="pui-autocomplete-panel ui-widget-content ui-corner-all ui-helper-hidden pui-shadow"></div>').appendTo('body');
+            this.panel = $('<div class="ui-autocomplete-panel ui-widget-content ui-corner-all ui-helper-hidden ui-shadow"></div>').appendTo('body');
             
             if(this.options.multiple) {
-                this.element.wrap('<ul class="pui-autocomplete-multiple ui-widget pui-inputtext ui-state-default ui-corner-all">' + 
-                                        '<li class="pui-autocomplete-input-token"></li></ul>');
+                this.element.wrap('<ul class="ui-autocomplete-multiple ui-widget ui-inputtext ui-state-default ui-corner-all">' + 
+                                        '<li class="ui-autocomplete-input-token"></li></ul>');
                 this.inputContainer = this.element.parent();
                 this.multiContainer = this.inputContainer.parent();
             }
             else {
                 if(this.options.dropdown) {
-                    this.dropdown = $('<button type="button" class="pui-autocomplete-dropdown pui-button ui-widget ui-state-default ui-corner-right pui-button-icon-only">' +
-                        '<span class="pui-icon fa fa-fw fa-caret-down"></span><span class="pui-button-text">&nbsp;</span></button>')
+                    this.dropdown = $('<button type="button" class="ui-autocomplete-dropdown ui-button ui-widget ui-state-default ui-corner-right ui-button-icon-only">' +
+                        '<span class="ui-icon fa fa-fw fa-caret-down"></span><span class="ui-button-text">&nbsp;</span></button>')
                         .insertAfter(this.element);
                     this.element.removeClass('ui-corner-all').addClass('ui-corner-left');
                 }
@@ -94,10 +94,10 @@
                     $this.element.trigger('focus');
                 });
 
-                this.element.on('focus.pui-autocomplete', function() {
+                this.element.on('focus.ui-autocomplete', function() {
                     $this.multiContainer.addClass('ui-state-focus');
                 })
-                .on('blur.pui-autocomplete', function(e) {
+                .on('blur.ui-autocomplete', function(e) {
                     $this.multiContainer.removeClass('ui-state-focus');
                 });
             }
@@ -259,13 +259,13 @@
                 var item = $(this);
                 
                 if($this.options.multiple) {
-                    var tokenMarkup = '<li class="pui-autocomplete-token ui-state-active ui-corner-all ui-helper-hidden">';
-                    tokenMarkup += '<span class="pui-autocomplete-token-icon fa fa-fw fa-close" />';
-                    tokenMarkup += '<span class="pui-autocomplete-token-label">' + item.data('label') + '</span></li>';
+                    var tokenMarkup = '<li class="ui-autocomplete-token ui-state-active ui-corner-all ui-helper-hidden">';
+                    tokenMarkup += '<span class="ui-autocomplete-token-icon fa fa-fw fa-close" />';
+                    tokenMarkup += '<span class="ui-autocomplete-token-label">' + item.data('label') + '</span></li>';
 
                     $(tokenMarkup).data(item.data())
                         .insertBefore($this.inputContainer).fadeIn()
-                        .children('.pui-autocomplete-token-icon').on('click.pui-autocomplete', function(e) {
+                        .children('.ui-autocomplete-token-icon').on('click.ui-autocomplete', function(e) {
                             var token = $(this).parent();
                             $this._removeItem(token);
                             $this._trigger('unselect', e, token);
@@ -319,10 +319,10 @@
         _handleData: function(data) {
             var $this = this;
             this.panel.html('');
-            this.listContainer = $('<ul class="pui-autocomplete-items pui-autocomplete-list ui-widget-content ui-widget ui-corner-all ui-helper-reset"></ul>').appendTo(this.panel);
+            this.listContainer = $('<ul class="ui-autocomplete-items ui-autocomplete-list ui-widget-content ui-widget ui-corner-all ui-helper-reset"></ul>').appendTo(this.panel);
 
             for(var i = 0; i < data.length; i++) {
-                var item = $('<li class="pui-autocomplete-item pui-autocomplete-list-item ui-corner-all"></li>');
+                var item = $('<li class="ui-autocomplete-item ui-autocomplete-list-item ui-corner-all"></li>');
                 item.data(data[i]);
                 
                 if(this.options.content)
@@ -333,7 +333,7 @@
                 this.listContainer.append(item);
             }
             
-            this.items = this.listContainer.children('.pui-autocomplete-item');
+            this.items = this.listContainer.children('.ui-autocomplete-item');
             
             this._bindDynamicEvents();
 
@@ -347,7 +347,7 @@
                         var item = $(this),
                         text = item.html(),
                         re = new RegExp(PUI.escapeRegExp($this.query), 'gi'),
-                        highlighedText = text.replace(re, '<span class="pui-autocomplete-query">$&</span>');
+                        highlighedText = text.replace(re, '<span class="ui-autocomplete-query">$&</span>');
 
                         item.html(highlighedText);
                     });
@@ -413,11 +413,11 @@
             }
             else {
                 if(this.panel.is(':visible')) {
-                    panelWidth = this.panel.children('.pui-autocomplete-items').outerWidth();
+                    panelWidth = this.panel.children('.ui-autocomplete-items').outerWidth();
                 }
                 else {
                     this.panel.css({'visibility':'hidden','display':'block'});
-                    panelWidth = this.panel.children('.pui-autocomplete-items').outerWidth();
+                    panelWidth = this.panel.children('.ui-autocomplete-items').outerWidth();
                     this.panel.css({'visibility':'visible','display':'none'});
                 }
 

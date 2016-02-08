@@ -37,20 +37,20 @@
         _createDom: function() {
             this.element.addClass('ui-helper-hidden');
             if(this.options.controlsLocation !== 'none')
-                this.element.wrap('<div class="pui-grid-col-10"></div>');
+                this.element.wrap('<div class="ui-grid-col-10"></div>');
             else
-                this.element.wrap('<div class="pui-grid-col-12"></div>');
+                this.element.wrap('<div class="ui-grid-col-12"></div>');
 
-            this.element.parent().wrap('<div class="pui-orderlist pui-grid ui-widget"><div class="pui-grid-row"></div></div>')
-            this.container = this.element.closest('.pui-orderlist');
+            this.element.parent().wrap('<div class="ui-orderlist ui-grid ui-widget"><div class="ui-grid-row"></div></div>')
+            this.container = this.element.closest('.ui-orderlist');
             
             if(this.options.controlsLocation !== 'none') {
-                this.element.parent().before('<div class="pui-orderlist-controls pui-grid-col-2"></div>');
+                this.element.parent().before('<div class="ui-orderlist-controls ui-grid-col-2"></div>');
                 this._createButtons();
             }
             
             if(this.options.responsive) {
-                this.container.addClass('pui-grid-responsive');
+                this.container.addClass('ui-grid-responsive');
             }
         },
         
@@ -65,12 +65,12 @@
         },
         
         _createListElement: function() {
-            this.list = $('<ul class="ui-widget-content pui-orderlist-list"></ul>').insertBefore(this.element);
+            this.list = $('<ul class="ui-widget-content ui-orderlist-list"></ul>').insertBefore(this.element);
                     
             for(var i = 0; i < this.optionElements.length; i++) {
                 var optionElement = this.optionElements.eq(i),
                 itemContent = this._createItemContent(optionElement.get(0)),
-                listItem = $('<li class="pui-orderlist-item ui-corner-all"></li>');
+                listItem = $('<li class="ui-orderlist-item ui-corner-all"></li>');
         
                 if($.type(itemContent) === 'string')
                     listItem.html(itemContent);
@@ -80,10 +80,10 @@
                 listItem.data('item-value', optionElement.attr('value')).appendTo(this.list);
             }
             
-            this.items = this.list.children('.pui-orderlist-item');
+            this.items = this.list.children('.ui-orderlist-item');
             
             if(this.options.caption) {
-                this.list.addClass('ui-corner-bottom').before('<div class="pui-orderlist-caption ui-widget-header ui-corner-top">' + this.options.caption + '</div>')
+                this.list.addClass('ui-corner-bottom').before('<div class="ui-orderlist-caption ui-widget-header ui-corner-top">' + this.options.caption + '</div>')
             } else {
                 this.list.addClass('ui-corner-all')
             }
@@ -93,10 +93,10 @@
             var $this = this,
             buttonContainer = this.element.parent().prev();
             
-            buttonContainer.append(this._createButton('fa-angle-up', 'pui-orderlist-button-moveup', function(){$this._moveUp();}))
-                            .append(this._createButton('fa-angle-double-up', 'pui-orderlist-button-move-top', function(){$this._moveTop();}))
-                            .append(this._createButton('fa-angle-down', 'pui-orderlist-button-move-down', function(){$this._moveDown();}))
-                            .append(this._createButton('fa-angle-double-down', 'pui-orderlist-move-bottom', function(){$this._moveBottom();}));
+            buttonContainer.append(this._createButton('fa-angle-up', 'ui-orderlist-button-moveup', function(){$this._moveUp();}))
+                            .append(this._createButton('fa-angle-double-up', 'ui-orderlist-button-move-top', function(){$this._moveTop();}))
+                            .append(this._createButton('fa-angle-down', 'ui-orderlist-button-move-down', function(){$this._moveDown();}))
+                            .append(this._createButton('fa-angle-double-down', 'ui-orderlist-move-bottom', function(){$this._moveBottom();}));
         },
         
         _createButton: function(icon, cssClass, fn) {
@@ -287,7 +287,7 @@
         _generateOptions: function() {
             var $this = this;
 
-            this.list.children('.pui-orderlist-item').each(function() {
+            this.list.children('.ui-orderlist-item').each(function() {
                 var item = $(this),
                 itemValue = item.data('item-value');
 

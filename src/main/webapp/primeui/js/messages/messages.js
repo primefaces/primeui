@@ -10,11 +10,11 @@
         },
 
         _create: function() {
-            this.element.addClass('pui-messages ui-widget ui-corner-all');
+            this.element.addClass('ui-messages ui-widget ui-corner-all');
             if(this.options.closable) {
-                this.closer = $('<a href="#" class="pui-messages-close"><i class="fa fa-close"></i></a>').appendTo(this.element);
+                this.closer = $('<a href="#" class="ui-messages-close"><i class="fa fa-close"></i></a>').appendTo(this.element);
             }
-            this.element.append('<span class="pui-messages-icon fa fa-2x"></span>');
+            this.element.append('<span class="ui-messages-icon fa fa-2x"></span>');
             
             this.msgContainer = $('<ul></ul>').appendTo(this.element);
             
@@ -33,9 +33,9 @@
 
         show: function(severity, msgs) {
             this.clear();
-            this.element.removeClass('pui-messages-info pui-messages-warn pui-messages-error').addClass('pui-messages-' + severity);
+            this.element.removeClass('ui-messages-info ui-messages-warn ui-messages-error').addClass('ui-messages-' + severity);
             
-            this.element.children('.pui-messages-icon').removeClass('fa-info-circle fa-close fa-warning').addClass(this._getIcon(severity));
+            this.element.children('.ui-messages-icon').removeClass('fa-info-circle fa-close fa-warning').addClass(this._getIcon(severity));
             
             if($.isArray(msgs)) {
                 for(var i = 0; i < msgs.length; i++) {
@@ -50,7 +50,7 @@
         },
         
         _showMessage: function(msg) {
-            this.msgContainer.append('<li><span class="pui-messages-summary">' + msg.summary + '</span><span class="pui-messages-detail">' + msg.detail + '</span></li>');
+            this.msgContainer.append('<li><span class="ui-messages-summary">' + msg.summary + '</span><span class="ui-messages-detail">' + msg.detail + '</span></li>');
         },
         
         clear: function() {

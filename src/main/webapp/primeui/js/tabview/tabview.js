@@ -18,24 +18,24 @@
             this._resolvePanelMode();
             this.panels = this._findPanels();
 
-            element.addClass('pui-tabview ui-widget ui-widget-content ui-corner-all ui-hidden-container pui-tabview-' + this.options.orientation);
-            this.navContainer.addClass('pui-tabview-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all');
+            element.addClass('ui-tabview ui-widget ui-widget-content ui-corner-all ui-hidden-container ui-tabview-' + this.options.orientation);
+            this.navContainer.addClass('ui-tabview-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all');
             this.tabHeaders.addClass('ui-state-default ui-corner-top');
-            this.panelContainer.addClass('pui-tabview-panels');
-            this.panels.addClass('pui-tabview-panel ui-widget-content ui-corner-bottom');
+            this.panelContainer.addClass('ui-tabview-panels');
+            this.panels.addClass('ui-tabview-panel ui-widget-content ui-corner-bottom');
 
-            this.tabHeaders.eq(this.options.activeIndex).addClass('pui-tabview-selected ui-state-active');
+            this.tabHeaders.eq(this.options.activeIndex).addClass('ui-tabview-selected ui-state-active');
             this.panels.filter(':not(:eq(' + this.options.activeIndex + '))').addClass('ui-helper-hidden');
             
             this._bindEvents();
         },
 
         _destroy: function() {
-            this.element.removeClass('pui-tabview ui-widget ui-widget-content ui-corner-all ui-hidden-container pui-tabview-' + this.options.orientation);
-            this.navContainer.removeClass('pui-tabview-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all');
-            this.tabHeaders.removeClass('ui-state-default ui-corner-top pui-tabview-selected ui-state-active');
-            this.panelContainer.removeClass('pui-tabview-panels');
-            this.panels.removeClass('pui-tabview-panel ui-widget-content ui-corner-bottom ui-helper-hidden').removeData('loaded');
+            this.element.removeClass('ui-tabview ui-widget ui-widget-content ui-corner-all ui-hidden-container ui-tabview-' + this.options.orientation);
+            this.navContainer.removeClass('ui-tabview-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all');
+            this.tabHeaders.removeClass('ui-state-default ui-corner-top ui-tabview-selected ui-state-active');
+            this.panelContainer.removeClass('ui-tabview-panels');
+            this.panels.removeClass('ui-tabview-panel ui-widget-content ui-corner-bottom ui-helper-hidden').removeData('loaded');
 
             this._unbindEvents();
         },
@@ -92,7 +92,7 @@
            var newPanel = this.panels.eq(index),
            oldHeader = this.tabHeaders.filter('.ui-state-active'),
            newHeader = this._getHeaderOfPanel(newPanel),
-           oldPanel = this.panels.filter('.pui-tabview-panel:visible'),
+           oldPanel = this.panels.filter('.ui-tabview-panel:visible'),
            $this = this;
 
            //aria
@@ -103,19 +103,19 @@
 
            if(this.options.effect) {
                 oldPanel.hide(this.options.effect.name, null, this.options.effect.duration, function() {
-                   oldHeader.removeClass('pui-tabview-selected ui-state-active');
+                   oldHeader.removeClass('ui-tabview-selected ui-state-active');
 
-                   newHeader.removeClass('ui-state-hover').addClass('pui-tabview-selected ui-state-active');
+                   newHeader.removeClass('ui-state-hover').addClass('ui-tabview-selected ui-state-active');
                    newPanel.show($this.options.name, null, $this.options.effect.duration, function() {
                        $this._trigger('change', null, {'index':index});
                    });
                });
            }
            else {
-               oldHeader.removeClass('pui-tabview-selected ui-state-active');
+               oldHeader.removeClass('ui-tabview-selected ui-state-active');
                oldPanel.hide();
 
-               newHeader.removeClass('ui-state-hover').addClass('pui-tabview-selected ui-state-active');
+               newHeader.removeClass('ui-state-hover').addClass('ui-tabview-selected ui-state-active');
                newPanel.show();
 
                $this._trigger('change', null, {'index':index});
@@ -142,7 +142,7 @@
                newHeader = this.tabHeaders.eq(newIndex),
                newPanel = this.panels.eq(newIndex);
                
-               newHeader.removeClass('ui-state-hover').addClass('pui-tabview-selected ui-state-active');
+               newHeader.removeClass('ui-state-hover').addClass('ui-tabview-selected ui-state-active');
                newPanel.show(); 
            }
        },

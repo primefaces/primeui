@@ -1,5 +1,5 @@
 /* Button */
-.pui-button { 
+.ui-button { 
     display: inline-block; 
     position: relative; 
     padding: 0; 
@@ -11,71 +11,71 @@
     overflow: visible; /* the overflow property removes extra width in IE */
 } 
 
-.pui-button-icon-only { 
+.ui-button-icon-only { 
     width: 2.4em;
 } 
 
 /*button text element */
-.pui-button .pui-button-text { 
+.ui-button .ui-button-text { 
     display: block; 
     line-height: normal;  
 }
 
-.pui-button-text-only .pui-button-text { 
+.ui-button-text-only .ui-button-text { 
     padding: .3em 1em; 
 }
 
-.pui-button-icon-only .pui-button-text { 
+.ui-button-icon-only .ui-button-text { 
     padding: .3em; 
     text-indent: -9999999px; 
 }
 
-.pui-button-text-icon-left .pui-button-text { 
+.ui-button-text-icon-left .ui-button-text { 
     padding: .3em 1em .3em 2.1em; 
 }
 
-.pui-button-text-icon-right .pui-button-text { 
+.ui-button-text-icon-right .ui-button-text { 
     padding: .3em 2.1em .3em 1em; 
 }
 
 /*button icon element(s) */
-.pui-button-icon-only .pui-icon, 
-.pui-button-text-icon-left .pui-icon, 
-.pui-button-text-icon-right .pui-icon { 
+.ui-button-icon-only .ui-icon, 
+.ui-button-text-icon-left .ui-icon, 
+.ui-button-text-icon-right .ui-icon { 
     position: absolute; 
     top: 50%;
     margin-top: -7px; 
 }
 
-.pui-button-icon-only .pui-icon { 
+.ui-button-icon-only .ui-icon { 
     left: 50%; 
     margin-left: -8px; 
 }
 
-.pui-button-icon-left {
+.ui-button-icon-left {
     left: .5em; 
 }
 
-.pui-button-icon-right {
+.ui-button-icon-right {
     right: .5em; 
 }
 
 /*button sets*/
-.pui-buttonset { 
+.ui-buttonset { 
     margin-right: 7px; 
 }
-.pui-buttonset .pui-button { 
+.ui-buttonset .ui-button { 
     margin-left: 0; 
     margin-right: 0;
 }
 
 /* workarounds */
-button.pui-button::-moz-focus-inner { 
+button.ui-button::-moz-focus-inner { 
     border: 0; padding: 0; /* reset extra padding in Firefox */
 }
 
 /** Fluid **/
-.pui-fluid .pui-button {
+.ui-fluid .ui-button {
     width: 100%;
     box-sizing: border-box;
     -webkit-box-sizing:border-box;
@@ -83,24 +83,24 @@ button.pui-button::-moz-focus-inner {
 }
 
 /** ButtonSet **/
-.pui-fluid .pui-buttonset {
+.ui-fluid .ui-buttonset {
     width: 100%;
 }
 
-.pui-fluid .pui-buttonset.pui-buttonset-1 .pui-button {width: 100%;}
-.pui-fluid .pui-buttonset.pui-buttonset-2 .pui-button {width: 50%;}
-.pui-fluid .pui-buttonset.pui-buttonset-3 .pui-button {width: 33.3%;}
-.pui-fluid .pui-buttonset.pui-buttonset-4 .pui-button {width: 25%;}
-.pui-fluid .pui-buttonset.pui-buttonset-5 .pui-button {width: 20%;}
-.pui-fluid .pui-buttonset.pui-buttonset-6 .pui-button {width: 16.6%;}
+.ui-fluid .ui-buttonset.ui-buttonset-1 .ui-button {width: 100%;}
+.ui-fluid .ui-buttonset.ui-buttonset-2 .ui-button {width: 50%;}
+.ui-fluid .ui-buttonset.ui-buttonset-3 .ui-button {width: 33.3%;}
+.ui-fluid .ui-buttonset.ui-buttonset-4 .ui-button {width: 25%;}
+.ui-fluid .ui-buttonset.ui-buttonset-5 .ui-button {width: 20%;}
+.ui-fluid .ui-buttonset.ui-buttonset-6 .ui-button {width: 16.6%;}
 
 @media (max-width: 640px) {
-    .pui-fluid .pui-buttonset.pui-buttonset-1 .pui-button,
-    .pui-fluid .pui-buttonset.pui-buttonset-2 .pui-button,
-    .pui-fluid .pui-buttonset.pui-buttonset-3 .pui-button,
-    .pui-fluid .pui-buttonset.pui-buttonset-4 .pui-button,
-    .pui-fluid .pui-buttonset.pui-buttonset-5 .pui-button,
-    .pui-fluid .pui-buttonset.pui-buttonset-6 .pui-button {
+    .ui-fluid .ui-buttonset.ui-buttonset-1 .ui-button,
+    .ui-fluid .ui-buttonset.ui-buttonset-2 .ui-button,
+    .ui-fluid .ui-buttonset.ui-buttonset-3 .ui-button,
+    .ui-fluid .ui-buttonset.ui-buttonset-4 .ui-button,
+    .ui-fluid .ui-buttonset.ui-buttonset-5 .ui-button,
+    .ui-fluid .ui-buttonset.ui-buttonset-6 .ui-button {
         width: 100%;
     }
 }

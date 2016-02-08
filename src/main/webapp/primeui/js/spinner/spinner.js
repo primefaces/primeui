@@ -17,11 +17,11 @@
             var input = this.element,
             disabled = input.prop('disabled');
             
-            input.puiinputtext().addClass('pui-spinner-input').wrap('<span class="pui-spinner ui-widget ui-corner-all" />');
+            input.puiinputtext().addClass('ui-spinner-input').wrap('<span class="ui-spinner ui-widget ui-corner-all" />');
             this.wrapper = input.parent();
-            this.wrapper.append('<a class="pui-spinner-button pui-spinner-up ui-corner-tr pui-button ui-widget ui-state-default pui-button-text-only"><span class="pui-button-text"><span class="pui-icon fa fa-fw fa-caret-up"></span></span></a><a class="pui-spinner-button pui-spinner-down ui-corner-br pui-button ui-widget ui-state-default pui-button-text-only"><span class="pui-button-text"><span class="pui-icon fa fa-fw fa-caret-down"></span></span></a>');
-            this.upButton = this.wrapper.children('a.pui-spinner-up');
-            this.downButton = this.wrapper.children('a.pui-spinner-down');
+            this.wrapper.append('<a class="ui-spinner-button ui-spinner-up ui-corner-tr ui-button ui-widget ui-state-default ui-button-text-only"><span class="ui-button-text"><span class="ui-icon fa fa-fw fa-caret-up"></span></span></a><a class="ui-spinner-button ui-spinner-down ui-corner-br ui-button ui-widget ui-state-default ui-button-text-only"><span class="ui-button-text"><span class="ui-icon fa fa-fw fa-caret-down"></span></span></a>');
+            this.upButton = this.wrapper.children('a.ui-spinner-up');
+            this.downButton = this.wrapper.children('a.ui-spinner-down');
             this.options.step = this.options.step||1;
             
             if(parseInt(this.options.step, 10) === 0) {
@@ -47,8 +47,8 @@
         },
 
         _destroy: function() {
-            this.element.puiinputtext('destroy').removeClass('pui-spinner-input').off('keydown.puispinner keyup.puispinner blur.puispinner focus.puispinner mousewheel.puispinner');
-            this.wrapper.children('.pui-spinner-button').off().remove();
+            this.element.puiinputtext('destroy').removeClass('ui-spinner-input').off('keydown.puispinner keyup.puispinner blur.puispinner focus.puispinner mousewheel.puispinner');
+            this.wrapper.children('.ui-spinner-button').off().remove();
             this.element.unwrap();
         },
 
@@ -56,7 +56,7 @@
             var $this = this;
             
             //visuals for spinner buttons
-            this.wrapper.children('.pui-spinner-button')
+            this.wrapper.children('.ui-spinner-button')
                 .mouseover(function() {
                     $(this).addClass('ui-state-hover');
                 }).mouseout(function() {
@@ -70,7 +70,7 @@
                     $(this).removeClass('ui-state-active').addClass('ui-state-hover');
                 }).mousedown(function(e) {
                     var element = $(this),
-                    dir = element.hasClass('pui-spinner-up') ? 1 : -1;
+                    dir = element.hasClass('ui-spinner-up') ? 1 : -1;
 
                     element.removeClass('ui-state-hover').addClass('ui-state-active');
 
@@ -238,7 +238,7 @@
 
         _unbindEvents: function() {
             //visuals for spinner buttons
-            this.wrapper.children('.pui-spinner-button').off();
+            this.wrapper.children('.ui-spinner-button').off();
 
             this.element.off();
         },

@@ -1,16 +1,16 @@
-.pui-spinner {
+.ui-spinner {
     display: inline-block;
     overflow: visible;
     padding: 0;
     position: relative;
     vertical-align: middle;
 }
-.pui-spinner-input {
+.ui-spinner-input {
     vertical-align: middle;
     text-align: right;
     padding-right: 20px;
 }
-.pui-spinner-button {
+.ui-spinner-button {
     cursor: default;
     display: block;
     font-size: 0.5em;
@@ -25,30 +25,30 @@
     width: 16px;
     z-index: 100;
 }
-.pui-spinner .pui-icon {
+.ui-spinner .ui-icon {
     left: -1px;
     margin-top: -8px;
     position: absolute;
     top: 50%;
 }
-.pui-spinner-up {
+.ui-spinner-up {
     top: 0;
 }
-.pui-spinner-down {
+.ui-spinner-down {
     bottom: 0;
 }
 
 /* Fluid */
-.pui-fluid .pui-spinner {
+.ui-fluid .ui-spinner {
     width: 100%;
 }
-.pui-fluid .pui-spinner .pui-spinner-input {
+.ui-fluid .ui-spinner .ui-spinner-input {
     padding-right: 36px;
     width: 100%;
 }
-.pui-fluid .pui-spinner .pui-spinner-button {
+.ui-fluid .ui-spinner .ui-spinner-button {
     width: auto;
 }
-.pui-fluid .pui-spinner .pui-spinner-button .pui-icon {
+.ui-fluid .ui-spinner .ui-spinner-button .ui-icon {
     left: 6px;
 }

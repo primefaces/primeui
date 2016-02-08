@@ -22,19 +22,19 @@
                 this.id = this.element.uniqueId().attr('id');
             }
                         
-            this.element.addClass('pui-datagrid ui-widget');
+            this.element.addClass('ui-datagrid ui-widget');
             
             //header
             if(this.options.header) {
-                this.element.append('<div class="pui-datagrid-header ui-widget-header ui-corner-top">' + this.options.header + '</div>');
+                this.element.append('<div class="ui-datagrid-header ui-widget-header ui-corner-top">' + this.options.header + '</div>');
             }
             
             //content
-            this.content = $('<div class="pui-datagrid-content ui-widget-content pui-grid pui-grid-responsive"></div>').appendTo(this.element);
+            this.content = $('<div class="ui-datagrid-content ui-widget-content ui-grid ui-grid-responsive"></div>').appendTo(this.element);
             
             //footer
             if(this.options.footer) {
-                this.element.append('<div class="pui-datagrid-footer ui-widget-header ui-corner-top">' + this.options.footer + '</div>');
+                this.element.append('<div class="ui-datagrid-footer ui-widget-header ui-corner-top">' + this.options.footer + '</div>');
             }
             
             //data
@@ -100,10 +100,10 @@
                     
                     if(dataValue) {
                         if(i % this.options.columns === 0) {
-                            gridRow = $('<div class="pui-grid-row"></div>').appendTo(this.content);
+                            gridRow = $('<div class="ui-grid-row"></div>').appendTo(this.content);
                         }
                         
-                        var gridColumn = $('<div class="pui-datagrid-column ' + PUI.getGridColumn(this.options.columns) + '"></div>').appendTo(gridRow),
+                        var gridColumn = $('<div class="ui-datagrid-column ' + PUI.getGridColumn(this.options.columns) + '"></div>').appendTo(gridRow),
                         markup = this._createItemContent(dataValue);
                         gridColumn.append(markup);
                     }

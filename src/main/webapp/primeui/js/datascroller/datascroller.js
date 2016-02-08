@@ -25,21 +25,21 @@
                 this.id = this.element.uniqueId().attr('id');
             }
             
-            this.element.addClass('pui-datascroller ui-widget');
+            this.element.addClass('ui-datascroller ui-widget');
             if(this.options.header) {
-                this.header = this.element.append('<div class="pui-datascroller-header ui-widget-header ui-corner-top">' + this.options.header + '</div>').children('.pui-datascroller-header');
+                this.header = this.element.append('<div class="ui-datascroller-header ui-widget-header ui-corner-top">' + this.options.header + '</div>').children('.ui-datascroller-header');
             }
             
-            this.content = this.element.append('<div class="pui-datascroller-content ui-widget-content ui-corner-bottom"></div>').children('.pui-datascroller-content');
-            this.list = this.content.append('<ul class="pui-datascroller-list"></ul>').children('.pui-datascroller-list');
-            this.loaderContainer = this.content.append('<div class="pui-datascroller-loader"></div>').children('.pui-datascroller-loader');
-            this.loadStatus = $('<div class="pui-datascroller-loading"></div>');
+            this.content = this.element.append('<div class="ui-datascroller-content ui-widget-content ui-corner-bottom"></div>').children('.ui-datascroller-content');
+            this.list = this.content.append('<ul class="ui-datascroller-list"></ul>').children('.ui-datascroller-list');
+            this.loaderContainer = this.content.append('<div class="ui-datascroller-loader"></div>').children('.ui-datascroller-loader');
+            this.loadStatus = $('<div class="ui-datascroller-loading"></div>');
             this.loading = false;
             this.allLoaded = false;
             this.offset = 0;
             
             if(this.options.mode === 'self') {
-                this.element.addClass('pui-datascroller-inline');
+                this.element.addClass('ui-datascroller-inline');
                 
                 if(this.options.scrollHeight) {
                     this.content.css('height', this.options.scrollHeight);
@@ -154,7 +154,7 @@
         _renderData: function(data, start, end) {
             if(data && data.length) {
                 for(var i = start; i < end; i++) {
-                    var listItem = $('<li class="pui-datascroller-item"></li>'),
+                    var listItem = $('<li class="ui-datascroller-item"></li>'),
                     content = this._createItemContent(data[i]);
                     listItem.append(content);
                     

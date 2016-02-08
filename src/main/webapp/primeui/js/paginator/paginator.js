@@ -6,7 +6,7 @@
     var ElementHandlers = {
         
         '{FirstPageLink}': {
-            markup: '<span class="pui-paginator-first pui-paginator-element ui-state-default ui-corner-all"><span class="fa fa-step-backward"></span></span>',
+            markup: '<span class="ui-paginator-first ui-paginator-element ui-state-default ui-corner-all"><span class="fa fa-step-backward"></span></span>',
             
             create: function(paginator) {
                 var element = $(this.markup);
@@ -35,7 +35,7 @@
         },
                 
         '{PreviousPageLink}': {
-            markup: '<span class="pui-paginator-prev pui-paginator-element ui-state-default ui-corner-all"><span class="fa fa-backward"></span></span>',
+            markup: '<span class="ui-paginator-prev ui-paginator-element ui-state-default ui-corner-all"><span class="fa fa-backward"></span></span>',
                     
             create: function(paginator) {
                 var element = $(this.markup);
@@ -64,7 +64,7 @@
         },
                 
         '{NextPageLink}': {
-            markup: '<span class="pui-paginator-next pui-paginator-element ui-state-default ui-corner-all"><span class="fa fa-forward"></span></span>',
+            markup: '<span class="ui-paginator-next ui-paginator-element ui-state-default ui-corner-all"><span class="fa fa-forward"></span></span>',
                     
             create: function(paginator) {
                 var element = $(this.markup);
@@ -93,7 +93,7 @@
         },
                 
         '{LastPageLink}': {
-            markup: '<span class="pui-paginator-last pui-paginator-element ui-state-default ui-corner-all"><span class="fa fa-step-forward"></span></span>',
+            markup: '<span class="ui-paginator-last ui-paginator-element ui-state-default ui-corner-all"><span class="fa fa-step-forward"></span></span>',
                     
             create: function(paginator) {
                 var element = $(this.markup);
@@ -122,7 +122,7 @@
         },
                 
         '{PageLinks}': {
-            markup: '<span class="pui-paginator-pages"></span>',
+            markup: '<span class="ui-paginator-pages"></span>',
                     
             create: function(paginator) {
                 var element = $(this.markup),
@@ -136,7 +136,7 @@
                 
                 for(var i = start; i <= end; i++) {
                     var pageLinkNumber = (i + 1),
-                    pageLinkElement = $('<span class="pui-paginator-page pui-paginator-element ui-state-default ui-corner-all">' + pageLinkNumber + "</span>");
+                    pageLinkElement = $('<span class="ui-paginator-page ui-paginator-element ui-state-default ui-corner-all">' + pageLinkNumber + "</span>");
                     
                     if(i === paginator.options.page) {
                         pageLinkElement.addClass('ui-state-active');
@@ -170,7 +170,7 @@
         
                 for(var i = start; i <= end; i++) {
                     var pageLinkNumber = (i + 1),
-                    pageLinkElement = $('<span class="pui-paginator-page pui-paginator-element ui-state-default ui-corner-all">' + pageLinkNumber + "</span>");
+                    pageLinkElement = $('<span class="ui-paginator-page ui-paginator-element ui-state-default ui-corner-all">' + pageLinkNumber + "</span>");
                     
                     if(i === state.page) {
                         pageLinkElement.addClass('ui-state-active');
@@ -221,7 +221,7 @@
         },
         
         _create: function() {
-            this.element.addClass('pui-paginator ui-widget-header');
+            this.element.addClass('ui-paginator ui-widget-header');
             this.paginatorElements = [];
             
             var elementKeys = this.options.template.split(/[ ]+/);
@@ -240,7 +240,7 @@
         },
                 
         _bindEvents: function() {
-            this._bindHover(this.element.find('span.pui-paginator-element'));
+            this._bindHover(this.element.find('span.ui-paginator-element'));
         },
         
         _bindHover: function(elements) {

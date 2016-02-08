@@ -1,4 +1,4 @@
-.pui-autocomplete {
+.ui-autocomplete {
     width: auto;
     zoom: 1;
     cursor: pointer;
@@ -9,27 +9,27 @@
     display: inline-block;
 }
 
-.pui-autocomplete .pui-autocomplete-dropdown {
+.ui-autocomplete .ui-autocomplete-dropdown {
     position: absolute;
     height: 100%;
     width: 2.4em;
 }
 
-.pui-autocomplete-query {
+.ui-autocomplete-query {
     font-weight: bold;
 }
 
-.pui-autocomplete-panel {
+.ui-autocomplete-panel {
     position: absolute;
     overflow: auto;
 }
 
-.pui-autocomplete-panel .pui-autocomplete-list {
+.ui-autocomplete-panel .ui-autocomplete-list {
     padding: 0.4em;
     border: 0 none;
 }
 
-.pui-autocomplete-panel .pui-autocomplete-list-item {
+.ui-autocomplete-panel .ui-autocomplete-list-item {
     border:0px none;
     cursor:pointer;
     font-weight:normal;
@@ -38,24 +38,24 @@
     text-align:left;
 }
 
-.pui-autocomplete-panel .pui-autocomplete-table {
+.ui-autocomplete-panel .ui-autocomplete-table {
     border-collapse:collapse;
     width: 100%;
 }
 
-.pui-autocomplete-panel .pui-autocomplete-table td {
+.ui-autocomplete-panel .ui-autocomplete-table td {
     border-width: 1px;
     border-style: solid;
     border-color: inherit;
     padding:4px 10px 4px 10px;
 }
 
-.pui-autocomplete .ui-button-icon-only .ui-button-text {
+.ui-autocomplete .ui-button-icon-only .ui-button-text {
     padding: 0.29em;
 }
 
 /* Multiple Selection */
-.pui-autocomplete-multiple {
+.ui-autocomplete-multiple {
     clear: left;
     cursor: text;
     list-style-type: none;
@@ -65,11 +65,11 @@
     width: 400px;
 }
 
-.pui-autocomplete-multiple-container.pui-inputfield {
+.ui-autocomplete-multiple-container.ui-inputfield {
     padding:0;
 }
 
-.pui-autocomplete-token {
+.ui-autocomplete-token {
     cursor: default;
     float: left;
     overflow: hidden;
@@ -79,12 +79,12 @@
     margin:2px;
 }
 
-.pui-autocomplete-token-label {
+.ui-autocomplete-token-label {
     display: block;
     padding: 0em 2.1em 0em 0.5em;
 }
 
-.pui-autocomplete-token-icon {
+.ui-autocomplete-token-icon {
     margin-top: -9px;
     position: absolute;
     right: 0.2em;
@@ -92,14 +92,14 @@
     cursor: pointer;
 }
 
-.pui-autocomplete-input-token {
+.ui-autocomplete-input-token {
     float: left;
     list-style-type: none;
     margin: 1px;
     padding: 0;
 }
 
-.pui-autocomplete-input-token .pui-inputtext {
+.ui-autocomplete-input-token .ui-inputtext {
     border: 0 none;
     width: 140px;
     outline: medium none;
@@ -109,31 +109,31 @@
     box-shadow: none;
 }
 
-.pui-autocomplete-itemtip-content {
+.ui-autocomplete-itemtip-content {
     display:none;
 }
 
-.pui-autocomplete-itemtip {
+.ui-autocomplete-itemtip {
     position: absolute;
     display: none;
     padding: 0.4em;
 }
 
-.pui-autocomplete-emptyMessage {
+.ui-autocomplete-emptyMessage {
     padding:3px 5px;
 }
 
-.pui-autocomplete-panel .pui-autocomplete-group {
+.ui-autocomplete-panel .ui-autocomplete-group {
     font-weight: bold;
     cursor: default;
 }
 
 /** AutoComplete **/
-.pui-fluid .pui-autocomplete,
-.pui-fluid .pui-autocomplete-input {
+.ui-fluid .ui-autocomplete,
+.ui-fluid .ui-autocomplete-input {
     width: 100%;
 }
 
-.pui-fluid .pui-autocomplete .pui-autocomplete-dropdown.pui-button {
+.ui-fluid .ui-autocomplete .ui-autocomplete-dropdown.ui-button {
     width: 2.4em;
 }

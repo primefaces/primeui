@@ -1,16 +1,16 @@
-.pui-listbox {
+.ui-listbox {
     overflow:auto;
     padding:2px;
     width:125px;
 }
 
-.pui-listbox .pui-listbox-list {
+.ui-listbox .ui-listbox-list {
     list-style-type: none; 
     margin: 0;
     padding: 0;
 }
 
-.pui-listbox .pui-listbox-item {
+.ui-listbox .ui-listbox-item {
     margin:2px;
     border:0 none;
     cursor: pointer;

@@ -14,22 +14,22 @@
         _create: function() { 
             this.options.mode = this.options.iframe ? 'iframe' : (this.element.children('div').length == 1) ? 'inline' : 'image';
             
-            var dom = '<div class="pui-lightbox ui-widget ui-helper-hidden ui-corner-all pui-shadow">';
-            dom += '<div class="pui-lightbox-content-wrapper">';
-            dom += '<a class="ui-state-default pui-lightbox-nav-left ui-corner-right ui-helper-hidden"><span class="fa fa-fw fa-caret-left"></span></a>';
-            dom += '<div class="pui-lightbox-content ui-corner-all"></div>';
-            dom += '<a class="ui-state-default pui-lightbox-nav-right ui-corner-left ui-helper-hidden"><span class="fa fa-fw fa-caret-right"></span></a>';
+            var dom = '<div class="ui-lightbox ui-widget ui-helper-hidden ui-corner-all ui-shadow">';
+            dom += '<div class="ui-lightbox-content-wrapper">';
+            dom += '<a class="ui-state-default ui-lightbox-nav-left ui-corner-right ui-helper-hidden"><span class="fa fa-fw fa-caret-left"></span></a>';
+            dom += '<div class="ui-lightbox-content ui-corner-all"></div>';
+            dom += '<a class="ui-state-default ui-lightbox-nav-right ui-corner-left ui-helper-hidden"><span class="fa fa-fw fa-caret-right"></span></a>';
             dom += '</div>';
-            dom += '<div class="pui-lightbox-caption ui-widget-header"><span class="pui-lightbox-caption-text"></span>';
-            dom += '<a class="pui-lightbox-close ui-corner-all" href="#"><span class="fa fa-fw fa-close"></span></a><div style="clear:both" /></div>';
+            dom += '<div class="ui-lightbox-caption ui-widget-header"><span class="ui-lightbox-caption-text"></span>';
+            dom += '<a class="ui-lightbox-close ui-corner-all" href="#"><span class="fa fa-fw fa-close"></span></a><div style="clear:both" /></div>';
             dom += '</div>';
 
             this.panel = $(dom).appendTo(document.body);
-            this.contentWrapper = this.panel.children('.pui-lightbox-content-wrapper');
-            this.content = this.contentWrapper.children('.pui-lightbox-content');
-            this.caption = this.panel.children('.pui-lightbox-caption');
-            this.captionText = this.caption.children('.pui-lightbox-caption-text');        
-            this.closeIcon = this.caption.children('.pui-lightbox-close');
+            this.contentWrapper = this.panel.children('.ui-lightbox-content-wrapper');
+            this.content = this.contentWrapper.children('.ui-lightbox-content');
+            this.caption = this.panel.children('.ui-lightbox-caption');
+            this.captionText = this.caption.children('.ui-lightbox-caption-text');        
+            this.closeIcon = this.caption.children('.ui-lightbox-close');
             
             if(this.options.mode === 'image') {
                 this._setupImaging();
@@ -58,7 +58,7 @@
             });
 
             //hide when outside is clicked
-            $(document.body).bind('click.pui-lightbox', function (e) {            
+            $(document.body).bind('click.ui-lightbox', function (e) {            
                 if($this.isHidden()) {
                     return;
                 }
@@ -109,7 +109,7 @@
                 topOffset = ($this.panel.height() - image.height()) / 2;
 
                 //resize content for new image
-                $this.content.removeClass('pui-lightbox-loading').animate({
+                $this.content.removeClass('ui-lightbox-loading').animate({
                     width: image.width(),
                     height: image.height()
                 },
@@ -136,7 +136,7 @@
 
                 $this._hideNavigators();
 
-                if(nav.hasClass('pui-lightbox-nav-left')) {
+                if(nav.hasClass('ui-lightbox-nav-left')) {
                     index = $this.current === 0 ? $this.links.length - 1 : $this.current - 1;
 
                     $this.links.eq(index).trigger('click');
@@ -154,7 +154,7 @@
                 var link = $(this);
 
                 if($this.isHidden()) {
-                    $this.content.addClass('pui-lightbox-loading').width(32).height(32);
+                    $this.content.addClass('ui-lightbox-loading').width(32).height(32);
                     $this.show();
                 }
                 else {
@@ -165,7 +165,7 @@
                             'height': 'auto'
                         });
 
-                        $this.content.addClass('pui-lightbox-loading');
+                        $this.content.addClass('ui-lightbox-loading');
                     });
 
                     $this.caption.slideUp();
@@ -211,7 +211,7 @@
         
         _setupInline: function() {
             this.links = this.element.children('a');
-            this.inline = this.element.children('div').addClass('pui-lightbox-inline');
+            this.inline = this.element.children('div').addClass('ui-lightbox-inline');
             this.inline.appendTo(this.content).show();
             var $this = this;
 
@@ -240,7 +240,7 @@
 
             this.element.click(function(e) {
                 if(!$this.iframeLoaded) {
-                    $this.content.addClass('pui-lightbox-loading').css({
+                    $this.content.addClass('ui-lightbox-loading').css({
                         width: $this.options.iframeWidth,
                         height: $this.options.iframeHeight
                     });
@@ -249,7 +249,7 @@
 
                     $this.iframe.on('load', function() {
                                     $this.iframeLoaded = true;
-                                    $this.content.removeClass('pui-lightbox-loading');
+                                    $this.content.removeClass('ui-lightbox-loading');
                                 })
                                 .attr('src', $this.element.attr('href'));
                 }

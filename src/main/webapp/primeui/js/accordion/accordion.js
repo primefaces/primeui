@@ -16,7 +16,7 @@
             }
         
             var $this = this;
-            this.element.addClass('pui-accordion ui-widget ui-helper-reset');
+            this.element.addClass('ui-accordion ui-widget ui-helper-reset');
 
             var tabContainers = this.element.children();
 
@@ -33,19 +33,19 @@
                 this.panels = tabContainers.children('div');
             }
             
-            this.headers.addClass('pui-accordion-header ui-helper-reset ui-state-default').each(function(i) {
+            this.headers.addClass('ui-accordion-header ui-helper-reset ui-state-default').each(function(i) {
                 var header = $(this),
                 title = header.html(),
                 active = $this.options.multiple ? ($.inArray(i, $this.options.activeIndex) !== -1) : (i == $this.options.activeIndex);
                 headerClass = (active) ? 'ui-state-active ui-corner-top' : 'ui-corner-all',
-                iconClass = (active) ? 'pui-icon fa fa-fw fa-caret-down' : 'pui-icon fa fa-fw fa-caret-right';
+                iconClass = (active) ? 'ui-icon fa fa-fw fa-caret-down' : 'ui-icon fa fa-fw fa-caret-right';
 
                 header.addClass(headerClass).html('<span class="' + iconClass + '"></span><a href="#">' + title + '</a>');
             });
             
             this.panels.each(function(i) {
                 var content = $(this);
-                content.addClass('pui-accordion-content ui-helper-reset ui-widget-content'),
+                content.addClass('ui-accordion-content ui-helper-reset ui-widget-content'),
                 active = $this.options.multiple ? ($.inArray(i, $this.options.activeIndex) !== -1) : (i == $this.options.activeIndex);
                 
                 if(!active) {
@@ -60,10 +60,10 @@
 
         _destroy: function() {
             this._unbindEvents();
-            this.element.removeClass('pui-accordion ui-widget ui-helper-reset');
-            this.headers.removeClass('pui-accordion-header ui-helper-reset ui-state-default ui-state-hover ui-state-active ui-state-disabled ui-corner-all ui-corner-top');
-            this.panels.removeClass('pui-accordion-content ui-helper-reset ui-widget-content ui-helper-hidden');
-            this.headers.children('.pui-icon').remove();
+            this.element.removeClass('ui-accordion ui-widget ui-helper-reset');
+            this.headers.removeClass('ui-accordion-header ui-helper-reset ui-state-default ui-state-hover ui-state-active ui-state-disabled ui-corner-all ui-corner-top');
+            this.panels.removeClass('ui-accordion-content ui-helper-reset ui-widget-content ui-helper-hidden');
+            this.headers.children('.ui-icon').remove();
             this.headers.children('a').contents().unwrap();
         },
         
@@ -128,7 +128,7 @@
             var panel = this.panels.eq(index),
             header = panel.prev();
 
-            header.attr('aria-expanded', false).children('.pui-icon').removeClass('fa-caret-down').addClass('fa-caret-right');
+            header.attr('aria-expanded', false).children('.ui-icon').removeClass('fa-caret-down').addClass('fa-caret-right');
             header.removeClass('ui-state-active ui-corner-top').addClass('ui-corner-all');
             panel.attr('aria-hidden', true).slideUp();
 
@@ -139,14 +139,14 @@
             //deactivate current
             if(!this.options.multiple) {
                 var oldHeader = this.headers.filter('.ui-state-active');
-                oldHeader.children('.pui-icon').removeClass('fa-caret-down').addClass('fa-caret-right');
+                oldHeader.children('.ui-icon').removeClass('fa-caret-down').addClass('fa-caret-right');
                 oldHeader.attr('aria-expanded', false).removeClass('ui-state-active ui-corner-top').addClass('ui-corner-all').next().attr('aria-hidden', true).slideUp();
             }
 
             //activate selected
             var newHeader = panel.prev();
             newHeader.attr('aria-expanded', true).addClass('ui-state-active ui-corner-top').removeClass('ui-state-hover ui-corner-all')
-                    .children('.pui-icon').removeClass('fa-caret-right').addClass('fa-caret-down');
+                    .children('.ui-icon').removeClass('fa-caret-right').addClass('fa-caret-down');
 
             panel.attr('aria-hidden', false).slideDown('normal');
         },

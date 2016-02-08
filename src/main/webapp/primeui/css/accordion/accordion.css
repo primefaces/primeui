@@ -1,28 +1,28 @@
-.pui-accordion { 
+.ui-accordion { 
     width: 100%; 
 }
 
-.pui-accordion .pui-accordion-header { 
+.ui-accordion .ui-accordion-header { 
     cursor: pointer; 
     position: relative; 
     margin-top: 1px; 
     zoom: 1; 
 }
 
-.pui-accordion .pui-accordion-header a { 
+.ui-accordion .ui-accordion-header a { 
     display: block; 
     font-size: 1em; 
     padding: .5em .5em .5em 2.2em; 
 }
 
-.pui-accordion .pui-accordion-header .pui-icon { 
+.ui-accordion .ui-accordion-header .ui-icon { 
     position: absolute; 
     left: .5em; 
     top: 50%; 
     margin-top: -8px; 
 }
 
-.pui-accordion .pui-accordion-content { 
+.ui-accordion .ui-accordion-content { 
     padding: 1em 2.2em; 
     border-top: 0; 
     margin-top: -2px; 
@@ -33,7 +33,7 @@
     zoom: 1; 
 }
 
-.pui-accordion .pui-accordion-header.ui-state-disabled, 
-.pui-accordion .pui-accordion-header.ui-state-disabled a { 
+.ui-accordion .ui-accordion-header.ui-state-disabled, 
+.ui-accordion .ui-accordion-header.ui-state-disabled a { 
     cursor: default; 
 }

@@ -1,10 +1,10 @@
-.pui-progressbar { 
+.ui-progressbar { 
     height: 1.2em; 
     text-align: left; 
     position: relative;
 }
 
-.pui-progressbar .pui-progressbar-value {
+.ui-progressbar .ui-progressbar-value {
     margin: -1px; 
     height: 100%;
     width: 0%;
@@ -12,14 +12,14 @@
     display: none;
 }
 
-.pui-progressbar .pui-progressbar-value-animate {
+.ui-progressbar .ui-progressbar-value-animate {
     -webkit-transition: width 1s ease-in-out;
     -moz-transition: width 1s ease-in-out;
     -o-transition: width 1s ease-in-out;
     transition: width 1s ease-in-out;
 }
 
-.pui-progressbar .pui-progressbar-label {
+.ui-progressbar .ui-progressbar-label {
     text-align: center;
     height: 100%;
     width: 100%;

@@ -14,18 +14,18 @@
         },
        
         _create: function() {
-            this.element.wrap('<div class="pui-button pui-togglebutton ui-widget ui-state-default ui-corner-all" />');
+            this.element.wrap('<div class="ui-button ui-togglebutton ui-widget ui-state-default ui-corner-all" />');
             this.container = this.element.parent();
             
             this.element.addClass('ui-helper-hidden-accessible');
             if(this.options.onIcon && this.options.offIcon) {
-                this.container.addClass('pui-button-text-icon-left');
-                this.container.append('<span class="pui-button-icon-left pui-icon fa fa-fw"></span>');
+                this.container.addClass('ui-button-text-icon-left');
+                this.container.append('<span class="ui-button-icon-left ui-icon fa fa-fw"></span>');
             }
             else {
-                this.container.addClass('pui-button-text-only');
+                this.container.addClass('ui-button-text-only');
             }
-            this.container.append('<span class="pui-button-text"></span>');
+            this.container.append('<span class="ui-button-text"></span>');
             
             if(this.options.style) {
                 this.container.attr('style', this.options.style);
@@ -35,8 +35,8 @@
                 this.container.attr('class', this.options.styleClass);
             }
             
-            this.label = this.container.children('.pui-button-text');
-            this.icon = this.container.children('.pui-icon');
+            this.label = this.container.children('.ui-button-text');
+            this.icon = this.container.children('.ui-icon');
             
             //initial state
             if(this.element.prop('checked')||this.options.checked) {

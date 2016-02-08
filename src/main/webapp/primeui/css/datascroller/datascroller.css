@@ -1,36 +1,36 @@
-.pui-datascroller {
+.ui-datascroller {
 }
 
-.pui-datascroller .pui-datascroller-header {
+.ui-datascroller .ui-datascroller-header {
     text-align: center;
     padding: 4px 10px;
     border-bottom: 0px none;
 }
 
-.pui-datascroller .pui-datascroller-content {
+.ui-datascroller .ui-datascroller-content {
     padding:4px 10px;
 }
 
-.pui-datascroller-inline .pui-datascroller-content {
+.ui-datascroller-inline .ui-datascroller-content {
     overflow: auto;
 }
 
-.pui-datascroller .pui-datascroller-list {
+.ui-datascroller .ui-datascroller-list {
     list-style-type: none; 
     margin: 0;
     padding: 0;
 }
 
-.pui-datascroller .pui-datascroller-item {
+.ui-datascroller .ui-datascroller-item {
     border: 0 none;
 }
 
-.pui-datascroller .pui-datascroller-loader {
+.ui-datascroller .ui-datascroller-loader {
     text-align: center;
     padding: 4px 10px;
 }
 
-.pui-datascroller .pui-datascroller-loading {
+.ui-datascroller .ui-datascroller-loading {
     background: url("./images/loadingbar.gif") center center no-repeat;
     width: 220px;
     height: 19px;

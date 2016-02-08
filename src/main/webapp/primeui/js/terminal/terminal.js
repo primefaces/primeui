@@ -12,14 +12,14 @@
         },
         
         _create: function() {
-            this.element.addClass('pui-terminal ui-widget ui-widget-content ui-corner-all')
+            this.element.addClass('ui-terminal ui-widget ui-widget-content ui-corner-all')
                         .append('<div>' + this.options.welcomeMessage + '</div>')
-                        .append('<div class="pui-terminal-content"></div>')
-                        .append('<div><span class="pui-terminal-prompt">' + this.options.prompt + '</span>' +
-                                 '<input type="text" class="pui-terminal-input" autocomplete="off"></div>' );
+                        .append('<div class="ui-terminal-content"></div>')
+                        .append('<div><span class="ui-terminal-prompt">' + this.options.prompt + '</span>' +
+                                 '<input type="text" class="ui-terminal-input" autocomplete="off"></div>' );
                          
-            this.promptContainer = this.element.find('> div:last-child > span.pui-terminal-prompt');
-            this.content = this.element.children('.pui-terminal-content');
+            this.promptContainer = this.element.find('> div:last-child > span.ui-terminal-prompt');
+            this.content = this.element.children('.ui-terminal-content');
             this.input = this.promptContainer.next();
             this.commands = [];
             this.commandIndex = 0;
@@ -80,7 +80,7 @@
 
         _updateContent: function(content) {
             var commandResponseContainer = $('<div></div>');
-            commandResponseContainer.append('<span>' + this.options.prompt + '</span><span class="pui-terminal-command">' +  this.input.val() + '</span>')
+            commandResponseContainer.append('<span>' + this.options.prompt + '</span><span class="ui-terminal-command">' +  this.input.val() + '</span>')
                                     .append('<div>' + content + '</div>').appendTo(this.content);
 
             this.input.val('');

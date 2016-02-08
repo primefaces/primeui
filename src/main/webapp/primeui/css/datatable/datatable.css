@@ -1,110 +1,110 @@
-.pui-datatable table {
+.ui-datatable table {
 	border-collapse:collapse;
     width: 100%;
     table-layout: fixed;
 }
 
-.pui-datatable-tablewrapper {
+.ui-datatable-tablewrapper {
     overflow: auto;
 }
 
-.pui-datatable .pui-datatable-caption,
-.pui-datatable .pui-datatable-footer {
+.ui-datatable .ui-datatable-caption,
+.ui-datatable .ui-datatable-footer {
     text-align: center;
     padding: 4px 10px;
 }
 
-.pui-datatable .pui-datatable-caption {
+.ui-datatable .ui-datatable-caption {
     border-bottom: 0px none;
 }
 
-.pui-datatable .pui-datatable-footer {
+.ui-datatable .ui-datatable-footer {
     border-top: 0px none;
 }
 
-.pui-datatable thead th, .pui-datatable tfoot td {
+.ui-datatable thead th, .ui-datatable tfoot td {
     text-align: center;
 }
 
-.pui-datatable thead th,
-.pui-datatable tbody td,
-.pui-datatable tfoot td,
-.pui-datatable tfoot th{
+.ui-datatable thead th,
+.ui-datatable tbody td,
+.ui-datatable tfoot td,
+.ui-datatable tfoot th{
     padding: 4px 10px;
     overflow: hidden;
     border-width: 1px;
     border-style: solid;
 }
 
-.pui-datatable tbody {
+.ui-datatable tbody {
     outline: 0;
 }
 
-.pui-datatable tbody td {
+.ui-datatable tbody td {
     border-color: inherit;
 }
 
-.pui-datatable .pui-sortable-column {
+.ui-datatable .ui-sortable-column {
     cursor: pointer;
 }
 
-.pui-datatable .pui-sortable-column-icon {
+.ui-datatable .ui-sortable-column-icon {
     display: inline-block;
     margin: -3px 0px -3px 2px;
 }
 
-.pui-datatable tr.ui-state-highlight {
+.ui-datatable tr.ui-state-highlight {
     cursor: pointer;
 }
 
 /* Scrollable */
-.pui-datatable-scrollable-body {
+.ui-datatable-scrollable-body {
     overflow:auto;
 }
-.pui-datatable-scrollable-header {
+.ui-datatable-scrollable-header {
     overflow: hidden;
     border: 0px none;
 }
 
-.pui-datatable-scrollable .pui-datatable-scrollable-header {
+.ui-datatable-scrollable .ui-datatable-scrollable-header {
     position: relative;
 } 
 
-.pui-datatable-scrollable .pui-datatable-scrollable-header td {
+.ui-datatable-scrollable .ui-datatable-scrollable-header td {
     font-weight: normal;
 }
 
-.pui-datatable-scrollable-body::-webkit-scrollbar {
+.ui-datatable-scrollable-body::-webkit-scrollbar {
     -webkit-appearance: none;
     width: 15px;
     background-color: transparent;
 }
 
-.pui-datatable-scrollable-body::-webkit-scrollbar-thumb {
+.ui-datatable-scrollable-body::-webkit-scrollbar-thumb {
     border-radius: 8px;
     border: 1px solid white;
     background-color: rgba(194,194,194,.5);
 }
 
-.pui-datatable .pui-datatable-scrollable-body  {
+.ui-datatable .ui-datatable-scrollable-body  {
     min-height: 0%;
 }
 
-.pui-datatable .pui-datatable-data tr.ui-state-hover {
+.ui-datatable .ui-datatable-data tr.ui-state-hover {
     border-color: inherit;
     font-weight: inherit;
     cursor: pointer;
 }
 
-.pui-datatable-scrollable-theadclone {
+.ui-datatable-scrollable-theadclone {
     height:0px;
 }
 
-.pui-datatable-scrollable-theadclone tr {
+.ui-datatable-scrollable-theadclone tr {
     height:0px;
 }
 
-.pui-datatable-scrollable-theadclone th.ui-state-default {
+.ui-datatable-scrollable-theadclone th.ui-state-default {
     height:0px;
     border-bottom-width: 0px;
     border-top-width: 0px;
@@ -113,32 +113,32 @@
     outline: 0 none;
 }
 
-.pui-datatable-scrollable-theadclone th span.pui-column-title {
+.ui-datatable-scrollable-theadclone th span.ui-column-title {
   display: block;
   height: 0px;
 }
 
-.pui-datatable .pui-paginator {
+.ui-datatable .ui-paginator {
     padding: 2px;
     border-top: 0 none;
 }
 
-.pui-datatable-rtl {
+.ui-datatable-rtl {
     direction: rtl;
 }
 
-.pui-datatable-rtl.pui-datatable thead th, 
-.pui-datatable-rtl.pui-datatable tfoot td {
+.ui-datatable-rtl.ui-datatable thead th, 
+.ui-datatable-rtl.ui-datatable tfoot td {
     text-align: right;
 }
 
 /* Row Toggler */
-.pui-row-toggler {
+.ui-row-toggler {
     cursor: pointer;
 }
 
 /* Resizable */
-.pui-datatable .pui-column-resizer {
+.ui-datatable .ui-column-resizer {
     position: absolute !important;
     top: 0px;
     right: 0px;
@@ -150,47 +150,47 @@
     border: 1px solid transparent;
 }
 
-.pui-datatable .pui-column-resizer-helper {
+.ui-datatable .ui-column-resizer-helper {
     width: 1px;
     position: absolute;
     z-index: 10;
     display: none;
 }
 
-.pui-datatable-resizable {
+.ui-datatable-resizable {
     padding-bottom:1px;     /*fix for webkit overlow*/
     overflow:auto;
 }
 
-.pui-datatable-resizable thead th,
-.pui-datatable-resizable tbody td,
-.pui-datatable-resizable tfoot td {
+.ui-datatable-resizable thead th,
+.ui-datatable-resizable tbody td,
+.ui-datatable-resizable tfoot td {
     white-space: nowrap;
 }
 
-.pui-datatable-resizable th.pui-resizable-column {
+.ui-datatable-resizable th.ui-resizable-column {
     background-clip: padding-box;
     position: relative;
 }
 
 /** Reflow **/
-.pui-datatable-reflow .pui-datatable-data td .pui-column-title {
+.ui-datatable-reflow .ui-datatable-data td .ui-column-title {
     display: none;
 }
 
 /* Filter */
-.pui-datatable .pui-column-filter {
+.ui-datatable .ui-column-filter {
     display: block;
     width:100px;
     margin:auto;
 }
 
 /* Editing */
-.pui-datatable td.pui-cell-editing {
+.ui-datatable td.ui-cell-editing {
     padding: 0px;
 }
 
-.pui-datatable td.pui-cell-editing input {
+.ui-datatable td.ui-cell-editing input {
     box-sizing: border-box;
     width: 100%;
     border: 0px none;
@@ -198,12 +198,12 @@
 }
 
 @media ( max-width: 35em ) {
-    .pui-datatable-reflow thead th,
-    .pui-datatable-reflow tfoot td {
+    .ui-datatable-reflow thead th,
+    .ui-datatable-reflow tfoot td {
         display: none;
     }
 
-    .pui-datatable-reflow .pui-datatable-data td { 
+    .ui-datatable-reflow .ui-datatable-data td { 
         text-align: left;
         display: block;
         border: 0px none;
@@ -215,16 +215,16 @@
 		clear: left;
     }
     
-    .pui-datatable-reflow .pui-datatable-data.ui-widget-content {
+    .ui-datatable-reflow .ui-datatable-data.ui-widget-content {
         border: 0px none;
     }
     
-    .pui-datatable-reflow .pui-datatable-data tr.ui-widget-content {
+    .ui-datatable-reflow .ui-datatable-data tr.ui-widget-content {
         border-left: 0px none;
         border-right: 0px none;
     }
 
-    .pui-datatable-reflow .pui-datatable-data td .pui-column-title { 
+    .ui-datatable-reflow .ui-datatable-data td .ui-column-title { 
         padding: .4em; 
         min-width: 30%; 
         display: inline-block;

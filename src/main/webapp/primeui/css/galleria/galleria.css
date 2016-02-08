@@ -1,16 +1,16 @@
-.pui-galleria { 
+.ui-galleria { 
     overflow: hidden; 
     visibility: hidden; 
     position: relative;
 }
 
-.pui-galleria-panel-wrapper {
+.ui-galleria-panel-wrapper {
     position: relative;
     padding: 0px;
     margin: 0px;
 }
 
-.pui-galleria-panel {
+.ui-galleria-panel {
     filter: inherit;
     position: absolute;
     top: 0px;
@@ -18,13 +18,13 @@
     list-style-type: none;
 }
 
-.pui-galleria-filmstrip-wrapper {
+.ui-galleria-filmstrip-wrapper {
     overflow: hidden;
     margin: 5px auto;
     position: relative;
 }
 
-.pui-galleria-filmstrip { 
+.ui-galleria-filmstrip { 
     list-style: none outside none;
     margin: 0;
     padding: 0;
@@ -35,35 +35,35 @@
     left: 0px;
 }
 
-.pui-galleria-frame {
+.ui-galleria-frame {
     float:left;
     margin-right: 5px;
     opacity: 0.3;
     cursor: pointer;
 }
 
-.pui-galleria-frame-active {
+.ui-galleria-frame-active {
     opacity: 1;
 }
 
-.pui-galleria-frame-content {
+.ui-galleria-frame-content {
     overflow: hidden;
 }
 
-.pui-galleria-nav-next, .pui-galleria-nav-prev {
+.ui-galleria-nav-next, .ui-galleria-nav-prev {
 	cursor: pointer;
     position: absolute;
 }
 
-.pui-galleria-nav-prev {	
+.ui-galleria-nav-prev {	
     left: 5px;
 }
 
-.pui-galleria-nav-next {
+.ui-galleria-nav-next {
     right: 5px;
 }
 
-.pui-galleria-caption {
+.ui-galleria-caption {
     position: absolute;
     left:1px;
     background-color: rgba(0,0,0,0.5);
@@ -72,6 +72,6 @@
     padding: 0.2em 1em;
 }
 
-.pui-galleria-panel-content {
+.ui-galleria-panel-content {
     padding: 1em 1.4em;
 }

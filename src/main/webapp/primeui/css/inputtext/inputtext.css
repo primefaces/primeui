@@ -1,16 +1,16 @@
-.pui-inputtext {
+.ui-inputtext {
     margin: 0;
     outline: medium none;
     padding: 4px;
     font-weight: normal;
 }
 
-.ui-widget-header .pui-inputtext,
-.ui-widget-content .pui-inputtext {
+.ui-widget-header .ui-inputtext,
+.ui-widget-content .ui-inputtext {
     font-weight: normal;
 }
 
-.pui-fluid .pui-inputtext {
+.ui-fluid .ui-inputtext {
     width: 100%;
     box-sizing: border-box;
     -webkit-box-sizing:border-box;

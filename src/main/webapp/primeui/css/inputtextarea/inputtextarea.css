@@ -1,8 +1,8 @@
-.pui-inputtextarea-resizable {
+.ui-inputtextarea-resizable {
     overflow: hidden;
     resize:none;
 }
 
-.pui-fluid .pui-inputtextarea {
+.ui-fluid .ui-inputtextarea {
     width: 100%;
 }

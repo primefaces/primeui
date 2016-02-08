@@ -27,11 +27,11 @@
                     headerText: 'Local Javascript Array',
                     datasource: cars,
                     itemContent: function(car) {
-                        var content = $('<div class="pui-grid pui-grid-responsive"></div>');
-                        content.append('<div class="pui-grid-row"><div class="pui-grid-col-12"><img src="resources/demo/images/car/' + car.brand +  '.gif" /></div>')
-                                .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Vin</div><div class="pui-grid-col-6">' + car.vin + ' </div></div>')
-                                .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Year</div><div class="pui-grid-col-6">' + car.year + ' </div></div>')
-                                .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Color</div><div class="pui-grid-col-6">' + car.color + ' </div></div>');
+                        var content = $('<div class="ui-grid ui-grid-responsive"></div>');
+                        content.append('<div class="ui-grid-row"><div class="ui-grid-col-12"><img src="resources/demo/images/car/' + car.brand +  '.gif" /></div>')
+                                .append('<div class="ui-grid-row"><div class="ui-grid-col-6">Vin</div><div class="ui-grid-col-6">' + car.vin + ' </div></div>')
+                                .append('<div class="ui-grid-row"><div class="ui-grid-col-6">Year</div><div class="ui-grid-col-6">' + car.year + ' </div></div>')
+                                .append('<div class="ui-grid-row"><div class="ui-grid-col-6">Color</div><div class="ui-grid-col-6">' + car.color + ' </div></div>');
 
                         return content;
                     }
@@ -52,11 +52,11 @@
                         });
                     },
                     itemContent: function(car) {
-                        var content = $('<div class="pui-grid pui-grid-responsive"></div>');
-                        content.append('<div class="pui-grid-row"><div class="pui-grid-col-12"><img src="resources/demo/images/car/' + car.brand +  '.gif" /></div>')
-                                .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Vin</div><div class="pui-grid-col-6">' + car.vin + ' </div></div>')
-                                .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Year</div><div class="pui-grid-col-6">' + car.year + ' </div></div>')
-                                .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Color</div><div class="pui-grid-col-6">' + car.color + ' </div></div>');
+                        var content = $('<div class="ui-grid ui-grid-responsive"></div>');
+                        content.append('<div class="ui-grid-row"><div class="ui-grid-col-12"><img src="resources/demo/images/car/' + car.brand +  '.gif" /></div>')
+                                .append('<div class="ui-grid-row"><div class="ui-grid-col-6">Vin</div><div class="ui-grid-col-6">' + car.vin + ' </div></div>')
+                                .append('<div class="ui-grid-row"><div class="ui-grid-col-6">Year</div><div class="ui-grid-col-6">' + car.year + ' </div></div>')
+                                .append('<div class="ui-grid-row"><div class="ui-grid-col-6">Color</div><div class="ui-grid-col-6">' + car.color + ' </div></div>');
 
                         return content.html();
                     }
@@ -71,19 +71,19 @@
         });
     </script>
     <style type="text/css">
-        .pui-carousel .pui-grid-row {
+        .ui-carousel .ui-grid-row {
             text-align: center;
         }
         
-        .pui-carousel .pui-grid {
+        .ui-carousel .ui-grid {
             margin: 10px 0px;
         }
         
-        .pui-carousel .pui-grid-row > div {
+        .ui-carousel .ui-grid-row > div {
             padding: 4px 10px;
         }
         
-        .pui-carousel {
+        .ui-carousel {
             margin-bottom: 30px;
         }
     </style>
@@ -102,21 +102,21 @@
         
         <p-carousel datasource="CarouselDemo.cars" headertext="PrimeElement" renderdelay="10">
             <script type="x-tmpl-mustache" >
-                <div class="pui-grid pui-grid-responsive">
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-12"><img src="resources/demo/images/car/{{brand}}.gif" /></div>
+                <div class="ui-grid ui-grid-responsive">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-12"><img src="resources/demo/images/car/{{brand}}.gif" /></div>
                     </div>
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-6">Vin</div>
-                        <div class="pui-grid-col-6">{{vin}}</div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Vin</div>
+                        <div class="ui-grid-col-6">{{vin}}</div>
                     </div>
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-6">Year</div>
-                        <div class="pui-grid-col-6">{{year}}</div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Year</div>
+                        <div class="ui-grid-col-6">{{year}}</div>
                     </div>
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-6">Color</div>
-                        <div class="pui-grid-col-6">{{color}}</div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Color</div>
+                        <div class="ui-grid-col-6">{{color}}</div>
                     </div>
                 </div>
             </script>
@@ -124,182 +124,182 @@
         
         <ul id="cars3">
             <li>
-                <div class="pui-grid pui-grid-responsive">
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-12"><img src="resources/demo/images/car/Volkswagen.gif">
+                <div class="ui-grid ui-grid-responsive">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-12"><img src="resources/demo/images/car/Volkswagen.gif">
                         </div>
                     </div>
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-6">Vin</div>
-                        <div class="pui-grid-col-6">dsad231ff </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Vin</div>
+                        <div class="ui-grid-col-6">dsad231ff </div>
                     </div>
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-6">Year</div>
-                        <div class="pui-grid-col-6">2012 </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Year</div>
+                        <div class="ui-grid-col-6">2012 </div>
                     </div>
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-6">Color</div>
-                        <div class="pui-grid-col-6">White </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Color</div>
+                        <div class="ui-grid-col-6">White </div>
                     </div>
                 </div>
             </li>
             <li>
-                <div class="pui-grid pui-grid-responsive">
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-12"><img src="resources/demo/images/car/Audi.gif">
+                <div class="ui-grid ui-grid-responsive">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-12"><img src="resources/demo/images/car/Audi.gif">
                         </div>
                     </div>
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-6">Vin</div>
-                        <div class="pui-grid-col-6">gwregre345 </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Vin</div>
+                        <div class="ui-grid-col-6">gwregre345 </div>
                     </div>
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-6">Year</div>
-                        <div class="pui-grid-col-6">2011 </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Year</div>
+                        <div class="ui-grid-col-6">2011 </div>
                     </div>
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-6">Color</div>
-                        <div class="pui-grid-col-6">Black </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Color</div>
+                        <div class="ui-grid-col-6">Black </div>
                     </div>
                 </div>
             </li>
             <li>
-                <div class="pui-grid pui-grid-responsive">
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-12"><img src="resources/demo/images/car/Renault.gif">
+                <div class="ui-grid ui-grid-responsive">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-12"><img src="resources/demo/images/car/Renault.gif">
                         </div>
                     </div>
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-6">Vin</div>
-                        <div class="pui-grid-col-6">h354htr </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Vin</div>
+                        <div class="ui-grid-col-6">h354htr </div>
                     </div>
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-6">Year</div>
-                        <div class="pui-grid-col-6">2005 </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Year</div>
+                        <div class="ui-grid-col-6">2005 </div>
                     </div>
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-6">Color</div>
-                        <div class="pui-grid-col-6">Gray </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Color</div>
+                        <div class="ui-grid-col-6">Gray </div>
                     </div>
                 </div>
             </li>
             <li>
-                <div class="pui-grid pui-grid-responsive">
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-12"><img src="resources/demo/images/car/BMW.gif">
+                <div class="ui-grid ui-grid-responsive">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-12"><img src="resources/demo/images/car/BMW.gif">
                         </div>
                     </div>
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-6">Vin</div>
-                        <div class="pui-grid-col-6">j6w54qgh </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Vin</div>
+                        <div class="ui-grid-col-6">j6w54qgh </div>
                     </div>
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-6">Year</div>
-                        <div class="pui-grid-col-6">2003 </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Year</div>
+                        <div class="ui-grid-col-6">2003 </div>
                     </div>
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-6">Color</div>
-                        <div class="pui-grid-col-6">Blue </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Color</div>
+                        <div class="ui-grid-col-6">Blue </div>
                     </div>
                 </div>
             </li>
             <li>
-                <div class="pui-grid pui-grid-responsive">
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-12"><img src="resources/demo/images/car/Mercedes.gif">
+                <div class="ui-grid ui-grid-responsive">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-12"><img src="resources/demo/images/car/Mercedes.gif">
                         </div>
                     </div>
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-6">Vin</div>
-                        <div class="pui-grid-col-6">hrtwy34 </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Vin</div>
+                        <div class="ui-grid-col-6">hrtwy34 </div>
                     </div>
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-6">Year</div>
-                        <div class="pui-grid-col-6">1995 </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Year</div>
+                        <div class="ui-grid-col-6">1995 </div>
                     </div>
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-6">Color</div>
-                        <div class="pui-grid-col-6">White </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Color</div>
+                        <div class="ui-grid-col-6">White </div>
                     </div>
                 </div>
             </li>
             <li>
-                <div class="pui-grid pui-grid-responsive">
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-12"><img src="resources/demo/images/car/Jaguar.gif">
+                <div class="ui-grid ui-grid-responsive">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-12"><img src="resources/demo/images/car/Jaguar.gif">
                         </div>
                     </div>
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-6">Vin</div>
-                        <div class="pui-grid-col-6">jejtyj </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Vin</div>
+                        <div class="ui-grid-col-6">jejtyj </div>
                     </div>
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-6">Year</div>
-                        <div class="pui-grid-col-6">2005 </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Year</div>
+                        <div class="ui-grid-col-6">2005 </div>
                     </div>
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-6">Color</div>
-                        <div class="pui-grid-col-6">Black </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Color</div>
+                        <div class="ui-grid-col-6">Black </div>
                     </div>
                 </div>
             </li>
             <li>
-                <div class="pui-grid pui-grid-responsive">
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-12"><img src="resources/demo/images/car/BMW.gif">
+                <div class="ui-grid ui-grid-responsive">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-12"><img src="resources/demo/images/car/BMW.gif">
                         </div>
                     </div>
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-6">Vin</div>
-                        <div class="pui-grid-col-6">g43gr </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Vin</div>
+                        <div class="ui-grid-col-6">g43gr </div>
                     </div>
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-6">Year</div>
-                        <div class="pui-grid-col-6">2012 </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Year</div>
+                        <div class="ui-grid-col-6">2012 </div>
                     </div>
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-6">Color</div>
-                        <div class="pui-grid-col-6">Yellow </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Color</div>
+                        <div class="ui-grid-col-6">Yellow </div>
                     </div>
                 </div>
             </li>
-            <li class="pui-carousel-item ui-widget-content ui-corner-all" style="width: 349px;">
-                <div class="pui-grid pui-grid-responsive">
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-12"><img src="resources/demo/images/car/Fiat.gif">
+            <li class="ui-carousel-item ui-widget-content ui-corner-all" style="width: 349px;">
+                <div class="ui-grid ui-grid-responsive">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-12"><img src="resources/demo/images/car/Fiat.gif">
                         </div>
                     </div>
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-6">Vin</div>
-                        <div class="pui-grid-col-6">greg34 </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Vin</div>
+                        <div class="ui-grid-col-6">greg34 </div>
                     </div>
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-6">Year</div>
-                        <div class="pui-grid-col-6">2013 </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Year</div>
+                        <div class="ui-grid-col-6">2013 </div>
                     </div>
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-6">Color</div>
-                        <div class="pui-grid-col-6">White </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Color</div>
+                        <div class="ui-grid-col-6">White </div>
                     </div>
                 </div>
             </li>
             <li>
-                <div class="pui-grid pui-grid-responsive">
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-12"><img src="resources/demo/images/car/Ford.gif">
+                <div class="ui-grid ui-grid-responsive">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-12"><img src="resources/demo/images/car/Ford.gif">
                         </div>
                     </div>
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-6">Vin</div>
-                        <div class="pui-grid-col-6">h54hw5 </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Vin</div>
+                        <div class="ui-grid-col-6">h54hw5 </div>
                     </div>
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-6">Year</div>
-                        <div class="pui-grid-col-6">2000 </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Year</div>
+                        <div class="ui-grid-col-6">2000 </div>
                     </div>
-                    <div class="pui-grid-row">
-                        <div class="pui-grid-col-6">Color</div>
-                        <div class="pui-grid-col-6">Black </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Color</div>
+                        <div class="ui-grid-col-6">Black </div>
                     </div>
                 </div>
             </li>
@@ -518,11 +518,11 @@ $(function() {
         headerText: 'Local Javascript Array',
         datasource: cars,
         itemContent: function(car) {
-            var content = $('&lt;div class="pui-grid pui-grid-responsive"&gt;&lt;/div&gt;');
-            content.append('&lt;div class="pui-grid-row"&gt;&lt;div class="pui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/' + car.brand +  '.gif" /&gt;&lt;/div&gt;')
-                    .append('&lt;div class="pui-grid-row"&gt;&lt;div class="pui-grid-col-6"&gt;Vin&lt;/div&gt;&lt;div class="pui-grid-col-6"&gt;' + car.vin + ' &lt;/div&gt;&lt;/div&gt;')
-                    .append('&lt;div class="pui-grid-row"&gt;&lt;div class="pui-grid-col-6"&gt;Year&lt;/div&gt;&lt;div class="pui-grid-col-6"&gt;' + car.year + ' &lt;/div&gt;&lt;/div&gt;')
-                    .append('&lt;div class="pui-grid-row"&gt;&lt;div class="pui-grid-col-6"&gt;Color&lt;/div&gt;&lt;div class="pui-grid-col-6"&gt;' + car.color + ' &lt;/div&gt;&lt;/div&gt;');
+            var content = $('&lt;div class="ui-grid ui-grid-responsive"&gt;&lt;/div&gt;');
+            content.append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/' + car.brand +  '.gif" /&gt;&lt;/div&gt;')
+                    .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.vin + ' &lt;/div&gt;&lt;/div&gt;')
+                    .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.year + ' &lt;/div&gt;&lt;/div&gt;')
+                    .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.color + ' &lt;/div&gt;&lt;/div&gt;');
 
             return content;
         }
@@ -543,11 +543,11 @@ $(function() {
             });
         },
         itemContent: function(car) {
-            var content = $('&lt;div class="pui-grid pui-grid-responsive"&gt;&lt;/div&gt;');
-            content.append('&lt;div class="pui-grid-row"&gt;&lt;div class="pui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/' + car.brand +  '.gif" /&gt;&lt;/div&gt;')
-                    .append('&lt;div class="pui-grid-row"&gt;&lt;div class="pui-grid-col-6"&gt;Vin&lt;/div&gt;&lt;div class="pui-grid-col-6"&gt;' + car.vin + ' &lt;/div&gt;&lt;/div&gt;')
-                    .append('&lt;div class="pui-grid-row"&gt;&lt;div class="pui-grid-col-6"&gt;Year&lt;/div&gt;&lt;div class="pui-grid-col-6"&gt;' + car.year + ' &lt;/div&gt;&lt;/div&gt;')
-                    .append('&lt;div class="pui-grid-row"&gt;&lt;div class="pui-grid-col-6"&gt;Color&lt;/div&gt;&lt;div class="pui-grid-col-6"&gt;' + car.color + ' &lt;/div&gt;&lt;/div&gt;');
+            var content = $('&lt;div class="ui-grid ui-grid-responsive"&gt;&lt;/div&gt;');
+            content.append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/' + car.brand +  '.gif" /&gt;&lt;/div&gt;')
+                    .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.vin + ' &lt;/div&gt;&lt;/div&gt;')
+                    .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.year + ' &lt;/div&gt;&lt;/div&gt;')
+                    .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.color + ' &lt;/div&gt;&lt;/div&gt;');
 
             return content.html();
         }
@@ -566,21 +566,21 @@ $(function() {
 
 &lt;p-carousel datasource="CarouselDemo.cars" headertext="PrimeElement" renderdelay="10"&gt;
     &lt;script type="x-tmpl-mustache" &gt;
-        &lt;div class="pui-grid pui-grid-responsive"&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/{{brand}}.gif" /&gt;&lt;/div&gt;
+        &lt;div class="ui-grid ui-grid-responsive"&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/{{brand}}.gif" /&gt;&lt;/div&gt;
             &lt;/div&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-6"&gt;Vin&lt;/div&gt;
-                &lt;div class="pui-grid-col-6"&gt;{{vin}}&lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;{{vin}}&lt;/div&gt;
             &lt;/div&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-6"&gt;Year&lt;/div&gt;
-                &lt;div class="pui-grid-col-6"&gt;{{year}}&lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;{{year}}&lt;/div&gt;
             &lt;/div&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-6"&gt;Color&lt;/div&gt;
-                &lt;div class="pui-grid-col-6"&gt;{{color}}&lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;{{color}}&lt;/div&gt;
             &lt;/div&gt;
         &lt;/div&gt;
     &lt;/script&gt;
@@ -588,182 +588,182 @@ $(function() {
 
 &lt;ul id="cars3"&gt;
     &lt;li&gt;
-        &lt;div class="pui-grid pui-grid-responsive"&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/Volkswagen.gif"&gt;
+        &lt;div class="ui-grid ui-grid-responsive"&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/Volkswagen.gif"&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-6"&gt;Vin&lt;/div&gt;
-                &lt;div class="pui-grid-col-6"&gt;dsad231ff &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;dsad231ff &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-6"&gt;Year&lt;/div&gt;
-                &lt;div class="pui-grid-col-6"&gt;2012 &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;2012 &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-6"&gt;Color&lt;/div&gt;
-                &lt;div class="pui-grid-col-6"&gt;White &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;White &lt;/div&gt;
             &lt;/div&gt;
         &lt;/div&gt;
     &lt;/li&gt;
     &lt;li&gt;
-        &lt;div class="pui-grid pui-grid-responsive"&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/Audi.gif"&gt;
+        &lt;div class="ui-grid ui-grid-responsive"&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/Audi.gif"&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-6"&gt;Vin&lt;/div&gt;
-                &lt;div class="pui-grid-col-6"&gt;gwregre345 &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;gwregre345 &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-6"&gt;Year&lt;/div&gt;
-                &lt;div class="pui-grid-col-6"&gt;2011 &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;2011 &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-6"&gt;Color&lt;/div&gt;
-                &lt;div class="pui-grid-col-6"&gt;Black &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;Black &lt;/div&gt;
             &lt;/div&gt;
         &lt;/div&gt;
     &lt;/li&gt;
     &lt;li&gt;
-        &lt;div class="pui-grid pui-grid-responsive"&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/Renault.gif"&gt;
+        &lt;div class="ui-grid ui-grid-responsive"&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/Renault.gif"&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-6"&gt;Vin&lt;/div&gt;
-                &lt;div class="pui-grid-col-6"&gt;h354htr &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;h354htr &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-6"&gt;Year&lt;/div&gt;
-                &lt;div class="pui-grid-col-6"&gt;2005 &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;2005 &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-6"&gt;Color&lt;/div&gt;
-                &lt;div class="pui-grid-col-6"&gt;Gray &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;Gray &lt;/div&gt;
             &lt;/div&gt;
         &lt;/div&gt;
     &lt;/li&gt;
     &lt;li&gt;
-        &lt;div class="pui-grid pui-grid-responsive"&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/BMW.gif"&gt;
+        &lt;div class="ui-grid ui-grid-responsive"&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/BMW.gif"&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-6"&gt;Vin&lt;/div&gt;
-                &lt;div class="pui-grid-col-6"&gt;j6w54qgh &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;j6w54qgh &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-6"&gt;Year&lt;/div&gt;
-                &lt;div class="pui-grid-col-6"&gt;2003 &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;2003 &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-6"&gt;Color&lt;/div&gt;
-                &lt;div class="pui-grid-col-6"&gt;Blue &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;Blue &lt;/div&gt;
             &lt;/div&gt;
         &lt;/div&gt;
     &lt;/li&gt;
     &lt;li&gt;
-        &lt;div class="pui-grid pui-grid-responsive"&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/Mercedes.gif"&gt;
+        &lt;div class="ui-grid ui-grid-responsive"&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/Mercedes.gif"&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-6"&gt;Vin&lt;/div&gt;
-                &lt;div class="pui-grid-col-6"&gt;hrtwy34 &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;hrtwy34 &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-6"&gt;Year&lt;/div&gt;
-                &lt;div class="pui-grid-col-6"&gt;1995 &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;1995 &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-6"&gt;Color&lt;/div&gt;
-                &lt;div class="pui-grid-col-6"&gt;White &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;White &lt;/div&gt;
             &lt;/div&gt;
         &lt;/div&gt;
     &lt;/li&gt;
     &lt;li&gt;
-        &lt;div class="pui-grid pui-grid-responsive"&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/Jaguar.gif"&gt;
+        &lt;div class="ui-grid ui-grid-responsive"&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/Jaguar.gif"&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-6"&gt;Vin&lt;/div&gt;
-                &lt;div class="pui-grid-col-6"&gt;jejtyj &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;jejtyj &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-6"&gt;Year&lt;/div&gt;
-                &lt;div class="pui-grid-col-6"&gt;2005 &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;2005 &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-6"&gt;Color&lt;/div&gt;
-                &lt;div class="pui-grid-col-6"&gt;Black &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;Black &lt;/div&gt;
             &lt;/div&gt;
         &lt;/div&gt;
     &lt;/li&gt;
     &lt;li&gt;
-        &lt;div class="pui-grid pui-grid-responsive"&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/BMW.gif"&gt;
+        &lt;div class="ui-grid ui-grid-responsive"&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/BMW.gif"&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-6"&gt;Vin&lt;/div&gt;
-                &lt;div class="pui-grid-col-6"&gt;g43gr &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;g43gr &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-6"&gt;Year&lt;/div&gt;
-                &lt;div class="pui-grid-col-6"&gt;2012 &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;2012 &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-6"&gt;Color&lt;/div&gt;
-                &lt;div class="pui-grid-col-6"&gt;Yellow &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;Yellow &lt;/div&gt;
             &lt;/div&gt;
         &lt;/div&gt;
     &lt;/li&gt;
-    &lt;li class="pui-carousel-item ui-widget-content ui-corner-all" style="width: 349px;"&gt;
-        &lt;div class="pui-grid pui-grid-responsive"&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/Fiat.gif"&gt;
+    &lt;li class="ui-carousel-item ui-widget-content ui-corner-all" style="width: 349px;"&gt;
+        &lt;div class="ui-grid ui-grid-responsive"&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/Fiat.gif"&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-6"&gt;Vin&lt;/div&gt;
-                &lt;div class="pui-grid-col-6"&gt;greg34 &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;greg34 &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-6"&gt;Year&lt;/div&gt;
-                &lt;div class="pui-grid-col-6"&gt;2013 &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;2013 &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-6"&gt;Color&lt;/div&gt;
-                &lt;div class="pui-grid-col-6"&gt;White &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;White &lt;/div&gt;
             &lt;/div&gt;
         &lt;/div&gt;
     &lt;/li&gt;
     &lt;li&gt;
-        &lt;div class="pui-grid pui-grid-responsive"&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/Ford.gif"&gt;
+        &lt;div class="ui-grid ui-grid-responsive"&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/Ford.gif"&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-6"&gt;Vin&lt;/div&gt;
-                &lt;div class="pui-grid-col-6"&gt;h54hw5 &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;h54hw5 &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-6"&gt;Year&lt;/div&gt;
-                &lt;div class="pui-grid-col-6"&gt;2000 &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;2000 &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div class="pui-grid-row"&gt;
-                &lt;div class="pui-grid-col-6"&gt;Color&lt;/div&gt;
-                &lt;div class="pui-grid-col-6"&gt;Black &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;Black &lt;/div&gt;
             &lt;/div&gt;
         &lt;/div&gt;
     &lt;/li&gt;

@@ -1,34 +1,34 @@
-.pui-datagrid .pui-paginator {
+.ui-datagrid .ui-paginator {
 	text-align: center;
     border-top: 0px none;
 }
 
-.pui-datagrid-column {
+.ui-datagrid-column {
 	padding: 3px;
 }
 
-.pui-datagrid-content-empty {
+.ui-datagrid-content-empty {
     padding: 4px 10px;
 }
 
-.pui-datagrid .pui-datagrid-header,
-.pui-datagrid .pui-datagrid-footer {
+.ui-datagrid .ui-datagrid-header,
+.ui-datagrid .ui-datagrid-footer {
     text-align:center;
     padding:4px 10px;
 }
 
-.pui-datagrid .pui-datagrid-header {
+.ui-datagrid .ui-datagrid-header {
     border-bottom: 0px none;
 }
 
-.pui-datagrid .pui-datagrid-footer {
+.ui-datagrid .ui-datagrid-footer {
     border-top: 0px none;
 }
 
-.pui-datagrid .pui-paginator-top {
+.ui-datagrid .ui-paginator-top {
     border-bottom: 0px none;
 }
 
-.pui-datagrid .pui-paginator-bottom {
+.ui-datagrid .ui-paginator-bottom {
     border-top: 0px none;
 }

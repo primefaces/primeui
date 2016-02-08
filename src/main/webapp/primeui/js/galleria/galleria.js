@@ -22,11 +22,11 @@
         },
         
         _create: function() {
-            this.element.addClass('pui-galleria ui-widget ui-widget-content ui-corner-all');
+            this.element.addClass('ui-galleria ui-widget ui-widget-content ui-corner-all');
             this.panelWrapper = this.element.children('ul');
-            this.panelWrapper.addClass('pui-galleria-panel-wrapper');
+            this.panelWrapper.addClass('ui-galleria-panel-wrapper');
             this.panels = this.panelWrapper.children('li');
-            this.panels.addClass('pui-galleria-panel ui-helper-hidden');
+            this.panels.addClass('ui-galleria-panel ui-helper-hidden');
                         
             this.element.width(this.options.panelWidth);
             this.panelWrapper.width(this.options.panelWidth).height(this.options.panelHeight);
@@ -39,7 +39,7 @@
             
             if(this.options.customContent) {
                 this.panels.children('img').hide();
-                this.panels.children('div').addClass('pui-galleria-panel-content');
+                this.panels.children('div').addClass('ui-galleria-panel-content');
             }
             
             //show first
@@ -59,9 +59,9 @@
         _destroy: function() {
             this.stopSlideshow();
             this._unbindEvents();
-            this.element.removeClass('pui-galleria ui-widget ui-widget-content ui-corner-all').removeAttr('style');
-            this.panelWrapper.removeClass('pui-galleria-panel-wrapper').removeAttr('style');
-            this.panels.removeClass('pui-galleria-panel ui-helper-hidden').removeAttr('style');
+            this.element.removeClass('ui-galleria ui-widget ui-widget-content ui-corner-all').removeAttr('style');
+            this.panelWrapper.removeClass('ui-galleria-panel-wrapper').removeAttr('style');
+            this.panels.removeClass('ui-galleria-panel ui-helper-hidden').removeAttr('style');
             this.strip.remove();
             this.stripWrapper.remove();
             this.element.children('.fa').remove();
@@ -74,33 +74,33 @@
         _renderStrip: function() {
             var frameStyle = 'style="width:' + this.options.frameWidth + "px;height:" + this.options.frameHeight + 'px;"';
 
-            this.stripWrapper = $('<div class="pui-galleria-filmstrip-wrapper"></div>')
+            this.stripWrapper = $('<div class="ui-galleria-filmstrip-wrapper"></div>')
                     .width(this.element.width() - 50)
                     .height(this.options.frameHeight)
                     .appendTo(this.element);
 
-            this.strip = $('<ul class="pui-galleria-filmstrip"></div>').appendTo(this.stripWrapper);
+            this.strip = $('<ul class="ui-galleria-filmstrip"></div>').appendTo(this.stripWrapper);
 
             for(var i = 0; i < this.panels.length; i++) {
                 var image = this.panels.eq(i).children('img'),
-                frameClass = (i == this.options.activeIndex) ? 'pui-galleria-frame pui-galleria-frame-active' : 'pui-galleria-frame',
+                frameClass = (i == this.options.activeIndex) ? 'ui-galleria-frame ui-galleria-frame-active' : 'ui-galleria-frame',
                 frameMarkup = '<li class="'+ frameClass + '" ' + frameStyle + '>' +
-                '<div class="pui-galleria-frame-content" ' + frameStyle + '>' +
-                '<img src="' + image.attr('src') + '" class="pui-galleria-frame-image" ' + frameStyle + '/>' +
+                '<div class="ui-galleria-frame-content" ' + frameStyle + '>' +
+                '<img src="' + image.attr('src') + '" class="ui-galleria-frame-image" ' + frameStyle + '/>' +
                 '</div></li>';
 
                 this.strip.append(frameMarkup);
             }
 
-            this.frames = this.strip.children('li.pui-galleria-frame');
+            this.frames = this.strip.children('li.ui-galleria-frame');
 
             //navigators
-            this.element.append('<div class="pui-galleria-nav-prev fa fa-fw fa-chevron-circle-left" style="bottom:' + (this.options.frameHeight / 2) + 'px"></div>' + 
-                '<div class="pui-galleria-nav-next fa fa-fw fa-chevron-circle-right" style="bottom:' + (this.options.frameHeight / 2) + 'px"></div>');
+            this.element.append('<div class="ui-galleria-nav-prev fa fa-fw fa-chevron-circle-left" style="bottom:' + (this.options.frameHeight / 2) + 'px"></div>' + 
+                '<div class="ui-galleria-nav-next fa fa-fw fa-chevron-circle-right" style="bottom:' + (this.options.frameHeight / 2) + 'px"></div>');
 
             //caption
             if(this.options.showCaption) {
-                this.caption = $('<div class="pui-galleria-caption"></div>').css({
+                this.caption = $('<div class="ui-galleria-caption"></div>').css({
                     'bottom': this.stripWrapper.outerHeight() + 10,
                     'width': this.panelWrapper.width()
                     }).appendTo(this.element);
@@ -110,7 +110,7 @@
         _bindEvents: function() {
             var $this = this;
 
-            this.element.children('div.pui-galleria-nav-prev').on('click.puigalleria', function() {
+            this.element.children('div.ui-galleria-nav-prev').on('click.puigalleria', function() {
                 if($this.slideshowActive) {
                     $this.stopSlideshow();
                 }
@@ -120,7 +120,7 @@
                 }
             });
 
-            this.element.children('div.pui-galleria-nav-next').on('click.puigalleria', function() {
+            this.element.children('div.ui-galleria-nav-next').on('click.puigalleria', function() {
                 if($this.slideshowActive) {
                     $this.stopSlideshow();
                 }
@@ -130,7 +130,7 @@
                 }
             });
 
-            this.strip.children('li.pui-galleria-frame').on('click.puigalleria', function() {
+            this.strip.children('li.ui-galleria-frame').on('click.puigalleria', function() {
                 if($this.slideshowActive) {
                     $this.stopSlideshow();
                 }
@@ -140,9 +140,9 @@
         },
 
         _unbindEvents: function() {
-            this.element.children('div.pui-galleria-nav-prev').off('click.puigalleria');
-            this.element.children('div.pui-galleria-nav-next').off('click.puigalleria');
-            this.strip.children('li.pui-galleria-frame').off('click.puigalleria');
+            this.element.children('div.ui-galleria-nav-prev').off('click.puigalleria');
+            this.element.children('div.ui-galleria-nav-next').off('click.puigalleria');
+            this.strip.children('li.ui-galleria-frame').off('click.puigalleria');
         },
 
         startSlideshow: function() {
@@ -185,9 +185,9 @@
                         newFrame = this.frames.eq(index);
 
                     //frame
-                    oldFrame.removeClass('pui-galleria-frame-active').css('opacity', '');
+                    oldFrame.removeClass('ui-galleria-frame-active').css('opacity', '');
                     newFrame.animate({opacity:1.0}, this.options.effectSpeed, null, function() {
-                       $(this).addClass('pui-galleria-frame-active');
+                       $(this).addClass('ui-galleria-frame-active');
                     });
 
                     //viewport

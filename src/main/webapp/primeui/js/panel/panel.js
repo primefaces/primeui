@@ -18,29 +18,29 @@
         
         _create: function() {
             if(!this.options.enhanced) {
-                this.element.addClass('pui-panel ui-widget ui-widget-content ui-corner-all')
-                    .contents().wrapAll('<div class="pui-panel-content ui-widget-content" />');
+                this.element.addClass('ui-panel ui-widget ui-widget-content ui-corner-all')
+                    .contents().wrapAll('<div class="ui-panel-content ui-widget-content" />');
 
                 var title = this.element.attr('title')||this.options.title;
                 if(title) {
-                    this.element.prepend('<div class="pui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all"><span class="ui-panel-title">' +
+                    this.element.prepend('<div class="ui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all"><span class="ui-panel-title">' +
                             title + "</span></div>").removeAttr('title');
                 }
             }
                 
-            this.header = this.element.children('div.pui-panel-titlebar');
+            this.header = this.element.children('div.ui-panel-titlebar');
             this.title = this.header.children('span.ui-panel-title');
-            this.content = this.element.children('div.pui-panel-content');
+            this.content = this.element.children('div.ui-panel-content');
             
             var $this = this;
             
             if(this.options.closable) {
                 if(!this.options.enhanced) {
-                    this.closer = $('<a class="pui-panel-titlebar-icon pui-panel-titlebar-closer ui-corner-all ui-state-default" href="#"><span class="pui-icon fa fa-fw fa-close"></span></a>')
+                    this.closer = $('<a class="ui-panel-titlebar-icon ui-panel-titlebar-closer ui-corner-all ui-state-default" href="#"><span class="ui-icon fa fa-fw fa-close"></span></a>')
                                 .appendTo(this.header);
                 }
                 else {
-                    this.closer = this.header.children('.pui-panel-titlebar-closer');
+                    this.closer = this.header.children('.ui-panel-titlebar-closer');
                 }
 
                 this.closer.on('click.puipanel', function(e) {
@@ -53,12 +53,12 @@
                 var icon = this.options.collapsed ? 'fa-plus' : 'fa-minus';
                 
                 if(!this.options.enhanced) {
-                    this.toggler = $('<a class="pui-panel-titlebar-icon pui-panel-titlebar-toggler ui-corner-all ui-state-default" href="#"><span class="pui-icon fa fa-fw ' + icon + '"></span></a>')
+                    this.toggler = $('<a class="ui-panel-titlebar-icon ui-panel-titlebar-toggler ui-corner-all ui-state-default" href="#"><span class="ui-icon fa fa-fw ' + icon + '"></span></a>')
                                 .appendTo(this.header);
                 }
                 else {
-                    this.toggler = this.header.children('.pui-panel-titlebar-toggler');
-                    this.toggler.children('.pui-icon').addClass(icon);
+                    this.toggler = this.header.children('.ui-panel-titlebar-toggler');
+                    this.toggler.children('.ui-icon').addClass(icon);
                 }
                 
                 this.toggler.on('click.puipanel', function(e) {
@@ -75,7 +75,7 @@
         },
 
         _bindEvents: function() {
-            this.header.children('a.pui-panel-titlebar-icon').on('mouseenter.puipanel', function() {
+            this.header.children('a.ui-panel-titlebar-icon').on('mouseenter.puipanel', function() {
                 $(this).addClass('ui-state-hover');
             })
             .on('mouseleave.puipanel', function() {
@@ -84,7 +84,7 @@
         },
 
         _unbindEvents: function() {
-            this.header.children('a.pui-panel-titlebar-icon').off();
+            this.header.children('a.ui-panel-titlebar-icon').off();
         },
         
         close: function() {
@@ -109,7 +109,7 @@
         },
         
         expand: function() {
-            this.toggler.children('.pui-icon').removeClass('fa-plus').addClass('fa-minus');
+            this.toggler.children('.ui-icon').removeClass('fa-plus').addClass('fa-minus');
             
             if(this.options.toggleOrientation === 'vertical') {
                 this._slideDown();
@@ -120,7 +120,7 @@
         },
 
         collapse: function() {
-            this.toggler.children('.pui-icon').removeClass('fa-minus').addClass('fa-plus');
+            this.toggler.children('.ui-icon').removeClass('fa-minus').addClass('fa-plus');
             
             if(this.options.toggleOrientation === 'vertical') {
                 this._slideUp();
@@ -165,7 +165,7 @@
                 width: '42px'
             }, this.options.toggleSpeed, 'easeInOutCirc', function() {
                 $this.toggler.show();
-                $this.element.addClass('pui-panel-collapsed-h');
+                $this.element.addClass('ui-panel-collapsed-h');
                 $this.options.collapsed = !$this.options.collapsed;
             });
         },
@@ -179,7 +179,7 @@
             this.element.animate({
                 width: expandWidth
             }, this.options.toggleSpeed, 'easeInOutCirc', function() {
-                $this.element.removeClass('pui-panel-collapsed-h');
+                $this.element.removeClass('ui-panel-collapsed-h');
                 $this.title.show();
                 $this.toggler.show();
                 $this.options.collapsed = !$this.options.collapsed;
@@ -195,7 +195,7 @@
         _destroy: function() {
             this._unbindEvents();
             if(this.toggler) {
-                this.toggler.children('.pui-icon').removeClass('fa-minus fa-plus');
+                this.toggler.children('.ui-icon').removeClass('fa-minus fa-plus');
             }
         }
     });

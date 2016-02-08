@@ -31,19 +31,19 @@
             }
 
             if(!this.options.enhanced) {
-                this.element.wrap('<div class="pui-carousel ui-widget ui-widget-content ui-corner-all"><div class="pui-carousel-viewport"></div></div>');
+                this.element.wrap('<div class="ui-carousel ui-widget ui-widget-content ui-corner-all"><div class="ui-carousel-viewport"></div></div>');
             }
 
             this.container = this.element.parent().parent();
-            this.element.addClass('pui-carousel-items');
+            this.element.addClass('ui-carousel-items');
             this.viewport = this.element.parent();
-            this.container.prepend('<div class="pui-carousel-header ui-widget-header"><div class="pui-carousel-header-title"></div></div>');
-            this.header = this.container.children('.pui-carousel-header');
-            this.header.append('<span class="pui-carousel-button pui-carousel-next-button fa fa-arrow-circle-right"></span>' +
-                '<span class="pui-carousel-button pui-carousel-prev-button fa fa-arrow-circle-left"></span>');
+            this.container.prepend('<div class="ui-carousel-header ui-widget-header"><div class="ui-carousel-header-title"></div></div>');
+            this.header = this.container.children('.ui-carousel-header');
+            this.header.append('<span class="ui-carousel-button ui-carousel-next-button fa fa-arrow-circle-right"></span>' +
+                '<span class="ui-carousel-button ui-carousel-prev-button fa fa-arrow-circle-left"></span>');
                 
             if(this.options.headerText) {
-                this.header.children('.pui-carousel-header-title').html(this.options.headerText);
+                this.header.children('.ui-carousel-header-title').html(this.options.headerText);
             }
             
             if(this.options.styleClass) {
@@ -63,8 +63,8 @@
         _destroy: function() {
             this._unbindEvents();
             this.header.remove();
-            this.items.removeClass('pui-carousel-item ui-widget-content ui-corner-all').css('width','auto');
-            this.element.removeClass('pui-carousel-items').css('left','auto');
+            this.items.removeClass('ui-carousel-item ui-widget-content ui-corner-all').css('width','auto');
+            this.element.removeClass('ui-carousel-items').css('left','auto');
 
             if(!this.options.enhanced) {
                 this.element.unwrap().unwrap();
@@ -85,7 +85,7 @@
         _updateDatasource: function(value) {
             this.options.datasource = value;
             this.element.children().remove();
-            this.header.children('.pui-carousel-page-links').remove();
+            this.header.children('.ui-carousel-page-links').remove();
             this.header.children('select').remove();
             this._loadData();
         },
@@ -104,7 +104,7 @@
             }
             
             this.items = this.element.children('li');
-            this.items.addClass('pui-carousel-item ui-widget-content ui-corner-all');
+            this.items.addClass('ui-carousel-item ui-widget-content ui-corner-all');
             this.itemsCount = this.items.length;
             this.columns = this.options.numVisible;
             this.first = this.options.firstVisible;
@@ -113,11 +113,11 @@
             
             this._renderPageLinks();
             
-            this.prevNav = this.header.children('.pui-carousel-prev-button');
-            this.nextNav = this.header.children('.pui-carousel-next-button');
-            this.pageLinks = this.header.find('> .pui-carousel-page-links > .pui-carousel-page-link');
-            this.dropdown = this.header.children('.pui-carousel-dropdown');
-            this.mobileDropdown = this.header.children('.pui-carousel-mobiledropdown');
+            this.prevNav = this.header.children('.ui-carousel-prev-button');
+            this.nextNav = this.header.children('.ui-carousel-next-button');
+            this.pageLinks = this.header.find('> .ui-carousel-page-links > .ui-carousel-page-link');
+            this.dropdown = this.header.children('.ui-carousel-dropdown');
+            this.mobileDropdown = this.header.children('.ui-carousel-mobiledropdown');
             
             this._bindEvents();
             
@@ -133,14 +133,14 @@
         
         _renderPageLinks: function() {
             if(this.totalPages <= this.options.pageLinks) {
-                this.pageLinksContainer = $('<div class="pui-carousel-page-links"></div>');
+                this.pageLinksContainer = $('<div class="ui-carousel-page-links"></div>');
                 for(var i = 0; i < this.totalPages; i++) {
-                    this.pageLinksContainer.append('<a href="#" class="pui-carousel-page-link fa fa-circle-o"></a>');
+                    this.pageLinksContainer.append('<a href="#" class="ui-carousel-page-link fa fa-circle-o"></a>');
                 }
                 this.header.append(this.pageLinksContainer);
             }
             else {
-                this.dropdown = $('<select class="pui-carousel-dropdown ui-widget ui-state-default ui-corner-left"></select>');
+                this.dropdown = $('<select class="ui-carousel-dropdown ui-widget ui-state-default ui-corner-left"></select>');
                 for(var i = 0; i < this.totalPages; i++) {
                     var pageNumber = (i+1);
                     this.dropdown.append('<option value="' + pageNumber + '">' + pageNumber + '</option>');
@@ -149,7 +149,7 @@
             }
             
             if(this.options.responsive) {
-                this.mobileDropdown = $('<select class="pui-carousel-mobiledropdown ui-widget ui-state-default ui-corner-left"></select>');
+                this.mobileDropdown = $('<select class="ui-carousel-mobiledropdown ui-widget ui-state-default ui-corner-left"></select>');
                 for(var i = 0; i < this.itemsCount; i++) {
                     var pageNumber = (i+1);
                     this.mobileDropdown.append('<option value="' + pageNumber + '">' + pageNumber + '</option>');

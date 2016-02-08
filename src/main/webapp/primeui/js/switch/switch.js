@@ -15,28 +15,28 @@
 
         _create: function() {
             if(!this.options.enhanced) {
-                this.element.wrap('<div class="pui-inputswitch ui-widget ui-widget-content ui-corner-all"></div>');
+                this.element.wrap('<div class="ui-inputswitch ui-widget ui-widget-content ui-corner-all"></div>');
                 this.container = this.element.parent();
 
                 this.element.wrap('<div class="ui-helper-hidden-accessible"></div>');
-                this.container.prepend('<div class="pui-inputswitch-off"></div>' +
-                    '<div class="pui-inputswitch-on ui-state-active"></div>' +
-                    '<div class="pui-inputswitch-handle ui-state-default"></div>');
+                this.container.prepend('<div class="ui-inputswitch-off"></div>' +
+                    '<div class="ui-inputswitch-on ui-state-active"></div>' +
+                    '<div class="ui-inputswitch-handle ui-state-default"></div>');
 
-                this.onContainer = this.container.children('.pui-inputswitch-on');
-                this.offContainer = this.container.children('.pui-inputswitch-off');
+                this.onContainer = this.container.children('.ui-inputswitch-on');
+                this.offContainer = this.container.children('.ui-inputswitch-off');
                 this.onContainer.append('<span>'+ this.options.onLabel +'</span>');
                 this.offContainer.append('<span>'+ this.options.offLabel +'</span>');
             }
             else {
-                this.container = this.element.closest('.pui-inputswitch');
-                this.onContainer = this.container.children('.pui-inputswitch-on');
-                this.offContainer = this.container.children('.pui-inputswitch-off');
+                this.container = this.element.closest('.ui-inputswitch');
+                this.onContainer = this.container.children('.ui-inputswitch-on');
+                this.offContainer = this.container.children('.ui-inputswitch-off');
             }
 
             this.onLabel = this.onContainer.children('span');
             this.offLabel = this.offContainer.children('span');
-            this.handle = this.container.children('.pui-inputswitch-handle');
+            this.handle = this.container.children('.ui-inputswitch-handle');
 
             var	onContainerWidth = this.onContainer.width(),
                 offContainerWidth = this.offContainer.width(),

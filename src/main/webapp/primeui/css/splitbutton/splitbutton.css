@@ -1,9 +1,9 @@
-.pui-splitbutton {
+.ui-splitbutton {
     position: relative;
     padding-right: 2em;
 }
 
-.pui-splitbutton .pui-button.pui-splitbutton-menubutton {
+.ui-splitbutton .ui-button.ui-splitbutton-menubutton {
     width: 32px;
     position: absolute;
     top: 0px;
@@ -11,23 +11,23 @@
     right: 0px;
 }
 
-.pui-splitbutton {
+.ui-splitbutton {
     display: inline-block;
     zoom: 1;
 }
 
-.pui-fluid .pui-splitbutton {
+.ui-fluid .ui-splitbutton {
     width: 100%;
     box-sizing: border-box;
     -webkit-box-sizing:border-box;
     -moz-box-sizing: border-box;
 }
 
-.pui-fluid .pui-splitbutton .pui-button {
+.ui-fluid .ui-splitbutton .ui-button {
     width: 100%;
 }
 
-.pui-fluid .pui-splitbutton .pui-button.pui-splitbutton-menubutton {
+.ui-fluid .ui-splitbutton .ui-button.ui-splitbutton-menubutton {
     width: 32px;
     box-sizing: border-box;
     -webkit-box-sizing:border-box;

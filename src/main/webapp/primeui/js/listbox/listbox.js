@@ -20,9 +20,9 @@
 
         _create: function() {
             if(!this.options.enhanced) {
-                this.element.wrap('<div class="pui-listbox pui-inputtext ui-widget ui-widget-content ui-corner-all"><div class="ui-helper-hidden-accessible"></div></div>');
+                this.element.wrap('<div class="ui-listbox ui-inputtext ui-widget ui-widget-content ui-corner-all"><div class="ui-helper-hidden-accessible"></div></div>');
                 this.container = this.element.parent().parent();
-                this.listContainer = $('<ul class="pui-listbox-list"></ul>').appendTo(this.container);
+                this.listContainer = $('<ul class="ui-listbox-list"></ul>').appendTo(this.container);
 
                 if(this.options.data) {
                     this._populateInputFromData();
@@ -32,8 +32,8 @@
             }
             else {
                 this.container = this.element.parent().parent();
-                this.listContainer = this.container.children('ul').addClass('pui-listbox-list');
-                this.items = this.listContainer.children('li').addClass('pui-listbox-item ui-corner-all');
+                this.listContainer = this.container.children('ul').addClass('ui-listbox-list');
+                this.items = this.listContainer.children('li').addClass('ui-listbox-item ui-corner-all');
                 this.choices = this.element.children('option');
             }
 
@@ -74,9 +74,9 @@
             this.choices = this.element.children('option');
             for(var i = 0; i < this.choices.length; i++) {
                 var choice = this.choices.eq(i);
-                this.listContainer.append('<li class="pui-listbox-item ui-corner-all">' + this._createItemContent(choice.get(0)) + '</li>');
+                this.listContainer.append('<li class="ui-listbox-item ui-corner-all">' + this._createItemContent(choice.get(0)) + '</li>');
             }
-            this.items = this.listContainer.find('.pui-listbox-item:not(.ui-state-disabled)');
+            this.items = this.listContainer.find('.ui-listbox-item:not(.ui-state-disabled)');
         },
 
         _restrictHeight: function() {
@@ -320,7 +320,7 @@
         _updateOptions: function(options) {
             var $this = this;
             setTimeout(function() {
-                $this.items = $this.listContainer.children('li').addClass('pui-listbox-item ui-corner-all');
+                $this.items = $this.listContainer.children('li').addClass('ui-listbox-item ui-corner-all');
                 $this.choices = $this.element.children('option');
                 $this._unbindItemEvents();
                 $this._bindItemEvents();

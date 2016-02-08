@@ -16,14 +16,14 @@
 
         _create: function() {
             if(!this.options.enhanced) {
-                this.element.addClass('pui-selectbutton pui-buttonset ui-widget ui-corner-all').attr('tabindex');
+                this.element.addClass('ui-selectbutton ui-buttonset ui-widget ui-corner-all').attr('tabindex');
 
                 if(this.options.choices) {
-                    this.element.addClass('pui-buttonset-' + this.options.choices.length);
+                    this.element.addClass('ui-buttonset-' + this.options.choices.length);
                     for(var i = 0; i < this.options.choices.length; i++) {
-                        this.element.append('<div class="pui-button ui-widget ui-state-default pui-button-text-only" tabindex="' + this.options.tabindex + '" data-value="'
+                        this.element.append('<div class="ui-button ui-widget ui-state-default ui-button-text-only" tabindex="' + this.options.tabindex + '" data-value="'
                             + this.options.choices[i].value + '">' +
-                            '<span class="pui-button-text ui-c">' +
+                            '<span class="ui-button-text ui-c">' +
                             this.options.choices[i].label +
                             '</span></div>');
                     }
@@ -33,7 +33,7 @@
                 var $this = this;
                 this.options.choices = [];
 
-                this.element.children('.pui-button').each(function() {
+                this.element.children('.ui-button').each(function() {
                     var btn = $(this),
                         value = btn.attr('data-value'),
                         label = btn.children('span').text();
@@ -42,7 +42,7 @@
             }
 
             //cornering
-            this.buttons = this.element.children('div.pui-button');
+            this.buttons = this.element.children('div.ui-button');
 
             this.buttons.filter(':first-child').addClass('ui-corner-left');
             this.buttons.filter(':last-child').addClass('ui-corner-right');
@@ -75,7 +75,7 @@
             this._unbindEvents();
             if(!this.options.enhanced) {
                 this.buttons.remove();
-                this.element.removeClass('pui-selectbutton pui-buttonset ui-widget ui-corner-all').removeAttr('tabindex');
+                this.element.removeClass('ui-selectbutton ui-buttonset ui-widget ui-corner-all').removeAttr('tabindex');
             }
             else {
                 this.buttons.removeClass('ui-state-focus ui-state-hover ui-state-active ui-corner-left ui-corner-right');
@@ -167,7 +167,7 @@
         },
 
         selectOption: function(value) {
-            var btn = $.isNumeric(value) ? this.element.children('.pui-button').eq(value) : value;
+            var btn = $.isNumeric(value) ? this.element.children('.ui-button').eq(value) : value;
 
             if(this.options.multiple) {
                 this.selectOptions.eq(btn.index()).prop('selected',true);
@@ -179,7 +179,7 @@
         },
 
         unselectOption: function(value){
-            var btn = $.isNumeric(value) ? this.element.children('.pui-button').eq(value) : value;
+            var btn = $.isNumeric(value) ? this.element.children('.ui-button').eq(value) : value;
 
             if(this.options.multiple)
                 this.selectOptions.eq(btn.index()).prop('selected',false);

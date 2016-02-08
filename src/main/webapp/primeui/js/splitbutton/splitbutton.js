@@ -12,9 +12,9 @@
         },
         
         _create: function() {
-            this.element.wrap('<div class="pui-splitbutton pui-buttonset ui-widget"></div>');
+            this.element.wrap('<div class="ui-splitbutton ui-buttonset ui-widget"></div>');
             this.container = this.element.parent().uniqueId();
-            this.menuButton = this.container.append('<button class="pui-splitbutton-menubutton" type="button"></button>').children('.pui-splitbutton-menubutton');
+            this.menuButton = this.container.append('<button class="ui-splitbutton-menubutton" type="button"></button>').children('.ui-splitbutton-menubutton');
             this.options.disabled = this.element.prop('disabled');
             
             if(this.options.disabled) {
@@ -34,14 +34,14 @@
         },
                 
         _renderPanel: function() {
-            this.menu = $('<div class="pui-menu pui-menu-dynamic ui-widget ui-widget-content ui-corner-all ui-helper-clearfix pui-shadow"></div>').
-                    append('<ul class="pui-menu-list ui-helper-reset"></ul>');
-            this.menuList = this.menu.children('.pui-menu-list');
+            this.menu = $('<div class="ui-menu ui-menu-dynamic ui-widget ui-widget-content ui-corner-all ui-helper-clearfix ui-shadow"></div>').
+                    append('<ul class="ui-menu-list ui-helper-reset"></ul>');
+            this.menuList = this.menu.children('.ui-menu-list');
             
             for(var i = 0; i < this.options.items.length; i++) {
                 var item = this.options.items[i],
-                menuitem = $('<li class="pui-menuitem ui-widget ui-corner-all" role="menuitem"></li>'),
-                link = $('<a class="pui-menuitem-link ui-corner-all"><span class="pui-menuitem-icon fa fa-fw ' + item.icon +'"></span><span class="pui-menuitem-text">' + item.text +'</span></a>');
+                menuitem = $('<li class="ui-menuitem ui-widget ui-corner-all" role="menuitem"></li>'),
+                link = $('<a class="ui-menuitem-link ui-corner-all"><span class="ui-menuitem-icon fa fa-fw ' + item.icon +'"></span><span class="ui-menuitem-text">' + item.text +'</span></a>');
                 
                 if(item.url) {
                     link.attr('href', item.url);

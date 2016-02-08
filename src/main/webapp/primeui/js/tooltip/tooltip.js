@@ -31,7 +31,7 @@
         },
         
         _bindGlobal: function() {
-            this.container = $('<div class="pui-tooltip pui-tooltip-global ui-widget ui-widget-content ui-corner-all pui-shadow" />').appendTo(document.body);
+            this.container = $('<div class="ui-tooltip ui-tooltip-global ui-widget ui-widget-content ui-corner-all ui-shadow" />').appendTo(document.body);
             this.globalSelector = 'a,:input,:button,img';
             var $this = this;
 
@@ -68,7 +68,7 @@
         },
         
         _bindTarget: function() {
-            this.container = $('<div class="pui-tooltip ui-widget ui-widget-content ui-corner-all pui-shadow" />').appendTo(document.body);
+            this.container = $('<div class="ui-tooltip ui-widget ui-widget-content ui-corner-all ui-shadow" />').appendTo(document.body);
 
             var $this = this;
             this.element.off(this.options.showEvent + ' ' + this.options.hideEvent)

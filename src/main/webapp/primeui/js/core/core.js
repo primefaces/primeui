@@ -6,12 +6,12 @@ var PUI = {
     zindex : 1000,
     
     gridColumns: {
-        '1': 'pui-grid-col-12',
-        '2': 'pui-grid-col-6',
-        '3': 'pui-grid-col-4',
-        '4': 'pui-grid-col-3',
-        '6': 'pui-grid-col-2',
-        '12': 'pui-grid-col-11'
+        '1': 'ui-grid-col-12',
+        '2': 'ui-grid-col-6',
+        '3': 'ui-grid-col-4',
+        '4': 'ui-grid-col-3',
+        '6': 'ui-grid-col-2',
+        '12': 'ui-grid-col-11'
     },
         
     /**

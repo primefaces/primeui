@@ -1,4 +1,4 @@
-.pui-inputswitch {
+.ui-inputswitch {
 	display: inline-block;
 	padding: 0;
 	position: relative;
@@ -11,8 +11,8 @@
     height: 24px;
 }
 
-.pui-inputswitch .pui-inputswitch-on,
-.pui-inputswitch .pui-inputswitch-off {
+.ui-inputswitch .ui-inputswitch-on,
+.ui-inputswitch .ui-inputswitch-off {
 	white-space: nowrap;
     display: block;
     position: absolute;
@@ -28,32 +28,32 @@
 	padding-top: 4px;
 }
 
-.pui-inputswitch .pui-inputswitch-off {
+.ui-inputswitch .ui-inputswitch-off {
 	right: 0;
 	text-align: right;
 }
 
-.pui-inputswitch .pui-inputswitch-off span {
+.ui-inputswitch .ui-inputswitch-off span {
 	display: inline-block;
 	text-align: center;
 	padding-left: 2px;
 	padding-right: 3px;
 }
 
-.pui-inputswitch .pui-inputswitch-on {
+.ui-inputswitch .ui-inputswitch-on {
 	left: 0;
 	padding-right: 4px;
     border: 0 none;
 }
 
-.pui-inputswitch .pui-inputswitch-on span {
+.ui-inputswitch .ui-inputswitch-on span {
 	display: inline-block;
 	text-align: center;
 	padding-left: 3px;
 	padding-right: 2px;
 }
 
-.pui-inputswitch .pui-inputswitch-handle {
+.ui-inputswitch .ui-inputswitch-handle {
 	display: block;
 	width: 0;
 	position: absolute;

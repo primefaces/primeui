@@ -314,56 +314,56 @@ input.searchInput {
 }
 
 /* Tabs Source */
-.Source .pui-tabview {
+.Source .ui-tabview {
     background: none;
     border: 0 none;
     color: #5C666A;
     font-family: 'exoregular', "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 
-.Source .pui-tabview .pui-tabview-nav {
+.Source .ui-tabview .ui-tabview-nav {
     background: none;
     margin-bottom: -1px;
     padding: 0 !important;
 }
 
-.Source .pui-tabview .pui-tabview-nav li {
+.Source .ui-tabview .ui-tabview-nav li {
     background: #DFE4E6;
     border-color: #BCC7CF;
     box-shadow: none !important;
 }
 
-.Source .pui-tabview .pui-tabview-nav li.tab-doc {
+.Source .ui-tabview .ui-tabview-nav li.tab-doc {
     margin-right: 0;
 }
 
-.Source .pui-tabview .pui-tabview-nav li.ui-state-hover.ui-state-default a {
+.Source .ui-tabview .ui-tabview-nav li.ui-state-hover.ui-state-default a {
     color: #5C666A;
 }
 
-.Source .pui-tabview .pui-tabview-nav li.ui-state-default a {
+.Source .ui-tabview .ui-tabview-nav li.ui-state-default a {
     color: #84939F;
     text-shadow: none;
 }
 
-.Source .pui-tabview .pui-tabview-nav li.ui-state-active a {
+.Source .ui-tabview .ui-tabview-nav li.ui-state-active a {
     color: #5C666A;
 }
 
-.Source .pui-tabview .pui-tabview-nav li.ui-state-hover {
+.Source .ui-tabview .ui-tabview-nav li.ui-state-hover {
     box-shadow: none; 
 }
 
-.Source .pui-tabview .pui-tabview-nav li.pui-tabview-selected {
+.Source .ui-tabview .ui-tabview-nav li.ui-tabview-selected {
     background: #EFF3F6;
 }
 
-.Source .pui-tabview .pui-tabview-panels {
+.Source .ui-tabview .ui-tabview-panels {
     border-top: 1px solid #BCC7CF;
     color: #5C666A !important;
 }
 
-.Source .pui-tabview-panels h3 {
+.Source .ui-tabview-panels h3 {
     font-size: 24px;
     font-weight: normal;
 }
@@ -444,7 +444,7 @@ input.searchInput {
         width: 100%;
     }
 
-    .pui-tabview.pui-tabview-top > .pui-tabview-nav li {
+    .ui-tabview.ui-tabview-top > .ui-tabview-nav li {
         width: 100%;
     }
 
@@ -502,7 +502,7 @@ input.searchInput {
 .ui-theme.ui-theme-ui-lightness{ background-position: -80px -768px; width: 30px; height: 27px; } 
 .ui-theme.ui-theme-vader{ background-position: -80px -845px; width: 30px; height: 27px; }
 
-.pui-tabview .tab-primeelement {
+.ui-tabview .tab-primeelement {
     float: right !important;
 }
 

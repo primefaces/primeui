@@ -16,7 +16,7 @@
             var container = this.element;
             this.originalParent = this.element.parent();
 
-            container.addClass("pui-growl ui-widget");
+            container.addClass("ui-growl ui-widget");
 
             if(this.options.appendTo) {
                 container.appendTo(this.options.appendTo);
@@ -42,7 +42,7 @@
         },
 
         clear: function() {
-            var messageElements = this.element.children('div.pui-growl-item-container');
+            var messageElements = this.element.children('div.ui-growl-item-container');
             for(var i = 0; i < messageElements.length; i++) {
                 this._unbindMessageEvents(messageElements.eq(i));
             }
@@ -51,12 +51,12 @@
         },
 
         _renderMessage: function(msg) {
-            var markup = '<div class="pui-growl-item-container ui-state-highlight ui-corner-all ui-helper-hidden" aria-live="polite">';
-            markup += '<div class="pui-growl-item pui-shadow">';
-            markup += '<div class="pui-growl-icon-close fa fa-close" style="display:none"></div>';
-            markup += '<span class="pui-growl-image fa fa-2x ' + this._getIcon(msg.severity) + ' pui-growl-image-' + msg.severity + '"/>';
-            markup += '<div class="pui-growl-message">';
-            markup += '<span class="pui-growl-title">' + msg.summary + '</span>';
+            var markup = '<div class="ui-growl-item-container ui-state-highlight ui-corner-all ui-helper-hidden" aria-live="polite">';
+            markup += '<div class="ui-growl-item ui-shadow">';
+            markup += '<div class="ui-growl-icon-close fa fa-close" style="display:none"></div>';
+            markup += '<span class="ui-growl-image fa fa-2x ' + this._getIcon(msg.severity) + ' ui-growl-image-' + msg.severity + '"/>';
+            markup += '<div class="ui-growl-message">';
+            markup += '<span class="ui-growl-title">' + msg.summary + '</span>';
             markup += '<p>' + (msg.detail||'') + '</p>';
             markup += '</div><div style="clear: both;"></div></div></div>';
 
@@ -82,15 +82,15 @@
                     var msg = $(this);
 
                     if(!msg.is(':animated')) {
-                        msg.find('div.pui-growl-icon-close:first').show();
+                        msg.find('div.ui-growl-icon-close:first').show();
                     }
                 })
                 .on('mouseout.puigrowl', function() {
-                    $(this).find('div.pui-growl-icon-close:first').hide();
+                    $(this).find('div.ui-growl-icon-close:first').hide();
                 });
 
             //remove message on click of close icon
-            message.find('div.pui-growl-icon-close').on('click.puigrowl',function() {
+            message.find('div.ui-growl-icon-close').on('click.puigrowl',function() {
                 $this._removeMessage(message);
 
                 if(!sticky) {
@@ -108,7 +108,7 @@
                 sticky = this.options.sticky;
 
             message.off('mouseover.puigrowl mouseout.puigrowl');
-            message.find('div.pui-growl-icon-close').off('click.puigrowl');
+            message.find('div.ui-growl-icon-close').off('click.puigrowl');
             if(!sticky) {
                 var timeout = message.data('timeout');
                 if(timeout) {
@@ -158,7 +158,7 @@
 
         _destroy: function() {
             this.clear();
-            this.element.removeClass("pui-growl ui-widget");
+            this.element.removeClass("ui-growl ui-widget");
 
             if(this.options.appendTo) {
                 this.element.appendTo(this.originalParent);

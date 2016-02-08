@@ -1,4 +1,4 @@
-.pui-notify {
+.ui-notify {
 	position: fixed;
 	width: 100%;
 	height: 100px;
@@ -6,15 +6,15 @@
 	padding: 10px;
 }
 
-.pui-notify-top {
+.ui-notify-top {
     top: 0;
 }
 
-.pui-notify-bottom {
+.ui-notify-bottom {
     bottom: 0;
 }
  
-.pui-notify-close {
+.ui-notify-close {
 	position: absolute;
 	right: 3em;
 	top: 1em;
@@ -22,6 +22,6 @@
     opacity: 0.5;
 }
 
-.pui-notify-close:hover {
+.ui-notify-close:hover {
     opacity: 1.0;
 }

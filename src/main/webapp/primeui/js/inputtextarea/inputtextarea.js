@@ -30,7 +30,7 @@
                 this.options.rowsDefault = this.element.attr('rows');
                 this.options.colsDefault = this.element.attr('cols');
         
-                this.element.addClass('pui-inputtextarea-resizable');
+                this.element.addClass('ui-inputtextarea-resizable');
                 
                 this.element.on('keyup.puiinputtextarea-resize', function() {
                     $this._resize();
@@ -69,7 +69,7 @@
             this.element.puiinputtext('destroy');
 
             if(this.options.autoResize) {
-                this.element.removeClass('pui-inputtextarea-resizable').off('keyup.puiinputtextarea-resize focus.puiinputtextarea-resize blur.puiinputtextarea-resize');
+                this.element.removeClass('ui-inputtextarea-resizable').off('keyup.puiinputtextarea-resize focus.puiinputtextarea-resize blur.puiinputtextarea-resize');
             }
 
             if(this.options.maxlength) {
@@ -114,7 +114,7 @@
         
         
         _initAutoComplete: function() {
-            var panelMarkup = '<div id="' + this.id + '_panel" class="pui-autocomplete-panel ui-widget-content ui-corner-all ui-helper-hidden pui-shadow"></div>',
+            var panelMarkup = '<div id="' + this.id + '_panel" class="ui-autocomplete-panel ui-widget-content ui-corner-all ui-helper-hidden ui-shadow"></div>',
             $this = this;
 
             this.panel = $(panelMarkup).appendTo(document.body);
@@ -327,10 +327,10 @@
         _handleResponse: function(data) {
             this.panel.html('');
             
-            var listContainer = $('<ul class="pui-autocomplete-items pui-autocomplete-list ui-widget-content ui-widget ui-corner-all ui-helper-reset"></ul>');
+            var listContainer = $('<ul class="ui-autocomplete-items ui-autocomplete-list ui-widget-content ui-widget ui-corner-all ui-helper-reset"></ul>');
 
             for(var i = 0; i < data.length; i++) {
-                var item = $('<li class="pui-autocomplete-item pui-autocomplete-list-item ui-corner-all"></li>');
+                var item = $('<li class="ui-autocomplete-item ui-autocomplete-list-item ui-corner-all"></li>');
                 item.attr('data-item-value', data[i].value);
                 item.text(data[i].label);
 
@@ -338,7 +338,7 @@
             }
             
             this.panel.append(listContainer);
-            this.items = this.panel.find('.pui-autocomplete-item');
+            this.items = this.panel.find('.ui-autocomplete-item');
 
             this._bindDynamicEvents();
 

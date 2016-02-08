@@ -45,12 +45,12 @@
                 expandableRows: true,
                 rowExpandMode: 'single',
                 expandedRowContent: function(car) {
-                    return $('<div class="pui-grid" style="width:200px"></div>')
-                            .append('<div class="pui-grid-row"><div class="pui-grid-col-12"><img src="resources/demo/images/car/' + car.brand + '-big.gif"/></div>')
-                            .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Vin</div><div class="pui-grid-col-6">' + car.vin +'</div></div>')
-                            .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Brand</div><div class="pui-grid-col-6">' + car.brand +'</div></div>')
-                            .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Year</div><div class="pui-grid-col-6">' + car.color +'</div></div>')
-                            .append('<div class="pui-grid-row"><div class="pui-grid-col-6">Color</div><div class="pui-grid-col-6">' + car.year +'</div></div>');
+                    return $('<div class="ui-grid" style="width:200px"></div>')
+                            .append('<div class="ui-grid-row"><div class="ui-grid-col-12"><img src="resources/demo/images/car/' + car.brand + '-big.gif"/></div>')
+                            .append('<div class="ui-grid-row"><div class="ui-grid-col-6">Vin</div><div class="ui-grid-col-6">' + car.vin +'</div></div>')
+                            .append('<div class="ui-grid-row"><div class="ui-grid-col-6">Brand</div><div class="ui-grid-col-6">' + car.brand +'</div></div>')
+                            .append('<div class="ui-grid-row"><div class="ui-grid-col-6">Year</div><div class="ui-grid-col-6">' + car.color +'</div></div>')
+                            .append('<div class="ui-grid-row"><div class="ui-grid-col-6">Color</div><div class="ui-grid-col-6">' + car.year +'</div></div>');
                         
                 }
             });
@@ -60,7 +60,7 @@
         });
     </script>
     <style type="text/css">
-        .pui-datatable {
+        .ui-datatable {
             margin-bottom: 40px;
         }
     </style>
@@ -143,12 +143,12 @@ $(function() {
         expandableRows: true,
         rowExpandMode: 'single',
         expandedRowContent: function(car) {
-            return $('&lt;div class="pui-grid" style="width:200px"&gt;&lt;/div&gt;')
-                    .append('&lt;div class="pui-grid-row"&gt;&lt;div class="pui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/' + car.brand + '-big.gif"/&gt;&lt;/div&gt;')
-                    .append('&lt;div class="pui-grid-row"&gt;&lt;div class="pui-grid-col-6"&gt;Vin&lt;/div&gt;&lt;div class="pui-grid-col-6"&gt;' + car.vin +'&lt;/div&gt;&lt;/div&gt;')
-                    .append('&lt;div class="pui-grid-row"&gt;&lt;div class="pui-grid-col-6"&gt;Brand&lt;/div&gt;&lt;div class="pui-grid-col-6"&gt;' + car.brand +'&lt;/div&gt;&lt;/div&gt;')
-                    .append('&lt;div class="pui-grid-row"&gt;&lt;div class="pui-grid-col-6"&gt;Year&lt;/div&gt;&lt;div class="pui-grid-col-6"&gt;' + car.color +'&lt;/div&gt;&lt;/div&gt;')
-                    .append('&lt;div class="pui-grid-row"&gt;&lt;div class="pui-grid-col-6"&gt;Color&lt;/div&gt;&lt;div class="pui-grid-col-6"&gt;' + car.year +'&lt;/div&gt;&lt;/div&gt;');
+            return $('&lt;div class="ui-grid" style="width:200px"&gt;&lt;/div&gt;')
+                    .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/' + car.brand + '-big.gif"/&gt;&lt;/div&gt;')
+                    .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.vin +'&lt;/div&gt;&lt;/div&gt;')
+                    .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Brand&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.brand +'&lt;/div&gt;&lt;/div&gt;')
+                    .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.color +'&lt;/div&gt;&lt;/div&gt;')
+                    .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.year +'&lt;/div&gt;&lt;/div&gt;');
 
         }
     });

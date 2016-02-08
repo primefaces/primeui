@@ -1,30 +1,30 @@
-.pui-treetable table {
+.ui-treetable table {
 	border-collapse:collapse;
     width: 100%;
     table-layout: fixed;
 }
 
-.pui-treetable .pui-treetable-header,
-.pui-treetable .pui-treetable-footer {
+.ui-treetable .ui-treetable-header,
+.ui-treetable .ui-treetable-footer {
     text-align:center;
     padding: 4px 10px;
 }
 
-.pui-treetable .pui-treetable-header {
+.ui-treetable .ui-treetable-header {
     border-bottom: 0px none;
 }
 
-.pui-treetable .pui-treetable-footer {
+.ui-treetable .ui-treetable-footer {
     border-top: 0px none;
 }
 
-.pui-treetable th, .pui-treetable tfoot td {
+.ui-treetable th, .ui-treetable tfoot td {
     text-align: center;
 }
 
-.pui-treetable thead th,
-.pui-treetable tbody td,
-.pui-treetable tfoot td {
+.ui-treetable thead th,
+.ui-treetable tbody td,
+.ui-treetable tfoot td {
     padding: 4px 10px;
     overflow: hidden;
     white-space: nowrap;
@@ -32,26 +32,26 @@
     border-style: solid;
 }
 
-.pui-treetable tbody td {
+.ui-treetable tbody td {
     border-color: inherit;
 }
 
-.pui-treetable .pui-treetable-toggler {
+.ui-treetable .ui-treetable-toggler {
     float: left;
     cursor: pointer;
 }
 
-.pui-treetable .pui-treetable-data tr.ui-state-highlight,
-.pui-treetable .pui-treetable-data tr.ui-state-hover {
+.ui-treetable .ui-treetable-data tr.ui-state-highlight,
+.ui-treetable .ui-treetable-data tr.ui-state-hover {
     cursor: pointer;
 }
       
-.pui-treetable .pui-treetable-data tr.ui-state-hover {
+.ui-treetable .ui-treetable-data tr.ui-state-hover {
     border-color: inherit;
     font-weight: inherit;
 }
 
-.pui-treetable .pui-treetable-indent {
+.ui-treetable .ui-treetable-indent {
     width: 16px;
     height: 16px;
     float: left;

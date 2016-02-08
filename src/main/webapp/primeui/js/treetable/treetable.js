@@ -18,11 +18,11 @@
                 this.id = this.element.uniqueId().attr('id');
             }
             
-            this.element.addClass('pui-treetable ui-widget');
-            this.tableWrapper = $('<div class="pui-treetable-tablewrapper" />').appendTo(this.element);
+            this.element.addClass('ui-treetable ui-widget');
+            this.tableWrapper = $('<div class="ui-treetable-tablewrapper" />').appendTo(this.element);
             this.table = $('<table><thead></thead><tbody></tbody></table>').appendTo(this.tableWrapper);
             this.thead = this.table.children('thead');
-            this.tbody = this.table.children('tbody').addClass('pui-treetable-data');
+            this.tbody = this.table.children('tbody').addClass('ui-treetable-data');
             
             var $this = this;
             
@@ -47,11 +47,11 @@
             }
             
             if(this.options.header) {
-                this.element.prepend('<div class="pui-treetable-header ui-widget-header ui-corner-top">' + this.options.header + '</div>');
+                this.element.prepend('<div class="ui-treetable-header ui-widget-header ui-corner-top">' + this.options.header + '</div>');
             }
             
             if(this.options.footer) {
-                this.element.append('<div class="pui-treetable-footer ui-widget-header ui-corner-bottom">' + this.options.footer + '</div>');
+                this.element.append('<div class="ui-treetable-footer ui-widget-header ui-corner-bottom">' + this.options.footer + '</div>');
             }
             
             if($.isArray(this.options.nodes)) {
@@ -105,7 +105,7 @@
                     }
                     
                     if(j === 0) {
-                        var toggler = $('<span class="pui-treetable-toggler pui-icon fa fa-fw fa-caret-right pui-c"></span>');
+                        var toggler = $('<span class="ui-treetable-toggler ui-icon fa fa-fw fa-caret-right ui-c"></span>');
                         
                         toggler.css('margin-left', depth * 16 + 'px');
                         if(leaf) {
@@ -140,7 +140,7 @@
         
         _bindEvents: function() {
             var $this = this,
-            togglerSelector = '> tr > td:first-child > .pui-treetable-toggler';
+            togglerSelector = '> tr > td:first-child > .ui-treetable-toggler';
 
             //expand and collapse
             this.tbody.off('click.puitreetable', togglerSelector)
@@ -207,7 +207,7 @@
         _showNodeChildren: function(row, showOnly) {
             if(!showOnly) {
                 row.data('expanded', true).attr('aria-expanded', true)
-                        .find('.pui-treetable-toggler:first').addClass('fa-caret-down').removeClass('fa-caret-right');
+                        .find('.ui-treetable-toggler:first').addClass('fa-caret-down').removeClass('fa-caret-right');
             }
             
             var children = this._getChildren(row);
@@ -236,7 +236,7 @@
         _hideNodeChildren: function(row, hideOnly) {
             if(!hideOnly) {
                 row.data('expanded', false).attr('aria-expanded', false)
-                        .find('.pui-treetable-toggler:first').addClass('fa-caret-right').removeClass('fa-caret-down');
+                        .find('.ui-treetable-toggler:first').addClass('fa-caret-right').removeClass('fa-caret-down');
             }
             
             var children = this._getChildren(row);
@@ -251,7 +251,7 @@
         },
         
         onRowClick: function(event, row) {
-            if(!$(event.target).is(':input,:button,a,.pui-c')) {
+            if(!$(event.target).is(':input,:button,a,.ui-c')) {
                 var selected = row.hasClass('ui-state-highlight'),
                 metaKey = event.metaKey||event.ctrlKey;
 

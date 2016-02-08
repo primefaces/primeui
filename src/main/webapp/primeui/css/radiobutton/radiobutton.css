@@ -1,4 +1,4 @@
-.pui-radiobutton {
+.ui-radiobutton {
     position: relative;
     width: 16px;
     margin: 2px 0;
@@ -6,7 +6,7 @@
     cursor: pointer;
 }
 
-.pui-radiobutton .pui-radiobutton-box {
+.ui-radiobutton .ui-radiobutton-box {
     width: 16px;
     height: 16px;
     line-height: 16px;
@@ -15,7 +15,7 @@
     border-radius: 10px;
 }
 
-.pui-radiobutton-icon {
+.ui-radiobutton-icon {
     font-size: 10px;
     margin-top: 3px;
     margin-left: 2px;

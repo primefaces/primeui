@@ -14,9 +14,9 @@
         },
         
         _create: function() {
-            this.element.uniqueId().addClass('pui-tree ui-widget ui-widget-content ui-corner-all')
-                    .append('<ul class="pui-tree-container"></ul>');
-            this.rootContainer = this.element.children('.pui-tree-container');
+            this.element.uniqueId().addClass('ui-tree ui-widget ui-widget-content ui-corner-all')
+                    .append('<ul class="ui-tree-container"></ul>');
+            this.rootContainer = this.element.children('.ui-tree-container');
             
             if(this.options.selectionMode) {
                 this.selection = [];
@@ -46,32 +46,32 @@
             iconType = node.iconType||'def',
             expanded = node.expanded,
             selectable = this.options.selectionMode ? (node.selectable === false ? false : true) : false,
-            toggleIcon = leaf ? 'pui-treenode-leaf-icon' : 
-                        (node.expanded ? 'pui-tree-toggler fa fa-fw fa-caret-down' : 'pui-tree-toggler fa fa-fw fa-caret-right'),
-            styleClass = leaf ? 'pui-treenode pui-treenode-leaf' : 'pui-treenode pui-treenode-parent',
+            toggleIcon = leaf ? 'ui-treenode-leaf-icon' : 
+                        (node.expanded ? 'ui-tree-toggler fa fa-fw fa-caret-down' : 'ui-tree-toggler fa fa-fw fa-caret-right'),
+            styleClass = leaf ? 'ui-treenode ui-treenode-leaf' : 'ui-treenode ui-treenode-parent',
             nodeElement = $('<li class="' + styleClass + '"></li>'),
-            contentElement = $('<span class="pui-treenode-content"></span>');
+            contentElement = $('<span class="ui-treenode-content"></span>');
     
             nodeElement.data('puidata', node.data).appendTo(container);
 
             if(selectable) {
-                contentElement.addClass('pui-treenode-selectable');
+                contentElement.addClass('ui-treenode-selectable');
             }
        
             contentElement.append('<span class="' + toggleIcon + '"></span>')
-                            .append('<span class="pui-treenode-icon"></span>')
-                            .append('<span class="pui-treenode-label ui-corner-all">' + node.label + '</span>')
+                            .append('<span class="ui-treenode-icon"></span>')
+                            .append('<span class="ui-treenode-label ui-corner-all">' + node.label + '</span>')
                             .appendTo(nodeElement);
                     
             var iconConfig = this.options.icons && this.options.icons[iconType];
             if(iconConfig) {
-                var iconContainer = contentElement.children('.pui-treenode-icon'),
+                var iconContainer = contentElement.children('.ui-treenode-icon'),
                 icon = ($.type(iconConfig) === 'string') ? iconConfig : (expanded ? iconConfig.expanded : iconConfig.collapsed);
                 iconContainer.addClass('fa fa-fw ' + icon);
             }
                     
             if(!leaf) {
-                var childrenContainer = $('<ul class="pui-treenode-children"></ul>');
+                var childrenContainer = $('<ul class="ui-treenode-children"></ul>');
                 if(!node.expanded) {
                     childrenContainer.hide();
                 }
@@ -91,7 +91,7 @@
         },
                 
         _handleNodeData: function(data, node) {
-            this._renderNodes(data, node.children('.pui-treenode-children'));    
+            this._renderNodes(data, node.children('.ui-treenode-children'));    
             this._showNodeChildren(node);
             node.data('puiloaded', true);
         },
@@ -99,22 +99,22 @@
         _bindEvents: function() {
             var $this = this,
             elementId = this.element.attr('id'),
-            togglerSelector = '#' + elementId + ' .pui-tree-toggler';
+            togglerSelector = '#' + elementId + ' .ui-tree-toggler';
     
             $(document).off('click.puitree-' + elementId, togglerSelector)
                 .on('click.puitree-' + elementId, togglerSelector, null, function(e) {
                     var toggleIcon = $(this),
                     node = toggleIcon.closest('li');
 
-                    if(node.hasClass('pui-treenode-expanded'))
+                    if(node.hasClass('ui-treenode-expanded'))
                         $this.collapseNode(node);
                     else
                         $this.expandNode(node);
                 });
                 
             if(this.options.selectionMode) {
-                var nodeLabelSelector = '#' + elementId + ' .pui-treenode-selectable .pui-treenode-label',
-                nodeContentSelector = '#' + elementId + ' .pui-treenode-selectable.pui-treenode-content';
+                var nodeLabelSelector = '#' + elementId + ' .ui-treenode-selectable .ui-treenode-label',
+                nodeContentSelector = '#' + elementId + ' .ui-treenode-selectable.ui-treenode-content';
 
                 $(document).off('mouseout.puitree-' + elementId + ' mouseover.puitree-' + elementId, nodeLabelSelector)
                         .on('mouseout.puitree-' + elementId, nodeLabelSelector, null, function() {
@@ -148,16 +148,16 @@
         collapseNode: function(node) {
             this._trigger('beforeCollapse', null, {'node': node, 'data': node.data('puidata')});
     
-            node.removeClass('pui-treenode-expanded');
+            node.removeClass('ui-treenode-expanded');
             
             var iconType = node.iconType||'def',
             iconConfig = this.options.icons && this.options.icons[iconType];
             if(iconConfig && $.type(iconConfig) !== 'string') {
-                node.find('> .pui-treenode-content > .pui-treenode-icon').removeClass(iconConfig.expanded).addClass(iconConfig.collapsed);
+                node.find('> .ui-treenode-content > .ui-treenode-icon').removeClass(iconConfig.expanded).addClass(iconConfig.collapsed);
             }
             
-            var toggleIcon = node.find('> .pui-treenode-content > .pui-tree-toggler'),
-            childrenContainer = node.children('.pui-treenode-children');
+            var toggleIcon = node.find('> .ui-treenode-content > .ui-tree-toggler'),
+            childrenContainer = node.children('.ui-treenode-children');
 
             toggleIcon.addClass('fa-caret-right').removeClass('fa-caret-down');
 
@@ -172,22 +172,22 @@
         },
                 
         _showNodeChildren: function(node) {
-            node.addClass('pui-treenode-expanded').attr('aria-expanded', true);
+            node.addClass('ui-treenode-expanded').attr('aria-expanded', true);
             
             var iconType = node.iconType||'def',
             iconConfig = this.options.icons && this.options.icons[iconType];
             if(iconConfig && $.type(iconConfig) !== 'string') {
-                node.find('> .pui-treenode-content > .pui-treenode-icon').removeClass(iconConfig.collapsed).addClass(iconConfig.expanded);
+                node.find('> .ui-treenode-content > .ui-treenode-icon').removeClass(iconConfig.collapsed).addClass(iconConfig.expanded);
             }
 
-            var toggleIcon = node.find('> .pui-treenode-content > .pui-tree-toggler');
+            var toggleIcon = node.find('> .ui-treenode-content > .ui-tree-toggler');
             toggleIcon.addClass('fa-caret-down').removeClass('fa-caret-right');
 
             if(this.options.animate) {
-                node.children('.pui-treenode-children').slideDown('fast');
+                node.children('.ui-treenode-children').slideDown('fast');
             }
             else {
-                node.children('.pui-treenode-children').show();
+                node.children('.ui-treenode-children').show();
             }
             
             this._trigger('afterExpand', null, {'node': node, 'data': node.data('puidata')});
@@ -196,7 +196,7 @@
         _nodeClick: function(event, nodeContent) {
             PUI.clearSelection();
         
-            if($(event.target).is(':not(.pui-tree-toggler)')) {
+            if($(event.target).is(':not(.ui-tree-toggler)')) {
                 var node = nodeContent.parent();
 
                 var selected = this._isNodeSelected(node.data('puidata')),
@@ -216,20 +216,20 @@
         },
                 
         selectNode: function(node) {
-            node.attr('aria-selected', true).find('> .pui-treenode-content > .pui-treenode-label').removeClass('ui-state-hover').addClass('ui-state-highlight');
+            node.attr('aria-selected', true).find('> .ui-treenode-content > .ui-treenode-label').removeClass('ui-state-hover').addClass('ui-state-highlight');
             this._addToSelection(node.data('puidata'));
             this._trigger('nodeSelect', null, {'node': node, 'data': node.data('puidata')});
         },
                 
         unselectNode: function(node) {           
-            node.attr('aria-selected', false).find('> .pui-treenode-content > .pui-treenode-label').removeClass('ui-state-highlight ui-state-hover');
+            node.attr('aria-selected', false).find('> .ui-treenode-content > .ui-treenode-label').removeClass('ui-state-highlight ui-state-hover');
             this._removeFromSelection(node.data('puidata'));
             this._trigger('nodeUnselect', null, {'node': node, 'data': node.data('puidata')});
         },
                 
         unselectAllNodes: function() {
             this.selection = [];
-            this.element.find('.pui-treenode-label.ui-state-highlight').each(function() {
+            this.element.find('.ui-treenode-label.ui-state-highlight').each(function() {
                 $(this).removeClass('ui-state-highlight').closest('.ui-treenode').attr('aria-selected', false);
             });
         },

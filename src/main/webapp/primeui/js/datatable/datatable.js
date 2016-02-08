@@ -49,9 +49,9 @@
                 this.id = this.element.uniqueId().attr('id');
             }
             
-            this.element.addClass('pui-datatable ui-widget');
+            this.element.addClass('ui-datatable ui-widget');
             if(this.options.responsive) {
-                this.element.addClass('pui-datatable-reflow');
+                this.element.addClass('ui-datatable-reflow');
             }
             
             if(this.options.scrollable) {
@@ -94,10 +94,10 @@
         },
         
         _createRegularDatatable: function() {
-            this.tableWrapper = $('<div class="pui-datatable-tablewrapper" />').appendTo(this.element);
+            this.tableWrapper = $('<div class="ui-datatable-tablewrapper" />').appendTo(this.element);
             this.table = $('<table><thead></thead><tbody></tbody></table>').appendTo(this.tableWrapper);
             this.thead = this.table.children('thead');
-            this.tbody = this.table.children('tbody').addClass('pui-datatable-data');
+            this.tbody = this.table.children('tbody').addClass('ui-datatable-data');
 
             if(this.containsFooter()) {
                 this.tfoot = this.thead.after('<tfoot></tfoot>').next();
@@ -105,15 +105,15 @@
         },
         
         _createScrollableDatatable: function() {            
-            this.element.append('<div class="ui-widget-header pui-datatable-scrollable-header"><div class="pui-datatable-scrollable-header-box"><table><thead></thead></table></div></div>')
-                        .append('<div class="pui-datatable-scrollable-body"><table><tbody></tbody></table></div>');
+            this.element.append('<div class="ui-widget-header ui-datatable-scrollable-header"><div class="ui-datatable-scrollable-header-box"><table><thead></thead></table></div></div>')
+                        .append('<div class="ui-datatable-scrollable-body"><table><tbody></tbody></table></div>');
         
-            this.thead = this.element.find('> .pui-datatable-scrollable-header > .pui-datatable-scrollable-header-box > table > thead');
-            this.tbody = this.element.find('> .pui-datatable-scrollable-body > table > tbody');
+            this.thead = this.element.find('> .ui-datatable-scrollable-header > .ui-datatable-scrollable-header-box > table > thead');
+            this.tbody = this.element.find('> .ui-datatable-scrollable-body > table > tbody');
             
             if(this.containsFooter()) {
-                this.element.append('<div class="ui-widget-header pui-datatable-scrollable-footer"><div class="pui-datatable-scrollable-footer-box"><table><tfoot></tfoot></table></div></div>');
-                this.tfoot = this.element.find('> .pui-datatable-scrollable-footer > .pui-datatable-scrollable-footer-box > table > tfoot');
+                this.element.append('<div class="ui-widget-header ui-datatable-scrollable-footer"><div class="ui-datatable-scrollable-footer-box"><table><tfoot></tfoot></table></div></div>');
+                this.tfoot = this.element.find('> .ui-datatable-scrollable-footer > .ui-datatable-scrollable-footer-box > table > tfoot');
             }
         },
                 
@@ -124,7 +124,7 @@
             this._initFooter();
 
             if(this.options.caption) {
-                this.element.prepend('<div class="pui-datatable-caption ui-widget-header">' + this.options.caption + '</div>');
+                this.element.prepend('<div class="ui-datatable-caption ui-widget-header">' + this.options.caption + '</div>');
             }
             
             if(this.options.paginator) {
@@ -137,7 +137,7 @@
             }
             
             if(this.options.footer) {
-                this.element.append('<div class="pui-datatable-footer ui-widget-header">' + this.options.footer + '</div>');
+                this.element.append('<div class="ui-datatable-footer ui-widget-header">' + this.options.footer + '</div>');
             }
 
             if(this._isSortingEnabled()) {
@@ -219,7 +219,7 @@
             $this = this;
     
             $.each(columns, function(i, col) {
-                var cell = $('<th class="ui-state-default"><span class="pui-column-title"></span></th>').data('field', col.field).uniqueId().appendTo(headerRow);
+                var cell = $('<th class="ui-state-default"><span class="ui-column-title"></span></th>').data('field', col.field).uniqueId().appendTo(headerRow);
 
                 if(col.headerClass) {
                     cell.addClass(col.headerClass);
@@ -230,9 +230,9 @@
                 }
 
                 if(col.headerText)
-                    cell.children('.pui-column-title').text(col.headerText);
+                    cell.children('.ui-column-title').text(col.headerText);
                 else if(col.headerContent)
-                    cell.children('.pui-column-title').append(col.headerContent.call(this, col));
+                    cell.children('.ui-column-title').append(col.headerContent.call(this, col));
                 
                 if(col.rowspan) {
                     cell.attr('rowspan', col.rowspan);
@@ -243,15 +243,15 @@
                 }
 
                 if(col.sortable) {
-                    cell.addClass('pui-sortable-column')
+                    cell.addClass('ui-sortable-column')
                             .data('order', 0)
-                            .append('<span class="pui-sortable-column-icon fa fa-fw fa-sort"></span>');
+                            .append('<span class="ui-sortable-column-icon fa fa-fw fa-sort"></span>');
                 }
                 
                 if(col.filter) {
                     $this.hasFiltering = true;
                     
-                    var filterElement = $('<input type="text" class="pui-column-filter" />').puiinputtext().data({
+                    var filterElement = $('<input type="text" class="ui-column-filter" />').puiinputtext().data({
                         'field': col.field,
                         'filtermatchmode': col.filterMatchMode||'startsWith'
                     }).appendTo(cell);
@@ -286,14 +286,14 @@
         },
 
         _indicateInitialSortColumn: function() {
-            this.sortableColumns = this.thead.find('> tr > th.pui-sortable-column');
+            this.sortableColumns = this.thead.find('> tr > th.ui-sortable-column');
             var $this = this;
             
             $.each(this.sortableColumns, function(i, column) {
                 var $column = $(column),
                     data = $column.data();
                 if ($this.options.sortField === data.field) {
-                    var sortIcon = $column.children('.pui-sortable-column-icon');
+                    var sortIcon = $column.children('.ui-sortable-column-icon');
                     $column.data('order', $this.options.sortOrder).removeClass('ui-state-hover').addClass('ui-state-active');
                     if($this.options.sortOrder === -1)
                         sortIcon.removeClass('fa-sort fa-sort-asc').addClass('fa-sort-desc');
@@ -345,13 +345,13 @@
                 });
             }
 
-            this.thead.find('> tr > th.pui-sortable-column').data('order', 0).filter('.ui-state-active').removeClass('ui-state-active')
-                                .children('span.pui-sortable-column-icon').removeClass('fa-sort-asc fa-sort-desc').addClass('fa-sort');
+            this.thead.find('> tr > th.ui-sortable-column').data('order', 0).filter('.ui-state-active').removeClass('ui-state-active')
+                                .children('span.ui-sortable-column-icon').removeClass('fa-sort-asc fa-sort-desc').addClass('fa-sort');
         },
                 
         _initSorting: function() {
             var $this = this,
-            sortableColumns = this.thead.find('> tr > th.pui-sortable-column');
+            sortableColumns = this.thead.find('> tr > th.ui-sortable-column');
             
             sortableColumns.on('mouseover.puidatatable', function() {
                 var column = $(this);
@@ -374,10 +374,10 @@
                 sortField = column.data('field'),
                 order = column.data('order'),
                 sortOrder = (order === 0) ? 1 : (order * -1),
-                sortIcon = column.children('.pui-sortable-column-icon');
+                sortIcon = column.children('.ui-sortable-column-icon');
                 
                 //clean previous sort state
-                column.siblings().filter('.ui-state-active').data('order', 0).removeClass('ui-state-active').children('span.pui-sortable-column-icon')
+                column.siblings().filter('.ui-state-active').data('order', 0).removeClass('ui-state-active').children('span.ui-sortable-column-icon')
                                                             .removeClass('fa-sort-asc fa-sort-desc').addClass('fa-sort');
                                                     
                 //update state
@@ -476,7 +476,7 @@
                     
                     if(rowData) {
                         var row = $('<tr class="ui-widget-content" />').appendTo(this.tbody),
-                        zebraStyle = (i%2 === 0) ? 'pui-datatable-even' : 'pui-datatable-odd',
+                        zebraStyle = (i%2 === 0) ? 'ui-datatable-even' : 'ui-datatable-odd',
                         rowIndex = i;
 
                         row.addClass(zebraStyle);
@@ -504,7 +504,7 @@
                             }
                             
                             if(columnOptions.editor) {
-                                column.addClass('pui-editable-column').data({
+                                column.addClass('ui-editable-column').data({
                                     'editor': columnOptions.editor, 
                                     'rowdata': rowData,
                                     'field': columnOptions.field
@@ -519,14 +519,14 @@
                                     column.append(content);
                             }
                             else if(columnOptions.rowToggler) {
-                                column.append('<div class="pui-row-toggler fa fa-fw fa-chevron-circle-right pui-c"></div>');
+                                column.append('<div class="ui-row-toggler fa fa-fw fa-chevron-circle-right ui-c"></div>');
                             }
                             else if(columnOptions.field) {
                                 column.text(rowData[columnOptions.field]);
                             }
                             
                             if(this.options.responsive && columnOptions.headerText) {
-                                column.prepend('<span class="pui-column-title">' + columnOptions.headerText + '</span>');
+                                column.prepend('<span class="ui-column-title">' + columnOptions.headerText + '</span>');
                             }
                         }
                     }
@@ -571,7 +571,7 @@
         _initSelection: function() {
             var $this = this;
             this.selection = [];
-            this.rowSelector = '> tr.ui-widget-content:not(.pui-datatable-empty-message,.pui-datatable-unselectable)';
+            this.rowSelector = '> tr.ui-widget-content:not(.ui-datatable-empty-message,.ui-datatable-unselectable)';
             
             //shift key based range selection
             if(this._isMultipleSelection()) {
@@ -606,7 +606,7 @@
         },
                 
         _onRowClick: function(event, rowElement) {
-            if(!$(event.target).is(':input,:button,a,.pui-c')) {
+            if(!$(event.target).is(':input,:button,a,.ui-c')) {
                 var row = $(rowElement),
                 selected = row.hasClass('ui-state-highlight'),
                 metaKey = event.metaKey||event.ctrlKey,
@@ -786,7 +786,7 @@
         
         _initExpandableRows: function() {
             var $this = this,
-            togglerSelector = '> tr > td > div.pui-row-toggler';
+            togglerSelector = '> tr > td > div.ui-row-toggler';
 
             this.tbody.off('click', togglerSelector)
                 .on('click', togglerSelector, null, function() {
@@ -826,15 +826,15 @@
         
         loadExpandedRowContent: function(row) {
             var rowIndex = this._getRowIndex(row),
-            expandedRow = $('<tr class="pui-expanded-row-content pui-datatable-unselectable ui-widget-content"><td colspan="' + this.options.columns.length + '"></td></tr>');
+            expandedRow = $('<tr class="ui-expanded-row-content ui-datatable-unselectable ui-widget-content"><td colspan="' + this.options.columns.length + '"></td></tr>');
             expandedRow.children('td').append(this.options.expandedRowContent.call(this, this.data[rowIndex]));
 
-            row.addClass('pui-expanded-row').after(expandedRow);
+            row.addClass('ui-expanded-row').after(expandedRow);
             this._trigger('rowExpand', null, this.data[this._getRowIndex(row)]);
         },
         
         collapseRow: function(row) {
-            row.removeClass('pui-expanded-row').next('.pui-expanded-row-content').remove();
+            row.removeClass('ui-expanded-row').next('.ui-expanded-row-content').remove();
         },
         
         collapseAllRows: function() {
@@ -847,7 +847,7 @@
                 var columns = expandedRow.children('td');
                 for (var i = 0; i < columns.length; i++) {
                     var column = columns.eq(i),
-                    toggler = column.children('.pui-row-toggler');
+                    toggler = column.children('.ui-row-toggler');
 
                     if (toggler.length) {
                         toggler.addClass('fa-chevron-circle-right').removeClass('fa-chevron-circle-down');
@@ -857,7 +857,7 @@
         },
         
         getExpandedRows: function () {
-            return this.tbody.children('.pui-expanded-row');
+            return this.tbody.children('.ui-expanded-row');
         },
                 
         _createStateMeta: function() {
@@ -896,9 +896,9 @@
         },
         
         _initScrolling: function() {
-            this.scrollHeader = this.element.children('.pui-datatable-scrollable-header');
-            this.scrollBody = this.element.children('.pui-datatable-scrollable-body');
-            this.scrollHeaderBox = this.scrollHeader.children('.pui-datatable-scrollable-header-box');
+            this.scrollHeader = this.element.children('.ui-datatable-scrollable-header');
+            this.scrollBody = this.element.children('.ui-datatable-scrollable-body');
+            this.scrollHeaderBox = this.scrollHeader.children('.ui-datatable-scrollable-header-box');
             this.headerTable = this.scrollHeaderBox.children('table');
             this.bodyTable = this.scrollBody.children('table');
             this.percentageScrollHeight = this.options.scrollHeight && (this.options.scrollHeight.indexOf('%') !== -1);
@@ -954,13 +954,13 @@
             this.theadClone.find('th').each(function() {
                 var header = $(this);
                 header.attr('id', header.attr('id') + '_clone');
-                $(this).children().not('.pui-column-title').remove();
+                $(this).children().not('.ui-column-title').remove();
             });
-            this.theadClone.removeAttr('id').addClass('pui-datatable-scrollable-theadclone').height(0).prependTo(this.bodyTable);
+            this.theadClone.removeAttr('id').addClass('ui-datatable-scrollable-theadclone').height(0).prependTo(this.bodyTable);
 
             //align horizontal scroller on keyboard tab
             if(this.options.scrollWidth) {
-                var clonedSortableColumns = this.theadClone.find('> tr > th.pui-sortable-column');
+                var clonedSortableColumns = this.theadClone.find('> tr > th.ui-sortable-column');
                 clonedSortableColumns.each(function() {
                     $(this).data('original', $(this).attr('id').split('_clone')[0]);
                 });
@@ -985,8 +985,8 @@
 
         adjustScrollHeight: function() {
             var relativeHeight = this.element.parent().innerHeight() * (parseInt(this.options.scrollHeight) / 100),
-            tableHeaderHeight = this.element.children('.pui-datatable-header').outerHeight(true),
-            tableFooterHeight = this.element.children('.pui-datatable-footer').outerHeight(true),
+            tableHeaderHeight = this.element.children('.ui-datatable-header').outerHeight(true),
+            tableFooterHeight = this.element.children('.ui-datatable-footer').outerHeight(true),
             scrollersHeight = (this.scrollHeader.outerHeight(true) + this.scrollFooter.outerHeight(true)),
             paginatorsHeight = this.paginator ? this.paginator.getContainerHeight(true) : 0,
             height = (relativeHeight - (scrollersHeight + paginatorsHeight + tableHeaderHeight + tableFooterHeight));
@@ -1059,7 +1059,7 @@
                     });
                 }
                 else {
-                    this.element.find('> .pui-datatable-tablewrapper > table > thead > tr > th').each(function() {
+                    this.element.find('> .ui-datatable-tablewrapper > table > thead > tr > th').each(function() {
                         var col = $(this);
                         col.width(col.width());
                     });
@@ -1237,11 +1237,11 @@
         },
         
         _initResizableColumns: function() {
-            this.element.addClass('pui-datatable-resizable');
-            this.thead.find('> tr > th').addClass('pui-resizable-column');
-            this.resizerHelper = $('<div class="pui-column-resizer-helper ui-state-highlight"></div>').appendTo(this.element);
+            this.element.addClass('ui-datatable-resizable');
+            this.thead.find('> tr > th').addClass('ui-resizable-column');
+            this.resizerHelper = $('<div class="ui-column-resizer-helper ui-state-highlight"></div>').appendTo(this.element);
             this.addResizers();
-            var resizers = this.thead.find('> tr > th > span.pui-column-resizer'),
+            var resizers = this.thead.find('> tr > th > span.ui-column-resizer'),
             $this = this;
 
             setTimeout(function() {
@@ -1283,7 +1283,7 @@
                     }
 
                     if($this.options.stickyHeader) {
-                        $this.thead.find('.pui-column-filter').prop('disabled', false);
+                        $this.thead.find('.ui-column-filter').prop('disabled', false);
                         $this.clone = $this.thead.clone(true);
                         $this.cloneContainer.find('thead').remove();
                         $this.cloneContainer.children('table').append($this.clone);
@@ -1360,11 +1360,11 @@
         },
         
         addResizers: function() {
-            var resizableColumns = this.thead.find('> tr > th.pui-resizable-column');
-            resizableColumns.prepend('<span class="pui-column-resizer">&nbsp;</span>');
+            var resizableColumns = this.thead.find('> tr > th.ui-resizable-column');
+            resizableColumns.prepend('<span class="ui-column-resizer">&nbsp;</span>');
 
             if(this.options.columnResizeMode === 'fit') {
-                resizableColumns.filter(':last-child').children('span.pui-column-resizer').hide();
+                resizableColumns.filter(':last-child').children('span.ui-column-resizer').hide();
             }
         },
         
@@ -1372,13 +1372,13 @@
             var $this = this;
 
             this.tbody.sortable({
-                placeholder: 'pui-datatable-rowordering ui-state-active',
+                placeholder: 'ui-datatable-rowordering ui-state-active',
                 cursor: 'move',
                 handle: 'td,span:not(.ui-c)',
                 appendTo: document.body,
                 helper: function(event, ui) {
                     var cells = ui.children(),
-                    helper = $('<div class="pui-datatable ui-widget"><table><tbody></tbody></table></div>'),
+                    helper = $('<div class="ui-datatable ui-widget"><table><tbody></tbody></table></div>'),
                     helperRow = ui.clone(),
                     helperCells = helperRow.children();
 
@@ -1412,12 +1412,12 @@
             for(var i = this._getFirst(); i < rows.length; i++) {
                 var row = rows.eq(i);
 
-                row.data('ri', i).removeClass('pui-datatable-even pui-datatable-odd');
+                row.data('ri', i).removeClass('ui-datatable-even ui-datatable-odd');
 
                 if(i % 2 === 0)
-                    row.addClass('pui-datatable-even');
+                    row.addClass('ui-datatable-even');
                 else
-                    row.addClass('pui-datatable-odd');
+                    row.addClass('ui-datatable-odd');
 
             }
         },
@@ -1428,7 +1428,7 @@
         
         _initFiltering: function() {
             var $this = this;
-            this.filterElements = this.thead.find('.pui-column-filter');
+            this.filterElements = this.thead.find('.ui-column-filter');
             
             this.filterElements.on('keyup', function() {
                         if($this.filterTimeout) {
@@ -1544,7 +1544,7 @@
             stickyNS = 'scroll.' + this.id,
             resizeNS = 'resize.sticky-' + this.id; 
 
-            this.cloneContainer = $('<div class="pui-datatable pui-datatable-sticky ui-widget"><table></table></div>');
+            this.cloneContainer = $('<div class="ui-datatable ui-datatable-sticky ui-widget"><table></table></div>');
             this.clone = this.thead.clone(true);
             this.cloneContainer.children('table').append(this.clone);
 
@@ -1566,7 +1566,7 @@
                                             'position': 'fixed',
                                             'top': '0px'
                                         })
-                                        .addClass('pui-shadow pui-sticky');
+                                        .addClass('ui-shadow ui-sticky');
 
                     if(scrollTop >= (tableOffset.top + $this.tbody.height()))
                         $this.cloneContainer.hide();
@@ -1578,7 +1578,7 @@
                                             'position': 'absolute',
                                             'top': tableOffset.top
                                         })
-                                        .removeClass('pui-shadow pui-sticky');
+                                        .removeClass('ui-shadow ui-sticky');
                 }
             })
             .off(resizeNS).on(resizeNS, function() {
@@ -1586,17 +1586,17 @@
             });
 
             //filter support
-            this.thead.find('.pui-column-filter').prop('disabled', true);
+            this.thead.find('.ui-column-filter').prop('disabled', true);
         },
         
         _initEditing: function() {
-            var cellSelector = '> tr > td.pui-editable-column',
+            var cellSelector = '> tr > td.ui-editable-column',
             $this = this;
             
             this.tbody.off('click', cellSelector)
                         .on('click', cellSelector, null, function(e) {
                             var cell = $(this);
-                            if(!cell.hasClass('pui-cell-editing')) {
+                            if(!cell.hasClass('ui-cell-editing')) {
                                 $this._showCellEditor(cell);
                                 e.stopPropagation();
                             }
@@ -1609,7 +1609,7 @@
     
             editor.val(cell.data('rowdata')[cell.data('field')]);
             
-            cell.addClass('pui-cell-editing').html('').append(editor);
+            cell.addClass('ui-cell-editing').html('').append(editor);
             
             editor.focus().on('change', function() {
                 $this._onCellEditorChange(cell);
@@ -1627,18 +1627,18 @@
                 }
                 else if(key === keyCode.TAB) {
                     if(e.shiftKey) {
-                        var prevCell = cell.prevAll('td.pui-editable-column').eq(0);
+                        var prevCell = cell.prevAll('td.ui-editable-column').eq(0);
                         if(!prevCell.length) {
-                            prevCell = cell.parent().prev('tr').children('td.pui-editable-column:last');
+                            prevCell = cell.parent().prev('tr').children('td.ui-editable-column:last');
                         }
                         if(prevCell.length) {
                             $this._showCellEditor(prevCell);
                         }
                     }
                     else {
-                        var nextCell = cell.nextAll('td.pui-editable-column').eq(0);
+                        var nextCell = cell.nextAll('td.ui-editable-column').eq(0);
                         if(!nextCell.length) {
-                            nextCell = cell.parent().next('tr').children('td.pui-editable-column').eq(0);
+                            nextCell = cell.parent().next('tr').children('td.ui-editable-column').eq(0);
                         }
                         if(nextCell.length) {
                             $this._showCellEditor(nextCell);
@@ -1654,7 +1654,7 @@
         },
         
         _onCellEditorChange: function(cell) {
-            var newCellValue = cell.children('.pui-cell-editor').val();
+            var newCellValue = cell.children('.ui-cell-editor').val();
             
             var retVal = this._trigger('cellEdit', null, {
                 oldValue: cell.data('rowdata')[cell.data('field')],
@@ -1669,8 +1669,8 @@
         },
         
         _onCellEditorBlur: function(cell) {
-            cell.removeClass('pui-cell-editing').text(cell.data('rowdata')[cell.data('field')])
-                    .children('.pui-cell-editor').remove();
+            cell.removeClass('ui-cell-editing').text(cell.data('rowdata')[cell.data('field')])
+                    .children('.ui-cell-editor').remove();
         },
 
         reload: function() {
@@ -1704,7 +1704,7 @@
         editors: {
             
             'input': function() {
-                return $('<input type="text" class="pui-cell-editor"/>');
+                return $('<input type="text" class="ui-cell-editor"/>');
             }
         }
     

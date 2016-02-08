@@ -1,12 +1,12 @@
-.pui-selectbutton{
+.ui-selectbutton{
     display: inline-block;
     padding:1px;
 }
             
-.pui-selectbutton.ui-state-error{
+.ui-selectbutton.ui-state-error{
     padding:0px;
 }
 
-.pui-selectbutton .pui-button.ui-state-focus{
+.ui-selectbutton .ui-button.ui-state-focus{
     outline: none;
 }

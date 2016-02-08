@@ -15,12 +15,12 @@
         },
        
         _create: function() {
-            this.element.addClass('pui-progressbar ui-widget ui-widget-content ui-corner-all')
-                    .append('<div class="pui-progressbar-value ui-widget-header ui-corner-all"></div>')
-                    .append('<div class="pui-progressbar-label"></div>');
+            this.element.addClass('ui-progressbar ui-widget ui-widget-content ui-corner-all')
+                    .append('<div class="ui-progressbar-value ui-widget-header ui-corner-all"></div>')
+                    .append('<div class="ui-progressbar-label"></div>');
             
-            this.jqValue = this.element.children('.pui-progressbar-value');
-            this.jqLabel = this.element.children('.pui-progressbar-label');
+            this.jqValue = this.element.children('.ui-progressbar-value');
+            this.jqLabel = this.element.children('.ui-progressbar-label');
             
             if(this.options.value !==0) {
                 this._setValue(this.options.value, false);

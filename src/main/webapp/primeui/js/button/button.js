@@ -16,28 +16,28 @@
             var element = this.element;
             this.elementText = this.element.text();
             
-            var value = this.options.value||(this.elementText === '' ? 'pui-button' : this.elementText),
+            var value = this.options.value||(this.elementText === '' ? 'ui-button' : this.elementText),
             disabled = element.prop('disabled'),
             styleClass = null;
             
             if(this.options.icon) {
-                styleClass = (value === 'pui-button') ? 'pui-button-icon-only' : 'pui-button-text-icon-' + this.options.iconPos;
+                styleClass = (value === 'ui-button') ? 'ui-button-icon-only' : 'ui-button-text-icon-' + this.options.iconPos;
             }
             else {
-                styleClass = 'pui-button-text-only';
+                styleClass = 'ui-button-text-only';
             }
 
             if(disabled) {
                 styleClass += ' ui-state-disabled';
             }
             
-            this.element.addClass('pui-button ui-widget ui-state-default ui-corner-all ' + styleClass).text('');
+            this.element.addClass('ui-button ui-widget ui-state-default ui-corner-all ' + styleClass).text('');
             
             if(this.options.icon) {
-                this.element.append('<span class="pui-button-icon-' + this.options.iconPos + ' pui-icon pui-c fa fa-fw ' + this.options.icon + '" />');
+                this.element.append('<span class="ui-button-icon-' + this.options.iconPos + ' ui-icon ui-c fa fa-fw ' + this.options.icon + '" />');
             }
             
-            this.element.append('<span class="pui-button-text pui-c">' + value + '</span>');
+            this.element.append('<span class="ui-button-text ui-c">' + value + '</span>');
                         
             if(!disabled) {
                 this._bindEvents();
@@ -45,11 +45,11 @@
         },
 
         _destroy: function() {
-            this.element.removeClass('pui-button ui-widget ui-state-default ui-state-hover ui-state-active ui-state-disabled ui-state-focus ui-corner-all ' + 
-                                                    'pui-button-text-only pui-button-icon-only pui-button-text-icon-right pui-button-text-icon-left');
+            this.element.removeClass('ui-button ui-widget ui-state-default ui-state-hover ui-state-active ui-state-disabled ui-state-focus ui-corner-all ' + 
+                                                    'ui-button-text-only ui-button-icon-only ui-button-text-icon-right ui-button-text-icon-left');
             this._unbindEvents();
-            this.element.children('.pui-icon').remove();
-            this.element.children('.pui-button-text').remove();
+            this.element.children('.ui-icon').remove();
+            this.element.children('.ui-button-text').remove();
             this.element.text(this.elementText);
         },
         
