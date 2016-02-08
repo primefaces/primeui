@@ -130,7 +130,7 @@ if(!xtag.tags['p-dialog']) {
                     effectSpeed: this.effectspeed||'normal',
                     closeOnEscape: this.closeoneescape ? JSON.parse(this.closeoneescape) : true,
                     rtl: this.rtl,
-                    closable: this.closable ? JSON.parse(closable) : true,
+                    closable: this.closable ? JSON.parse(this.closable) : true,
                     minimizable: this.minimizable,
                     maximizable: this.maximizable,
                     appendTo: this.appendto,
