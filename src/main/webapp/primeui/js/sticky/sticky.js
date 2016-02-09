@@ -45,9 +45,9 @@
                     'top': 0,
                     'z-index': 10000
                 })
-                .addClass('pui-shadow pui-sticky');
+                .addClass('ui-shadow ui-sticky');
         
-                this.ghost = $('<div class="pui-sticky-ghost"></div>').height(this.initialState.height).insertBefore(this.element);
+                this.ghost = $('<div class="ui-sticky-ghost"></div>').height(this.initialState.height).insertBefore(this.element);
                 this.element.width(this.ghost.outerWidth() - (this.element.outerWidth() - this.element.width()));
                 this.fixed = true;
             }
@@ -60,7 +60,7 @@
                     top: 'auto',
                     width: 'auto'
                 })
-                .removeClass('pui-shadow pui-sticky');
+                .removeClass('ui-shadow ui-sticky');
 
                 this.ghost.remove();
                 this.fixed = false;
