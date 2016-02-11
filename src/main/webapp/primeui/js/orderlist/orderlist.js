@@ -90,13 +90,14 @@
         },
         
         _createButtons: function() {
-            var $this = this,
-            buttonContainer = this.element.parent().prev();
-            
-            buttonContainer.append(this._createButton('fa-angle-up', 'ui-orderlist-button-moveup', function(){$this._moveUp();}))
-                            .append(this._createButton('fa-angle-double-up', 'ui-orderlist-button-move-top', function(){$this._moveTop();}))
-                            .append(this._createButton('fa-angle-down', 'ui-orderlist-button-move-down', function(){$this._moveDown();}))
-                            .append(this._createButton('fa-angle-double-down', 'ui-orderlist-move-bottom', function(){$this._moveBottom();}));
+            var $this = this;
+            this.buttonContainer = this.element.parent().prev();
+            this.moveUpButton = this._createButton('fa-angle-up', 'ui-orderlist-button-moveup', function(){$this._moveUp();}),
+            this.moveTopButton = this._createButton('fa-angle-double-up', 'ui-orderlist-button-move-top', function(){$this._moveTop();}),
+            this.moveDownButton = this._createButton('fa-angle-down', 'ui-orderlist-button-move-down', function(){$this._moveDown();}),
+            this.moveBottomButton = this._createButton('fa-angle-double-down', 'ui-orderlist-move-bottom', function(){$this._moveBottom();});
+
+            this.buttonContainer.append(this.moveUpButton).append(this.moveTopButton).append(this.moveDownButton).append(this.moveBottomButton);
         },
         
         _createButton: function(icon, cssClass, fn) {
@@ -112,53 +113,7 @@
         },
         
         _bindEvents: function() {
-            var $this = this;
-            
-            this.items.on('mouseover.puiorderlist', function(e) {
-                var element = $(this);
-
-                if(!element.hasClass('ui-state-highlight'))
-                    $(this).addClass('ui-state-hover');
-            })
-            .on('mouseout.puiorderlist', function(e) {
-                var element = $(this);
-
-                if(!element.hasClass('ui-state-highlight'))
-                    $(this).removeClass('ui-state-hover');
-            })
-            .on('mousedown.puiorderlist', function(e) {
-                var element = $(this),
-                metaKey = (e.metaKey||e.ctrlKey);
-
-                if(!metaKey) {
-                    element.removeClass('ui-state-hover').addClass('ui-state-highlight')
-                            .siblings('.ui-state-highlight').removeClass('ui-state-highlight');
-
-                    //$this.fireItemSelectEvent(element, e);
-                }
-                else {
-                    if(element.hasClass('ui-state-highlight')) {
-                        element.removeClass('ui-state-highlight');
-                        //$this.fireItemUnselectEvent(element);
-                    }
-                    else {
-                        element.removeClass('ui-state-hover').addClass('ui-state-highlight');
-                        //$this.fireItemSelectEvent(element, e);
-                    }
-                }
-            });
-
-            if(this.options.dragdrop) {
-                this.list.sortable({
-                    revert: 1,
-                    start: function(event, ui) {
-                        //PrimeFaces.clearSelection();
-                    }
-                    ,update: function(event, ui) {
-                        $this.onDragDrop(event, ui);
-                    }
-                });
-            }
+            this._bindItemEvents(this.items);
         },
         
         _moveUp: function() {
@@ -306,6 +261,158 @@
             }
             else {
                 return choice.label;
+            }
+        },
+
+        addOption: function(value,label) {
+            if(this.options.content) {
+                if(label) {
+                    var option = {'label':label,'value':value};
+                }
+                else {
+                    var option = {'label':value,'value':value};
+                }
+
+                var newItem = $('<li class="ui-orderlist-item ui-corner-all"></li>');
+                var customContent = this.options.content(option);
+                var newlistItem = newItem.append(customContent).appendTo(this.list);  
+            }
+            else {
+                if(label) {
+                    var newlistItem = $('<li class="ui-orderlist-item ui-corner-all">' + label + '</li>').appendTo(this.list);
+                }
+                else {
+                    var newlistItem = $('<li class="ui-orderlist-item ui-corner-all">' + value + '</li>').appendTo(this.list);
+                }
+            }
+
+            if(label) {
+                this.element.append('<option value="' + value + '">' + label + '</option>');
+            }
+            else {
+                this.element.append('<option value="' + value + '">' + value + '</option>');
+            }
+
+            this._bindItemEvents(newlistItem);
+        },
+
+        removeOption: function(value) {
+            for (var i = 0; i < this.optionElements.length; i++) {
+                if(this.optionElements[i].value == value) {
+                    this.optionElements[i].remove(i);
+                    this._unbindItemEvents(this.items.eq(i));
+                    this.items[i].remove(i);
+                }
+            }
+        },
+
+        _unbindEvents: function() {
+            this._unbindItemEvents(this.items);
+            this._unbindButtonEvents();
+        },
+
+        _unbindItemEvents: function(item) {
+            item.off('mouseover.puiorderlist mouseout.puiorderlist mousedown.puiorderlist');
+        },
+
+        _bindItemEvents: function(item) {
+            var $this = this;
+            this._bindButtonEvents();
+
+            item.on('mouseover.puiorderlist', function(e) {
+                var element = $(this);
+
+                if(!element.hasClass('ui-state-highlight'))
+                    $(this).addClass('ui-state-hover');
+            })
+            .on('mouseout.puiorderlist', function(e) {
+                var element = $(this);
+
+                if(!element.hasClass('ui-state-highlight'))
+                    $(this).removeClass('ui-state-hover');
+            })
+            .on('mousedown.puiorderlist', function(e) {
+                var element = $(this),
+                metaKey = (e.metaKey||e.ctrlKey);
+
+                if(!metaKey) {
+                    element.removeClass('ui-state-hover').addClass('ui-state-highlight')
+                            .siblings('.ui-state-highlight').removeClass('ui-state-highlight');
+
+                    //$this.fireItemSelectEvent(element, e);
+                }
+                else {
+                    if(element.hasClass('ui-state-highlight')) {
+                        element.removeClass('ui-state-highlight');
+                        //$this.fireItemUnselectEvent(element);
+                    }
+                    else {
+                        element.removeClass('ui-state-hover').addClass('ui-state-highlight');
+                        //$this.fireItemSelectEvent(element, e);
+                    }
+                }
+            });
+
+            if(this.options.dragdrop) {
+                this.list.sortable({
+                    revert: 1,
+                    start: function(event, ui) {
+                        //PrimeFaces.clearSelection();
+                    }
+                    ,update: function(event, ui) {
+                        $this.onDragDrop(event, ui);
+                    }
+                });
+            }
+        },
+
+        getSelection: function() {
+            var selectedItems = [];
+            for (var i = 0; i < this.items.length; i++) {
+                if(this.items.eq(i).hasClass('ui-state-highlight')) {
+                    selectedItems.push(this.items.eq(i).data('item-value'));
+                }
+            }
+            return selectedItems;
+        },
+
+        setSelection: function(value) {
+            for (var i = 0; i < this.items.length; i++) {
+                for (var j = 0; j < value.length; j++) {
+                    if(this.items.eq(i).data('item-value') == value[j]) {
+                        this.items.eq(i).addClass('ui-state-highlight');
+                    }  
+                }
+            }
+        },
+
+        disable: function() {
+            this._unbindEvents();
+            this.items.addClass('ui-state-disabled');
+            this.container.addClass('ui-state-disabled');
+        },
+
+        enable: function() {
+            this._bindEvents();
+            this.items.removeClass('ui-state-disabled');
+            this.container.removeClass('ui-state-disabled');
+        },
+
+        _unbindButtonEvents: function() {
+            if(this.buttonContainer) {
+                this.moveUpButton.puibutton('disable');
+                this.moveTopButton.puibutton('disable');
+                this.moveDownButton.puibutton('disable');
+                this.moveBottomButton.puibutton('disable');
+            }
+        },
+
+        _bindButtonEvents: function() {
+            if(this.buttonContainer) {
+                this.moveUpButton.puibutton('enable');
+                this.moveTopButton.puibutton('enable');
+                this.moveDownButton.puibutton('enable');
+                this.moveBottomButton.puibutton('enable');
             }
         }
         
