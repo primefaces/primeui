@@ -761,7 +761,7 @@
                 var listItem = $(this),
                     menuitemLink = listItem.children('a'),
                     icon = menuitemLink.data('icon');
-                    
+
                     menuitemLink.addClass('ui-megamenu-anchor ui-menuitem-link ui-corner-all').contents().wrap('<span class="ui-menuitem-text" />');
 
                     if(icon) {
@@ -771,7 +771,12 @@
                     listItem.addClass('ui-menuitem ui-widget ui-corner-all');
                     listItem.parent().addClass('ui-menu-list ui-helper-reset');
 
-                    if(listItem.children('div').length > 0) {
+                    if(listItem.children('h3').length > 0) {
+                        listItem.addClass('ui-widget-header ui-corner-all');
+                        listItem.removeClass('ui-widget ui-menuitem');
+                    }
+
+                    else if(listItem.children('div').length > 0) {
                         listItem.addClass('ui-menu-parent');
                         listItem.children('div').addClass('ui-megamenu-panel ui-widget-content ui-menu-list ui-corner-all ui-helper-clearfix ui-menu-child ui-shadow');
                         menuitemLink.addClass('.ui-submenu-link').prepend('<span class="ui-submenu-icon ui-icon ui-icon-triangle-1-e"></span>');
