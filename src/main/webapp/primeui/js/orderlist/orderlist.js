@@ -92,9 +92,9 @@
         _createButtons: function() {
             var $this = this;
             this.buttonContainer = this.element.parent().prev();
-            this.moveUpButton = this._createButton('fa-angle-up', 'ui-orderlist-button-moveup', function(){$this._moveUp();}),
-            this.moveTopButton = this._createButton('fa-angle-double-up', 'ui-orderlist-button-move-top', function(){$this._moveTop();}),
-            this.moveDownButton = this._createButton('fa-angle-down', 'ui-orderlist-button-move-down', function(){$this._moveDown();}),
+            this.moveUpButton = this._createButton('fa-angle-up', 'ui-orderlist-button-moveup', function(){$this._moveUp();});
+            this.moveTopButton = this._createButton('fa-angle-double-up', 'ui-orderlist-button-move-top', function(){$this._moveTop();});
+            this.moveDownButton = this._createButton('fa-angle-down', 'ui-orderlist-button-move-down', function(){$this._moveDown();});
             this.moveBottomButton = this._createButton('fa-angle-double-down', 'ui-orderlist-move-bottom', function(){$this._moveBottom();});
 
             this.buttonContainer.append(this.moveUpButton).append(this.moveTopButton).append(this.moveDownButton).append(this.moveBottomButton);
@@ -113,7 +113,26 @@
         },
         
         _bindEvents: function() {
+            this._bindButtonEvents();
             this._bindItemEvents(this.items);
+
+            if(this.options.dragdrop) {
+                this._initDragDrop();
+            }
+        },
+
+        _initDragDrop: function() {
+            var $this = this;
+
+            this.list.sortable({
+                revert: 1,
+                start: function(event, ui) {
+                    PUI.clearSelection();
+                }
+                ,update: function(event, ui) {
+                    $this.onDragDrop(event, ui);
+                }
+            });
         },
         
         _moveUp: function() {
@@ -265,35 +284,30 @@
         },
 
         addOption: function(value,label) {
+            var newListItem;
+
             if(this.options.content) {
-                if(label) {
-                    var option = {'label':label,'value':value};
-                }
-                else {
-                    var option = {'label':value,'value':value};
-                }
-
-                var newItem = $('<li class="ui-orderlist-item ui-corner-all"></li>');
-                var customContent = this.options.content(option);
-                var newlistItem = newItem.append(customContent).appendTo(this.list);  
+                var option = (label) ? {'label':label,'value':value}: {'label':value,'value':value};
+                newListItem = $('<li class="ui-orderlist-item ui-corner-all"></li>').append(this.options.content(option)).appendTo(this.list);
             }
             else {
-                if(label) {
-                    var newlistItem = $('<li class="ui-orderlist-item ui-corner-all">' + label + '</li>').appendTo(this.list);
-                }
-                else {
-                    var newlistItem = $('<li class="ui-orderlist-item ui-corner-all">' + value + '</li>').appendTo(this.list);
-                }
+                var listLabel = (label) ? label: value;
+                newListItem = $('<li class="ui-orderlist-item ui-corner-all">' + listLabel + '</li>').appendTo(this.list);
             }
 
-            if(label) {
+            if(label)
                 this.element.append('<option value="' + value + '">' + label + '</option>');
-            }
-            else {
+            else
                 this.element.append('<option value="' + value + '">' + value + '</option>');
-            }
 
-            this._bindItemEvents(newlistItem);
+            this._bindItemEvents(newListItem);
+
+            this.optionElements = this.element.children('option');
+            this.items = this.items.add(newListItem);
+
+            if(this.options.dragdrop) {
+                this.list.sortable('refresh');
+            }
         },
 
         removeOption: function(value) {
@@ -303,6 +317,13 @@
                     this._unbindItemEvents(this.items.eq(i));
                     this.items[i].remove(i);
                 }
+            }
+
+            this.optionElements = this.element.children('option');
+            this.items = this.list.children('.ui-orderlist-item');
+
+            if(this.options.dragdrop) {
+                this.list.sortable('refresh');
             }
         },
 
@@ -317,7 +338,6 @@
 
         _bindItemEvents: function(item) {
             var $this = this;
-            this._bindButtonEvents();
 
             item.on('mouseover.puiorderlist', function(e) {
                 var element = $(this);
@@ -352,27 +372,13 @@
                     }
                 }
             });
-
-            if(this.options.dragdrop) {
-                this.list.sortable({
-                    revert: 1,
-                    start: function(event, ui) {
-                        //PrimeFaces.clearSelection();
-                    }
-                    ,update: function(event, ui) {
-                        $this.onDragDrop(event, ui);
-                    }
-                });
-            }
         },
 
         getSelection: function() {
             var selectedItems = [];
-            for (var i = 0; i < this.items.length; i++) {
-                if(this.items.eq(i).hasClass('ui-state-highlight')) {
-                    selectedItems.push(this.items.eq(i).data('item-value'));
-                }
-            }
+            this.items.filter('.ui-state-highlight').each(function() {
+                selectedItems.push($(this).data('item-value'));
+            });
             return selectedItems;
         },
 
@@ -390,12 +396,20 @@
             this._unbindEvents();
             this.items.addClass('ui-state-disabled');
             this.container.addClass('ui-state-disabled');
+
+            if(this.options.dragdrop) {
+                this.list.sortable('destroy');
+            }
         },
 
         enable: function() {
             this._bindEvents();
             this.items.removeClass('ui-state-disabled');
             this.container.removeClass('ui-state-disabled');
+
+            if(this.options.dragdrop) {
+                this._initDragDrop();
+            }
         },
 
         _unbindButtonEvents: function() {
