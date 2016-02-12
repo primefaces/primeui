@@ -732,7 +732,7 @@
 
         options: {
             autoDisplay: true,
-            vertical:false    
+            orientation:'horizontal'
         },
 
         _create: function() {
@@ -754,7 +754,7 @@
         _render: function() {
             var $this = this;
             this.element.addClass('ui-menu ui-menubar ui-megamenu ui-widget ui-widget-content ui-corner-all ui-helper-clearfix');
-            if(this.options.vertical) {
+            if(this._isVertical()) {
                 this.element.addClass('ui-megamenu-vertical');
             }
             this.element.children('ul').addClass('ui-menu-list ui-helper-reset');
@@ -778,11 +778,12 @@
                         listItem.removeClass('ui-widget ui-menuitem');
                     }
                     else if(listItem.children('div').length) {
-                        if(!$this.options.vertical) {
-                            var submenuIcon = 'fa-caret-down';
+                        var submenuIcon;
+                        if(!$this._isVertical()) {
+                            submenuIcon = 'fa-caret-down';
                         }
                         else {
-                            var submenuIcon = 'fa-caret-right'
+                            submenuIcon = 'fa-caret-right'
                         }
                         listItem.addClass('ui-menu-parent');
                         listItem.children('div').addClass('ui-megamenu-panel ui-widget-content ui-menu-list ui-corner-all ui-helper-clearfix ui-menu-child ui-shadow');
@@ -857,6 +858,13 @@
             });
        },
 
+        _isVertical: function () {
+            if(this.options.orientation === 'vertical')
+                return true;
+            else
+                return false;
+        },
+
        _deactivate: function(menuitem, animate) {
             var link = menuitem.children('a.ui-menuitem-link'),
             submenu = link.next();
@@ -900,7 +908,7 @@
         _showSubmenu: function(menuitem, submenu) {
             var pos = null;
         
-            if(this.options.vertical) {
+            if(this._isVertical()) {
                 pos = {
                     my: 'left top',
                     at: 'right top',

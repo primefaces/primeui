@@ -14,7 +14,7 @@
             $('#mm').puimegamenu();
 
             $('#vertical').puimegamenu({
-                vertical:true,
+                orientation:'vertical',
                 autoDisplay:false
             });
 
@@ -26,8 +26,8 @@
 
     <div class="ContentSideSections">
         <div class="Content100 overHidden TextShadow">
-            <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">Menu</span>
-            <span class="defaultText dispTable">Menu is a highly customizable navigation/command component that supports dynamic and static positioning.</span>
+            <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">Menu - MegaMenu</span>
+            <span class="defaultText dispTable">MegaMenu displays submenus of root items together.</span>
         </div>
     </div>
 
@@ -66,6 +66,11 @@
                                                 <li><a>TV 4.1</a></li>
                                                 <li><a>TV 4.2</a></li>
                                             </ul>
+                                        </div>
+
+                                        <div class="ui-grid-col-6">
+                                            <strong>image</strong>
+                                            <img src="resources/demo/images/mr-robot/mr-robot.jpg" alt="Mr Robot"/>
                                         </div>
                                     </div>
                                 </div>
@@ -399,9 +404,9 @@
                                             <td>Displays without the mouse click.</td>
                                         </tr>
                                         <tr>
-                                            <td>vertical</td>
-                                            <td>boolean</td>
-                                            <td>false</td>
+                                            <td>orientation</td>
+                                            <td>string</td>
+                                            <td>horizontal</td>
                                             <td>Defines the megamenu's orientation(vertical and horizontal).</td>
                                         </tr>
                                     </tbody>
