@@ -353,7 +353,6 @@
                             <li><a href="#doc-events">Events</a></li>
                             <li><a href="#doc-methods">Methods</a></li>
                             <li><a href="#doc-methods">Source</a></li>
-                            <li class="tab-primeelement"><a href="#doc-element">PrimeElement</a></li>
                         </ul>
 
                         <div>
@@ -361,15 +360,19 @@
                             <div id="doc-overview">
 
                                 <pre name="code" class="brush:js">
-                $('#pm1').puimenu();
+                $('#mm').puimegamenu();
                                 </pre>
 
                                 <pre name="code" class="brush:xml">
-        &lt;ul id="pm1" &gt;
-         &lt;li /&gt;
-         &lt;li /&gt;
-         &lt;li /&gt;
-        &lt;/ul &gt;
+        &lt;div id="mm" &gt;
+         &lt;ul&gt;
+          &lt;li&gt;
+            &lt;ul&gt;
+              &lt;li&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;li/&gt;
+        &lt;/ul&gt;
 
                                 </pre>
 
@@ -387,34 +390,16 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>popup</td>
+                                            <td>autoDisplay</td>
+                                            <td>boolean</td>
+                                            <td>true</td>
+                                            <td>Displays without the mouse click.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>vertical</td>
                                             <td>boolean</td>
                                             <td>false</td>
-                                            <td>Defines if menu would displayed as a popup.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>trigger</td>
-                                            <td>string/element</td>
-                                            <td>null</td>
-                                            <td>Trigger element to show the menu in popup mode.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>my</td>
-                                            <td>string</td>
-                                            <td>left top</td>
-                                            <td>Corners of menu to align with trigger in popup mode.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>at</td>
-                                            <td>string</td>
-                                            <td>left bottom</td>
-                                            <td>Corner of the trigger to align with menu in popup mode.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>triggerEvent</td>
-                                            <td>string</td>
-                                            <td>click</td>
-                                            <td>Event to show the menu in popup mode.</td>
+                                            <td>Defines the megamenu's orientation(vertical and horizontal).</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -441,11 +426,6 @@
                                             <td>hide</td>
                                             <td>-</td>
                                             <td>Hides Menu.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>align</td>
-                                            <td>-</td>
-                                            <td>Aligns overlay menu.</td>
                                         </tr>                                           
                                     </tbody>
                                 </table>                                                            
@@ -454,137 +434,329 @@
                             <div id="doc-source">
 
                                 <pre name="code" class="brush:js">
-$('#pm1').puimenu();
+$('#mm').puimegamenu();
 
-$('#pm2').puimenu({
-    popup: true,
-    trigger: $('#pm2trigger')
+$('#vertical').puimegamenu({
+    vertical:true,
+    autoDisplay:false
 });
 
 $('button').puibutton();
                                 </pre>
 
                                 <pre name="code" class="brush:xml">
-&lt;h3 class="first"&gt;Default&lt;/h3&gt;
-&lt;ul id="pm1"&gt;
-    &lt;li&gt;&lt;h3&gt;File&lt;/h3&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a data-icon="fa-plus"&gt;New&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a data-icon="fa-download"&gt;Open&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;h3&gt;Edit&lt;/h3&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a data-icon="fa-refresh"&gt;Undo&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a data-icon="ui-icon-arrowreturnthick-1-e"&gt;Redo&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h3 class="first"&gt;Basic&lt;/h3&gt;
+&lt;div id='mm'&gt;
+      &lt;div tabindex="0" class="ui-helper-hidden-accessible"&gt;&lt;/div&gt;
+      &lt;ul&gt;
+            &lt;li&gt;&lt;a data-icon="fa-check"&gt;TV&lt;/a&gt;
+                    &lt;div&gt;
+                        &lt;div class="ui-grid"&gt;
+                            &lt;div class="ui-grid-row"&gt;
+                                &lt;div class="ui-grid-col-6"&gt;
+                                    &lt;ul&gt;
+                                        &lt;li&gt;&lt;h3&gt;TV.1&lt;/h3&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;TV 1.1&lt;/a&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;TV 1.2&lt;/a&gt;&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                      
+                                    &lt;ul&gt;
+                                        &lt;li&gt;&lt;h3&gt;TV.2&lt;/h3&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;TV 2.1&lt;/a&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;TV 2.2&lt;/a&gt;&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                &lt;/div&gt;
+                                  
+                                &lt;div class="ui-grid-col-6"&gt;
+                                    &lt;ul&gt;
+                                        &lt;li&gt;&lt;h3&gt;TV.3&lt;/h3&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;TV 3.1&lt;/a&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;TV 3.2&lt;/a&gt;&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                      
+                                    &lt;ul&gt;
+                                        &lt;li&gt;&lt;h3&gt;TV.4&lt;/h3&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;TV 4.1&lt;/a&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;TV 4.2&lt;/a&gt;&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a data-icon="fa-soccer-ball-o"&gt;Sports&lt;/a&gt;
+                  &lt;div&gt;
+                      &lt;div class="ui-grid"&gt;
+                          &lt;div class="ui-grid-row"&gt;
+                              &lt;div class="ui-grid-col-4"&gt;
+                                  &lt;ul&gt;
+                                      &lt;li&gt;&lt;h3&gt;Sports.1&lt;/h3&gt;&lt;/li&gt;
+                                      &lt;li&gt;&lt;a&gt;Sports 1.1&lt;/a&gt;&lt;/li&gt;
+                                      &lt;li&gt;&lt;a&gt;Sports 1.2&lt;/a&gt;&lt;/li&gt;
+                                  &lt;/ul&gt;
 
-&lt;h3&gt;Popup&lt;/h3&gt;
-&lt;button id="pm2trigger" style="margin-top:0px"&gt;Show&lt;/button&gt;
-&lt;ul id="pm2"&gt;
-    &lt;li&gt;&lt;h3&gt;File&lt;/h3&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a data-icon="ui-icon-document"&gt;New&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a data-icon="ui-icon-folder-open"&gt;Open&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;h3&gt;Edit&lt;/h3&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a data-icon="ui-icon-arrowreturnthick-1-w"&gt;Undo&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a data-icon="ui-icon-arrowreturnthick-1-e"&gt;Redo&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+                                  &lt;ul&gt;
+                                      &lt;li&gt;&lt;h3&gt;Sports.2&lt;/h3&gt;&lt;/li&gt;
+                                      &lt;li&gt;&lt;a&gt;Sports 2.1&lt;/a&gt;&lt;/li&gt;
+                                      &lt;li&gt;&lt;a&gt;Sports 2.2&lt;/a&gt;&lt;/li&gt;
+                                  &lt;/ul&gt;
+                              &lt;/div&gt;
 
-&lt;h3&gt;PrimeElement&lt;/h3&gt;
-&lt;p-menu&gt;
-    &lt;p-submenu value="File"&gt;
-        &lt;p-menuitem value="New" icon="fa-plus"&gt;&lt;/p-menuitem&gt;
-        &lt;p-menuitem value="Open" icon="fa-download"&gt;&lt;/p-menuitem&gt;
-    &lt;/p-submenu&gt;
-    &lt;p-submenu value="Edit"&gt;
-        &lt;p-menuitem value="Undo" icon="fa-refresh"&gt;&lt;/p-menuitem&gt;
-        &lt;p-menuitem value="Close" icon="fa-close"&gt;&lt;/p-menuitem&gt;
-    &lt;/p-submenu&gt;
-&lt;/p-menu&gt;
+                              &lt;div class="ui-grid-col-4"&gt;
+                                  &lt;ul&gt;
+                                      &lt;li&gt;&lt;h3&gt;Sports.3&lt;/h3&gt;&lt;/li&gt;
+                                      &lt;li&gt;&lt;a&gt;Sports 3.1&lt;/a&gt;&lt;/li&gt;
+                                      &lt;li&gt;&lt;a&gt;Sports 3.2&lt;/a&gt;&lt;/li&gt;
+                                  &lt;/ul&gt;
+
+                                  &lt;ul&gt;
+                                      &lt;li&gt;&lt;h3&gt;Sports.4&lt;/h3&gt;&lt;/li&gt;
+                                      &lt;li&gt;&lt;a&gt;Sports 4.1&lt;/a&gt;&lt;/li&gt;
+                                      &lt;li&gt;&lt;a&gt;Sports 4.2&lt;/a&gt;&lt;/li&gt;
+                                  &lt;/ul&gt;
+                              &lt;/div&gt;
+
+                              &lt;div class="ui-grid-col-4"&gt;
+                                  &lt;ul&gt;
+                                      &lt;li&gt;&lt;h3&gt;Sports.5&lt;/h3&gt;&lt;/li&gt;
+                                      &lt;li&gt;&lt;a&gt;Sports 5.1&lt;/a&gt;&lt;/li&gt;
+                                      &lt;li&gt;&lt;a&gt;Sports 5.2&lt;/a&gt;&lt;/li&gt;
+                                  &lt;/ul&gt;
+
+                                  &lt;ul&gt;
+                                      &lt;li&gt;&lt;h3&gt;Sports.6&lt;/h3&gt;&lt;/li&gt;
+                                      &lt;li&gt;&lt;a&gt;Sports 6.1&lt;/a&gt;&lt;/li&gt;
+                                      &lt;li&gt;&lt;a&gt;Sports 6.2&lt;/a&gt;&lt;/li&gt;
+                                  &lt;/ul&gt;
+                              &lt;/div&gt;
+                          &lt;/div&gt;
+                      &lt;/div&gt;
+                      &lt;/div&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a data-icon="fa-child"&gt;Entartainment&lt;/a&gt;
+                  &lt;div&gt;
+                      &lt;div class="ui-grid"&gt;
+                          &lt;div class="ui-grid-row"&gt;
+                              &lt;div class="ui-grid-col-6"&gt;
+                                 &lt;ul&gt;
+                                        &lt;li&gt;&lt;h3&gt;Entartainment.1&lt;/h3&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;Entartainment 1.1&lt;/a&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;Entartainment 1.2&lt;/a&gt;&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                      
+                                    &lt;ul&gt;
+                                        &lt;li&gt;&lt;h3&gt;Entartainment.2&lt;/h3&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;Entartainment 2.1&lt;/a&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;Entartainment 2.2&lt;/a&gt;&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                &lt;/div&gt;
+                                  
+                                &lt;div class="ui-grid-col-6"&gt;
+                                    &lt;ul&gt;
+                                        &lt;li&gt;&lt;h3&gt;Entartainment.3&lt;/h3&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;Entartainment 3.1&lt;/a&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;Entartainment 3.2&lt;/a&gt;&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                      
+                                    &lt;ul&gt;
+                                        &lt;li&gt;&lt;h3&gt;Entartainment.4&lt;/h3&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;Entartainment 4.1&lt;/a&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;Entartainment 4.2&lt;/a&gt;&lt;/li&gt;
+                                    &lt;/ul&gt;
+                              &lt;/div&gt;
+                          &lt;/div&gt;
+                      &lt;/div&gt;
+                  &lt;/div&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a data-icon="fa-gears"&gt;Tech&lt;/a&gt;
+                  &lt;div&gt;
+                      &lt;div class="ui-grid"&gt;
+                          &lt;div class="ui-grid-row"&gt;
+                              &lt;div class="ui-grid-col-6"&gt;
+                                 &lt;ul&gt;
+                                        &lt;li&gt;&lt;h3&gt;Tech.1&lt;/h3&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;Tech 1.1&lt;/a&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;Tech 1.2&lt;/a&gt;&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                      
+                                    &lt;ul&gt;
+                                        &lt;li&gt;&lt;h3&gt;Tech.2&lt;/h3&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;Tech 2.1&lt;/a&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;Tech 2.2&lt;/a&gt;&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                &lt;/div&gt;
+                                  
+                                &lt;div class="ui-grid-col-6"&gt;
+                                    &lt;ul&gt;
+                                        &lt;li&gt;&lt;h3&gt;Tech.3&lt;/h3&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;Tech 3.1&lt;/a&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;Tech 3.2&lt;/a&gt;&lt;/li&gt;
+                                    &lt;/ul&gt;
+                              &lt;/div&gt;
+                          &lt;/div&gt;
+                      &lt;/div&gt;
+                  &lt;/div&gt;
+              &lt;/li&gt;
+      &lt;/ul&gt;
+&lt;/div&gt;
+&lt;h3&gt;Vertical&lt;/h3&gt;
+&lt;div id='vertical'&gt;
+      &lt;div tabindex="0" class="ui-helper-hidden-accessible"&gt;&lt;/div&gt;
+      &lt;ul&gt;
+            &lt;li&gt;&lt;a data-icon="fa-check"&gt;TV&lt;/a&gt;
+                    &lt;div&gt;
+                        &lt;div class="ui-grid"&gt;
+                            &lt;div class="ui-grid-row"&gt;
+                                &lt;div class="ui-grid-col-6"&gt;
+                                    &lt;ul&gt;
+                                        &lt;li&gt;&lt;h3&gt;TV.1&lt;/h3&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;TV 1.1&lt;/a&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;TV 1.2&lt;/a&gt;&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                      
+                                    &lt;ul&gt;
+                                        &lt;li&gt;&lt;h3&gt;TV.2&lt;/h3&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;TV 2.1&lt;/a&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;TV 2.2&lt;/a&gt;&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                &lt;/div&gt;
+                                  
+                                &lt;div class="ui-grid-col-6"&gt;
+                                    &lt;ul&gt;
+                                        &lt;li&gt;&lt;h3&gt;TV.3&lt;/h3&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;TV 3.1&lt;/a&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;TV 3.2&lt;/a&gt;&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                      
+                                    &lt;ul&gt;
+                                        &lt;li&gt;&lt;h3&gt;TV.4&lt;/h3&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;TV 4.1&lt;/a&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;TV 4.2&lt;/a&gt;&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a data-icon="fa-soccer-ball-o"&gt;Sports&lt;/a&gt;
+                  &lt;div&gt;
+                      &lt;div class="ui-grid"&gt;
+                          &lt;div class="ui-grid-row"&gt;
+                              &lt;div class="ui-grid-col-4"&gt;
+                                  &lt;ul&gt;
+                                      &lt;li&gt;&lt;h3&gt;Sports.1&lt;/h3&gt;&lt;/li&gt;
+                                      &lt;li&gt;&lt;a&gt;Sports 1.1&lt;/a&gt;&lt;/li&gt;
+                                      &lt;li&gt;&lt;a&gt;Sports 1.2&lt;/a&gt;&lt;/li&gt;
+                                  &lt;/ul&gt;
+
+                                  &lt;ul&gt;
+                                      &lt;li&gt;&lt;h3&gt;Sports.2&lt;/h3&gt;&lt;/li&gt;
+                                      &lt;li&gt;&lt;a&gt;Sports 2.1&lt;/a&gt;&lt;/li&gt;
+                                      &lt;li&gt;&lt;a&gt;Sports 2.2&lt;/a&gt;&lt;/li&gt;
+                                  &lt;/ul&gt;
+                              &lt;/div&gt;
+
+                              &lt;div class="ui-grid-col-4"&gt;
+                                  &lt;ul&gt;
+                                      &lt;li&gt;&lt;h3&gt;Sports.3&lt;/h3&gt;&lt;/li&gt;
+                                      &lt;li&gt;&lt;a&gt;Sports 3.1&lt;/a&gt;&lt;/li&gt;
+                                      &lt;li&gt;&lt;a&gt;Sports 3.2&lt;/a&gt;&lt;/li&gt;
+                                  &lt;/ul&gt;
+
+                                  &lt;ul&gt;
+                                      &lt;li&gt;&lt;h3&gt;Sports.4&lt;/h3&gt;&lt;/li&gt;
+                                      &lt;li&gt;&lt;a&gt;Sports 4.1&lt;/a&gt;&lt;/li&gt;
+                                      &lt;li&gt;&lt;a&gt;Sports 4.2&lt;/a&gt;&lt;/li&gt;
+                                  &lt;/ul&gt;
+                              &lt;/div&gt;
+
+                              &lt;div class="ui-grid-col-4"&gt;
+                                  &lt;ul&gt;
+                                      &lt;li&gt;&lt;h3&gt;Sports.5&lt;/h3&gt;&lt;/li&gt;
+                                      &lt;li&gt;&lt;a&gt;Sports 5.1&lt;/a&gt;&lt;/li&gt;
+                                      &lt;li&gt;&lt;a&gt;Sports 5.2&lt;/a&gt;&lt;/li&gt;
+                                  &lt;/ul&gt;
+
+                                  &lt;ul&gt;
+                                      &lt;li&gt;&lt;h3&gt;Sports.6&lt;/h3&gt;&lt;/li&gt;
+                                      &lt;li&gt;&lt;a&gt;Sports 6.1&lt;/a&gt;&lt;/li&gt;
+                                      &lt;li&gt;&lt;a&gt;Sports 6.2&lt;/a&gt;&lt;/li&gt;
+                                  &lt;/ul&gt;
+                              &lt;/div&gt;
+                          &lt;/div&gt;
+                      &lt;/div&gt;
+                      &lt;/div&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a data-icon="fa-child"&gt;Entartainment&lt;/a&gt;
+                  &lt;div&gt;
+                      &lt;div class="ui-grid"&gt;
+                          &lt;div class="ui-grid-row"&gt;
+                              &lt;div class="ui-grid-col-6"&gt;
+                                 &lt;ul&gt;
+                                        &lt;li&gt;&lt;h3&gt;Entartainment.1&lt;/h3&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;Entartainment 1.1&lt;/a&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;Entartainment 1.2&lt;/a&gt;&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                      
+                                    &lt;ul&gt;
+                                        &lt;li&gt;&lt;h3&gt;Entartainment.2&lt;/h3&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;Entartainment 2.1&lt;/a&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;Entartainment 2.2&lt;/a&gt;&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                &lt;/div&gt;
+                                  
+                                &lt;div class="ui-grid-col-6"&gt;
+                                    &lt;ul&gt;
+                                        &lt;li&gt;&lt;h3&gt;Entartainment.3&lt;/h3&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;Entartainment 3.1&lt;/a&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;Entartainment 3.2&lt;/a&gt;&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                      
+                                    &lt;ul&gt;
+                                        &lt;li&gt;&lt;h3&gt;Entartainment.4&lt;/h3&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;Entartainment 4.1&lt;/a&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;Entartainment 4.2&lt;/a&gt;&lt;/li&gt;
+                                    &lt;/ul&gt;
+                              &lt;/div&gt;
+                          &lt;/div&gt;
+                      &lt;/div&gt;
+                  &lt;/div&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a data-icon="fa-gears"&gt;Tech&lt;/a&gt;
+                  &lt;div&gt;
+                      &lt;div class="ui-grid"&gt;
+                          &lt;div class="ui-grid-row"&gt;
+                              &lt;div class="ui-grid-col-6"&gt;
+                                 &lt;ul&gt;
+                                        &lt;li&gt;&lt;h3&gt;Tech.1&lt;/h3&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;Tech 1.1&lt;/a&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;Tech 1.2&lt;/a&gt;&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                      
+                                    &lt;ul&gt;
+                                        &lt;li&gt;&lt;h3&gt;Tech.2&lt;/h3&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;Tech 2.1&lt;/a&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;Tech 2.2&lt;/a&gt;&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                &lt;/div&gt;
+                                  
+                                &lt;div class="ui-grid-col-6"&gt;
+                                    &lt;ul&gt;
+                                        &lt;li&gt;&lt;h3&gt;Tech.3&lt;/h3&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;Tech 3.1&lt;/a&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;a&gt;Tech 3.2&lt;/a&gt;&lt;/li&gt;
+                                    &lt;/ul&gt;
+                              &lt;/div&gt;
+                          &lt;/div&gt;
+                      &lt;/div&gt;
+                  &lt;/div&gt;
+              &lt;/li&gt;
+      &lt;/ul&gt;
+  &lt;/div&gt;
+
 
                                 </pre>
 
-                            </div>
-
-                            <div id="doc-element">
-                                <h3>Usage</h3>
-                                Menu is defined using submenus and menuitem elements.
-                                
-                                <h4>Inline</h4>
-                                <pre name="code" class="brush:xml">
-&lt;p-menu&gt;
-    &lt;p-submenu value="File"&gt;
-        &lt;p-menuitem value="New" icon="fa-plus"&gt;&lt;/p-menuitem&gt;
-        &lt;p-menuitem value="Open" icon="fa-download"&gt;&lt;/p-menuitem&gt;
-    &lt;/p-submenu&gt;
-    &lt;p-submenu value="Edit"&gt;
-        &lt;p-menuitem value="Undo" icon="fa-refresh"&gt;&lt;/p-menuitem&gt;
-        &lt;p-menuitem value="Close" icon="fa-close"&gt;&lt;/p-menuitem&gt;
-    &lt;/p-submenu&gt;
-&lt;/p-menu&gt;
-                                </pre>
-                                
-                                <h4>Popup</h4>
-                                <pre name="code" class="brush:xml">
-&lt;button id="btn" type="button" is="p-button"&gt;Show&lt;/button&gt;
-
-&lt;p-menu popup trigger="btn"&gt;
-    &lt;p-submenu value="File"&gt;
-        &lt;p-menuitem value="New" icon="fa-plus"&gt;&lt;/p-menuitem&gt;
-        &lt;p-menuitem value="Open" icon="fa-download"&gt;&lt;/p-menuitem&gt;
-    &lt;/p-submenu&gt;
-    &lt;p-submenu value="Edit"&gt;
-        &lt;p-menuitem value="Undo" icon="fa-refresh"&gt;&lt;/p-menuitem&gt;
-        &lt;p-menuitem value="Close" icon="fa-close"&gt;&lt;/p-menuitem&gt;
-    &lt;/p-submenu&gt;
-&lt;/p-menu&gt;
-                                </pre>
-
-                                <h3>Attributes</h3>
-                                <table class="doc-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Type</th>
-                                            <th>Default</th>
-                                            <th>Description</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>id</td>
-                                            <td>string</td>
-                                            <td>null</td>
-                                            <td>Identifier of the element.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>popup</td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>Defines if menu would displayed as a popup.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>trigger</td>
-                                            <td>string</td>
-                                            <td>null</td>
-                                           <td>Id of trigger element to show the menu in popup mode.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>my</td>
-                                            <td>string</td>
-                                            <td>left top</td>
-                                            <td>Corners of menu to align with trigger in popup mode.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>at</td>
-                                            <td>string</td>
-                                            <td>left bottom</td>
-                                            <td>Corner of the trigger to align with menu in popup mode.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>triggerEvent</td>
-                                            <td>string</td>
-                                            <td>click</td>
-                                            <td>Event to show the menu in popup mode.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
                             </div>
 
                         </div>
