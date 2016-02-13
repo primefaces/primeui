@@ -142,8 +142,8 @@ if(!xtag.tags['p-dialog']) {
                 });
                 
                 if(buttonsFacet.length) {
-                    $('<div class="pui-dialog-buttonpane ui-widget-content ui-helper-clearfix"></div>').append(buttonsFacet.html())
-                            .insertAfter($(this.xtag.container).children('div.pui-dialog-content'));
+                    $('<div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"></div>').append(buttonsFacet.html())
+                            .insertAfter($(this.xtag.container).children('div.ui-dialog-content'));
                 }      
             }
         }

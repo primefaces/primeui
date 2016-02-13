@@ -170,7 +170,7 @@ Showcase = {
 
     openPage: function(url) {
         //cleanup spa
-        $(document.body).children('.pui-notify,.pui-shadow,.pui-growl').remove();
+        $(document.body).children('.ui-notify,.ui-shadow,.ui-growl').remove();
         if(this.pbinterval1) {clearInterval(this.pbinterval1); this.pbinterval1 = null;}
         if(this.pbinterval2) {clearInterval(this.pbinterval2); this.pbinterval2 = null;}
         $(window).off('scroll resize');
