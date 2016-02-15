@@ -4,21 +4,21 @@
 (function() {
 
     $.widget("primeui.puibasemenu", {
-       
+
         options: {
-             popup: false,
-             trigger: null,
-             my: 'left top',
-             at: 'left bottom',
-             triggerEvent: 'click'
+            popup: false,
+            trigger: null,
+            my: 'left top',
+            at: 'left bottom',
+            triggerEvent: 'click'
         },
-        
+
         _create: function() {
             if(this.options.popup) {
                 this._initPopup();
             }
         },
-                
+
         _initPopup: function() {
             var $this = this;
 
@@ -27,13 +27,13 @@
             if($.type(this.options.trigger) === 'string') {
                 this.options.trigger =  $(this.options.trigger);
             }
-            
+
             this.positionConfig = {
                 my: this.options.my,
                 at: this.options.at,
                 of: this.options.trigger
             };
-            
+
             this.options.trigger.on(this.options.triggerEvent + '.ui-menu', function(e) {
                 if($this.element.is(':visible')) {
                     $this.hide();
@@ -41,12 +41,12 @@
                 else {
                     $this.show();
                 }
-                
+
                 e.preventDefault();
             });
 
             //hide overlay on document click
-            $(document.body).on('click.ui-menu', function (e) {
+            $(document.body).on('click.ui-menu-' + this.id, function (e) {
                 var popup = $this.element.closest('.ui-menu');
                 if(popup.is(":hidden")) {
                     return;
@@ -70,13 +70,13 @@
             });
 
             //Hide overlay on resize
-            $(window).on('resize.ui-menu', function() {
+            $(window).on('resize.ui-menu-' + this.id, function() {
                 if($this.element.closest('.ui-menu').is(':visible')) {
                     $this.align();
                 }
             });
         },
-                
+
         show: function() {
             this.align();
             this.element.closest('.ui-menu').css('z-index', ++PUI.zindex).show();
@@ -88,6 +88,14 @@
 
         align: function() {
             this.element.closest('.ui-menu').css({left:'', top:''}).position(this.positionConfig);
+        },
+
+        _destroy: function() {
+            if(this.options.popup) {
+                $(document.body).off('click.ui-menu-' + this.id);
+                $(window).off('resize.ui-menu-' + this.id);
+                this.options.trigger.off(this.options.triggerEvent + '.ui-menu');
+            }
         }
     });
 })();
@@ -98,56 +106,109 @@
 (function() {
 
     $.widget("primeui.puimenu", $.primeui.puibasemenu, {
-       
+
         options: {
-             
+            enhanced: false
         },
-        
+
         _create: function() {
-            this.element.addClass('ui-menu-list ui-helper-reset').
-                    wrap('<div class="ui-menu ui-widget ui-widget-content ui-corner-all ui-helper-clearfix" />');
-            
+            var $this = this;
+
+            this.id = this.element.attr('id');
+            if(!this.id) {
+                this.id = this.element.uniqueId().attr('id');
+            }
+
+            if(!this.options.enhanced) {
+                this.element.wrap('<div class="ui-menu ui-widget ui-widget-content ui-corner-all ui-helper-clearfix"></div>');
+            }
+
+            this.container = this.element.parent();
+            this.originalParent = this.container.parent();
+
+            this.element.addClass('ui-menu-list ui-helper-reset');
+
             this.element.children('li').each(function() {
                 var listItem = $(this);
-                
+
                 if(listItem.children('h3').length > 0) {
                     listItem.addClass('ui-widget-header ui-corner-all');
                 }
                 else {
                     listItem.addClass('ui-menuitem ui-widget ui-corner-all');
                     var menuitemLink = listItem.children('a'),
-                    icon = menuitemLink.data('icon');
-                    
-                    menuitemLink.addClass('ui-menuitem-link ui-corner-all').contents().wrap('<span class="ui-menuitem-text" />');
-                    
+                        icon = menuitemLink.data('icon');
+
+                    menuitemLink.addClass('ui-menuitem-link ui-corner-all');
+
+                    if($this.options.enhanced)
+                        menuitemLink.children('span').addClass('ui-menuitem-text');
+                    else
+                        menuitemLink.contents().wrap('<span class="ui-menuitem-text" />');
+
                     if(icon) {
                         menuitemLink.prepend('<span class="ui-menuitem-icon fa fa-fw ' + icon + '"></span>');
                     }
                 }
             });
-            
+
             this.menuitemLinks = this.element.find('.ui-menuitem-link:not(.ui-state-disabled)');
 
             this._bindEvents();
-            
+
             this._super();
         },
-            
-        _bindEvents: function() {  
+
+        _bindEvents: function() {
             var $this = this;
 
             this.menuitemLinks.on('mouseenter.ui-menu', function(e) {
-                $(this).addClass('ui-state-hover');
-            })
-            .on('mouseleave.ui-menu', function(e) {
-                $(this).removeClass('ui-state-hover');
-            });
+                    $(this).addClass('ui-state-hover');
+                })
+                .on('mouseleave.ui-menu', function(e) {
+                    $(this).removeClass('ui-state-hover');
+                });
 
             if(this.options.popup) {
                 this.menuitemLinks.on('click.ui-menu', function() {
                     $this.hide();
-                });  
-            }   
+                });
+            }
+        },
+
+        _unbindEvents: function() {
+            this.menuitemLinks.off('mouseenter.ui-menu mouseleave.ui-menu');
+            if(this.options.popup) {
+                this.menuitemLinks.off('click.ui-menu');
+            }
+        },
+
+        _destroy: function() {
+            this._super();
+
+            var $this = this;
+            this._unbindEvents();
+
+            this.element.removeClass('ui-menu-list ui-helper-reset');
+            this.element.children('li.h3').removeClass('ui-widget-header ui-corner-all');
+            this.element.children('li:not(h3)').removeClass('ui-menuitem ui-widget ui-corner-all')
+                .children('a').removeClass('ui-menuitem-link ui-corner-all').each(function() {
+                var link = $(this);
+                link.children('.ui-menuitem-icon').remove();
+
+                if($this.options.enhanced)
+                    link.children('.ui-menuitem-text').removeClass('ui-menuitem-text');
+                else
+                    link.children('.ui-menuitem-text').contents().unwrap();
+            });
+
+            if(this.options.popup) {
+                this.container.appendTo(this.originalParent);
+            }
+
+            if(!this.options.enhanced) {
+                this.element.unwrap();
+            }
         }
     });
 })();
@@ -158,23 +219,48 @@
 (function() {
 
     $.widget("primeui.puibreadcrumb", {
-        
+
         _create: function() {
-            this.element.wrap('<div class="ui-breadcrumb ui-module ui-widget ui-widget-header ui-helper-clearfix ui-corner-all" role="menu">');
-            
+            var $this = this;
+
+            if(!this.options.enhanced) {
+                this.element.wrap('<div class="ui-breadcrumb ui-module ui-widget ui-widget-header ui-helper-clearfix ui-corner-all" role="menu">');
+            }
             this.element.children('li').each(function(index) {
                 var listItem = $(this);
-                
                 listItem.attr('role', 'menuitem');
                 var menuitemLink = listItem.children('a');
-                menuitemLink.addClass('ui-menuitem-link ui-corner-all').contents().wrap('<span class="ui-menuitem-text" />');
-                    
+                menuitemLink.addClass('ui-menuitem-link');
+
+                if($this.options.enhanced)
+                    menuitemLink.children('span').addClass('ui-menuitem-text');
+                else
+                    menuitemLink.contents().wrap('<span class="ui-menuitem-text" />');
+
                 if(index > 0) {
                     listItem.before('<li class="ui-breadcrumb-chevron fa fa-chevron-right"></li>');
                 }
                 else {
                     listItem.before('<li class="fa fa-home"></li>');
                 }
+            });
+        },
+
+        _destroy: function() {
+            var $this = this;
+            if(!this.options.enhanced) {
+                this.unwrap();
+            }
+            this.element.children('li.ui-breadcrumb-chevron,.fa-home').remove();
+            this.element.children('li').each(function() {
+                var listItem = $(this),
+                    link = listItem.children('a');
+
+                link.removeClass('ui-menuitem-link');
+                if($this.options.enhanced)
+                    link.children('.ui-menuitem-text').removeClass('ui-menuitem-text');
+                else
+                    link.children('.ui-menuitem-text').contents().unwrap();
             });
         }
     });
@@ -186,64 +272,76 @@
 (function() {
 
     $.widget("primeui.puitieredmenu", $.primeui.puibasemenu, {
-        
+
         options: {
-            autoDisplay: true    
+            autoDisplay: true
         },
-        
+
         _create: function() {
-            this._render();
-            
+            var $this = this;
+
+            this.id = this.element.attr('id');
+            if(!this.id) {
+                this.id = this.element.uniqueId().attr('id');
+            }
+
+            if(!this.options.enhanced) {
+                this.element.wrap('<div class="ui-tieredmenu ui-menu ui-widget ui-widget-content ui-corner-all ui-helper-clearfix"></div>');
+            }
+
+            this.container = this.element.parent();
+            this.originalParent = this.container.parent();
+
+            this.element.addClass('ui-menu-list ui-helper-reset');
+
+            this.element.find('li').each(function() {
+                var listItem = $(this),
+                    menuitemLink = listItem.children('a'),
+                    icon = menuitemLink.data('icon');
+
+                menuitemLink.addClass('ui-menuitem-link ui-corner-all');
+
+                if($this.options.enhanced)
+                    menuitemLink.children('span').addClass('ui-menuitem-text');
+                else
+                    menuitemLink.contents().wrap('<span class="ui-menuitem-text" />');
+
+                if(icon) {
+                    menuitemLink.prepend('<span class="ui-menuitem-icon fa fa-fw ' + icon + '"></span>');
+                }
+
+                listItem.addClass('ui-menuitem ui-widget ui-corner-all');
+
+                if(listItem.children('ul').length > 0) {
+                    var submenuIcon = listItem.parent().hasClass('ui-menu-child') ? 'fa-caret-right' : $this._getRootSubmenuIcon();
+                    listItem.addClass('ui-menu-parent');
+                    listItem.children('ul').addClass('ui-widget-content ui-menu-list ui-corner-all ui-helper-clearfix ui-menu-child ui-shadow');
+
+                    menuitemLink.prepend('<span class="ui-submenu-icon fa fa-fw ' + submenuIcon + '"></span>');
+                }
+            });
+
             this.links = this.element.find('.ui-menuitem-link:not(.ui-state-disabled)');
 
             this._bindEvents();
-            
+
             this._super();
         },
-                
-        _render: function() {
-            var $this = this;
-            this.element.addClass('ui-menu-list ui-helper-reset').
-                    wrap('<div class="ui-tieredmenu ui-menu ui-widget ui-widget-content ui-corner-all ui-helper-clearfix" />');
-            
-            this.element.parent().uniqueId();
-            this.options.id = this.element.parent().attr('id');
-          
-            this.element.find('li').each(function() {
-                    var listItem = $(this),
-                    menuitemLink = listItem.children('a'),
-                    icon = menuitemLink.data('icon');
-                    
-                    menuitemLink.addClass('ui-menuitem-link ui-corner-all').contents().wrap('<span class="ui-menuitem-text" />');
-                    
-                    if(icon) {
-                        menuitemLink.prepend('<span class="ui-menuitem-icon fa fa-fw ' + icon + '"></span>');
-                    }
-                    
-                    listItem.addClass('ui-menuitem ui-widget ui-corner-all');
-                    if(listItem.children('ul').length > 0) {
-                        var submenuIcon = listItem.parent().hasClass('ui-menu-child') ? 'fa-caret-right' : $this._getRootSubmenuIcon();
-                        listItem.addClass('ui-menu-parent');
-                        listItem.children('ul').addClass('ui-widget-content ui-menu-list ui-corner-all ui-helper-clearfix ui-menu-child ui-shadow');
-                        
-                        menuitemLink.prepend('<span class="ui-submenu-icon fa fa-fw ' + submenuIcon + '"></span>');
-                    }            
-            });
-        },
-                
-        _bindEvents: function() {        
+
+
+        _bindEvents: function() {
             this._bindItemEvents();
-        
+
             this._bindDocumentHandler();
         },
-    
+
         _bindItemEvents: function() {
             var $this = this;
 
-            this.links.on('mouseenter.ui-menu',function() {
+            this.links.on('mouseenter.ui-menu', function() {
                 var link = $(this),
-                menuitem = link.parent(),
-                autoDisplay = $this.options.autoDisplay;
+                    menuitem = link.parent(),
+                    autoDisplay = $this.options.autoDisplay;
 
                 var activeSibling = menuitem.siblings('.ui-menuitem-active');
                 if(activeSibling.length === 1) {
@@ -256,7 +354,7 @@
                     }
                     else {
                         $this._activate(menuitem);
-                    }  
+                    }
                 }
                 else {
                     $this._highlight(menuitem);
@@ -265,19 +363,19 @@
 
             if(this.options.autoDisplay === false) {
                 this.rootLinks = this.element.find('> .ui-menuitem > .ui-menuitem-link');
-                this.rootLinks.data('primeui-tieredmenu-rootlink', this.options.id).find('*').data('primeui-tieredmenu-rootlink', this.options.id);
+                this.rootLinks.data('primeui-tieredmenu-rootlink', this.id).find('*').data('primeui-tieredmenu-rootlink', this.id);
 
                 this.rootLinks.on('click.ui-menu', function(e) {
                     var link = $(this),
-                    menuitem = link.parent(),
-                    submenu = menuitem.children('ul.ui-menu-child');
+                        menuitem = link.parent(),
+                        submenu = menuitem.children('ul.ui-menu-child');
 
                     if(submenu.length === 1) {
                         if(submenu.is(':visible')) {
                             $this.active = false;
                             $this._deactivate(menuitem);
                         }
-                        else {                                        
+                        else {
                             $this.active = true;
                             $this._highlight(menuitem);
                             $this._showSubmenu(menuitem, submenu);
@@ -285,25 +383,25 @@
                     }
                 });
             }
-            
+
             this.element.parent().find('ul.ui-menu-list').on('mouseleave.ui-menu', function(e) {
                 if($this.activeitem) {
                     $this._deactivate($this.activeitem);
                 }
-           
+
                 e.stopPropagation();
             });
         },
-       
+
         _bindDocumentHandler: function() {
             var $this = this;
 
-            $(document.body).on('click.ui-menu', function(e) {
+            $(document.body).on('click.ui-menu-' + this.id, function(e) {
                 var target = $(e.target);
-                if(target.data('primeui-tieredmenu-rootlink') === $this.options.id) {
+                if(target.data('primeui-tieredmenu-rootlink') === $this.id) {
                     return;
                 }
-                    
+
                 $this.active = false;
 
                 $this.element.find('li.ui-menuitem-active').each(function() {
@@ -311,7 +409,16 @@
                 });
             });
         },
-    
+
+        _unbindEvents: function() {
+            this.links.off('mouseenter.ui-menu');
+            if(this.options.autoDisplay === false) {
+                this.rootLinks.off('click.ui-menu');
+            }
+            this.element.parent().find('ul.ui-menu-list').off('mouseleave.ui-menu');
+            $(document.body).off('click.ui-menu-' + this.id);
+        },
+
         _deactivate: function(menuitem, animate) {
             this.activeitem = null;
             menuitem.children('a.ui-menuitem-link').removeClass('ui-state-hover');
@@ -337,8 +444,8 @@
         _reactivate: function(menuitem) {
             this.activeitem = menuitem;
             var submenu = menuitem.children('ul.ui-menu-child'),
-            activeChilditem = submenu.children('li.ui-menuitem-active:first'),
-            _self = this;
+                activeChilditem = submenu.children('li.ui-menuitem-active:first'),
+                _self = this;
 
             if(activeChilditem.length === 1) {
                 _self._deactivate(activeChilditem);
@@ -350,7 +457,7 @@
             menuitem.children('a.ui-menuitem-link').addClass('ui-state-hover');
             menuitem.addClass('ui-menuitem-active');
         },
-                
+
         _showSubmenu: function(menuitem, submenu) {
             submenu.css({
                 'left': menuitem.outerWidth(),
@@ -360,11 +467,37 @@
 
             submenu.show();
         },
-        
+
         _getRootSubmenuIcon: function() {
             return 'fa-caret-right';
+        },
+
+        _destroy: function() {
+            this._super();
+
+            var $this = this;
+            this._unbindEvents();
+
+            this.element.removeClass('ui-menu-list ui-helper-reset');
+            this.element.find('li').removeClass('ui-menuitem ui-widget ui-corner-all').each(function() {
+                var listItem = $(this);
+                listItem.children('.ui-menuitem-icon').remove();
+
+                if($this.options.enhanced)
+                    listItem.children('.ui-menuitem-text').removeClass('ui-menuitem-text');
+                else
+                    listItem.children('.ui-menuitem-text').contents().unwrap();
+            });
+
+            if(this.options.popup) {
+                this.container.appendTo(this.originalParent);
+            }
+
+            if(!this.options.enhanced) {
+                this.element.unwrap();
+            }
         }
-            
+
     });
 
 })();
@@ -375,32 +508,35 @@
 (function() {
 
     $.widget("primeui.puimenubar", $.primeui.puitieredmenu, {
-        
+
         options: {
-            autoDisplay: true    
+            autoDisplay: true,
+            enhanced: false
         },
-        
+
         _create: function() {
             this._super();
-            this.element.parent().removeClass('ui-tieredmenu').
-                    addClass('ui-menubar');
+
+            if(!this.options.enhanced) {
+                this.element.parent().removeClass('ui-tieredmenu').addClass('ui-menubar');
+            }
         },
-              
+
         _showSubmenu: function(menuitem, submenu) {
             var win = $(window),
-            submenuOffsetTop = null,
-            submenuCSS = {
-                'z-index': ++PUI.zindex
-            };
+                submenuOffsetTop = null,
+                submenuCSS = {
+                    'z-index': ++PUI.zindex
+                };
 
             if(menuitem.parent().hasClass('ui-menu-child')) {
                 submenuCSS.left = menuitem.outerWidth();
-                submenuCSS.top = 0; 
+                submenuCSS.top = 0;
                 submenuOffsetTop = menuitem.offset().top - win.scrollTop();
-            } 
+            }
             else {
                 submenuCSS.left = 0;
-                submenuCSS.top = menuitem.outerHeight(); 
+                submenuCSS.top = menuitem.outerHeight();
                 submenuOffsetTop = menuitem.offset().top + submenuCSS.top - win.scrollTop();
             }
 
@@ -413,7 +549,7 @@
 
             submenu.css(submenuCSS).show();
         },
-        
+
         _getRootSubmenuIcon: function() {
             return 'fa-caret-down';
         }
@@ -427,17 +563,23 @@
 (function() {
 
     $.widget("primeui.puislidemenu", $.primeui.puibasemenu, {
-                
+
         _create: function() {
+            this.id = this.element.attr('id');
+            if(!this.id) {
+                this.id = this.element.uniqueId().attr('id');
+            }
+
             this._render();
-        
+
             //elements
             this.rootList = this.element;
             this.content = this.element.parent();
             this.wrapper = this.content.parent();
             this.container = this.wrapper.parent();
+            this.originalParent = this.container.parent();
             this.submenus = this.container.find('ul.ui-menu-list');
-            
+
             this.links = this.element.find('a.ui-menuitem-link:not(.ui-state-disabled)');
             this.backward = this.wrapper.children('div.ui-slidemenu-backward');
 
@@ -445,73 +587,110 @@
             this.stack = [];
             this.jqWidth = this.container.width();
 
-            if(!this.element.hasClass('ui-menu-dynamic')) {
+            if(!this.options.popup) {
                 var $this = this;
                 setTimeout(function() {
                     $this._applyDimensions();
                 }, 100);
-                
+
             }
-            this._super();
 
             this._bindEvents();
+
+            this._super();
         },
-        
+
         _render: function() {
-            this.element.addClass('ui-menu-list ui-helper-reset').
-                    wrap('<div class="ui-menu ui-slidemenu ui-widget ui-widget-content ui-corner-all"/>').
-                    wrap('<div class="ui-slidemenu-wrapper" />').
-                    after('<div class="ui-slidemenu-backward ui-widget-header ui-corner-all">\n\
-                    <span class="ui-icon fa fa-fw fa-caret-left"></span>Back</div>').
-                    wrap('<div class="ui-slidemenu-content" />');
-            
-            this.element.parent().uniqueId();
-            this.options.id = this.element.parent().attr('id');
-          
+            var $this = this;
+
+            if(!this.options.enhanced) {
+                this.element.wrap('<div class="ui-menu ui-slidemenu ui-widget ui-widget-content ui-corner-all"></div>')
+                    .wrap('<div class="ui-slidemenu-wrapper"></div>')
+                    .wrap('<div class="ui-slidemenu-content"></div>')
+                    .after('<div class="ui-slidemenu-backward ui-widget-header ui-corner-all"><span class="ui-icon fa fa-fw fa-caret-left"></span>Back</div>');
+            }
+            this.element.addClass('ui-menu-list ui-helper-reset');
+
             this.element.find('li').each(function() {
-                    var listItem = $(this),
+                var listItem = $(this),
                     menuitemLink = listItem.children('a'),
                     icon = menuitemLink.data('icon');
-                    
-                    menuitemLink.addClass('ui-menuitem-link ui-corner-all').contents().wrap('<span class="ui-menuitem-text" />');
-                    
-                    if(icon) {
-                        menuitemLink.prepend('<span class="ui-menuitem-icon fa fa-fw ' + icon + '"></span>');
-                    }
-                    
-                    listItem.addClass('ui-menuitem ui-widget ui-corner-all');
-                    if(listItem.children('ul').length > 0) {
-                        listItem.addClass('ui-menu-parent');
-                        listItem.children('ul').addClass('ui-widget-content ui-menu-list ui-corner-all ui-helper-clearfix ui-menu-child ui-shadow');
-                        menuitemLink.prepend('<span class="ui-submenu-icon fa fa-fw fa-caret-right"></span>');
-                    }
+
+                menuitemLink.addClass('ui-menuitem-link ui-corner-all');
+
+                if($this.options.enhanced)
+                    menuitemLink.children('span').addClass('ui-menuitem-text');
+                else
+                    menuitemLink.contents().wrap('<span class="ui-menuitem-text" />');
+
+                if(icon) {
+                    menuitemLink.prepend('<span class="ui-menuitem-icon fa fa-fw ' + icon + '"></span>');
+                }
+
+                listItem.addClass('ui-menuitem ui-widget ui-corner-all');
+
+                if(listItem.children('ul').length) {
+                    listItem.addClass('ui-menu-parent');
+                    listItem.children('ul').addClass('ui-widget-content ui-menu-list ui-corner-all ui-helper-clearfix ui-menu-child ui-shadow');
+                    menuitemLink.prepend('<span class="ui-submenu-icon fa fa-fw fa-caret-right"></span>');
+                }
             });
         },
-              
+
+        _destroy: function() {
+            var $this = this;
+            this._super();
+            this._unbindEvents();
+
+            if(!this.options.enhanced) {
+                this.unwrap().unwrap().unwrap();
+                this.next('.ui-slidemenu-backward').remove();
+            }
+
+            this.element.removeClass('ui-menu-list ui-helper-reset').find('li').removeClass('ui-menuitem ui-widget ui-corner-all').each(function() {
+                var listItem = $(this);
+                listItem.children('.ui-menuitem-icon').remove();
+
+                if($this.options.enhanced)
+                    listItem.children('.ui-menuitem-text').removeClass('ui-menuitem-text');
+                else
+                    listItem.children('.ui-menuitem-text').contents().unwrap();
+            });
+
+            if(this.options.popup) {
+                this.container.appendTo(this.originalParent);
+            }
+        },
+
         _bindEvents: function() {
             var $this = this;
 
             this.links.on('mouseenter.ui-menu',function() {
-               $(this).addClass('ui-state-hover'); 
-            })
-            .on('mouseleave.ui-menu',function() {
-               $(this).removeClass('ui-state-hover'); 
-            })
-            .on('click.ui-menu',function() {
-               var link = $(this),
-               submenu = link.next();
+                    $(this).addClass('ui-state-hover');
+                })
+                .on('mouseleave.ui-menu',function() {
+                    $(this).removeClass('ui-state-hover');
+                })
+                .on('click.ui-menu',function() {
+                    var link = $(this),
+                        submenu = link.next();
 
-               if(submenu.length == 1) {
-                   $this._forward(submenu);
-               }
-            });
+                    if(submenu.length == 1) {
+                        $this._forward(submenu);
+                    }
+                });
 
             this.backward.on('click.ui-menu',function() {
                 $this._back();
             });
-       },
+        },
 
-       _forward: function(submenu) {
+        _unbindEvents: function() {
+            this.links.off('mouseenter.ui-menu mouseleave.ui-menu click.ui-menu');
+            this.backward.off('click.ui-menu');
+        },
+
+        _forward: function(submenu) {
             var $this = this;
 
             this._push(submenu);
@@ -529,13 +708,13 @@
                     $this.backward.fadeIn('fast');
                 }
             });
-       },
+        },
 
-       _back: function() {
+        _back: function() {
             if(!this.rootList.is(':animated')) {
                 var $this = this,
-                last = this._pop(),
-                depth = this._depth();
+                    last = this._pop(),
+                    depth = this._depth();
 
                 var rootLeft = -1 * (depth * this.jqWidth);
 
@@ -551,39 +730,39 @@
                     }
                 });
             }
-       },
+        },
 
-       _push: function(submenu) {
-             this.stack.push(submenu);
-       },
-    
-       _pop: function() {
-             return this.stack.pop();
-       },
+        _push: function(submenu) {
+            this.stack.push(submenu);
+        },
 
-       _last: function() {
+        _pop: function() {
+            return this.stack.pop();
+        },
+
+        _last: function() {
             return this.stack[this.stack.length - 1];
         },
 
-       _depth: function() {
+        _depth: function() {
             return this.stack.length;
         },
 
-       _applyDimensions: function() {
+        _applyDimensions: function() {
             this.submenus.width(this.container.width());
             this.wrapper.height(this.rootList.outerHeight(true) + this.backward.outerHeight(true));
             this.content.height(this.rootList.outerHeight(true));
             this.rendered = true;
         },
 
-       show: function() {                
+        show: function() {
             this.align();
             this.container.css('z-index', ++PUI.zindex).show();
 
             if(!this.rendered) {
                 this._applyDimensions();
             }
-        }        
+        }
     });
 
 })();

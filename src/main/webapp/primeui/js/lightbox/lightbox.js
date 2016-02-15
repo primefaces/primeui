@@ -4,16 +4,21 @@
 (function() {
 
     $.widget("primeui.puilightbox", {
-       
+
         options: {
             iframeWidth: 640,
             iframeHeight: 480,
             iframe: false
         },
-        
-        _create: function() { 
+
+        _create: function() {
+            this.id = this.element.attr('id');
+            if(!this.id) {
+                this.id = this.element.uniqueId().attr('id');
+            }
+
             this.options.mode = this.options.iframe ? 'iframe' : (this.element.children('div').length == 1) ? 'inline' : 'image';
-            
+
             var dom = '<div class="ui-lightbox ui-widget ui-helper-hidden ui-corner-all ui-shadow">';
             dom += '<div class="ui-lightbox-content-wrapper">';
             dom += '<a class="ui-state-default ui-lightbox-nav-left ui-corner-right ui-helper-hidden"><span class="fa fa-fw fa-caret-left"></span></a>';
@@ -28,37 +33,38 @@
             this.contentWrapper = this.panel.children('.ui-lightbox-content-wrapper');
             this.content = this.contentWrapper.children('.ui-lightbox-content');
             this.caption = this.panel.children('.ui-lightbox-caption');
-            this.captionText = this.caption.children('.ui-lightbox-caption-text');        
+            this.captionText = this.caption.children('.ui-lightbox-caption-text');
             this.closeIcon = this.caption.children('.ui-lightbox-close');
-            
+
             if(this.options.mode === 'image') {
                 this._setupImaging();
-            } 
+            }
             else if(this.options.mode === 'inline') {
                 this._setupInline();
-            } 
+            }
             else if(this.options.mode === 'iframe') {
                 this._setupIframe();
             }
-            
+
             this._bindCommonEvents();
-            
+
             this.links.data('puilightbox-trigger', true).find('*').data('puilightbox-trigger', true);
             this.closeIcon.data('puilightbox-trigger', true).find('*').data('puilightbox-trigger', true);
         },
-        
+
         _bindCommonEvents: function() {
             var $this = this;
 
-            this.closeIcon.hover(function() {
-                $(this).toggleClass('ui-state-hover');
-            }).click(function(e) {
-                $this.hide();
-                e.preventDefault();
-            });
+            this.closeIcon.on('hover.ui-lightbox', function() {
+                    $(this).toggleClass('ui-state-hover');
+                })
+                .on('click.ui-lightbox', function(e) {
+                    $this.hide();
+                    e.preventDefault();
+                });
 
             //hide when outside is clicked
-            $(document.body).bind('click.ui-lightbox', function (e) {            
+            $(document.body).on('click.ui-lightbox-' + this.id, function (e) {
                 if($this.isHidden()) {
                     return;
                 }
@@ -81,7 +87,7 @@
             });
 
             //sync window resize
-            $(window).resize(function() {
+            $(window).on('resize.ui-lightbox-' + this.id, function() {
                 if(!$this.isHidden()) {
                     $(document.body).children('.ui-widget-overlay').css({
                         'width': $(document).width(),
@@ -90,7 +96,27 @@
                 }
             });
         },
-                
+
+        _destroy: function() {
+            this.links.removeData('puilightbox-trigger').find('*').removeData('puilightbox-trigger');
+            this._unbindEvents();
+            this.panel.remove();
+            if(this.modality) {
+                this._disableModality();
+            }
+        },
+
+        _unbindEvents: function() {
+            this.closeIcon.off('hover.ui-lightbox click.ui-lightbox');
+            $(document.body).off('click.ui-lightbox-' + this.id);
+            $(window).off('resize.ui-lightbox-' + this.id)
+            this.links.off('click.ui-lightbox');
+            if(this.options.mode === 'image') {
+                this.imageDisplay.off('load.ui-lightbox');
+                this.navigators.off('hover.ui-lightbox click.ui-lightbox');
+            }
+        },
+
         _setupImaging: function() {
             var $this = this;
 
@@ -99,27 +125,27 @@
             this.imageDisplay = this.content.children('img');
             this.navigators = this.contentWrapper.children('a');
 
-            this.imageDisplay.load(function() { 
+            this.imageDisplay.on('load.ui-lightbox', function() {
                 var image = $(this);
 
                 $this._scaleImage(image);
 
                 //coordinates to center overlay
                 var leftOffset = ($this.panel.width() - image.width()) / 2,
-                topOffset = ($this.panel.height() - image.height()) / 2;
+                    topOffset = ($this.panel.height() - image.height()) / 2;
 
                 //resize content for new image
                 $this.content.removeClass('ui-lightbox-loading').animate({
-                    width: image.width(),
-                    height: image.height()
-                },
-                500,
-                function() {            
-                    //show image
-                    image.fadeIn();
-                    $this._showNavigators();
-                    $this.caption.slideDown();
-                });
+                        width: image.width(),
+                        height: image.height()
+                    },
+                    500,
+                    function() {
+                        //show image
+                        image.fadeIn();
+                        $this._showNavigators();
+                        $this.caption.slideDown();
+                    });
 
                 $this.panel.animate({
                     left: '+=' + leftOffset,
@@ -127,30 +153,30 @@
                 }, 500);
             });
 
-            this.navigators.hover(function() {
-                $(this).toggleClass('ui-state-hover'); 
-            })
-            .click(function(e) {
-                var nav = $(this),
-                    index;
+            this.navigators.on('hover.ui-lightbox', function() {
+                    $(this).toggleClass('ui-state-hover');
+                })
+                .on('click.ui-lightbox', function(e) {
+                    var nav = $(this),
+                        index;
 
-                $this._hideNavigators();
+                    $this._hideNavigators();
 
-                if(nav.hasClass('ui-lightbox-nav-left')) {
-                    index = $this.current === 0 ? $this.links.length - 1 : $this.current - 1;
+                    if(nav.hasClass('ui-lightbox-nav-left')) {
+                        index = $this.current === 0 ? $this.links.length - 1 : $this.current - 1;
 
-                    $this.links.eq(index).trigger('click');
-                } 
-                else {
-                    index = $this.current == $this.links.length - 1 ? 0 : $this.current + 1;
+                        $this.links.eq(index).trigger('click');
+                    }
+                    else {
+                        index = $this.current == $this.links.length - 1 ? 0 : $this.current + 1;
 
-                    $this.links.eq(index).trigger('click');
-                }
+                        $this.links.eq(index).trigger('click');
+                    }
 
-                e.preventDefault(); 
-            });
+                    e.preventDefault();
+                });
 
-            this.links.click(function(e) {
+            this.links.on('click.ui-lightbox', function(e) {
                 var link = $(this);
 
                 if($this.isHidden()) {
@@ -188,16 +214,16 @@
 
         _scaleImage: function(image) {
             var win = $(window),
-            winWidth = win.width(),
-            winHeight = win.height(),
-            imageWidth = image.width(),
-            imageHeight = image.height(),
-            ratio = imageHeight / imageWidth;
+                winWidth = win.width(),
+                winHeight = win.height(),
+                imageWidth = image.width(),
+                imageHeight = image.height(),
+                ratio = imageHeight / imageWidth;
 
             if(imageWidth >= winWidth && ratio <= 1){
                 imageWidth = winWidth * 0.75;
                 imageHeight = imageWidth * ratio;
-            } 
+            }
             else if(imageHeight >= winHeight){
                 imageHeight = winHeight * 0.75;
                 imageWidth = imageHeight / ratio;
@@ -208,14 +234,14 @@
                 'height':imageHeight + 'px'
             });
         },
-        
+
         _setupInline: function() {
             this.links = this.element.children('a');
             this.inline = this.element.children('div').addClass('ui-lightbox-inline');
             this.inline.appendTo(this.content).show();
             var $this = this;
 
-            this.links.click(function(e) {
+            this.links.on('click.ui-lightbox', function(e) {
                 $this.show();
 
                 var title = $(this).attr('title');
@@ -232,7 +258,7 @@
             var $this = this;
             this.links = this.element;
             this.iframe = $('<iframe frameborder="0" style="width:' + this.options.iframeWidth + 'px;height:' +
-                            this.options.iframeHeight + 'px;border:0 none; display: block;"></iframe>').appendTo(this.content);
+                this.options.iframeHeight + 'px;border:0 none; display: block;"></iframe>').appendTo(this.content);
 
             if(this.options.iframeTitle) {
                 this.iframe.attr('title', this.options.iframeTitle);
@@ -244,14 +270,14 @@
                         width: $this.options.iframeWidth,
                         height: $this.options.iframeHeight
                     });
-                    
+
                     $this.show();
 
                     $this.iframe.on('load', function() {
-                                    $this.iframeLoaded = true;
-                                    $this.content.removeClass('ui-lightbox-loading');
-                                })
-                                .attr('src', $this.element.attr('href'));
+                            $this.iframeLoaded = true;
+                            $this.content.removeClass('ui-lightbox-loading');
+                        })
+                        .attr('src', $this.element.attr('href'));
                 }
                 else {
                     $this.show();
@@ -292,10 +318,10 @@
             this._trigger('hide');
         },
 
-        center: function() { 
+        center: function() {
             var win = $(window),
-            left = (win.width() / 2 ) - (this.panel.width() / 2),
-            top = (win.height() / 2 ) - (this.panel.height() / 2);
+                left = (win.width() / 2 ) - (this.panel.width() / 2),
+                top = (win.height() / 2 ) - (this.panel.height() / 2);
 
             this.panel.css({
                 'left': left,
@@ -305,12 +331,12 @@
 
         _enableModality: function() {
             this.modality = $('<div class="ui-widget-overlay"></div>')
-                            .css({
-                                'width': $(document).width(),
-                                'height': $(document).height(),
-                                'z-index': this.panel.css('z-index') - 1
-                            })
-                            .appendTo(document.body);
+                .css({
+                    'width': $(document).width(),
+                    'height': $(document).height(),
+                    'z-index': this.panel.css('z-index') - 1
+                })
+                .appendTo(document.body);
         },
 
         _disableModality: function() {
@@ -325,7 +351,7 @@
         _hideNavigators: function() {
             this.navigators.hide();
         },
-        
+
         isHidden: function() {
             return this.panel.is(':hidden');
         },
@@ -338,7 +364,7 @@
                 this.iframe.attr('height', opt.height);
             }
 
-            this.iframe.attr('src', opt.src); 
+            this.iframe.attr('src', opt.src);
 
             this.show();
         }
