@@ -937,6 +937,7 @@
             var $this = this;
 
             if(!this.options.enhanced) {
+                this.element.prepend('<div tabindex="0" class="ui-helper-hidden-accessible"></div>');
                 this.element.addClass('ui-menu ui-menubar ui-megamenu ui-widget ui-widget-content ui-corner-all ui-helper-clearfix');
                 if(this._isVertical()) {
                     this.element.addClass('ui-megamenu-vertical');
@@ -1115,11 +1116,6 @@
             if(submenu.length > 0) {
                 $this._showSubmenu(menuitem, submenu);
             }
-        },
-
-        isRootLink: function(menuitem) {
-            var submenu = menuitem.closest('ul');
-            return submenu.parent().hasClass('ui-menu');
         },
 
         _highlight: function(menuitem) {
