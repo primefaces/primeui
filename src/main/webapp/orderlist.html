@@ -92,9 +92,9 @@
                         <option value="7">Jaguar</option>
                         <option value="8">Volvo</option>
                         <option value="9">Fiat</option>
-                        <script type="x-tmpl-mustache">
+                        <template>
                             <div class="ui-helper-clearfix"><img src="resources/demo/images/car/{{label}}.gif" alt="" style="float:left"/><span style="float:left; margin-left:15px; font-size:20px">{{label}}</span></div>
-                        </script>
+                        </template>
                     </p-orderlist>
                 </div>
             </div>
@@ -187,7 +187,7 @@ $('#list').puiorderlist();
                                             <td>template</td>
                                             <td>jQuery</td>
                                             <td>null</td>
-                                            <td>Mustache script element as jQuery object that represents the template.</td>
+                                            <td>Template element as jQuery object.</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -358,9 +358,9 @@ $('#advanced').puiorderlist({
                 &lt;option value="7"&gt;Jaguar&lt;/option&gt;
                 &lt;option value="8"&gt;Volvo&lt;/option&gt;
                 &lt;option value="9"&gt;Fiat&lt;/option&gt;
-                &lt;script type="x-tmpl-mustache"&gt;
+                &lt;template&gt;
                     &lt;div class="ui-helper-clearfix"&gt;&lt;img src="resources/demo/images/car/{{label}}.gif" alt="" style="float:left"/&gt;&lt;span style="float:left; margin-left:15px; font-size:20px"&gt;{{label}}&lt;/span&gt;&lt;/div&gt;
-                &lt;/script&gt;
+                &lt;/template&gt;
             &lt;/p-orderlist&gt;
         &lt;/div&gt;
     &lt;/div&gt;
@@ -402,9 +402,12 @@ $('#advanced').puiorderlist({
     &lt;option value="7"&gt;Jaguar&lt;/option&gt;
     &lt;option value="8"&gt;Volvo&lt;/option&gt;
     &lt;option value="9"&gt;Fiat&lt;/option&gt;
-    &lt;script type="x-tmpl-mustache"&gt;
-        &lt;div class="ui-helper-clearfix"&gt;&lt;img src="resources/demo/images/car/{{label}}.gif" alt="" style="float:left"/&gt;&lt;span style="float:left; margin-left:15px; font-size:20px"&gt;{{label}}&lt;/span&gt;&lt;/div&gt;
-    &lt;/script&gt;
+    &lt;template&gt;
+        &lt;div class="ui-helper-clearfix"&gt;
+            &lt;img src="resources/demo/images/car/{{label}}.gif" alt="" style="float:left"/&gt;
+            &lt;span style="float:left; margin-left:15px; font-size:20px"&gt;{{label}}&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/template&gt;
 &lt;/p-orderlist&gt;
                                 </pre>
 

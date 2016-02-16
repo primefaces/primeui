@@ -32,7 +32,7 @@ if(!xtag.tags['p-orderlist']) {
             created: function() {
                 var $this = this,
                 element = $(this),
-                itemTemplate = element.children('script');
+                itemTemplate = element.children('template');
                 element.children('option').wrapAll('<select></select>'),
                 
                 this.xtag.select = element.children('select');
