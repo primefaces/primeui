@@ -20,7 +20,7 @@
     padding: 0 3px;
 }
 
-.ui-dropdown .ui-dropdown-trigger  .ui-icon {
+.ui-dropdown .ui-dropdown-trigger .fa {
     margin-top: 4px;
     margin-left: -1px;
 }
@@ -91,7 +91,7 @@
     display: inline-block;
 }
 
-.ui-dropdown-panel .ui-dropdown-filter-container .ui-icon {
+.ui-dropdown-panel .ui-dropdown-filter-container .fa {
     position: absolute;
     top: 12px;
     right: 15px;
