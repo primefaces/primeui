@@ -152,8 +152,8 @@ if(!xtag.tags['p-datatable']) {
                     col.editor = columnElement.attr('editor') !== undefined;
                     col.rowToggler = columnElement.attr('rowToggler') !== undefined;
 
-                    if(columnElement.children('script').length) {
-                        col.contentTemplate = columnElement.children('script').text();
+                    if(columnElement.children('template').length) {
+                        col.contentTemplate = columnElement.children('template').html();
                         col.content = function(data, _col) {
                             return Mustache.render(_col.contentTemplate, data);
                         };
