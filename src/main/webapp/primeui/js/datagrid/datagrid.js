@@ -207,9 +207,9 @@
         
         _createItemContent: function(obj) {
             if(this.options.template) {
-                var template = this.options.template.html();
-                Mustache.parse(template);
-                return Mustache.render(template, obj);
+                var templateContent = this.options.template.html();
+                Mustache.parse(templateContent);
+                return Mustache.render(templateContent, obj);
             }
             else {
                 return this.options.content.call(this, obj);

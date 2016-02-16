@@ -137,29 +137,30 @@
 
         <div id="lazygrid"></div>
 
-        <script id="cartemplate" type="x-tmpl-mustache">
+        <template id="cartemplate">
             <div class="ui-panel ui-widget ui-widget-content ui-corner-all">
-            <div class="ui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all">
-            <span class="ui-panel-title">{{vin}}</span></div>
-            <div class="ui-panel-content ui-widget-content">
-            <img src="resources/demo/images/car/{{brand}}.gif">
-            <div class="car-detail">{{year}} - {{color}}</div>
-            </div>
-            </div>
-        </script>
-
-        <p-datagrid datasource="DataDemo.loadAllCars" header="PrimeElement" paginator rows="9">
-            <script type="x-tmpl-mustache">
-                <div class="ui-panel ui-widget ui-widget-content ui-corner-all">
                 <div class="ui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all">
-                <span class="ui-panel-title">{{vin}}</span>
+                    <span class="ui-panel-title">{{vin}}</span>
                 </div>
                 <div class="ui-panel-content ui-widget-content">
-                <img src="resources/demo/images/car/{{brand}}.gif" />
-                <div class="car-detail">{{year}} - {{color}}</div>
+                    <img src="resources/demo/images/car/{{brand}}.gif">
+                    <div class="car-detail">{{year}} - {{color}}</div>
                 </div>
+            </div>
+        </template>
+
+        <p-datagrid datasource="DataDemo.loadAllCars" header="PrimeElement" paginator rows="9">
+            <template>
+                <div class="ui-panel ui-widget ui-widget-content ui-corner-all">
+                    <div class="ui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all">
+                        <span class="ui-panel-title">{{vin}}</span>
+                    </div>
+                    <div class="ui-panel-content ui-widget-content">
+                        <img src="resources/demo/images/car/{{brand}}.gif">
+                        <div class="car-detail">{{year}} - {{color}}</div>
+                    </div>
                 </div>
-            </script>
+            </template>
         </p-datagrid>
     </div>
 
@@ -251,7 +252,7 @@ $('#grid').puidatagrid({
                                             <td>template</td>
                                             <td>jQuery</td>
                                             <td>null</td>
-                                            <td>Mustache script element as jQuery object that represents the template.</td>
+                                            <td>Template element as jQuery object.</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -355,34 +356,35 @@ $(function() {
 
                                 <pre name="code" class="brush:xml">
 &lt;div id="localgrid"&gt;&lt;/div&gt;
-        
+
 &lt;div id="remotegrid"&gt;&lt;/div&gt;
 
 &lt;div id="lazygrid"&gt;&lt;/div&gt;
 
-&lt;script id="cartemplate" type="x-tmpl-mustache"&gt;
+&lt;template id="cartemplate"&gt;
     &lt;div class="ui-panel ui-widget ui-widget-content ui-corner-all"&gt;
         &lt;div class="ui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all"&gt;
-            &lt;span class="ui-panel-title"&gt;{{vin}}&lt;/span&gt;&lt;/div&gt;
+            &lt;span class="ui-panel-title"&gt;{{vin}}&lt;/span&gt;
+        &lt;/div&gt;
         &lt;div class="ui-panel-content ui-widget-content"&gt;
             &lt;img src="resources/demo/images/car/{{brand}}.gif"&gt;
             &lt;div class="car-detail"&gt;{{year}} - {{color}}&lt;/div&gt;
         &lt;/div&gt;
     &lt;/div&gt;
-&lt;/script&gt;
+&lt;/template&gt;
 
 &lt;p-datagrid datasource="DataDemo.loadAllCars" header="PrimeElement" paginator rows="9"&gt;
-    &lt;script type="x-tmpl-mustache"&gt;
+    &lt;template&gt;
         &lt;div class="ui-panel ui-widget ui-widget-content ui-corner-all"&gt;
             &lt;div class="ui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all"&gt;
                 &lt;span class="ui-panel-title"&gt;{{vin}}&lt;/span&gt;
             &lt;/div&gt;
             &lt;div class="ui-panel-content ui-widget-content"&gt;
-                &lt;img src="resources/demo/images/car/{{brand}}.gif" /&gt;
+                &lt;img src="resources/demo/images/car/{{brand}}.gif"&gt;
                 &lt;div class="car-detail"&gt;{{year}} - {{color}}&lt;/div&gt;
             &lt;/div&gt;
         &lt;/div&gt;
-    &lt;/script&gt;
+    &lt;/template&gt;
 &lt;/p-datagrid&gt;
                                 </pre>
                             </div>
@@ -392,9 +394,9 @@ $(function() {
                                 as a mustache template where properties of an object can be access via {{}} syntax.
                                 <pre name="code" class="brush:xml">
 &lt;p-datagrid datasource="DataDemo.cars" rows="9" paginator&gt;
-     &lt;script type="x-tmpl-mustache"&gt;
+    &lt;template&gt;
         Access color of a car using {{color}}
-     &lt;/script&gt;
+    &lt;/template&gt;
 &lt;/p-datagrid&gt;
                                 </pre>
 
