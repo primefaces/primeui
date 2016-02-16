@@ -58,7 +58,7 @@
     <div class="ContentSideSections Implementation">
         <div id="ds"></div>
         
-        <script id="cartemplate" type="x-tmpl-mustache">
+        <template id="cartemplate">
             <div class="ui-grid">
                 <div class="ui-grid-row">
                     <div class="ui-grid-col-3">
@@ -94,7 +94,7 @@
                     </div>
                 </div>
             </div>
-        </script>
+        </template>
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">
@@ -113,8 +113,8 @@
                         <div>
                             <div id="doc-overview">
                                 <p class="defaultText">Datasource of Datascroller can either be a javascript array or a function to load
-                                data from a remote location. In eager mode, datasource is loaded only once and in lazy mode
-                                ,invoked everytime whenever a load is necessary.</p>
+                                data from a remote location. In eager mode, datasource is loaded only once and in lazy mode,
+                                invoked everytime whenever a load is necessary.</p>
 
                                 <pre name="code" class="brush:js">
 $('#grid').puidatagrid({
@@ -181,7 +181,7 @@ $('#grid').puidatagrid({
                                             <td>template</td>
                                             <td>jQuery</td>
                                             <td>null</td>
-                                            <td>Mustache script element as jQuery object that represents the template.</td>
+                                            <td>Template element as jQuery object.</td>
                                         </tr>
                                         <tr>
                                             <td>mode</td>
@@ -237,7 +237,7 @@ $("#ds").puidatascroller({
                                 <pre name="code" class="brush:xml">
 &lt;div id="ds"&gt;&lt;/div&gt;
 
-&lt;script id="cartemplate" type="x-tmpl-mustache"&gt;
+&lt;template id="cartemplate"&gt;
     &lt;div class="ui-grid"&gt;
         &lt;div class="ui-grid-row"&gt;
             &lt;div class="ui-grid-col-3"&gt;
@@ -273,8 +273,7 @@ $("#ds").puidatascroller({
             &lt;/div&gt;
         &lt;/div&gt;
     &lt;/div&gt;
-&lt;/script&gt;
-&lt;/div&gt;
+&lt;/template&gt;
                                 </pre>
                             </div>
                             <div id="doc-element">
@@ -284,9 +283,9 @@ $("#ds").puidatascroller({
                                 
                                 <pre name="code" class="brush:xml">
 &lt;p-datascroller datasource="DataDemo.cars" chunksize="10"&gt;
-     &lt;script type="x-tmpl-mustache"&gt;
+    &lt;template&gt;
         Access color of a car using {{color}}
-     &lt;/script&gt;
+    &lt;/template&gt;
 &lt;/p-datascroller&gt;
                                 </pre>
 
@@ -312,9 +311,9 @@ var DataDemo = {
                                 <h4>Lazy</h4>
                                 <pre name="code" class="brush:xml">
 &lt;p-datascroller datasource="DataDemo.cars" chunksize="10" lazy totalsize="20000"&gt;
-     &lt;script type="x-tmpl-mustache"&gt;
+     &lt;template&gt;
         Access color of a car using {{color}}
-     &lt;/script&gt;
+     &lt;/template&gt;
 &lt;/p-datascroller&gt;
                                 </pre>
                                 <pre name="code" class="brush:js">
