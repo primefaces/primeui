@@ -83,7 +83,7 @@
             this.input.remove();
         },
 
-        _triggerChangeEvent: function() {
+        _triggerChangeEvent: function(event) {
             var $this = this;
 
             if(this.options.multiple) {
@@ -145,7 +145,7 @@
                         }
                     }
 
-                    $this._triggerChangeEvent();
+                    $this._triggerChangeEvent(e);
                 })
                 .on('focus.puiselectbutton', function() {
                     $(this).addClass('ui-state-focus');
