@@ -183,7 +183,7 @@
         
         _renderHeaderIcon: function(styleClass, icon) {
             this.titlebar.append('<a class="ui-dialog-titlebar-icon ' + styleClass + ' ui-corner-all" href="#" role="button">' +
-                                '<span class="ui-icon fa fa-fw ' + icon + '"></span></a>');
+                                '<span class="fa fa-fw ' + icon + '"></span></a>');
         },
         
         _enableModality: function() {
@@ -445,7 +445,7 @@
                 this.element.removeClass('ui-dialog-maximized');
                 this._restoreState();
 
-                this.maximizeIcon.removeClass('ui-state-hover');//.children('.ui-icon').removeClass('ui-icon-newwin').addClass('ui-icon-extlink');
+                this.maximizeIcon.removeClass('ui-state-hover');
                 this.maximized = false;
             }
             else {
@@ -467,7 +467,7 @@
                     height: 'auto'
                 });
 
-                this.maximizeIcon.removeClass('ui-state-hover');//.children('.ui-icon').removeClass('ui-icon-extlink').addClass('ui-icon-newwin');
+                this.maximizeIcon.removeClass('ui-state-hover');
                 this.maximized = true;
                 this._trigger('maximize');
             }
@@ -488,7 +488,7 @@
                 this.element.appendTo(this.parent).removeClass('ui-dialog-minimized').css({'position':'fixed', 'float':'none'});
                 this._restoreState();
                 this.content.show();
-                this.minimizeIcon.removeClass('ui-state-hover');//.children('.ui-icon').removeClass('ui-icon-plus').addClass('ui-icon-minus');
+                this.minimizeIcon.removeClass('ui-state-hover').children('.fa').removeClass('fa-plus').addClass('fa-minus');
                 this.minimized = false;
 
                 if(this.options.resizable) {
@@ -522,7 +522,7 @@
             this.element.appendTo(zone).css('position', 'static');
             this.element.css({'height':'auto', 'width':'auto', 'float': 'left'});
             this.content.hide();
-            this.minimizeIcon.removeClass('ui-state-hover').children('.ui-icon').removeClass('ui-icon-minus').addClass('ui-icon-plus');
+            this.minimizeIcon.removeClass('ui-state-hover').children('.fa').removeClass('fa-minus').addClass('fa-plus');
             this.minimized = true;
 
             if(this.options.resizable) {
