@@ -101,7 +101,7 @@
         <ul id="cars2"></ul>
         
         <p-carousel datasource="CarouselDemo.cars" headertext="PrimeElement" renderdelay="10">
-            <script type="x-tmpl-mustache" >
+            <template>
                 <div class="ui-grid ui-grid-responsive">
                     <div class="ui-grid-row">
                         <div class="ui-grid-col-12"><img src="resources/demo/images/car/{{brand}}.gif" /></div>
@@ -119,7 +119,7 @@
                         <div class="ui-grid-col-6">{{color}}</div>
                     </div>
                 </div>
-            </script>
+            </template>
         </p-carousel>
         
         <ul id="cars3">
@@ -434,7 +434,7 @@ $('#list').puicarousel();
                                             <td>template</td>
                                             <td>jQuery</td>
                                             <td>null</td>
-                                            <td>Mustache script element as jQuery object that represents the template.</td>
+                                            <td>Template element as jQuery object.</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -565,7 +565,7 @@ $(function() {
 &lt;ul id="cars2"&gt;&lt;/ul&gt;
 
 &lt;p-carousel datasource="CarouselDemo.cars" headertext="PrimeElement" renderdelay="10"&gt;
-    &lt;script type="x-tmpl-mustache" &gt;
+    &lt;template&gt;
         &lt;div class="ui-grid ui-grid-responsive"&gt;
             &lt;div class="ui-grid-row"&gt;
                 &lt;div class="ui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/{{brand}}.gif" /&gt;&lt;/div&gt;
@@ -583,7 +583,7 @@ $(function() {
                 &lt;div class="ui-grid-col-6"&gt;{{color}}&lt;/div&gt;
             &lt;/div&gt;
         &lt;/div&gt;
-    &lt;/script&gt;
+    &lt;/template&gt;
 &lt;/p-carousel&gt; 
 
 &lt;ul id="cars3"&gt;
@@ -777,9 +777,9 @@ $(function() {
                                 as a mustache template where properties of an object can be access via {{}} syntax.
                                 <pre name="code" class="brush:xml">
 &lt;p-carousel datasource="CarouselDemo.cars" headertext="PrimeElement"&gt;
-    &lt;script type="x-tmpl-mustache" &gt;
+    &lt;template&gt;
         Access color of a car using {{color}}
-    &lt;/script&gt;
+    &lt;/template&gt;
 &lt;/p-carousel&gt;
                                 </pre>
                                 <h4>Array</h4>

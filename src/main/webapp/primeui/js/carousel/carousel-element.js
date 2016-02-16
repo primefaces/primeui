@@ -81,7 +81,7 @@ if(!xtag.tags['p-carousel']) {
                     autoplayInterval: this.autoplayinterval ? parseInt(this.autoplayinterval) : 0,
                     easing: this.easing||'easeInOutCirc',
                     pageLinks: this.pagelinks ? parseInt(this.pagelinks): 3,
-                    template: $(this).children('script'),
+                    template: $(this).children('template'),
                     pageChange: this.onpagechange ? function(event, param) {PUI.executeFunctionByName($this.onpagechange, event, param);} : null,
                     style: this.style,
                     styleClass: this.styleClass
