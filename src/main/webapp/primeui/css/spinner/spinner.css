@@ -25,7 +25,7 @@
     width: 16px;
     z-index: 100;
 }
-.ui-spinner .ui-icon {
+.ui-spinner .fa {
     left: -1px;
     margin-top: -8px;
     position: absolute;
@@ -49,6 +49,6 @@
 .ui-fluid .ui-spinner .ui-spinner-button {
     width: auto;
 }
-.ui-fluid .ui-spinner .ui-spinner-button .ui-icon {
+.ui-fluid .ui-spinner .ui-spinner-button .fa {
     left: 6px;
 }
