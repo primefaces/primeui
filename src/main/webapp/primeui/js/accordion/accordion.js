@@ -36,9 +36,9 @@
             this.headers.addClass('ui-accordion-header ui-helper-reset ui-state-default').each(function(i) {
                 var header = $(this),
                 title = header.html(),
-                active = $this.options.multiple ? ($.inArray(i, $this.options.activeIndex) !== -1) : (i == $this.options.activeIndex);
+                active = $this.options.multiple ? ($.inArray(i, $this.options.activeIndex) !== -1) : (i == $this.options.activeIndex),
                 headerClass = (active) ? 'ui-state-active ui-corner-top' : 'ui-corner-all',
-                iconClass = (active) ? 'ui-icon fa fa-fw fa-caret-down' : 'ui-icon fa fa-fw fa-caret-right';
+                iconClass = (active) ? 'fa fa-fw fa-caret-down' : 'fa fa-fw fa-caret-right';
 
                 header.addClass(headerClass).html('<span class="' + iconClass + '"></span><a href="#">' + title + '</a>');
             });
@@ -63,7 +63,7 @@
             this.element.removeClass('ui-accordion ui-widget ui-helper-reset');
             this.headers.removeClass('ui-accordion-header ui-helper-reset ui-state-default ui-state-hover ui-state-active ui-state-disabled ui-corner-all ui-corner-top');
             this.panels.removeClass('ui-accordion-content ui-helper-reset ui-widget-content ui-helper-hidden');
-            this.headers.children('.ui-icon').remove();
+            this.headers.children('.fa').remove();
             this.headers.children('a').contents().unwrap();
         },
         
@@ -128,7 +128,7 @@
             var panel = this.panels.eq(index),
             header = panel.prev();
 
-            header.attr('aria-expanded', false).children('.ui-icon').removeClass('fa-caret-down').addClass('fa-caret-right');
+            header.attr('aria-expanded', false).children('.fa').removeClass('fa-caret-down').addClass('fa-caret-right');
             header.removeClass('ui-state-active ui-corner-top').addClass('ui-corner-all');
             panel.attr('aria-hidden', true).slideUp();
 
@@ -139,14 +139,14 @@
             //deactivate current
             if(!this.options.multiple) {
                 var oldHeader = this.headers.filter('.ui-state-active');
-                oldHeader.children('.ui-icon').removeClass('fa-caret-down').addClass('fa-caret-right');
+                oldHeader.children('.fa').removeClass('fa-caret-down').addClass('fa-caret-right');
                 oldHeader.attr('aria-expanded', false).removeClass('ui-state-active ui-corner-top').addClass('ui-corner-all').next().attr('aria-hidden', true).slideUp();
             }
 
             //activate selected
             var newHeader = panel.prev();
             newHeader.attr('aria-expanded', true).addClass('ui-state-active ui-corner-top').removeClass('ui-state-hover ui-corner-all')
-                    .children('.ui-icon').removeClass('fa-caret-right').addClass('fa-caret-down');
+                    .children('.fa').removeClass('fa-caret-right').addClass('fa-caret-down');
 
             panel.attr('aria-hidden', false).slideDown('normal');
         },
