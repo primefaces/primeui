@@ -51,7 +51,7 @@ if(!xtag.tags['p-selectbutton']) {
             selectOption: function(value) {
                 $(this).puiselectbutton('selectOption', value);
             },
-            unselectOption: function() {
+            unselectOption: function(value) {
                 $(this).puiselectbutton('unselectOption', value);
             }
         }
