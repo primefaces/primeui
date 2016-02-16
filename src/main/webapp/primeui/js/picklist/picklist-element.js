@@ -52,7 +52,7 @@ if(!xtag.tags['p-picklist']) {
         lifecycle: {
             created: function() {
                 var element = $(this),
-                itemTemplate = element.children('script'),
+                itemTemplate = element.children('template'),
                 $this = this;
         
                 element.children('select').wrapAll('<div></div>');
