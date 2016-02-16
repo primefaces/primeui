@@ -33,7 +33,7 @@
             else {
                 if(this.options.dropdown) {
                     this.dropdown = $('<button type="button" class="ui-autocomplete-dropdown ui-button ui-widget ui-state-default ui-corner-right ui-button-icon-only">' +
-                        '<span class="ui-icon fa fa-fw fa-caret-down"></span><span class="ui-button-text">&nbsp;</span></button>')
+                        '<span class="fa fa-fw fa-caret-down"></span><span class="ui-button-text">&nbsp;</span></button>')
                         .insertAfter(this.element);
                     this.element.removeClass('ui-corner-all').addClass('ui-corner-left');
                 }

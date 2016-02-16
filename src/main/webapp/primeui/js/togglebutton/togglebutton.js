@@ -20,7 +20,7 @@
             this.element.addClass('ui-helper-hidden-accessible');
             if(this.options.onIcon && this.options.offIcon) {
                 this.container.addClass('ui-button-text-icon-left');
-                this.container.append('<span class="ui-button-icon-left ui-icon fa fa-fw"></span>');
+                this.container.append('<span class="ui-button-icon-left fa fa-fw"></span>');
             }
             else {
                 this.container.addClass('ui-button-text-only');
@@ -36,7 +36,7 @@
             }
             
             this.label = this.container.children('.ui-button-text');
-            this.icon = this.container.children('.ui-icon');
+            this.icon = this.container.children('.fa');
             
             //initial state
             if(this.element.prop('checked')||this.options.checked) {

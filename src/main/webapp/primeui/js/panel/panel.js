@@ -36,7 +36,7 @@
             
             if(this.options.closable) {
                 if(!this.options.enhanced) {
-                    this.closer = $('<a class="ui-panel-titlebar-icon ui-panel-titlebar-closer ui-corner-all ui-state-default" href="#"><span class="ui-icon fa fa-fw fa-close"></span></a>')
+                    this.closer = $('<a class="ui-panel-titlebar-icon ui-panel-titlebar-closer ui-corner-all ui-state-default" href="#"><span class="fa fa-fw fa-close"></span></a>')
                                 .appendTo(this.header);
                 }
                 else {
@@ -53,12 +53,12 @@
                 var icon = this.options.collapsed ? 'fa-plus' : 'fa-minus';
                 
                 if(!this.options.enhanced) {
-                    this.toggler = $('<a class="ui-panel-titlebar-icon ui-panel-titlebar-toggler ui-corner-all ui-state-default" href="#"><span class="ui-icon fa fa-fw ' + icon + '"></span></a>')
+                    this.toggler = $('<a class="ui-panel-titlebar-icon ui-panel-titlebar-toggler ui-corner-all ui-state-default" href="#"><span class="fa fa-fw ' + icon + '"></span></a>')
                                 .appendTo(this.header);
                 }
                 else {
                     this.toggler = this.header.children('.ui-panel-titlebar-toggler');
-                    this.toggler.children('.ui-icon').addClass(icon);
+                    this.toggler.children('.fa').addClass(icon);
                 }
                 
                 this.toggler.on('click.puipanel', function(e) {
@@ -109,7 +109,7 @@
         },
         
         expand: function() {
-            this.toggler.children('.ui-icon').removeClass('fa-plus').addClass('fa-minus');
+            this.toggler.children('.fa').removeClass('fa-plus').addClass('fa-minus');
             
             if(this.options.toggleOrientation === 'vertical') {
                 this._slideDown();
@@ -120,7 +120,7 @@
         },
 
         collapse: function() {
-            this.toggler.children('.ui-icon').removeClass('fa-minus').addClass('fa-plus');
+            this.toggler.children('.fa').removeClass('fa-minus').addClass('fa-plus');
             
             if(this.options.toggleOrientation === 'vertical') {
                 this._slideUp();
@@ -195,7 +195,7 @@
         _destroy: function() {
             this._unbindEvents();
             if(this.toggler) {
-                this.toggler.children('.ui-icon').removeClass('fa-minus fa-plus');
+                this.toggler.children('.fa').removeClass('fa-minus fa-plus');
             }
         }
     });

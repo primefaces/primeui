@@ -105,7 +105,7 @@
                     }
                     
                     if(j === 0) {
-                        var toggler = $('<span class="ui-treetable-toggler ui-icon fa fa-fw fa-caret-right ui-c"></span>');
+                        var toggler = $('<span class="ui-treetable-toggler fa fa-fw fa-caret-right ui-c"></span>');
                         
                         toggler.css('margin-left', depth * 16 + 'px');
                         if(leaf) {
