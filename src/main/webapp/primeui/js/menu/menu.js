@@ -606,8 +606,9 @@
             if(!this.options.enhanced) {
                 this.element.wrap('<div class="ui-menu ui-slidemenu ui-widget ui-widget-content ui-corner-all"></div>')
                     .wrap('<div class="ui-slidemenu-wrapper"></div>')
-                    .wrap('<div class="ui-slidemenu-content"></div>')
-                    .after('<div class="ui-slidemenu-backward ui-widget-header ui-corner-all"><span class="fa fa-fw fa-caret-left"></span>Back</div>');
+                    .wrap('<div class="ui-slidemenu-content"></div>');
+
+                this.element.parent().after('<div class="ui-slidemenu-backward ui-widget-header ui-corner-all"><span class="fa fa-fw fa-caret-left"></span>Back</div>');
             }
             this.element.addClass('ui-menu-list ui-helper-reset');
 
