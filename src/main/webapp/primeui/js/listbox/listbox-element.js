@@ -36,7 +36,7 @@ if(!xtag.tags['p-listbox']) {
                     this.xtag.select.attr('name', this.name);
                 }
                 
-                var itemTemplate = element.children('script');
+                var itemTemplate = element.children('template');
                 
                 this.xtag.select.puilistbox({
                     multiple: this.multiple,

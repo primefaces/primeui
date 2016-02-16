@@ -75,9 +75,9 @@
             <option value="3">cupertino</option>
             <option value="4">rocket</option>
             <option value="5">vader</option>
-            <script type="x-tmpl-mustache">
+            <template>
                 <img src="resources/demo/images/themes/{{label}}.png" alt="" /><span style="float:right;font-size:14px">{{label}}</span>
-            </script>
+            </template>
         </p-listbox>
     </div>
 
@@ -148,7 +148,7 @@ $('#basic').puilistbox();
                                             <td>template</td>
                                             <td>jQuery</td>
                                             <td>null</td>
-                                            <td>Mustache script element as jQuery object that represents the template.</td>
+                                            <td>Template element as jQuery object.</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -310,9 +310,9 @@ $(function() {
     &lt;option value="3"&gt;cupertino&lt;/option&gt;
     &lt;option value="4"&gt;rocket&lt;/option&gt;
     &lt;option value="5"&gt;vader&lt;/option&gt;
-    &lt;script type="x-tmpl-mustache"&gt;
+    &lt;template&gt;
         &lt;img src="resources/demo/images/themes/{{label}}.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;{{label}}&lt;/span&gt;
-    &lt;/script&gt;
+    &lt;/template&gt;
 &lt;/p-listbox&gt;                                   
                                 </pre>
 
@@ -334,7 +334,7 @@ $(function() {
                                 </pre>
                                 
                                 <h4>Custom Content</h4>
-                                In order to display custom content in listbox, place a script tag and add mustache template to repeat for each item.
+                                In order to display custom content in listbox, place a template tag and add mustache template to repeat for each item.
                                 <pre name="code" class="brush:xml">
 &lt;p-listbox multiple&gt;
     &lt;option value="1"&gt;afterdark&lt;/option&gt;
@@ -342,9 +342,9 @@ $(function() {
     &lt;option value="3"&gt;cupertino&lt;/option&gt;
     &lt;option value="4"&gt;rocket&lt;/option&gt;
     &lt;option value="5"&gt;vader&lt;/option&gt;
-    &lt;script type="x-tmpl-mustache"&gt;
+    &lt;template&gt;
         &lt;img src="resources/demo/images/themes/{{label}}.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;{{label}}&lt;/span&gt;
-    &lt;/script&gt;
+    &lt;/template&gt;
 &lt;/p-listbox&gt;  
                                 </pre>
 
