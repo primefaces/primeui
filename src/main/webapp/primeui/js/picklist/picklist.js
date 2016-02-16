@@ -69,7 +69,7 @@
                 listContainer = $('<ul class="ui-widget-content ui-picklist-list ' + cssClass + '"></ul>');
 
             if(this.options.filter) {
-                listWrapper.append('<div class="ui-picklist-filter-container"><input type="text" class="ui-picklist-filter" /><span class="ui-icon fa fa-fw fa-search"></span></div>');
+                listWrapper.append('<div class="ui-picklist-filter-container"><input type="text" class="ui-picklist-filter" /><span class="fa fa-fw fa-search"></span></div>');
                 listWrapper.find('> .ui-picklist-filter-container > input').puiinputtext();
             } 
     

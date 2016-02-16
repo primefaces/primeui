@@ -43,14 +43,6 @@
     background-image: none;
 }
 
-.ui-paginator .ui-paginator-next .ui-icon,
-.ui-paginator .ui-paginator-prev .ui-icon,
-.ui-paginator .ui-paginator-first .ui-icon,
-.ui-paginator .ui-paginator-last .ui-icon {
-	height: auto;
-	overflow: inherit;
-}
-
 .ui-paginator .ui-paginator-jtp-select option,
 .ui-paginator .ui-paginator-rpp-options option {
     background-image: none;

@@ -34,7 +34,7 @@
             this.element.addClass('ui-button ui-widget ui-state-default ui-corner-all ' + styleClass).text('');
             
             if(this.options.icon) {
-                this.element.append('<span class="ui-button-icon-' + this.options.iconPos + ' ui-icon ui-c fa fa-fw ' + this.options.icon + '" />');
+                this.element.append('<span class="ui-button-icon-' + this.options.iconPos + ' ui-c fa fa-fw ' + this.options.icon + '" />');
             }
             
             this.element.append('<span class="ui-button-text ui-c">' + value + '</span>');
@@ -48,7 +48,7 @@
             this.element.removeClass('ui-button ui-widget ui-state-default ui-state-hover ui-state-active ui-state-disabled ui-state-focus ui-corner-all ' + 
                                                     'ui-button-text-only ui-button-icon-only ui-button-text-icon-right ui-button-text-icon-left');
             this._unbindEvents();
-            this.element.children('.ui-icon').remove();
+            this.element.children('.fa').remove();
             this.element.children('.ui-button-text').remove();
             this.element.text(this.elementText);
         },
