@@ -15,7 +15,8 @@
     padding: 4px 10px;
 }
 
-.ui-datatable .ui-datatable-caption {
+.ui-datatable .ui-datatable-caption,
+.ui-datatable .ui-datatable-header {
     border-bottom: 0px none;
 }
 

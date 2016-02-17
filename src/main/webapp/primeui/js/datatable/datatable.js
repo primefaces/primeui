@@ -124,7 +124,7 @@
             this._initFooter();
 
             if(this.options.caption) {
-                this.element.prepend('<div class="ui-datatable-caption ui-widget-header">' + this.options.caption + '</div>');
+                this.element.prepend('<div class="ui-datatable-header ui-widget-header">' + this.options.caption + '</div>');
             }
             
             if(this.options.paginator) {
