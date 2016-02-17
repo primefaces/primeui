@@ -8,6 +8,7 @@
     overflow: auto;
 }
 
+.ui-datatable .ui-datatable-header,
 .ui-datatable .ui-datatable-caption,
 .ui-datatable .ui-datatable-footer {
     text-align: center;
