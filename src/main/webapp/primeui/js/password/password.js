@@ -8,7 +8,7 @@
         options: {
             promptLabel: 'Please enter a password',
             weakLabel: 'Weak',
-            goodLabel: 'Medium',
+            mediumLabel: 'Medium',
             strongLabel: 'Strong',
             inline: false
         },
@@ -74,7 +74,7 @@
                         meterPos = '0px -10px';
                     }
                     else if(score >= 30 && score < 80) {
-                        label = $this.options.goodLabel;
+                        label = $this.options.mediumLabel;
                         meterPos = '0px -20px';
                     } 
                     else if(score >= 80) {

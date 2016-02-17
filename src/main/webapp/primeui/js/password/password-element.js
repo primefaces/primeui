@@ -11,7 +11,7 @@ if(!xtag.tags['p-password']) {
             weakLabel:{
                 attribute:{}
             },
-            goodLabel:{
+            mediumLabel:{
                 attribute:{}
             },
             strongLabel:{
@@ -29,7 +29,7 @@ if(!xtag.tags['p-password']) {
                 $(this).puipassword({
                     promptLabel: this.promptLabel || 'Please enter a password',
                     weakLabel: this.weakLabel || 'Weak',
-                    goodLabel: this.goodLabel || 'Medium',
+                    mediumLabel: this.mediumLabel || 'Medium',
                     strongLabel: this.strongLabel || 'Strong',
                     inline: this.inline || false,
                 });
