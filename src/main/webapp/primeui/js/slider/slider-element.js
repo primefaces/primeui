@@ -77,7 +77,7 @@ if(!xtag.tags['p-slider']) {
                     step: this.step ? parseInt(this.step) : 1,
                     value: this.value ? parseInt(this.value) : 0,
                     values: rangeValues,
-                    change: this.onchange ? function(event, value){;PUI.executeFunctionByName($this.onchange, event, value);} : null,
+                    change: this.onchange ? function(event, value){PUI.executeFunctionByName($this.onchange, event, value);} : null,
                     slide: this.onslide ? function(event, value){PUI.executeFunctionByName($this.onslide, event, value);} : null,
                     start: this.onstart ? function(event, value){PUI.executeFunctionByName($this.onstart, event, value);} : null,
                     stop: this.onstop ? function(event, value){PUI.executeFunctionByName($this.onstop, event, value);} : null
