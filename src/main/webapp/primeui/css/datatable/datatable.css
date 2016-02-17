@@ -93,6 +93,7 @@
 }
 
 .ui-datatable .ui-datatable-data tr.ui-state-hover {
+    border-color: inherit;
     font-weight: inherit;
     cursor: pointer;
 }

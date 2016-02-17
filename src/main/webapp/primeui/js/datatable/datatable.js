@@ -97,7 +97,7 @@
             this.tableWrapper = $('<div class="ui-datatable-tablewrapper" />').appendTo(this.element);
             this.table = $('<table><thead></thead><tbody></tbody></table>').appendTo(this.tableWrapper);
             this.thead = this.table.children('thead');
-            this.tbody = this.table.children('tbody').addClass('ui-datatable-data');
+            this.tbody = this.table.children('tbody').addClass('ui-datatable-data ui-widget-content');
 
             if(this.containsFooter()) {
                 this.tfoot = this.thead.after('<tfoot></tfoot>').next();
