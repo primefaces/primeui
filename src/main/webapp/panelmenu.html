@@ -28,7 +28,7 @@
 
         <div id="pm" style="width:300px">
             <div>
-                <div><a data-icon="fa-file">File</a></div>
+                <div><a data-icon="fa-file-o">File</a></div>
                 <div>
                     <ul>
                         <li><a data-icon="fa-plus">New</a>
@@ -37,25 +37,51 @@
                                 <li><a>Other</a></li>
                             </ul>
                         </li>
-                        <li><a data-icon="fa-child">Entertainment</a></li>
+                        <li><a>Open</a></li>
+                        <li><a>Quit</a></li>
                     </ul>
                 </div>
             </div>
             <div>
-                <div><a>Categories</a></div>
+                <div><a data-icon="fa-edit">Edit</a></div>
                 <div>
                     <ul>
-                        <li><a data-icon="fa-check">TV</a></li>
-                        <li><a data-icon="fa-child">Entertainment</a>
+                        <li><a data-icon="fa-mail-forward">Undo</a></li>
+                        <li><a data-icon="fa-mail-reply">Redo</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div><a data-icon="fa-question">Help</a></div>
+                <div>
+                    <ul>
+                        <li><a>Contents</a></li>
+                        <li><a data-icon="fa-search">Search</a>
                             <ul>
-                                <li><a data-icon="fa-soccer-ball-o">Sports</a>
+                                <li><a>Text</a>
                                     <ul>
-                                        <li><a>1.1</a></li>
-                                        <li><a>1.2</a></li>
-                                        <li><a>2.1</a></li>
-                                        <li><a>2.2</a></li>
+                                        <li><a>Workspace</a></li>
                                     </ul>
                                 </li>
+                                <li><a>File</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div><a data-icon="fa-gear">Actions</a></div>
+                <div>
+                    <ul>
+                        <li><a data-icon="fa-pencil">Edit</a>
+                            <ul>
+                                <li><a data-icon="fa-save">Save</a></li>
+                                <li><a data-icon="fa-save">Update</a></li>
+                            </ul>
+                        </li>
+                        <li><a data-icon="fa-phone">Other</a>
+                            <ul>
+                                <li><a data-icon="fa-minus">Delete</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -76,7 +102,6 @@
                             <li><a href="#doc-events">Events</a></li>
                             <li><a href="#doc-methods">Methods</a></li>
                             <li><a href="#doc-methods">Source</a></li>
-                            <li class="tab-primeelement"><a href="#doc-element">PrimeElement</a></li>
                         </ul>
 
                         <div>
@@ -88,10 +113,23 @@
                                 </pre>
 
                                 <pre name="code" class="brush:xml">
-        &lt;div id="pm" &gt;
-            &lt;div&gt;//Header... &lt;/div&gt;
-            &lt;div&gt;//Content... &lt;/div&gt;
-        &lt;/div &gt;
+&lt;div id="pm" style="width:300px"&gt;
+    &lt;div&gt;
+        &lt;div&gt;&lt;a data-icon="fa-file-o"&gt;File&lt;/a&gt;&lt;/div&gt;
+        &lt;div&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a data-icon="fa-plus"&gt;New&lt;/a&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;&lt;a&gt;Project&lt;/a&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;a&gt;Other&lt;/a&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/li&gt;
+                &lt;li&gt;&lt;a&gt;Open&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a&gt;Quit&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
 
                                 </pre>
 
@@ -109,34 +147,16 @@
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <td>popup</td>
+                                        <td>autoDisplay</td>
                                         <td>boolean</td>
                                         <td>false</td>
-                                        <td>Defines if menu would displayed as a popup.</td>
+                                        <td>Displays without the mouse click.</td>
                                     </tr>
                                     <tr>
-                                        <td>trigger</td>
-                                        <td>string/element</td>
-                                        <td>null</td>
-                                        <td>Trigger element to show the menu in popup mode.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>my</td>
-                                        <td>string</td>
-                                        <td>left top</td>
-                                        <td>Corners of menu to align with trigger in popup mode.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>at</td>
-                                        <td>string</td>
-                                        <td>left bottom</td>
-                                        <td>Corner of the trigger to align with menu in popup mode.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>triggerEvent</td>
-                                        <td>string</td>
-                                        <td>click</td>
-                                        <td>Event to show the menu in popup mode.</td>
+                                        <td>stateful</td>
+                                        <td>boolean</td>
+                                        <td>false</td>
+                                        <td>Saves the last state of panel menu.</td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -176,140 +196,77 @@
                             <div id="doc-source">
 
                                 <pre name="code" class="brush:js">
-$('#pm1').puimenu();
-
-$('#pm2').puimenu({
-    popup: true,
-    trigger: $('#pm2trigger')
-});
-
+$('#pm').puipanelmenu();
 $('button').puibutton();
                                 </pre>
 
                                 <pre name="code" class="brush:xml">
-&lt;h3 class="first"&gt;Default&lt;/h3&gt;
-&lt;ul id="pm1"&gt;
-    &lt;li&gt;&lt;h3&gt;File&lt;/h3&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a data-icon="fa-plus"&gt;New&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a data-icon="fa-download"&gt;Open&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;h3&gt;Edit&lt;/h3&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a data-icon="fa-refresh"&gt;Undo&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a data-icon="ui-icon-arrowreturnthick-1-e"&gt;Redo&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3&gt;Popup&lt;/h3&gt;
-&lt;button id="pm2trigger" style="margin-top:0px"&gt;Show&lt;/button&gt;
-&lt;ul id="pm2"&gt;
-    &lt;li&gt;&lt;h3&gt;File&lt;/h3&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a data-icon="ui-icon-document"&gt;New&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a data-icon="ui-icon-folder-open"&gt;Open&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;h3&gt;Edit&lt;/h3&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a data-icon="ui-icon-arrowreturnthick-1-w"&gt;Undo&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a data-icon="ui-icon-arrowreturnthick-1-e"&gt;Redo&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3&gt;PrimeElement&lt;/h3&gt;
-&lt;p-menu&gt;
-    &lt;p-submenu value="File"&gt;
-        &lt;p-menuitem value="New" icon="fa-plus"&gt;&lt;/p-menuitem&gt;
-        &lt;p-menuitem value="Open" icon="fa-download"&gt;&lt;/p-menuitem&gt;
-    &lt;/p-submenu&gt;
-    &lt;p-submenu value="Edit"&gt;
-        &lt;p-menuitem value="Undo" icon="fa-refresh"&gt;&lt;/p-menuitem&gt;
-        &lt;p-menuitem value="Close" icon="fa-close"&gt;&lt;/p-menuitem&gt;
-    &lt;/p-submenu&gt;
-&lt;/p-menu&gt;
+&lt;div id="pm" style="width:300px"&gt;
+    &lt;div&gt;
+        &lt;div&gt;&lt;a data-icon="fa-file-o"&gt;File&lt;/a&gt;&lt;/div&gt;
+        &lt;div&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a data-icon="fa-plus"&gt;New&lt;/a&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;&lt;a&gt;Project&lt;/a&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;a&gt;Other&lt;/a&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/li&gt;
+                &lt;li&gt;&lt;a&gt;Open&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a&gt;Quit&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;div&gt;&lt;a data-icon="fa-edit"&gt;Edit&lt;/a&gt;&lt;/div&gt;
+        &lt;div&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a data-icon="fa-mail-forward"&gt;Undo&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a data-icon="fa-mail-reply"&gt;Redo&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;div&gt;&lt;a data-icon="fa-question"&gt;Help&lt;/a&gt;&lt;/div&gt;
+        &lt;div&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a&gt;Contents&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a data-icon="fa-search"&gt;Search&lt;/a&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;&lt;a&gt;Text&lt;/a&gt;
+                            &lt;ul&gt;
+                                &lt;li&gt;&lt;a&gt;Workspace&lt;/a&gt;&lt;/li&gt;
+                            &lt;/ul&gt;
+                        &lt;/li&gt;
+                        &lt;li&gt;&lt;a&gt;File&lt;/a&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;div&gt;&lt;a data-icon="fa-gear"&gt;Actions&lt;/a&gt;&lt;/div&gt;
+        &lt;div&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a data-icon="fa-pencil"&gt;Edit&lt;/a&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;&lt;a data-icon="fa-save"&gt;Save&lt;/a&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;a data-icon="fa-save"&gt;Update&lt;/a&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/li&gt;
+                &lt;li&gt;&lt;a data-icon="fa-phone"&gt;Other&lt;/a&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;&lt;a data-icon="fa-minus"&gt;Delete&lt;/a&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
 
                                 </pre>
 
                             </div>
-
-                            <div id="doc-element">
-                                <h3>Usage</h3>
-                                Menu is defined using submenus and menuitem elements.
-
-                                <h4>Inline</h4>
-                                <pre name="code" class="brush:xml">
-&lt;p-menu&gt;
-    &lt;p-submenu value="File"&gt;
-        &lt;p-menuitem value="New" icon="fa-plus"&gt;&lt;/p-menuitem&gt;
-        &lt;p-menuitem value="Open" icon="fa-download"&gt;&lt;/p-menuitem&gt;
-    &lt;/p-submenu&gt;
-    &lt;p-submenu value="Edit"&gt;
-        &lt;p-menuitem value="Undo" icon="fa-refresh"&gt;&lt;/p-menuitem&gt;
-        &lt;p-menuitem value="Close" icon="fa-close"&gt;&lt;/p-menuitem&gt;
-    &lt;/p-submenu&gt;
-&lt;/p-menu&gt;
-                                </pre>
-
-                                <h4>Popup</h4>
-                                <pre name="code" class="brush:xml">
-&lt;button id="btn" type="button" is="p-button"&gt;Show&lt;/button&gt;
-
-&lt;p-menu popup trigger="btn"&gt;
-    &lt;p-submenu value="File"&gt;
-        &lt;p-menuitem value="New" icon="fa-plus"&gt;&lt;/p-menuitem&gt;
-        &lt;p-menuitem value="Open" icon="fa-download"&gt;&lt;/p-menuitem&gt;
-    &lt;/p-submenu&gt;
-    &lt;p-submenu value="Edit"&gt;
-        &lt;p-menuitem value="Undo" icon="fa-refresh"&gt;&lt;/p-menuitem&gt;
-        &lt;p-menuitem value="Close" icon="fa-close"&gt;&lt;/p-menuitem&gt;
-    &lt;/p-submenu&gt;
-&lt;/p-menu&gt;
-                                </pre>
-
-                                <h3>Attributes</h3>
-                                <table class="doc-table">
-                                    <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Type</th>
-                                        <th>Default</th>
-                                        <th>Description</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>id</td>
-                                        <td>string</td>
-                                        <td>null</td>
-                                        <td>Identifier of the element.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>popup</td>
-                                        <td>boolean</td>
-                                        <td>false</td>
-                                        <td>Defines if menu would displayed as a popup.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>trigger</td>
-                                        <td>string</td>
-                                        <td>null</td>
-                                        <td>Id of trigger element to show the menu in popup mode.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>my</td>
-                                        <td>string</td>
-                                        <td>left top</td>
-                                        <td>Corners of menu to align with trigger in popup mode.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>at</td>
-                                        <td>string</td>
-                                        <td>left bottom</td>
-                                        <td>Corner of the trigger to align with menu in popup mode.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>triggerEvent</td>
-                                        <td>string</td>
-                                        <td>click</td>
-                                        <td>Event to show the menu in popup mode.</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                        </div>
 
                     </div>
                 </span>
