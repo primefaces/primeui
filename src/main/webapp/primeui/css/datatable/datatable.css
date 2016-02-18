@@ -183,8 +183,9 @@
 /* Filter */
 .ui-datatable .ui-column-filter {
     display: block;
-    width:100px;
     margin:auto;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* Editing */
