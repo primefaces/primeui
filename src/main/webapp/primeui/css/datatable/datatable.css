@@ -200,6 +200,18 @@
     outline: 0;
 }
 
+.ui-datatable .ui-editable-column .ui-cell-editor {
+    display: none;
+}
+
+.ui-datatable .ui-editable-column.ui-cell-editing .ui-cell-editor {
+    display: inline;
+}
+
+.ui-datatable .ui-editable-column.ui-cell-editing .ui-cell-data {
+    display: none;
+}
+
 @media ( max-width: 35em ) {
     .ui-datatable-reflow thead th,
     .ui-datatable-reflow tfoot td {
