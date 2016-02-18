@@ -300,6 +300,10 @@
     margin-top: -8px;
 }
 
+.ui-panelmenu .ui-panelmenu-header .ui-menuitem-icon.fa {
+    left: 1.5em;
+}
+
 .ui-panelmenu .ui-panelmenu-content {
     padding: 0.2em 0;
     border-top: 0;
@@ -337,14 +341,15 @@
     padding: 0.3em 0.3em 0.3em 2em;
 }
 
-.ui-panelmenu .ui-menu-parent .ui-menuitem-link-hasicon {
+.ui-panelmenu .ui-menu-parent .ui-menuitem-link-hasicon,
+.ui-panelmenu .ui-panelmenu-header a.ui-panelmenu-headerlink-hasicon {
     padding-left: 2.8em;
 }
 
 .ui-panelmenu .fa {
     position: absolute;
     right: auto;
-    top: 0;
+    top: 4px;
     bottom: 0;
     margin: auto 0;
     left: 0.5em;

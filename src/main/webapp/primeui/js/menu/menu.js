@@ -1389,8 +1389,8 @@
 
             this.element.find('li').each(function(){
                 var listItem = $(this),
-                    menuitemLink = listItem.children('a'),
-                    icon = menuitemLink.data('icon');
+                menuitemLink = listItem.children('a'),
+                icon = menuitemLink.data('icon');
 
                 menuitemLink.addClass('ui-menuitem-link ui-corner-all').contents().wrap('<span class="ui-menuitem-text" />');
 
@@ -1400,13 +1400,17 @@
 
                 if(listItem.children('ul').length) {
                     listItem.addClass('ui-menu-parent');
-                    menuitemLink.prepend('<span class="ui-panelmenu-icon fa fa-caret-right"></span>');
+                    menuitemLink.prepend('<span class="ui-panelmenu-icon fa fa-fw fa-caret-right"></span>');
                     listItem.children('ul').addClass('ui-helper-hidden');
+
+                    if(icon) {
+                        menuitemLink.addClass('ui-menuitem-link-hasicon');
+                    }
                 }
 
                 listItem.addClass('ui-menuitem ui-widget ui-corner-all');
                 listItem.parent().addClass('ui-menu-list ui-helper-reset');
-            })
+            });
 
             this.panel.find('div').each(function () {
                 var divItem = $(this),
@@ -1416,13 +1420,14 @@
                     icon = divItemLink.data('icon');
 
                 if(icon) {
-                    divItemLink.prepend('<span class="ui-menuitem-icon fa fa-fw ' + icon + '"></span>');
+                    divItemLink.addClass('ui-panelmenu-headerlink-hasicon').prepend('<span class="ui-menuitem-icon fa fa-fw ' + icon + '"></span>')
+
                 }
 
                 itemHeaders.addClass('ui-widget ui-panelmenu-header ui-state-default ui-corner-all').
-                prepend('<span class="ui-panelmenu-icon fa fa-caret-right"></span>');
+                prepend('<span class="ui-panelmenu-icon fa fa-fw fa-caret-right"></span>');
                 contentDiv.addClass('ui-panelmenu-content ui-widget-content ui-helper-hidden');
-            })
+            });
 
         },
 
