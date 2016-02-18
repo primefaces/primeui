@@ -5,16 +5,16 @@ if(!xtag.tags['p-password']) {
         extends: 'input',
 
         accessors: {
-            promptLabel:{
+            promptlabel:{
                 attribute:{}
             },
-            weakLabel:{
+            weaklabel:{
                 attribute:{}
             },
-            mediumLabel:{
+            mediumlabel:{
                 attribute:{}
             },
-            strongLabel:{
+            stronglabel:{
                 attribute:{}
             },
             inline:{
@@ -27,11 +27,11 @@ if(!xtag.tags['p-password']) {
         lifecycle: {
             created: function() {
                 $(this).puipassword({
-                    promptLabel: this.promptLabel || 'Please enter a password',
-                    weakLabel: this.weakLabel || 'Weak',
-                    mediumLabel: this.mediumLabel || 'Medium',
-                    strongLabel: this.strongLabel || 'Strong',
-                    inline: this.inline || false,
+                    promptLabel: this.promptlabel||'Please enter a password',
+                    weakLabel: this.weaklabel||'Weak',
+                    mediumLabel: this.mediumlabel||'Medium',
+                    strongLabel: this.stronglabel||'Strong',
+                    inline: this.inline
                 });
             }
         },
