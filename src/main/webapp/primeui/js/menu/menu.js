@@ -1355,7 +1355,7 @@
 
         options: {
             autoDisplay: true,
-            stateful:false
+            stateful: false
         },
 
         _create: function() {
@@ -1364,15 +1364,14 @@
                 this.id = this.element.uniqueId().attr('id');
             }
 
-            this.panel = this.element.children('div');
+            this.panels = this.element.children('div');
 
             this._render();
 
             this.headers = this.element.find('> .ui-panelmenu-panel > div.ui-panelmenu-header:not(.ui-state-disabled)');
-            this.menuContent = this.element.find('> .ui-panelmenu-panel > .ui-panelmenu-content');
-            this.menuitemLinks = this.menuContent.find('.ui-menuitem-link:not(.ui-state-disabled)');
-            this.menuText = this.menuitemLinks.find('.ui-menuitem-text');
-            this.treeLinks = this.menuContent.find('.ui-menu-parent > .ui-menuitem-link:not(.ui-state-disabled)');
+            this.contents = this.element.find('> .ui-panelmenu-panel > .ui-panelmenu-content');
+            this.menuitemLinks = this.contents.find('.ui-menuitem-link:not(.ui-state-disabled)');
+            this.treeLinks = this.contents.find('.ui-menu-parent > .ui-menuitem-link:not(.ui-state-disabled)');
 
             this._bindEvents();
 
@@ -1385,7 +1384,7 @@
 
         _render: function() {
             this.element.addClass('ui-panelmenu ui-widget');
-            this.panel.addClass('ui-panelmenu-panel');
+            this.panels.addClass('ui-panelmenu-panel');
 
             this.element.find('li').each(function(){
                 var listItem = $(this),
@@ -1412,23 +1411,21 @@
                 listItem.parent().addClass('ui-menu-list ui-helper-reset');
             });
 
-            this.panel.find('div').each(function () {
-                var divItem = $(this),
-                    itemHeaders = divItem.children('a').parent(),
-                    contentDiv = itemHeaders.siblings('div'),
-                    divItemLink = divItem.children('a'),
-                    icon = divItemLink.data('icon');
+            //headers
+            this.panels.children(':first-child').attr('tabindex', '0').each(function () {
+                var header = $(this),
+                headerLink = header.children('a'),
+                icon = headerLink.data('icon');
 
                 if(icon) {
-                    divItemLink.addClass('ui-panelmenu-headerlink-hasicon').prepend('<span class="ui-menuitem-icon fa fa-fw ' + icon + '"></span>')
-
+                    headerLink.addClass('ui-panelmenu-headerlink-hasicon').prepend('<span class="ui-menuitem-icon fa fa-fw ' + icon + '"></span>');
                 }
 
-                itemHeaders.addClass('ui-widget ui-panelmenu-header ui-state-default ui-corner-all').
-                prepend('<span class="ui-panelmenu-icon fa fa-fw fa-caret-right"></span>');
-                contentDiv.addClass('ui-panelmenu-content ui-widget-content ui-helper-hidden');
+                header.addClass('ui-widget ui-panelmenu-header ui-state-default ui-corner-all').prepend('<span class="ui-panelmenu-icon fa fa-fw fa-caret-right"></span>');
             });
 
+            //contents
+            this.panels.children(':last-child').attr('tabindex', '0').addClass('ui-panelmenu-content ui-widget-content ui-helper-hidden');
         },
 
         _bindEvents: function() {
@@ -1474,17 +1471,20 @@
 
             this.treeLinks.click(function(e) {
                 var link = $(this),
-                    submenu = link.parent(),
-                    submenuList = link.next();
+                submenu = link.parent(),
+                submenuList = link.next();
 
                 if(submenuList.is(':visible')) {
-                    if(link.children('span.fa-caret-down').length)
+                    if(link.children('span.fa-caret-down').length) {
                         link.children('span.fa-caret-down').removeClass('fa-caret-down').addClass('fa-caret-right');
+                    }
                     $this._collapseTreeItem(submenu);
                 }
                 else {
-                    if(link.children('span.fa-caret-right').length)
+                    if(link.children('span.fa-caret-right').length) {
                         link.children('span.fa-caret-right').removeClass('fa-caret-right').addClass('fa-caret-down');
+                    }
+
                     $this._expandTreeItem(submenu, false);
                 }
 
@@ -1517,7 +1517,7 @@
                     }
                 });
 
-            this.menuContent.on('mousedown.panelmenu', function(e) {
+            this.contents.on('mousedown.panelmenu', function(e) {
                 if($(e.target).is(':not(:input:enabled)')) {
                     e.preventDefault();
                 }
@@ -1530,7 +1530,7 @@
                 }
             });
 
-            this.menuContent.off('keydown.panelmenu blur.panelmenu').on('keydown.panelmenu', function(e) {
+            this.contents.off('keydown.panelmenu blur.panelmenu').on('keydown.panelmenu', function(e) {
                 if(!$this.focusedItem) {
                     return;
                 }
@@ -1680,7 +1680,7 @@
             panel.attr('aria-hidden', true).slideUp('normal', 'easeInOutCirc');
 
             this._removeAsExpanded(panel);
-        },
+},
 
         _expandRootSubmenu: function(header, restoring) {
             var panel = header.next();
