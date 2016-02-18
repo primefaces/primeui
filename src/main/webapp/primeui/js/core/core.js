@@ -217,7 +217,20 @@ var PUI = {
         else {
             return null;
         }
+    },
+
+    getCookie : function(name) {
+        return $.cookie(name);
+    },
+
+    setCookie : function(name, value, cfg) {
+        $.cookie(name, value, cfg);
+    },
+
+    deleteCookie: function(name, cfg) {
+        $.removeCookie(name, cfg);
     }
+
 };
 
 PUI.resolveUserAgent();
