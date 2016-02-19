@@ -1355,7 +1355,8 @@
 
         options: {
             autoDisplay: true,
-            stateful: false
+            stateful: false,
+            enhanced: false
         },
 
         _create: function() {
@@ -1383,7 +1384,11 @@
         },
 
         _render: function() {
-            this.element.addClass('ui-panelmenu ui-widget');
+            var $this = this;
+
+            if(!this.options.enhanced) {
+                this.element.addClass('ui-panelmenu ui-widget');
+            }
             this.panels.addClass('ui-panelmenu-panel');
 
             this.element.find('li').each(function(){
@@ -1391,7 +1396,12 @@
                 menuitemLink = listItem.children('a'),
                 icon = menuitemLink.data('icon');
 
-                menuitemLink.addClass('ui-menuitem-link ui-corner-all').contents().wrap('<span class="ui-menuitem-text" />');
+                menuitemLink.addClass('ui-menuitem-link ui-corner-all');
+
+                if($this.options.enhanced)
+                    menuitemLink.children('span').addClass('ui-menuitem-text');
+                else
+                    menuitemLink.contents().wrap('<span class="ui-menuitem-text" />');
 
                 if(icon) {
                     menuitemLink.prepend('<span class="ui-menuitem-icon fa fa-fw ' + icon + '"></span>');
@@ -1428,20 +1438,26 @@
             this.panels.children(':last-child').attr('tabindex', '0').addClass('ui-panelmenu-content ui-widget-content ui-helper-hidden');
         },
 
+        _unbindEvents: function() {
+            this.headers.off('mouseover.ui-panelmenu mouseout.ui-panelmenu click.ui-panelmenu');
+            this.menuitemLinks.off('mouseover.ui-panelmenu mouseout.ui-panelmenu click.ui-panelmenu');
+            this.treeLinks.off('click.ui-panelmenu');
+        },
+
         _bindEvents: function() {
             var $this = this;
 
-            this.headers.mouseover(function() {
+            this.headers.on('mouseover.ui-panelmenu', function() {
                 var element = $(this);
                 if(!element.hasClass('ui-state-active')) {
                     element.addClass('ui-state-hover');
                 }
-            }).mouseout(function() {
+            }).on('mouseout.ui-panelmenu', function() {
                 var element = $(this);
                 if(!element.hasClass('ui-state-active')) {
                     element.removeClass('ui-state-hover');
                 }
-            }).click(function(e) {
+            }).on('click.ui-panelmenu', function(e) {
                 var header = $(this);
 
                 if(header.hasClass('ui-state-active'))
@@ -1454,11 +1470,11 @@
                 e.preventDefault();
             });
 
-            this.menuitemLinks.mouseover(function() {
+            this.menuitemLinks.on('mouseover.ui-panelmenu', function() {
                 $(this).addClass('ui-state-hover');
-            }).mouseout(function() {
+            }).on('mouseout.ui-panelmenu', function() {
                 $(this).removeClass('ui-state-hover');
-            }).click(function(e) {
+            }).on('click.ui-panelmenu', function(e) {
                 var currentLink = $(this);
                 $this._focusItem(currentLink.closest('.ui-menuitem'));
 
@@ -1469,7 +1485,7 @@
                 e.preventDefault();
             });
 
-            this.treeLinks.click(function(e) {
+            this.treeLinks.on('click.ui-panelmenu', function(e) {
                 var link = $(this),
                 submenu = link.parent(),
                 submenuList = link.next();
@@ -1824,8 +1840,67 @@
             if(this.options.stateful) {
                 PUI.deleteCookie(this.stateKey, {path:'/'});
             }
-        }
+        },
 
+        _destroy: function() {
+            var $this = this;
+            this._unbindEvents();
+            if(!this.options.enhanced) {
+                this.element.removeClass('ui-panelmenu ui-widget');
+            }
+
+            this.panels.removeClass('ui-panelmenu-panel');
+            this.element.find('li').each(function(){
+                var listItem = $(this),
+                    menuitemLink = listItem.children('a');
+
+                menuitemLink.removeClass('ui-menuitem-link ui-corner-all');
+                listItem.removeClass('ui-menu-parent');
+
+                if($this.options.enhanced)
+                    menuitemLink.children('span').removeClass('ui-menuitem-text');
+                else
+                    menuitemLink.contents().unwrap();
+
+                menuitemLink.children('.ui-menuitem-icon').remove();
+
+                listItem.removeClass('ui-menuitem ui-widget ui-corner-all')
+                    .parent().removeClass('ui-menu-list ui-helper-reset');
+
+            });
+
+            //headers
+            this.panels.children(':first-child').attr('tabindex', '0').each(function () {
+                var header = $(this),
+                    headerLink = header.children('a'),
+                    icon = headerLink.data('icon');
+
+                if(icon) {
+                    headerLink.removeClass('ui-panelmenu-headerlink-hasicon');
+                }
+
+                headerLink.children('span').removeClass('ui-menuitem-icon');
+                header.removeClass('ui-widget ui-panelmenu-header ui-state-default ui-corner-all');
+                header.children('span').removeClass('ui-panelmenu-icon');
+            });
+
+            //contents
+            this.panels.children(':last-child').removeClass('ui-panelmenu-content ui-widget-content ui-helper-hidden');
+
+            this.panels.children(':last-child').children('ul').each(function () {
+                var content = $(this),
+                    contentSpan = content.children('li').children('span'),
+                    icon = contentSpan.data('icon');
+
+                contentSpan.removeClass('ui-panelmenu-icon').removeClass('ui-menuitem-icon').removeClass('ui-menuitem-text');
+
+                if(content.children('ul')) {
+                    content.children('li').children('ul').removeClass('ui-helper-hidden');
+                    content.children('li').children('ul').children('li').children('span').
+                    removeClass('ui-panelmenu-icon').removeClass('ui-menuitem-icon').removeClass('ui-menuitem-text');
+                }
+            });
+        }
     });
 
 })();
