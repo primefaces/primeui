@@ -581,3 +581,11 @@ button.ui-button span {
 	color: #ffffff;
 	border-color: #168dd9;
 }
+
+/* PanelMenu */
+.ui-panelmenu .ui-panelmenu-header.ui-state-active,
+.ui-panelmenu .ui-panelmenu-header.ui-state-active a {
+    background: #27abff;
+    color: #ffffff;
+    border-color: #168dd9;
+}
