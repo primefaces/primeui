@@ -4,7 +4,7 @@
 (function() {
 
     $.widget("primeui.puidatatable", {
-       
+
         options: {
             columns: null,
             datasource: null,
@@ -42,18 +42,18 @@
             rowReorder: null,
             cellEdit: null,
         },
-        
+
         _create: function() {
             this.id = this.element.attr('id');
             if(!this.id) {
                 this.id = this.element.uniqueId().attr('id');
             }
-            
+
             this.element.addClass('ui-datatable ui-widget');
             if(this.options.responsive) {
                 this.element.addClass('ui-datatable-reflow');
             }
-            
+
             if(this.options.scrollable) {
                 this._createScrollableDatatable();
             }
@@ -69,7 +69,7 @@
                     if($.type(this.options.datasource) === 'string') {
                         var $this = this,
                         dataURL = this.options.datasource;
-                
+
                         this.options.datasource = function() {
                             $.ajax({
                                 type: 'GET',
@@ -82,7 +82,7 @@
                             });
                         };
                     }
-                    
+
                     if($.type(this.options.datasource) === 'function') {
                         if(this.options.lazy)
                             this.options.datasource.call(this, this._onDataInit, {first:0, rows:this._getRows(), sortField:this.options.sortField, sortOrder:this.options.sortOrder, filters: this._createFilterMap()});
@@ -92,7 +92,7 @@
                 }
             }
         },
-        
+
         _createRegularDatatable: function() {
             this.tableWrapper = $('<div class="ui-datatable-tablewrapper" />').appendTo(this.element);
             this.table = $('<table><thead></thead><tbody></tbody></table>').appendTo(this.tableWrapper);
@@ -103,20 +103,20 @@
                 this.tfoot = this.thead.after('<tfoot></tfoot>').next();
             }
         },
-        
-        _createScrollableDatatable: function() {            
+
+        _createScrollableDatatable: function() {
             this.element.append('<div class="ui-widget-header ui-datatable-scrollable-header"><div class="ui-datatable-scrollable-header-box"><table><thead></thead></table></div></div>')
                         .append('<div class="ui-datatable-scrollable-body"><table><tbody></tbody></table></div>');
-        
+
             this.thead = this.element.find('> .ui-datatable-scrollable-header > .ui-datatable-scrollable-header-box > table > thead');
             this.tbody = this.element.find('> .ui-datatable-scrollable-body > table > tbody');
-            
+
             if(this.containsFooter()) {
                 this.element.append('<div class="ui-widget-header ui-datatable-scrollable-footer"><div class="ui-datatable-scrollable-footer-box"><table><tfoot></tfoot></table></div></div>');
                 this.tfoot = this.element.find('> .ui-datatable-scrollable-footer > .ui-datatable-scrollable-footer-box > table > tfoot');
             }
         },
-                
+
         _initialize: function() {
             var $this = this;
 
@@ -126,16 +126,16 @@
             if(this.options.caption) {
                 this.element.prepend('<div class="ui-datatable-header ui-widget-header">' + this.options.caption + '</div>');
             }
-            
+
             if(this.options.paginator) {
                 this.options.paginator.paginate = function(event, state) {
                     $this.paginate();
                 };
-                
+
                 this.options.paginator.totalRecords = this.options.lazy ? this.options.paginator.totalRecords : this.data.length;
                 this.paginator = $('<div></div>').insertAfter(this.tableWrapper).puipaginator(this.options.paginator);
             }
-            
+
             if(this.options.footer) {
                 this.element.append('<div class="ui-datatable-footer ui-widget-header">' + this.options.footer + '</div>');
             }
@@ -143,23 +143,23 @@
             if(this._isSortingEnabled()) {
                 this._initSorting();
             }
-            
+
             if(this.hasFiltering) {
                 this._initFiltering();
             }
-            
+
             if(this.options.selectionMode) {
                 this._initSelection();
             }
-            
+
             if(this.options.expandableRows) {
                 this._initExpandableRows();
             }
-            
+
             if(this.options.draggableColumns) {
                 this._initDraggableColumns();
             }
-            
+
             if(this.options.stickyHeader) {
                 this._initStickyHeader();
             }
@@ -167,57 +167,57 @@
             if (this.options.sortField && this.options.sortOrder) {
                 this._indicateInitialSortColumn();
                 this.sort(this.options.sortField, this.options.sortOrder);
-            } 
+            }
             else {
                 this._renderData();
             }
-            
+
             if(this.options.scrollable) {
                 this._initScrolling();
             }
-            
+
             if(this.options.resizableColumns) {
                 this._initResizableColumns();
             }
-            
+
             if(this.options.draggableRows) {
                 this._initDraggableRows();
             }
-            
+
             if(this.options.editMode) {
                 this._initEditing();
             }
 
         },
-        
+
         _initHeader: function() {
             if(this.options.headerRows) {
                 for(var i = 0; i < this.options.headerRows.length; i++) {
                     this._initHeaderColumns(this.options.headerRows[i].columns);
                 }
-            }            
+            }
             else if(this.options.columns) {
                 this._initHeaderColumns(this.options.columns);
             }
         },
-        
+
         _initFooter: function() {
             if(this.containsFooter()) {
                 if(this.options.footerRows) {
                     for(var i = 0; i < this.options.footerRows.length; i++) {
                         this._initFooterColumns(this.options.footerRows[i].columns);
                     }
-                }            
+                }
                 else if(this.options.columns) {
                     this._initFooterColumns(this.options.columns);
                 }
             }
         },
-        
+
         _initHeaderColumns: function(columns) {
-            var headerRow = $('<tr></tr>').appendTo(this.thead),
+            var headerRow = $('<tr class="ui-state-default"></tr>').appendTo(this.thead),
             $this = this;
-    
+
             $.each(columns, function(i, col) {
                 var cell = $('<th class="ui-state-default"><span class="ui-column-title"></span></th>').data('field', col.field).uniqueId().appendTo(headerRow);
 
@@ -233,11 +233,11 @@
                     cell.children('.ui-column-title').text(col.headerText);
                 else if(col.headerContent)
                     cell.children('.ui-column-title').append(col.headerContent.call(this, col));
-                
+
                 if(col.rowspan) {
                     cell.attr('rowspan', col.rowspan);
                 }
-                
+
                 if(col.colspan) {
                     cell.attr('colspan', col.colspan);
                 }
@@ -247,15 +247,15 @@
                             .data('order', 0)
                             .append('<span class="ui-sortable-column-icon fa fa-fw fa-sort"></span>');
                 }
-                
+
                 if(col.filter) {
                     $this.hasFiltering = true;
-                    
+
                     var filterElement = $('<input type="text" class="ui-column-filter" />').puiinputtext().data({
                         'field': col.field,
                         'filtermatchmode': col.filterMatchMode||'startsWith'
                     }).appendTo(cell);
-                    
+
                     if(col.filterFunction) {
                         filterElement.on('filter', function(event, dataValue, filterValue) {
                             return col.filterFunction.call($this, dataValue, filterValue);
@@ -264,7 +264,7 @@
                 }
             });
         },
-        
+
         _initFooterColumns: function(columns) {
             var footerRow = $('<tr></tr>').appendTo(this.tfoot);
             $.each(columns, function(i, col) {
@@ -272,11 +272,11 @@
                 if(col.footerText) {
                     cell.text(col.footerText);
                 }
-                
+
                 if(col.rowspan) {
                     cell.attr('rowspan', col.rowspan);
                 }
-                
+
                 if(col.colspan) {
                     cell.attr('colspan', col.colspan);
                 }
@@ -288,7 +288,7 @@
         _indicateInitialSortColumn: function() {
             this.sortableColumns = this.thead.find('> tr > th.ui-sortable-column');
             var $this = this;
-            
+
             $.each(this.sortableColumns, function(i, column) {
                 var $column = $(column),
                     data = $column.data();
@@ -309,35 +309,35 @@
             if(!this.data) {
                 this.data = [];
             }
-                
+
             this._initialize();
         },
-                
+
         _onDataUpdate: function(data) {
             this.data = data;
             if(!this.data) {
                 this.data = [];
             }
-            
+
             this.reset();
-                
+
             this._renderData();
         },
-        
+
         _onLazyLoad: function(data) {
             this.data = data;
             if(!this.data) {
                 this.data = [];
             }
-            
+
             this._renderData();
         },
-        
+
         reset: function() {
             if(this.options.selectionMode) {
                 this.selection = [];
             }
-            
+
             if(this.paginator) {
                 this.paginator.puipaginator('setState', {
                     page: 0,
@@ -348,11 +348,11 @@
             this.thead.find('> tr > th.ui-sortable-column').data('order', 0).filter('.ui-state-active').removeClass('ui-state-active')
                                 .children('span.ui-sortable-column-icon').removeClass('fa-sort-asc fa-sort-desc').addClass('fa-sort');
         },
-                
+
         _initSorting: function() {
             var $this = this,
             sortableColumns = this.thead.find('> tr > th.ui-sortable-column');
-            
+
             sortableColumns.on('mouseover.puidatatable', function() {
                 var column = $(this);
 
@@ -369,33 +369,33 @@
                 if(!$(event.target).is('th,span')) {
                     return;
                 }
-                
+
                 var column = $(this),
                 sortField = column.data('field'),
                 order = column.data('order'),
                 sortOrder = (order === 0) ? 1 : (order * -1),
                 sortIcon = column.children('.ui-sortable-column-icon');
-                
+
                 //clean previous sort state
                 column.siblings().filter('.ui-state-active').data('order', 0).removeClass('ui-state-active').children('span.ui-sortable-column-icon')
                                                             .removeClass('fa-sort-asc fa-sort-desc').addClass('fa-sort');
-                                                    
+
                 //update state
                 $this.options.sortField = sortField;
                 $this.options.sortOrder = sortOrder;
-    
+
                 $this.sort(sortField, sortOrder);
-                                
+
                 column.data('order', sortOrder).removeClass('ui-state-hover').addClass('ui-state-active');
                 if(sortOrder === -1)
                     sortIcon.removeClass('fa-sort fa-sort-asc').addClass('fa-sort-desc');
                 else if(sortOrder === 1)
                     sortIcon.removeClass('fa-sort fa-sort-desc').addClass('fa-sort-asc');
-                
+
                 $this._trigger('sort', event, {'sortOrder' : sortOrder, 'sortField' : sortField});
             });
         },
-        
+
         paginate: function() {
             if(this.options.lazy) {
                 if(this.options.selectionMode && ! this.options.keepSelectionInLazyMode) {
@@ -407,12 +407,12 @@
                this._renderData();
             }
         },
-                
+
         sort: function(field, order) {
             if(this.options.selectionMode) {
                 this.selection = [];
             }
-            
+
             if(this.options.lazy) {
                 this.options.datasource.call(this, this._onLazyLoad, this._createStateMeta());
             }
@@ -420,7 +420,7 @@
                 this.data.sort(function(data1, data2) {
                     var value1 = data1[field], value2 = data2[field],
                     result = null;
-                    
+
                     if (typeof value1 == 'string' || value1 instanceof String) {
                     	if ( value1.localeCompare ) {
                     		return (order * value1.localeCompare(value2));
@@ -433,14 +433,14 @@
                             	value2 = value2.toLowerCase();
                             }
                             result = (value1 < value2) ? -1 : (value1 > value2) ? 1 : 0;
-                            
-                            
+
+
                     	}
                     }
                     else {
                         result = (value1 < value2) ? -1 : (value1 > value2) ? 1 : 0;
-                    }  
-                    
+                    }
+
                     return (order * result);
                 });
 
@@ -455,16 +455,16 @@
                 this._renderData();
             }
         },
-                
+
         sortByField: function(a, b) {
             var aName = a.name.toLowerCase();
-            var bName = b.name.toLowerCase(); 
+            var bName = b.name.toLowerCase();
             return ((aName < bName) ? -1 : ((aName > bName) ? 1 : 0));
         },
-                
+
         _renderData: function() {
             this.tbody.html('');
-            
+
             var dataToRender = this.filteredData||this.data;
             if(dataToRender && dataToRender.length) {
                 var firstNonLazy = this._getFirst(),
@@ -473,14 +473,14 @@
 
                 for(var i = first; i < (first + rows); i++) {
                     var rowData = dataToRender[i];
-                    
+
                     if(rowData) {
                         var row = $('<tr class="ui-widget-content" />').appendTo(this.tbody),
                         zebraStyle = (i%2 === 0) ? 'ui-datatable-even' : 'ui-datatable-odd',
                         rowIndex = i;
 
                         row.addClass(zebraStyle);
-                        
+
                         if(this.options.lazy) {
                             rowIndex += firstNonLazy; // Selection is kept as it is non lazy data
                         }
@@ -488,7 +488,7 @@
                         if(this.options.selectionMode && PUI.inArray(this.selection, rowIndex)) {
                             row.addClass("ui-state-highlight");
                         }
-                        
+
                         row.data('rowindex', rowIndex);
 
                         for(var j = 0; j < this.options.columns.length; j++) {
@@ -497,20 +497,20 @@
 
                             if(columnOptions.bodyClass) {
                                 column.addClass(columnOptions.bodyClass);
-                            } 
+                            }
 
                             if(columnOptions.bodyStyle) {
                                 column.attr('style', columnOptions.bodyStyle);
                             }
-                            
+
                             if(columnOptions.editor) {
                                 column.addClass('ui-editable-column').data({
-                                    'editor': columnOptions.editor, 
+                                    'editor': columnOptions.editor,
                                     'rowdata': rowData,
                                     'field': columnOptions.field
                                 });
                             }
-                            
+
                             if(columnOptions.content) {
                                 var content = columnOptions.content.call(this, rowData, columnOptions);
                                 if($.type(content) === 'string')
@@ -524,7 +524,7 @@
                             else if(columnOptions.field) {
                                 column.text(rowData[columnOptions.field]);
                             }
-                            
+
                             if(this.options.responsive && columnOptions.headerText) {
                                 column.prepend('<span class="ui-column-title">' + columnOptions.headerText + '</span>');
                             }
@@ -538,23 +538,23 @@
                 emptyColumn.html(this.options.emptyMessage);
             }
         },
-                                
+
         _getFirst: function() {
             if(this.paginator) {
                 var page = this.paginator.puipaginator('option', 'page'),
                 rows = this.paginator.puipaginator('option', 'rows');
-                
+
                 return (page * rows);
             }
             else {
                 return 0;
             }
         },
-        
+
         _getRows: function() {
             return this.paginator ? this.paginator.puipaginator('option', 'rows') : (this.data ? this.data.length : 0);
         },
-                
+
         _isSortingEnabled: function() {
             var cols = this.options.columns;
             if(cols) {
@@ -564,21 +564,21 @@
                     }
                 }
             }
-            
+
             return false;
         },
-                
+
         _initSelection: function() {
             var $this = this;
             this.selection = [];
             this.rowSelector = '> tr.ui-widget-content:not(.ui-datatable-empty-message,.ui-datatable-unselectable)';
-            
+
             //shift key based range selection
             if(this._isMultipleSelection()) {
                 this.originRowIndex = 0;
                 this.cursorIndex = null;
             }
-                        
+
             this.tbody.off('mouseover.puidatatable mouseout.puidatatable mousedown.puidatatable click.puidatatable', this.rowSelector)
                     .on('mouseover.datatable', this.rowSelector, null, function() {
                         var element = $(this);
@@ -601,17 +601,17 @@
                         $this._onRowClick(e, this);
                         $this.mousedownOnRow = false;
                     });
-                    
+
             this._bindSelectionKeyEvents();
         },
-                
+
         _onRowClick: function(event, rowElement) {
             if(!$(event.target).is(':input,:button,a,.ui-c')) {
                 var row = $(rowElement),
                 selected = row.hasClass('ui-state-highlight'),
                 metaKey = event.metaKey||event.ctrlKey,
                 shiftKey = event.shiftKey;
-        
+
                 this.focusedRow = row;
 
                 //unselect a selected row if metakey is on
@@ -630,31 +630,31 @@
 
                         this.unselectAllRows();
                     }
-                    
+
                     this.selectRow(row, false, event);
-                } 
+                }
 
                 PUI.clearSelection();
             }
         },
-        
+
         onRowRightClick: function(event, rowElement) {
             var row = $(rowElement),
             rowIndex = this._getRowIndex(row),
             selectedData = this.data[rowIndex],
             selected = row.hasClass('ui-state-highlight');
-    
+
             if(this._isSingleSelection() || !selected) {
                 this.unselectAllRows();
             }
-            
+
             this.selectRow(row, true);
             this.dataSelectedByContextMenu = selectedData;
             this._trigger('rowSelectContextMenu', event, selectedData);
 
             PUI.clearSelection();
         },
-        
+
         _bindSelectionKeyEvents: function() {
             var $this = this;
 
@@ -712,7 +712,7 @@
             });
 
         },
-                
+
         _isSingleSelection: function() {
             return this.options.selectionMode === 'single';
         },
@@ -720,12 +720,12 @@
         _isMultipleSelection: function() {
             return this.options.selectionMode === 'multiple';
         },
-                
+
         unselectAllRows: function() {
             this.tbody.children('tr.ui-state-highlight').removeClass('ui-state-highlight').attr('aria-selected', false);
             this.selection = [];
         },
-        
+
         unselectRow: function(row, silent) {
             var rowIndex = this._getRowIndex(row);
             row.removeClass('ui-state-highlight').attr('aria-selected', false);
@@ -736,7 +736,7 @@
                 this._trigger('rowUnselect', null, this.data[rowIndex]);
             }
         },
-                
+
         selectRow: function(row, silent, event) {
             var rowIndex = this._getRowIndex(row),
             selectedData = this.data[rowIndex];
@@ -748,11 +748,11 @@
                 if (this.options.lazy) {
                     selectedData = this.data[rowIndex - this._getFirst()];
                 }
-                
+
                 this._trigger('rowSelect', event, selectedData);
             }
         },
-                
+
         getSelection: function() {
             var first = this.options.lazy ? this._getFirst() : 0,
                 selections = [];
@@ -763,8 +763,8 @@
             }
             return selections;
         },
-                
-        _removeSelection: function(rowIndex) {        
+
+        _removeSelection: function(rowIndex) {
             this.selection = $.grep(this.selection, function(value) {
                 return value !== rowIndex;
             });
@@ -775,15 +775,15 @@
                 this.selection.push(rowIndex);
             }
         },
-                
+
         _isSelected: function(rowIndex) {
             return PUI.inArray(this.selection, rowIndex);
         },
-                
+
         _getRowIndex: function(row) {
             return row.data('rowindex');
         },
-        
+
         _initExpandableRows: function() {
             var $this = this,
             togglerSelector = '> tr > td > div.ui-row-toggler';
@@ -802,11 +802,11 @@
                     }
             });
         },
-        
+
         toggleExpansion: function(toggler) {
             var row = toggler.closest('tr'),
             expanded = toggler.hasClass('fa-chevron-circle-down');
-    
+
             if(expanded) {
                 toggler.addClass('fa-chevron-circle-right').removeClass('fa-chevron-circle-down').attr('aria-expanded', false);
 
@@ -823,7 +823,7 @@
                 this.loadExpandedRowContent(row);
             }
         },
-        
+
         loadExpandedRowContent: function(row) {
             var rowIndex = this._getRowIndex(row),
             expandedRow = $('<tr class="ui-expanded-row-content ui-datatable-unselectable ui-widget-content"><td colspan="' + this.options.columns.length + '"></td></tr>');
@@ -832,11 +832,11 @@
             row.addClass('ui-expanded-row').after(expandedRow);
             this._trigger('rowExpand', null, this.data[this._getRowIndex(row)]);
         },
-        
+
         collapseRow: function(row) {
             row.removeClass('ui-expanded-row').next('.ui-expanded-row-content').remove();
         },
-        
+
         collapseAllRows: function() {
             var $this = this;
 
@@ -855,11 +855,11 @@
                 }
             });
         },
-        
+
         getExpandedRows: function () {
             return this.tbody.children('.ui-expanded-row');
         },
-                
+
         _createStateMeta: function() {
             var state = {
                 first: this._getFirst(),
@@ -868,13 +868,13 @@
                 sortOrder: this.options.sortOrder,
                 filters: this.filterMetaMap
             };
-            
+
             return state;
         },
-                
+
         _updateDatasource: function(datasource) {
             this.options.datasource = datasource;
-                        
+
             if($.isArray(this.options.datasource)) {
                 this._onDataUpdate(this.options.datasource);
             }
@@ -885,7 +885,7 @@
                     this.options.datasource.call(this, this._onDataUpdate);
             }
         },
-                
+
         _setOption: function(key, value) {
             if(key === 'datasource') {
                 this._updateDatasource(value);
@@ -894,7 +894,7 @@
                 $.Widget.prototype._setOption.apply(this, arguments);
             }
         },
-        
+
         _initScrolling: function() {
             this.scrollHeader = this.element.children('.ui-datatable-scrollable-header');
             this.scrollBody = this.element.children('.ui-datatable-scrollable-body');
@@ -1068,10 +1068,10 @@
                 this.columnWidthsFixed = true;
             }
         },
-        
+
         _initDraggableColumns: function() {
             var $this = this;
-            
+
             this.dragIndicatorTop = $('<span class="fa fa-arrow-down" style="position:absolute"/></span>').hide().appendTo(this.element);
             this.dragIndicatorBottom = $('<span class="fa fa-arrow-up" style="position:absolute"/></span>').hide().appendTo(this.element);
 
@@ -1106,12 +1106,12 @@
                         }
 
                         $this.dragIndicatorTop.offset({
-                            'left': arrowX, 
+                            'left': arrowX,
                             'top': topArrowY - 3
                         }).show();
 
                         $this.dragIndicatorBottom.offset({
-                            'left': arrowX, 
+                            'left': arrowX,
                             'top': bottomArrowY - 3
                         }).show();
                     }
@@ -1119,12 +1119,12 @@
                 stop: function(event, ui) {
                     //hide dnd arrows
                     $this.dragIndicatorTop.css({
-                        'left':0, 
+                        'left':0,
                         'top':0
                     }).hide();
 
                     $this.dragIndicatorBottom.css({
-                        'left':0, 
+                        'left':0,
                         'top':0
                     }).hide();
                 },
@@ -1217,7 +1217,7 @@
                 }
             });
         },
-        
+
         containsFooter: function() {
             if(this.hasFooter === undefined) {
                 this.hasFooter = this.options.footerRows !== undefined;
@@ -1235,7 +1235,7 @@
 
             return this.hasFooter;
         },
-        
+
         _initResizableColumns: function() {
             this.element.addClass('ui-datatable-resizable');
             this.thead.find('> tr > th').addClass('ui-resizable-column');
@@ -1259,11 +1259,11 @@
                 },
                 drag: function(event, ui) {
                     $this.resizerHelper.offset({
-                        left: ui.helper.offset().left + ui.helper.width() / 2, 
+                        left: ui.helper.offset().left + ui.helper.width() / 2,
                         top: $this.thead.offset().top + $this.thead.height()
-                    });                
+                    });
                 },
-                stop: function(event, ui) {                
+                stop: function(event, ui) {
                     ui.helper.css({
                         'left': '',
                         'top': '0px',
@@ -1293,9 +1293,9 @@
                 containment: this.element
             });
         },
-        
+
         resize: function(event, ui) {
-            var columnHeader, nextColumnHeader, change = null, newWidth = null, nextColumnWidth = null, 
+            var columnHeader, nextColumnHeader, change = null, newWidth = null, nextColumnWidth = null,
             expandMode = (this.options.columnResizeMode === 'expand'),
             table = this.thead.parent(),
             columnHeader = ui.helper.parent(),
@@ -1305,7 +1305,7 @@
             newWidth = (columnHeader.width() + change),
             nextColumnWidth = (nextColumnHeader.width() - change);
 
-            if((newWidth > 15 && nextColumnWidth > 15) || (expandMode && newWidth > 15)) {          
+            if((newWidth > 15 && nextColumnWidth > 15) || (expandMode && newWidth > 15)) {
                 if(expandMode) {
                     table.width(table.width() + change);
                     setTimeout(function() {
@@ -1355,10 +1355,10 @@
                             nextFooterCol.width(nextColumnWidth);
                         }*/
                     }
-                }            
+                }
             }
         },
-        
+
         addResizers: function() {
             var resizableColumns = this.thead.find('> tr > th.ui-resizable-column');
             resizableColumns.prepend('<span class="ui-column-resizer">&nbsp;</span>');
@@ -1367,7 +1367,7 @@
                 resizableColumns.filter(':last-child').children('span.ui-column-resizer').hide();
             }
         },
-        
+
         _initDraggableRows: function() {
             var $this = this;
 
@@ -1421,15 +1421,15 @@
 
             }
         },
-        
+
         getContextMenuSelection: function(data) {
             return this.dataSelectedByContextMenu;
         },
-        
+
         _initFiltering: function() {
             var $this = this;
             this.filterElements = this.thead.find('.ui-column-filter');
-            
+
             this.filterElements.on('keyup', function() {
                         if($this.filterTimeout) {
                             clearTimeout($this.filterTimeout);
@@ -1442,31 +1442,31 @@
                         $this.options.filterDelay);
                     });
         },
-        
+
         filter: function() {
             this.filterMetaMap = [];
-                
+
             for(var i = 0; i < this.filterElements.length; i++) {
                 var filterElement = this.filterElements.eq(i),
                 filterElementValue = filterElement.val();
 
                 if(filterElementValue && $.trim(filterElementValue) !== '') {
                     this.filterMetaMap.push({
-                        field: filterElement.data('field'), 
-                        filterMatchMode: filterElement.data('filtermatchmode'), 
+                        field: filterElement.data('field'),
+                        filterMatchMode: filterElement.data('filtermatchmode'),
                         value: filterElementValue.toLowerCase(),
                         element: filterElement
                     });
                 }
             }
-                
+
             if(this.options.lazy) {
                 this.options.datasource.call(this, this._onLazyLoad, this._createStateMeta());
             }
             else {
                 if(this.filterMetaMap.length) {
                     this.filteredData = [];
-                    
+
                     for(var i = 0; i < this.data.length; i++) {
                         var localMatch = true;
 
@@ -1475,7 +1475,7 @@
                             filterValue = filterMeta.value,
                             filterField = filterMeta.field,
                             dataFieldValue = this.data[i][filterField];
-                    
+
                             if(filterMeta.filterMatchMode === 'custom') {
                                 localMatch = filterMeta.element.triggerHandler('filter', [dataFieldValue, filterValue]);
                             }
@@ -1503,46 +1503,46 @@
                 if(this.paginator) {
                     this.paginator.puipaginator('option', 'totalRecords', this.filteredData ? this.filteredData.length : this.data ? this.data.length : 0);
                 }
-                
+
                 this._renderData();
             }
         },
-        
+
         filterConstraints: {
-            
+
             startsWith: function(value, filter) {
                 if(filter === undefined || filter === null || $.trim(filter) === '') {
                     return true;
                 }
-                
+
                 if(value === undefined || value === null) {
                     return false;
                 }
-                
+
                 return value.toString().toLowerCase().slice(0, filter.length) === filter;
             },
-            
+
             contains: function(value, filter) {
                 if(filter === undefined || filter === null || $.trim(filter) === '') {
                     return true;
                 }
-                
+
                 if(value === undefined || value === null) {
                     return false;
                 }
-                
+
                 return value.toString().toLowerCase().indexOf(filter) !== -1;
             }
-            
+
         },
-        
+
         _initStickyHeader: function() {
             var table = this.thead.parent(),
             offset = table.offset(),
             win = $(window),
             $this = this,
             stickyNS = 'scroll.' + this.id,
-            resizeNS = 'resize.sticky-' + this.id; 
+            resizeNS = 'resize.sticky-' + this.id;
 
             this.cloneContainer = $('<div class="ui-datatable ui-datatable-sticky ui-widget"><table></table></div>');
             this.clone = this.thead.clone(true);
@@ -1588,11 +1588,11 @@
             //filter support
             this.thead.find('.ui-column-filter').prop('disabled', true);
         },
-        
+
         _initEditing: function() {
             var cellSelector = '> tr > td.ui-editable-column',
             $this = this;
-            
+
             this.tbody.off('click', cellSelector)
                         .on('click', cellSelector, null, function(e) {
                             var cell = $(this);
@@ -1602,15 +1602,15 @@
                             }
                         });
         },
-  
+
         _showCellEditor: function(cell) {
             var editor = this.editors[cell.data('editor')].call(),
             $this = this;
-    
+
             editor.val(cell.data('rowdata')[cell.data('field')]);
-            
+
             cell.addClass('ui-cell-editing').html('').append(editor);
-            
+
             editor.focus().on('change', function() {
                 $this._onCellEditorChange(cell);
             })
@@ -1644,30 +1644,30 @@
                             $this._showCellEditor(nextCell);
                         }
                     }
-                    
+
                     e.preventDefault();
                 } else if(key === keyCode.ESCAPE) {
                     $this._onCellEditorBlur(cell);
                 }
-                
+
             });
         },
-        
+
         _onCellEditorChange: function(cell) {
             var newCellValue = cell.children('.ui-cell-editor').val();
-            
+
             var retVal = this._trigger('cellEdit', null, {
                 oldValue: cell.data('rowdata')[cell.data('field')],
                 newValue: newCellValue,
                 data: cell.data('rowdata'),
                 field: cell.data('field')
             });
-            
+
             if(retVal !== false) {
                 cell.data('rowdata')[cell.data('field')] = newCellValue;
             }
         },
-        
+
         _onCellEditorBlur: function(cell) {
             cell.removeClass('ui-cell-editing').text(cell.data('rowdata')[cell.data('field')])
                     .children('.ui-cell-editor').remove();
@@ -1700,13 +1700,13 @@
 
             return filters;
         },
-        
+
         editors: {
-            
+
             'input': function() {
                 return $('<input type="text" class="ui-cell-editor"/>');
             }
         }
-    
+
     });
 })();

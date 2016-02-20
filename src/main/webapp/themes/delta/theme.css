@@ -589,3 +589,11 @@ button.ui-button span {
     color: #ffffff;
     border-color: #168dd9;
 }
+
+/* DataTable */
+.ui-datatable th {
+    font-weight: bold;
+}
+.ui-datatable-odd {
+    background-color: #f9f9f9;
+}
