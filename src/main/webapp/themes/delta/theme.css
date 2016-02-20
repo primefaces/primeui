@@ -594,6 +594,16 @@ button.ui-button span {
 .ui-datatable th {
     font-weight: bold;
 }
+.ui-datatable th.ui-state-default{
+    background: #ebedf0;
+}
+.ui-datatable th.ui-state-hover{
+    background: #d3d5d8;
+}
+.ui-datatable th.ui-state-active{
+    background: #27abff;
+    color: #ffffff;
+}
 .ui-datatable-odd {
-    background-color: #f9f9f9;
+    background-color: #f9f9fa;
 }
