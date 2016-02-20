@@ -38,6 +38,10 @@
     border-style: solid;
 }
 
+.ui-datatable thead tr {
+    border-width: 0px;
+}
+
 .ui-datatable thead th {
     border-color: inherit;
 }
