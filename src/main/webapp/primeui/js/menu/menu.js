@@ -1155,9 +1155,11 @@
         },
 
         _unbindEvents: function() {
-            this.rootLinks.off('mouseenter.ui-megamenu click.ui-megamenu');
-            this.subLinks.off('mousenter.ui-megamenu');
+            this.rootLinks.off('mouseenter.ui-megamenu mouselave.ui-megamenu click.ui-megamenu');
+            this.subLinks.off('mouseenter.ui-megamenu mouselave.ui-megamenu');
             this.rootList.off('mouseleave.ui-megamenu');
+            this.rootList.find('> li.ui-menuitem > ul.ui-menu-child').off('mouseleave.ui-megamenu');
+            $(document.body).off('click.' + this.id);
         },
 
         _isVertical: function () {
