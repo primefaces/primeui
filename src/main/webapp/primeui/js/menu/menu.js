@@ -1026,7 +1026,7 @@
                     var submenuIcon = $this._isVertical() ? 'fa-caret-right' : 'fa-caret-down';
                     listItem.addClass('ui-menu-parent');
                     listItem.children('div').addClass('ui-megamenu-panel ui-widget-content ui-menu-list ui-corner-all ui-helper-clearfix ui-menu-child ui-shadow');
-                    menuitemLink.addClass('.ui-submenu-link').prepend('<span class="ui-submenu-icon fa fa-fw ' + submenuIcon + '"></span>');
+                    menuitemLink.addClass('ui-submenu-link').prepend('<span class="ui-submenu-icon fa fa-fw ' + submenuIcon + '"></span>');
                 }
             });
         },
@@ -1062,7 +1062,7 @@
                     var submenuIcon = $this._isVertical() ? 'fa-caret-right' : 'fa-caret-down';
                     listItem.removeClass('ui-menu-parent');
                     listItem.children('div').removeClass('ui-megamenu-panel ui-widget-content ui-menu-list ui-corner-all ui-helper-clearfix ui-menu-child ui-shadow');
-                    menuitemLink.removeClass('.ui-submenu-link').children('.ui-submenu-icon').remove();
+                    menuitemLink.removeClass('ui-submenu-link').children('.ui-submenu-icon').remove();
                 }
             });
         },
