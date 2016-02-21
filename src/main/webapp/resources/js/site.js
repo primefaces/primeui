@@ -2,38 +2,38 @@ var winW=$(window).width();
 var winH=$(window).height();
 
 Showcase = {
-            
+
     init: function() {
         this.menu = $('#MENUSIDE');
         this.hiddenMenuIcons = this.menu.find('> div > span.MenuSideMainLink > .hiddenIcons');
         this.hiddenLogo = $('#BlueLogo');
-        
+
         this.menu.height($(window).height());
-        
+
         this.menu.perfectScrollbar({
             wheelSpeed: 40,
             suppressScrollX: true
         });
-        
+
         this.bindEvents();
-        
+
         this.initMenuState();
     },
 
     bindEvents: function() {
         var $this = this;
-        
+
         this.menu.on("mouseenter", function() {
             Showcase.highlightMenu();
         })
         .on("mouseleave", function() {
             Showcase.unhighlightMenu();
         });
-        
+
         $('#mobilemenu').on('change', function(e) {
             Showcase.changePageWithLink($(this).val());
         });
-        
+
         var hashedLinks = this.menu.find('a.SubMenuLink');
         hashedLinks = hashedLinks.add($('#PFTopLinksCover').children('a.hashed'));
 
@@ -41,14 +41,14 @@ Showcase = {
             Showcase.changePageWithLink($(this).attr('href'));
             e.preventDefault();
         });
-        
+
         $("#themeSwitcher").on("click",function(){
             $("#GlobalThemeSwitcher").slideDown(500);
         })
         .on("mouseleave",function(){
             $("#GlobalThemeSwitcher").slideUp(1);
         });
-        
+
         $("#PremiumLayouts").on("click",function(){
             $("#PremiumLayoutsPanel").slideDown(500);
         })
@@ -60,11 +60,11 @@ Showcase = {
             var theme = $(this).data("theme"),
             themeLink = $('link[href$="theme.css"]'),
             newThemeURL =  'themes/' + theme + '/theme.css';
-                        
+
             themeLink.attr('href', newThemeURL);
             e.preventDefault();
         });
-        
+
         $(window).on('hashchange', function (e) {
             if(!Showcase.hashChangeByLink) {
                 var hash = window.location.hash;
@@ -76,12 +76,12 @@ Showcase = {
                 Showcase.hashChangeByLink = false;
             }
         });
-        
+
         $(window).on("resize", function() {
             $this.onWinResize();
         });
     },
-    
+
     changePageWithLink: function(page) {
         if(page === '#') {
             window.location.href = '';
@@ -90,19 +90,22 @@ Showcase = {
             window.location.href = page;
         }
         else {
-            Showcase.hashChangeByLink = true;
-            Showcase.openPage(page);
-            window.location.hash = page.substring(page.lastIndexOf('/'), page.indexOf('.html'));
+            var newPageHash = page.substring(page.lastIndexOf('/'), page.indexOf('.html'));
+            if('#' + newPageHash != window.location.hash) {
+                Showcase.hashChangeByLink = true;
+                Showcase.openPage(page);
+                window.location.hash = newPageHash;
+            }
         }
     },
-    
+
     initMenuState: function() {
         var hash = window.location.hash;
         if(hash) {
             this.openPageHash(hash);
         }
     },
-    
+
     onWinResize: function() {
         this.menu.height($(window).height());
     },
@@ -134,7 +137,7 @@ Showcase = {
                         $this.menu.perfectScrollbar('update');
                     });
                 });
-                
+
                 this.activeMenu = header;
             }
         }
@@ -145,7 +148,7 @@ Showcase = {
             this.activeMenu = header;
         }
     },
-    
+
     openPageHash: function(hash) {
         if(hash && hash.length > 1) {
             var plainHash = hash.substring(1),
@@ -153,14 +156,14 @@ Showcase = {
             url = root + plainHash + '.html';
 
             this.openPage(url);
-            
+
             this.menu.find('> div > span.MenuSideMainLink.MenuSideMainLinkDark').removeClass('MenuSideMainLinkDark').next().hide();
-            
+
             var menuitem = this.menu.find('a.SubMenuLink[href="' + plainHash + '.html"]');
             if(menuitem.length) {
                 var submenu = menuitem.parent(),
                 submenuTitle = submenu.prev();
-        
+
                 submenu.show();
                 submenuTitle.addClass('MenuSideMainLinkDark');
                 this.activeMenu = submenuTitle;
@@ -174,7 +177,7 @@ Showcase = {
         if(this.pbinterval1) {clearInterval(this.pbinterval1); this.pbinterval1 = null;}
         if(this.pbinterval2) {clearInterval(this.pbinterval2); this.pbinterval2 = null;}
         $(window).off('scroll resize');
-        
+
         $.get(url, function(content) {
             $('#widgetdemo').html(content);
         });
@@ -183,7 +186,7 @@ Showcase = {
 
 $(function() {
     Showcase.init();
-    
+
     $.ajaxSetup({
         cache: true
     });
