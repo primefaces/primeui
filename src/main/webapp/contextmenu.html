@@ -26,7 +26,7 @@
     </div>
 
     <div class="ContentSideSections Implementation">
-        <h3 class="first">Specific Target</h3>                            
+        <h3 class="first">Specific Target</h3>
         <img id="img1" src="resources/demo/images/galleria/galleria1.jpg" />
 
         <ul id="cm">
@@ -161,25 +161,21 @@ $('#cm1').puicontextmenu();
                                             <td>isVisible</td>
                                             <td>-</td>
                                             <td>Returns visibility state of menu.</td>
-                                        </tr>                                           
+                                        </tr>
                                     </tbody>
-                                </table>                                    
+                                </table>
                             </div>
 
                             <div id="doc-source">
 
                                 <pre name="code" class="brush:js">
-&lt;script type="text/javascript"&gt;
-    $('#cm1').puicontextmenu();   
-
-    $('#cm2').puicontextmenu({
-       target:$('#img1')
-    });
-&lt;/script&gt;
+$('#cm').puicontextmenu({
+    target: $('#img1')
+});
                                 </pre>
 
                                 <pre name="code" class="brush:xml">
-&lt;h3 class="first"&gt;Specific Target&lt;/h3&gt;                            
+&lt;h3 class="first"&gt;Specific Target&lt;/h3&gt;
 &lt;img id="img1" src="resources/demo/images/galleria/galleria1.jpg" /&gt;
 
 &lt;ul id="cm"&gt;
@@ -223,7 +219,7 @@ $('#cm1').puicontextmenu();
                                 </pre>
 
                             </div>
-                            
+
                             <div id="doc-element">
                                 <h3>Usage</h3>
                                 ContextMenu is defined using nested submenus and menuitem elements.
@@ -262,7 +258,7 @@ $('#cm1').puicontextmenu();
     &lt;p-menuitem value="Quit" icon="fa-close"&gt;&lt;/p-menuitem&gt;
 &lt;/p-contextmenu&gt;
                                 </pre>
-                                
+
                                 <h3>Attributes</h3>
                                 <table class="doc-table">
                                     <thead>

@@ -799,8 +799,8 @@
             var $this = this;
 
             if(this.options.target) {
-                if($.type(this.options.trigger) === 'string') {
-                    this.options.trigger =  $(this.options.trigger);
+                if($.type(this.options.target) === 'string') {
+                    this.options.target =  $(this.options.target);
                 }
             }
             else {
@@ -815,7 +815,7 @@
                 $this._bindDataTable();
             }
             else {
-                this.options.target.on(this.options.event + '.ui-contextmenu' , function(e){
+                this.options.target.on(this.options.event + '.ui-contextmenu', function(e){
                     $this.show(e);
                 });
             }
@@ -827,7 +827,7 @@
             var $this = this;
 
             //hide menu on item click
-            this.links.bind('click', function() {
+            this.links.on('click.ui-contextmenu', function() {
                 $this._hide();
             });
         },
@@ -836,7 +836,7 @@
             var $this = this;
 
             //hide overlay when document is clicked
-            $(document.body).on('click.ui-contextmenu', function (e) {
+            $(document.body).on('click.ui-contextmenu.' + this.id, function (e) {
                 if($this.element.parent().is(":hidden")) {
                     return;
                 }
@@ -855,11 +855,23 @@
                             $this.options.target.puidatatable('onRowRightClick', event, $(this));
                             $this.show(e);
                         });
+        },
 
+        _unbindDataTable: function() {
+            $(document).off(this.options.event + '.ui-datatable',
+                        '#' + this.options.target.attr('id') + ' tbody.ui-datatable-data > tr.ui-widget-content:not(.ui-datatable-empty-message)');
         },
 
         _unbindEvents() {
             this._super();
+
+            this.options.target.off(this.options.event + '.ui-contextmenu');
+            this.links.off('click.ui-contextmenu');
+            $(document.body).off('click.ui-contextmenu.' + this.id);
+
+            if(this.options.target.hasClass('ui-datatable')) {
+                this._unbindDataTable();
+            }
         },
 
         show: function(e) {
@@ -918,19 +930,21 @@
             this._unbindEvents();
 
             this.element.removeClass('ui-menu-list ui-helper-reset');
-            this.element.find('li').removeClass('ui-menuitem ui-widget ui-corner-all').each(function() {
-                var listItem = $(this);
-                listItem.children('.ui-menuitem-icon').remove();
+            this.element.find('li').removeClass('ui-menuitem ui-widget ui-corner-all ui-menu-parent').each(function() {
+                var listItem = $(this),
+                link = listItem.children('a');
+
+                link.removeClass('ui-menuitem-link ui-corner-all').children('.fa').remove();
 
                 if($this.options.enhanced)
-                    listItem.children('.ui-menuitem-text').removeClass('ui-menuitem-text');
+                    link.children('.ui-menuitem-text').removeClass('ui-menuitem-text');
                 else
-                    listItem.children('.ui-menuitem-text').contents().unwrap();
+                    link.children('.ui-menuitem-text').contents().unwrap();
+
+                listItem.children('ul').removeClass('ui-widget-content ui-menu-list ui-corner-all ui-helper-clearfix ui-menu-child ui-shadow');
             });
 
-            if(this.options.popup) {
-                this.container.appendTo(this.originalParent);
-            }
+            this.container.appendTo(this.originalParent);
 
             if(!this.options.enhanced) {
                 this.element.unwrap();
