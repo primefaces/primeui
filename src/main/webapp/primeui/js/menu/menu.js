@@ -1069,66 +1069,88 @@
 
         _bindEvents: function() {
             var $this = this;
-
+      
             this.rootLinks.on('mouseenter.ui-megamenu', function(e) {
+                var link = $(this),
+                menuitem = link.parent();
+                
+                var current = menuitem.siblings('.ui-menuitem-active');
+                if(current.length > 0) {
+                    current.find('li.ui-menuitem-active').each(function() {
+                        $this._deactivate($(this));
+                    });
+                    $this._deactivate(current, false);
+                }
+                
+                if($this.options.autoDisplay||$this.active) {
+                    $this._activate(menuitem);
+                }
+                else {
+                    $this._highlight(menuitem);
+                }
+                
+            });
+            
+            if(this.options.autoDisplay === false) {
+                this.rootLinks.data('primefaces-megamenu', this.id).find('*').data('primefaces-megamenu', this.id)
+                
+                this.rootLinks.on('click.ui-megamenu', function(e) {
                     var link = $(this),
-                        menuitem = link.parent();
+                    menuitem = link.parent(),
+                    submenu = link.next();
 
-                    var current = menuitem.siblings('.ui-menuitem-active');
-                    if(current.length > 0) {
-                        current.find('li.ui-menuitem-active').each(function() {
-                            $this._deactivate($(this));
-                        });
-                        $this._deactivate(current, false);
-                    }
-
-                    if($this.options.autoDisplay||$this.active) {
-                        $this._activate(menuitem);
-                    }
-                    else {
-                        $this._highlight(menuitem);
-                    }
-                })
-                .on('click.ui-megamenu', function(e) {
-                    var link = $(this),
-                        menuitem = link.parent(),
-                        submenu = link.next();
-
-                    if(submenu.length) {
+                    if(submenu.length === 1) {
                         if(submenu.is(':visible')) {
                             $this.active = false;
                             $this._deactivate(menuitem, true);
                         }
-                        else {
+                        else {                                        
                             $this.active = true;
                             $this._activate(menuitem);
                         }
                     }
-
+                    
                     e.preventDefault();
                 });
-
-            this.subLinks.on('mousenter.ui-megamenu', function() {
-                    if($this.activeitem && !$this._isRootLink($this.activeitem)) {
-                        $this._deactivate($this.activeitem);
-                    }
-                    $this._highlight($(this).parent());
-                })
-                .mouseleave(function() {
-                    if($this.activeitem && !$this._isRootLink($this.activeitem)) {
-                        $this._deactivate($this.activeitem);
-                    }
-                    $(this).removeClass('ui-state-hover');
-                })
-                .on('click.puimegamenu',function() {
-                    $(this).closest('div.ui-megamenu-panel').hide();
+            }
+            else {
+                this.rootLinks.filter('.ui-submenu-link').on('click.ui-megamenu', function(e) {
+                    e.preventDefault();
                 });
+            }
 
+            this.subLinks.on('mouseenter.ui-megamenu', function() {
+                if($this.activeitem && !$this.isRootLink($this.activeitem)) {
+                    $this._deactivate($this.activeitem);    
+                } 
+                $this._highlight($(this).parent());
+            })
+            .on('mouseleave.ui-megamenu', function() {
+                if($this.activeitem && !$this.isRootLink($this.activeitem)) {
+                    $this._deactivate($this.activeitem);    
+                }
+                $(this).removeClass('ui-state-hover');
+            });
+            
             this.rootList.on('mouseleave.ui-megamenu', function(e) {
                 var activeitem = $this.rootList.children('.ui-menuitem-active');
                 if(activeitem.length === 1) {
                     $this._deactivate(activeitem, false);
                 }
+            });
+            
+            this.rootList.find('> li.ui-menuitem > ul.ui-menu-child').on('mouseleave.ui-megamenu', function(e) {            
+                e.stopPropagation();
+            });
+            
+            $(document.body).on('click.' + this.id, function(e) {
+                var target = $(e.target);
+                if(target.data('primefaces-megamenu') === $this.id) {
+                    return;
+                }
+                
+                $this.active = false;
+                $this._deactivate($this.rootList.children('li.ui-menuitem-active'), true);
             });
         },
 
@@ -1392,6 +1414,11 @@
             this.element.find('li.ui-menuitem-active').each(function() {
                 $this._deactivate($(this), true);
             });
+        },
+        
+        isRootLink: function(menuitem) {
+            var submenu = menuitem.closest('ul');
+            return submenu.parent().hasClass('ui-menu');
         }
 
     });
