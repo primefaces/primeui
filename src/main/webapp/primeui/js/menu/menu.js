@@ -862,7 +862,7 @@
                         '#' + this.options.target.attr('id') + ' tbody.ui-datatable-data > tr.ui-widget-content:not(.ui-datatable-empty-message)');
         },
 
-        _unbindEvents() {
+        _unbindEvents: function() {
             this._super();
 
             this.options.target.off(this.options.event + '.ui-contextmenu');
