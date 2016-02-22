@@ -13,6 +13,8 @@ var PUI = {
         '6': 'ui-grid-col-2',
         '12': 'ui-grid-col-11'
     },
+    
+    charSet: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',
         
     /**
      *  Aligns container scrollbar to keep item in container viewport, algorithm copied from jquery-ui menu widget
@@ -31,6 +33,15 @@ var PUI = {
         else if((offset + itemHeight) > elementHeight) {
             container.scrollTop(scroll + offset - elementHeight + itemHeight);
         }
+    },
+    
+    generateRandomId: function() {
+        var id = '';
+        for (var i = 1; i <= 10; i++) {
+            var randPos = Math.floor(Math.random() * this.charSet.length);
+            id += this.charSet[randPos];
+        }
+        return id;
     },
     
     isIE: function(version) {
