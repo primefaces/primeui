@@ -89,7 +89,7 @@
             var $this = this;
 
             //items
-            this._bindItemEvents();
+            this._bindItemEvents(this.items);
 
             //input
             this.element.on('focus.puilistbox', function() {
@@ -99,9 +99,10 @@
             });
         },
 
-        _bindItemEvents: function() {
+        _bindItemEvents: function(item) {
             var $this = this;
-            this.items.on('mouseover.puilistbox', function() {
+
+            item.on('mouseover.puilistbox', function() {
                     var item = $(this);
                     if(!item.hasClass('ui-state-highlight')) {
                         item.addClass('ui-state-hover');
@@ -323,7 +324,7 @@
                 $this.items = $this.listContainer.children('li').addClass('ui-listbox-item ui-corner-all');
                 $this.choices = $this.element.children('option');
                 $this._unbindItemEvents();
-                $this._bindItemEvents();
+                $this._bindItemEvents(this.items);
             }, 50);
         },
 
@@ -350,6 +351,38 @@
             if(this.choices) {
                 this.choices.prop('selected', false);
             }
+        },
+
+        removeAllOptions: function() {
+            this.element.empty();
+            this.listContainer.empty();
+            this.container.empty();
+            this.element.val('');
+        },
+
+        addOption: function(value,label) {
+            var newListItem;
+
+            if(this.options.content) {
+                var option = (label) ? {'label':label,'value':value}: {'label':value,'value':value};
+                newListItem = $('<li class="ui-listbox-item ui-corner-all"></li>').append(this.options.content(option)).appendTo(this.listContainer);
+            }
+            else {
+                var listLabel = (label) ? label: value;
+                newListItem = $('<li class="ui-listbox-item ui-corner-all">' + listLabel + '</li>').appendTo(this.listContainer);
+            }
+
+            if(label)
+                this.element.append('<option value="' + value + '">' + label + '</option>');
+            else
+                this.element.append('<option value="' + value + '">' + value + '</option>');
+
+            this._bindItemEvents(newListItem);
+
+            this.choices = this.element.children('option');
+            this.items = this.items.add(newListItem);
+
+
         }
     });
 

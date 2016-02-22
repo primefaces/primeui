@@ -169,7 +169,7 @@ $('#basic').puilistbox();
                                             <td>
                                                 event: puilistboxitemselect event
                                                 <br />
-                                                item: Selected item 
+                                                item: Selected item
                                             </td>
                                             <td>Fired when an item is selected.</td>
                                         </tr>
@@ -178,7 +178,7 @@ $('#basic').puilistbox();
                                             <td>
                                                 event: puilistboxitemunselect event
                                                 <br />
-                                                item: Unselected item 
+                                                item: Unselected item
                                             </td>
                                             <td>Fired when an item is unselected.</td>
                                         </tr>
@@ -189,7 +189,7 @@ $('#basic').puilistbox();
                                 <pre name="code" class="brush:js">
                 $('#default').puilistbox({
                     itemSelect: function(event, item) {
-                        
+
                     }
                 });
                                 </pre>
@@ -218,6 +218,16 @@ $('#basic').puilistbox();
                                             <td>unselectAll</td>
                                             <td>-</td>
                                             <td>Clears selections.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>removeAllOptions</td>
+                                            <td>-</td>
+                                            <td>Removes all options of the listbox.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>addOption</td>
+                                            <td>value,label</td>
+                                            <td>Adds new option to the listbox.</td>
                                         </tr>
                                         <tr>
                                             <td>enable</td>
@@ -255,7 +265,7 @@ $('#basic').puilistbox('selectItem', 1);
 $(function() {
     var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
             'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
-            'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 
+            'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse',
             'trontastic', 'ui-darkness', 'ui-lightness', 'vader');
 
     $('#basic').puilistbox();
@@ -313,7 +323,7 @@ $(function() {
     &lt;template&gt;
         &lt;img src="resources/demo/images/themes/{{label}}.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;{{label}}&lt;/span&gt;
     &lt;/template&gt;
-&lt;/p-listbox&gt;                                   
+&lt;/p-listbox&gt;
                                 </pre>
 
                             </div>
@@ -321,7 +331,7 @@ $(function() {
                             <div id="doc-element">
                                 <h3>Usage</h3>
                                 Listbox is similar to a select element that requires options as children.
-                                
+
                                 <h4>Simple</h4>
                                 <pre name="code" class="brush:xml">
 &lt;p-listbox multiple&gt;
@@ -332,7 +342,7 @@ $(function() {
     &lt;option value="5"&gt;Option 5&lt;/option&gt;
 &lt;/p-listbox&gt;
                                 </pre>
-                                
+
                                 <h4>Custom Content</h4>
                                 In order to display custom content in listbox, place a template tag and add mustache template to repeat for each item.
                                 <pre name="code" class="brush:xml">
@@ -345,7 +355,7 @@ $(function() {
     &lt;template&gt;
         &lt;img src="resources/demo/images/themes/{{label}}.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;{{label}}&lt;/span&gt;
     &lt;/template&gt;
-&lt;/p-listbox&gt;  
+&lt;/p-listbox&gt;
                                 </pre>
 
                                 <h3>Attributes</h3>
@@ -385,7 +395,7 @@ $(function() {
                                         </tr>
                                     </tbody>
                                 </table>
-                                
+
                                 <h3>Methods</h3>
                                 <table class="doc-table">
                                     <thead>
