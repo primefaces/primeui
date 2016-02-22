@@ -163,6 +163,7 @@
                                                 <include>${basedir}/src/main/webapp/primeui/js/tooltip/tooltip.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/tree/tree.js</include>
                                                 <include>${basedir}/src/main/webapp/primeui/js/treetable/treetable.js</include>
+                                                <include>${basedir}/src/main/webapp/primeui/js/utils/utils.js</include>
                                             </includes>
                                         </aggregation>
 
@@ -276,6 +277,7 @@
                                                 <include>${project.build.directory}/primeui/production/js/tooltip/tooltip.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/tree/tree.js</include>
                                                 <include>${project.build.directory}/primeui/production/js/treetable/treetable.js</include>
+                                                <include>${project.build.directory}/primeui/production/js/utils/utils.js</include>
                                             </includes>
                                         </aggregation>
 
