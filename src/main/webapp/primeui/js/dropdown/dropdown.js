@@ -34,40 +34,14 @@
                         this._generateOptionElements(this.options.data);
                     }
                     else {
-                        if($.type(this.options.data) === 'function'){
-                            this.options.data.call(this, this._generateOptionElements);
+                        if($.type(this.options.data) === 'function') {
+                            this.options.data.call(this, this._onRemoteOptionsLoad);
+                            return;
                         }
                     }
                 }
-                this.choices = this.element.children('option');
-                this.element.attr('tabindex', '-1').wrap('<div class="ui-dropdown ui-widget ui-state-default ui-corner-all ui-helper-clearfix" />')
-                    .wrap('<div class="ui-helper-hidden-accessible" />');
-
-                this.container = this.element.closest('.ui-dropdown');
-                this.focusElementContainer = $('<div class="ui-helper-hidden-accessible"><input type="text" /></div>').appendTo(this.container);
-                this.focusElement = this.focusElementContainer.children('input');
-                this.label = this.options.editable ? $('<input type="text" class="ui-dropdown-label ui-inputtext ui-corner-all"">')
-                    : $('<label class="ui-dropdown-label ui-inputtext ui-corner-all"/>');
-                this.label.appendTo(this.container);
-                this.menuIcon = $('<div class="ui-dropdown-trigger ui-state-default ui-corner-right"><span class="fa fa-fw fa-caret-down"></span></div>')
-                    .appendTo(this.container);
-
-                //panel
-                this.panel = $('<div class="ui-dropdown-panel ui-widget-content ui-corner-all ui-helper-hidden ui-shadow" />');
-                this.itemsWrapper = $('<div class="ui-dropdown-items-wrapper" />').appendTo(this.panel);
-                this.itemsContainer = $('<ul class="ui-dropdown-items ui-dropdown-list ui-widget-content ui-widget ui-corner-all ui-helper-reset"></ul>')
-                    .appendTo(this.itemsWrapper);
-
-                this.optGroupsSize = this.itemsContainer.children('li.puiselectonemenu-item-group').length;
-
-                if(this.options.filter) {
-                    this.filterContainer = $('<div class="ui-dropdown-filter-container" />').prependTo(this.panel);
-                    this.filterInput = $('<input type="text" autocomplete="off" class="ui-dropdown-filter ui-inputtext ui-widget ui-state-default ui-corner-all" />')
-                        .appendTo(this.filterContainer);
-                    this.filterContainer.append('<span class="fa fa-search"></span>');
-                }
-
-                this._generateItems();
+                
+                this._render();
             }
             else {
                 this.choices = this.element.children('option');
@@ -88,6 +62,42 @@
                 }
             }
 
+            this._postRender();
+        },
+        
+        _render: function() {
+            this.choices = this.element.children('option');
+            this.element.attr('tabindex', '-1').wrap('<div class="ui-dropdown ui-widget ui-state-default ui-corner-all ui-helper-clearfix" />')
+                .wrap('<div class="ui-helper-hidden-accessible" />');
+
+            this.container = this.element.closest('.ui-dropdown');
+            this.focusElementContainer = $('<div class="ui-helper-hidden-accessible"><input type="text" /></div>').appendTo(this.container);
+            this.focusElement = this.focusElementContainer.children('input');
+            this.label = this.options.editable ? $('<input type="text" class="ui-dropdown-label ui-inputtext ui-corner-all"">')
+                : $('<label class="ui-dropdown-label ui-inputtext ui-corner-all"/>');
+            this.label.appendTo(this.container);
+            this.menuIcon = $('<div class="ui-dropdown-trigger ui-state-default ui-corner-right"><span class="fa fa-fw fa-caret-down"></span></div>')
+                .appendTo(this.container);
+
+            //panel
+            this.panel = $('<div class="ui-dropdown-panel ui-widget-content ui-corner-all ui-helper-hidden ui-shadow" />');
+            this.itemsWrapper = $('<div class="ui-dropdown-items-wrapper" />').appendTo(this.panel);
+            this.itemsContainer = $('<ul class="ui-dropdown-items ui-dropdown-list ui-widget-content ui-widget ui-corner-all ui-helper-reset"></ul>')
+                .appendTo(this.itemsWrapper);
+
+            this.optGroupsSize = this.itemsContainer.children('li.puiselectonemenu-item-group').length;
+
+            if(this.options.filter) {
+                this.filterContainer = $('<div class="ui-dropdown-filter-container" />').prependTo(this.panel);
+                this.filterInput = $('<input type="text" autocomplete="off" class="ui-dropdown-filter ui-inputtext ui-widget ui-state-default ui-corner-all" />')
+                    .appendTo(this.filterContainer);
+                this.filterContainer.append('<span class="fa fa-search"></span>');
+            }
+
+            this._generateItems();
+        },
+        
+        _postRender: function() {
             if(this.options.style) {
                 this.container.attr('style', this.options.style);
             }
@@ -147,6 +157,12 @@
                 this._bindEvents();
                 this._bindConstantEvents();
             }
+        },
+        
+        _onRemoteOptionsLoad: function(data) {
+            this._generateOptionElements(data);
+            this._render();
+            this._postRender();
         },
         
         _generateOptionElements: function(data) {
