@@ -27,15 +27,16 @@
             if(!this.id) {
                 this.id = this.element.uniqueId().attr('id');
             }
-
+            
             if(!this.options.enhanced) {
                 if(this.options.data) {
-                    for(var i = 0; i < this.options.data.length; i++) {
-                        var choice = this.options.data[i];
-                        if(choice.label)
-                            this.element.append('<option value="' + choice.value + '">' + choice.label + '</option>');
-                        else
-                            this.element.append('<option value="' + choice + '">' + choice + '</option>');
+                    if($.isArray(this.options.data)) {
+                        this._generateOptionElements(this.options.data);
+                    }
+                    else {
+                        if($.type(this.options.data) === 'function'){
+                            this.options.data.call(this, this._generateOptionElements);
+                        }
                     }
                 }
                 this.choices = this.element.children('option');
@@ -145,6 +146,16 @@
             if(!this.disabled) {
                 this._bindEvents();
                 this._bindConstantEvents();
+            }
+        },
+        
+        _generateOptionElements: function(data) {
+            for(var i = 0; i < data.length; i++) {
+                var choice = data[i];
+                if(choice.label)
+                    this.element.append('<option value="' + choice.value + '">' + choice.label + '</option>');
+                else
+                    this.element.append('<option value="' + choice + '">' + choice + '</option>');
             }
         },
 

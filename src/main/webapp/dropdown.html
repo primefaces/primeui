@@ -13,7 +13,19 @@
                     'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
                     'ui-darkness', 'ui-lightness', 'vader');
 
-            $('#basic').puidropdown();
+            $('#basic').puidropdown({
+                data:  function(callback) {
+                    $.ajax({
+                        type: "GET",
+                        url: 'resources/data/options.json',
+                        dataType: "json",
+                        context: this,
+                        success: function(response) {
+                            callback.call(this, response.options);
+                        }
+                    });
+                }
+            });
 
             $('#editable').puidropdown({
                 editable: true
@@ -49,12 +61,7 @@
 
     <div class="ContentSideSections Implementation">
         <h3 class="first">Basic</h3>
-        <select id="basic" name="basic">
-            <option value="0">Select One</option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-        </select>
+        <select id="basic" name="basic"></select>
 
         <h3>Editable</h3>
         <select id="editable" name="editable">
