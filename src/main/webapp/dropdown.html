@@ -38,13 +38,13 @@
                         dataType: "json",
                         context: this,
                         success: function(response) {
-                            callback.call(this, response.options);
+                            callback.call(this, response);
                         }
                     });
                 }
             });
             
-            $('#rfn').puidropdown({
+            $('#rurl').puidropdown({
                 data: 'resources/data/options.json'
             });
 
@@ -102,10 +102,10 @@
         </select>
         
         <h3>Remote Function</h3>
-        <select id="rfn"></select>
+        <select id="rfn" name="rfn"></select>
         
         <h3>Remote URL</h3>
-        <select id="rurl"></select>
+        <select id="rurl" name="rurl"></select>
 
         <h3>PrimeElement</h3>
         <p-dropdown effect="fade" name="element" filter>
@@ -150,7 +150,48 @@ $('#basic').puidropdown();
     &lt;option value="3"&gt;Option 3&lt;/option&gt;
 &lt;/select&gt;
                                 </pre>
-
+                                
+                                <h4>Local Data</h4>
+                                <pre name="code" class="brush:js">
+var themes = new Array('afterdark', 'afternoon', 'afterwork', ...);
+        
+$('#custom').puidropdown({
+    data: themes
+});
+                                </pre>
+                                <pre name="code" class="brush:xml">
+&lt;select id="custom" name="custom"&gt;&lt;/select&gt;
+                                </pre>
+                                
+                                <h4>Remote Data</h4>
+                                <pre name="code" class="brush:js">
+$('#rfn').puidropdown({
+    data:  function(callback) {
+        $.ajax({
+            type: "GET",
+            url: 'resources/data/options.json',
+            dataType: "json",
+            context: this,
+            success: function(response) {
+                callback.call(this, response);
+            }
+        });
+    }
+});
+                                </pre>
+                                <pre name="code" class="brush:xml">
+&lt;select id="rfn" name="rfn"&gt;&lt;/select&gt;
+                                </pre>
+                                
+                                <h4>Remote URL</h4>
+                                <pre name="code" class="brush:js">
+$('#rurl').puidropdown({
+    data: 'resources/data/options.json'
+});
+                                </pre>
+                                <pre name="code" class="brush:xml">
+&lt;select id="rurl" name="rurl"&gt;&lt;/select&gt;
+                                </pre>
                             </div>
 
                             <div id="doc-options">
@@ -349,6 +390,24 @@ $('#basic').puidropdown('selectValue', 1);
 
         $('#filter').puidropdown({
             filter: true
+        });
+        
+        $('#rfn').puidropdown({
+            data:  function(callback) {
+                $.ajax({
+                    type: "GET",
+                    url: 'resources/data/options.json',
+                    dataType: "json",
+                    context: this,
+                    success: function(response) {
+                        callback.call(this, response);
+                    }
+                });
+            }
+        });
+        
+        $('#rurl').puidropdown({
+            data: 'resources/data/options.json'
         });                                     
     });
 &lt;/script&gt;
@@ -389,6 +448,12 @@ $('#basic').puidropdown('selectValue', 1);
     &lt;option value="6"&gt;Paris&lt;/option&gt;
     &lt;option value="7"&gt;Rome&lt;/option&gt;
 &lt;/select&gt;
+
+&lt;h3&gt;Remote Function&lt;/h3&gt;
+&lt;select id="rfn" name="rfn"&gt;&lt;/select&gt;
+
+&lt;h3&gt;Remote URL&lt;/h3&gt;
+&lt;select id="rurl" name="rurl"&gt;&lt;/select&gt;
 
 &lt;h3&gt;PrimeElement&lt;/h3&gt;
 &lt;p-dropdown effect="fade" name="element" filter&gt;

@@ -38,6 +38,26 @@
                             this.options.data.call(this, this._onRemoteOptionsLoad);
                             return;
                         }
+                        else {
+                            if($.type(this.options.data) === 'string') {
+                                var $this = this,
+                                dataURL = this.options.data;
+                                
+                                var loader = function() {
+                                    $.ajax({
+                                        type: 'GET',
+                                        url: dataURL,
+                                        dataType: "json",
+                                        context: $this,
+                                        success: function (response) {
+                                            this._onRemoteOptionsLoad(response);
+                                        }
+                                    });
+                                };
+                                loader.call(this);
+                            }
+                        }
+                        return;
                     }
                 }
                 
@@ -454,7 +474,7 @@
 
             if(item.length) {
                 item.addClass('ui-state-highlight');
-
+                
                 this._setLabel(item.data('label'));
             }
             else {
