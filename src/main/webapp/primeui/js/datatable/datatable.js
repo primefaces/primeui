@@ -14,7 +14,6 @@
             footer: null,
             sortField: null,
             sortOrder: null,
-            keepSelectionInLazyMode: false,
             scrollable: false,
             scrollHeight: null,
             scrollWidth: null,
@@ -404,9 +403,6 @@
 
         paginate: function() {
             if(this.options.lazy) {
-                if(this.options.selectionMode && ! this.options.keepSelectionInLazyMode) {
-                    this.selection = [];
-                }
                 this.options.datasource.call(this, this._onLazyLoad, this._createStateMeta());
             }
             else {
@@ -486,16 +482,11 @@
                         rowIndex = i;
 
                         row.addClass(zebraStyle);
+                        row.data('rowdata', rowData);
 
-                        if(this.options.lazy) {
-                            rowIndex += firstNonLazy; // Selection is kept as it is non lazy data
-                        }
-
-                        if(this.options.selectionMode && PUI.inArray(this.selection, rowIndex)) {
+                        if(this.options.selectionMode && this._isSelected(rowData)) {
                             row.addClass("ui-state-highlight");
                         }
-
-                        row.data('rowindex', rowIndex);
 
                         for(var j = 0; j < this.options.columns.length; j++) {
                             var column = $('<td />').appendTo(row),
@@ -646,8 +637,7 @@
 
         onRowRightClick: function(event, rowElement) {
             var row = $(rowElement),
-            rowIndex = this._getRowIndex(row),
-            selectedData = this.data[rowIndex],
+            selectedData = row.data('rowdata'),
             selected = row.hasClass('ui-state-highlight');
 
             if(this._isSingleSelection() || !selected) {
@@ -733,61 +723,45 @@
         },
 
         unselectRow: function(row, silent) {
-            var rowIndex = this._getRowIndex(row);
+            var unselectedData = row.data('rowdata');
             row.removeClass('ui-state-highlight').attr('aria-selected', false);
 
-            this._removeSelection(rowIndex);
+            this._removeSelection(unselectedData);
 
             if(!silent) {
-                this._trigger('rowUnselect', null, this.data[rowIndex]);
+                this._trigger('rowUnselect', null, unselectedData);
             }
         },
 
         selectRow: function(row, silent, event) {
-            var rowIndex = this._getRowIndex(row),
-            selectedData = this.data[rowIndex];
+            var selectedData = row.data('rowdata');
             row.removeClass('ui-state-hover').addClass('ui-state-highlight').attr('aria-selected', true);
 
-            this._addSelection(rowIndex);
+            this._addSelection(selectedData);
 
             if(!silent) {
-                if (this.options.lazy) {
-                    selectedData = this.data[rowIndex - this._getFirst()];
-                }
-
                 this._trigger('rowSelect', event, selectedData);
             }
         },
 
         getSelection: function() {
-            var first = this.options.lazy ? this._getFirst() : 0,
-                selections = [];
-            for(var i = 0; i < this.selection.length; i++) {
-                if(this.data.length > this.selection[i]-first && this.selection[i]-first > 0) {
-                    selections.push(this.data[this.selection[i]-first]);
-                }
-            }
-            return selections;
+            return this.selection;
         },
 
-        _removeSelection: function(rowIndex) {
+        _removeSelection: function(rowData) {
             this.selection = $.grep(this.selection, function(value) {
-                return value !== rowIndex;
+                return value !== rowData;
             });
         },
 
-        _addSelection: function(rowIndex) {
-            if(!this._isSelected(rowIndex)) {
-                this.selection.push(rowIndex);
+        _addSelection: function(rowData) {
+            if(!this._isSelected(rowData)) {
+                this.selection.push(rowData);
             }
         },
 
-        _isSelected: function(rowIndex) {
-            return PUI.inArray(this.selection, rowIndex);
-        },
-
-        _getRowIndex: function(row) {
-            return row.data('rowindex');
+        _isSelected: function(rowData) {
+            return PUI.inArray(this.selection, rowData);
         },
 
         _initExpandableRows: function() {
@@ -817,7 +791,7 @@
                 toggler.addClass('fa-chevron-circle-right').removeClass('fa-chevron-circle-down').attr('aria-expanded', false);
 
                 this.collapseRow(row);
-                this._trigger('rowCollapse', null, this.data[this._getRowIndex(row)]);
+                this._trigger('rowCollapse', null, row.data('rowdata'));
             }
             else {
                 if(this.options.rowExpandMode === 'single') {
@@ -831,12 +805,11 @@
         },
 
         loadExpandedRowContent: function(row) {
-            var rowIndex = this._getRowIndex(row),
-            expandedRow = $('<tr class="ui-expanded-row-content ui-datatable-unselectable ui-widget-content"><td colspan="' + this.options.columns.length + '"></td></tr>');
-            expandedRow.children('td').append(this.options.expandedRowContent.call(this, this.data[rowIndex]));
+            var expandedRow = $('<tr class="ui-expanded-row-content ui-datatable-unselectable ui-widget-content"><td colspan="' + this.options.columns.length + '"></td></tr>');
+            expandedRow.children('td').append(this.options.expandedRowContent.call(this, row.data('rowdata')));
 
             row.addClass('ui-expanded-row').after(expandedRow);
-            this._trigger('rowExpand', null, this.data[this._getRowIndex(row)]);
+            this._trigger('rowExpand', null, row.data('rowdata'));
         },
 
         collapseRow: function(row) {
