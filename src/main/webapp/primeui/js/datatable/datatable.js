@@ -40,7 +40,7 @@
             colReorder: null,
             colResize: null,
             rowReorder: null,
-            cellEdit: null,
+            cellEdit: null
         },
 
         _create: function() {
@@ -134,6 +134,12 @@
 
                 this.options.paginator.totalRecords = this.options.lazy ? this.options.paginator.totalRecords : this.data.length;
                 this.paginator = $('<div></div>').insertAfter(this.tableWrapper).puipaginator(this.options.paginator);
+                if(this.options.paginator.contentLeft) {
+                    this.paginator.prepend(this.options.paginator.contentLeft.call());
+                }
+                if(this.options.paginator.contentRight) {
+                    this.paginator.append(this.options.paginator.contentRight.call());
+                }
             }
 
             if(this.options.footer) {
