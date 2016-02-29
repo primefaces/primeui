@@ -1,5 +1,5 @@
 /**
- * PrimeUI picklist widget
+ * PrimeUI orderlist widget
  */
 (function() {
 
@@ -13,23 +13,37 @@
             responsive: false,
             datasource: null,
             content: null,
-            template: null
+            template: null,
+            enhanced: false,
+            multiple: true
         },
 
         _create: function() {
-            this._createDom();
-            
-            if(this.options.datasource) {
-                if($.isArray(this.options.datasource)) {
-                    this._generateOptionElements(this.options.datasource);
+            if(!this.options.enhanced) {
+                this._createDom();
+                
+                if(this.options.datasource) {
+                    if($.isArray(this.options.datasource)) {
+                        this._generateOptionElements(this.options.datasource);
+                    }
+                    else if($.type(this.options.datasource) === 'function') {
+                        this.options.datasource.call(this, this._generateOptionElements);
+                    }
                 }
-                else if($.type(this.options.datasource) === 'function') {
-                    this.options.datasource.call(this, this._generateOptionElements);
-                }
+                
+                this.optionElements = this.element.children('option');
+                this._createListElement();
             }
-            
-            this.optionElements = this.element.children('option');
-            this._createListElement();
+            else {
+                this.list = this.element.find('ul.ui-orderlist-list');
+                this.items = this.list.children('li').addClass('ui-orderlist-item ui-corner-all');
+                
+                var buttons = this.element.find('> div > .ui-orderlist-controls > button');
+                this.moveUpButton = buttons.eq(0);
+                this.moveTopButton = buttons.eq(1);
+                this.moveDownButton = buttons.eq(2);
+                this.moveBottomButton = buttons.eq(3);
+            }
 
             this._bindEvents();
         },
@@ -113,7 +127,10 @@
         },
         
         _bindEvents: function() {
-            this._bindButtonEvents();
+            if(this.options.enhanced) {
+                this._bindButtonEvents();
+            }
+            
             this._bindItemEvents(this.items);
 
             if(this.options.dragdrop) {
@@ -333,45 +350,83 @@
         },
 
         _unbindItemEvents: function(item) {
-            item.off('mouseover.puiorderlist mouseout.puiorderlist mousedown.puiorderlist');
+            item.off('mouseover.ui-orderlist mouseout.ui-orderlist mousedown.ui-orderlist');
         },
 
         _bindItemEvents: function(item) {
             var $this = this;
 
-            item.on('mouseover.puiorderlist', function(e) {
+            item.on('mouseover.ui-orderlist', function(e) {
                 var element = $(this);
 
                 if(!element.hasClass('ui-state-highlight'))
                     $(this).addClass('ui-state-hover');
             })
-            .on('mouseout.puiorderlist', function(e) {
+            .on('mouseout.ui-orderlist', function(e) {
                 var element = $(this);
 
                 if(!element.hasClass('ui-state-highlight'))
                     $(this).removeClass('ui-state-hover');
             })
-            .on('mousedown.puiorderlist', function(e) {
+            .on('mousedown.ui-orderlist', function(e) {
                 var element = $(this),
                 metaKey = (e.metaKey||e.ctrlKey);
-
-                if(!metaKey) {
-                    element.removeClass('ui-state-hover').addClass('ui-state-highlight')
-                            .siblings('.ui-state-highlight').removeClass('ui-state-highlight');
-
-                    //$this.fireItemSelectEvent(element, e);
+                
+                if(element.hasClass('ui-state-highlight')) {
+                    if(metaKey) {
+                        element.removeClass('ui-state-highlight');
+                    }
                 }
                 else {
-                    if(element.hasClass('ui-state-highlight')) {
-                        element.removeClass('ui-state-highlight');
-                        //$this.fireItemUnselectEvent(element);
+                    if(!$this.options.multiple||!metaKey) {
+                        element.siblings('.ui-state-highlight').removeClass('ui-state-highlight');
                     }
-                    else {
-                        element.removeClass('ui-state-hover').addClass('ui-state-highlight');
-                        //$this.fireItemSelectEvent(element, e);
-                    }
+                    
+                    element.removeClass('ui-state-hover').addClass('ui-state-highlight');
                 }
             });
+        },
+        
+        _bindButtonEvents: function() {
+            var $this = this;
+
+            this.moveUpButton.on('click.ui-orderlist', function(e) {
+                var item = $this.items.filter('.ui-state-highlight').eq(0);
+                $this._trigger('onMoveUp', e, {index: $this.items.filter('.ui-state-highlight').index()});
+                setTimeout(function() {
+                    PUI.scrollInView($this.list, item);
+                }, 50);
+            });
+            this.moveTopButton.on('click.ui-orderlist', function(e) {
+                var item = $this.items.filter('.ui-state-highlight').eq(0);
+                $this._trigger('onMoveTop', e, {index: $this.items.filter('.ui-state-highlight').index()});
+                setTimeout(function() {
+                    PUI.scrollInView($this.list, item);
+                }, 50);
+            });
+            this.moveDownButton.on('click.ui-orderlist', function(e) {
+                var item = $this.items.filter('.ui-state-highlight').eq(0);
+                $this._trigger('onMoveDown', e, {index: $this.items.filter('.ui-state-highlight').index()});
+                setTimeout(function() {
+                    PUI.scrollInView($this.list, item);
+                }, 50);
+            });
+            this.moveBottomButton.on('click.ui-orderlist', function(e) {
+                var item = $this.items.filter('.ui-state-highlight').eq(0);
+                $this._trigger('onMoveBottom', e, {index: $this.items.filter('.ui-state-highlight').index()});
+                setTimeout(function() {
+                    PUI.scrollInView($this.list, item);
+                }, 50);
+            });
+        },
+                
+        _unbindButtonEvents: function() {
+            var $this = this;
+            
+            this.moveUpButton.off('click.ui-orderlist');
+            this.moveTopButton.off('click.ui-orderlist');
+            this.moveDownButton.off('click.ui-orderlist');
+            this.moveBottomButton.off('click.ui-orderlist');
         },
 
         getSelection: function() {
@@ -412,7 +467,7 @@
             }
         },
 
-        _unbindButtonEvents: function() {
+        _disableButtons: function() {
             if(this.buttonContainer) {
                 this.moveUpButton.puibutton('disable');
                 this.moveTopButton.puibutton('disable');
@@ -421,13 +476,17 @@
             }
         },
 
-        _bindButtonEvents: function() {
+        _enableButtons: function() {
             if(this.buttonContainer) {
                 this.moveUpButton.puibutton('enable');
                 this.moveTopButton.puibutton('enable');
                 this.moveDownButton.puibutton('enable');
                 this.moveBottomButton.puibutton('enable');
             }
+        },
+        
+        _destroy: function() {
+            this.unbindEvents();
         }
         
     });
