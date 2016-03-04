@@ -156,10 +156,6 @@
                 this._initFiltering();
             }
             
-            if(this.options.globalFilter) {
-                this._bindGlobalFilterEvent();
-            }
-
             if(this.options.selectionMode) {
                 this._initSelection();
             }
@@ -1574,91 +1570,83 @@
                         },
                         $this.options.filterDelay);
                     });
+                    
+            if(this.options.globalFilter) {
+                $(this.options.globalFilter).on('keyup.puidatatable', function() {
+                    $this.filter();
+                });
+            }
         },
         
-        _bindGlobalFilterEvent: function() {
-            var $this = this,
-            input = document.getElementById(this.options.globalFilter);
-            
-            $(input).on('keyup.puidatatable', function() {
-                var filterElement = $(input),
-                filterElementValue = filterElement.val();
-                
-                $this.filter(filterElementValue);
-            });
-        },
-
-        filter: function(globalFilterValue) {
+        filter: function() {
             this.filterMetaMap = [];
             
             for(var i = 0; i < this.filterElements.length; i++) {
                 var filterElement = this.filterElements.eq(i),
-                filterElementValue;
-                if(globalFilterValue) {
-                    filterElementValue = globalFilterValue;
-                 }
-                 else {
-                     filterElementValue = filterElement.val();
-                 }
+                filterElementValue = filterElement.val();
                  
-                if(filterElementValue && $.trim(filterElementValue) !== '') {
-                    this.filterMetaMap.push({
-                        field: filterElement.data('field'),
-                        filterMatchMode: filterElement.data('filtermatchmode'),
-                        value: filterElementValue.toLowerCase(),
-                        element: filterElement
-                    });
-                }
+                this.filterMetaMap.push({
+                    field: filterElement.data('field'),
+                    filterMatchMode: filterElement.data('filtermatchmode'),
+                    value: filterElementValue.toLowerCase(),
+                    element: filterElement
+                });
             }
+                        
             if(this.options.lazy) {
                 this.options.datasource.call(this, this._onLazyLoad, this._createStateMeta());
             }
             else {
-                if(this.filterMetaMap.length) {
-                    this.filteredData = [];
+                var globalFilterValue = $(this.options.globalFilter).val();
+                this.filteredData = [];
+                
+                for(var i = 0; i < this.data.length; i++) {
+                    var localMatch = true;
+                    var globalMatch = false;
                     
-                    for(var i = 0; i < this.data.length; i++) {
-                        var localMatch = true;
-                        var globalMatch = false;
-                        
-                        for(var j = 0; j < this.filterMetaMap.length; j++) {
-                            var filterMeta = this.filterMetaMap[j],
-                            filterValue = filterMeta.value,
-                            filterField = filterMeta.field,
-                            dataFieldValue = this.data[i][filterField];
-                            
-                            if(globalFilterValue && !globalMatch) {
-                                var filterConstraint = this.filterConstraints[filterMeta.filterMatchMode ];
-                                globalMatch = !filterConstraint(dataFieldValue,globalFilterValue);
-                            }
-                            
-                            if(filterMeta.filterMatchMode === 'custom') {
-                                localMatch = filterMeta.element.triggerHandler('filter', [dataFieldValue, filterValue]);
-                            }
-                            else {
-                                var filterConstraint = this.filterConstraints[filterMeta.filterMatchMode];
-                                if(!filterConstraint(dataFieldValue, filterValue)) {
-                                    localMatch = false;
-                                }
-                            }
+                    for(var j = 0; j < this.filterMetaMap.length; j++) {
+                        var filterMeta = this.filterMetaMap[j],
+                        filterValue = filterMeta.value,
+                        filterField = filterMeta.field,
+                        dataFieldValue = this.data[i][filterField];
 
-                            if(!localMatch) {
-                                break;
-                            }
+                        var filterConstraint = this.filterConstraints[filterMeta.filterMatchMode];
+
+                        //global
+                        if(this.options.globalFilter && !globalMatch) {
+                            var filterConstraint = this.filterConstraints['contains'];
+                            globalMatch = filterConstraint(dataFieldValue, globalFilterValue);
+                            
                         }
                         
-                        var matches = localMatch;
-                        
-                        if(globalFilterValue) {
-                            matches = localMatch && globalMatch;
+                        //local
+                        if(filterMeta.filterMatchMode === 'custom') {
+                            localMatch = filterMeta.element.triggerHandler('filter', [dataFieldValue, filterValue]);
                         }
-
-                        if(matches) {
-                            this.filteredData.push(this.data[i]);
+                        else {
+                            var filterConstraint = this.filterConstraints[filterMeta.filterMatchMode];
+                            if(!filterConstraint(dataFieldValue, filterValue)) {
+                                localMatch = false;
+                            }
+                        }
+                                                                        
+                        if(!localMatch) {
+                            break;
                         }
                     }
+                                        
+                    var matches = localMatch;
+                    
+                    if(this.options.globalFilter) {
+                        matches = localMatch && globalMatch;
+                    }
+
+                    if(matches) {
+                        this.filteredData.push(this.data[i]);
+                    }
                 }
-                else {
+                
+                if(this.filteredData.length === this.data.length) {
                     this.filteredData = null;
                 }
 
@@ -1692,7 +1680,7 @@
                 if(value === undefined || value === null) {
                     return false;
                 }
-
+                
                 return value.toString().toLowerCase().indexOf(filter) !== -1;
             }
 

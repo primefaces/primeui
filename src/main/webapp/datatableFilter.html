@@ -27,7 +27,7 @@
                     {field: 'year', headerText: 'Year', filter: true},
                     {field: 'color', headerText: 'Color', filter: true}
                 ],
-                globalFilter:'globalFilter',
+                globalFilter:'#globalFilter',
                 datasource: function(callback) {
                     $.ajax({
                         type: "GET",
@@ -82,9 +82,9 @@
         </div>
     </div>
 
-    <div class="ContentSideSections Implementation">        
+    <div class="ContentSideSections Implementation">  
+        <input id="globalFilter" placeholder="Global Filter" size="30"></input>
         <div id="tblfilter"></div>
-        <label>Global Filter: <input id="globalFilter"></input></label>
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">
