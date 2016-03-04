@@ -9,11 +9,14 @@
             columns: null,
             datasource: null,
             paginator: null,
+            globalFilter:null,
             selectionMode: null,
             caption: null,
             footer: null,
             sortField: null,
-            sortOrder: null,
+            sortOrder: '1',
+            sortMeta: null,
+            sortMode: null,
             scrollable: false,
             scrollHeight: null,
             scrollWidth: null,
@@ -151,6 +154,10 @@
 
             if(this.hasFiltering) {
                 this._initFiltering();
+            }
+            
+            if(this.options.globalFilter) {
+                this._bindGlobalFilterEvent();
             }
 
             if(this.options.selectionMode) {
@@ -293,17 +300,21 @@
         _indicateInitialSortColumn: function() {
             this.sortableColumns = this.thead.find('> tr > th.ui-sortable-column');
             var $this = this;
-
+            
             $.each(this.sortableColumns, function(i, column) {
                 var $column = $(column),
                     data = $column.data();
+                    
                 if ($this.options.sortField === data.field) {
                     var sortIcon = $column.children('.ui-sortable-column-icon');
-                    $column.data('order', $this.options.sortOrder).removeClass('ui-state-hover').addClass('ui-state-active');
-                    if($this.options.sortOrder === -1)
+                        $column.data('order', $this.options.sortOrder).removeClass('ui-state-hover').addClass('ui-state-active');
+                    
+                    if($this.options.sortOrder === '-1') {
                         sortIcon.removeClass('fa-sort fa-sort-asc').addClass('fa-sort-desc');
-                    else if($this.options.sortOrder === 1)
+                    }
+                    else if($this.options.sortOrder === '1') {
                         sortIcon.removeClass('fa-sort fa-sort-desc').addClass('fa-sort-asc');
+                    }
                 }
             });
 
@@ -353,14 +364,45 @@
             this.thead.find('> tr > th.ui-sortable-column').data('order', 0).filter('.ui-state-active').removeClass('ui-state-active')
                                 .children('span.ui-sortable-column-icon').removeClass('fa-sort-asc fa-sort-desc').addClass('fa-sort');
         },
+        
+        _isMultiSort: function() {
+            if(this.options.sortMode === 'multiple')
+                return true;
+            else 
+                return false;
+        },
+        
+        _cleanPrev: function(column) {
+            //clean previous sort state
+            column.siblings().filter('.ui-state-active').data('order', 0).removeClass('ui-state-active').children('span.ui-sortable-column-icon')
+                                                        .removeClass('fa-sort-asc fa-sort-desc').addClass('fa-sort');
+        },
 
         _initSorting: function() {
             var $this = this,
             sortableColumns = this.thead.find('> tr > th.ui-sortable-column');
-
+            this.multiColumns = this.thead.find('> tr > th.ui-sortable-column'),
+            this.fields = [],
+            this.orders = [],
+            this.sortMetaFields = [],
+            this.sortMetaOrders = [];
+            
+            if($this._isMultiSort()) {
+               this.sortMeta = [];
+               var arr = [];
+               
+               if($this.options.sortMeta) {
+                   for (var i = 0; i < $this.options.sortMeta.length; i++) {
+                       this.sortMetaFields.push($this.options.sortMeta[i].field),
+                       this.sortMetaOrders.push($this.options.sortMeta[i].order);
+                   }   
+                   $this.sort(this.sortMetaFields,this.sortMetaOrders,true);
+               } 
+           }
+            
             sortableColumns.on('mouseover.puidatatable', function() {
                 var column = $(this);
-
+                
                 if(!column.hasClass('ui-state-active'))
                     column.addClass('ui-state-hover');
             })
@@ -374,31 +416,78 @@
                 if(!$(event.target).is('th,span')) {
                     return;
                 }
-
+                
                 var column = $(this),
                 sortField = column.data('field'),
                 order = column.data('order'),
                 sortOrder = (order === 0) ? 1 : (order * -1),
-                sortIcon = column.children('.ui-sortable-column-icon');
-
-                //clean previous sort state
-                column.siblings().filter('.ui-state-active').data('order', 0).removeClass('ui-state-active').children('span.ui-sortable-column-icon')
-                                                            .removeClass('fa-sort-asc fa-sort-desc').addClass('fa-sort');
-
+                sortIcon = column.children('.ui-sortable-column-icon'),
+                metaKey = event.metaKey||event.ctrlKey;
+                                            
+                if($this._isMultiSort()) {
+                    if(metaKey) {
+                        $this._addSortMeta({
+                            field: sortField, 
+                            order: sortOrder
+                        });
+                        var index = $.inArray(sortField, $this.fields);
+                        if(index == -1) {
+                            if(!$this.options.sortMeta) {
+                                $this.fields.push(sortField);
+                                $this.orders.push(sortOrder);
+                            }
+                            else {
+                                $this.sortMetaFields.push(sortField);
+                                $this.sortMetaOrders.push(sortOrder);
+                            }
+                        }
+                        else {
+                            $this.orders[index]=$this.orders[index]*(-1);
+                        }
+                            $this.sort(sortField, sortOrder, true);
+                    }
+                    else {
+                        $this.sortMeta = [];
+                        $this._addSortMeta({
+                            field: sortField, 
+                            order: sortOrder
+                        });
+                        $this._cleanPrev(column);
+                        $this.sort(sortField, sortOrder , false);
+                    }
+                }
+                else {
+                    $this._cleanPrev(column);
+                    if(!$this.options.sortField)
+                        $this.sort(sortField, sortOrder , false);
+                    else {
+                        $this.sort($this.options.sortField, $this.options.sortOrder, false);
+                    }
+                }    
                 //update state
                 $this.options.sortField = sortField;
                 $this.options.sortOrder = sortOrder;
 
-                $this.sort(sortField, sortOrder);
-
-                column.data('order', sortOrder).removeClass('ui-state-hover').addClass('ui-state-active');
-                if(sortOrder === -1)
-                    sortIcon.removeClass('fa-sort fa-sort-asc').addClass('fa-sort-desc');
-                else if(sortOrder === 1)
-                    sortIcon.removeClass('fa-sort fa-sort-desc').addClass('fa-sort-asc');
+                $this._defaultSettings(column,sortOrder,sortIcon);
 
                 $this._trigger('sort', event, {'sortOrder' : sortOrder, 'sortField' : sortField});
             });
+        },
+        
+        _defaultSettings: function(column,sortOrder,sortIcon) {
+            column.data('order', sortOrder).removeClass('ui-state-hover').addClass('ui-state-active');
+            if(sortOrder === -1)
+                sortIcon.removeClass('fa-sort fa-sort-asc').addClass('fa-sort-desc');
+            else if(sortOrder === 1)
+                sortIcon.removeClass('fa-sort fa-sort-desc').addClass('fa-sort-asc');
+        },
+        
+        _addSortMeta: function(meta) {
+            this.sortMeta = $.grep(this.sortMeta, function(value) {
+                return value.col !== meta.col;
+            });
+       
+            this.sortMeta.push(meta);
         },
 
         paginate: function() {
@@ -409,52 +498,117 @@
                this._renderData();
             }
         },
+        
+        _indicateInitialSortColumnMeta: function() {
+            this.sortableColumns = this.thead.find('> tr > th.ui-sortable-column');
+            var $this = this;
+            
+            this.sortableColumns.each(function(i, column) {
+                var $column = $(column),
+                    data = $column.data();
+                    
+                if ($this.sortMetaFields.indexOf(data.field) >= 0) {
+                    var sortIcon = $column.children('.ui-sortable-column-icon');
+                    
+                    $column.data('order', $this.sortMetaOrders[i-1]).removeClass('ui-state-hover').addClass('ui-state-active');
+                    
+                    if($this.sortMetaOrders[i-1] === '-1') {
+                        sortIcon.removeClass('fa-sort fa-sort-asc').addClass('fa-sort-desc');
+                    }
+                    else if($this.sortMetaOrders[i-1] === '1') {
+                        sortIcon.removeClass('fa-sort fa-sort-desc').addClass('fa-sort-asc');
+                    }
+                }
+            });
 
-        sort: function(field, order) {
+        },
+        
+        _multipleSort: function(sortMetaField,sortMetaOrder) {
+            var $this = this;
+            if($this.options.sortMeta) {
+                $this.fields = this.sortMetaFields;
+                $this.orders = this.sortMetaOrders;
+            }
+            
+            function multisort(data1,data2,fields,orders,index) {
+                var value1 = data1[fields[index]], value2 = data2[fields[index]],
+                result = null;
+                
+                if (typeof value1 == 'string' || value1 instanceof String) {
+                    if ( value1.localeCompare && (value1 != value2) ) {
+                        return ($this.orders[index] * value1.localeCompare(value2));
+                    }
+                }
+                else {
+                    result = (value1 < value2) ? -1 : 1;    
+                }
+
+                if(value1 == value2)  {
+                    return ($this.multiColumns.length-1) > (index) ? (multisort(data1,data2,$this.fields,$this.orders,index+1)) : 0;
+                }
+                return ($this.orders[index] * result);
+            }
+            
+            this.data.sort(function (data1,data2) {
+                return multisort(data1,data2,$this.fields,$this.orders,0);
+            });
+            
+            this._renderData();
+            
+        },
+
+        sort: function(field, order, multiple) {
             if(this.options.selectionMode) {
                 this.selection = [];
             }
-
+            
             if(this.options.lazy) {
                 this.options.datasource.call(this, this._onLazyLoad, this._createStateMeta());
             }
             else {
-                this.data.sort(function(data1, data2) {
-                    var value1 = data1[field], value2 = data2[field],
-                    result = null;
+                if(multiple) {
+                    this._multipleSort(field,order);
+                    if(this.options.sortMeta) {
+                        this._indicateInitialSortColumnMeta();
+                    }
+                }
+                else {
+                    this.data.sort(function(data1, data2) {
+                        var value1 = data1[field], value2 = data2[field],
+                        result = null;
+                        
+                        if (typeof value1 == 'string' || value1 instanceof String) {
+                        	if ( value1.localeCompare ) {
+                        		return (order * value1.localeCompare(value2));
+                        	}
+                        	else {
+                            	if (value1.toLowerCase) {
+                                	value1 = value1.toLowerCase();
+                                }
+                                if (value2.toLowerCase) {
+                                	value2 = value2.toLowerCase();
+                                }
+                                result = (value1 < value2) ? -1 : (value1 > value2) ? 1 : 0;
 
-                    if (typeof value1 == 'string' || value1 instanceof String) {
-                    	if ( value1.localeCompare ) {
-                    		return (order * value1.localeCompare(value2));
-                    	}
-                    	else {
-                        	if (value1.toLowerCase) {
-                            	value1 = value1.toLowerCase();
-                            }
-                            if (value2.toLowerCase) {
-                            	value2 = value2.toLowerCase();
-                            }
+                        	}
+                        }
+                        else {
                             result = (value1 < value2) ? -1 : (value1 > value2) ? 1 : 0;
+                        }
 
+                        return (order * result);
+                    });
 
-                    	}
+                    if(this.options.selectionMode) {
+                        this.selection = [];
                     }
-                    else {
-                        result = (value1 < value2) ? -1 : (value1 > value2) ? 1 : 0;
+
+                    if(this.paginator) {
+                        this.paginator.puipaginator('option', 'page', 0);
                     }
 
-                    return (order * result);
-                });
-
-                if(this.options.selectionMode) {
-                    this.selection = [];
+                    this._renderData();
                 }
-
-                if(this.paginator) {
-                    this.paginator.puipaginator('option', 'page', 0);
-                }
-
-                this._renderData();
             }
         },
 
@@ -466,7 +620,7 @@
 
         _renderData: function() {
             this.tbody.html('');
-
+            
             var dataToRender = this.filteredData||this.data;
             if(dataToRender && dataToRender.length) {
                 var firstNonLazy = this._getFirst(),
@@ -1408,7 +1562,7 @@
         _initFiltering: function() {
             var $this = this;
             this.filterElements = this.thead.find('.ui-column-filter');
-
+            
             this.filterElements.on('keyup', function() {
                         if($this.filterTimeout) {
                             clearTimeout($this.filterTimeout);
@@ -1421,14 +1575,32 @@
                         $this.options.filterDelay);
                     });
         },
+        
+        _bindGlobalFilterEvent: function() {
+            var $this = this,
+            input = document.getElementById(this.options.globalFilter);
+            
+            $(input).on('keyup.puidatatable', function() {
+                var filterElement = $(input),
+                filterElementValue = filterElement.val();
+                
+                $this.filter(filterElementValue);
+            });
+        },
 
-        filter: function() {
+        filter: function(globalFilterValue) {
             this.filterMetaMap = [];
-
+            
             for(var i = 0; i < this.filterElements.length; i++) {
                 var filterElement = this.filterElements.eq(i),
-                filterElementValue = filterElement.val();
-
+                filterElementValue;
+                if(globalFilterValue) {
+                    filterElementValue = globalFilterValue;
+                 }
+                 else {
+                     filterElementValue = filterElement.val();
+                 }
+                 
                 if(filterElementValue && $.trim(filterElementValue) !== '') {
                     this.filterMetaMap.push({
                         field: filterElement.data('field'),
@@ -1438,23 +1610,28 @@
                     });
                 }
             }
-
             if(this.options.lazy) {
                 this.options.datasource.call(this, this._onLazyLoad, this._createStateMeta());
             }
             else {
                 if(this.filterMetaMap.length) {
                     this.filteredData = [];
-
+                    
                     for(var i = 0; i < this.data.length; i++) {
                         var localMatch = true;
-
+                        var globalMatch = false;
+                        
                         for(var j = 0; j < this.filterMetaMap.length; j++) {
                             var filterMeta = this.filterMetaMap[j],
                             filterValue = filterMeta.value,
                             filterField = filterMeta.field,
                             dataFieldValue = this.data[i][filterField];
-
+                            
+                            if(globalFilterValue && !globalMatch) {
+                                var filterConstraint = this.filterConstraints[filterMeta.filterMatchMode ];
+                                globalMatch = !filterConstraint(dataFieldValue,globalFilterValue);
+                            }
+                            
                             if(filterMeta.filterMatchMode === 'custom') {
                                 localMatch = filterMeta.element.triggerHandler('filter', [dataFieldValue, filterValue]);
                             }
@@ -1469,8 +1646,14 @@
                                 break;
                             }
                         }
+                        
+                        var matches = localMatch;
+                        
+                        if(globalFilterValue) {
+                            matches = localMatch && globalMatch;
+                        }
 
-                        if(localMatch) {
+                        if(matches) {
                             this.filteredData.push(this.data[i]);
                         }
                     }

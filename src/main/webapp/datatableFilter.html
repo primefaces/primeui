@@ -27,6 +27,7 @@
                     {field: 'year', headerText: 'Year', filter: true},
                     {field: 'color', headerText: 'Color', filter: true}
                 ],
+                globalFilter:'globalFilter',
                 datasource: function(callback) {
                     $.ajax({
                         type: "GET",
@@ -42,7 +43,8 @@
                     rows: 10
                 }
             });
-
+            
+            $('#globalFilter').puiinputtext();
             $('#doc').puitabview();
         });
     </script>
@@ -82,6 +84,7 @@
 
     <div class="ContentSideSections Implementation">        
         <div id="tblfilter"></div>
+        <label>Global Filter: <input id="globalFilter"></input></label>
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">

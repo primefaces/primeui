@@ -18,6 +18,19 @@
                 Showcase.changePageWithLink($(this).attr('href'));
                 e.preventDefault();
             });
+            
+            var cars = [
+               {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
+               {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
+               {'brand': 'Audi', 'year': 2001, 'color': 'White', 'vin': 'gwregre346'},
+               {'brand': 'Audi', 'year': 2005, 'color': 'Yellow', 'vin': 'gwregre347'},
+               {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
+               {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
+               {'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
+               {'brand': 'Jaguar', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
+               {'brand': 'Jaguar', 'year': 1995, 'color': 'Black', 'vin': 'jejt1j'},
+               {'brand': 'BMW', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'}
+           ];
         
             $('#tbllocal').puidatatable({
                 caption: 'Client Side Sorting',
@@ -73,6 +86,31 @@
                     });
                 }
             });
+            
+            $('#tblmultisort').puidatatable({
+                caption: 'Multiple Column Sort with Metakey',
+                paginator: {
+                    rows: 10
+                },
+                sortMode: 'multiple',
+                columns: [
+                    {field: 'vin', headerText: 'Vin', sortable: true},
+                    {field: 'brand', headerText: 'Brand', sortable: true},
+                    {field: 'year', headerText: 'Year', sortable: true},
+                    {field: 'color', headerText: 'Color', sortable: true}
+                ],
+                datasource: function(callback) {
+                    $.ajax({
+                        type: "GET",
+                        url: 'rest/cars/list',
+                        dataType: "json",
+                        context: this,
+                        success: function(response) {
+                            callback.call(this, response);
+                        }
+                    });
+                }
+            });
 
             $('#doc').puitabview();
         });
@@ -114,6 +152,8 @@
         <div id="tbllocal"></div>
 
         <div id="tblremote"></div>
+        
+        <div id="tblmultisort"></div>
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">
