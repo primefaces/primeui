@@ -449,6 +449,8 @@
                             order: sortOrder
                         });
                         $this._cleanPrev(column);
+                        $this.fields.push(sortField);
+                        $this.orders.push(sortOrder);
                         $this.sort(sortField, sortOrder , false);
                     }
                 }
@@ -464,18 +466,14 @@
                 $this.options.sortField = sortField;
                 $this.options.sortOrder = sortOrder;
 
-                $this._defaultSettings(column,sortOrder,sortIcon);
+                column.data('order', sortOrder).removeClass('ui-state-hover').addClass('ui-state-active');
+                if(sortOrder === -1)
+                    sortIcon.removeClass('fa-sort fa-sort-asc').addClass('fa-sort-desc');
+                else if(sortOrder === 1)
+                    sortIcon.removeClass('fa-sort fa-sort-desc').addClass('fa-sort-asc');
 
                 $this._trigger('sort', event, {'sortOrder' : sortOrder, 'sortField' : sortField});
             });
-        },
-        
-        _defaultSettings: function(column,sortOrder,sortIcon) {
-            column.data('order', sortOrder).removeClass('ui-state-hover').addClass('ui-state-active');
-            if(sortOrder === -1)
-                sortIcon.removeClass('fa-sort fa-sort-asc').addClass('fa-sort-desc');
-            else if(sortOrder === 1)
-                sortIcon.removeClass('fa-sort fa-sort-desc').addClass('fa-sort-asc');
         },
         
         _addSortMeta: function(meta) {
