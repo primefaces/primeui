@@ -14,7 +14,7 @@
             caption: null,
             footer: null,
             sortField: null,
-            sortOrder: '1',
+            sortOrder: 1,
             sortMeta: [],
             sortMode: null,
             scrollable: false,
@@ -292,27 +292,32 @@
             });
         },
 
-        _indicateInitialSortColumn: function() {
-            this.sortableColumns = this.thead.find('> tr > th.ui-sortable-column');
+        _indicateInitialSortColumn: function(sortField, sortOrder) {
             var $this = this;
             
             $.each(this.sortableColumns, function(i, column) {
                 var $column = $(column),
                     data = $column.data();
                     
-                if ($this.options.sortField === data.field) {
+                if (sortField === data.field) {
                     var sortIcon = $column.children('.ui-sortable-column-icon');
-                        $column.data('order', $this.options.sortOrder).removeClass('ui-state-hover').addClass('ui-state-active');
+                        $column.data('order', sortOrder).removeClass('ui-state-hover').addClass('ui-state-active');
                     
-                    if($this.options.sortOrder === '-1') {
+                    if(sortOrder == -1)
                         sortIcon.removeClass('fa-sort fa-sort-asc').addClass('fa-sort-desc');
-                    }
-                    else if($this.options.sortOrder === '1') {
+                    else if(sortOrder == 1)
                         sortIcon.removeClass('fa-sort fa-sort-desc').addClass('fa-sort-asc');
-                    }
                 }
             });
-
+        },
+        
+        _indicateInitialSortColumns: function() {
+            var $this = this;
+            
+            for(var i = 0; i < this.options.sortMeta.length; i++) {
+                var meta = this.options.sortMeta[i];
+                this._indicateInitialSortColumn(meta.field, meta.order);
+            }
         },
 
         _onDataInit: function(data) {
@@ -455,30 +460,6 @@
             }
         },
         
-        _indicateInitialSortColumnMeta: function() {
-            this.sortableColumns = this.thead.find('> tr > th.ui-sortable-column');
-            var $this = this;
-            
-            this.sortableColumns.each(function(i, column) {
-                var $column = $(column),
-                    data = $column.data();
-                    
-                if ($this.sortMetaFields.indexOf(data.field) >= 0) {
-                    var sortIcon = $column.children('.ui-sortable-column-icon');
-                    
-                    $column.data('order', $this.sortMetaOrders[i-1]).removeClass('ui-state-hover').addClass('ui-state-active');
-                    
-                    if($this.sortMetaOrders[i-1] === '-1') {
-                        sortIcon.removeClass('fa-sort fa-sort-asc').addClass('fa-sort-desc');
-                    }
-                    else if($this.sortMetaOrders[i-1] === '1') {
-                        sortIcon.removeClass('fa-sort fa-sort-desc').addClass('fa-sort-asc');
-                    }
-                }
-            });
-
-        },
-        
         _multipleSort: function() {
             var $this = this;
             
@@ -567,16 +548,13 @@
         sortByDefault: function() {
             if(this._isMultiSort()) {
                 if(this.options.sortMeta) {
-                    for (var i = 0; i < this.options.sortMeta.length; i++) {
-                        this.sortMetaFields.push($this.options.sortMeta[i].field),
-                        this.sortMetaOrders.push($this.options.sortMeta[i].order);
-                    }   
-                    this.sort(this.sortMetaFields,this.sortMetaOrders,true);
+                    this._indicateInitialSortColumns();
+                    this.sort();
                 }
             }
             else {
-                this._indicateInitialSortColumn();
-                this.sort(this.options.sortField, this.options.sortOrder);
+                this._indicateInitialSortColumn(this.options.sortField, this.options.sortOrder);
+                this.sort();
             }
         },
 
