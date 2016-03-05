@@ -15,7 +15,7 @@
             footer: null,
             sortField: null,
             sortOrder: '1',
-            sortMeta: null,
+            sortMeta: [],
             sortMode: null,
             scrollable: false,
             scrollHeight: null,
@@ -172,9 +172,8 @@
                 this._initStickyHeader();
             }
 
-            if (this.options.sortField && this.options.sortOrder) {
-                this._indicateInitialSortColumn();
-                this.sort(this.options.sortField, this.options.sortOrder);
+            if ((this.options.sortField && this.options.sortOrder) || this.options.sortMeta.length) {
+                this.sortByDefault();
             }
             else {
                 this._renderData();
@@ -368,35 +367,16 @@
                 return false;
         },
         
-        _cleanPrev: function(column) {
-            //clean previous sort state
-            column.siblings().filter('.ui-state-active').data('order', 0).removeClass('ui-state-active').children('span.ui-sortable-column-icon')
+        _resetSortState: function(column) {
+            this.sortableColumns.filter('.ui-state-active').data('order', 0).removeClass('ui-state-active').children('span.ui-sortable-column-icon')
                                                         .removeClass('fa-sort-asc fa-sort-desc').addClass('fa-sort');
         },
 
         _initSorting: function() {
-            var $this = this,
-            sortableColumns = this.thead.find('> tr > th.ui-sortable-column');
-            this.multiColumns = this.thead.find('> tr > th.ui-sortable-column'),
-            this.fields = [],
-            this.orders = [],
-            this.sortMetaFields = [],
-            this.sortMetaOrders = [];
+            var $this = this;
+            this.sortableColumns = this.thead.find('> tr > th.ui-sortable-column');
             
-            if($this._isMultiSort()) {
-               this.sortMeta = [];
-               var arr = [];
-               
-               if($this.options.sortMeta) {
-                   for (var i = 0; i < $this.options.sortMeta.length; i++) {
-                       this.sortMetaFields.push($this.options.sortMeta[i].field),
-                       this.sortMetaOrders.push($this.options.sortMeta[i].order);
-                   }   
-                   $this.sort(this.sortMetaFields,this.sortMetaOrders,true);
-               } 
-           }
-            
-            sortableColumns.on('mouseover.puidatatable', function() {
+            this.sortableColumns.on('mouseover.puidatatable', function() {
                 var column = $(this);
                 
                 if(!column.hasClass('ui-state-active'))
@@ -422,66 +402,48 @@
                                             
                 if($this._isMultiSort()) {
                     if(metaKey) {
-                        $this._addSortMeta({
-                            field: sortField, 
-                            order: sortOrder
-                        });
-                        var index = $.inArray(sortField, $this.fields);
-                        if(index == -1) {
-                            if(!$this.options.sortMeta) {
-                                $this.fields.push(sortField);
-                                $this.orders.push(sortOrder);
-                            }
-                            else {
-                                $this.sortMetaFields.push(sortField);
-                                $this.sortMetaOrders.push(sortOrder);
-                            }
-                        }
-                        else {
-                            $this.orders[index]=$this.orders[index]*(-1);
-                        }
-                            $this.sort(sortField, sortOrder, true);
+                        $this._addSortMeta({field: sortField, order: sortOrder});
+                        $this.sort();    
                     }
                     else {
-                        $this.sortMeta = [];
-                        $this._addSortMeta({
-                            field: sortField, 
-                            order: sortOrder
-                        });
-                        $this._cleanPrev(column);
-                        $this.fields.push(sortField);
-                        $this.orders.push(sortOrder);
-                        $this.sort(sortField, sortOrder , false);
+                        $this.options.sortMeta = [];
+                        $this._addSortMeta({field: sortField, order: sortOrder});
+                        $this._resetSortState(column);
+                        $this.sort();
                     }
                 }
                 else {
-                    $this._cleanPrev(column);
-                    if(!$this.options.sortField)
-                        $this.sort(sortField, sortOrder , false);
-                    else {
-                        $this.sort($this.options.sortField, $this.options.sortOrder, false);
-                    }
-                }    
-                //update state
-                $this.options.sortField = sortField;
-                $this.options.sortOrder = sortOrder;
+                    //update state
+                    $this.options.sortField = sortField;
+                    $this.options.sortOrder = sortOrder;
+                    
+                    $this._resetSortState(column);
+                    $this.sort();
+                }
 
+                //update visuals
                 column.data('order', sortOrder).removeClass('ui-state-hover').addClass('ui-state-active');
                 if(sortOrder === -1)
                     sortIcon.removeClass('fa-sort fa-sort-asc').addClass('fa-sort-desc');
                 else if(sortOrder === 1)
                     sortIcon.removeClass('fa-sort fa-sort-desc').addClass('fa-sort-asc');
 
-                $this._trigger('sort', event, {'sortOrder' : sortOrder, 'sortField' : sortField});
+                $this._trigger('sort', event, {'sortOrder': sortOrder, 'sortField': sortField});
             });
         },
         
         _addSortMeta: function(meta) {
-            this.sortMeta = $.grep(this.sortMeta, function(value) {
-                return value.col !== meta.col;
-            });
-       
-            this.sortMeta.push(meta);
+            var index = -1;
+            for(var i = 0; i < this.options.sortMeta.length; i++) {
+                if(this.options.sortMeta[i].field === meta.field) {
+                    index = i;
+                }
+            }
+            
+            if(index >= 0)
+                this.options.sortMeta[index] = meta;
+            else
+                this.options.sortMeta.push(meta);
         },
 
         paginate: function() {
@@ -517,20 +479,17 @@
 
         },
         
-        _multipleSort: function(sortMetaField,sortMetaOrder) {
+        _multipleSort: function() {
             var $this = this;
-            if($this.options.sortMeta) {
-                $this.fields = this.sortMetaFields;
-                $this.orders = this.sortMetaOrders;
-            }
             
-            function multisort(data1,data2,fields,orders,index) {
-                var value1 = data1[fields[index]], value2 = data2[fields[index]],
+            function multisort(data1,data2,sortMeta,index) {
+                var value1 = data1[sortMeta[index].field], 
+                value2 = data2[sortMeta[index].field],
                 result = null;
-                
+                                
                 if (typeof value1 == 'string' || value1 instanceof String) {
-                    if ( value1.localeCompare && (value1 != value2) ) {
-                        return ($this.orders[index] * value1.localeCompare(value2));
+                    if (value1.localeCompare && (value1 != value2)) {
+                        return (sortMeta[index].order * value1.localeCompare(value2));
                     }
                 }
                 else {
@@ -538,78 +497,87 @@
                 }
 
                 if(value1 == value2)  {
-                    return ($this.multiColumns.length-1) > (index) ? (multisort(data1,data2,$this.fields,$this.orders,index+1)) : 0;
+                    return (sortMeta.length - 1) > (index) ? (multisort(data1, data2, sortMeta, index + 1)) : 0;
                 }
-                return ($this.orders[index] * result);
+                
+                return (sortMeta[index].order * result);
             }
             
             this.data.sort(function (data1,data2) {
-                return multisort(data1,data2,$this.fields,$this.orders,0);
+                return multisort(data1, data2, $this.options.sortMeta, 0);
             });
             
             this._renderData();
-            
         },
 
-        sort: function(field, order, multiple) {
-            if(this.options.selectionMode) {
-                this.selection = [];
-            }
-            
+        sort: function() {
             if(this.options.lazy) {
                 this.options.datasource.call(this, this._onLazyLoad, this._createStateMeta());
             }
             else {
-                if(multiple) {
-                    this._multipleSort(field,order);
-                    if(this.options.sortMeta) {
-                        this._indicateInitialSortColumnMeta();
+                if(this._isMultiSort())
+                    this._multipleSort();
+                else
+                    this._singleSort();
+            }
+        },
+        
+        _singleSort: function() {
+            var $this = this;
+            
+            this.data.sort(function(data1, data2) {
+                var value1 = data1[$this.options.sortField], value2 = data2[$this.options.sortField],
+                result = null;
+                
+                if (typeof value1 == 'string' || value1 instanceof String) {
+                    if ( value1.localeCompare ) {
+                        return ($this.options.sortOrder * value1.localeCompare(value2));
+                    }
+                    else {
+                        if (value1.toLowerCase) {
+                            value1 = value1.toLowerCase();
+                        }
+                        if (value2.toLowerCase) {
+                            value2 = value2.toLowerCase();
+                        }
+                        result = (value1 < value2) ? -1 : (value1 > value2) ? 1 : 0;
+
                     }
                 }
                 else {
-                    this.data.sort(function(data1, data2) {
-                        var value1 = data1[field], value2 = data2[field],
-                        result = null;
-                        
-                        if (typeof value1 == 'string' || value1 instanceof String) {
-                        	if ( value1.localeCompare ) {
-                        		return (order * value1.localeCompare(value2));
-                        	}
-                        	else {
-                            	if (value1.toLowerCase) {
-                                	value1 = value1.toLowerCase();
-                                }
-                                if (value2.toLowerCase) {
-                                	value2 = value2.toLowerCase();
-                                }
-                                result = (value1 < value2) ? -1 : (value1 > value2) ? 1 : 0;
-
-                        	}
-                        }
-                        else {
-                            result = (value1 < value2) ? -1 : (value1 > value2) ? 1 : 0;
-                        }
-
-                        return (order * result);
-                    });
-
-                    if(this.options.selectionMode) {
-                        this.selection = [];
-                    }
-
-                    if(this.paginator) {
-                        this.paginator.puipaginator('option', 'page', 0);
-                    }
-
-                    this._renderData();
+                    result = (value1 < value2) ? -1 : (value1 > value2) ? 1 : 0;
                 }
+
+                return ($this.options.sortOrder * result);
+            });
+
+            if(this.paginator) {
+                this.paginator.puipaginator('option', 'page', 0);
             }
+
+            this._renderData();
         },
 
         sortByField: function(a, b) {
             var aName = a.name.toLowerCase();
             var bName = b.name.toLowerCase();
             return ((aName < bName) ? -1 : ((aName > bName) ? 1 : 0));
+        },
+        
+        sortByDefault: function() {
+            if(this._isMultiSort()) {
+                if(this.options.sortMeta) {
+                    for (var i = 0; i < this.options.sortMeta.length; i++) {
+                        this.sortMetaFields.push($this.options.sortMeta[i].field),
+                        this.sortMetaOrders.push($this.options.sortMeta[i].order);
+                    }   
+                    this.sort(this.sortMetaFields,this.sortMetaOrders,true);
+                }
+            }
+            else {
+                this._indicateInitialSortColumn();
+                this.sort(this.options.sortField, this.options.sortOrder);
+            }
         },
 
         _renderData: function() {
