@@ -173,6 +173,8 @@
 &lt;div id="tbllocal"&gt;&lt;/div&gt;
 
 &lt;div id="tblremote"&gt;&lt;/div&gt;
+
+&lt;div id="tblmultisort"&gt;&lt;/div&gt;
                                 </pre>
                             </div>
 
@@ -225,6 +227,32 @@ $(function() {
             $.ajax({
                 type: "GET",
                 url: uri,
+                dataType: "json",
+                context: this,
+                success: function(response) {
+                    callback.call(this, response);
+                }
+            });
+        }
+    });
+    
+    $('#tblmultisort').puidatatable({
+        caption: 'Multiple Column Sort with Metakey',
+        paginator: {
+            rows: 10
+        },
+        sortMode: 'multiple',
+        sortMeta: [{field: 'brand', order:1}, {field:'year',order:1}],
+        columns: [
+            {field: 'vin', headerText: 'Vin', sortable: true},
+            {field: 'brand', headerText: 'Brand', sortable: true},
+            {field: 'year', headerText: 'Year', sortable: true},
+            {field: 'color', headerText: 'Color', sortable: true}
+        ],
+        datasource: function(callback) {
+            $.ajax({
+                type: "GET",
+                url: 'rest/cars/list',
                 dataType: "json",
                 context: this,
                 success: function(response) {

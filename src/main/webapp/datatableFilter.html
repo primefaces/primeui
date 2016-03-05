@@ -100,6 +100,7 @@
 
                             <div id="doc-markup">                               
                                 <pre name="code" class="brush:xml">
+&lt;input id="globalFilter" placeholder="Global Filter" size="30"&gt;&lt;/input&gt;
 &lt;div id="tblfilter"&gt;/&lt;/div&gt;
                                 </pre>
                             </div>
@@ -115,6 +116,7 @@ $(function() {
             {field: 'year', headerText: 'Year', filter: true},
             {field: 'color', headerText: 'Color', filter: true}
         ],
+        globalFilter:'#globalFilter',
         datasource: function(callback) {
             $.ajax({
                 type: "GET",
