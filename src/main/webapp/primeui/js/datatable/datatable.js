@@ -939,6 +939,7 @@
                 rows: this._getRows(),
                 sortField: this.options.sortField,
                 sortOrder: this.options.sortOrder,
+                sortMeta: this.options.sortMeta,
                 filters: this.filterMetaMap
             };
 
