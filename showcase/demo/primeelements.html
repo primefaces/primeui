@@ -1,0 +1,270 @@
+<div>
+    <link rel="stylesheet" href="../../../components/button/button.css" />
+    <link rel="stylesheet" href="../../../components/inputtext/inputtext.css" />
+    <link rel="stylesheet" href="../../../components/datatable/datatable.css" />
+    <link rel="stylesheet" href="../../../components/paginator/paginator.css" />
+    <link rel="stylesheet" href="../../../components/tabview/tabview.css" />
+    <link rel="stylesheet" href="../../../components/grid/grid.css" />
+    <link rel="stylesheet" href="../../../components/dropdown/dropdown.css" />
+    <link rel="stylesheet" href="../../../components/dialog/dialog.css" />
+    <script type="text/javascript" src="../showcase/resources/demo/js/data-demo.js"></script>
+    <script type="text/javascript" src="../../../components/dropdown/dropdown.js"></script>   
+    <script type="text/javascript" src="../../../components/button/button.js"></script>
+    <script type="text/javascript" src="../../../components/datatable/datatable.js"></script>
+    <script type="text/javascript" src="../../../components/paginator/paginator.js"></script>
+    <script type="text/javascript" src="../../../components/tabview/tabview.js"></script>
+    <script type="text/javascript" src="../../../components/dialog/dialog.js"></script>
+    <script type="text/javascript" src="../../../components/inputtext/inputtext.js"></script>
+    <script type="text/javascript" src="../../../components/column/column-element.js"></script>
+    <script type="text/javascript" src="../../../components/datatable/datatable-element.js"></script>
+    <script type="text/javascript" src="../../../components/tabview/tabview-element.js"></script>
+    <script type="text/javascript" src="../../../components/button/button-element.js"></script>
+    <script type="text/javascript" src="../../../components/dialog/dialog-element.js"></script>
+    <script type="text/javascript" src="../../../components/dropdown/dropdown-element.js"></script>
+    <script type="text/javascript" src="../../../components/button/button-element.js"></script> 
+
+    <div class="ContentSideSections">
+        <div style="text-align:center;border-bottom:1px solid #bcc7cf;margin-bottom:20px"><img src="showcase/resources/images/primeelements.png" /></div>
+
+        <div class="Content100 overHidden TextShadow">
+            <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">PrimeElements - <span class="subitem">Web Components</span></span>
+            <p class="defaultText"><a href="http://www.webcomponents.org">Web Components</a> is a collection of four specifications to create reusable user interface components. These
+                different technologies are <strong>Custom Elements, Shadow DOM, Html Imports</strong> and <strong>Templates</strong>. Modern browsers provide native implementations and javascript
+                libraries called <a href="http://webcomponents.org/polyfills/">pollyfills</a> are available to use them on older browsers. There are some libraries to create web components easily
+                such as Google Polymer or Mozilla X-Tag while providing additional features.</p>
+
+            <p class="defaultText">PrimeElements is an add-on library for PrimeUI that only uses the Custom Elements technology. PrimeElements
+                are based on <a href="http://x-tag.github.io/">X-Tag</a> APIs, a simple and lightweight library to create cross browser custom elements.
+            </p>
+
+            <p class="defaultText">PrimeElements is a library not a framework, features such as data binding, validation, routing are out of scope since they can be provided by your framework of choice. As they are regular html elements, there are various use cases including integration with a simple REST backend, a javascript mvc framework  or implementation in a server side rendering web framework such as PHP, JSP,
+                RoR, Django, ASP.NET MVC, Spring MVC, JavaEE MVC and many more. Advanced cases such as hybrid mobile apps and offline support is also possible since there is no dependency to a server side api.</p>
+        </div>
+
+    </div>
+
+    <div class="ContentSideSections Implementation">
+
+        <h3 class="first">Creation</h3>
+        A common approach to use a widget on a page involves a markup and invoking a jquery plugin on that markup.
+
+        <pre name="code" class="brush:xml">
+            &lt;select id="basic" name="basic"&gt;
+                &lt;option value="0"&gt;Select One&lt;/option&gt;
+                &lt;option value="1"&gt;Option 1&lt;/option&gt;
+                &lt;option value="2"&gt;Option 2&lt;/option&gt;
+                &lt;option value="3"&gt;Option 3&lt;/option&gt;
+            &lt;/select&gt;
+        </pre>
+
+        <pre name="code" class="brush:js">
+            $('#basic').puidropdown();
+        </pre>
+
+        On the contrary, elements are created using their tags without need of an initialization script.
+
+        <pre name="code" class="brush:xml">
+            &lt;p-dropdown&gt;
+                &lt;option value="1"&gt;Option 1&lt;/option&gt;
+                &lt;option value="2"&gt;Option 2&lt;/option&gt;
+                &lt;option value="3"&gt;Option 3&lt;/option&gt;
+            &lt;/p-dropdown&gt;
+        </pre>
+
+        <p-dropdown>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+        </p-dropdown>
+
+        <br />
+
+        That is it! As PrimeElements are also regular dom elements, they can be initialized with document.createElement() where you can later attach it to another element.
+        <pre name="code" class="brush:js">
+            var dropdown = document.createElement('p-dropdown');
+        </pre>
+
+        <h3>Extending Elements</h3>
+        Some of the PrimeElements extend standard elements instead of providing their own tags, p-button is one of them so same UI can be defined using "is" attribute. Notice that
+        there is no need for a script anymore as approach is declarative.
+
+        <pre name="code" class="brush:xml">
+            &lt;button type="button" id="btn"&gt;Save&lt;/button&gt;
+        </pre>
+
+        <pre name="code" class="brush:js">
+            $('#btn').puibutton();
+        </pre>
+
+        <h4>Extend a Button</h4>
+
+        <pre name="code" class="brush:xml">
+            &lt;button is="p-button" type="button" id="btn"&gt;Save&lt;/button&gt;
+        </pre>
+
+        <h3>Accessing APIs</h3>
+        Elements can be interacted using their public apis. Example below demonstrates how to show a dialog at a button click.
+
+        <pre name="code" class="brush:xml">
+            &lt;button type="button" is="p-button" icon="fa-external-link" onclick="document.getElementById('dlgelement').show()" &gt;Show&lt;/button&gt;
+
+            &lt;p-dialog id="dlgelement" title="Dialog Header" modal showeffect="fade" hideeffect="fade" draggable resizable&gt;
+                &lt;p&gt;Dialog content here.&lt;/p&gt;
+            &lt;/p-dialog&gt;
+        </pre>
+
+        <button type="button" is="p-button" icon="fa-external-link" onclick="document.getElementById('dlgelement').show()">Show</button>
+        <p-dialog id="dlgelement" title="Dialog Header" modal showeffect="fade" hideeffect="fade" draggable resizable renderdelay="10">
+            <p>Dialog content here.</p>
+        </p-dialog>
+
+        <h3>Data Components</h3>
+        A complex example is datatable where there are many options for customization. Regular way is to write the markup and the script.
+
+        <pre name="code" class="brush:xml">
+            &lt;div id="tbl"&gt;&lt;/div&gt;
+        </pre>
+
+        <pre name="code" class="brush:js">
+            $('#tbl').puidatatable({
+                caption: 'List of Cars',
+                paginator: {
+                    rows: 10
+                },
+                columns: [
+                    {field: 'vin', headerText: 'Vin', sortable: true, filter: true},
+                    {field: 'brand', headerText: 'Brand', sortable: true, filter: true},
+                    {field: 'year', headerText: 'Year', sortable: true, filter: true},
+                    {field: 'color', headerText: 'Color', sortable: true, filter: true, content: function(car){return $(&lt;span style="color:{{color}}"&gt;{{color}}&lt;/span&gt;);}}
+                ],
+                datasource: function(callback) {
+                    $.ajax({
+                        type: "GET",
+                        url: 'rest/cars/list',
+                        dataType: "json",
+                        context: this,
+                        success: function(response) {
+                            callback.call(this, response);
+                        }
+                    });
+                },
+                selectionMode: 'single'
+            });
+        </pre>
+
+        PrimeElement shortens the code required using p-datatable and p-column elements.
+
+        <pre name="code" class="brush:xml">
+            &lt;p-datatable datasource="rest/cars/list" paginator rows="10" selectionmode="single"&gt;
+                &lt;p-column field="vin" headertext="Vin" sortable filter&gt;&lt;/p-column&gt;
+                &lt;p-column field="year" headertext="Year" sortable filter&gt;&lt;/p-column&gt;
+                &lt;p-column field="brand" headertext="Brand" sortable filter&gt;&lt;/p-column&gt;
+                &lt;p-column field="color" headertext="Color" sortable filter&gt; 
+                    &lt;template&gt;
+                        &lt;span style="color:{{color}}"&gt;{{color}}&lt;/span&gt;
+                    &lt;/template&gt;
+                &lt;/p-column&gt;
+            &lt;/p-datatable&gt;
+        </pre>
+        
+        <p-datatable datasource="rest/cars/list" paginator rows="10" selectionmode="single">
+            <p-column field="vin" headertext="Vin" sortable filter></p-column>
+            <p-column field="year" headertext="Year" sortable filter></p-column>
+            <p-column field="brand" headertext="Brand" sortable filter></p-column>
+            <p-column field="color" headertext="Color" sortable filter> 
+                <template>
+                    <span style="color:{{color}}">{{color}}</span>
+                </template>
+            </p-column>
+        </p-datatable>
+
+        <h3>Containers</h3>
+        PrimeElements can have any content as children just like a standard div element. Here is an example of tabview.
+
+        <pre name="code" class="brush:xml">
+            &lt;div id="tabview"&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;a href="#tab1"&gt;Tab 1&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#tab2"&gt;Tab 2&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#tab3"&gt;Tab 3&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+                &lt;div&gt;
+                    &lt;div id="tab1"&gt;
+                        Tab 1 Content
+                    &lt;/div&gt;
+                    &lt;div id="tab2"&gt;
+                        Tab 2 Content
+                    &lt;/div&gt;
+                    &lt;div id="tab3"&gt;
+                        Tab 3 Content
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        </pre>
+
+        <pre name="code" class="brush:js">
+            $('#tabview').puitabview();
+        </pre>
+
+        And the PrimeElement version.
+        <pre name="code" class="brush:xml">
+            &lt;p-tabview&gt;
+                &lt;p-tab title="Tab 1"&gt;
+                    Tab 1 Content
+                &lt;/p-tab&gt;
+                &lt;p-tab title="Tab 2"&gt;
+                    Tab 2 Content
+                &lt;/p-tab&gt;
+            &lt;/p-tabview&gt;
+        </pre>
+
+        <p-tabview>
+            <p-tab title="Tab 1">
+                Tab 1 Content
+            </p-tab>
+            <p-tab title="Tab 2">
+                Tab 2 Content
+            </p-tab>
+        </p-tabview>
+
+        <h3>Events</h3>
+        PrimeElements provide event callbacks prefixed with "on" keyword. An example with rating is below;
+
+        <pre name="code" class="brush:xml">
+            &lt;p-rating stars="10" onrate="MyApp.handleRate"&gt;&lt;/p-rating&gt;
+        </pre>
+
+        <pre name="code" class="brush:js">
+            var MyApp = {
+                handleRate: function(event, value) {
+                    //value = new rating value
+                }
+            };
+        </pre>
+
+        <h3>Premium Layouts and Themes</h3>
+        <p>In addition to the free themeroller based themes, PrimeElements support premium layouts and themes as well to give the elements a great look and a
+            responsive template to work within.</p>
+
+        <div class="overHidden">
+            <div class="Content33 floatLeft">
+                <a href="http://www.primefaces.org/modena-primeui/#primeelements"><img src="showcase/resources/images/layouts/modena.png" style="width:90%" /></a>
+            </div>
+            <div class="Content33 floatLeft">
+                <a href=http://www.primefaces.org/rio-primeui/#primeelements"><img src="showcase/resources/images/layouts/rio.png" style="width:90%" /></a>
+            </div>
+            <div class="Content33 floatLeft">
+                <a href=http://www.primefaces.org/adamantium-primeui/#primeelements"><img src="showcase/resources/images/layouts/adamantium.png" style="width:90%" /></a>
+            </div>
+        </div>
+
+        <h3>Conclusion</h3>
+        <p>PrimeElements drastically reduce the amount of work required to create nice looking and functional UIs by providing a rapid
+            application development kit based on standard Web Components technologies. Maintenance effort also benefits from this as there is less amount of script involved.</p>
+
+    </div>
+
+    <script language="javascript">
+        SyntaxHighlighter.highlight();
+    </script>
+</div>

@@ -1,0 +1,582 @@
+<div>
+    <link rel="stylesheet" href="../../../components/inputtext/inputtext.css" />
+    <link rel="stylesheet" href="../../../components/dropdown/dropdown.css" />
+    <link rel="stylesheet" href="../../../components/tabview/tabview.css" />
+    <script type="text/javascript" src="../../../components/inputtext/inputtext.js"></script>
+    <script type="text/javascript" src="../../../components/dropdown/dropdown.js"></script>
+    <script type="text/javascript" src="../../../components/dropdown/dropdown-element.js"></script>
+    <script type="text/javascript" src="../../../components/tabview/tabview.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
+                    'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
+                    'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
+                    'ui-darkness', 'ui-lightness', 'vader');
+
+            $('#basic').puidropdown();
+
+            $('#editable').puidropdown({
+                editable: true
+            });
+
+            $('#custom').puidropdown({
+                data: themes,
+                content: function (option) {
+                    return '<img src="showcase/resources/demo/images/themes/' + option + '.png" alt="" /><span style="float:right;font-size:14px">' + option + '</span>';
+                }
+            });
+
+            $('#filter').puidropdown({
+                filter: true
+            });
+            
+            $('#rfn').puidropdown({
+                data:  function(callback) {
+                    $.ajax({
+                        type: "GET",
+                        url: 'showcase/resources/data/options.json',
+                        dataType: "json",
+                        context: this,
+                        success: function(response) {
+                            callback.call(this, response);
+                        }
+                    });
+                }
+            });
+            
+            $('#rurl').puidropdown({
+                data: 'showcase/resources/data/options.json'
+            });
+
+            $('#doc').puitabview();
+
+        });
+    </script>
+    <style type="text/css">
+        .ui-dropdown {
+            width: 150px;
+        }
+    </style>
+
+    <div class="ContentSideSections">
+        <div class="Content100 overHidden TextShadow">
+            <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">Dropdown</span>
+            <span class="defaultText dispTable">Dropdown is an advanced widget to select an item from a collection.</span>
+        </div>
+    </div>
+
+    <div class="ContentSideSections Implementation">
+        <h3 class="first">Basic</h3>
+        <select id="basic" name="basic">
+            <option value="0">Select One</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+        </select>
+
+        <h3>Editable</h3>
+        <select id="editable" name="editable">
+            <option value="0">Select a City</option>
+            <option value="1">Barcelona</option>
+            <option value="2">Berlin</option>
+            <option value="3">Istanbul</option>
+            <option value="4">London</option>
+            <option value="5">New York</option>
+            <option value="6">Paris</option>
+            <option value="7">Rome</option>
+        </select>
+
+        <h3>Content</h3>
+        <select id="custom" name="custom" style="width: 180px;"></select>
+
+        <h3>Filter</h3>
+        <select id="filter" name="filter">
+            <option value="0">Select a City</option>
+            <option value="1">Barcelona</option>
+            <option value="2">Berlin</option>
+            <option value="3">Istanbul</option>
+            <option value="4">London</option>
+            <option value="5">New York</option>
+            <option value="6">Paris</option>
+            <option value="7">Rome</option>
+        </select>
+        
+        <h3>Remote Function</h3>
+        <select id="rfn" name="rfn"></select>
+        
+        <h3>Remote URL</h3>
+        <select id="rurl" name="rurl"></select>
+
+        <h3>PrimeElement</h3>
+        <p-dropdown effect="fade" name="element" filter>
+            <option value="0">Select a City</option>
+            <option value="1">Barcelona</option>
+            <option value="2">Berlin</option>
+            <option value="3">Istanbul</option>
+            <option value="4">London</option>
+            <option value="5">New York</option>
+            <option value="6">Paris</option>
+            <option value="7">Rome</option>
+        </p-dropdown>
+    </div>
+
+    <div id="SourceContentSide" class="ContentSideSections Source">
+        <div class="Content100 overHidden TextShadow">
+            <span class="defaultText">
+                <span class="fontSize18 logoBlueText">
+                    <div id="doc">
+                        <ul>
+                            <li><a href="#doc-overview">Overview</a></li>
+                            <li><a href="#doc-options">Options</a></li>
+                            <li><a href="#doc-events">Events</a></li>
+                            <li><a href="#doc-methods">Methods</a></li>
+                            <li><a href="#doc-methods">Source</a></li>
+                            <li class="tab-primeelement"><a href="#doc-element">PrimeElement</a></li>
+                        </ul>
+                        <div>
+                            <div id="doc-overview">
+
+                                <p>Dropdown is an advanced widget to select an item from a collection.</p>
+
+                                <pre name="code" class="brush:js">
+$('#basic').puidropdown();
+                                </pre>
+
+                                <pre name="code" class="brush:xml">
+&lt;select id="basic" name="basic"&gt;
+    &lt;option value="0"&gt;Select One&lt;/option&gt;
+    &lt;option value="1"&gt;Option 1&lt;/option&gt;
+    &lt;option value="2"&gt;Option 2&lt;/option&gt;
+    &lt;option value="3"&gt;Option 3&lt;/option&gt;
+&lt;/select&gt;
+                                </pre>
+                                
+                                <h4>Local Data</h4>
+                                <pre name="code" class="brush:js">
+var themes = new Array('afterdark', 'afternoon', 'afterwork', ...);
+        
+$('#custom').puidropdown({
+    data: themes
+});
+                                </pre>
+                                <pre name="code" class="brush:xml">
+&lt;select id="custom" name="custom"&gt;&lt;/select&gt;
+                                </pre>
+                                
+                                <h4>Remote Data</h4>
+                                <pre name="code" class="brush:js">
+$('#rfn').puidropdown({
+    data:  function(callback) {
+        $.ajax({
+            type: "GET",
+            url: 'resources/data/options.json',
+            dataType: "json",
+            context: this,
+            success: function(response) {
+                callback.call(this, response);
+            }
+        });
+    }
+});
+                                </pre>
+                                <pre name="code" class="brush:xml">
+&lt;select id="rfn" name="rfn"&gt;&lt;/select&gt;
+                                </pre>
+                                
+                                <h4>Remote URL</h4>
+                                <pre name="code" class="brush:js">
+$('#rurl').puidropdown({
+    data: 'resources/data/options.json'
+});
+                                </pre>
+                                <pre name="code" class="brush:xml">
+&lt;select id="rurl" name="rurl"&gt;&lt;/select&gt;
+                                </pre>
+                            </div>
+
+                            <div id="doc-options">
+
+                                <table class="doc-table">
+                                    <thead>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>effect</td>
+                                            <td>string</td>
+                                            <td>fade</td>
+                                            <td>Animation to run on displaying the options overlay, refer to jQuery UI effect api for valid values.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>effectSpeed</td>
+                                            <td>int/string</td>
+                                            <td>normal</td>
+                                            <td>Duration in milliseconds or keywords like slow, normal and fast.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>filter</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>Adds a filter input at options panel when enabled.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>filterMatchMode</td>
+                                            <td>string</td>
+                                            <td>startsWith</td>
+                                            <td>Mode of filter, valid values are startsWith, contains, endsWith and custom.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>caseSensitiveFilter</td>
+                                            <td>false</td>
+                                            <td>boolean</td>
+                                            <td>Defines case sensitivity on filtering.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>filterFunction</td>
+                                            <td>function</td>
+                                            <td>null</td>
+                                            <td>Function to be used in custom filtering, this function gets option as parameter and needs to return a boolean.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>data</td>
+                                            <td>array</td>
+                                            <td>null</td>
+                                            <td>An array of items to populate dropdown dynamically. Objects in this array can be simple types or object with
+                                                label-value fields like {label:'Option 1', value:1}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>content</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Content template of an item in overlay.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>scrollHeight</td>
+                                            <td>integer</td>
+                                            <td>200</td>
+                                            <td>Maximum height boundary of overlay panel in pixels, if total height of items exceed this value, scrollbar is displayed.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>style</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Inline style of the element.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>styleClass</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Style class of the element.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                            <div id="doc-events">
+
+                                <table class="doc-table">
+                                    <thead>
+                                    <th>Name</th>
+                                    <th>Parameters</th>
+                                    <th>Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>change</td>
+                                            <td>
+                                                event: puidropdownchange event
+                                            </td>
+                                            <td>Fired on value change.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div id="doc-methods">
+
+                                <table class="doc-table">
+                                    <thead>
+                                    <th>Name</th>
+                                    <th>Parameters</th>
+                                    <th>Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>getSelectedValue</td>
+                                            <td>-.</td>
+                                            <td>Returns value of current value.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>getSelectedLabel</td>
+                                            <td>-.</td>
+                                            <td>Returns label of current option.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>selectValue</td>
+                                            <td>value: Value to select.</td>
+                                            <td>Updates the current value with given parameter.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>addOption</td>
+                                            <td>label: Label of the option, value: Value of the option.</td>
+                                            <td>Adds an option to the dropdown with given label value pair.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>removeAllOptions</td>
+                                            <td>-.</td>
+                                            <td>Removes all options from the widget.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>enable</td>
+                                            <td>-</td>
+                                            <td>Enable the widget</td>
+                                        </tr>
+                                        <tr>
+                                            <td>disable</td>
+                                            <td>-</td>
+                                            <td>Disable the widget.</td>
+                                        </tr>
+                                         <tr>
+                                            <td>getEditableText</td>
+                                            <td>-</td>
+                                            <td>Returns value of the editable field.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>option</td>
+                                            <td>name: Name of the option</td>
+                                            <td>Returns the value of the option.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>option</td>
+                                            <td>name: Name of the option, value: Value of the option</td>
+                                            <td>Set the value of the option.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <h3>Example</h3>
+                                <pre name="code" class="brush:js">
+$('#basic').puidropdown('selectValue', 1);
+                                </pre>
+
+                            </div>
+
+                            <div id="doc-source">
+
+                                <pre name="code" class="brush:js">
+&lt;script type="text/javascript"&gt;
+    $(function() {
+        var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
+        'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
+        'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
+        'ui-darkness', 'ui-lightness', 'vader');
+
+        $('#basic').puidropdown();
+
+        $('#editable').puidropdown({
+            editable: true
+        });
+
+        $('#custom').puidropdown({
+            data: themes,
+            content: function(option) {
+                return '&lt;img src="resources/demo/images/themes/' + option + '.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;' + option + '&lt;/span&gt;';
+            }
+        });
+
+        $('#filter').puidropdown({
+            filter: true
+        });
+        
+        $('#rfn').puidropdown({
+            data:  function(callback) {
+                $.ajax({
+                    type: "GET",
+                    url: 'resources/data/options.json',
+                    dataType: "json",
+                    context: this,
+                    success: function(response) {
+                        callback.call(this, response);
+                    }
+                });
+            }
+        });
+        
+        $('#rurl').puidropdown({
+            data: 'resources/data/options.json'
+        });                                     
+    });
+&lt;/script&gt;
+                                </pre>
+
+                                <pre name="code" class="brush:xml">
+&lt;h3 class="title title-short" style="margin-top: 0px;"&gt;Basic&lt;/h3&gt;
+&lt;select id="basic" name="basic"&gt;
+    &lt;option value="0"&gt;Select One&lt;/option&gt;
+    &lt;option value="1"&gt;Option 1&lt;/option&gt;
+    &lt;option value="2"&gt;Option 2&lt;/option&gt;
+    &lt;option value="3"&gt;Option 3&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;h3 class="title title-short"&gt;Editable&lt;/h3&gt;
+&lt;select id="editable" name="editable"&gt;
+    &lt;option value="0"&gt;Select a City&lt;/option&gt;
+    &lt;option value="1"&gt;Barcelona&lt;/option&gt;
+    &lt;option value="2"&gt;Berlin&lt;/option&gt;
+    &lt;option value="3"&gt;Istanbul&lt;/option&gt;
+    &lt;option value="4"&gt;London&lt;/option&gt;
+    &lt;option value="5"&gt;New York&lt;/option&gt;
+    &lt;option value="6"&gt;Paris&lt;/option&gt;
+    &lt;option value="7"&gt;Rome&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;h3 class="title title-short"&gt;Custom Content&lt;/h3&gt;
+&lt;select id="custom" name="custom" style="width: 180px;"&gt;&lt;/select&gt;
+
+&lt;h3 class="title title-short"&gt;Filter&lt;/h3&gt;
+&lt;select id="filter" name="filter"&gt;
+    &lt;option value="0"&gt;Select a City&lt;/option&gt;
+    &lt;option value="1"&gt;Barcelona&lt;/option&gt;
+    &lt;option value="2"&gt;Berlin&lt;/option&gt;
+    &lt;option value="3"&gt;Istanbul&lt;/option&gt;
+    &lt;option value="4"&gt;London&lt;/option&gt;
+    &lt;option value="5"&gt;New York&lt;/option&gt;
+    &lt;option value="6"&gt;Paris&lt;/option&gt;
+    &lt;option value="7"&gt;Rome&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;h3&gt;Remote Function&lt;/h3&gt;
+&lt;select id="rfn" name="rfn"&gt;&lt;/select&gt;
+
+&lt;h3&gt;Remote URL&lt;/h3&gt;
+&lt;select id="rurl" name="rurl"&gt;&lt;/select&gt;
+
+&lt;h3&gt;PrimeElement&lt;/h3&gt;
+&lt;p-dropdown effect="fade" name="element" filter&gt;
+    &lt;option value="0"&gt;Select a City&lt;/option&gt;
+    &lt;option value="1"&gt;Barcelona&lt;/option&gt;
+    &lt;option value="2"&gt;Berlin&lt;/option&gt;
+    &lt;option value="3"&gt;Istanbul&lt;/option&gt;
+    &lt;option value="4"&gt;London&lt;/option&gt;
+    &lt;option value="5"&gt;New York&lt;/option&gt;
+    &lt;option value="6"&gt;Paris&lt;/option&gt;
+    &lt;option value="7"&gt;Rome&lt;/option&gt;
+&lt;/p-dropdown&gt;
+
+                                </pre>
+
+                            </div>
+                            <div id="doc-element">
+                                <h3>Usage</h3>
+                                Dropdown is similar to a select element that requires options as children.
+                                <pre name="code" class="brush:xml">
+&lt;p-dropdown name="element" filter&gt;
+    &lt;option value="0"&gt;Select a City&lt;/option&gt;
+    &lt;option value="1"&gt;Barcelona&lt;/option&gt;
+    &lt;option value="2"&gt;Berlin&lt;/option&gt;
+    &lt;option value="3"&gt;Istanbul&lt;/option&gt;
+&lt;/p-dropdown&gt;
+                                </pre>
+
+                                <h3>Attributes</h3>
+                                <table class="doc-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Default</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>id</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Identifier of the element.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>name</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Name of the request parameter to be used in a form submission.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>effect</td>
+                                            <td>string</td>
+                                            <td>fade</td>
+                                            <td>Animation to run on displaying the options overlay, refer to jQuery UI effect api for valid values.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>effectspeed</td>
+                                            <td>int/string</td>
+                                            <td>normal</td>
+                                            <td>Duration in milliseconds or keywords like slow, normal and fast.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>filter</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>Adds a filter input at options panel when enabled.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>filtermatchmode</td>
+                                            <td>string</td>
+                                            <td>startsWith</td>
+                                            <td>Mode of filter, valid values are startsWith, contains, endsWith and custom.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>casesensitivefilter</td>
+                                            <td>false</td>
+                                            <td>boolean</td>
+                                            <td>Defines case sensitivity on filtering.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>filterfunction</td>
+                                            <td>function</td>
+                                            <td>null</td>
+                                            <td>Function to be used in custom filtering, this function gets option as parameter and needs to return a boolean.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>scrollheight</td>
+                                            <td>integer</td>
+                                            <td>200</td>
+                                            <td>Maximum height boundary of overlay panel in pixels, if total height of items exceed this value, scrollbar is displayed.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>onchange</td>
+                                            <td>function</td>
+                                            <td>null</td>
+                                            <td>Name of the function to invoke when value of dropdown changes.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>style</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Inline style of the element.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>styleclass</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Style class of the element.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </span>
+            </span>
+        </div>
+    </div>
+
+    <script language="javascript">
+        SyntaxHighlighter.highlight();
+    </script>
+
+</div>

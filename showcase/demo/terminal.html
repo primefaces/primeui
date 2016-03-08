@@ -1,0 +1,263 @@
+<div>
+    <link rel="stylesheet" href="../../../components/inputtext/inputtext.css" />
+    <link rel="stylesheet" href="../../../components/button/button.css" />
+    <link rel="stylesheet" href="../../../components/terminal/terminal.css" />
+    <link rel="stylesheet" href="../../../components/tabview/tabview.css" />
+    <script type="text/javascript" src="../showcase/resources/demo/js/terminal-demo.js"></script>
+    <script type="text/javascript" src="../../../components/button/button.js"></script>
+    <script type="text/javascript" src="../../../components/terminal/terminal.js"></script>
+    <script type="text/javascript" src="../../../components/terminal/terminal-element.js"></script>
+    <script type="text/javascript" src="../../../components/tabview/tabview.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#trmnl').puiterminal({
+                welcomeMessage: 'Welcome to PrimeUI Terminal, how are you today?',
+                handler: function (request, response) {
+                    if($.trim(request).length) {
+                       $.ajax({
+                            type: "GET",
+                            url: 'rest/terminal/' + request,
+                            dataType: "text",
+                            context: this,
+                            success: function (data) {
+                                response.call(this, data);
+                            }
+                        }); 
+                    }
+                }
+            });
+
+            $('#doc').puitabview();
+        });
+    </script>
+
+    <div class="ContentSideSections">
+        <div class="Content100 overHidden TextShadow">
+            <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">Terminal</span>
+            <span class="defaultText dispTable">Terminal is a text based user interface. Backed in this demo is integrated with a restful webservice, 
+                try <i>date</i> and <i>greet {param}</i> commands.</span>
+        </div>
+    </div>
+
+    <div class="ContentSideSections Implementation">
+        <h3 class="first">Remote Connection</h3>
+        <div id="trmnl" style="margin-bottom:20px"></div>
+
+        <h3>PrimeElement</h3>
+        <p-terminal handler="TerminalDemo.handler" welcomemessage="Welcome to Terminal Element"></terminal>
+    </div>
+
+    <div id="SourceContentSide" class="ContentSideSections Source">
+        <div class="Content100 overHidden TextShadow">
+            <span class="defaultText">
+                <span class="fontSize18 logoBlueText">
+                    <div id="doc">
+                        <ul>
+                            <li><a href="#doc-overview">Overview</a></li>
+                            <li><a href="#doc-options">Options</a></li>
+                            <li><a href="#doc-events">Events</a></li>
+                            <li><a href="#doc-methods">Methods</a></li>
+                            <li><a href="#doc-methods">Source</a></li>
+                            <li class="tab-primeelement"><a href="#doc-element">PrimeElement</a></li>
+                        </ul>
+                        <div>
+                            <div id="doc-overview">
+
+
+                                <pre name="code" class="brush:js">
+$('#trmnl').puiterminal({
+    handler: // function
+});
+                                </pre>
+
+                                <pre name="code" class="brush:xml">
+&lt;div id="trmnl" /&gt;
+                                </pre>
+
+                            </div>
+
+                            <div id="doc-options">
+                                <table class="doc-table">
+                                    <thead>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>welcomeMessage</td>
+                                            <td>string</td>
+                                            <td>''</td>
+                                            <td>Welcome message to be displayed on initial load.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>prompt</td>
+                                            <td>string</td>
+                                            <td>prime $</td>
+                                            <td>Primary prompt text.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>handler</td>
+                                            <td>function</td>
+                                            <td>null</td>
+                                            <td>Function to handle commands.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div id="doc-events">
+                                <h3>No events.</h3>
+                            </div>
+
+                            <div id="doc-methods">
+                                <table class="doc-table">
+                                    <thead>
+                                    <th>Name</th>
+                                    <th>Parameters</th>
+                                    <th>Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>clear</td>
+                                            <td>-</td>
+                                            <td>Clears the terminal content.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div id="doc-source">
+                                <pre name="code" class="brush:js">
+$('#trmnl').puiterminal({
+    welcomeMessage: 'Welcome to PrimeUI Terminal, how are you today?',
+    handler: function(request, response) {
+        if($.trim(request).length) {
+            $.ajax({
+                 type: "GET",
+                 url: 'rest/terminal/' + request,
+                 dataType: "text",
+                 context: this,
+                 success: function (data) {
+                     response.call(this, data);
+                 }
+             }); 
+         }
+    }
+});
+                                </pre>
+
+                                <pre name="code" class="brush:xml">
+&lt;h3 class="first"&gt;Remote Connection&lt;/h3&gt;
+&lt;div id="trmnl" style="margin-bottom:20px"&gt;&lt;/div&gt;
+
+&lt;h3&gt;PrimeElement&lt;/h3&gt;
+&lt;p-terminal handler="TerminalDemo.handler" welcomemessage="Welcome to Terminal Element"&gt;&lt;/terminal&gt;
+                                </pre>
+
+                            </div>
+
+                            <div id="doc-element">
+                                <h3>Usage</h3>
+                                Terminal requires a handler to process the commands.
+
+                                <pre name="code" class="brush:xml">
+&lt;p-terminal handler="TerminalDemo.handler" welcomemessage="Welcome to Terminal Element"&gt;&lt;/terminal&gt;
+                                </pre>
+
+                                <pre name="code" class="brush:js">
+var TerminalDemo = {
+  
+    handler: function(request, response) {
+        if($.trim(request).length) {
+            $.ajax({
+                 type: "GET",
+                 url: 'rest/terminal/' + request,
+                 dataType: "text",
+                 context: this,
+                 success: function (data) {
+                     response.call(this, data);
+                 }
+             }); 
+         }
+    }
+    
+};
+                                </pre>
+
+                                <h3>Attributes</h3>
+                                <table class="doc-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Default</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>id</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Identifier of the element.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>welcomemessage</td>
+                                            <td>string</td>
+                                            <td>''</td>
+                                            <td>Welcome message to be displayed on initial load.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>prompt</td>
+                                            <td>string</td>
+                                            <td>prime $</td>
+                                            <td>Primary prompt text.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>handler</td>
+                                            <td>function</td>
+                                            <td>null</td>
+                                            <td>Function to handle commands.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                
+                                <h3>Methods</h3>
+                                <table class="doc-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Parameters</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>enable()</td>
+                                            <td>-</td>
+                                            <td>Enables the element.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>disable()</td>
+                                            <td>-</td>
+                                            <td>Disables the element.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </span>
+            </span>
+        </div>
+    </div>
+
+    <script language="javascript">
+        SyntaxHighlighter.highlight();
+    </script>
+
+</div>

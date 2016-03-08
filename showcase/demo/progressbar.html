@@ -1,0 +1,314 @@
+<div>
+    <link rel="stylesheet" href="../../../components/inputtext/inputtext.css" />
+    <link rel="stylesheet" href="../../../components/button/button.css" />
+    <link rel="stylesheet" href="../../../components/progressbar/progressbar.css" />
+    <link rel="stylesheet" href="../../../components/tabview/tabview.css" />
+    <script type="text/javascript" src="../../../components/button/button.js"></script>
+    <script type="text/javascript" src="../../../components/progressbar/progressbar.js"></script>
+    <script type="text/javascript" src="../../../components/progressbar/progressbar-element.js"></script>
+    <script type="text/javascript" src="../../../components/tabview/tabview.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#pb1').puiprogressbar();
+
+            $('#pb2').puiprogressbar({
+                value: 50
+            });
+
+            $('#doc').puitabview();
+
+            Showcase.pbinterval1 = setInterval(function () {
+                var val = $('#pb1').puiprogressbar('option', 'value') + 10;
+                $('#pb1').puiprogressbar('option', 'value', val);
+            }, 1000);
+
+            Showcase.pbinterval2 = setInterval(function () {
+                var progressElement = document.getElementById('pbel');
+                progressElement.setValue(progressElement.getValue() + 10);
+            }, 1000);
+
+            $('#doc').puitabview();
+        });
+    </script>
+
+    <div class="ContentSideSections">
+        <div class="Content100 overHidden TextShadow">
+            <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">ProgressBar</span>
+            <span class="defaultText dispTable">ProgressBar is a process status indicator.</span>
+        </div>
+    </div>
+
+    <div class="ContentSideSections Implementation">
+        <h3 class="first">Dynamic</h3>
+        <div id="pb1" style="margin-bottom:5px"></div>
+
+        <h3>Static</h3>
+        <div id="pb2" style="margin-bottom:5px"></div>
+
+        <h3>Prime Element</h3>
+        <p-progressbar id="pbel"></p-progressbar>
+    </div>
+
+    <div id="SourceContentSide" class="ContentSideSections Source">
+        <div class="Content100 overHidden TextShadow">
+            <span class="defaultText">
+                <span class="fontSize18 logoBlueText">
+                    <div id="doc">
+                        <ul>
+                            <li><a href="#doc-overview">Overview</a></li>
+                            <li><a href="#doc-options">Options</a></li>
+                            <li><a href="#doc-events">Events</a></li>
+                            <li><a href="#doc-methods">Methods</a></li>
+                            <li><a href="#doc-methods">Source</a></li>
+                            <li class="tab-primeelement"><a href="#doc-element">PrimeElement</a></li>
+                        </ul>
+                        <div>
+                            <div id="doc-overview">
+
+
+                                <pre name="code" class="brush:js">
+$('#default').puiprogressbar();
+                                </pre>
+
+                                <pre name="code" class="brush:js">
+&lt;div id="default" /&gt;
+                                </pre>
+
+                            </div>
+
+                            <div id="doc-options">
+                                <table class="doc-table">
+                                    <thead>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>value</td>
+                                            <td>number</td>
+                                            <td>0</td>
+                                            <td>Progress Bar value</td>
+                                        </tr>
+                                        <tr>
+                                            <td>labelTemplate</td>
+                                            <td>string</td>
+                                            <td>{value}%</td>
+                                            <td>Progress Bar label template</td>
+                                        </tr>
+                                        <tr>
+                                            <td>showLabel</td>
+                                            <td>boolean</td>
+                                            <td>true</td>
+                                            <td>Shows label on ProgressBar</td>
+                                        </tr>
+                                        <tr>
+                                            <td>easing</td>
+                                            <td>string</td>
+                                            <td>swing</td>
+                                            <td>Optional easing to use in animation.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>effectSpeed</td>
+                                            <td>int/string</td>
+                                            <td>normal</td>
+                                            <td>Speed in milliseconds or keywords like slow, normal and fast.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div id="doc-events">
+                                <table class="doc-table">
+                                    <thead>
+                                    <th>Name</th>
+                                    <th>Parameters</th>
+                                    <th>Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>complete</td>
+                                            <td>event: puiprogressbarcomplete event</td>
+                                            <td>Fired when value equals 100</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <h3>Example</h3>
+                                <pre name="code" class="brush:js">
+$('#default').puiprogressbar({
+    complete: function(event) {
+        //...
+    }
+});
+                                </pre>
+                            </div>
+
+                            <div id="doc-methods">
+                                <table class="doc-table">
+                                    <thead>
+                                    <th>Name</th>
+                                    <th>Parameters</th>
+                                    <th>Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>option</td>
+                                            <td>name: Name of the option</td>
+                                            <td>Returns the value of the option.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>option</td>
+                                            <td>name: Name of the option, value: Value of the option</td>
+                                            <td>Set the value of the option.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div id="doc-source">
+
+                                <pre name="code" class="brush:js">
+$(function() {
+    $('#pb1').puiprogressbar();
+
+    $('#pb2').puiprogressbar({
+        value: 50
+    });
+
+    $('#doc').puitabview();
+
+    Showcase.pbinterval1 = setInterval(function() {
+        var val = $('#pb1').puiprogressbar('option', 'value') + 10;
+        $('#pb1').puiprogressbar('option', 'value', val);
+    }, 1000);
+
+    Showcase.pbinterval2 = setInterval(function() {
+        var progressElement = document.getElementById('pbel');
+        progressElement.setValue(progressElement.getValue() + 10);
+    }, 1000);
+}); 
+                                </pre>
+
+                                <pre name="code" class="brush:xml">
+&lt;h3 class="first"&gt;Dynamic&lt;/h3&gt;
+&lt;div id="pb1" style="margin-bottom:5px"&gt;&lt;/div&gt;
+
+&lt;h3&gt;Static&lt;/h3&gt;
+&lt;div id="pb2" style="margin-bottom:5px"&gt;&lt;/div&gt;
+
+&lt;h3&gt;Prime Element&lt;/h3&gt;
+&lt;p-progressbar id="pbel"&gt;&lt;/p-progressbar&gt;
+                                </pre>
+
+                            </div>
+
+                            <div id="doc-element">
+                                <h3>Usage</h3>
+                                Value of progressbar is updated usign setValue(value) method.
+
+                                <pre name="code" class="brush:xml">
+&lt;p-progressbar id="pbel"&gt;&lt;/p-progressbar&gt;
+                                </pre>
+                                
+                                <pre name="code" class="brush:js">
+var pbar = document.getElementById('pbel'),
+value = pbar.getValue();
+pbar.setValue(value + 10);
+                                </pre>
+
+                                <h3>Attributes</h3>
+                                <table class="doc-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Default</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>id</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Identifier of the element.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>value</td>
+                                            <td>number</td>
+                                            <td>0</td>
+                                            <td>Progress Bar value</td>
+                                        </tr>
+                                        <tr>
+                                            <td>labeltemplate</td>
+                                            <td>string</td>
+                                            <td>{value}%</td>
+                                            <td>Progress Bar label template</td>
+                                        </tr>
+                                        <tr>
+                                            <td>showlabel</td>
+                                            <td>boolean</td>
+                                            <td>true</td>
+                                            <td>Shows label on ProgressBar</td>
+                                        </tr>
+                                        <tr>
+                                            <td>easing</td>
+                                            <td>string</td>
+                                            <td>swing</td>
+                                            <td>Optional easing to use in animation.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>effectspeed</td>
+                                            <td>int/string</td>
+                                            <td>normal</td>
+                                            <td>Speed in milliseconds or keywords like slow, normal and fast.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>oncomplete</td>
+                                            <td>function</td>
+                                            <td>null</td>
+                                            <td>Name of the function to invoke when progress reaches 100%.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                                <h3>Methods</h3>
+                                <table class="doc-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Parameters</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>getValue()</td>
+                                            <td>-</td>
+                                            <td>Returns the current value of progressbar.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>setValue(value)</td>
+                                            <td>-</td>
+                                            <td>Assigns the value of progressbar and updates ui if necessary.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </span>
+            </span>
+        </div>
+    </div>
+
+    <script language="javascript">
+        SyntaxHighlighter.highlight();
+    </script>
+
+</div>

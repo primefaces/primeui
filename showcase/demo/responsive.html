@@ -1,0 +1,369 @@
+<div>
+    <link rel="stylesheet" href="../../../components/inputtext/inputtext.css" />
+    <link rel="stylesheet" href="../../../components/inputtextarea/inputtextarea.css" />
+    <link rel="stylesheet" href="../../../components/button/button.css" />
+    <link rel="stylesheet" href="../../../components/tabview/tabview.css" />
+    <link rel="stylesheet" href="../../../components/grid/grid.css" />
+    <link rel="stylesheet" href="../../../components/listbox/listbox.css" />
+    <link rel="stylesheet" href="../../../components/panel/panel.css" />
+    <link rel="stylesheet" href="../../../components/datatable/datatable.css" />
+    <link rel="stylesheet" href="../../../components/dialog/dialog.css" />
+    <link rel="stylesheet" href="../../../components/dropdown/dropdown.css" />
+    <link rel="stylesheet" href="../../../components/datagrid/datagrid.css" />
+    <script type="text/javascript" src="../../../components/inputtext/inputtext.js"></script>
+    <script type="text/javascript" src="../../../components/inputtextarea/inputtextarea.js"></script>
+    <script type="text/javascript" src="../../../components/button/button.js"></script>
+    <script type="text/javascript" src="../../../components/tabview/tabview.js"></script>
+    <script type="text/javascript" src="../../../components/listbox/listbox.js"></script>
+    <script type="text/javascript" src="../../../components/panel/panel.js"></script>
+    <script type="text/javascript" src="../../../components/datatable/datatable.js"></script>
+    <script type="text/javascript" src="../../../components/dialog/dialog.js"></script>
+    <script type="text/javascript" src="../../../components/dropdown/dropdown.js"></script>
+    <script type="text/javascript" src="../../../components/datagrid/datagrid.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
+                        'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
+                        'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
+                        'ui-darkness', 'ui-lightness', 'vader');
+                        
+            $('#it').puiinputtext();
+            
+            $('#ita').puiinputtext();
+            
+            $('#btn').puibutton();
+            
+            $('#lbox').puilistbox({
+                data: themes
+            });
+            
+            $('#pnl').puipanel();
+            
+            $('#tbl').puidatatable({
+                caption: 'Cars',
+                responsive: true,
+                columns: [
+                    {field: 'vin', headerText: 'Vin'},
+                    {field: 'brand', headerText: 'Brand'},
+                    {field: 'year', headerText: 'Year'},
+                    {field: 'color', headerText: 'Color'}
+                ],
+                datasource: [
+                    {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
+                    {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
+                    {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
+                    {'brand': 'Bmw', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
+                    {'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
+                    {'brand': 'Opel', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
+                    {'brand': 'Honda', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
+                    {'brand': 'Chevrolet', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
+                    {'brand': 'Opel', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'},
+                    {'brand': 'Mazda', 'year': 2013, 'color': 'Red', 'vin': '245t2s'}
+                ]
+            });
+            
+            $('#dlgbtn').puibutton({
+                icon: 'fa-external-link',
+                click: function() {
+                    $('#dlg').puidialog('show');
+                }
+            });
+            
+            setTimeout(function() {
+                $('#dlg').puidialog({
+                    draggable: false,
+                    resizable: false,
+                    responsive: true
+                });
+            }, 100);
+            
+            $('#dd').puidropdown({
+                appendTo: 'self'
+            });
+            
+            $('#dtgrid').puidatagrid({
+                header: 'DataGrid',
+                datasource: [
+                    {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
+                    {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
+                    {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
+                    {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
+                    {'brand': 'Ford', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
+                    {'brand': 'Fiat', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
+                    {'brand': 'Honda', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
+                    {'brand': 'Volvo', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
+                    {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'}
+                ],
+                content: function(car) {
+                    return $('<div title="'+ car.vin + '"><img src="showcase/resources/demo/images/car/' + car.brand + '.gif" /><div class="car-detail">' + car.year + ' - ' + car.color  +'</div></div>').puipanel();
+                }
+            });
+        });
+    </script>
+    <style type="text/css">
+        /** Demo **/
+        .ui-grid-row .ui-grid-col-2,
+        .ui-grid-row .ui-grid-col-10 {
+            padding: 0.5em 0;
+        }
+        
+        .ui-datagrid .ui-datagrid-column {
+            text-align: center; 
+        }     
+    </style>
+
+    <div class="ContentSideSections">
+        <div class="Content100 overHidden TextShadow">
+            <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">Responsive</span>
+            <span class="defaultText dispTable">In combination with <a href="grid.html">Grid CSS</a>, .ui-fluid style class provides fluid width for efficient use of space in screen. 
+                This example demonstrates ui-fluid in combination with the components having built-in responsive modes.</span>
+        </div>
+    </div>
+
+    <div class="ContentSideSections Implementation ui-fluid">
+        <div class="ui-grid ui-grid-responsive">
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    InputText
+                </div>
+                <div class="ui-grid-col-10">
+                    <input id="it" type="text" />
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    InputTextarea
+                </div>
+                <div class="ui-grid-col-10">
+                    <textarea id="ita" type="text"></textarea>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Button
+                </div>
+                <div class="ui-grid-col-10">
+                    <button id="btn" type="button">Save</button>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Dropdown
+                </div>
+                <div class="ui-grid-col-10">
+                    <select id="dd" name="dd">
+                        <option value="0">Select One</option>
+                        <option value="1">Option 1</option>
+                        <option value="2">Option 2</option>
+                        <option value="3">Option 3</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Listbox
+                </div>
+                <div class="ui-grid-col-10">
+                    <select id="lbox"></select>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Dialog
+                </div>
+                <div class="ui-grid-col-10">
+                    <button id="dlgbtn" type="button">Show</button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="dlg" title="Godfather I">
+            <p>The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
+                His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. 
+                Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, 
+                kind and benevolent to those who give respect, 
+                but given to ruthless violence whenever anything stands against the good of the family.</p>
+        </div>
+        
+        <div id="pnl" title="Panel" style="margin-top:20px">
+            The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
+            His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. 
+            Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, 
+            kind and benevolent to those who give respect, 
+            but given to ruthless violence whenever anything stands against the good of the family.
+        </div>
+        
+        <div id="tbl" style="margin-top:20px"></div>
+        
+        <div id="dtgrid" style="margin-top:20px;margin-bottom:20px"></div>
+    </div>
+
+    <div id="SourceContentSide" class="ContentSideSections Source">
+        <div class="Content100 overHidden TextShadow">
+            <span class="defaultText">
+               <pre name="code" class="brush:js">
+$(function() {
+    var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
+                'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
+                'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
+                'ui-darkness', 'ui-lightness', 'vader');
+
+    $('#it').puiinputtext();
+
+    $('#ita').puiinputtext();
+
+    $('#btn').puibutton();
+
+    $('#lbox').puilistbox({
+        data: themes
+    });
+
+    $('#pnl').puipanel();
+
+    $('#tbl').puidatatable({
+        caption: 'Cars',
+        responsive: true,
+        columns: [
+            {field: 'vin', headerText: 'Vin'},
+            {field: 'brand', headerText: 'Brand'},
+            {field: 'year', headerText: 'Year'},
+            {field: 'color', headerText: 'Color'}
+        ],
+        datasource: [
+            {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
+            {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
+            {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
+            {'brand': 'Bmw', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
+            {'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
+            {'brand': 'Opel', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
+            {'brand': 'Honda', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
+            {'brand': 'Chevrolet', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
+            {'brand': 'Opel', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'},
+            {'brand': 'Mazda', 'year': 2013, 'color': 'Red', 'vin': '245t2s'}
+        ]
+    });
+
+    $('#dlgbtn').puibutton({
+        icon: 'fa-external-link',
+        click: function() {
+            $('#dlg').puidialog('show');
+        }
+    });
+
+    $('#dlg').puidialog({
+        responsive: true
+    });
+
+    $('#dd').puidropdown({
+        appendTo: 'self'
+    });
+
+    $('#dtgrid').puidatagrid({
+        header: 'DataGrid',
+        datasource: [
+            {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
+            {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
+            {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
+            {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
+            {'brand': 'Ford', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
+            {'brand': 'Fiat', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
+            {'brand': 'Honda', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
+            {'brand': 'Volvo', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
+            {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'}
+        ],
+        content: function(car) {
+            return $('&lt;div title="'+ car.vin + '"&gt;&lt;img src="resources/demo/images/car/' + car.brand + 
+                    '.gif" /&gt;&lt;div class="car-detail"&gt;' + car.year + ' - ' + car.color  +'&lt;/div&gt;&lt;/div&gt;').puipanel();
+        }
+    });
+});
+               </pre>
+                
+               <pre name="code" class="brush:xml">
+&lt;div class="ui-grid ui-grid-responsive"&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-2"&gt;
+            InputText
+        &lt;/div&gt;
+        &lt;div class="ui-grid-col-10"&gt;
+            &lt;input id="it" type="text" /&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-2"&gt;
+            InputTextarea
+        &lt;/div&gt;
+        &lt;div class="ui-grid-col-10"&gt;
+            &lt;textarea id="ita" type="text"&gt;&lt;/textarea&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-2"&gt;
+            Button
+        &lt;/div&gt;
+        &lt;div class="ui-grid-col-10"&gt;
+            &lt;button id="btn" type="button"&gt;Save&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-2"&gt;
+            Dropdown
+        &lt;/div&gt;
+        &lt;div class="ui-grid-col-10"&gt;
+            &lt;select id="dd" name="dd"&gt;
+                &lt;option value="0"&gt;Select One&lt;/option&gt;
+                &lt;option value="1"&gt;Option 1&lt;/option&gt;
+                &lt;option value="2"&gt;Option 2&lt;/option&gt;
+                &lt;option value="3"&gt;Option 3&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-2"&gt;
+            Listbox
+        &lt;/div&gt;
+        &lt;div class="ui-grid-col-10"&gt;
+            &lt;select id="lbox"&gt;&lt;/select&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-2"&gt;
+            Dialog
+        &lt;/div&gt;
+        &lt;div class="ui-grid-col-10"&gt;
+            &lt;button id="dlgbtn" type="button"&gt;Show&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id="dlg" title="Godfather I"&gt;
+    &lt;p&gt;The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
+        His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. 
+        Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, 
+        kind and benevolent to those who give respect, 
+        but given to ruthless violence whenever anything stands against the good of the family.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div id="pnl" title="Panel" style="margin-top:20px"&gt;
+    The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
+    His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. 
+    Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, 
+    kind and benevolent to those who give respect, 
+    but given to ruthless violence whenever anything stands against the good of the family.
+&lt;/div&gt;
+
+&lt;div id="tbl" style="margin-top:20px"&gt;&lt;/div&gt;
+
+<div id="dtgrid" style="margin-top:20px;margin-bottom:20px"></div>
+               </pre>
+            </span>
+        </div>
+    </div>
+
+    <script language="javascript">
+        SyntaxHighlighter.highlight();
+    </script>
+
+</div>
