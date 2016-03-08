@@ -1,0 +1,158 @@
+<div>
+    <link rel="stylesheet" href="../../../components/inputtext/inputtext.css" />
+    <link rel="stylesheet" href="../../../components/datatable/datatable.css" />
+    <link rel="stylesheet" href="../../../components/paginator/paginator.css" />
+    <link rel="stylesheet" href="../../../components/tabview/tabview.css" />
+    <link rel="stylesheet" href="../../../components/growl/growl.css" />
+    <link rel="stylesheet" href="../../../components/grid/grid.css" />
+    <link rel="stylesheet" href="../../../components/menu/menu.css" />
+    <script type="text/javascript" src="../..resources/demo/js/data-demo.js"></script>
+    <script type="text/javascript" src="../../../components/column/column-element.js"></script>
+    <script type="text/javascript" src="../../../components/datatable/datatable.js"></script>
+    <script type="text/javascript" src="../../../components/datatable/datatable-element.js"></script>
+    <script type="text/javascript" src="../../../components/paginator/paginator.js"></script>
+    <script type="text/javascript" src="../../../components/growl/growl.js"></script>
+    <script type="text/javascript" src="../../../components/growl/growl-element.js"></script> 
+    <script type="text/javascript" src="../../../components/tabview/tabview.js"></script>
+    <script type="text/javascript" src="../../../components/growl/growl.js"></script>
+    <script type="text/javascript" src="../../../components/menu/menu.js"></script>
+    <script type="text/javascript" src="../../../components/inputtext/inputtext.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('#datatable-submenu a').on('click', function(e) {
+                Showcase.changePageWithLink($(this).attr('href'));
+                e.preventDefault();
+            });
+            
+            handleRowSelect = function(event, data) {
+                document.getElementById('messages').show([{severity: 'info', summary: 'Row Selected', detail: data.vin + ' ' + data.year}]);
+            };
+        
+            $('#doc').puitabview();
+        });
+    </script>
+    <style type="text/css">
+        .ui-datatable {
+            margin-bottom: 40px;
+        }
+    </style>
+    
+    <div id="datatable-submenu" class="ContentSideSections SubSubMenu clearfix">
+        <ul>
+            <li><a href="datatable.html">&bull; DataSource</a></li>
+            <li><a href="datatablePaginator.html">&bull; Paginator</a></li>
+            <li><a href="datatableSort.html">&bull; Sort</a></li>
+            <li><a href="datatableFilter.html">&bull; Filter</a></li>
+            <li><a href="datatableSelection.html">&bull; Selection</a></li>
+            <li><a href="datatableEditable.html">&bull; Editable</a></li>
+            <li><a href="datatableReorder.html">&bull; Reorder</a></li>
+            <li><a href="datatableResize.html">&bull; Resize</a></li>
+            <li><a href="datatableExpansion.html">&bull; Expansion</a></li>
+            <li><a href="datatableScroll.html">&bull; Scroll</a></li>
+            <li><a href="datatableGroup.html">&bull; Group</a></li>
+            <li><a href="datatableResponsive.html">&bull; Responsive</a></li>
+            <li><a href="datatableContextMenu.html">&bull; ContextMenu</a></li>
+            <li><a href="datatableSticky.html">&bull; Sticky</a></li>
+            <li><a href="datatableElement.html">&bull; Element</a></li>
+        </ul>
+    </div>
+
+    <div class="ContentSideSections">
+        <div class="Content100 overHidden TextShadow">
+            <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">Datatable - <span class="subitem">Element</span></span>
+            <span class="defaultText dispTable">DataTable can be defined declaratively using p-datatable and p-column elements.</span>
+        </div>
+    </div>
+
+    <div class="ContentSideSections Implementation">
+        
+        <p-growl id="messages"></p-growl>
+        
+        <p-datatable datasource="DataDemo.loadAllCars" paginator rows="10" selectionmode="single" onrowselect="handleRowSelect">
+            <p-column field="vin" headertext="Vin" sortable filter>
+                <template>
+                    <div>{{vin}}</div>
+                </template>
+            </p-column>
+            <p-column field="year" headertext="Year" sortable filter>
+                <template>
+                    <span>{{year}}</span>
+                </template>
+            </p-column>
+            <p-column field="brand" headertext="Brand" sortable filter>
+                <template>
+                    <span>{{brand}}</span>
+                </template>
+            </p-column>
+            <p-column field="color" headertext="Color" sortable filter> 
+                <template>
+                    <span style="color:{{color}}">{{color}}</span>
+                </template>
+            </p-column>
+        </p-datatable>
+            
+    </div>
+
+    <div id="SourceContentSide" class="ContentSideSections Source">
+        <div class="Content100 overHidden TextShadow">
+            <span class="defaultText">
+                <span class="fontSize18 logoBlueText">
+                    <div id="doc">
+                        <ul>
+                            <li><a href="#doc-overview">Markup</a></li>
+                            <li><a href="#doc-options">Script</a></li>
+                        </ul>
+                        <div>
+
+                            <div id="doc-markup">                               
+                                <pre name="code" class="brush:xml">
+&lt;p-growl id="messages"&gt;&lt;/p-growl&gt;
+
+&lt;p-datatable datasource="DataDemo.loadAllCars" paginator rows="10" selectionmode="single" onrowselect="handleRowSelect"&gt;
+    &lt;p-column field="vin" headertext="Vin" sortable filter&gt;&lt;/p-column&gt;
+    &lt;p-column field="year" headertext="Year" sortable filter&gt;&lt;/p-column&gt;
+    &lt;p-column field="brand" headertext="Brand" sortable filter&gt;&lt;/p-column&gt;
+    &lt;p-column field="color" headertext="Color" sortable filter&gt; 
+        &lt;template&gt;
+            &lt;span style="color:{{color}}"&gt;{{color}}&lt;/span&gt;
+        &lt;/template&gt;
+    &lt;/p-column&gt;
+&lt;/p-datatable&gt;
+                                </pre>
+                            </div>
+
+                            <div id="doc-script">
+                                <pre name="code" class="brush:js">
+var DataDemo = {
+
+    loadAllCars: function(callback) {
+        $.ajax({
+            type: "GET",
+            url: 'rest/cars/list',
+            dataType: "json",
+            context: this,
+            success: function (response) {
+                callback.call(this, response);
+            }
+        });
+    }
+
+};
+
+handleRowSelect = function(event, data) {
+    document.getElementById('messages').show([{severity: 'info', summary: 'Row Selected', detail: data.vin + ' ' + data.year}]);
+};
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </span>
+            </span>
+        </div>
+    </div>
+
+    <script language="javascript">
+        SyntaxHighlighter.highlight();
+    </script>
+
+</div>

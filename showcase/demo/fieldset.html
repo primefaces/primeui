@@ -1,0 +1,315 @@
+<div>
+    <link rel="stylesheet" href="../../../components/inputtext/inputtext.css" />
+    <link rel="stylesheet" href="../../../components/fieldset/fieldset.css" />
+    <link rel="stylesheet" href="../../../components/tabview/tabview.css" />
+    <script type="text/javascript" src="../../../components/fieldset/fieldset.js"></script>
+    <script type="text/javascript" src="../../../components/fieldset/fieldset-element.js"></script>
+    <script type="text/javascript" src="../../../components/tabview/tabview.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#default').puifieldset();
+
+            $('#toggle').puifieldset({
+                toggleable: true
+            });
+
+            $('#doc').puitabview();
+        });
+    </script>
+
+    <div class="ContentSideSections">
+        <div class="Content100 overHidden TextShadow">
+            <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">Fieldset</span>
+            <span class="defaultText dispTable">Fieldset is a grouping component providing a content toggle feature.</span>
+        </div>
+    </div>
+
+    <div class="ContentSideSections Implementation">
+        <fieldset id="default" style="margin-bottom:20px">
+            <legend>Default</legend>
+            The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
+            His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. 
+            Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, 
+            kind and benevolent to those who give respect, 
+            but given to ruthless violence whenever anything stands against the good of the family.
+        </fieldset>
+
+        <fieldset id="toggle" style="margin-bottom:20px">
+            <legend>Toggleable</legend>
+            The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
+            His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. 
+            Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, 
+            kind and benevolent to those who give respect, 
+            but given to ruthless violence whenever anything stands against the good of the family.
+        </fieldset>
+
+        <p-fieldset toggleable>
+            <legend>PrimeElement</legend>
+            The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
+            His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. 
+            Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, 
+            kind and benevolent to those who give respect, 
+            but given to ruthless violence whenever anything stands against the good of the family.
+        </p-fieldset>
+    </div>
+
+    <div id="SourceContentSide" class="ContentSideSections Source">
+        <div class="Content100 overHidden TextShadow">
+            <span class="defaultText">
+                <span class="fontSize18 logoBlueText">
+                    <div id="doc">
+                        <ul>
+                            <li><a href="#doc-overview">Overview</a></li>
+                            <li><a href="#doc-options">Options</a></li>
+                            <li><a href="#doc-events">Events</a></li>
+                            <li><a href="#doc-methods">Methods</a></li>
+                            <li><a href="#doc-methods">Source</a></li>
+                            <li class="tab-primeelement"><a href="#doc-element">PrimeElement</a></li>
+                        </ul>
+                        <div>
+                            <div id="doc-overview">
+
+
+                                <pre name="code" class="brush:js">
+$('#default').puifieldset();
+                                </pre>
+
+                                <pre name="code" class="brush:xml">
+&lt;fieldset id="default"&gt;
+    &lt;legend&gt;Title&gt;/legend&gt;
+    Content
+&lt;/fieldset&gt;
+                                </pre>
+                            </div>
+
+                            <div id="doc-options">
+                                <table class="doc-table">
+                                    <thead>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>toggleable</td>
+                                            <td>Boolean</td>
+                                            <td>false</td>
+                                            <td>Defines if content of fieldset can be expanded and collapsed.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>toggleDuration</td>
+                                            <td>Number/String</td>
+                                            <td>normal</td>
+                                            <td>Defines the duration of the toggle effect, valid values are "slow", "normal", "fast" or a number in milliseconds.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>collapsed</td>
+                                            <td>Boolean</td>
+                                            <td>false</td>
+                                            <td>Displays the fieldset as collapsed initially.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div id="doc-events">
+                                <table class="doc-table">
+                                    <thead>
+                                    <th>Name</th>
+                                    <th>Parameters</th>
+                                    <th>Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>beforeToggle</td>
+                                            <td>event: puifieldsetbeforetoggle event<br>
+                                                collapsed: Collapsed state as a boolean
+                                            <td>Fired before toggling.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>afterToggle</td>
+                                            <td>event: puifieldsetaftertoggle event<br>
+                                                collapsed: Collapsed state as a boolean
+                                            <td>Fired after toggling.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <h3>Example</h3>
+                                <pre name="code" class="brush:js">
+$('#default').puifieldset({
+    afterToggle: function(event) {
+        //...
+    }
+});
+                                </pre>
+                            </div>
+
+                            <div id="doc-methods">
+                                <table class="doc-table">
+                                    <thead>
+                                    <th>Name</th>
+                                    <th>Parameters</th>
+                                    <th>Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>toggle</td>
+                                            <td>-</td>
+                                            <td>Toggles content.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>option</td>
+                                            <td>name: Name of the option</td>
+                                            <td>Returns the value of the option.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>option</td>
+                                            <td>name: Name of the option, value: Value of the option</td>
+                                            <td>Set the value of the option.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <h3>Example</h3>
+                                <pre name="code" class="brush:js">
+    $('#default').puifieldset('toggle');
+                                </pre>
+                            </div>
+
+                            <div id="doc-source">
+                                <pre name="code" class="brush:js">
+&lt;script type="text/javascript"&gt;
+    $(function() {
+        $('#default').puifieldset();
+
+        $('#toggle').puifieldset({
+            toggleable: true
+        });
+    });
+&lt;/script&gt;
+                                </pre>
+
+                                <pre name="code" class="brush:xml">
+&lt;fieldset id="default" style="margin-bottom:20px"&gt;
+    &lt;legend&gt;Default&lt;/legend&gt;
+    The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
+    His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. 
+    Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, 
+    kind and benevolent to those who give respect, 
+    but given to ruthless violence whenever anything stands against the good of the family.
+&lt;/fieldset&gt;
+
+&lt;fieldset id="toggle"&gt;
+    &lt;legend&gt;Toggleable&lt;/legend&gt;
+    The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
+    His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. 
+    Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, 
+    kind and benevolent to those who give respect, 
+    but given to ruthless violence whenever anything stands against the good of the family.
+&lt;/fieldset&gt;
+
+&lt;p-fieldset toggleable&gt;
+    &lt;legend&gt;PrimeElement&lt;/legend&gt;
+    The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
+    His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. 
+    Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, 
+    kind and benevolent to those who give respect, 
+    but given to ruthless violence whenever anything stands against the good of the family.
+&lt;/p-fieldset&gt;
+                                </pre>
+                            </div>
+
+                            <div id="doc-element">
+                                <h3>Usage</h3>
+                                <p>Fieldset is a container element having a legend and content as children.</p>
+                                <pre name="code" class="brush:xml">
+&lt;p-fieldset toggleable&gt;
+    &lt;legend&gt;PrimeElement&lt;/legend&gt;
+    Content
+&lt;/p-fieldset&gt;
+                                </pre>
+
+                                <h3>Attributes</h3>
+                                <table class="doc-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Default</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>id</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Identifier of the element.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>toggleable</td>
+                                            <td>Boolean</td>
+                                            <td>false</td>
+                                            <td>Defines if content of fieldset can be expanded and collapsed.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>toggleduration</td>
+                                            <td>Number/String</td>
+                                            <td>normal</td>
+                                            <td>Defines the duration of the toggle effect, valid values are "slow", "normal", "fast" or a number in milliseconds.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>collapsed</td>
+                                            <td>Boolean</td>
+                                            <td>false</td>
+                                            <td>Displays the fieldset as collapsed initially.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>onbeforetoggle</td>
+                                            <td>function</td>
+                                            <td>event: puifieldsetbeforetoggle event<br>
+                                                collapsed: Collapsed state as a boolean
+                                            <td>Name of the function to invoke before fieldset gets toggled.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>onaftertoggle</td>
+                                            <td>function</td>
+                                            <td>event: puifieldsetaftertoggle event<br>
+                                                collapsed: Collapsed state as a boolean
+                                            <td>Name of the function to invoke after fieldset gets toggled.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                
+                                <h3>Methods</h3>
+                                <table class="doc-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Parameters</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>toggle()</td>
+                                            <td>-</td>
+                                            <td>Toggles the content.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </span>
+            </span>
+        </div>
+    </div>
+
+    <script language="javascript">
+        SyntaxHighlighter.highlight();
+    </script>
+
+</div>

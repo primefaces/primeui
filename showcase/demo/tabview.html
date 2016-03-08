@@ -1,0 +1,570 @@
+<div>
+    <link rel="stylesheet" href="../../../components/tabview/tabview.css" />
+    <link rel="stylesheet" href="../../../components/inputtext/inputtext.css" />
+    <script type="text/javascript" src="../../../components/tabview/tabview.js"></script>
+    <script type="text/javascript" src="../../../components/tab/tab-element.js"></script>
+    <script type="text/javascript" src="../../../components/tabview/tabview-element.js"></script>
+    <script type="text/javascript">
+        $(function () {
+
+            $('#default').puitabview();
+
+            $('#dynamic').puitabview({
+                change: function (event, ui) {
+                    $.ajax({
+                        type: "GET",
+                        url: './tabcontent',
+                        data: {tabindex: ui.index},
+                        dataType: "html",
+                        context: this,
+                        success: function (data) {
+                            $(this).children('div.ui-tabview-panels').children().eq(ui.index).html(data);
+                        }
+                    });
+                }
+            });
+
+            $('#effect').puitabview({
+                effect: {
+                    name: 'fade'
+                    , duration: 'normal'
+                }
+            });
+
+            $('#closable').puitabview();
+
+            $('#left').puitabview({
+                orientation: 'left'
+            });
+
+            $('#doc').puitabview();
+        });
+    </script>
+
+    <div class="ContentSideSections">
+        <div class="Content100 overHidden TextShadow">
+            <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">TabView</span>
+            <span class="defaultText dispTable">TabView is a tabbed panel component featuring client side tabs, dynamic content loading with ajax and content transition effects.</span>
+        </div>
+    </div>
+
+    <div class="ContentSideSections Implementation">
+        <h3 class="first">Default</h3>
+        <div id="default">
+            <ul>
+                <li><a href="#tab1">Tab 1</a></li>
+                <li><a href="#tab2">Tab 2</a></li>
+                <li><a href="#tab3">Tab 3</a></li>
+            </ul>
+            <div>
+                <div id="tab1">
+                    The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
+                </div>
+                <div id="tab2">
+                    Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows.
+                </div>
+                <div id="tab3">
+                    After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.
+                </div>
+            </div>
+        </div>
+
+        <h3>Ajax Content Loading</h3>
+        <div id="dynamic">
+            <ul>
+                <li><a href="#tab1">Tab 1</a></li>
+                <li><a href="#tab2">Tab 2</a></li>
+                <li><a href="#tab3">Tab 3</a></li>
+            </ul>
+            <div>
+                <div id="tab1">
+                    <p>Dynamic Content for Tab 1</p>
+                </div>
+                <div id="tab2">
+                </div>
+                <div id="tab3">
+                </div>
+            </div>
+        </div>
+
+        <h3>Effect</h3>
+        <div id="effect">
+            <ul>
+                <li><a href="#tab1">Tab 1</a></li>
+                <li><a href="#tab2">Tab 2</a></li>
+                <li><a href="#tab3">Tab 3</a></li>
+            </ul>
+            <div>
+                <div id="tab1">
+                    The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
+                </div>
+                <div id="tab2">
+                    Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows.
+                </div>
+                <div id="tab3">
+                    After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.
+                </div>
+            </div>
+        </div>
+
+        <h3>Closable</h3>
+        <div id="closable">
+            <ul>
+                <li><a href="#tab1">Tab 1</a><span class="fa fa-close"></span></li>
+                <li><a href="#tab2">Tab 2</a><span class="fa fa-close"></span></li>
+                <li><a href="#tab3">Tab 3</a><span class="fa fa-close"></span></li>
+            </ul>
+            <div>
+                <div id="tab1">
+                    The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
+                </div>
+                <div id="tab2">
+                    Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows.
+                </div>
+                <div id="tab3">
+                    After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.
+                </div>
+            </div>
+        </div>
+
+        <h3>Orientations</h3>
+        <div id="left" style="width:600px;">
+            <ul>
+                <li><a href="#tab1">Tab 1</a></li>
+                <li><a href="#tab2">Tab 2</a></li>
+                <li><a href="#tab3">Tab 3</a></li>
+            </ul>
+            <div>
+                <div id="tab1">
+                    The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
+                </div>
+                <div id="tab2">
+                    Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows.
+                </div>
+                <div id="tab3">
+                    After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.
+                </div>
+            </div>
+        </div>
+
+        <h3>PrimeElement</h3>
+        <p-tabview activeindex="1">
+            <p-tab title="Godfather I">
+                The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
+            </p-tab>
+            <p-tab title="Godfather II">
+                Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows.
+            </p-tab>
+            <p-tab title="Godfather III">
+                After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.
+            </p-tab>
+        </p-tabview>
+
+    </div>
+
+    <div id="SourceContentSide" class="ContentSideSections Source">
+        <div class="Content100 overHidden TextShadow">
+            <span class="defaultText">
+                <span class="fontSize18 logoBlueText">
+                    <div id="doc">
+                        <ul>
+                            <li><a href="#doc-overview">Overview</a></li>
+                            <li><a href="#doc-options">Options</a></li>
+                            <li><a href="#doc-events">Events</a></li>
+                            <li><a href="#doc-methods">Methods</a></li>
+                            <li><a href="#doc-methods">Source</a></li>
+                            <li class="tab-primeelement"><a href="#doc-element">PrimeElement</a></li>
+                        </ul>
+                        <div>
+                            <div id="doc-overview">
+
+                                <pre name="code" class="brush:js">
+$('#default').puitabview();
+                                </pre>
+
+                                <pre name="code" class="brush:xml">
+&lt;div id="default"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#tab1"&gt;Tab 1&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#tab2"&gt;Tab 2&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#tab3"&gt;Tab 3&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;div&gt;
+        &lt;div id="tab1"&gt;
+            content 1
+        &lt;/div&gt;
+        &lt;div id="tab2"&gt;
+            content 2
+        &lt;/div&gt;
+        &lt;div id="tab3"&gt;
+            content 3
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+                                </pre>
+                            </div>
+
+                            <div id="doc-options">
+                                <table class="doc-table">
+                                    <thead>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>activeIndex</td>
+                                            <td>Integer</td>
+                                            <td>0</td>
+                                            <td>Index of the active tab.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>orientation</td>
+                                            <td>String</td>
+                                            <td>top</td>
+                                            <td>Orientation of tab headers.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div id="doc-events">
+                                <table class="doc-table">
+                                    <thead>
+                                    <th>Name</th>
+                                    <th>Parameters</th>
+                                    <th>Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>change</td>
+                                            <td>ui.index: index of selected tab.</td>
+                                            <td>Fired when an inactive tab is selected.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>close</td>
+                                            <td>ui.index: index of selected tab.</td>
+                                            <td>Fired when a tab is closed.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <h3>Example</h3>
+                                <pre name="code" class="brush:js">
+$('#default').puitabview({
+    change: function(event, ui) {
+        //...
+    }
+});
+                                </pre>
+                            </div>
+
+                            <div id="doc-methods">
+                                <table class="doc-table">
+                                    <thead>
+                                    <th>Name</th>
+                                    <th>Parameters</th>
+                                    <th>Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>select</td>
+                                            <td>index: Index of the tab to select.</td>
+                                            <td>Activates the tab with given index.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>remove</td>
+                                            <td>index: Index of the tab to remove.</td>
+                                            <td>Removes the tab with given index.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>getLength</td>
+                                            <td>-</td>
+                                            <td>Returns length of tabs.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>getActiveIndex</td>
+                                            <td>-</td>
+                                            <td>Returns index of selected tab.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>disable</td>
+                                            <td>index: Index of the tab to disable.</td>
+                                            <td>Disable selected tab.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>enable</td>
+                                            <td>index: Index of the tab to enable.</td>
+                                            <td>Enable selected tab.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>option</td>
+                                            <td>name: Name of the option</td>
+                                            <td>Returns the value of the option.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>option</td>
+                                            <td>name: Name of the option, value: Value of the option</td>
+                                            <td>Set the value of the option.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <h3>Example</h3>
+                                <pre name="code" class="brush:js">
+$('#default').puitabview('remove', 1);
+                                </pre>
+                            </div>
+
+                            <div id="doc-source">
+                                <pre name="code" class="brush:js">
+$(function() {       
+    $('#default').puitabview();
+
+    $('#dynamic').puitabview({
+        change: function(event, ui) {
+
+            $.ajax({
+                type: "GET",
+                url: './tabcontent',
+                data: {tabindex: ui.index},
+                dataType: "html",
+                context: this,
+                success: function(data) {
+                    $(this).children('div.ui-tabview-panels').children().eq(ui.index).html(data);
+                }
+            });
+        }
+    });
+
+
+    $('#effect').puitabview({
+        effect: {
+            name: 'fade'
+            ,duration: 'normal'
+        }
+    });
+
+    $('#closable').puitabview();
+
+    $('#left').puitabview({
+        orientation: 'left'
+    });
+});
+                                </pre>
+
+                                <pre name="code" class="brush:xml">
+
+&lt;div id="default"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#tab1"&gt;Tab 1&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#tab2"&gt;Tab 2&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#tab3"&gt;Tab 3&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;div&gt;
+        &lt;div id="tab1"&gt;
+            The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
+        &lt;/div&gt;
+        &lt;div id="tab2"&gt;
+            Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows.
+        &lt;/div&gt;
+        &lt;div id="tab3"&gt;
+            After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id="dynamic"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#tab1"&gt;Tab 1&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#tab2"&gt;Tab 2&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#tab3"&gt;Tab 3&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;div&gt;
+        &lt;div id="tab1"&gt;
+            &lt;p&gt;Dynamic Content for Tab 1&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div id="tab2"&gt;
+        &lt;/div&gt;
+        &lt;div id="tab3"&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id="effect"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#tab1"&gt;Tab 1&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#tab2"&gt;Tab 2&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#tab3"&gt;Tab 3&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;div&gt;
+        &lt;div id="tab1"&gt;
+            The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
+        &lt;/div&gt;
+        &lt;div id="tab2"&gt;
+            Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows.
+        &lt;/div&gt;
+        &lt;div id="tab3"&gt;
+            After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id="closable"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#tab1"&gt;Tab 1&lt;/a&gt;&lt;span class="fa fa-close"&gt;&lt;/span&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#tab2"&gt;Tab 2&lt;/a&gt;&lt;span class="fa fa-close"&gt;&lt;/span&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#tab3"&gt;Tab 3&lt;/a&gt;&lt;span class="fa fa-close"&gt;&lt;/span&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;div&gt;
+        &lt;div id="tab1"&gt;
+            The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
+        &lt;/div&gt;
+        &lt;div id="tab2"&gt;
+            Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows.
+        &lt;/div&gt;
+        &lt;div id="tab3"&gt;
+            After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id="left" style="width:600px;"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#tab1"&gt;Tab 1&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#tab2"&gt;Tab 2&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#tab3"&gt;Tab 3&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;div&gt;
+        &lt;div id="tab1"&gt;
+            The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
+        &lt;/div&gt;
+        &lt;div id="tab2"&gt;
+            Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows.
+        &lt;/div&gt;
+        &lt;div id="tab3"&gt;
+            After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3>PrimeElement&lt;/h3&gt;
+&lt;p-tabview activeindex="1"&gt;
+    &lt;p-tab title="Godfather I"&gt;
+        The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
+    &lt;/p-tab&gt;
+    &lt;p-tab title="Godfather II"&gt;
+        Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows.
+    &lt;/p-tab&gt;
+    &lt;p-tab title="Godfather III"&gt;
+        After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.
+    &lt;/p-tab&gt;
+&lt;/p-tabview&gt;
+                                </pre>
+                            </div>
+
+                            <div id="doc-element">
+                                <h3>Usage</h3>
+                                Tabview element consists of one or more p-tab elements. Header of the tab is defined using title attribute of tab.
+
+                                <pre name="code" class="brush:xml">
+&lt;p-tabview&gt;
+    &lt;p-tab title="Title for tab 1"&gt;
+        Tab Content 1
+    &lt;/p-tab&gt;
+    &lt;p-tab title="Title for tab 2"&gt;
+        Tab Content 2
+    &lt;/p-tab&gt;
+&lt;/p-tabview&gt;
+                                </pre>
+
+                                <h3>Attributes</h3>
+                                <table class="doc-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Default</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>id</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Identifier of the element.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>activeindex</td>
+                                            <td>Integer</td>
+                                            <td>0</td>
+                                            <td>Index of the active tab.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>orientation</td>
+                                            <td>String</td>
+                                            <td>top</td>
+                                            <td>Orientation of tab headers.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>onchange</td>
+                                            <td>function</td>
+                                            <td>null</td>
+                                            <td>Name of the function to invoke on tab change.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <h3>Methods</h3>
+                                <table class="doc-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Parameters</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>select</td>
+                                            <td>index: Index of the tab to select.</td>
+                                            <td>Activates the tab with given index.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>remove</td>
+                                            <td>index: Index of the tab to remove.</td>
+                                            <td>Removes the tab with given index.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>getActiveIndex</td>
+                                            <td>-</td>
+                                            <td>Returns index of selected tab.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>disable</td>
+                                            <td>index: Index of the tab to disable.</td>
+                                            <td>Disable selected tab.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>enable</td>
+                                            <td>index: Index of the tab to enable.</td>
+                                            <td>Enable selected tab.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </span>
+            </span>
+        </div>
+    </div>
+
+    <script language="javascript">
+        SyntaxHighlighter.highlight();
+    </script>
+
+</div>

@@ -1,0 +1,209 @@
+<div>
+    <link rel="stylesheet" href="../../../components/inputtext/inputtext.css" />
+    <link rel="stylesheet" href="../../../components/datatable/datatable.css" />
+    <link rel="stylesheet" href="../../../components/paginator/paginator.css" />
+    <link rel="stylesheet" href="../../../components/tabview/tabview.css" />
+    <link rel="stylesheet" href="../../../components/growl/growl.css" />
+    <link rel="stylesheet" href="../../../components/grid/grid.css" />
+    <link rel="stylesheet" href="../../../components/menu/menu.css" />
+    <script type="text/javascript" src="../../../components/datatable/datatable.js"></script>
+    <script type="text/javascript" src="../../../components/paginator/paginator.js"></script>
+    <script type="text/javascript" src="../../../components/tabview/tabview.js"></script>
+    <script type="text/javascript" src="../../../components/growl/growl.js"></script>
+    <script type="text/javascript" src="../../../components/menu/menu.js"></script>
+    <script type="text/javascript" src="../../../components/inputtext/inputtext.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('#datatable-submenu a').on('click', function(e) {
+                Showcase.changePageWithLink($(this).attr('href'));
+                e.preventDefault();
+            });
+                        
+            var salesData = [
+                {brand: 'Apple', lastYearSale: '51%', thisYearSale: '40%', lastYearProfit: '$54,406.00', thisYearProfit: '$43,342'},
+                {brand: 'Samsung', lastYearSale: '83%', thisYearSale: '96%', lastYearProfit: '$423,132', thisYearProfit: '$312,122'},
+                {brand: 'Microsoft', lastYearSale: '38%', thisYearSale: '5%', lastYearProfit: '$12,321', thisYearProfit: '$8,500'},
+                {brand: 'Philips', lastYearSale: '49%', thisYearSale: '22%', lastYearProfit: '$745,232', thisYearProfit: '$650,323,'},
+                {brand: 'Song', lastYearSale: '17%', thisYearSale: '79%', lastYearProfit: '$643,242', thisYearProfit: '500,332'},
+                {brand: 'LG', lastYearSale: '52%', thisYearSale: ' 65%', lastYearProfit: '$421,132', thisYearProfit: '$150,005'},
+                {brand: 'Sharp', lastYearSale: '82%', thisYearSale: '12%', lastYearProfit: '$131,211', thisYearProfit: '$100,214'},
+                {brand: 'Panasonic', lastYearSale: '44%', thisYearSale: '45%', lastYearProfit: '$66,442', thisYearProfit: '$53,322'},
+                {brand: 'HTC', lastYearSale: '90%', thisYearSale: '56%', lastYearProfit: '$765,442', thisYearProfit: '$296,232'},
+                {brand: 'Toshiba', lastYearSale: '75%', thisYearSale: '54%', lastYearProfit: '$21,212', thisYearProfit: '$12,533'}
+            ];
+              
+            $('#tblgroup').puidatatable({
+                caption: 'Grouping',
+                footer: 'Summary',
+                headerRows: [
+                    {
+                        columns: [
+                            {headerText: 'Brand', rowspan: 3},
+                            {headerText: 'Sale Rate', colspan: 4}
+                        ]
+                    },
+                    {
+                        columns: [
+                            {headerText: 'Brand', colspan: 2},
+                            {headerText: 'Sale Rate', colspan: 2}
+                        ]
+                    },
+                    {
+                        columns: [
+                            {headerText: 'Last Year'},
+                            {headerText: 'This Year'},
+                            {headerText: 'Last Year'},
+                            {headerText: 'This Year'}
+                        ]
+                    }
+                ],
+                footerRows: [
+                    {
+                        columns: [
+                            {footerText: 'Totals:', colspan: 3},
+                            {footerText: '$506,202'},
+                            {footerText: '$531,020'}
+                        ]
+                    }
+                ],
+                columns: [
+                    {field: 'brand'},
+                    {field: 'lastYearSale'},
+                    {field: 'thisYearSale'},
+                    {field: 'lastYearProfit'},
+                    {field: 'thisYearProfit'}
+                ],
+                datasource: salesData
+            });
+            
+            $('#doc').puitabview();
+        });
+    </script>
+    <style type="text/css">
+        .ui-datatable {
+            margin-bottom: 40px;
+        }
+    </style>
+    
+    <div id="datatable-submenu" class="ContentSideSections SubSubMenu clearfix">
+        <ul>
+            <li><a href="datatable.html">&bull; DataSource</a></li>
+            <li><a href="datatablePaginator.html">&bull; Paginator</a></li>
+            <li><a href="datatableSort.html">&bull; Sort</a></li>
+            <li><a href="datatableFilter.html">&bull; Filter</a></li>
+            <li><a href="datatableSelection.html">&bull; Selection</a></li>
+            <li><a href="datatableEditable.html">&bull; Editable</a></li>
+            <li><a href="datatableReorder.html">&bull; Reorder</a></li>
+            <li><a href="datatableResize.html">&bull; Resize</a></li>
+            <li><a href="datatableExpansion.html">&bull; Expansion</a></li>
+            <li><a href="datatableScroll.html">&bull; Scroll</a></li>
+            <li><a href="datatableGroup.html">&bull; Group</a></li>
+            <li><a href="datatableResponsive.html">&bull; Responsive</a></li>
+            <li><a href="datatableContextMenu.html">&bull; ContextMenu</a></li>
+            <li><a href="datatableSticky.html">&bull; Sticky</a></li>
+            <li><a href="datatableElement.html">&bull; Element</a></li>
+        </ul>
+    </div>
+
+    <div class="ContentSideSections">
+        <div class="Content100 overHidden TextShadow">
+            <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">Datatable - <span class="subitem">Group</span></span>
+            <span class="defaultText dispTable">Columns at header and footer are grouped using headerRows and footerRows options.</span>
+        </div>
+    </div>
+
+    <div class="ContentSideSections Implementation">        
+        <div id="tblgroup"></div>
+    </div>
+
+    <div id="SourceContentSide" class="ContentSideSections Source">
+        <div class="Content100 overHidden TextShadow">
+            <span class="defaultText">
+                <span class="fontSize18 logoBlueText">
+                    <div id="doc">
+                        <ul>
+                            <li><a href="#doc-overview">Markup</a></li>
+                            <li><a href="#doc-options">Script</a></li>
+                        </ul>
+                        <div>
+
+                            <div id="doc-markup">                               
+                                <pre name="code" class="brush:xml">
+&lt;div id="tblgroup"&gt;/&lt;/div&gt;
+                                </pre>
+                            </div>
+
+                            <div id="doc-script">
+                                <pre name="code" class="brush:js">
+$(function() {
+    var salesData = [
+        {brand: 'Apple', lastYearSale: '51%', thisYearSale: '40%', lastYearProfit: '$54,406.00', thisYearProfit: '$43,342'},
+        {brand: 'Samsung', lastYearSale: '83%', thisYearSale: '96%', lastYearProfit: '$423,132', thisYearProfit: '$312,122'},
+        {brand: 'Microsoft', lastYearSale: '38%', thisYearSale: '5%', lastYearProfit: '$12,321', thisYearProfit: '$8,500'},
+        {brand: 'Philips', lastYearSale: '49%', thisYearSale: '22%', lastYearProfit: '$745,232', thisYearProfit: '$650,323,'},
+        {brand: 'Song', lastYearSale: '17%', thisYearSale: '79%', lastYearProfit: '$643,242', thisYearProfit: '500,332'},
+        {brand: 'LG', lastYearSale: '52%', thisYearSale: ' 65%', lastYearProfit: '$421,132', thisYearProfit: '$150,005'},
+        {brand: 'Sharp', lastYearSale: '82%', thisYearSale: '12%', lastYearProfit: '$131,211', thisYearProfit: '$100,214'},
+        {brand: 'Panasonic', lastYearSale: '44%', thisYearSale: '45%', lastYearProfit: '$66,442', thisYearProfit: '$53,322'},
+        {brand: 'HTC', lastYearSale: '90%', thisYearSale: '56%', lastYearProfit: '$765,442', thisYearProfit: '$296,232'},
+        {brand: 'Toshiba', lastYearSale: '75%', thisYearSale: '54%', lastYearProfit: '$21,212', thisYearProfit: '$12,533'}
+    ];
+
+    $('#tblgroup').puidatatable({
+        caption: 'Grouping',
+        footer: 'Summary',
+        headerRows: [
+            {
+                columns: [
+                    {headerText: 'Brand', rowspan: 3},
+                    {headerText: 'Sale Rate', colspan: 4}
+                ]
+            },
+            {
+                columns: [
+                    {headerText: 'Brand', colspan: 2},
+                    {headerText: 'Sale Rate', colspan: 2}
+                ]
+            },
+            {
+                columns: [
+                    {headerText: 'Last Year'},
+                    {headerText: 'This Year'},
+                    {headerText: 'Last Year'},
+                    {headerText: 'This Year'}
+                ]
+            }
+        ],
+        footerRows: [
+            {
+                columns: [
+                    {footerText: 'Totals:', colspan: 3},
+                    {footerText: '$506,202'},
+                    {footerText: '$531,020'}
+                ]
+            }
+        ],
+        columns: [
+            {field: 'brand'},
+            {field: 'lastYearSale'},
+            {field: 'thisYearSale'},
+            {field: 'lastYearProfit'},
+            {field: 'thisYearProfit'}
+        ],
+        datasource: salesData
+    });
+});
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </span>
+            </span>
+        </div>
+    </div>
+
+    <script language="javascript">
+        SyntaxHighlighter.highlight();
+    </script>
+
+</div>

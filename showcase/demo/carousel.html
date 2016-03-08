@@ -1,0 +1,932 @@
+<div>
+    <link rel="stylesheet" href="../../../components/grid/grid.css" />
+    <link rel="stylesheet" href="../../../components/carousel/carousel.css" />
+    <link rel="stylesheet" href="../../../components/tabview/tabview.css" />
+    <script type="text/javascript" src="../showcase/resources/js/plugins/touchswipe.js"></script>
+    <script type="text/javascript" src="../showcase/resources/demo/js/carousel-demo.js"></script>
+    <script type="text/javascript" src="../../../components/carousel/carousel.js"></script>
+    <script type="text/javascript" src="../../../components/carousel/carousel-element.js"></script>
+    <script type="text/javascript" src="../../../components/tabview/tabview.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            setTimeout(function() {
+
+                var cars = [
+                    {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
+                    {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
+                    {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
+                    {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
+                    {'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
+                    {'brand': 'Jaguar', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
+                    {'brand': 'BMW', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
+                    {'brand': 'Fiat', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
+                    {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'}
+                ];
+
+                $('#cars1').puicarousel({
+                    headerText: 'Local Javascript Array',
+                    datasource: cars,
+                    itemContent: function(car) {
+                        var content = $('<div class="ui-grid ui-grid-responsive"></div>');
+                        content.append('<div class="ui-grid-row"><div class="ui-grid-col-12"><img src="showcase/resources/demo/images/car/' + car.brand +  '.gif" /></div>')
+                                .append('<div class="ui-grid-row"><div class="ui-grid-col-6">Vin</div><div class="ui-grid-col-6">' + car.vin + ' </div></div>')
+                                .append('<div class="ui-grid-row"><div class="ui-grid-col-6">Year</div><div class="ui-grid-col-6">' + car.year + ' </div></div>')
+                                .append('<div class="ui-grid-row"><div class="ui-grid-col-6">Color</div><div class="ui-grid-col-6">' + car.color + ' </div></div>');
+
+                        return content;
+                    }
+                });
+
+                $('#cars2').puicarousel({
+                    headerText: 'Remote DataSource',
+                    pageLinks: 5,
+                    datasource: function(callback) {
+                        $.ajax({
+                            type: "GET",
+                            url: 'showcase/resources/data/cars-medium.json',
+                            dataType: "json",
+                            context: this,
+                            success: function(response) {
+                                callback.call(this, response.slice(0,15));
+                            }
+                        });
+                    },
+                    itemContent: function(car) {
+                        var content = $('<div class="ui-grid ui-grid-responsive"></div>');
+                        content.append('<div class="ui-grid-row"><div class="ui-grid-col-12"><img src="showcase/resources/demo/images/car/' + car.brand +  '.gif" /></div>')
+                                .append('<div class="ui-grid-row"><div class="ui-grid-col-6">Vin</div><div class="ui-grid-col-6">' + car.vin + ' </div></div>')
+                                .append('<div class="ui-grid-row"><div class="ui-grid-col-6">Year</div><div class="ui-grid-col-6">' + car.year + ' </div></div>')
+                                .append('<div class="ui-grid-row"><div class="ui-grid-col-6">Color</div><div class="ui-grid-col-6">' + car.color + ' </div></div>');
+
+                        return content.html();
+                    }
+                });
+
+                $('#cars3').puicarousel({
+                    headerText: 'Enhanced Markup'
+                });
+            }, 100);
+            
+            $('#doc').puitabview();
+        });
+    </script>
+    <style type="text/css">
+        .ui-carousel .ui-grid-row {
+            text-align: center;
+        }
+        
+        .ui-carousel .ui-grid {
+            margin: 10px 0px;
+        }
+        
+        .ui-carousel .ui-grid-row > div {
+            padding: 4px 10px;
+        }
+        
+        .ui-carousel {
+            margin-bottom: 30px;
+        }
+    </style>
+
+    <div class="ContentSideSections">
+        <div class="Content100 overHidden TextShadow">
+            <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">Carousel</span>
+            <span class="defaultText dispTable">Carousel displays content using a slide effect feauturing responsive mode, swipe support for touch enabled devices and various customization options.</span>
+        </div>
+    </div>
+
+    <div class="ContentSideSections Implementation">
+        <ul id="cars1"></ul>
+               
+        <ul id="cars2"></ul>
+        
+        <p-carousel datasource="CarouselDemo.cars" headertext="PrimeElement" renderdelay="10">
+            <template>
+                <div class="ui-grid ui-grid-responsive">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-12"><img src="showcase/resources/demo/images/car/{{brand}}.gif" /></div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Vin</div>
+                        <div class="ui-grid-col-6">{{vin}}</div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Year</div>
+                        <div class="ui-grid-col-6">{{year}}</div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Color</div>
+                        <div class="ui-grid-col-6">{{color}}</div>
+                    </div>
+                </div>
+            </template>
+        </p-carousel>
+        
+        <ul id="cars3">
+            <li>
+                <div class="ui-grid ui-grid-responsive">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-12"><img src="showcase/resources/demo/images/car/Volkswagen.gif">
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Vin</div>
+                        <div class="ui-grid-col-6">dsad231ff </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Year</div>
+                        <div class="ui-grid-col-6">2012 </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Color</div>
+                        <div class="ui-grid-col-6">White </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="ui-grid ui-grid-responsive">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-12"><img src="showcase/resources/demo/images/car/Audi.gif">
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Vin</div>
+                        <div class="ui-grid-col-6">gwregre345 </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Year</div>
+                        <div class="ui-grid-col-6">2011 </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Color</div>
+                        <div class="ui-grid-col-6">Black </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="ui-grid ui-grid-responsive">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-12"><img src="showcase/resources/demo/images/car/Renault.gif">
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Vin</div>
+                        <div class="ui-grid-col-6">h354htr </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Year</div>
+                        <div class="ui-grid-col-6">2005 </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Color</div>
+                        <div class="ui-grid-col-6">Gray </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="ui-grid ui-grid-responsive">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-12"><img src="showcase/resources/demo/images/car/BMW.gif">
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Vin</div>
+                        <div class="ui-grid-col-6">j6w54qgh </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Year</div>
+                        <div class="ui-grid-col-6">2003 </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Color</div>
+                        <div class="ui-grid-col-6">Blue </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="ui-grid ui-grid-responsive">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-12"><img src="showcase/resources/demo/images/car/Mercedes.gif">
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Vin</div>
+                        <div class="ui-grid-col-6">hrtwy34 </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Year</div>
+                        <div class="ui-grid-col-6">1995 </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Color</div>
+                        <div class="ui-grid-col-6">White </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="ui-grid ui-grid-responsive">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-12"><img src="showcase/resources/demo/images/car/Jaguar.gif">
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Vin</div>
+                        <div class="ui-grid-col-6">jejtyj </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Year</div>
+                        <div class="ui-grid-col-6">2005 </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Color</div>
+                        <div class="ui-grid-col-6">Black </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="ui-grid ui-grid-responsive">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-12"><img src="showcase/resources/demo/images/car/BMW.gif">
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Vin</div>
+                        <div class="ui-grid-col-6">g43gr </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Year</div>
+                        <div class="ui-grid-col-6">2012 </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Color</div>
+                        <div class="ui-grid-col-6">Yellow </div>
+                    </div>
+                </div>
+            </li>
+            <li class="ui-carousel-item ui-widget-content ui-corner-all" style="width: 349px;">
+                <div class="ui-grid ui-grid-responsive">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-12"><img src="showcase/resources/demo/images/car/Fiat.gif">
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Vin</div>
+                        <div class="ui-grid-col-6">greg34 </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Year</div>
+                        <div class="ui-grid-col-6">2013 </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Color</div>
+                        <div class="ui-grid-col-6">White </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="ui-grid ui-grid-responsive">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-12"><img src="showcase/resources/demo/images/car/Ford.gif">
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Vin</div>
+                        <div class="ui-grid-col-6">h54hw5 </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Year</div>
+                        <div class="ui-grid-col-6">2000 </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">Color</div>
+                        <div class="ui-grid-col-6">Black </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        
+    </div>
+
+    <div id="SourceContentSide" class="ContentSideSections Source">
+        <div class="Content100 overHidden TextShadow">
+            <span class="defaultText">
+                <span class="fontSize18 logoBlueText">
+                    <div id="doc">
+                        <ul>
+                            <li><a href="#doc-overview">Overview</a></li>
+                            <li><a href="#doc-options">Options</a></li>
+                            <li><a href="#doc-events">Events</a></li>
+                            <li><a href="#doc-methods">Methods</a></li>
+                            <li><a href="#doc-methods">Source</a></li>
+                            <li class="tab-primeelement"><a href="#doc-element">PrimeElement</a></li>
+                        </ul>
+                        <div>
+                            <div id="doc-overview">
+                                <p>Carousel's content can be defined either programmatically or declaratively. For programmatic way, define
+                                provide the data using the datasource option where the value can be a javascript array or a function that returns
+                                data usually by connecting to a remote source. Declarative approach simply requires a list element with "li" items as children.</p>
+                                <pre class="brush: html">
+$('#list').puicarousel(); 
+                                </pre>
+
+                                <pre class="brush: js">
+&lt;ul id="list"&gt;&lt;/ul&gt;
+                                </pre>
+                                
+                                <p>Note: Carousel requires touchswipe plugin for swipe support.</p> 
+
+                            </div>
+
+                            <div id="doc-options">
+                                <table class="doc-table">
+                                    <thead>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>datasource</td>
+                                            <td>Array/Function</td>
+                                            <td>null</td>
+                                            <td>Datasource for the carousel, valid options are an array and a function to load data.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>numVisible</td>
+                                            <td>Integer</td>
+                                            <td>3</td>
+                                            <td>Number of visible items per page.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>firstVisible</td>
+                                            <td>Integer</td>
+                                            <td>0</td>
+                                            <td>Index of the first visible item.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>headerText</td>
+                                            <td>String</td>
+                                            <td>null</td>
+                                            <td>Text of the header section.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>effectDuration</td>
+                                            <td>Integer</td>
+                                            <td>500</td>
+                                            <td>Duration of the scrolling animation in milliseconds.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>circular</td>
+                                            <td>Boolean</td>
+                                            <td>false</td>
+                                            <td>Defines continuous scrolling.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>breakpoint</td>
+                                            <td>Integer</td>
+                                            <td>560</td>
+                                            <td>Breakpoint value in pixels to switch between small and large viewport.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>itemContent</td>
+                                            <td>Function</td>
+                                            <td>null</td>
+                                            <td>Function to provide item content as string or jQuery object.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>responsive</td>
+                                            <td>Boolean</td>
+                                            <td>true</td>
+                                            <td>Breakpoint value in pixels to switch between small and large viewport.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>autoplayInterval</td>
+                                            <td>Integer</td>
+                                            <td>0</td>
+                                            <td>Time in milliseconds to have carousel start scrolling automatically.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>easing</td>
+                                            <td>String</td>
+                                            <td>easeInOutCirc</td>
+                                            <td>Easing animation to use for scrolling.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>pageLinks</td>
+                                            <td>String</td>
+                                            <td>3</td>
+                                            <td>Number of maximum page links to display. If total page count exceeds this value a dropdown is displayed instead.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>style</td>
+                                            <td>String</td>
+                                            <td>null</td>
+                                            <td>Inline style of the main wrapper element.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>styleClass</td>
+                                            <td>String</td>
+                                            <td>null</td>
+                                            <td>Style class for the main wrapper element.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>template</td>
+                                            <td>jQuery</td>
+                                            <td>null</td>
+                                            <td>Template element as jQuery object.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div id="doc-events">
+                                <table class="doc-table">
+                                    <thead>
+                                    <th>Name</th>
+                                    <th>Parameters</th>
+                                    <th>Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>pageChange</td>
+                                            <td>ui.page: index of the new page</td>
+                                            <td>Fired when carousel page changes.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <h3>Example</h3>
+                                <pre name="code" class="brush:js">
+$('#default').puicarousel({
+    pageChange: function(event, ui) {
+        //...
+    }
+});
+                                </pre>
+                            </div>
+
+                            <div id="doc-methods">
+                                <table class="doc-table">
+                                    <thead>
+                                        <th>Name</th>
+                                        <th>Parameters</th>
+                                        <th>Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>setPage</td>
+                                            <td>index: Index of the page to navigate to.</td>
+                                            <td>Enable the widget</td>
+                                        </tr>
+ 
+                                        <tr>
+                                            <td>option</td>
+                                            <td>name: Name of the option</td>
+                                            <td>Returns the value of the option.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>option</td>
+                                            <td>name: Name of the option, value: Value of the option</td>
+                                            <td>Set the value of the option.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                
+                                <h3>Example</h3>
+                                <pre name="code" class="brush:js">
+$('#default').puicarousel('setPage', 3);
+                                </pre>
+                            </div>
+
+                            <div id="doc-source">
+                                <pre class="brush:js">
+$(function() {
+    var cars = [
+        {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
+        {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
+        {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
+        {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
+        {'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
+        {'brand': 'Jaguar', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
+        {'brand': 'BMW', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
+        {'brand': 'Fiat', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
+        {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'}
+    ];
+
+    $('#cars1').puicarousel({
+        headerText: 'Local Javascript Array',
+        datasource: cars,
+        itemContent: function(car) {
+            var content = $('&lt;div class="ui-grid ui-grid-responsive"&gt;&lt;/div&gt;');
+            content.append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/' + car.brand +  '.gif" /&gt;&lt;/div&gt;')
+                    .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.vin + ' &lt;/div&gt;&lt;/div&gt;')
+                    .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.year + ' &lt;/div&gt;&lt;/div&gt;')
+                    .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.color + ' &lt;/div&gt;&lt;/div&gt;');
+
+            return content;
+        }
+    });
+
+    $('#cars2').puicarousel({
+        headerText: 'Remote DataSource',
+        pageLinks: 5,
+        datasource: function(callback) {
+            $.ajax({
+                type: "GET",
+                url: 'rest/cars/list',
+                dataType: "json",
+                context: this,
+                success: function(response) {
+                    callback.call(this, response.slice(0,15));
+                }
+            });
+        },
+        itemContent: function(car) {
+            var content = $('&lt;div class="ui-grid ui-grid-responsive"&gt;&lt;/div&gt;');
+            content.append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/' + car.brand +  '.gif" /&gt;&lt;/div&gt;')
+                    .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.vin + ' &lt;/div&gt;&lt;/div&gt;')
+                    .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.year + ' &lt;/div&gt;&lt;/div&gt;')
+                    .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.color + ' &lt;/div&gt;&lt;/div&gt;');
+
+            return content.html();
+        }
+    });
+
+    $('#cars3').puicarousel({
+        headerText: 'Enhanced Markup'
+    });
+});
+                                </pre>
+
+                                <pre class="brush:xml">
+&lt;ul id="cars1"&gt;&lt;/ul&gt;
+        
+&lt;ul id="cars2"&gt;&lt;/ul&gt;
+
+&lt;p-carousel datasource="CarouselDemo.cars" headertext="PrimeElement" renderdelay="10"&gt;
+    &lt;template&gt;
+        &lt;div class="ui-grid ui-grid-responsive"&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/{{brand}}.gif" /&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;{{vin}}&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;{{year}}&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;{{color}}&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/template&gt;
+&lt;/p-carousel&gt; 
+
+&lt;ul id="cars3"&gt;
+    &lt;li&gt;
+        &lt;div class="ui-grid ui-grid-responsive"&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/Volkswagen.gif"&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;dsad231ff &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;2012 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;White &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div class="ui-grid ui-grid-responsive"&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/Audi.gif"&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;gwregre345 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;2011 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;Black &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div class="ui-grid ui-grid-responsive"&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/Renault.gif"&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;h354htr &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;2005 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;Gray &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div class="ui-grid ui-grid-responsive"&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/BMW.gif"&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;j6w54qgh &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;2003 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;Blue &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div class="ui-grid ui-grid-responsive"&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/Mercedes.gif"&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;hrtwy34 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;1995 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;White &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div class="ui-grid ui-grid-responsive"&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/Jaguar.gif"&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;jejtyj &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;2005 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;Black &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div class="ui-grid ui-grid-responsive"&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/BMW.gif"&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;g43gr &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;2012 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;Yellow &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li class="ui-carousel-item ui-widget-content ui-corner-all" style="width: 349px;"&gt;
+        &lt;div class="ui-grid ui-grid-responsive"&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/Fiat.gif"&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;greg34 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;2013 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;White &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div class="ui-grid ui-grid-responsive"&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-12"&gt;&lt;img src="resources/demo/images/car/Ford.gif"&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;h54hw5 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;2000 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;Black &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;           
+                                </pre>
+
+                            </div>
+                            <div id="doc-element">
+                                <h3>Usage</h3>
+                                Carousel's datasource can either be a name of an array or a function to load the array. Content for each item is defined
+                                as a mustache template where properties of an object can be access via {{}} syntax.
+                                <pre name="code" class="brush:xml">
+&lt;p-carousel datasource="CarouselDemo.cars" headertext="PrimeElement"&gt;
+    &lt;template&gt;
+        Access color of a car using {{color}}
+    &lt;/template&gt;
+&lt;/p-carousel&gt;
+                                </pre>
+                                <h4>Array</h4>
+                                <pre name="code" class="brush:js">
+var CarouselDemo = {
+    
+    cars: [
+        {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
+        {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
+        {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
+        {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
+        {'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
+        {'brand': 'Jaguar', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
+        {'brand': 'BMW', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
+        {'brand': 'Fiat', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
+        {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'}
+    ]
+    
+};
+                                </pre>
+                                
+                                <h4>Function</h4>
+                                <pre name="code" class="brush:js">
+var CarouselDemo = {
+    
+    cars: function(callback) {
+        $.ajax({
+            type: "GET",
+            url: 'rest/cars/list',
+            dataType: "json",
+            context: this,
+            success: function(response) {
+                callback.call(this, response);
+            }
+        });
+    }
+};
+                                </pre>
+                                
+                                
+                                <h3>Attributes</h3>
+                                    <table class="doc-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Type</th>
+                                                <th>Default</th>
+                                                <th>Description</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>datasource</td>
+                                                <td>Array/Function</td>
+                                                <td>null</td>
+                                                <td>Datasource for the carousel, valid options are an array and a function to load data.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>numvisible</td>
+                                                <td>Integer</td>
+                                                <td>3</td>
+                                                <td>Number of visible items per page.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>firstvisible</td>
+                                                <td>Integer</td>
+                                                <td>0</td>
+                                                <td>Index of the first visible item.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>headertext</td>
+                                                <td>String</td>
+                                                <td>null</td>
+                                                <td>Text of the header section.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>effectduration</td>
+                                                <td>Integer</td>
+                                                <td>500</td>
+                                                <td>Duration of the scrolling animation in milliseconds.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>circular</td>
+                                                <td>Boolean</td>
+                                                <td>false</td>
+                                                <td>Defines continuous scrolling.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>breakpoint</td>
+                                                <td>Integer</td>
+                                                <td>560</td>
+                                                <td>Breakpoint value in pixels to switch between small and large viewport.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>responsive</td>
+                                                <td>Boolean</td>
+                                                <td>true</td>
+                                                <td>Breakpoint value in pixels to switch between small and large viewport.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>autoplayinterval</td>
+                                                <td>Integer</td>
+                                                <td>0</td>
+                                                <td>Time in milliseconds to have carousel start scrolling automatically.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>easing</td>
+                                                <td>String</td>
+                                                <td>easeInOutCirc</td>
+                                                <td>Easing animation to use for scrolling.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>pagelinks</td>
+                                                <td>String</td>
+                                                <td>3</td>
+                                                <td>Number of maximum page links to display. If total page count exceeds this value a dropdown is displayed instead.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>style</td>
+                                                <td>String</td>
+                                                <td>null</td>
+                                                <td>Inline style of the main wrapper element.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>styleclass</td>
+                                                <td>String</td>
+                                                <td>null</td>
+                                                <td>Style class for the main wrapper element.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>onpagechange</td>
+                                                <td>function</td>
+                                                <td>null</td>
+                                                <td>Name of the function to invoke when carousel page changes.</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                        </div>
+                    </div>
+                </span>
+            </span>
+        </div>
+    </div>
+
+    <script language="javascript">
+        SyntaxHighlighter.highlight();
+    </script>
+
+</div>
