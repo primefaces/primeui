@@ -1,0 +1,22 @@
+div {display:none;animation-duration:0ms;}
+@-webkit-keyframes bounce {
+    0%,100% {
+        -webkit-transform: scale(0.0);
+    }
+    50% {
+        -webkit-transform: scale(1.0);
+    }
+}
+div {color:red;
+    animation: blink 2s ease 0s;
+}
+@keyframes bounce {
+    0%,100% {
+        transform: scale(0.0);
+        -webkit-transform: scale(0.0);
+    }
+    50% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+    }
+}

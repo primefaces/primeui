@@ -1,0 +1,1 @@
+.element1,element2{font-family:sans-serif;font-size:1em;padding:0;margin:10px;animation:blink 2s ease 0s}@keyframes blink{0%{background-color:#fff}50%{background-color:#000}100%{background-color:#fff}}
