@@ -1,0 +1,19 @@
+/* line 56, sprite/icon-header/*.png */
+.my-css-class1 {
+	font-weight:bold;
+}
+
+/* line 56, /*sprite/icon-header/*.png */
+.my-css-class2 {
+	font-weight:bold;
+}
+
+/* line 56, /*sprite*//*icon-/*header/*.png */
+.my-css-class3 {
+	font-weight:bold;
+}
+
+/*////////////////////////////////////*/
+a {
+	color:black;
+}
