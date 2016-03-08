@@ -1,3 +1,2 @@
-/nb-configuration.xml
-/target/
-.idea/
+node_modules
+build
