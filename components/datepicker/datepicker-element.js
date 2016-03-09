@@ -1,5 +1,5 @@
 if(!xtag.tags['p-datepicker']) {
- 
+
     xtag.register('p-datepicker', {
 
         accessors: {
@@ -203,9 +203,12 @@ if(!xtag.tags['p-datepicker']) {
             },
             getDate: function() {
                 return this.xtag.container.datepicker('getDate');
+            },
+            setDate: function(date) {
+                return this.xtag.container.datepicker('setDate', date);
             }
         }
-        
+
     });
-    
+
 }
