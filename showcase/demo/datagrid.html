@@ -1,18 +1,4 @@
 <div>
-    <link rel="stylesheet" href="../../../components//inputtext/inputtext.css" />
-    <link rel="stylesheet" href="../../../components/datagrid/datagrid.css" />
-    <link rel="stylesheet" href="../../../components/paginator/paginator.css" />
-    <link rel="stylesheet" href="../../../components/panel/panel.css" />
-    <link rel="stylesheet" href="../../../components//tabview/tabview.css" />
-    <link rel="stylesheet" href="../../../components/grid/grid.css" />
-    <link rel="stylesheet" href="../../../components/growl/growl.css" />
-    <script type="text/javascript" src="../showcase/resources/demo/js/data-demo.js"></script>
-    <script type="text/javascript" src="../../../components/datagrid/datagrid.js"></script>
-    <script type="text/javascript" src="../../../components/datagrid/datagrid-element.js"></script>
-    <script type="text/javascript" src="../../../components/paginator/paginator.js"></script>
-    <script type="text/javascript" src="../../../components/panel/panel.js"></script>
-    <script type="text/javascript" src="../../../components/tabview/tabview.js"></script>
-    <script type="text/javascript" src="../../../components/growl/growl.js"></script>
     <script type="text/javascript">
         $(function () {
             $('#localgrid').puidatagrid({
@@ -21,7 +7,7 @@
                 },
                 header: 'Local Javascript Array',
                 datasource: [
-                    {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
+                    {'brand': 'VW', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
                     {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
                     {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
                     {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
@@ -149,14 +135,14 @@
             </div>
         </template>
 
-        <p-datagrid datasource="DataDemo.loadAllCars" header="PrimeElement" paginator rows="9">
+        <p-datagrid datasource="Showcase.demo.loadAllCars" header="PrimeElement" paginator rows="9">
             <template>
                 <div class="ui-panel ui-widget ui-widget-content ui-corner-all">
                     <div class="ui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all">
                         <span class="ui-panel-title">{{vin}}</span>
                     </div>
                     <div class="ui-panel-content ui-widget-content">
-                        <img src="resources/demo/images/car/{{brand}}.gif">
+                        <img src="showcase/resources/demo/images/car/{{brand}}.gif">
                         <div class="car-detail">{{year}} - {{color}}</div>
                     </div>
                 </div>

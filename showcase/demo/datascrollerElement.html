@@ -1,11 +1,4 @@
 <div>
-    <link rel="stylesheet" href="../../../components/datascroller/datascroller.css" />
-    <link rel="stylesheet" href="../../../components/grid/grid.css" />
-    <link rel="stylesheet" href="../../../components/tabview/tabview.css" />
-    <script type="text/javascript" src="../../resources/demo/js/data-demo.js"></script>
-    <script type="text/javascript" src="../../../components/datascroller/datascroller.js"></script>
-    <script type="text/javascript" src="../../../components/datascroller/datascroller-element.js"></script>
-    <script type="text/javascript" src="../../../components/tabview/tabview.js"></script>
     <script type="text/javascript">
         $(function() {
             $('#datascroller-submenu a').on('click', function(e) {
@@ -39,12 +32,12 @@
     </div>
 
     <div class="ContentSideSections Implementation">
-        <p-datascroller datasource="DataDemo.loadLazyCars" chunksize="10" header="Prime Element" lazy totalsize="200">
+        <p-datascroller datasource="Showcase.demo.loadAllCars" chunksize="10" header="Prime Element" totalsize="200">
             <template>
                 <div class="ui-grid">
                     <div class="ui-grid-row">
                         <div class="ui-grid-col-3">
-                            <img src="resources/demo/images/car/{{brand}}-big.gif" />
+                            <img src="showcase/resources/demo/images/car/{{brand}}-big.gif" />
                         </div>
                         <div class="ui-grid-col-12" style="padding-top:20px">
                             <div class="ui-grid">

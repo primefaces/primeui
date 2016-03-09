@@ -1,11 +1,4 @@
 <div>
-    <link rel="stylesheet" href="../../../components/datascroller/datascroller.css" />
-    <link rel="stylesheet" href="../../../components//grid/grid.css" />
-    <link rel="stylesheet" href="../../../components/tabview/tabview.css" />
-    <link rel="stylesheet" href="../../../components/button/button.css" />
-    <script type="text/javascript" src="../../../components/button/button.js"></script>
-    <script type="text/javascript" src="../../../components/datascroller/datascroller.js"></script>
-    <script type="text/javascript" src="../../../components/tabview/tabview.js"></script>
     <script type="text/javascript">
         $(function() {
             $('#datascroller-submenu a').on('click', function(e) {
@@ -20,7 +13,7 @@
                 datasource: function (callback) {
                     $.ajax({
                         type: "GET",
-                        url: 'rest/cars/list',
+                        url: 'showcase/resources/data/cars-large.json',
                         dataType: "json",
                         context: this,
                         success: function (response) {
@@ -69,7 +62,7 @@
             <div class="ui-grid">
                 <div class="ui-grid-row">
                     <div class="ui-grid-col-3">
-                        <img src="resources/demo/images/car/{{brand}}-big.gif" />
+                        <img src="showcase/resources/demo/images/car/{{brand}}-big.gif" />
                     </div>
                     <div class="ui-grid-col-12" style="padding-top:20px">
                         <div class="ui-grid">

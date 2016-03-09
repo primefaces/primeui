@@ -1,13 +1,4 @@
 <div>
-    <link rel="stylesheet" href="../../../components/tree/tree.css" />
-    <link rel="stylesheet" href="../../../components/inputtext/inputtext.css" />
-    <link rel="stylesheet" href="../../../components/tabview/tabview.css" />
-    <link rel="stylesheet" href="../../../components/growl/growl.css" />
-    <script type="text/javascript" src="../showcase/resources/demo/js/tree-demo.js"></script>
-    <script type="text/javascript" src="../../../components/tree/tree.js"></script>
-    <script type="text/javascript" src="../../../components/tree/tree-element.js"></script>
-    <script type="text/javascript" src="../../../components/tabview/tabview.js"></script>
-    <script type="text/javascript" src="../../../components/growl/growl.js"></script>
     <script type="text/javascript">
         $(function () {
             $('#local').puitree({
@@ -72,7 +63,7 @@
                 nodes: function (ui, response) {
                     $.ajax({
                         type: "GET",
-                        url: 'showcase/resources/data/cars-small.json',
+                        url: '',
                         dataType: "json",
                         context: this,
                         success: function (data) {
@@ -123,7 +114,7 @@
         <div id="remotelazy"></div>
 
         <h3>PrimeElement - Local</h3>
-        <p-tree nodes="TreeDemo.localData" animate>
+        <p-tree nodes="Showcase.demo.localTreeNodes" animate>
             <p-treeicon type="def" expanded="fa-folder-open" collapsed="fa-folder"></p-treeicon>
             <p-treeicon type="picture" value="fa-file-image-o"></p-treeicon>
             <p-treeicon type="doc" value="fa-file-word-o"></p-treeicon>
@@ -131,7 +122,7 @@
         </p-tree>
 
         <h3>PrimeElement - Remote</h3>
-        <p-tree nodes="TreeDemo.remoteData" animate></p-tree>
+        <p-tree nodes="Showcase.demo.remoteTreeNodes" animate></p-tree>
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">

@@ -1,17 +1,4 @@
 <div>
-    <link rel="stylesheet" href="../../../components/inputtext/inputtext.css" />
-    <link rel="stylesheet" href="../../../components/datatable/datatable.css" />
-    <link rel="stylesheet" href="../../../components/paginator/paginator.css" />
-    <link rel="stylesheet" href="../../../components/tabview/tabview.css" />
-    <link rel="stylesheet" href="../../../components/growl/growl.css" />
-    <link rel="stylesheet" href="../../../components/grid/grid.css" />
-    <link rel="stylesheet" href="../../../components/menu/menu.css" />
-    <script type="text/javascript" src="../../../components/datatable/datatable.js"></script>
-    <script type="text/javascript" src="../../../components/paginator/paginator.js"></script>
-    <script type="text/javascript" src="../../../components/tabview/tabview.js"></script>
-    <script type="text/javascript" src="../../../components/growl/growl.js"></script>
-    <script type="text/javascript" src="../../../components/menu/menu.js"></script>
-    <script type="text/javascript" src="../../../components/inputtext/inputtext.js"></script>
     <script type="text/javascript">
         $(function() {
             $('#datatable-submenu a').on('click', function(e) {
@@ -20,7 +7,7 @@
             });
             
             var localData = [
-                {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
+                {'brand': 'VW', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
                 {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
                 {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
                 {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
@@ -46,7 +33,7 @@
                 rowExpandMode: 'single',
                 expandedRowContent: function(car) {
                     return $('<div class="ui-grid" style="width:200px"></div>')
-                            .append('<div class="ui-grid-row"><div class="ui-grid-col-12"><img src="resources/demo/images/car/' + car.brand + '-big.gif"/></div>')
+                            .append('<div class="ui-grid-row"><div class="ui-grid-col-12"><img src="showcase/resources/demo/images/car/' + car.brand + '-big.gif"/></div>')
                             .append('<div class="ui-grid-row"><div class="ui-grid-col-6">Vin</div><div class="ui-grid-col-6">' + car.vin +'</div></div>')
                             .append('<div class="ui-grid-row"><div class="ui-grid-col-6">Brand</div><div class="ui-grid-col-6">' + car.brand +'</div></div>')
                             .append('<div class="ui-grid-row"><div class="ui-grid-col-6">Year</div><div class="ui-grid-col-6">' + car.color +'</div></div>')

@@ -1,17 +1,4 @@
 <div>
-    <link rel="stylesheet" href="../../../components/inputtext/inputtext.css" />
-    <link rel="stylesheet" href="../../../components/datatable/datatable.css" />
-    <link rel="stylesheet" href="../../../components/paginator/paginator.css" />
-    <link rel="stylesheet" href="../../../components/tabview/tabview.css" />
-    <link rel="stylesheet" href="../../../components/growl/growl.css" />
-    <link rel="stylesheet" href="../../../components/grid/grid.css" />
-    <link rel="stylesheet" href="../../../components/menu/menu.css" />
-    <script type="text/javascript" src="../../../components/datatable/datatable.js"></script>
-    <script type="text/javascript" src="../../../components/paginator/paginator.js"></script>
-    <script type="text/javascript" src="../../../components/tabview/tabview.js"></script>
-    <script type="text/javascript" src="../../../components/growl/growl.js"></script>
-    <script type="text/javascript" src="../../../components/menu/menu.js"></script>
-    <script type="text/javascript" src="../../../components/inputtext/inputtext.js"></script>
     <script type="text/javascript">
         $(function() {
             $('#datatable-submenu a').on('click', function(e) {
@@ -60,7 +47,7 @@
                 datasource: function(callback) {
                     $.ajax({
                         type: "GET",
-                        url: 'rest/cars/list',
+                        url: 'showcase/resources/data/cars-medium.json',
                         dataType: "json",
                         context: this,
                         success: function(response) {
