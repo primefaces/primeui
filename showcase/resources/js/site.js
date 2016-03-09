@@ -21,8 +21,8 @@ Showcase = {
     },
 
     bindEvents: function() {
-        var $this = this,
-        hashedLinksSamples = this.menu.find('a.SubMenuLinkSamples');
+        var $this = this;
+        
         this.menu.on("mouseenter", function() {
             Showcase.highlightMenu();
         })
@@ -40,11 +40,6 @@ Showcase = {
             Showcase.changePageWithLink('showcase/demo/' + $(this).attr('href'));
             e.preventDefault();
         });
-        
-        hashedLinksSamples.on('click', function(e) {
-            Showcase.changePageWithLink($(this).attr('href'));
-            e.preventDefault();
-        })
 
         $("#themeSwitcher").on("click",function(){
             $("#GlobalThemeSwitcher").slideDown(500);
