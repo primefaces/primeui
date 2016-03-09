@@ -9,13 +9,18 @@
             value: null,
             icon: null,
             iconPos: 'left',
-            click: null
+            click: null,
+            disabled: null
         },
         
         _create: function() {
             var element = this.element;
             this.elementText = this.element.text();
             
+            if(this.option.disabled) {
+                element.prop('disabled', this.options.disabled);
+            }
+
             var value = this.options.value||(this.elementText === '' ? 'ui-button' : this.elementText),
             disabled = element.prop('disabled'),
             styleClass = null;
