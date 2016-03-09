@@ -7,7 +7,8 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     del = require('del'),
     flatten = require('gulp-flatten'),
-    zip = require('gulp-zip');
+    zip = require('gulp-zip'),
+    browserSync = require('browser-sync').create();
     
 //Building only primeui.js
 gulp.task('build-js', function() {
@@ -116,6 +117,17 @@ gulp.task('distribute', ['build-all'], function() {
 		.pipe(zip('primeui.zip'))
 		.pipe(gulp.dest('build'));
 })
+
+//Browser Sync config
+gulp.task('browser-sync', function() {
+    browserSync.init({
+        watchOptions: {
+            ignoreInitial: true,
+            ignored: 'components*'
+        }
+    });
+})
+
 
 
         

@@ -21,15 +21,15 @@ Showcase = {
     },
 
     bindEvents: function() {
-        var $this = this;
-
+        var $this = this,
+        hashedLinksSamples = this.menu.find('a.SubMenuLinkSamples');
         this.menu.on("mouseenter", function() {
             Showcase.highlightMenu();
         })
         .on("mouseleave", function() {
             Showcase.unhighlightMenu();
         });
-
+        
         $('#mobilemenu').on('change', function(e) {
             Showcase.changePageWithLink('showcase/demo/' + $(this).val());
         });
@@ -40,6 +40,11 @@ Showcase = {
             Showcase.changePageWithLink('showcase/demo/' + $(this).attr('href'));
             e.preventDefault();
         });
+        
+        hashedLinksSamples.on('click', function(e) {
+            Showcase.changePageWithLink($(this).attr('href'));
+            e.preventDefault();
+        })
 
         $("#themeSwitcher").on("click",function(){
             $("#GlobalThemeSwitcher").slideDown(500);
