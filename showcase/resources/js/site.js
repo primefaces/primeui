@@ -31,13 +31,13 @@ Showcase = {
         });
         
         $('#mobilemenu').on('change', function(e) {
-            Showcase.changePageWithLink('showcase/demo/' + $(this).val());
+            Showcase.changePageWithLink($(this).val());
         });
 
         var hashedLinks = this.menu.find('a.SubMenuLink');
         hashedLinks = hashedLinks.add($('#PFTopLinksCover').children('a.hashed'));
         hashedLinks.on('click', function(e) {
-            Showcase.changePageWithLink('showcase/demo/' + $(this).attr('href'));
+            Showcase.changePageWithLink($(this).attr('href'));
             e.preventDefault();
         });
 
@@ -92,7 +92,7 @@ Showcase = {
             var newPageHash = page.substring(page.lastIndexOf('/'), page.indexOf('.html'));
             if('#' + newPageHash != window.location.hash) {
                 Showcase.hashChangeByLink = true;
-                Showcase.openPage(page);
+                Showcase.openPage('showcase/demo/' + page);
                 window.location.hash = newPageHash;
             }
         }
@@ -157,7 +157,7 @@ Showcase = {
             this.openPage(url);
 
             this.menu.find('> div > span.MenuSideMainLink.MenuSideMainLinkDark').removeClass('MenuSideMainLinkDark').next().hide();
-            var menuitem = this.menu.find('a.SubMenuLink[href="'+ 'showcase/demo/' + plainHash + '.html"]');
+            var menuitem = this.menu.find('a.SubMenuLink[href="'+ plainHash + '.html"]');
             if(menuitem.length) {
                 var submenu = menuitem.parent(),
                 submenuTitle = submenu.prev();
