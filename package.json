@@ -4,7 +4,6 @@
     "start": "lite-server"
   },
   "devDependencies": {
-    "browser-sync": "^2.11.1",
     "del": "^2.2.0",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
