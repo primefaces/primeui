@@ -31,7 +31,7 @@ Showcase = {
         });
 
         $('#mobilemenu').on('change', function(e) {
-            Showcase.changePageWithLink($(this).val());
+            Showcase.changePageWithLink('showcase/demo/' + $(this).val());
         });
 
         var hashedLinks = this.menu.find('a.SubMenuLink');
@@ -58,7 +58,7 @@ Showcase = {
         $("#GlobalThemeSwitcher > a").on("click", function(e) {
             var theme = $(this).data("theme"),
             themeLink = $('link[href$="theme.css"]'),
-            newThemeURL =  'themes/' + theme + '/theme.css';
+            newThemeURL =  'showcase/' + 'themes/' + theme + '/theme.css';
 
             themeLink.attr('href', newThemeURL);
             e.preventDefault();
