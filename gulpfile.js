@@ -19,7 +19,7 @@ gulp.task('build-primeng-js', function() {
         '!components/panel/panel.js', '!components/picklist/picklist.js', '!components/progressbar/progressbar.js',
         '!components/radiobutton/radiobutton.js', '!components/rating/rating.js', '!components/togglebutton/togglebutton.js',
         '!components/selectbutton/selectbutton.js',
-        'components/*/*.js'
+        'components/**/*.js'
     ])
 	.pipe(concat('primeui-ng.js'))
 	.pipe(gulp.dest('build/primeng'));
@@ -28,8 +28,8 @@ gulp.task('build-primeng-js', function() {
 //Building only primeui.js
 gulp.task('build-js', function() {
 	gulp.src([
-        '!components/*/*-element.js',
-		'components/*/*.js'
+        '!components/**/*-element.js',
+		'components/**/*.js'
     ])
 	.pipe(concat('primeui.js'))
 	.pipe(gulp.dest('build'));
@@ -38,7 +38,7 @@ gulp.task('build-js', function() {
 //Building only primeui.css
 gulp.task('build-css', function() {
 	gulp.src([
-		'components/*/*.css'
+		'components/**/*.css'
     ])
 	.pipe(concat('primeui.css'))
 	.pipe(gulp.dest('build'));
@@ -47,7 +47,7 @@ gulp.task('build-css', function() {
 //Building only primeelements.js
 gulp.task('build-element', function() {
 	gulp.src([
-		'components/*/*-element.js'
+		'components/**/*-element.js'
     ])
 	.pipe(concat('primeelements.js'))
 	.pipe(gulp.dest('build'));
@@ -56,7 +56,7 @@ gulp.task('build-element', function() {
 //Building primeui.js, primeui.css, primelements.js at the same time
 gulp.task('build-dev', ['build-js', 'build-css'], function() {
 	gulp.src([
-		'components/*/*-element.js'
+		'components/**/*-element.js'
     ])
 	.pipe(concat('primeelements.js'))
 	.pipe(gulp.dest('build'));
@@ -64,7 +64,7 @@ gulp.task('build-dev', ['build-js', 'build-css'], function() {
 
 //Building images
 gulp.task('images', function() {
-    return gulp.src(['components/*/images/*.png', 'components/*/images/*.gif'])
+    return gulp.src(['components/**/images/*.png', 'components/*/images/*.gif'])
         .pipe(flatten())
         .pipe(gulp.dest('build/images'));
 });
@@ -84,8 +84,8 @@ gulp.task('plugins', function () {
 //Building primeui.js and primeui.min.js
 gulp.task('uglify-js', function() {
     gulp.src([
-        '!components/*/*-element.js',
-		'components/*/*.js'
+        '!components/**/*-element.js',
+		'components/**/*.js'
     ])
 	.pipe(concat('primeui.js'))
 	.pipe(gulp.dest('build'))
@@ -97,7 +97,7 @@ gulp.task('uglify-js', function() {
 //Building primeui.css and primeui.min.css
 gulp.task('uglify-css', function() {
     gulp.src([
-		'components/*/*.css'
+		'components/**/*.css'
     ])
 	.pipe(concat('primeui.css'))
 	.pipe(gulp.dest('build'))
@@ -109,7 +109,7 @@ gulp.task('uglify-css', function() {
 //Building primeelements.js and primeelements.min.js
 gulp.task('uglify-element', function() {
     gulp.src([
-		'components/*/*-element.js'
+		'components/**/*-element.js'
     ])
 	.pipe(concat('primeelements.js'))
 	.pipe(gulp.dest('build'))
