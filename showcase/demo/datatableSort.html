@@ -57,7 +57,7 @@
                     {field: 'color', headerText: 'Color', sortable:true}
                 ],
                 datasource: function(callback, ui) {
-                    var uri = 'rest/cars/lazylist/' + ui.first;
+                    var uri = 'showcase/resources/data/cars-large.json';
                     if (ui.sortField) {
                         uri += '/' + ui.sortField + '/' + ui.sortOrder;
                     }
@@ -68,7 +68,8 @@
                         dataType: "json",
                         context: this,
                         success: function(response) {
-                            callback.call(this, response);
+                            //imitate lazy loading by slicing a new list from whole data, in real application the response should actually contain just the new chunk
+                            callback.call(this, response.slice(ui.first, ui.first + 10));
                         }
                     });
                 }

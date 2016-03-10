@@ -282,7 +282,7 @@ Showcase = {
         remoteTreeNodes: function(ui, response) {
             $.ajax({
                 type: "GET",
-                url: 'rest/tree/all',
+                url: 'showcase/resources/data/nodes.json',
                 dataType: "json",
                 context: this,
                 success: function(data) {
