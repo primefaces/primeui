@@ -13,7 +13,7 @@
                 scrollHeight: 500,
                 lazy: true,
                 datasource: function (callback, ui) {
-                    var uri = 'rest/cars/lazylist/' + ui.first;
+                    var uri = 'showcase/resources/data/cars-large.json';
 
                     $.ajax({
                         type: "GET",
@@ -21,7 +21,8 @@
                         dataType: "json",
                         context: this,
                         success: function (response) {
-                            callback.call(this, response);
+                            //imitate lazy loading by slicing a new list from whole data, in real application the response should actually contain just the new chunk
+                            callback.call(this, response.slice(ui.first, ui.first + 10));
                         }
                     });
                 },
@@ -160,7 +161,7 @@ $("#ds").puidatascroller({
     scrollHeight: 500,
     lazy: true,
     datasource: function (callback, ui) {
-        var uri = 'rest/cars/lazylist/' + ui.first;
+        var uri = 'showcase/resources/data/cars-large.json';
 
         $.ajax({
             type: "GET",
@@ -168,7 +169,8 @@ $("#ds").puidatascroller({
             dataType: "json",
             context: this,
             success: function (response) {
-                callback.call(this, response);
+                //imitate lazy loading by slicing a new list from whole data, in real application the response should actually contain just the new chunk
+                callback.call(this, response.slice(ui.first, ui.first + 10));
             }
         });
     },
