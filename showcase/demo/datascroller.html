@@ -215,7 +215,7 @@ $("#ds").puidatascroller({
     datasource: function (callback) {
         $.ajax({
             type: "GET",
-            url: 'rest/cars/list',
+            url: 'showcase/resources/data/cars-large.json',
             dataType: "json",
             context: this,
             success: function (response) {
@@ -235,7 +235,7 @@ $("#ds").puidatascroller({
     &lt;div class="ui-grid"&gt;
         &lt;div class="ui-grid-row"&gt;
             &lt;div class="ui-grid-col-3"&gt;
-                &lt;img src="resources/demo/images/car/{{brand}}-big.gif" /&gt;
+                &lt;img src="showcase/resources/demo/images/car/{{brand}}-big.gif" /&gt;
             &lt;/div&gt;
             &lt;div class="ui-grid-col-12" style="padding-top:20px"&gt;
                 &lt;div class="ui-grid"&gt;
@@ -276,7 +276,7 @@ $("#ds").puidatascroller({
                                 as a mustache template where properties of an object can be access via {{}} syntax.
                                 
                                 <pre name="code" class="brush:xml">
-&lt;p-datascroller datasource="DataDemo.cars" chunksize="10"&gt;
+&lt;p-datascroller datasource="Showcase.demo.cars" chunksize="10"&gt;
     &lt;template&gt;
         Access color of a car using {{color}}
     &lt;/template&gt;
@@ -285,7 +285,7 @@ $("#ds").puidatascroller({
 
                                 <h4>Local Data</h4>
                                 <pre name="code" class="brush:js">
-var DataDemo = {
+var demo = {
     
     cars: [
         {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
@@ -304,14 +304,14 @@ var DataDemo = {
 
                                 <h4>Lazy</h4>
                                 <pre name="code" class="brush:xml">
-&lt;p-datascroller datasource="DataDemo.cars" chunksize="10" lazy totalsize="20000"&gt;
+&lt;p-datascroller datasource="Showcase.demo.cars" chunksize="10" lazy totalsize="20000"&gt;
      &lt;template&gt;
         Access color of a car using {{color}}
      &lt;/template&gt;
 &lt;/p-datascroller&gt;
                                 </pre>
                                 <pre name="code" class="brush:js">
-var DataDemo = {
+var demo = {
     
     cars: function (callback, ui) {
         var uri = 'rest/cars/lazylist/' + ui.first;

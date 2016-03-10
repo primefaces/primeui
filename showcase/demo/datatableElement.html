@@ -90,7 +90,7 @@
                                 <pre name="code" class="brush:xml">
 &lt;p-growl id="messages"&gt;&lt;/p-growl&gt;
 
-&lt;p-datatable datasource="DataDemo.loadAllCars" paginator rows="10" selectionmode="single" onrowselect="handleRowSelect"&gt;
+&lt;p-datatable datasource="Showcase.demo.loadAllCars" paginator rows="10" selectionmode="single" onrowselect="handleRowSelect"&gt;
     &lt;p-column field="vin" headertext="Vin" sortable filter&gt;&lt;/p-column&gt;
     &lt;p-column field="year" headertext="Year" sortable filter&gt;&lt;/p-column&gt;
     &lt;p-column field="brand" headertext="Brand" sortable filter&gt;&lt;/p-column&gt;
@@ -105,12 +105,12 @@
 
                             <div id="doc-script">
                                 <pre name="code" class="brush:js">
-var DataDemo = {
+var demo = {
 
     loadAllCars: function(callback) {
         $.ajax({
             type: "GET",
-            url: 'rest/cars/list',
+            url: 'showcase/resources/data/cars-large.json',
             dataType: "json",
             context: this,
             success: function (response) {

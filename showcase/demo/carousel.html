@@ -4,7 +4,7 @@
             setTimeout(function() {
 
                 var cars = [
-                    {'brand': 'VW', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
+                    {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
                     {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
                     {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
                     {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
@@ -118,7 +118,7 @@
             <li>
                 <div class="ui-grid ui-grid-responsive">
                     <div class="ui-grid-row">
-                        <div class="ui-grid-col-12"><img src="showcase/resources/demo/images/car/VW.gif">
+                        <div class="ui-grid-col-12"><img src="showcase/resources/demo/images/car/Volkswagen.gif">
                         </div>
                     </div>
                     <div class="ui-grid-row">
@@ -526,7 +526,7 @@ $(function() {
         datasource: function(callback) {
             $.ajax({
                 type: "GET",
-                url: 'rest/cars/list',
+                url: 'showcase/resources/data/cars-medium.json',
                 dataType: "json",
                 context: this,
                 success: function(response) {
@@ -556,7 +556,7 @@ $(function() {
         
 &lt;ul id="cars2"&gt;&lt;/ul&gt;
 
-&lt;p-carousel datasource="CarouselDemo.cars" headertext="PrimeElement" renderdelay="10"&gt;
+&lt;p-carousel datasource="Showcase.demo.cars" headertext="PrimeElement" renderdelay="10"&gt;
     &lt;template&gt;
         &lt;div class="ui-grid ui-grid-responsive"&gt;
             &lt;div class="ui-grid-row"&gt;
@@ -768,7 +768,7 @@ $(function() {
                                 Carousel's datasource can either be a name of an array or a function to load the array. Content for each item is defined
                                 as a mustache template where properties of an object can be access via {{}} syntax.
                                 <pre name="code" class="brush:xml">
-&lt;p-carousel datasource="CarouselDemo.cars" headertext="PrimeElement"&gt;
+&lt;p-carousel datasource="Showcase.demo.cars" headertext="PrimeElement"&gt;
     &lt;template&gt;
         Access color of a car using {{color}}
     &lt;/template&gt;
@@ -795,12 +795,12 @@ var CarouselDemo = {
                                 
                                 <h4>Function</h4>
                                 <pre name="code" class="brush:js">
-var CarouselDemo = {
+var demo = {
     
     cars: function(callback) {
         $.ajax({
             type: "GET",
-            url: 'rest/cars/list',
+            url: 'showcase/resources/data/cars-large.json',
             dataType: "json",
             context: this,
             success: function(response) {

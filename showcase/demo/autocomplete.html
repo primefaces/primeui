@@ -301,7 +301,7 @@ $('#basic').puiautocomplete('search', 'A');
         $('#customcontent').puiautocomplete({
             completeSource: themes,
             content: function(data) {
-                return '&lt;img src="resources/demo/images/themes/' + data.label + '.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;' 
+                return '&lt;img src="showcase/resources/demo/images/themes/' + data.label + '.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;' 
                     + data.label + '&lt;/span&gt;';
             }
         });
@@ -367,7 +367,7 @@ $('#basic').puiautocomplete('search', 'A');
                                 AutoComplete element extends input text element so it is defined using is="p-autocomplete" on input. CompleteSource should
                                 resolve to the name of an array or a function to load the suggestions.
                                 <pre name="code" class="brush:xml">
-&lt;input name="element" type="text" is="p-autocomplete" completesource="AutoCompleteDemo.themes" /&gt;
+&lt;input name="element" type="text" is="p-autocomplete" completesource="Showcase.demo.themes" /&gt;
                                 </pre>
                                 
                                 <h3>Attributes</h3>

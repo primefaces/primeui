@@ -193,7 +193,7 @@ $('#tbl').puidatatable({
     datasource: function(callback) {
         $.ajax({
             type: "GET",
-            url: 'rest/cars/list',
+            url: 'showcase/resources/data/cars-large.json',
             dataType: "json",
             context: this,
             success: function(response) {
@@ -611,7 +611,7 @@ $('#default').puidatatable('unselectAllRows');
             datasource: function(callback) {
                 $.ajax({
                     type: "GET",
-                    url: 'rest/cars/list',
+                    url: 'showcase/resources/data/cars-large.json',
                     dataType: "json",
                     context: this,
                     success: function(response) {
@@ -671,7 +671,7 @@ $('#default').puidatatable('unselectAllRows');
 
                                 <h4>Load from a URL</h4>
                                 <pre name="code" class="brush:xml">
-&lt;p-datatable datasource="rest/cars/list" paginator rows="10" selectionmode="single" onrowselect="handleRowSelect"&gt;
+&lt;p-datatable datasource="showcase/resources/data/cars-large.json" paginator rows="10" selectionmode="single" onrowselect="handleRowSelect"&gt;
     &lt;p-column field="vin" headertext="Vin" sortable filter&gt;&lt;/p-column&gt;
     &lt;p-column field="year" headertext="Year" sortable filter&gt;&lt;/p-column&gt;
     &lt;p-column field="brand" headertext="Brand" sortable filter&gt;&lt;/p-column&gt;
@@ -685,7 +685,7 @@ $('#default').puidatatable('unselectAllRows');
                                 
                                 <h4>Load with a Function</h4>
                                 <pre name="code" class="brush:xml">
-&lt;p-datatable datasource="DataDemo.cars" paginator rows="10" selectionmode="single" onrowselect="handleRowSelect"&gt;
+&lt;p-datatable datasource="Showcase.demo.cars" paginator rows="10" selectionmode="single" onrowselect="handleRowSelect"&gt;
     &lt;p-column field="vin" headertext="Vin" sortable filter&gt;&lt;/p-column&gt;
     &lt;p-column field="year" headertext="Year" sortable filter&gt;&lt;/p-column&gt;
     &lt;p-column field="brand" headertext="Brand" sortable filter&gt;&lt;/p-column&gt;
@@ -699,7 +699,7 @@ $('#default').puidatatable('unselectAllRows');
 
                                 <h4>Local Data</h4>
                                 <pre name="code" class="brush:js">
-var DataDemo = { 
+var demo = { 
     
     cars: [
         {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
@@ -719,12 +719,12 @@ var DataDemo = {
 
                                 <h4>Remote Data</h4>
                                 <pre name="code" class="brush:js">
-var DataDemo = {
+var demo = {
     
     cars: function (callback) {
         $.ajax({
             type: "GET",
-            url: 'rest/cars/list',
+            url: 'showcase/resources/data/cars-large.json',
             dataType: "json",
             context: this,
             success: function (response) {

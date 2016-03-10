@@ -85,12 +85,12 @@
                         <div>
                             <div id="doc-markup">                               
                                 <pre name="code" class="brush:xml">
-&lt;p-datascroller datasource="DataDemo.loadLazyCars" chunksize="10" header="Prime Element" lazy totalsize="200"&gt;
+&lt;p-datascroller datasource="Showcase.demo.loadAllCars" chunksize="10" header="Prime Element" totalsize="200"&gt;
     &lt;template&gt;
         &lt;div class="ui-grid"&gt;
             &lt;div class="ui-grid-row"&gt;
                 &lt;div class="ui-grid-col-3"&gt;
-                    &lt;img src="resources/demo/images/car/{{brand}}-big.gif" /&gt;
+                    &lt;img src="showcase/resources/demo/images/car/{{brand}}-big.gif" /&gt;
                 &lt;/div&gt;
                 &lt;div class="ui-grid-col-12" style="padding-top:20px"&gt;
                     &lt;div class="ui-grid"&gt;
@@ -129,14 +129,12 @@
 
                             <div id="doc-script">
                                 <pre name="code" class="brush:js">
-var DataDemo = {
+var demo = {
     
-    loadLazyCars: function (callback, ui) {
-        var uri = 'rest/cars/lazylist/' + ui.first;
-
+    loadAllCars: function(callback) {
         $.ajax({
             type: "GET",
-            url: uri,
+            url: 'showcase/resources/data/cars-large.json',
             dataType: "json",
             context: this,
             success: function (response) {

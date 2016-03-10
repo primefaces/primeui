@@ -116,7 +116,7 @@
                 datasource: function(callback) {
                     $.ajax({
                         type: "GET",
-                        url: 'rest/cars/list',
+                        url: 'showcase/resources/data/cars-large.json',
                         dataType: "json",
                         context: this,
                         success: function(response) {
@@ -131,7 +131,7 @@
         PrimeElement shortens the code required using p-datatable and p-column elements.
 
         <pre name="code" class="brush:xml">
-            &lt;p-datatable datasource="rest/cars/list" paginator rows="10" selectionmode="single"&gt;
+            &lt;p-datatable datasource="Showcase.demo.loadAllCars" paginator rows="10" selectionmode="single"&gt;
                 &lt;p-column field="vin" headertext="Vin" sortable filter&gt;&lt;/p-column&gt;
                 &lt;p-column field="year" headertext="Year" sortable filter&gt;&lt;/p-column&gt;
                 &lt;p-column field="brand" headertext="Brand" sortable filter&gt;&lt;/p-column&gt;
