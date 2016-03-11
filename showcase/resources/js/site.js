@@ -228,16 +228,16 @@ Showcase = {
         
         terminalHandler: function(request, response) {
             if($.trim(request).length) {
-                $.ajax({
-                     type: "GET",
-                     url: 'rest/terminal/' + request,
-                     dataType: "text",
-                     context: this,
-                     success: function (data) {
-                         response.call(this, data);
-                     }
-                 }); 
-             }
+               if(request == 'date') {
+                   response.call(this, new Date());
+               }
+               else if (request.indexOf('greet') === 0) {
+                   response.call(this, 'Hello ' + request.split(' ')[1]);
+               }
+               else {
+                   response.call(this, "Unknown command: " + request);
+               }
+            }
         },
         
         localTreeNodes: [
