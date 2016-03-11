@@ -18,16 +18,24 @@
             $('#counter').puiinputtextarea({counter: $('#display'), counterTemplate: '{0} characters remaining.', maxlength: 10});
 
             $('#ac').puiinputtextarea({
-                autoComplete: true
-                , scrollHeight: 150
-                , completeSource: function (request, response) {
+                autoComplete: true,
+                scrollHeight: 150,
+                minQueryLength: 2,
+                completeSource: function(request, response) {
+                    //in a real application, make a call to a remote url by passing the request.query as parameter
                     $.ajax({
                         type: "GET",
-                        url: 'rest/autocomplete/' + request.query,
+                        url: 'showcase/resources/data/themes.json',
                         dataType: "json",
                         context: this,
-                        success: function (data) {
-                            response.call(this, data);
+                        success: function(data) {
+                            var filtered = [];
+                            for(var i = 0; i < data.length; i++) {
+                                if(data[i].label.indexOf(request.query) === 0) {
+                                    filtered.push(data[i]);
+                                }
+                            }
+                            response.call(this, filtered);
                         }
                     });
                 }
@@ -62,6 +70,7 @@
         <br /><br />
 
         <h3>AutoComplete</h3>
+        <p>Complete theme names such as af*.</p>
         <textarea id="ac" rows="5" cols="30"></textarea>
 
         <h3>PrimeElement</h3>
@@ -237,16 +246,24 @@ $(function() {
     $('#counter').puiinputtextarea({counter:$('#display'), counterTemplate:'{0} characters remaining.', maxlength:10});
 
     $('#ac').puiinputtextarea({
-        autoComplete:true
-        ,scrollHeight:150
-        ,completeSource:function(request, response) {
+        autoComplete:true,
+        scrollHeight:150,
+        minQueryLength: 2,
+        completeSource: function(request, response) {
+            //in a real application, make a call to a remote url by passing the request.query as parameter
             $.ajax({
                 type: "GET",
-                url: 'rest/autocomplete/' + request.query,
+                url: 'showcase/resources/data/themes.json',
                 dataType: "json",
                 context: this,
                 success: function(data) {
-                    response.call(this, data);
+                    var filtered = [];
+                    for(var i = 0; i < data.length; i++) {
+                        if(data[i].label.indexOf(request.query) === 0) {
+                            filtered.push(data[i]);
+                        }
+                    }
+                    response.call(this, filtered);
                 }
             });
         }
@@ -268,6 +285,7 @@ $(function() {
 &lt;span id="display"&gt;&lt;/span&gt;
 
 &lt;h3&gt;AutoComplete&lt;/h3&gt;
+&lt;p&gt;Complete theme names such as af*.&lt;/p&gt;
 &lt;textarea id="ac" rows="5" cols="30"&gt;&lt;/textarea&gt;
 
 &lt;h3&gt;PrimeElement&lt;/h3&gt;
