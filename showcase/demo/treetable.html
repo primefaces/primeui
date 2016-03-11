@@ -71,7 +71,7 @@
                 nodes: function (ui, response) {
                     $.ajax({
                         type: "GET",
-                        url: 'showcase/resources/data/nodes.json',
+                        url: 'showcase/resources/data/nodes-treetable.json',
                         dataType: "json",
                         context: this,
                         success: function (data) {
@@ -90,9 +90,10 @@
                 ],
                 header: 'Infinite',
                 nodes: function (ui, response) {
+                    //in a real application, make a call to a remote url to load new nodes to append current node
                     $.ajax({
                         type: "GET",
-                        url: 'rest/tree/lazydocuments',
+                        url: 'showcase/resources/data/lazy-nodes-treetable.json',
                         dataType: "json",
                         context: this,
                         success: function (data) {
@@ -427,10 +428,10 @@ $(function() {
         nodes: function(ui, response) {                        
             $.ajax({
                 type: "GET",
-                url: 'rest/tree/documents',
+                url: 'showcase/resources/data/nodes-treetable.json',
                 dataType: "json",
                 context: this,
-                success: function(data) {
+                success: function (data) {
                     response.call(this, data);
                 }
             });
@@ -446,12 +447,13 @@ $(function() {
         ],
         header: 'Infinite',
         nodes: function(ui, response) {  
+            //in a real application, make a call to a remote url to load new nodes to append current node
             $.ajax({
                 type: "GET",
-                url: 'rest/tree/lazydocuments',
+                url: 'showcase/resources/data/lazy-nodes-treetable.json',
                 dataType: "json",
                 context: this,
-                success: function(data) {
+                success: function (data) {
                     response.call(this, data, ui.node);
                 }
             });

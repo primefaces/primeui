@@ -1,0 +1,38 @@
+[  
+    {  
+        "label":null,
+        "data":{  
+            "name":"Folder X",
+            "size":"-",
+            "type":"Folder"
+        },
+        "leaf":false,
+        "children":[  
+
+        ]
+    },
+    {  
+        "label":null,
+        "data":{  
+            "name":"Folder Y",
+            "size":"-",
+            "type":"Folder"
+        },
+        "leaf":false,
+        "children":[  
+
+        ]
+    },
+    {  
+        "label":null,
+        "data":{  
+            "name":"Folder Z",
+            "size":"-",
+            "type":"Folder"
+        },
+        "leaf":false,
+        "children":[  
+
+        ]
+    }
+]
