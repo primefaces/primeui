@@ -42,38 +42,6 @@
                     });
                 }
             });
-
-            $('#tblremote').puidatatable({
-                lazy: true,
-                caption: 'Server Side Sorting',
-                paginator: {
-                    rows: 10,
-                    totalRecords: 200
-                },
-                columns: [
-                    {field: 'vin', headerText: 'Vin', sortable:true},
-                    {field: 'brand', headerText: 'Brand', sortable:true},
-                    {field: 'year', headerText: 'Year', sortable:true},
-                    {field: 'color', headerText: 'Color', sortable:true}
-                ],
-                datasource: function(callback, ui) {
-                    var uri = 'showcase/resources/data/cars-large.json';
-                    if (ui.sortField) {
-                        uri += '/' + ui.sortField + '/' + ui.sortOrder;
-                    }
-
-                    $.ajax({
-                        type: "GET",
-                        url: uri,
-                        dataType: "json",
-                        context: this,
-                        success: function(response) {
-                            //imitate lazy loading by slicing a new list from whole data, in real application the response should actually contain just the new chunk
-                            callback.call(this, response.slice(ui.first, ui.first + 10));
-                        }
-                    });
-                }
-            });
             
             $('#tblmultisort').puidatatable({
                 caption: 'Multiple Column Sort with Metakey',
@@ -139,8 +107,6 @@
 
     <div class="ContentSideSections Implementation">
         <div id="tbllocal"></div>
-
-        <div id="tblremote"></div>
         
         <div id="tblmultisort"></div>
     </div>
@@ -159,8 +125,6 @@
                             <div id="doc-markup">                               
                                 <pre name="code" class="brush:xml">
 &lt;div id="tbllocal"&gt;&lt;/div&gt;
-
-&lt;div id="tblremote"&gt;&lt;/div&gt;
 
 &lt;div id="tblmultisort"&gt;&lt;/div&gt;
                                 </pre>
@@ -184,37 +148,6 @@ $(function() {
             $.ajax({
                 type: "GET",
                 url: 'showcase/resources/data/cars-large.json',
-                dataType: "json",
-                context: this,
-                success: function(response) {
-                    callback.call(this, response);
-                }
-            });
-        }
-    });
-
-    $('#tblremote').puidatatable({
-        lazy: true,
-        caption: 'Server Side Sorting',
-        paginator: {
-            rows: 10,
-            totalRecords: 200
-        },
-        columns: [
-            {field: 'vin', headerText: 'Vin', sortable:true},
-            {field: 'brand', headerText: 'Brand', sortable:true},
-            {field: 'year', headerText: 'Year', sortable:true},
-            {field: 'color', headerText: 'Color', sortable:true}
-        ],
-        datasource: function(callback, ui) {
-            var uri = 'rest/cars/lazylist/' + ui.first;
-            if (ui.sortField) {
-                uri += '/' + ui.sortField + '/' + ui.sortOrder;
-            }
-
-            $.ajax({
-                type: "GET",
-                url: uri,
                 dataType: "json",
                 context: this,
                 success: function(response) {
