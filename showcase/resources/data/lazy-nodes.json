@@ -1,0 +1,26 @@
+[  
+    {  
+        "label":"Lazy Node 0",
+        "data":"Child0",
+        "leaf":false,
+        "children":[  
+
+        ]
+    },
+    {  
+        "label":"Lazy Node 1",
+        "data":"Child1",
+        "leaf":false,
+        "children":[  
+
+        ]
+    },
+    {  
+        "label":"Lazy Node 2",
+        "data":"Child2",
+        "leaf":false,
+        "children":[  
+
+        ]
+    }
+]

@@ -76,9 +76,10 @@
             $('#remotelazy').puitree({
                 lazy: true,
                 nodes: function (ui, response) {
+                    //in a real application, make a call to a remote url to load new nodes to append current node
                     $.ajax({
                         type: "GET",
-                        url: 'rest/tree/' + (ui.data ? ui.data : 'root'),
+                        url: 'showcase/resources/data/lazy-nodes.json',
                         dataType: "json",
                         context: this,
                         success: function (data) {
@@ -419,13 +420,14 @@ $(function() {
 
     $('#remotelazy').puitree({
         lazy: true,
-        nodes: function(ui, response) {  
+        nodes: function (ui, response) {
+            //in a real application, make a call to a remote url to load new nodes to append current node
             $.ajax({
                 type: "GET",
-                url: 'rest/tree/' + (ui.data ? ui.data : 'root'),
+                url: 'showcase/resources/data/lazy-nodes.json',
                 dataType: "json",
                 context: this,
-                success: function(data) {
+                success: function (data) {
                     response.call(this, data, ui.node);
                 }
             });
