@@ -232,7 +232,7 @@ Showcase = {
                    response.call(this, new Date());
                }
                else if (request.indexOf('greet') === 0) {
-                   response.call(this, 'Hello ' + request.split(' ')[1]);
+                   (request.split(' ')[1] == undefined) ? (response.call(this, 'Hello')) : (response.call(this, 'Hello ' + request.split(' ')[1]));
                }
                else {
                    response.call(this, "Unknown command: " + request);
