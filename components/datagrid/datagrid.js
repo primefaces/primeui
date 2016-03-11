@@ -30,7 +30,7 @@
             }
             
             //content
-            this.content = $('<div class="ui-datagrid-content ui-widget-content ui-grid ui-grid-responsive"></div>').appendTo(this.element);
+            this.content = $('<div class="ui-datagrid-content ui-widget-content ui-datagrid-col-' + this.options.columns + '"></div>').appendTo(this.element);
             
             //footer
             if(this.options.footer) {
@@ -98,12 +98,8 @@
                 for(var i = first; i < (first + rows); i++) {
                     var dataValue = this.data[i];
                     
-                    if(dataValue) {
-                        if(i % this.options.columns === 0) {
-                            gridRow = $('<div class="ui-grid-row"></div>').appendTo(this.content);
-                        }
-                        
-                        var gridColumn = $('<div class="ui-datagrid-column ' + PUI.getGridColumn(this.options.columns) + '"></div>').appendTo(gridRow),
+                    if(dataValue) {                        
+                        var gridColumn = $('<div></div>').appendTo(this.content),
                         markup = this._createItemContent(dataValue);
                         gridColumn.append(markup);
                     }
