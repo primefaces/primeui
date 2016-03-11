@@ -768,7 +768,7 @@ $(function() {
                                 Carousel's datasource can either be a name of an array or a function to load the array. Content for each item is defined
                                 as a mustache template where properties of an object can be access via {{}} syntax.
                                 <pre name="code" class="brush:xml">
-&lt;p-carousel datasource="Showcase.demo.cars" headertext="PrimeElement"&gt;
+&lt;p-carousel datasource="CarouselDemo.cars" headertext="PrimeElement"&gt;
     &lt;template&gt;
         Access color of a car using {{color}}
     &lt;/template&gt;
@@ -776,7 +776,7 @@ $(function() {
                                 </pre>
                                 <h4>Array</h4>
                                 <pre name="code" class="brush:js">
-var demo = {
+var CarouselDemo = {
     
     cars: [
         {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
@@ -795,12 +795,12 @@ var demo = {
                                 
                                 <h4>Function</h4>
                                 <pre name="code" class="brush:js">
-var demo = {
+var CarouselDemo = {
     
     cars: function(callback) {
         $.ajax({
             type: "GET",
-            url: 'showcase/resources/data/cars-large.json',
+            url: 'rest/cars/list',
             dataType: "json",
             context: this,
             success: function(response) {
