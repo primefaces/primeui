@@ -12,6 +12,7 @@ var gulp = require('gulp'),
 //Building PrimeNg Dependencies - Js
 gulp.task('build-primeng-js', function() {
     gulp.src([
+        'components/core/core.js',
         '!components/button/button.js', '!components/checkbox/checkbox.js', '!components/**/*-element.js',
         '!components/datagrid/datagrid.js', '!components/datascroller/datascroller.js', '!components/datatable/datatable.js',
         '!components/fieldset/fieldset.js', '!components/inputtext/inputtext.js', '!components/inputtextarea/inputtextarea.js',
@@ -28,6 +29,7 @@ gulp.task('build-primeng-js', function() {
 //Building only primeui.js
 gulp.task('build-js', function() {
 	gulp.src([
+        'components/core/core.js',
         '!components/**/*-element.js',
 		'components/**/*.js'
     ])
@@ -84,6 +86,7 @@ gulp.task('plugins', function () {
 //Building primeui.js and primeui.min.js
 gulp.task('uglify-js', function() {
     gulp.src([
+        'components/core/core.js',
         '!components/**/*-element.js',
 		'components/**/*.js'
     ])
@@ -97,6 +100,7 @@ gulp.task('uglify-js', function() {
 //Building primeui-ng.js and primeui-ng.min.js
 gulp.task('uglify-primeui-ng-js', function() {
     gulp.src([
+        'components/core/core.js',
         '!components/button/button.js', '!components/checkbox/checkbox.js', '!components/**/*-element.js',
         '!components/datagrid/datagrid.js', '!components/datascroller/datascroller.js', '!components/datatable/datatable.js',
         '!components/fieldset/fieldset.js', '!components/inputtext/inputtext.js', '!components/inputtextarea/inputtextarea.js',
