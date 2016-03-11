@@ -55,13 +55,20 @@
                 effect: 'fade',
                 effectSpeed: 'fast',
                 completeSource: function(request, response) {
+                    //in a real application, make a call to a remote url by passing the request.query as parameter
                     $.ajax({
                         type: "GET",
-                        url: 'rest/autocomplete/' + request.query,
+                        url: 'showcase/resources/data/themes.json',
                         dataType: "json",
                         context: this,
                         success: function(data) {
-                            response.call(this, data);
+                            var filtered = [];
+                            for(var i = 0; i < data.length; i++) {
+                                if(data[i].label.indexOf(request.query) === 0) {
+                                    filtered.push(data[i]);
+                                }
+                            }
+                            response.call(this, filtered);
                         }
                     });
                 }
@@ -320,15 +327,21 @@ $('#basic').puiautocomplete('search', 'A');
         $('#remote').puiautocomplete({
             effect: 'fade',
             effectSpeed: 'fast',
-            completeSource:function(request, response) {
+            completeSource: function(request, response) {
+                //in a real application, make a call to a remote url by passing the request.query as parameter
                 $.ajax({
                     type: "GET",
-                    url: './autocomplete',
-                    data: {query: request.query},
+                    url: 'showcase/resources/data/themes.json',
                     dataType: "json",
                     context: this,
                     success: function(data) {
-                        response.call(this, data);
+                        var filtered = [];
+                        for(var i = 0; i < data.length; i++) {
+                            if(data[i].label.indexOf(request.query) === 0) {
+                                filtered.push(data[i]);
+                            }
+                        }
+                        response.call(this, filtered);
                     }
                 });
             }
