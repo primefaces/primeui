@@ -20,6 +20,8 @@ var ngScripts = [
     '!components/selectbutton/selectbutton.js','!components/accordion/accordion.js','!components/tabview/tabview.js',
     'components/**/*.js'
 ];
+var jqueryScripts = ['showcase/resources/js/jquery.js','showcase/resources/js/jquery-ui.js'];
+var ngScriptsAll = jqueryScripts.concat(ngScripts);
         
 //Building only primeui.js
 gulp.task('build-js', function() {
@@ -109,6 +111,16 @@ gulp.task('uglify-primeui-ng-js', function() {
     .pipe(gulp.dest('build'));
 });
 
+//Build primeui-ng-all.js
+gulp.task('uglify-primeui-ng-all-js', function() {
+    gulp.src(ngScriptsAll)
+	.pipe(concat('primeui-ng-all.js'))
+	.pipe(gulp.dest('build'))
+    .pipe(uglify())
+    .pipe(rename('primeui-ng-all.min.js'))
+    .pipe(gulp.dest('build'));
+});
+
 //Building primeui.css and primeui.min.css
 gulp.task('uglify-css', function() {
     gulp.src([
@@ -144,7 +156,7 @@ gulp.task('clean-ng', function() {
 });
 
 //Building project with run sequence
-gulp.task('build-all', ['uglify-js', 'uglify-css','uglify-element', 'uglify-primeui-ng-js', 'images','themes','plugins']);
+gulp.task('build-all', ['uglify-js', 'uglify-css','uglify-element', 'uglify-primeui-ng-js', 'uglify-primeui-ng-all-js', 'images','themes','plugins']);
 
 //Building distribution version with zip folder
 gulp.task('distribute', ['build-all'], function() {
