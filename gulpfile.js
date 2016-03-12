@@ -19,7 +19,7 @@ gulp.task('build-primeng-js', function() {
         '!components/messages/messages.js', '!components/orderlist/orderlist.js', '!components/paginator/paginator.js',
         '!components/panel/panel.js', '!components/picklist/picklist.js', '!components/progressbar/progressbar.js',
         '!components/radiobutton/radiobutton.js', '!components/rating/rating.js', '!components/togglebutton/togglebutton.js',
-        '!components/selectbutton/selectbutton.js',
+        '!components/selectbutton/selectbutton.js','!components/accordion/accordion.js','!components/tabview/tabview.js',
         'components/**/*.js'
     ])
 	.pipe(concat('primeui-ng.js'))
@@ -107,7 +107,8 @@ gulp.task('uglify-primeui-ng-js', function() {
         '!components/messages/messages.js', '!components/orderlist/orderlist.js', '!components/paginator/paginator.js',
         '!components/panel/panel.js', '!components/picklist/picklist.js', '!components/progressbar/progressbar.js',
         '!components/radiobutton/radiobutton.js', '!components/rating/rating.js', '!components/togglebutton/togglebutton.js',
-        '!components/selectbutton/selectbutton.js','!components/acciordion/acciordion.js','!components/panel/panel.js'
+        '!components/selectbutton/selectbutton.js','!components/accordion/accordion.js','!components/panel/panel.js',
+        '!components/tabview/tabview.js',
         'components/**/*.js'
     ])
 	.pipe(concat('primeui-ng.js'))
