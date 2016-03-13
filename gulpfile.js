@@ -162,7 +162,7 @@ gulp.task('build-all', ['build-js-prod', 'build-css-prod', 'build-elements-prod'
 
 //Building distribution version with zip folder
 gulp.task('distribute', ['build-all'], function() {
-    return gulp.src('build/*')
+    return gulp.src('build/**/*')
 		.pipe(zip('primeui.zip'))
 		.pipe(gulp.dest('build'));
 })
