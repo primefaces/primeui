@@ -5,34 +5,35 @@
 
         <h3>Download via Package Manager</h3>
         <p>PrimeUI is available via bower and npm.</p>
-        <h4>Bower</h4>
+        <h4>BOWER</h4>
         <pre name="code" class="brush:js">
             bower install primeui
         </pre>
 
-        <h4>npm</h4>
+        <h4>NPM</h4>
         <pre name="code" class="brush:js">
             npm install primeui
         </pre>
         
-        <h4>Download as a Zip Bundle</h4>
+        <h4>ZIP</h4>
         <p>PrimeUI is distributed in a zip file that is available at <a href="https://github.com/primefaces/primeui/releases">github releases</a>.
             Once you download the file and extract it in filesystem, you'd see two folders named development and production. Development folder has
             the uncompressed and the Production folder has the compressed distribution.</p>
 
         <h3>Include Resources</h3>
-        <p>Although you can include resources of each widget individually, it is suggested to use the prime-ui.js and prime-ui.css file to register all
-            the widgets at once. As PrimeUI is jQuery UI based, you also need to include jQuery and jQuery UI. In addition, PrimeUI uses <a href="http://fortawesome.github.io/Font-Awesome/">FontAwesome</a> for the icons.
-        Some components have images so place the images folder at the same location with primeui css file.</p>
+        <p>Although you can include resources of each widget individually, it is suggested to use the primeui.min.js and primeui.min.css file to register all
+            the widgets at once. As PrimeUI is jQuery UI based, you also need to include jQuery and jQuery UI Core. PrimeUI does not the whole jQuery UI distribution, only core and utilities are needed. In addition, PrimeUI uses <a href="http://fortawesome.github.io/Font-Awesome/">FontAwesome</a> for the icons.
+            Some components have images so place the images folder at the same location with primeui css file.</p>
 
         <pre name="code" class="brush:xml">
             &lt;head&gt;                                    
                 &lt;link rel="stylesheet" href="%PATH%/theme.css" /&gt;
                 &lt;link rel="stylesheet" type="text/css" href="%PATH%/font-awesome.css" /&gt;
-                &lt;link rel="stylesheet" href="%PATH%/primeui-3.0.css" /&gt;
+                &lt;link rel="stylesheet" href="%PATH%/jquery-ui.css" /&gt;
+                &lt;link rel="stylesheet" href="%PATH%/primeui.min.css" /&gt;
                 &lt;script type="text/javascript" src="%PATH%/jquery.js"&gt;&lt;/script&gt;
                 &lt;script type="text/javascript" src="%PATH%/jquery-ui.js"&gt;&lt;/script&gt;
-                &lt;script type="text/javascript" src="%PATH%/primeui-3.0.js"&gt;&lt;/script&gt;
+                &lt;script type="text/javascript" src="%PATH%/primeui.min.js"&gt;&lt;/script&gt;
             &lt;/head&gt;
         </pre>
         
