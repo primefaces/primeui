@@ -64,7 +64,7 @@ gulp.task('images', function() {
 
 //Building themes
 gulp.task('themes', function () {
-    return gulp.src(['showcase/themes/*/images/*.png', 'showcase/themes/*/*.css'])
+    return gulp.src(['showcase/themes/**/*'])
         .pipe(gulp.dest('build/themes'));
 });
 
