@@ -139,13 +139,26 @@ gulp.task('build-primeng-all', function() {
     .pipe(gulp.dest('build'));
 });
 
+//Build primeui-ng-all.css
+gulp.task('build-primeng-css-all', function() {
+    gulp.src([
+		'showcase/resources/css/jquery-ui.css',
+        'components/**/*.css'
+    ])
+	.pipe(concat('primeui-ng-all.css'))
+	.pipe(gulp.dest('build'))
+    .pipe(uglifycss({"uglyComments": true}))
+    .pipe(rename('primeui-ng-all.min.css'))
+    .pipe(gulp.dest('build'));	
+});
+
 //Cleaning previous gulp tasks from project
 gulp.task('clean', function() {
 	del(['build']);
 });
 
 //Building project with run sequence
-gulp.task('build-all', ['build-js-prod', 'build-css-prod', 'build-elements-prod', 'build-primeng-prod', 'build-primeng-all', 'images','themes','plugins']);
+gulp.task('build-all', ['build-js-prod', 'build-css-prod', 'build-elements-prod', 'build-primeng-prod', 'build-primeng-all', 'build-primeng-css-all', 'images','themes','plugins']);
 
 //Building distribution version with zip folder
 gulp.task('distribute', ['build-all'], function() {
