@@ -180,7 +180,8 @@ $('#basic').puilistbox();
                                 <pre name="code" class="brush:js">
                 $('#default').puilistbox({
                     itemSelect: function(event, item) {
-
+                        console.log(item.text());
+                        console.log(item.val());
                     }
                 });
                                 </pre>

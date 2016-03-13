@@ -102,6 +102,8 @@
             $(':checkbox').puicheckbox({
                 change: function(event, checked) {
                     //..
+                    console.log(event.target.value);
+                    console.log(checked == true);
             }});
                                 </pre>
                             </div>
