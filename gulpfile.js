@@ -23,6 +23,7 @@ var ngScripts = [
     'components/menu/menu.js',
     'components/password/password.js',
     'components/spinner/spinner.js',
+    'components/utils/utils.js'
 ];
 var jqueryScripts = ['showcase/resources/js/jquery.js','showcase/resources/js/jquery-ui.js'];
 var ngScriptsAll = jqueryScripts.concat(ngScripts);
