@@ -138,7 +138,7 @@ gulp.task('build-primeng-all', function() {
     gulp.src(ngScriptsAll)
 	.pipe(concat('primeui-ng-all.js'))
 	.pipe(gulp.dest('build'))
-    .pipe(uglify())
+    .pipe(uglify({compress: {hoist_funs: false, hoist_vars: false}}))
     .pipe(rename('primeui-ng-all.min.js'))
     .pipe(gulp.dest('build'));
 });
