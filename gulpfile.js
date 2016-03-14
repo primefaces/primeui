@@ -11,14 +11,18 @@ var gulp = require('gulp'),
     
 var ngScripts = [
     'components/core/core.js',
-    '!components/button/button.js', '!components/checkbox/checkbox.js', '!components/**/*-element.js',
-    '!components/datagrid/datagrid.js', '!components/datascroller/datascroller.js', '!components/datatable/datatable.js',
-    '!components/fieldset/fieldset.js', '!components/inputtextarea/inputtextarea.js',
-    '!components/messages/messages.js', '!components/orderlist/orderlist.js', '!components/paginator/paginator.js',
-    '!components/panel/panel.js', '!components/picklist/picklist.js', '!components/progressbar/progressbar.js',
-    '!components/radiobutton/radiobutton.js', '!components/rating/rating.js', '!components/togglebutton/togglebutton.js',
-    '!components/selectbutton/selectbutton.js','!components/accordion/accordion.js','!components/tabview/tabview.js',
-    'components/**/*.js'
+    'components/carousel/carousel.js',
+    'components/dialog/dialog.js',
+    'components/dropdown/dropdown.js',
+    'components/galleria/galleria.js',
+    'components/growl/growl.js',
+    'components/switch/switch.js',
+    'components/inputtext/inputtext.js',
+    'components/lightbox/lightbox.js',
+    'components/listbox/listbox.js',
+    'components/menu/menu.js',
+    'components/password/password.js',
+    'components/spinner/spinner.js',
 ];
 var jqueryScripts = ['showcase/resources/js/jquery.js','showcase/resources/js/jquery-ui.js'];
 var ngScriptsAll = jqueryScripts.concat(ngScripts);
