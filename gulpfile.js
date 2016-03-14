@@ -13,7 +13,7 @@ var ngScripts = [
     'components/core/core.js',
     '!components/button/button.js', '!components/checkbox/checkbox.js', '!components/**/*-element.js',
     '!components/datagrid/datagrid.js', '!components/datascroller/datascroller.js', '!components/datatable/datatable.js',
-    '!components/fieldset/fieldset.js', '!components/inputtext/inputtext.js', '!components/inputtextarea/inputtextarea.js',
+    '!components/fieldset/fieldset.js', '!components/inputtextarea/inputtextarea.js',
     '!components/messages/messages.js', '!components/orderlist/orderlist.js', '!components/paginator/paginator.js',
     '!components/panel/panel.js', '!components/picklist/picklist.js', '!components/progressbar/progressbar.js',
     '!components/radiobutton/radiobutton.js', '!components/rating/rating.js', '!components/togglebutton/togglebutton.js',
