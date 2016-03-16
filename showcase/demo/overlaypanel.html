@@ -1,0 +1,329 @@
+<div>
+    <script type="text/javascript">
+        $(function() {
+            
+            var localData = [
+                {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
+                {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
+                {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
+                {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
+                {'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
+                {'brand': 'Volvo', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
+                {'brand': 'Honda', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
+                {'brand': 'Jaguar', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
+                {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'},
+                {'brand': 'Fiat', 'year': 2013, 'color': 'Red', 'vin': '245t2s'}
+            ];
+
+            $('#tbllocal').puidatatable({
+                caption: 'Datatable Integration',
+                columns: [
+                    {field: 'vin', headerText: 'Vin'},
+                    {field: 'brand', headerText: 'Brand'},
+                    {field: 'year', headerText: 'Year'},
+                    {field: 'color', headerText: 'Color'},
+                    {field: 'Integration', headerText: 'Integration', content: function(localData) {
+                        return $('<button id="' + localData.vin + '" type="button" value="' + localData.brand + '"></button>').puibutton({
+                            icon: 'fa-search',
+                            click: function(event) {
+                                $(event.target).on('click' , function() {
+                                    var pos = null;
+                                    
+                                        pos = {
+                                            my: 'right top',
+                                            at: 'left bottom',
+                                            of: $(event.target)
+                                        };
+                                        $('#overlayIntegration').position(pos);
+                                })
+                                beforeShow(this.value);
+                            }
+                        });
+                    }}
+                ],
+                datasource: localData
+            });
+            
+            beforeShow = function(brand) {
+                var image = document.getElementById('image');
+                image.src = 'showcase/resources/demo/images/car/' + brand + '-big.gif'
+            };
+            
+            $('#overlayIntegration').puioverlaypanel({
+                target: $('#tbllocal td:last-child').children('button'),
+                showCloseIcon:true,
+                showEffect: 'fade',
+                hideEffect: 'fade'
+            });
+            
+            $('#overlay').puioverlaypanel({
+                target:'#commandButton',
+                dismissable: true,
+                hideEffect:'explode'
+            });
+            
+            $('#closeIconOverlay').puioverlaypanel({
+                target:'#closeIcon',
+                showEvent:"mouseover",
+                hideEvent:"mousedown",
+                showCloseIcon:true,
+                showEffect:"blind"
+            });
+            
+            handleRowSelect = function(event, data) {
+                document.getElementById('messages').show([{severity: 'info', summary: 'Row Selected', detail: data.vin + ' ' + data.year}]);
+            };
+            
+            $('#commandButton').puibutton();
+            $('#closeIcon').puibutton();
+            $('#doc').puitabview();
+        });
+    </script>
+
+    <div class="ContentSideSections">
+        <div class="Content100 overHidden TextShadow">
+            <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">OverlayPanel</span>
+            <span class="defaultText dispTable">OverlayPanel is a generic container component that can overlay other components on page. Notable features are custom positioning, configurable events and effects. Lazy content loading to reduce page load time is also supported via dynamic option, when enabled overlayPanel will load the contents just before being shown.</span>
+        </div>
+    </div>
+
+    <div class="ContentSideSections Implementation">
+        <button id="commandButton" type="button">Click Me!</button>
+        <div id="overlay">
+            <img src="showcase/resources/demo/images/mr-robot/mr-robot.jpg" style="width:200px">
+        </div>
+        
+        <br/><br/><br/>
+        
+        <button id="closeIcon" type="button">Hover Me!</button>
+        <div id="closeIconOverlay" style="width:400px">
+            <p-growl id="messages"></p-growl>
+            <p-datatable datasource="Showcase.demo.loadAllCars" paginator rows="10" selectionmode="single" onrowselect="handleRowSelect">
+                <p-column field="vin" headertext="Vin" sortable filter></p-column>
+                <p-column field="year" headertext="Year" sortable filter></p-column>
+                <p-column field="brand" headertext="Brand" sortable filter></p-column>
+                <p-column field="color" headertext="Color" sortable filter> 
+                    <template>
+                        <span style="color:{{color}}">{{color}}</span>
+                    </template>
+                </p-column>
+            </p-datatable>
+        </div>
+        
+        <br/><br/><br/>
+        
+        <div id="tbllocal"></div>
+        <div id="overlayIntegration">
+            <img id="image" src="showcase/resources/demo/images/car/BMW.gif" style="width:200px"/>
+        </div>
+        
+    </div>
+
+    <div id="SourceContentSide" class="ContentSideSections Source">
+        <div class="Content100 overHidden TextShadow">
+            <span class="defaultText">
+                <span class="fontSize18 logoBlueText">
+                    <div id="doc">
+                        <ul>
+                            <li><a href="#doc-overview">Overview</a></li>
+                            <li><a href="#doc-options">Options</a></li>
+                            <li><a href="#doc-events">Events</a></li>
+                            <li><a href="#doc-methods">Methods</a></li>
+                            <li><a href="#doc-methods">Source</a></li>
+                        </ul>
+                        <div>
+                            <div id="doc-overview">
+                                <pre name="code" class="brush:js">
+$('#overlay').puioverlaypanel({
+    target:'#default'
+});
+                                </pre>
+
+                                <pre name="code" class="brush:xml">
+&lt;button id="default" type="button"&gt;default&lt;/button&gt;
+&lt;div id="overlay"&gt;
+    &lt;img src="resources/demo/images/..."&gt;
+&lt;/div&lt;
+                                </pre>
+                            </div>
+
+                            <div id="doc-options">
+                                <table class="doc-table">
+                                    <thead>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>target</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Identifier of the target component to show the panel.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>showEvent</td>
+                                            <td>string</td>
+                                            <td>click</td>
+                                            <td>Event to show the overlay panel.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>hideEvent</td>
+                                            <td>string</td>
+                                            <td>click</td>
+                                            <td>Event to hide the overlay panel.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>showCloseIcon</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>Displays a close icon to hide the overlay.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>dismissable</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>When set true, clicking outside of the panel hides the overlay.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>my</td>
+                                            <td>string</td>
+                                            <td>left top</td>
+                                            <td>Position of the panel relative to the target.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>at</td>
+                                            <td>string</td>
+                                            <td>left bottom</td>
+                                            <td>Position of the target relative to the panel.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div id="doc-events">
+                                <table class="doc-table">
+                                    <thead>
+                                    <th>Name</th>
+                                    <th>Parameters</th>
+                                    <th>Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>onShow</td>
+                                            <td>-</td>
+                                            <td>Client side callback to execute when panel is displayed.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>onHide</td>
+                                            <td>-</td>
+                                            <td>Client side callback to execute when panel is hidden.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <h3>Example</h3>
+                                <pre name="code" class="brush:js">
+            $('#default').puioverlaypanel('onShow');
+                                </pre>
+                            </div>
+
+                            <div id="doc-methods">
+                                <table class="doc-table">
+                                    <thead>
+                                    <th>Name</th>
+                                    <th>Parameters</th>
+                                    <th>Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>disable</td>
+                                            <td>-</td>
+                                            <td>Disables the button.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>enable</td>
+                                            <td>-</td>
+                                            <td>Enables the button.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>show</td>
+                                            <td>-</td>
+                                            <td>Shows the container.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>hide</td>
+                                            <td>-</td>
+                                            <td>Hides the container.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <h3>Example</h3>
+                                <pre name="code" class="brush:js">
+            $('#default').puibutton('disable');
+                                </pre>
+                            </div>
+
+                            <div id="doc-source">
+                                <pre name="code" class="brush:js">
+$('#overlay').puioverlaypanel({
+    target:'#commandButton',
+    dismissable: true,
+    hideEffect:'explode'
+});
+
+$('#closeIconOverlay').puioverlaypanel({
+    target:'#closeIcon',
+    showEvent:"mouseover",
+    hideEvent:"mousedown",
+    showCloseIcon:true,
+    showEffect:"blind"
+});
+
+handleRowSelect = function(event, data) {
+    document.getElementById('messages').show([{severity: 'info', summary: 'Row Selected', detail: data.vin + ' ' + data.year}]);
+};
+
+$('#commandButton').puibutton();
+$('#closeIcon').puibutton();
+                                </pre>
+
+                                <pre name="code" class="brush:xml">
+&lt;button id="commandButton" type="button"&gt;Click Me!&lt;/button&gt;
+&lt;div id="overlay"&gt;
+    &lt;img src="showcase/resources/demo/images/mr-robot/mr-robot.jpg" style="width:200px"&gt;
+&lt;/div&gt;
+
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+
+&lt;button id="closeIcon" type="button"&gt;Hover Me!&lt;/button&gt;
+&lt;div id="closeIconOverlay" style="width:400px"&gt;
+    &lt;p-growl id="messages"&gt;&lt;/p-growl&gt;
+    &lt;p-datatable datasource="Showcase.demo.loadAllCars" paginator rows="10" selectionmode="single" onrowselect="handleRowSelect"&gt;
+        &lt;p-column field="vin" headertext="Vin" sortable filter&gt;&lt;/p-column&gt;
+        &lt;p-column field="year" headertext="Year" sortable filter&gt;&lt;/p-column&gt;
+        &lt;p-column field="brand" headertext="Brand" sortable filter&gt;&lt;/p-column&gt;
+        &lt;p-column field="color" headertext="Color" sortable filter&gt; 
+            &lt;template&gt;
+                &lt;span style="color:{{color}}"&gt;{{color}}&lt;/span&gt;
+            &lt;/template&gt;
+        &lt;/p-column&gt;
+    &lt;/p-datatable&gt;
+&lt;/div&gt;
+                                    </pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </span>
+            </span>
+        </div>
+    </div>
+
+    <script language="javascript">
+        SyntaxHighlighter.highlight();
+    </script>
+
+</div>
