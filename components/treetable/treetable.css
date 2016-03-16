@@ -42,11 +42,13 @@
 }
 
 .ui-treetable .ui-treetable-data tr.ui-state-highlight,
-.ui-treetable .ui-treetable-data tr.ui-state-hover {
+.ui-treetable .ui-treetable-data tr.ui-state-hover,
+.ui-treetable .ui-treetable-row.ui-state-highlight,
+.ui-treetable .ui-treetable-row.ui-state-hover {
     cursor: pointer;
 }
       
-.ui-treetable .ui-treetable-data tr.ui-state-hover {
+.ui-treetable tr.ui-state-hover {
     border-color: inherit;
     font-weight: inherit;
 }
@@ -55,4 +57,24 @@
     width: 16px;
     height: 16px;
     float: left;
+}
+
+/* PrimeNG */
+.ui-treetable td.ui-treetable-child-table-container {
+    padding: 0px;
+    border: 0px none;
+}
+
+.ui-treetable .ui-treetable-row {
+    display:table-row;
+    border-bottom:0px transparent
+}
+
+.ui-treetable .ui-treetable-row.ui-state-hover,
+.ui-treetable .ui-treetable-row.ui-state-highlight {
+    border: 0px none;
+}
+
+.ui-treetable tbody .ui-treetable-row td {
+    border: 0px none;
 }
