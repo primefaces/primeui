@@ -19,7 +19,6 @@ var ngScripts = [
     'components/switch/switch.js',
     'components/inputtext/inputtext.js',
     'components/lightbox/lightbox.js',
-    'components/listbox/listbox.js',
     'components/menu/menu.js',
     'components/password/password.js',
     'components/spinner/spinner.js',
