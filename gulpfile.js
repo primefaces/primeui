@@ -62,7 +62,7 @@ gulp.task('build-dev', ['build-js', 'build-css', 'build-elements']);
 
 //Building images
 gulp.task('images', function() {
-    return gulp.src(['components/**/images/*.png', 'components/*/images/*.gif'])
+    return gulp.src(['components/**/images/*.png', 'components/**/images/*.gif'])
         .pipe(flatten())
         .pipe(gulp.dest('build/images'));
 });
