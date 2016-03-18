@@ -14,7 +14,19 @@
                 {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'},
                 {'brand': 'Fiat', 'year': 2013, 'color': 'Red', 'vin': '245t2s'}
             ];
-
+            
+            $('#sharedOverlay').puioverlaypanel({
+                target: '#tbllocal',
+                shared: true,
+                delegatedTarget: 'td:last-child > button',
+                showCloseIcon: true,
+                showEffect: 'fade',
+                hideEffect: 'fade',
+                preShow: function(event, ui) {
+                    $('#brandimage').attr('src', 'showcase/resources/demo/images/car/' + $(ui.target).data('brand') + '-big.gif');
+                }
+            });
+            
             $('#tbllocal').puidatatable({
                 caption: 'Datatable Integration',
                 columns: [
@@ -30,31 +42,19 @@
                 ],
                 datasource: localData
             });
-                        
-            $('#overlayIntegration').puioverlaypanel({
-                target: '#tbllocal',
-                shared: true,
-                delegatedTarget: 'td:last-child > button',
-                showCloseIcon: true,
-                showEffect: 'fade',
-                hideEffect: 'fade',
-                preShow: function(event, ui) {
-                    $('#brandimage').attr('src', 'showcase/resources/demo/images/car/' + $(ui.target).data('brand') + '-big.gif');
-                }
-            });
             
             $('#overlay').puioverlaypanel({
                 target:'#commandButton',
-                dismissable: true,
                 hideEffect:'explode'
             });
             
-            $('#closeIconOverlay').puioverlaypanel({
-                target:'#closeIcon',
+            $('#datatableOverlay').puioverlaypanel({
+                target:'#datatableOverlayHeader',
                 showEvent:"mouseover",
                 hideEvent:"mousedown",
                 showCloseIcon:true,
-                showEffect:"blind"
+                showEffect:"blind",
+                dismissable:false
             });
             
             handleRowSelect = function(event, data) {
@@ -82,8 +82,8 @@
         
         <br/><br/><br/>
         
-        <button id="closeIcon" type="button">Hover Me!</button>
-        <div id="closeIconOverlay" style="width:400px">
+        <label id="datatableOverlayHeader" type="text">Hover Me!</label>
+        <div id="datatableOverlay" style="width:400px">
             <p-growl id="messages"></p-growl>
             <p-datatable datasource="Showcase.demo.loadAllCars" paginator rows="10" selectionmode="single" onrowselect="handleRowSelect">
                 <p-column field="vin" headertext="Vin" sortable filter></p-column>
@@ -100,8 +100,8 @@
         <br/><br/><br/>
         
         <div id="tbllocal"></div>
-        <div id="overlayIntegration">
-            <img id="brandimage" src="showcase/resources/demo/images/car/BMW.gif" style="width:200px"/>
+        <div id="sharedOverlay">
+            <img id="brandimage" src="showcase/resources/demo/images/car/BMW-big.gif" style="width:200px"/>
         </div>
         
     </div>
@@ -185,6 +185,18 @@ $('#overlay').puioverlaypanel({
                                             <td>left bottom</td>
                                             <td>Position of the target relative to the panel.</td>
                                         </tr>
+                                        <tr>
+                                            <td>shared</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>Specifies the overlaypanel usage among specific components.(Must be used with delegatedTarget option.)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>delegatedTarget</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>The delegated components from a specific target.(Must bu used while shared option is true.)</td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -198,9 +210,14 @@ $('#overlay').puioverlaypanel({
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>onShow</td>
+                                            <td>preShow</td>
                                             <td>-</td>
-                                            <td>Client side callback to execute when panel is displayed.</td>
+                                            <td>Client side callback to execute before panel is displayed.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>postShow</td>
+                                            <td>-</td>
+                                            <td>Client side callback to execute after panel is displayed.</td>
                                         </tr>
                                         <tr>
                                             <td>onHide</td>
@@ -212,7 +229,7 @@ $('#overlay').puioverlaypanel({
 
                                 <h3>Example</h3>
                                 <pre name="code" class="brush:js">
-            $('#default').puioverlaypanel('onShow');
+            $('#default').puioverlaypanel('postShow');
                                 </pre>
                             </div>
 
@@ -224,16 +241,6 @@ $('#overlay').puioverlaypanel({
                                     <th>Description</th>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>disable</td>
-                                            <td>-</td>
-                                            <td>Disables the button.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>enable</td>
-                                            <td>-</td>
-                                            <td>Enables the button.</td>
-                                        </tr>
                                         <tr>
                                             <td>show</td>
                                             <td>-</td>
@@ -249,24 +256,65 @@ $('#overlay').puioverlaypanel({
 
                                 <h3>Example</h3>
                                 <pre name="code" class="brush:js">
-            $('#default').puibutton('disable');
+            $('#default').puioverlaypanel('show');
                                 </pre>
                             </div>
 
                             <div id="doc-source">
                                 <pre name="code" class="brush:js">
+var localData = [
+    {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
+    {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
+    {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
+    {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
+    {'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
+    {'brand': 'Volvo', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
+    {'brand': 'Honda', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
+    {'brand': 'Jaguar', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
+    {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'},
+    {'brand': 'Fiat', 'year': 2013, 'color': 'Red', 'vin': '245t2s'}
+];
+
+$('#sharedOverlay').puioverlaypanel({
+    target: '#tbllocal',
+    shared: true,
+    delegatedTarget: 'td:last-child > button',
+    showCloseIcon: true,
+    showEffect: 'fade',
+    hideEffect: 'fade',
+    preShow: function(event, ui) {
+        $('#brandimage').attr('src', 'showcase/resources/demo/images/car/' + $(ui.target).data('brand') + '-big.gif');
+    }
+});
+
+$('#tbllocal').puidatatable({
+    caption: 'Datatable Integration',
+    columns: [
+        {field: 'vin', headerText: 'Vin'},
+        {field: 'brand', headerText: 'Brand'},
+        {field: 'year', headerText: 'Year'},
+        {field: 'color', headerText: 'Color'},
+        {field: 'Integration', headerStyle:"width:10%",bodyStyle: 'text-align:center', headerText: 'Integration', content: function(localData) {
+            return $('&lt;button type="button" data-brand="' + localData.brand + '"&gt;&lt;/button&gt;').puibutton({
+                icon: 'fa-search'
+            });
+        }}
+    ],
+    datasource: localData
+});
+
 $('#overlay').puioverlaypanel({
     target:'#commandButton',
-    dismissable: true,
     hideEffect:'explode'
 });
 
-$('#closeIconOverlay').puioverlaypanel({
-    target:'#closeIcon',
+$('#datatableOverlay').puioverlaypanel({
+    target:'#datatableOverlayHeader',
     showEvent:"mouseover",
     hideEvent:"mousedown",
     showCloseIcon:true,
-    showEffect:"blind"
+    showEffect:"blind",
+    dismissable:false
 });
 
 handleRowSelect = function(event, data) {
@@ -285,8 +333,8 @@ $('#closeIcon').puibutton();
 
 &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
 
-&lt;button id="closeIcon" type="button"&gt;Hover Me!&lt;/button&gt;
-&lt;div id="closeIconOverlay" style="width:400px"&gt;
+&lt;label id="datatableOverlayHeader" type="text"&gt;Hover Me!&lt;/label&gt;
+&lt;div id="datatableOverlay" style="width:400px"&gt;
     &lt;p-growl id="messages"&gt;&lt;/p-growl&gt;
     &lt;p-datatable datasource="Showcase.demo.loadAllCars" paginator rows="10" selectionmode="single" onrowselect="handleRowSelect"&gt;
         &lt;p-column field="vin" headertext="Vin" sortable filter&gt;&lt;/p-column&gt;
@@ -298,6 +346,13 @@ $('#closeIcon').puibutton();
             &lt;/template&gt;
         &lt;/p-column&gt;
     &lt;/p-datatable&gt;
+&lt;/div&gt;
+
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+
+&lt;div id="tbllocal"&gt;&lt;/div&gt;
+&lt;div id="sharedOverlay"&gt;
+    &lt;img id="brandimage" src="showcase/resources/demo/images/car/BMW-big.gif" style="width:200px"/&gt;
 &lt;/div&gt;
                                     </pre>
                                 </div>

@@ -26,7 +26,7 @@
             this.container.append(this.element.contents());
             
             if(this.options.showCloseIcon) {
-                this.closerIcon = $('<a href="#" class="ui-overlaypanel-close ui-state-default" href="#"><span class="fa fa-close"></span></a>').appendTo(this.container);
+                this.closerIcon = $('<a href="#" class="ui-overlaypanel-close ui-state-default" href="#"><span class="fa fa-fw fa-close"></span></a>').appendTo(this.container);
             }
             
             this._bindCommonEvents();
