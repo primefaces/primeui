@@ -10,11 +10,14 @@
             showEvent: 'click',
             hideEvent: 'click',
             showCloseIcon: false,
-            dismissable: false,
+            dismissable: true,
             my: 'left top',
             at: 'left bottom',
-            onShow: null,
-            onHide: null
+            preShow: null,
+            postShow: null,
+            onHide: null,
+            shared: false,
+            delegatedTarget: null
         },
         
         _create: function() {
@@ -99,58 +102,102 @@
             if(this.options.showEvent === this.options.hideEvent) {
                 var event = this.options.showEvent;
                 
-                this.target.on(event, function(e) {
-                    $this._toggle();
-                });
+                if(this.options.shared) {
+                    this.target.on(event, this.options.delegatedTarget, null, function(e) {
+                        $this._toggle(e.currentTarget);
+                    });
+                }
+                else {
+                    this.target.on(event, function(e) {
+                        $this._toggle();
+                    });
+                }
             }
             else {
                 var showEvent = this.options.showEvent + '.puioverlaypanel',
                 hideEvent = this.options.hideEvent + '.puioverlaypanel';
                 
-                this.target.off(showEvent + '.puioverlaypanel' + ' ' + hideEvent + '.puioverlaypanel').on(showEvent, function(e) {
-                    if(!$this._isVisible()) {
-                        $this.show();
-                        if(showEvent === 'contextmenu.puioverlaypanel') {
-                            e.preventDefault();
-                        }
-                    }
-                })
-                .on(hideEvent, function(e) {
-                    if($this._isVisible()) {
-                        $this.hide();
-                    }
-                });
-            }
-            
-            $this.target.off('keydown.puioverlaypanel keyup.puioverlaypanel').on('keydown.puioverlaypanel', function(e) {
-                var keyCode = $.ui.keyCode, key = e.which;
-                
-                if(key === keyCode.ENTER||key === keyCode.NUMPAD_ENTER) {
-                    e.preventDefault();
-                }
-            })
-            .on('keyup.puioverlaypanel', function(e) {
-                var keyCode = $.ui.keyCode, key = e.which;
-                
-                if(key === keyCode.ENTER||key === keyCode.NUMPAD_ENTER) {
-                    $this._toggle();
-                    e.preventDefault();
-                }
-            });
-        },
-        
-        _toggle: function() {
-            if(this.target.length > 1) {
-                this.show();
-            }
-            else {
-                if(this._isVisible() ) {
-                    this.hide();
+                if(this.options.shared) {
+                    this.target.off(showEvent + '.puioverlaypanel' + ' ' + hideEvent + '.puioverlaypanel', this.options.delegatedTarget).on(showEvent, this.options.delegatedTarget, null, 
+                            function(e) {
+                                $this._onShowEvent(e);
+                            })
+                            .on(hideEvent, this.options.delegatedTarget, null, function(e) {
+                                $this._onHideEvent();
+                            });
                 }
                 else {
-                    this.show();
+                    this.target.off(showEvent + '.puioverlaypanel' + ' ' + hideEvent + '.puioverlaypanel').on(showEvent, function(e) {
+                        $this._onShowEvent(e);
+                    })
+                    .on(hideEvent, function(e) {
+                        $this._onHideEvent();
+                    });
                 }
-            }    
+                
+            }
+            
+            if(this.options.shared) {
+                $this.target.off('keydown.puioverlaypanel keyup.puioverlaypanel', this.options.delegatedTarget).on('keydown.puioverlaypanel', this.options.delegatedTarget, null, function(e) {
+                    $this._onTargetKeydown(e);
+                })
+                .on('keyup.puioverlaypanel', this.options.delegatedTarget, null, function(e) {
+                    $this._onTargetKeyup(e);
+                });
+            }
+            else {
+                $this.target.off('keydown.puioverlaypanel keyup.puioverlaypanel').on('keydown.puioverlaypanel', function(e) {
+                    $this._onTargetKeydown(e);
+                })
+                .on('keyup.puioverlaypanel', function(e) {
+                    $this._onTargetKeyup(e);
+                });
+            }
+        },
+        
+        _toggle: function(target) {
+            if(this.options.shared) {
+                this.show(target);
+            }
+            else {
+                if(this._isVisible())
+                    this.hide();
+                else
+                    this.show(target);
+            }
+            
+        },
+        
+        _onShowEvent: function(e) {
+            if(!this._isVisible()) {
+                this.show(e.currentTarget);
+                if(this.options.showEvent === 'contextmenu.puioverlaypanel') {
+                    e.preventDefault();
+                }
+            }
+        },
+        
+        _onHideEvent: function() {
+            if(this._isVisible()) {
+                this.hide();
+            }
+        },
+        
+        _onTargetKeydown: function(e) {
+            var keyCode = $.ui.keyCode, key = e.which;
+            
+            if(key === keyCode.ENTER||key === keyCode.NUMPAD_ENTER) {
+                e.preventDefault();
+            }
+        },
+        
+        _onTargetKeyup: function(e) {
+            var keyCode = $.ui.keyCode, key = e.which;
+            
+            if(key === keyCode.ENTER||key === keyCode.NUMPAD_ENTER) {
+                $this._toggle();
+                e.preventDefault();
+            }
         },
         
         _isVisible: function() {
@@ -159,6 +206,8 @@
         
         show: function(target) {
             var $this = this;
+            
+            $this._trigger('preShow', null, {'target':target});
             
             this._align(target);
 
@@ -194,9 +243,7 @@
         },
         
         postShow: function() {
-            if(this.options.onShow) {
-                this.options.onShow.call(this);
-            }
+            this._trigger('postShow');
             
             this._applyFocus();
         },
@@ -208,23 +255,18 @@
                 'visibility':'hidden'
             });
             
-            if(this.options.onHide) {
-                this.options.onHide.call(this);
-            }
+            this._trigger('onHide');
         },
         
         _align: function(target) {
-            var fixedPosition = this.element.css('position') == 'fixed',
-            win = $(window),
-            positionOffset = fixedPosition ? '-' + win.scrollLeft() + ' -' + win.scrollTop() : null,
-            targetId = target||this.options.target;
+            var win = $(window),
+            ofTarget = target||this.target;
 
             this.element.css({'left':'', 'top':'', 'z-index': PUI.zindex})
                     .position({
                         my: this.options.my,
                         at: this.options.at,
-                        of: document.getElementById(this.options.target),
-                        offset: positionOffset
+                        of: ofTarget
                     });
         },
         

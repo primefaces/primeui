@@ -22,38 +22,25 @@
                     {field: 'brand', headerText: 'Brand'},
                     {field: 'year', headerText: 'Year'},
                     {field: 'color', headerText: 'Color'},
-                    {field: 'Integration', headerText: 'Integration', content: function(localData) {
-                        return $('<button id="' + localData.vin + '" type="button" value="' + localData.brand + '"></button>').puibutton({
-                            icon: 'fa-search',
-                            click: function(event) {
-                                $(event.target).on('click' , function() {
-                                    var pos = null;
-                                    
-                                        pos = {
-                                            my: 'right top',
-                                            at: 'left bottom',
-                                            of: $(event.target)
-                                        };
-                                        $('#overlayIntegration').position(pos);
-                                })
-                                beforeShow(this.value);
-                            }
+                    {field: 'Integration', headerStyle:"width:10%",bodyStyle: 'text-align:center', headerText: 'Integration', content: function(localData) {
+                        return $('<button type="button" data-brand="' + localData.brand + '"></button>').puibutton({
+                            icon: 'fa-search'
                         });
                     }}
                 ],
                 datasource: localData
             });
-            
-            beforeShow = function(brand) {
-                var image = document.getElementById('image');
-                image.src = 'showcase/resources/demo/images/car/' + brand + '-big.gif'
-            };
-            
+                        
             $('#overlayIntegration').puioverlaypanel({
-                target: $('#tbllocal td:last-child').children('button'),
-                showCloseIcon:true,
+                target: '#tbllocal',
+                shared: true,
+                delegatedTarget: 'td:last-child > button',
+                showCloseIcon: true,
                 showEffect: 'fade',
-                hideEffect: 'fade'
+                hideEffect: 'fade',
+                preShow: function(event, ui) {
+                    $('#brandimage').attr('src', 'showcase/resources/demo/images/car/' + $(ui.target).data('brand') + '-big.gif');
+                }
             });
             
             $('#overlay').puioverlaypanel({
@@ -114,7 +101,7 @@
         
         <div id="tbllocal"></div>
         <div id="overlayIntegration">
-            <img id="image" src="showcase/resources/demo/images/car/BMW.gif" style="width:200px"/>
+            <img id="brandimage" src="showcase/resources/demo/images/car/BMW.gif" style="width:200px"/>
         </div>
         
     </div>
