@@ -49,7 +49,7 @@
             });
             
             $('#datatableOverlay').puioverlaypanel({
-                target:'#datatableOverlayHeader',
+                target:'#searchIcon',
                 showEvent:"mouseover",
                 hideEvent:"mousedown",
                 showCloseIcon:true,
@@ -70,19 +70,21 @@
     <div class="ContentSideSections">
         <div class="Content100 overHidden TextShadow">
             <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">OverlayPanel</span>
-            <span class="defaultText dispTable">OverlayPanel is a generic container component that can overlay other components on page. Notable features are custom positioning, configurable events and effects. Lazy content loading to reduce page load time is also supported via dynamic option, when enabled overlayPanel will load the contents just before being shown.</span>
+            <span class="defaultText dispTable">OverlayPanel is a container component positioned relative to its target.</span>
         </div>
     </div>
 
     <div class="ContentSideSections Implementation">
-        <button id="commandButton" type="button">Click Me!</button>
+        <h3 class="first">Basic</h3>
+        <button id="commandButton" type="button">View</button>
         <div id="overlay">
             <img src="showcase/resources/demo/images/mr-robot/mr-robot.jpg" style="width:200px">
         </div>
         
-        <br/><br/><br/>
+        <h3>Hover</h3>
+        <i id="searchIcon" class="fa fa-search" style="font-size:24px"></i>
         
-        <label id="datatableOverlayHeader" type="text">Hover Me!</label>
+        <h3>Shared</h3>
         <div id="datatableOverlay" style="width:400px">
             <p-growl id="messages"></p-growl>
             <p-datatable datasource="Showcase.demo.loadAllCars" paginator rows="10" selectionmode="single" onrowselect="handleRowSelect">
@@ -96,14 +98,11 @@
                 </p-column>
             </p-datatable>
         </div>
-        
-        <br/><br/><br/>
-        
+                
         <div id="tbllocal"></div>
         <div id="sharedOverlay">
             <img id="brandimage" src="showcase/resources/demo/images/car/BMW-big.gif" style="width:200px"/>
         </div>
-        
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">
@@ -120,6 +119,7 @@
                         </ul>
                         <div>
                             <div id="doc-overview">
+                                <p>Overlay panel is applied on a container element and requires a target to bind.</p>
                                 <pre name="code" class="brush:js">
 $('#overlay').puioverlaypanel({
     target:'#default'
@@ -137,17 +137,17 @@ $('#overlay').puioverlaypanel({
                             <div id="doc-options">
                                 <table class="doc-table">
                                     <thead>
-                                    <th>Name</th>
-                                    <th>Type</th>
-                                    <th>Default</th>
-                                    <th>Description</th>
+                                        <th>Name</th>
+                                        <th>Type</th>
+                                        <th>Default</th>
+                                        <th>Description</th>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>target</td>
                                             <td>string</td>
                                             <td>null</td>
-                                            <td>Identifier of the target component to show the panel.</td>
+                                            <td>Selector of the target element to bind.</td>
                                         </tr>
                                         <tr>
                                             <td>showEvent</td>
@@ -189,13 +189,13 @@ $('#overlay').puioverlaypanel({
                                             <td>shared</td>
                                             <td>boolean</td>
                                             <td>false</td>
-                                            <td>Specifies the overlaypanel usage among specific components.(Must be used with delegatedTarget option.)</td>
+                                            <td>When enabled, allows having multiple targets defined with delegatedTarget option.</td>
                                         </tr>
                                         <tr>
                                             <td>delegatedTarget</td>
                                             <td>string</td>
                                             <td>null</td>
-                                            <td>The delegated components from a specific target.(Must bu used while shared option is true.)</td>
+                                            <td>Selector to use in shared mode.</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -211,17 +211,17 @@ $('#overlay').puioverlaypanel({
                                     <tbody>
                                         <tr>
                                             <td>preShow</td>
-                                            <td>-</td>
+                                            <td>event: event instance</td>
                                             <td>Client side callback to execute before panel is displayed.</td>
                                         </tr>
                                         <tr>
                                             <td>postShow</td>
-                                            <td>-</td>
+                                            <td>event: event instance</td>
                                             <td>Client side callback to execute after panel is displayed.</td>
                                         </tr>
                                         <tr>
                                             <td>onHide</td>
-                                            <td>-</td>
+                                            <td>event: event instance</td>
                                             <td>Client side callback to execute when panel is hidden.</td>
                                         </tr>
                                     </tbody>
@@ -229,16 +229,20 @@ $('#overlay').puioverlaypanel({
 
                                 <h3>Example</h3>
                                 <pre name="code" class="brush:js">
-            $('#default').puioverlaypanel('postShow');
+            $('#default').puioverlaypanel({
+                'postShow': function(event) {
+                    //
+                } 
+            });
                                 </pre>
                             </div>
 
                             <div id="doc-methods">
                                 <table class="doc-table">
                                     <thead>
-                                    <th>Name</th>
-                                    <th>Parameters</th>
-                                    <th>Description</th>
+                                        <th>Name</th>
+                                        <th>Parameters</th>
+                                        <th>Description</th>
                                     </thead>
                                     <tbody>
                                         <tr>
@@ -309,7 +313,7 @@ $('#overlay').puioverlaypanel({
 });
 
 $('#datatableOverlay').puioverlaypanel({
-    target:'#datatableOverlayHeader',
+    target:'#searchIcon',
     showEvent:"mouseover",
     hideEvent:"mousedown",
     showCloseIcon:true,
@@ -326,14 +330,16 @@ $('#closeIcon').puibutton();
                                 </pre>
 
                                 <pre name="code" class="brush:xml">
-&lt;button id="commandButton" type="button"&gt;Click Me!&lt;/button&gt;
+&lt;h3 class="first"&gt;Basic&lt;/h3&gt;
+&lt;button id="commandButton" type="button"&gt;View&lt;/button&gt;
 &lt;div id="overlay"&gt;
     &lt;img src="showcase/resources/demo/images/mr-robot/mr-robot.jpg" style="width:200px"&gt;
 &lt;/div&gt;
 
-&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+&lt;h3&gt;Hover&lt;/h3&gt;
+&lt;i id="searchIcon" class="fa fa-search" style="font-size:24px"&gt;&lt;/i&gt;
 
-&lt;label id="datatableOverlayHeader" type="text"&gt;Hover Me!&lt;/label&gt;
+&lt;h3&gt;Shared&lt;/h3&gt;
 &lt;div id="datatableOverlay" style="width:400px"&gt;
     &lt;p-growl id="messages"&gt;&lt;/p-growl&gt;
     &lt;p-datatable datasource="Showcase.demo.loadAllCars" paginator rows="10" selectionmode="single" onrowselect="handleRowSelect"&gt;
@@ -347,9 +353,7 @@ $('#closeIcon').puibutton();
         &lt;/p-column&gt;
     &lt;/p-datatable&gt;
 &lt;/div&gt;
-
-&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
-
+        
 &lt;div id="tbllocal"&gt;&lt;/div&gt;
 &lt;div id="sharedOverlay"&gt;
     &lt;img id="brandimage" src="showcase/resources/demo/images/car/BMW-big.gif" style="width:200px"/&gt;
