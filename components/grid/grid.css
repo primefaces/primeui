@@ -140,3 +140,7 @@
         float: none;
     }
 }
+
+.ui-grid.ui-grid-pad > .ui-grid-row > div {
+    padding: 4px 10px;
+}
