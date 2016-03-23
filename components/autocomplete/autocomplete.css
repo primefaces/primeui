@@ -128,6 +128,25 @@
     cursor: default;
 }
 
+/* ng */
+.ui-autocomplete-dd input.ui-corner-all {
+    -moz-border-radius-topright: 0px; 
+    -webkit-border-top-right-radius: 0px;
+     border-top-right-radius: 0px;
+     -moz-border-radius-bottomright: 0px;
+     -webkit-border-bottom-right-radius: 0px;
+     border-bottom-right-radius: 0px;
+ }
+ 
+.ui-autocomplete-dd .ui-autocomplete-dropdown.ui-corner-all {
+     -moz-border-radius-topleft: 0px; 
+     -webkit-border-top-left-radius: 0px;
+      border-top-left-radius: 0px;
+      -moz-border-radius-bottomleft: 0px;
+      -webkit-border-bottom-left-radius: 0px;
+      border-bottom-left-radius: 0px;
+}
+
 /** AutoComplete **/
 .ui-fluid .ui-autocomplete,
 .ui-fluid .ui-autocomplete-input {
