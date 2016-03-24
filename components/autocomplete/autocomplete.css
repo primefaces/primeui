@@ -95,8 +95,8 @@
 .ui-autocomplete-input-token {
     float: left;
     list-style-type: none;
-    margin: 1px;
-    padding: 0;
+    margin: 2px;
+    padding: 1px;
 }
 
 .ui-autocomplete-input-token .ui-inputtext {
