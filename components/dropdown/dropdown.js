@@ -74,7 +74,7 @@
                 this.itemsWrapper = this.panel.children('.ui-dropdown-items-wrapper');
                 this.itemsContainer = this.itemsWrapper.children('ul');
                 this.itemsContainer.addClass('ui-dropdown-items ui-dropdown-list ui-widget-content ui-widget ui-corner-all ui-helper-reset');
-                this.items = this.itemsContainer.children('li').addClass('ui-dropdown-item ui-dropdown-list-item ui-corner-all');
+                this.items = this.itemsContainer.children('li').addClass('ui-dropdown-item ui-corner-all');
 
                 var $this = this;
                 this.items.each(function(i) {
@@ -206,7 +206,7 @@
                     optionLabel = option.text(),
                     content = this.options.content ? this.options.content.call(this, this.options.data[i]) : optionLabel;
 
-                this.itemsContainer.append('<li data-label="' + optionLabel + '" class="ui-dropdown-item ui-dropdown-list-item ui-corner-all">' + content + '</li>');
+                this.itemsContainer.append('<li data-label="' + optionLabel + '" class="ui-dropdown-item ui-corner-all">' + content + '</li>');
             }
 
             this.items = this.itemsContainer.children('.ui-dropdown-item');
@@ -697,7 +697,7 @@
             }
 
             var content = this.options.content ? this.options.content.call(this, option) : label,
-                item = $('<li data-label="' + label + '" class="ui-dropdown-item ui-dropdown-list-item ui-corner-all">' + content + '</li>'),
+                item = $('<li data-label="' + label + '" class="ui-dropdown-item ui-corner-all">' + content + '</li>'),
                 optionElement = $('<option value="' + value + '">' + label + '</option>');
 
             optionElement.appendTo(this.element);

@@ -59,6 +59,11 @@
 
 .ui-dropdown-panel .ui-dropdown-item {
     font-weight: normal;
+    border:0px none;
+    cursor:pointer;
+    margin:1px 0;
+    padding:3px 5px;
+    text-align:left;
 }
 
 .ui-dropdown-panel .ui-dropdown-item-group {
@@ -68,14 +73,6 @@
 .ui-dropdown-panel .ui-dropdown-list {
     padding: 0.4em;
     border: 0 none;
-}
-
-.ui-dropdown-panel .ui-dropdown-list-item {
-    border:0px none;
-    cursor:pointer;
-    margin:1px 0;
-    padding:3px 5px;
-    text-align:left;
 }
 
 .ui-dropdown-panel .ui-dropdown-filter {
