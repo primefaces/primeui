@@ -242,6 +242,7 @@
             this.id = PUI.generateRandomId();
             this.scrollHeader = this.element.children('.ui-datatable-scrollable-header');
             this.scrollBody = this.element.children('.ui-datatable-scrollable-body');
+            this.scrollFooter = this.element.children('.ui-datatable-footer');
             this.scrollHeaderBox = this.scrollHeader.children('.ui-datatable-scrollable-header-box');
             this.bodyTable = this.scrollBody.children('table');
             this.percentageScrollHeight = this.options.scrollHeight && (this.options.scrollHeight.indexOf('%') !== -1);
