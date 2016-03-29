@@ -13,7 +13,6 @@ var ngScripts = [
     'components/core/core.js',
     'components/carousel/carousel.js',
     'components/dialog/dialog.js',
-    'components/dropdown/dropdown.js',
     'components/galleria/galleria.js',
     'components/growl/growl.js',
     'components/switch/switch.js',
