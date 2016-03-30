@@ -25,6 +25,10 @@
 }
 
 .ui-multiselect .ui-multiselect-label  {
+    overflow: hidden;
+}
+
+.ui-multiselect .ui-multiselect-label  {
     display: block;
     padding: 3px 26px 3px 5px;
     width: auto;
