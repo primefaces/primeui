@@ -127,3 +127,7 @@
 .ui-multiselect-header .ui-multiselect-close.ui-state-hover {
     padding:0px;
 }
+
+.ui-fluid .ui-multiselect {
+    width: 100%;
+}
