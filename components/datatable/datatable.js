@@ -155,7 +155,7 @@
             if(this.hasFiltering) {
                 this._initFiltering();
             }
-            
+
             if(this.options.selectionMode) {
                 this._initSelection();
             }
@@ -294,15 +294,15 @@
 
         _indicateInitialSortColumn: function(sortField, sortOrder) {
             var $this = this;
-            
+
             $.each(this.sortableColumns, function(i, column) {
                 var $column = $(column),
                     data = $column.data();
-                    
+
                 if (sortField === data.field) {
                     var sortIcon = $column.children('.ui-sortable-column-icon');
                         $column.data('order', sortOrder).removeClass('ui-state-hover').addClass('ui-state-active');
-                    
+
                     if(sortOrder == -1)
                         sortIcon.removeClass('fa-sort fa-sort-asc').addClass('fa-sort-desc');
                     else if(sortOrder == 1)
@@ -310,10 +310,10 @@
                 }
             });
         },
-        
+
         _indicateInitialSortColumns: function() {
             var $this = this;
-            
+
             for(var i = 0; i < this.options.sortMeta.length; i++) {
                 var meta = this.options.sortMeta[i];
                 this._indicateInitialSortColumn(meta.field, meta.order);
@@ -364,14 +364,14 @@
             this.thead.find('> tr > th.ui-sortable-column').data('order', 0).filter('.ui-state-active').removeClass('ui-state-active')
                                 .children('span.ui-sortable-column-icon').removeClass('fa-sort-asc fa-sort-desc').addClass('fa-sort');
         },
-        
+
         _isMultiSort: function() {
             if(this.options.sortMode === 'multiple')
                 return true;
-            else 
+            else
                 return false;
         },
-        
+
         _resetSortState: function(column) {
             this.sortableColumns.filter('.ui-state-active').data('order', 0).removeClass('ui-state-active').children('span.ui-sortable-column-icon')
                                                         .removeClass('fa-sort-asc fa-sort-desc').addClass('fa-sort');
@@ -380,10 +380,10 @@
         _initSorting: function() {
             var $this = this;
             this.sortableColumns = this.thead.find('> tr > th.ui-sortable-column');
-            
+
             this.sortableColumns.on('mouseover.puidatatable', function() {
                 var column = $(this);
-                
+
                 if(!column.hasClass('ui-state-active'))
                     column.addClass('ui-state-hover');
             })
@@ -397,18 +397,18 @@
                 if(!$(event.target).is('th,span')) {
                     return;
                 }
-                
+
                 var column = $(this),
                 sortField = column.data('field'),
                 order = column.data('order'),
                 sortOrder = (order === 0) ? 1 : (order * -1),
                 sortIcon = column.children('.ui-sortable-column-icon'),
                 metaKey = event.metaKey||event.ctrlKey;
-                                            
+
                 if($this._isMultiSort()) {
                     if(metaKey) {
                         $this._addSortMeta({field: sortField, order: sortOrder});
-                        $this.sort();    
+                        $this.sort();
                     }
                     else {
                         $this.options.sortMeta = [];
@@ -421,7 +421,7 @@
                     //update state
                     $this.options.sortField = sortField;
                     $this.options.sortOrder = sortOrder;
-                    
+
                     $this._resetSortState(column);
                     $this.sort();
                 }
@@ -436,7 +436,7 @@
                 $this._trigger('sort', event, {'sortOrder': sortOrder, 'sortField': sortField});
             });
         },
-        
+
         _addSortMeta: function(meta) {
             var index = -1;
             for(var i = 0; i < this.options.sortMeta.length; i++) {
@@ -444,7 +444,7 @@
                     index = i;
                 }
             }
-            
+
             if(index >= 0)
                 this.options.sortMeta[index] = meta;
             else
@@ -459,35 +459,35 @@
                this._renderData();
             }
         },
-        
+
         _multipleSort: function() {
             var $this = this;
-            
+
             function multisort(data1,data2,sortMeta,index) {
-                var value1 = data1[sortMeta[index].field], 
+                var value1 = data1[sortMeta[index].field],
                 value2 = data2[sortMeta[index].field],
                 result = null;
-                                
+
                 if (typeof value1 == 'string' || value1 instanceof String) {
                     if (value1.localeCompare && (value1 != value2)) {
                         return (sortMeta[index].order * value1.localeCompare(value2));
                     }
                 }
                 else {
-                    result = (value1 < value2) ? -1 : 1;    
+                    result = (value1 < value2) ? -1 : 1;
                 }
 
                 if(value1 == value2)  {
                     return (sortMeta.length - 1) > (index) ? (multisort(data1, data2, sortMeta, index + 1)) : 0;
                 }
-                
+
                 return (sortMeta[index].order * result);
             }
-            
+
             this.data.sort(function (data1,data2) {
                 return multisort(data1, data2, $this.options.sortMeta, 0);
             });
-            
+
             this._renderData();
         },
 
@@ -502,14 +502,14 @@
                     this._singleSort();
             }
         },
-        
+
         _singleSort: function() {
             var $this = this;
-            
+
             this.data.sort(function(data1, data2) {
                 var value1 = data1[$this.options.sortField], value2 = data2[$this.options.sortField],
                 result = null;
-                
+
                 if (typeof value1 == 'string' || value1 instanceof String) {
                     if ( value1.localeCompare ) {
                         return ($this.options.sortOrder * value1.localeCompare(value2));
@@ -544,7 +544,7 @@
             var bName = b.name.toLowerCase();
             return ((aName < bName) ? -1 : ((aName > bName) ? 1 : 0));
         },
-        
+
         sortByDefault: function() {
             if(this._isMultiSort()) {
                 if(this.options.sortMeta) {
@@ -560,7 +560,7 @@
 
         _renderData: function() {
             this.tbody.html('');
-            
+
             var dataToRender = this.filteredData||this.data;
             if(dataToRender && dataToRender.length) {
                 var firstNonLazy = this._getFirst(),
@@ -972,6 +972,7 @@
         _initScrolling: function() {
             this.scrollHeader = this.element.children('.ui-datatable-scrollable-header');
             this.scrollBody = this.element.children('.ui-datatable-scrollable-body');
+            this.scrollFooter = this.element.children('.ui-datatable-scrollable-footer');
             this.scrollHeaderBox = this.scrollHeader.children('.ui-datatable-scrollable-header-box');
             this.headerTable = this.scrollHeaderBox.children('table');
             this.bodyTable = this.scrollBody.children('table');
@@ -1503,7 +1504,7 @@
         _initFiltering: function() {
             var $this = this;
             this.filterElements = this.thead.find('.ui-column-filter');
-            
+
             this.filterElements.on('keyup', function() {
                         if($this.filterTimeout) {
                             clearTimeout($this.filterTimeout);
@@ -1515,21 +1516,21 @@
                         },
                         $this.options.filterDelay);
                     });
-                    
+
             if(this.options.globalFilter) {
                 $(this.options.globalFilter).on('keyup.puidatatable', function() {
                     $this.filter();
                 });
             }
         },
-        
+
         filter: function() {
             this.filterMetaMap = [];
-            
+
             for(var i = 0; i < this.filterElements.length; i++) {
                 var filterElement = this.filterElements.eq(i),
                 filterElementValue = filterElement.val();
-                 
+
                 this.filterMetaMap.push({
                     field: filterElement.data('field'),
                     filterMatchMode: filterElement.data('filtermatchmode'),
@@ -1537,18 +1538,18 @@
                     element: filterElement
                 });
             }
-                        
+
             if(this.options.lazy) {
                 this.options.datasource.call(this, this._onLazyLoad, this._createStateMeta());
             }
             else {
                 var globalFilterValue = $(this.options.globalFilter).val();
                 this.filteredData = [];
-                
+
                 for(var i = 0; i < this.data.length; i++) {
                     var localMatch = true;
                     var globalMatch = false;
-                    
+
                     for(var j = 0; j < this.filterMetaMap.length; j++) {
                         var filterMeta = this.filterMetaMap[j],
                         filterValue = filterMeta.value,
@@ -1561,9 +1562,9 @@
                         if(this.options.globalFilter && !globalMatch) {
                             var filterConstraint = this.filterConstraints['contains'];
                             globalMatch = filterConstraint(dataFieldValue, globalFilterValue);
-                            
+
                         }
-                        
+
                         //local
                         if(filterMeta.filterMatchMode === 'custom') {
                             localMatch = filterMeta.element.triggerHandler('filter', [dataFieldValue, filterValue]);
@@ -1574,14 +1575,14 @@
                                 localMatch = false;
                             }
                         }
-                                                                        
+
                         if(!localMatch) {
                             break;
                         }
                     }
-                                        
+
                     var matches = localMatch;
-                    
+
                     if(this.options.globalFilter) {
                         matches = localMatch && globalMatch;
                     }
@@ -1590,7 +1591,7 @@
                         this.filteredData.push(this.data[i]);
                     }
                 }
-                
+
                 if(this.filteredData.length === this.data.length) {
                     this.filteredData = null;
                 }
@@ -1625,7 +1626,7 @@
                 if(value === undefined || value === null) {
                     return false;
                 }
-                
+
                 return value.toString().toLowerCase().indexOf(filter) !== -1;
             }
 
