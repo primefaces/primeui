@@ -31,7 +31,15 @@ if(!xtag.tags['p-accordion']) {
                     title = tab.attr('title')||'';
 
                     this.xtag.container.append('<h3>' + title + '</h3>').append();
-                    $('<div></div>').append(tab.contents()).appendTo(this.xtag.container);
+                    var div = $('<div></div>').append(tab.contents()).appendTo(this.xtag.container);
+
+                    if (tab.attr('onshow')) {
+                        div.attr('onshow', tab.attr('onshow'));
+                    }
+
+                    if (tab.attr('onhide')) {
+                        div.attr('onhide', tab.attr('onhide'));
+                    }
                 }
 
                 this.xtag.container.puiaccordion({

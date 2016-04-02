@@ -110,12 +110,19 @@
             if(!silent) {
                 this._trigger('change', null, {'index': index});
             }
+
+            var onShow = panel.attr('onshow');
+
+            if (onShow) {
+                eval(onShow);
+            }
             
             //update state
             if(this.options.multiple) {
                 this._addToSelection(index);
             }
             else {
+                this.unselect(this.options.activeIndex);
                 this.options.activeIndex = index;
             }
             this._show(panel);
@@ -128,6 +135,12 @@
             var panel = this.panels.eq(index),
             header = panel.prev();
 
+            var onHide = panel.attr('onhide');
+
+            if (onHide) {
+                eval(onHide);
+            }
+
             header.attr('aria-expanded', false).children('.fa').removeClass('fa-caret-down').addClass('fa-caret-right');
             header.removeClass('ui-state-active ui-corner-top').addClass('ui-corner-all');
             panel.attr('aria-hidden', true).slideUp();
@@ -136,12 +149,6 @@
         },
 
         _show: function(panel) {
-            //deactivate current
-            if(!this.options.multiple) {
-                var oldHeader = this.headers.filter('.ui-state-active');
-                oldHeader.children('.fa').removeClass('fa-caret-down').addClass('fa-caret-right');
-                oldHeader.attr('aria-expanded', false).removeClass('ui-state-active ui-corner-top').addClass('ui-corner-all').next().attr('aria-hidden', true).slideUp();
-            }
 
             //activate selected
             var newHeader = panel.prev();
