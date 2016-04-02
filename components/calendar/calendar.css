@@ -1,0 +1,11 @@
+.ui-calendar {
+    position: relative;
+    display: inline-block;
+}
+
+.ui-calendar button {
+    position: absolute;
+    height: 100%;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
