@@ -642,6 +642,9 @@
                 var emptyColumn = $('<td></td>').attr('colspan',this.options.columns.length).appendTo(emptyRow);
                 emptyColumn.html(this.options.emptyMessage);
             }
+            
+            if (this.cloneContainer)
+                this.cloneContainer.width(this.table.outerWidth());
         },
 
         _getFirst: function() {
