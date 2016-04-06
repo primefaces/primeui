@@ -295,6 +295,29 @@
  * http://docs.jquery.com/UI/Accordion#theming
  */
 .ui-accordion .ui-accordion-header a { display: block; font-size: 1em; padding: .5em .5em .5em .7em; font-weight: bold; }
+.ui-accordion .ui-accordion-header {
+	border: 1px solid #d9d9d9;
+	background: #f6f7f9;
+}
+
+.ui-accordion .ui-accordion-header.ui-state-hover {
+    background: #ededf0;
+}
+
+.ui-accordion .ui-accordion-header.ui-state-active {
+    background: #ffffff;
+    border-left: 0px none;
+    border-right: 0px none;
+}
+
+/* Tabview */
+.ui-tabview.ui-widget-content {
+    border:0px none;
+}
+
+.ui-tabview .ui-tabview-nav {
+    background: transparent;
+}
 
 /*
  * jQuery UI Button 1.8.16
@@ -602,4 +625,25 @@ button.ui-button span {
 }
 .ui-datatable-odd {
     background-color: #f9f9fa;
+}
+
+/* Panel */
+.ui-panel.ui-widget {
+    padding: 0;
+}
+
+.ui-panel.ui-widget .ui-panel-titlebar.ui-corner-all {
+    -moz-border-radius-bottom-left: 0px; 
+    -webkit-border-bottom-left-radius: 0px; 
+    -khtml-border-bottom-left-radius: 0px; 
+    border-bottom-left-radius: 0px;
+    -moz-border-radius-bottom-right: 0px; 
+    -webkit-border-bottom-right-radius: 0px; 
+    -khtml-border-bottom-right-radius: 0px; 
+    border-bottom-right-radius: 0px;
+}
+
+.ui-panel.ui-widget .ui-panel-titlebar {
+
+     border-width: 0 0 1px 0;
 }
