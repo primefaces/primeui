@@ -1,0 +1,230 @@
+<div>
+    <script type="text/javascript">
+        $(function () {
+            var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
+            'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
+            'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
+            'ui-darkness', 'ui-lightness', 'vader');
+
+            $('#basic').puimultiselect({
+                scrollHeight:120
+            });
+
+            $('#localData').puimultiselect({
+                data: themes,
+                defaultLabel:'Local Data'
+            });
+
+            $('#doc').puitabview();
+
+        });
+    </script>
+    <style type="text/css">
+        .ui-dropdown {
+            width: 150px;
+        }
+    </style>
+
+    <div class="ContentSideSections">
+        <div class="Content100 overHidden TextShadow">
+            <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">MultiSelect</span>
+            <span class="defaultText dispTable">MultiSelect is used to select multiple items from a collection.</span>
+        </div>
+    </div>
+
+    <div class="ContentSideSections Implementation">
+        <h3 class="first">Basic</h3>
+        <select id="basic" name="basic">
+            <option value="0">Istanbul</option>
+            <option value="1">Barcelona</option>
+            <option value="2">Paris</option>
+            <option value="3">Oslo</option>
+        </select>
+
+        <h3>Local Data</h3>
+        <select id="localData" name="localData"></select>
+    </div>
+
+    <div id="SourceContentSide" class="ContentSideSections Source">
+        <div class="Content100 overHidden TextShadow">
+            <span class="defaultText">
+                <span class="fontSize18 logoBlueText">
+                    <div id="doc">
+                        <ul>
+                            <li><a href="#doc-overview">Overview</a></li>
+                            <li><a href="#doc-options">Options</a></li>
+                            <li><a href="#doc-events">Events</a></li>
+                            <li><a href="#doc-methods">Methods</a></li>
+                            <li><a href="#doc-methods">Source</a></li>
+                        </ul>
+                        <div>
+                            <div id="doc-overview">
+                                <h4>Basic</h4>
+                                <pre name="code" class="brush:js">
+$('#basic').puimultiselect();
+                                </pre>
+
+                                <pre name="code" class="brush:xml">
+&lt;select id="basic" name="basic"&gt;
+    &lt;option value="0"&gt;Istanbul&lt;/option&gt;
+    &lt;option value="1"&gt;Barcelona&lt;/option&gt;
+    &lt;option value="2"&gt;Paris&lt;/option&gt;
+    &lt;option value="3"&gt;Oslo&lt;/option&gt;
+&lt;/select&gt;
+                                </pre>
+
+                                <h4>Local Data</h4>
+                                <pre name="code" class="brush:js">
+var themes = new Array('afterdark', 'afternoon', 'afterwork', ...);
+
+$('#localData').puimultiselect({
+    data: themes
+});
+                                </pre>
+                                <pre name="code" class="brush:xml">
+&lt;select id="localData" name="localData"&gt;&lt;/select&gt;
+                                </pre>
+
+                            </div>
+
+                            <div id="doc-options">
+
+                                <table class="doc-table">
+                                    <thead>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>defaultLabel</td>
+                                            <td>string</td>
+                                            <td>'Choose'</td>
+                                            <td>Default label of the MultiSelect.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>caseSensitive</td>
+                                            <td>false</td>
+                                            <td>boolean</td>
+                                            <td>Defines case sensitivity on filtering.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>filterMatchMode</td>
+                                            <td>string</td>
+                                            <td>startsWith</td>
+                                            <td>Mode of filter, valid values are startsWith, contains, endsWith and custom.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>filterFunction</td>
+                                            <td>function</td>
+                                            <td>null</td>
+                                            <td>Function to be used in custom filtering, this function gets option as parameter and needs to return a boolean.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>data</td>
+                                            <td>array</td>
+                                            <td>null</td>
+                                            <td>An array of items to populate dropdown dynamically. Objects in this array can be simple types or object with
+                                                label-value fields like {label:'Option 1', value:1}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>scrollHeight</td>
+                                            <td>integer</td>
+                                            <td>200</td>
+                                            <td>Maximum height boundary of overlay panel in pixels, if total height of items exceed this value, scrollbar is displayed.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>style</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Inline style of the element.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>styleClass</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Style class of the element.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                            <div id="doc-events">
+
+                                <table class="doc-table">
+                                    <thead>
+                                    <th>Name</th>
+                                    <th>Parameters</th>
+                                    <th>Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>onHide</td>
+                                            <td>
+                                                event: puimultiselectonhide event
+                                            </td>
+                                            <td>Fired on panel hide.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>onShow</td>
+                                            <td>
+                                                event: puimultiselectonshow event
+                                            </td>
+                                            <td>Fired on panel show.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div id="doc-methods">
+                                <table class="doc-table">
+                                    <h4>No Methods.</h4>
+                                </table>
+                            </div>
+                            <div id="doc-source">
+                                <pre name="code" class="brush:js">
+&lt;script type="text/javascript"&gt;
+$(function() {
+    var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
+    'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
+    'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
+    'ui-darkness', 'ui-lightness', 'vader');
+
+    $('#basic').puimultiselect({
+        scrollHeight:120
+    });
+
+    $('#localData').puimultiselect({
+        data: themes,
+        defaultLabel:'Local Data'
+    });
+});
+&lt;/script&gt;
+                                </pre>
+                                <pre name="code" class="brush:xml">
+&lt;h3 class="first"&gt;Basic&lt;/h3&gt;
+&lt;select id="basic" name="basic"&gt;
+    &lt;option value="0"&gt;Istanbul&lt;/option&gt;
+    &lt;option value="1"&gt;Barcelona&lt;/option&gt;
+    &lt;option value="2"&gt;Paris&lt;/option&gt;
+    &lt;option value="3"&gt;Oslo&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;h3&gt;Local Data&lt;/h3&gt;
+&lt;select id="localData" name="localData"&gt;&lt;/select&gt;
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </span>
+            </span>
+        </div>
+    </div>
+
+    <script language="javascript">
+        SyntaxHighlighter.highlight();
+    </script>
+
+</div>

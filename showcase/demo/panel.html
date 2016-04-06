@@ -1,7 +1,20 @@
 <div>
     <script type="text/javascript">
         $(function () {
-            $('#default').puipanel();
+            $('#default').puipanel({
+                headerContent:function() {
+                    var content = $('<button id="btn">Button</button>');
+                    return content;
+                },
+                footerContent:function() {
+                    var content = $('<button id="btn">FooterButton</button>');
+                    return content;
+                }
+            });
+
+            $('#btn').puibutton({
+                icon: 'fa-check'
+            });
 
             $('#options').puipanel({
                 toggleable: true
@@ -20,27 +33,27 @@
     </div>
 
     <div class="ContentSideSections Implementation">
-        <div id="default" style="margin-bottom:20px" title="Default">
-            The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
-            His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. 
-            Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, 
-            kind and benevolent to those who give respect, 
+        <div id="default" style="margin-bottom:20px" title="default">
+            The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.
+            His beloved son Michael has just come home from the war, but does not intend to become part of his father's business.
+            Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family,
+            kind and benevolent to those who give respect,
             but given to ruthless violence whenever anything stands against the good of the family.
         </div>
 
         <div id="options" style="margin-bottom:20px" title="Toggle and Close">
-            The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
-            His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. 
-            Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, 
-            kind and benevolent to those who give respect, 
+            The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.
+            His beloved son Michael has just come home from the war, but does not intend to become part of his father's business.
+            Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family,
+            kind and benevolent to those who give respect,
             but given to ruthless violence whenever anything stands against the good of the family.
         </div>
 
         <p-panel title="PrimeElement" toggleable>
-            The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
-            His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. 
-            Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, 
-            kind and benevolent to those who give respect, 
+            The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.
+            His beloved son Michael has just come home from the war, but does not intend to become part of his father's business.
+            Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family,
+            kind and benevolent to those who give respect,
             but given to ruthless violence whenever anything stands against the good of the family.
         </p-panel>
     </div>
@@ -245,26 +258,26 @@ $(function() {
 
                                 <pre name="code" class="brush:xml">
 &lt;div id="default" style="margin-bottom:20px" title="Default"&gt;
-    The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
-    His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. 
-    Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, 
-    kind and benevolent to those who give respect, 
+    The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.
+    His beloved son Michael has just come home from the war, but does not intend to become part of his father's business.
+    Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family,
+    kind and benevolent to those who give respect,
     but given to ruthless violence whenever anything stands against the good of the family.
 &lt;/div&gt;
 
 &lt;div id="options" style="margin-bottom:20px" title="Toggle and Close"&gt;
-    The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
-    His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. 
-    Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, 
-    kind and benevolent to those who give respect, 
+    The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.
+    His beloved son Michael has just come home from the war, but does not intend to become part of his father's business.
+    Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family,
+    kind and benevolent to those who give respect,
     but given to ruthless violence whenever anything stands against the good of the family.
 &lt;/div&gt;
 
 &lt;p-panel title="PrimeElement" toggleable&gt;
-    The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
-    His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. 
-    Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, 
-    kind and benevolent to those who give respect, 
+    The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.
+    His beloved son Michael has just come home from the war, but does not intend to become part of his father's business.
+    Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family,
+    kind and benevolent to those who give respect,
     but given to ruthless violence whenever anything stands against the good of the family.
 &lt;/p-panel&gt;
                                 </pre>
@@ -275,10 +288,10 @@ $(function() {
                                 <p>Panel is used as a container element.</p>
                                 <pre name="code" class="brush:xml">
 &lt;p-panel title="PrimeElement" toggleable&gt;
-    The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
-    His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. 
-    Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, 
-    kind and benevolent to those who give respect, 
+    The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.
+    His beloved son Michael has just come home from the war, but does not intend to become part of his father's business.
+    Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family,
+    kind and benevolent to those who give respect,
     but given to ruthless violence whenever anything stands against the good of the family.
 &lt;/p-panel&gt;
                                 </pre>
