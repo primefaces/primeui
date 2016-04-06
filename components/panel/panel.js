@@ -15,8 +15,8 @@
             title: null,
             footer: null,
             enhanced: false,
-            headerContent:false,
-            footerContent:false
+            headerContent:null,
+            footerContent:null
         },
 
         _create: function() {
