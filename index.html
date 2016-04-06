@@ -17,16 +17,16 @@
         <script type="text/javascript" src="showcase/resources/js/perfect-scrollbar.js"></script>
         <script type="text/javascript" src="showcase/resources/js/site.js"></script>
         <script type="text/javascript" src="showcase/resources/js/index.js"></script>
-        
+
         <!-- Dependencies of some widgets -->
         <script type="text/javascript" src="showcase/resources/js/plugins/plugins-all.js"></script>
-        
+
         <!-- Mustache for templating support -->
         <script type="text/javascript" src="showcase/resources/js/plugins/mustache.min.js"></script>
-        
+
         <!-- X-TAG for PrimeElements -->
         <script type="text/javascript" src="showcase/resources/js/x-tag-core.min.js"></script>
-        
+
         <!-- PrimeUI -->
         <link rel="stylesheet" href="build/primeui.css" />
         <script type="text/javascript" src="build/primeui.js"></script>
@@ -60,6 +60,7 @@
                         <a class="SubMenuLink" href="togglebutton.html">&#9679; ToggleButton</a>
                         <a class="SubMenuLink" href="switch.html">&#9679; InputSwitch</a>
                         <a class="SubMenuLink" href="multiselectlistbox.html">&#9679; MultiSelectListBox</a>
+                        <a class="SubMenuLink" href="multiselect.html">&#9679; MultiSelect</a>
                     </div>
                     <span id="SubMenu-Button" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><img src="showcase/resources/images/mono/button.svg" /><img class="hiddenIcons" src="showcase/resources/images/mono/buttonBlue.svg" /><span class="MainLinkText">Button</span></span>
                     <div class="SubMenuLinkContainer">
@@ -129,7 +130,7 @@
                         <a class="SubMenuLink" href="sticky.html">&#9679; Sticky</a>
                         <a class="SubMenuLink" href="terminal.html">&#9679; Terminal</a>
                     </div>
-                    
+
                     <span id="SubMenu-Misc" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><img src="showcase/resources/images/mono/apps.svg" /><img class="hiddenIcons" src="showcase/resources/images/mono/appsBlue.svg" /><span class="MainLinkText">Samples</span></span>
                     <div class="SubMenuLinkContainer">
                         <a class="SubMenuLinkSamples" href="http://www.demo.znetdk.fr">&#9679; ZnetDK-1</a>
@@ -151,7 +152,7 @@
                         </a>
 
                         <a href="http://forum.primefaces.org/viewforum.php?f=16" class="PFTopLinks floatRight boldFont"><img alt="mockosx" src="showcase/resources/images/community.svg" /><span class="PFDarkText">Forum</span></a>
-                        
+
                         <span class="PFTopLinks floatRight boldFont cursorPointer" id="themeSwitcher">
                             <img src="showcase/resources/images/themeswitcher.svg" /><span class="PFDarkText">Free Themes</span>
                             <div id="GlobalThemeSwitcher" class="navOverlay">
@@ -206,7 +207,7 @@
 
                         <div class="mobileLogoCover">
                             <img src="showcase/resources/images/logoDark.svg" style="height:30px;" class="floatLeft marginRight10" />
-                            <span class="dispBlock logoDarkText fontSize14 floatLeft">PrimeUI <span class="dispBlock logoBlueText fontSize14 mediumFont">SHOWCASE</span></span> 
+                            <span class="dispBlock logoDarkText fontSize14 floatLeft">PrimeUI <span class="dispBlock logoBlueText fontSize14 mediumFont">SHOWCASE</span></span>
                         </div>
                         <select id="mobilemenu" class="selectmenu mediumFont">
                             <optgroup label="Menu" class="LEVEL1">
@@ -239,10 +240,11 @@
                                 <option value="togglebutton.html">ToggleButton</option>
                                 <option value="switch.html">InputSwitch</option>
                                 <option value="multiselectlistbox.html">MultiSelectListBox</option>
+                                <option value="multiselect.html">MultiSelect</option>
                             </optgroup>
                             <optgroup label="Button" class="LEVEL1">
                                 <option value="button.html">Button</option>
-                                <option value="splitbutton.html">SplitButton</option>   
+                                <option value="splitbutton.html">SplitButton</option>
                             </optgroup>
                             <optgroup label="Data" class="LEVEL1">
                                 <option value="carousel.html">Carousel</option>
@@ -270,7 +272,7 @@
                                 <option value="picklist.html">PickList</option>
                                 <option value="tree.html">Tree</option>
                                 <option value="treetable.html">TreeTable</option>
-                                <option value="paginator.html">Paginator</option>   
+                                <option value="paginator.html">Paginator</option>
                             </optgroup>
                             <optgroup label="Panel" class="LEVEL1">
                                 <option value="accordion.html">Accordion</option>
@@ -278,13 +280,13 @@
                                 <option value="grid.html">Grid CSS</option>
                                 <option value="notify.html">Notify</option>
                                 <option value="panel.html">Panel</option>
-                                <option value="tabview.html">TabView</option> 
+                                <option value="tabview.html">TabView</option>
                             </optgroup>
                             <optgroup label="Overlay" class="LEVEL1">
                                 <option value="dialog.html">Dialog</option>
                                 <option value="lightbox.html">LightBox</option>
                                 <option value="tooltip.html">Tooltip</option>
-                                <option value="overlaypanel.html">OverlayPanel</option>    
+                                <option value="overlaypanel.html">OverlayPanel</option>
                             </optgroup>
                             <optgroup label="Menu" class="LEVEL1">
                                 <option value="breadcrumb.html">Breadcrumb</option>
@@ -294,21 +296,21 @@
                                 <option value="menubar.html">Menubar</option>
                                 <option value="panelmenu.html">PanelMenu</option>
                                 <option value="slidemenu.html">SlideMenu</option>
-                                <option value="tieredmenu.html">TieredMenu</option>   
+                                <option value="tieredmenu.html">TieredMenu</option>
                             </optgroup>
                             <optgroup label="Messages" class="LEVEL1">
-                                <option value="growl.html">Growl</option>   
+                                <option value="growl.html">Growl</option>
                                 <option value="messages.html">Messages</option>
                             </optgroup>
                             <optgroup label="Multimedia" class="LEVEL1">
-                                <option value="galleria.html">Galleria</option>  
+                                <option value="galleria.html">Galleria</option>
                             </optgroup>
                             <optgroup label="Misc" class="LEVEL1">
                                 <option value="responsive.html">Responsive</option>
                                 <option value="fontawesome.html">FontAwesome</option>
                                 <option value="progressbar.html">ProgressBar</option>
                                 <option value="sticky.html">Sticky</option>
-                                <option value="terminal.html">Terminal</option>  
+                                <option value="terminal.html">Terminal</option>
                             </optgroup>
                             <optgroup label="Samples" class="LEVEL1">
                                 <option value="http://www.demo.znetdk.fr">ZnetDK-1</option>
@@ -399,7 +401,7 @@
 
                                         <span class="gray dispBlock regularFont fontSize14"> With PrimeUI PRO, it's easy to support, tune and add features to PrimeUI as if it were an in-house framework.
                                             <br /><br />
-                                            PrimeUI PRO is a term based commercial support service. With the exclusive services of Pro account, 
+                                            PrimeUI PRO is a term based commercial support service. With the exclusive services of Pro account,
                                             you no longer need to post your questions in PrimeUI community forum and your issues to community issue tracker.</span><br />
                                         <ul style="margin-top:0">
                                             <li>Access to pro.primefaces.org</li>
