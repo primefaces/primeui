@@ -8,32 +8,29 @@
         options: {
             toggleable: false,
             toggleDuration: 'normal',
-            toggleOrientation : 'vertical',
+            toggleOrientation: 'vertical',
             collapsed: false,
             closable: false,
             closeDuration: 'normal',
             title: null,
-            footer: null,
-            enhanced: false,
-            headerContent:null,
-            footerContent:null
+            footer: null
         },
 
         _create: function() {
-            if(!this.options.enhanced) {
-                this.element.addClass('ui-panel ui-widget ui-widget-content ui-corner-all')
-                    .contents().wrapAll('<div class="ui-panel-content ui-widget-content" />');
+            this.element.addClass('ui-panel ui-widget ui-widget-content ui-corner-all')
+                .contents().wrapAll('<div class="ui-panel-content ui-widget-content" />');
+            
+            if(this.element.attr('title')) {
+                this.options.title = this.element.attr('title');
+                this.element.removeAttr('title');
+            }
 
-                var title = this.element.attr('title')||this.options.title;
-                if(title) {
-                    this.element.prepend('<div class="ui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all"><span class="ui-panel-title">' +
-                            title + "</span></div>").removeAttr('title');
-                }
-
-                var footer = this.element.attr('footer')||this.options.footer;
-                if(footer) {
-                    this.element.append('<div class="ui-panel-footer ui-widget-content">'+ footer +'</div>')
-                }
+            if(this.options.title) {
+                this.element.prepend('<div class="ui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all"><span class="ui-panel-title"></span></div>');
+            }
+            
+            if(this.options.footer) {
+                this.element.append('<div class="ui-panel-footer ui-widget-content"></div>');
             }
 
             this.header = this.element.children('div.ui-panel-titlebar');
@@ -42,33 +39,18 @@
             this.footer = this.element.children('div.ui-panel-footer');
 
             var $this = this;
-
-            if(this.options.headerContent) {
-                if(!title && title === null) {
-                    this.element.prepend('<div class="ui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all"></div>');
-                    this.header = this.element.children('div.ui-panel-titlebar');
-                }
-                var headerContent = this._createItemContent(this.options.headerContent);
-                this.header.append(headerContent);
+            
+            if(this.options.title) {
+                this._createFacetContent(this.title, this.options.title);
             }
-
-            if(this.options.footerContent) {
-                if(!footer && footer === null) {
-                    this.element.append('<div class="ui-panel-footer ui-widget-content"></div>');
-                    this.footer = this.element.children('div.ui-panel-footer');
-                }
-                var footerContent = this._createItemContent(this.options.footerContent);
-                this.footer.append(footerContent);
+            
+            if(this.options.footer) {
+                this._createFacetContent(this.footer, this.options.footer);
             }
 
             if(this.options.closable) {
-                if(!this.options.enhanced) {
-                    this.closer = $('<a class="ui-panel-titlebar-icon ui-panel-titlebar-closer ui-corner-all ui-state-default" href="#"><span class="fa fa-fw fa-close"></span></a>')
-                                .appendTo(this.header);
-                }
-                else {
-                    this.closer = this.header.children('.ui-panel-titlebar-closer');
-                }
+                this.closer = $('<a class="ui-panel-titlebar-icon ui-panel-titlebar-closer ui-corner-all ui-state-default" href="#"><span class="fa fa-fw fa-close"></span></a>')
+                            .appendTo(this.header);
 
                 this.closer.on('click.puipanel', function(e) {
                     $this.close();
@@ -79,14 +61,8 @@
             if(this.options.toggleable) {
                 var icon = this.options.collapsed ? 'fa-plus' : 'fa-minus';
 
-                if(!this.options.enhanced) {
-                    this.toggler = $('<a class="ui-panel-titlebar-icon ui-panel-titlebar-toggler ui-corner-all ui-state-default" href="#"><span class="fa fa-fw ' + icon + '"></span></a>')
-                                .appendTo(this.header);
-                }
-                else {
-                    this.toggler = this.header.children('.ui-panel-titlebar-toggler');
-                    this.toggler.children('.fa').addClass(icon);
-                }
+                this.toggler = $('<a class="ui-panel-titlebar-icon ui-panel-titlebar-toggler ui-corner-all ui-state-default" href="#"><span class="fa fa-fw ' + icon + '"></span></a>')
+                            .appendTo(this.header);
 
                 this.toggler.on('click.puipanel', function(e) {
                     $this.toggle();
@@ -225,9 +201,15 @@
                 this.toggler.children('.fa').removeClass('fa-minus fa-plus');
             }
         },
-
-        _createItemContent: function(obj) {
-            return obj.call(this);
+        
+        _createFacetContent: function(anchor, option) {
+            var facetValue;
+            if($.type(option) === 'string')
+                facetValue = option;
+            else if($.type(option) === 'function')
+                facetValue = option.call();
+            
+            anchor.append(facetValue);
         }
     });
 })();
