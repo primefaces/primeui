@@ -11,12 +11,17 @@
             filterMatchMode: 'startsWith',
             filterFunction: null,
             data: null,
-            scrollHeight:200,
+            scrollHeight: 200,
             style: null,
             styleClass: null
         },
 
         _create: function() {
+            this.id = this.element.attr('id');
+            if(!this.id) {
+                this.id = this.element.uniqueId().attr('id');
+            }
+            
             if(this.options.data) {
                 if($.isArray(this.options.data)) {
                     this._generateOptionElements(this.options.data);
@@ -79,12 +84,7 @@
             this.itemContainer = $('<ul class="ui-multiselect-items ui-multiselect-list ui-widget-content ui-widget ui-corner-all ui-helper-reset"></ul>')
                 .appendTo(this.itemsWrapper);
 
-            if(this.options.scrollHeight) {
-                this.itemsWrapper.height(this.options.scrollHeight);
-            }
-            else if(this.inputs.length > 10) {
-                this.itemsWrapper.height(200)
-            }
+            this.itemsWrapper.css('max-height', this.options.scrollHeight);
         },
 
         _generateItems: function() {
@@ -114,18 +114,10 @@
 
         _bindEvents: function() {
             var $this = this,
-            hideNS = 'mousedown.',
-            resizeNS = 'resize.';
+            hideNS = 'click.' + this.id,
+            resizeNS = 'resize.' + this.id;
 
-            this.items.filter(':not(.ui-state-disabled)').each(function(i, item) {
-                $this._bindItemEvents($(item));
-            });
-
-            //Events for checkboxes
-            this._bindCheckboxHover(this.checkboxes);
-            this.checkboxes.on('click.puimultiselect', function() {
-                $this._toggleItem($(this));
-            });
+            this._bindItemEvents(this.items.filter(':not(.ui-state-disabled)'));
 
             //Toggler
             this._bindCheckboxHover(this.togglerBox);
@@ -191,14 +183,12 @@
                 if(!$this.disabled) {
                     $this.triggers.removeClass('ui-state-hover');
                 }
-            }).on('mousedown.puimultiselect', function(e) {
+            }).on('click.puimultiselect', function(e) {
                 if(!$this.disabled) {
-                    if($this.panel.is(":hidden")) {
+                    if($this.panel.is(":hidden"))
                         $this.show();
-                    }
-                    else {
+                    else
                         $this.hide(true);
-                    }
                 }
             })
             .on('focus.puimultiselect', function() {
@@ -225,7 +215,7 @@
                 if($this.triggers.is(target)||$this.triggers.has(target).length > 0) {
                     return;
                 }
-
+                
                 //hide the panel and remove focus from label
                 var offset = $this.panel.offset();
                 if(e.pageX < offset.left ||
@@ -558,36 +548,17 @@
         },
 
         alignPanel: function() {
-            var fixedPosition = this.panel.css('position') == 'fixed',
-            win = $(window),
-            positionOffset = fixedPosition ? '-' + win.scrollLeft() + ' -' + win.scrollTop() : null,
-            panelStyle = this.panel.attr('style');
-
             this.panel.css({
                     'left':'',
                     'top':'',
                     'z-index': ++PUI.zindex
             });
-
-            if(this.panel.parent().attr('id') === this.id) {
-                this.panel.css({
-                    left: 0,
-                    top: this.container.innerHeight()
-                });
-            }
-            else {
-                this.panel.position({
-                                    my: 'left top'
-                                    ,at: 'left bottom'
-                                    ,of: this.container
-                                    ,offset : positionOffset
-                                });
-            }
-
-            if(!this.widthAligned && (this.panel.width() < this.container.width()) && (!panelStyle||panelStyle.toLowerCase().indexOf('width') === -1)) {
-                this.panel.width(this.container.width());
-                this.widthAligned = true;
-            }
+            
+            this.panel.show().position({
+                                my: 'left top'
+                                ,at: 'left bottom'
+                                ,of: this.container
+                            });
         }
     });
 })();
