@@ -328,10 +328,8 @@
             this._super();
         },
 
-
         _bindEvents: function() {
             this._bindItemEvents();
-
             this._bindDocumentHandler();
         },
 
@@ -799,37 +797,21 @@
             var $this = this;
 
             if(this.options.target) {
-                if($.type(this.options.target) === 'string') {
-                    this.options.target =  $(this.options.target);
+                this.options.target =  $(this.options.target);
+                
+                if(this.options.target.hasClass('ui-datatable')) {
+                    $this._bindDataTable();
                 }
-            }
-            else {
-                this.options.target = $(document);
+                else {
+                    this.options.target.on(this.options.event + '.ui-contextmenu', function(e){
+                        $this.show(e);
+                    });
+                }
             }
 
             if(!this.element.parent().parent().is(document.body)) {
                 this.element.parent().appendTo('body');
             }
-
-            if(this.options.target.hasClass('ui-datatable')) {
-                $this._bindDataTable();
-            }
-            else {
-                this.options.target.on(this.options.event + '.ui-contextmenu', function(e){
-                    $this.show(e);
-                });
-            }
-        },
-
-        _bindItemEvents: function() {
-            this._super();
-
-            var $this = this;
-
-            //hide menu on item click
-            this.links.on('click.ui-contextmenu', function() {
-                $this._hide();
-            });
         },
 
         _bindDocumentHandler: function() {
@@ -865,13 +847,14 @@
         _unbindEvents: function() {
             this._super();
 
-            this.options.target.off(this.options.event + '.ui-contextmenu');
-            this.links.off('click.ui-contextmenu');
-            $(document.body).off('click.ui-contextmenu.' + this.id);
-
-            if(this.options.target.hasClass('ui-datatable')) {
-                this._unbindDataTable();
+            if(this.options.target) {
+                if(this.options.target.hasClass('ui-datatable'))
+                    this._unbindDataTable();
+                else 
+                    this.options.target.off(this.options.event + '.ui-contextmenu');
             }
+            
+            $(document.body).off('click.ui-contextmenu.' + this.id);
         },
 
         show: function(e) {

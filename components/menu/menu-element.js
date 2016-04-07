@@ -355,7 +355,7 @@ if(!xtag.tags['p-contextmenu']) {
 
                 $(this.xtag.container).puicontextmenu({
                     autoDisplay: this.autodisplay ? JSON.parse(this.autodisplay): true,
-                    target: this.target,
+                    target: this.target||document,
                     event: this.event||'contextmenu'
                 });
             }
