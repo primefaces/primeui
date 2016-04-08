@@ -13,7 +13,8 @@
             data: null,
             scrollHeight: 200,
             style: null,
-            styleClass: null
+            styleClass: null,
+            value: null
         },
 
         _create: function() {
@@ -21,7 +22,7 @@
             if(!this.id) {
                 this.id = this.element.uniqueId().attr('id');
             }
-            
+
             if(this.options.data) {
                 if($.isArray(this.options.data)) {
                     this._generateOptionElements(this.options.data);
@@ -37,12 +38,30 @@
                 this.container.addClass(this.options.styleClass);
             }
 
-            this.inputs = this.element.find(':checkbox');
+            this.inputs = this.container.find(':checkbox');
             this.checkboxes = this.itemContainer.find('.ui-chkbox-box:not(.ui-state-disabled)');
             this.triggers = this.container.find('.ui-multiselect-trigger, .ui-multiselect-label');
+            this.label = this.labelContainer.find('.ui-multiselect-label');
 
             this._generateItems();
             this.labels = this.itemContainer.find('label');
+
+            //preselection via value option
+            if(this.options.value || this.options.value == 0) {
+                var checkboxes = this.items.find('.ui-chkbox-box');
+                if($.isArray(this.options.value)) {
+                    for (var i = 0; i < this.options.value.length; i++) {
+                        selectedOption = this.choices.filter('[value="'+this.options.value[i]+'"]').prop('selected', true);
+                        selectedOptionIndex = this.findSelectionIndex(selectedOption.text());
+                        this._toggleItem(checkboxes.eq(selectedOptionIndex), true);
+                    }
+                }
+                else {
+                    selectedOption = this.choices.filter('[value="'+this.options.value+'"]').prop('selected', true);
+                    selectedOptionIndex = this.findSelectionIndex(selectedOption.text());
+                    this._toggleItem(checkboxes.eq(selectedOptionIndex), true);
+                }
+            }
 
             this._bindEvents();
         },
@@ -105,6 +124,7 @@
         _generateOptionElements: function(data) {
             for(var i = 0; i < data.length; i++) {
                 var choice = data[i];
+
                 if(choice.label)
                     this.element.append('<option value="' + choice.value + '">' + choice.label + '</option>');
                 else
@@ -118,7 +138,6 @@
             resizeNS = 'resize.' + this.id;
 
             this._bindItemEvents(this.items.filter(':not(.ui-state-disabled)'));
-
             //Toggler
             this._bindCheckboxHover(this.togglerBox);
             this.togglerBox.on('click.puimultiselect', function() {
@@ -215,7 +234,7 @@
                 if($this.triggers.is(target)||$this.triggers.has(target).length > 0) {
                     return;
                 }
-                
+
                 //hide the panel and remove focus from label
                 var offset = $this.panel.offset();
                 if(e.pageX < offset.left ||
@@ -468,30 +487,37 @@
         check: function(checkbox, updateInput) {
             if(!checkbox.hasClass('ui-state-disabled')) {
                 var checkedInput = checkbox.prev().children('input');
-
+                var value = checkedInput.closest('li').children('label').text();
+                var index = this.findSelectionIndex(value);
                 checkedInput.prop('checked', true);
+                this.choices.eq(index).prop('selected', true);
+                
                 if(updateInput) {
                     checkedInput.trigger('focus.puimultiselect');
                 }
 
-                checkbox.addClass('ui-state-active').children('.ui-chkbox-icon').addClass('fa fa-fw fa-check');
+                checkbox.addClass('ui-state-active').children('.ui-chkbox-icon').removeClass('ui-icon-blank').addClass('fa fa-fw fa-check');
                 checkbox.closest('li.ui-multiselect-item').removeClass('ui-multiselect-unchecked').addClass('ui-multiselect-checked');
 
                 if(updateInput) {
                     var input = this.inputs.eq(checkbox.parents('li:first').index());
                     input.prop('checked', true).change();
-
                     this.updateToggler();
                 }
+                this.updateLabel();
             }
         },
 
         uncheck: function(checkbox, updateInput) {
             if(!checkbox.hasClass('ui-state-disabled')) {
                 var uncheckedInput = checkbox.prev().children('input');
+                var value = uncheckedInput.closest('li').children('label').text();
+                var index = this.findSelectionIndex(value);
+
                 checkbox.removeClass('ui-state-active').children('.ui-chkbox-icon').addClass('ui-icon-blank').removeClass('fa fa-fw fa-check');
                 checkbox.closest('li.ui-multiselect-item').addClass('ui-multiselect-unchecked').removeClass('ui-multiselect-checked');
                 uncheckedInput.prop('checked', false);
+                this.choices.eq(index).prop('selected', false);
 
                 if(updateInput) {
                     var input = this.inputs.eq(checkbox.parents('li:first').index());
@@ -499,7 +525,41 @@
                     uncheckedInput.trigger('focus.puimultiselect');
                     this.updateToggler();
                 }
+                this.updateLabel();
             }
+        },
+
+        findSelectionIndex(val){
+            var index = -1;
+
+            if(this.choices) {
+                for(var i = 0; i < this.choices.length; i++) {
+                    if(this.choices.eq(i).text() == val) {
+                        index = i;
+                        break;
+                    }
+                }
+            }
+
+            return index;
+        },
+
+        updateLabel() {
+            var selectedItems = this.element.find(':selected');
+            var label = '';
+
+            if(selectedItems && selectedItems.length) {
+                for(var i = 0; i < selectedItems.length; i++) {
+                    if(i != 0) {
+                        label = label + ',';
+                    }
+                    label = label + $(selectedItems[i]).text();
+                }
+            }
+            else {
+                label = this.options.defaultLabel;
+            }
+            this.label.text(label);
         },
 
         updateToggler: function() {
@@ -553,7 +613,7 @@
                     'top':'',
                     'z-index': ++PUI.zindex
             });
-            
+
             this.panel.show().position({
                                 my: 'left top'
                                 ,at: 'left bottom'

@@ -6,7 +6,9 @@
             'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
             'ui-darkness', 'ui-lightness', 'vader');
 
-            $('#basic').puimultiselect();
+            $('#basic').puimultiselect({
+                value: [0,1,2]
+            });
 
             $('#localData').puimultiselect({
                 data: themes,
@@ -32,7 +34,7 @@
 
     <div class="ContentSideSections Implementation">
         <h3 class="first">Basic</h3>
-        <select id="basic" name="basic">
+        <select id="basic" name="basic" multiple>
             <option value="0">Istanbul</option>
             <option value="1">Barcelona</option>
             <option value="2">Paris</option>
@@ -40,7 +42,7 @@
         </select>
 
         <h3>Local Data</h3>
-        <select id="localData" name="localData"></select>
+        <select id="localData" name="localData" multiple></select>
     </div>
 
     <div id="SourceContentSide" class="ContentSideSections Source">
