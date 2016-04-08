@@ -9,3 +9,7 @@
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
 }
+
+.ui-fluid .ui-calendar {
+    width: 100%;
+}
