@@ -38,29 +38,19 @@
                 this.container.addClass(this.options.styleClass);
             }
 
-            this.inputs = this.container.find(':checkbox');
-            this.checkboxes = this.itemContainer.find('.ui-chkbox-box:not(.ui-state-disabled)');
             this.triggers = this.container.find('.ui-multiselect-trigger, .ui-multiselect-label');
             this.label = this.labelContainer.find('.ui-multiselect-label');
 
             this._generateItems();
-            this.labels = this.itemContainer.find('label');
 
             //preselection via value option
-            if(this.options.value || this.options.value == 0) {
+            if(this.options.value && this.options.value.length) {
                 var checkboxes = this.items.find('.ui-chkbox-box');
-                if($.isArray(this.options.value)) {
-                    for (var i = 0; i < this.options.value.length; i++) {
-                        selectedOption = this.choices.filter('[value="'+this.options.value[i]+'"]').prop('selected', true);
-                        selectedOptionIndex = this.findSelectionIndex(selectedOption.text());
-                        this._toggleItem(checkboxes.eq(selectedOptionIndex), true);
-                    }
+                for (var i = 0; i < this.options.value.length; i++) {
+                    var index =  this.findSelectionIndex(this.options.value[i]);
+                    this.selectItem(this.items.eq(index));                    
                 }
-                else {
-                    selectedOption = this.choices.filter('[value="'+this.options.value+'"]').prop('selected', true);
-                    selectedOptionIndex = this.findSelectionIndex(selectedOption.text());
-                    this._toggleItem(checkboxes.eq(selectedOptionIndex), true);
-                }
+                this.updateLabel();
             }
 
             this._bindEvents();
@@ -95,7 +85,7 @@
             this.panelHeader = $('<div class="ui-widget-header ui-corner-all ui-multiselect-header ui-helper-clearfix"></div>').appendTo(this.panel);
             this.toggler = $('<div class="ui-chkbox ui-widget">' +
                 '<div class="ui-helper-hidden-accessible"><input readonly="readonly" type="checkbox"/></div>' +
-                '<div class="ui-chkbox-box ui-widget ui-corner-all ui-state-default"><span class="ui-chkbox-icon ui-c"></span></div>' +
+                '<div class="ui-chkbox-box ui-widget ui-corner-all ui-state-default"><span class="ui-chkbox-icon ui-c fa fa-fw"></span></div>' +
                     '</div>');
             this.togglerBox = this.toggler.children('.ui-chkbox-box');
             this.panelHeader.append(this.toggler);
@@ -113,12 +103,11 @@
                 this.listItems = $('<li data-label="' + optionLabel + '" class="ui-multiselect-item ui-corner-all">' +
                 '<div class="ui-chkbox ui-widget">' +
                     '<div class="ui-helper-hidden-accessible"><input readonly="readonly" type="checkbox"/></div>' +
-                    '<div class="ui-chkbox-box ui-widget ui-corner-all ui-state-default"><span class="ui-chkbox-icon ui-c"></span></div>' +
+                    '<div class="ui-chkbox-box ui-widget ui-corner-all ui-state-default"><span class="ui-chkbox-icon ui-c fa fa-fw"></span></div>' +
                 '</div>' + '<label>' + optionLabel + '</label>' + '</li>').appendTo(this.itemContainer);
             }
 
             this.items = this.itemContainer.children('.ui-multiselect-item');
-
         },
 
         _generateOptionElements: function(data) {
@@ -138,19 +127,17 @@
             resizeNS = 'resize.' + this.id;
 
             this._bindItemEvents(this.items.filter(':not(.ui-state-disabled)'));
+            
             //Toggler
             this._bindCheckboxHover(this.togglerBox);
             this.togglerBox.on('click.puimultiselect', function() {
                 var el = $(this);
-                if(el.hasClass('ui-state-active')) {
+                if(el.children('.ui-chkbox-icon').hasClass('fa-check'))
                     $this.uncheckAll();
-                    el.addClass('ui-state-hover');
-                }
-                else {
+                else
                     $this.checkAll();
-                    el.removeClass('ui-state-hover');
-                }
-                $this._toggleItem($(this));
+                    
+                $this.updateLabel();
             });
 
             //Filter
@@ -183,14 +170,6 @@
                 $this.hide(true);
 
                 e.preventDefault();
-            });
-
-            //Labels
-            this.items.on('click.puimultiselect', function() {
-                var checkbox = $(this).find('.ui-chkbox-box');
-                $this._toggleItem(checkbox);
-                checkbox.removeClass('ui-state-hover');
-                PUI.clearSelection();
             });
 
             //Events to show/hide the panel
@@ -265,6 +244,10 @@
                 .on('mouseout.puimultiselect', function() {
                     $(this).removeClass('ui-state-hover');
                 })
+                .on('click.puimultiselect', function() {
+                    $this._toggleItem($(this));
+                    PUI.clearSelection();
+                });
         },
 
         _bindKeyEvents: function() {
@@ -341,11 +324,8 @@
                         if(e.which === $.ui.keyCode.SPACE) {
                             var input = $(this),
                             box = input.parent().next();
-
-                            if(input.prop('checked'))
-                                $this.uncheck(box, true);
-                            else
-                                $this.check(box, true);
+                            
+                            $this._toggleItem(input.closest('li'));
 
                             e.preventDefault();
                         }
@@ -392,17 +372,30 @@
             });
         },
 
-        _toggleItem: function(checkbox) {
-            if(!checkbox.hasClass('ui-state-disabled')) {
-                if(checkbox.hasClass('ui-state-active')) {
-                    this.uncheck(checkbox, true);
-                    checkbox.addClass('ui-state-hover');
-                }
-                else {
-                    this.check(checkbox, true);
-                    checkbox.removeClass('ui-state-hover');
-                }
-            }
+        _toggleItem: function(item) {
+            if(item.hasClass('ui-state-highlight'))
+                this.unselectItem(item);
+            else
+                this.selectItem(item);
+            
+            this.updateLabel();
+            this.updateToggler();
+        },
+        
+        selectItem: function(item) {
+            var checkbox = item.find('> .ui-chkbox');
+            item.addClass('ui-state-highlight');
+            checkbox.find(':checkbox').prop('checked', true);
+            checkbox.find('> .ui-chkbox-box > .ui-chkbox-icon').addClass('fa-check');
+            this.choices.eq(item.index()).prop('selected', true);
+        },
+        
+        unselectItem: function(item) {
+            var checkbox = item.find('> .ui-chkbox');
+            item.removeClass('ui-state-highlight');
+            checkbox.find(':checkbox').prop('checked', false);
+            checkbox.find('> .ui-chkbox-box > .ui-chkbox-icon').removeClass('fa-check');
+            this.choices.eq(item.index()).prop('selected', false);
         },
 
         filter: function(value) {
@@ -412,17 +405,15 @@
                 this.itemContainer.children('li.ui-multiselect-item').filter(':hidden').show();
             }
             else {
-                for(var i = 0; i < this.labels.length; i++) {
-                    var labelElement = this.labels.eq(i),
-                    item = labelElement.parent(),
-                    itemLabel = this.options.caseSensitive ? labelElement.text() : labelElement.text().toLowerCase();
+                for(var i = 0; i < this.choices.length; i++) {
+                    var choice = this.choices.eq(i),
+                    item = this.items.eq(i),
+                    itemLabel = this.options.caseSensitive ? choice.text() : choice.text().toLowerCase();
 
-                    if(this.filterMatcher(itemLabel, filterValue)) {
+                    if(this.filterMatcher(itemLabel, filterValue))
                         item.show();
-                    }
-                    else {
+                    else
                         item.hide();
-                    }
                 }
             }
 
@@ -484,57 +475,12 @@
             this.panel.trigger('onHide.puimultiselect');
         },
 
-        check: function(checkbox, updateInput) {
-            if(!checkbox.hasClass('ui-state-disabled')) {
-                var checkedInput = checkbox.prev().children('input');
-                var value = checkedInput.closest('li').children('label').text();
-                var index = this.findSelectionIndex(value);
-                checkedInput.prop('checked', true);
-                this.choices.eq(index).prop('selected', true);
-                
-                if(updateInput) {
-                    checkedInput.trigger('focus.puimultiselect');
-                }
-
-                checkbox.addClass('ui-state-active').children('.ui-chkbox-icon').removeClass('ui-icon-blank').addClass('fa fa-fw fa-check');
-                checkbox.closest('li.ui-multiselect-item').removeClass('ui-multiselect-unchecked').addClass('ui-multiselect-checked');
-
-                if(updateInput) {
-                    var input = this.inputs.eq(checkbox.parents('li:first').index());
-                    input.prop('checked', true).change();
-                    this.updateToggler();
-                }
-                this.updateLabel();
-            }
-        },
-
-        uncheck: function(checkbox, updateInput) {
-            if(!checkbox.hasClass('ui-state-disabled')) {
-                var uncheckedInput = checkbox.prev().children('input');
-                var value = uncheckedInput.closest('li').children('label').text();
-                var index = this.findSelectionIndex(value);
-
-                checkbox.removeClass('ui-state-active').children('.ui-chkbox-icon').addClass('ui-icon-blank').removeClass('fa fa-fw fa-check');
-                checkbox.closest('li.ui-multiselect-item').addClass('ui-multiselect-unchecked').removeClass('ui-multiselect-checked');
-                uncheckedInput.prop('checked', false);
-                this.choices.eq(index).prop('selected', false);
-
-                if(updateInput) {
-                    var input = this.inputs.eq(checkbox.parents('li:first').index());
-                    input.prop('checked', false).change();
-                    uncheckedInput.trigger('focus.puimultiselect');
-                    this.updateToggler();
-                }
-                this.updateLabel();
-            }
-        },
-
         findSelectionIndex(val){
             var index = -1;
 
             if(this.choices) {
                 for(var i = 0; i < this.choices.length; i++) {
-                    if(this.choices.eq(i).text() == val) {
+                    if(this.choices.eq(i).val() == val) {
                         index = i;
                         break;
                     }
@@ -545,66 +491,60 @@
         },
 
         updateLabel() {
-            var selectedItems = this.element.find(':selected');
-            var label = '';
+            var selectedItems = this.choices.filter(':selected'),
+            label = null;
 
-            if(selectedItems && selectedItems.length) {
+            if(selectedItems.length) {
+                label = '';
                 for(var i = 0; i < selectedItems.length; i++) {
                     if(i != 0) {
                         label = label + ',';
                     }
-                    label = label + $(selectedItems[i]).text();
+                    label = label + selectedItems.eq(i).text();
                 }
             }
             else {
                 label = this.options.defaultLabel;
             }
+            
             this.label.text(label);
         },
 
         updateToggler: function() {
             var visibleItems = this.itemContainer.children('li.ui-multiselect-item:visible');
 
-            if(visibleItems.length && visibleItems.filter('.ui-multiselect-checked').length === visibleItems.length) {
-                this.check(this.togglerBox);
+            if(visibleItems.length && visibleItems.filter('.ui-state-highlight').length === visibleItems.length) {
+                this.toggler.find(':checkbox').prop('checked', true);
+                this.togglerBox.children('.ui-chkbox-icon').addClass('fa-check');
             }
             else {
-                this.uncheck(this.togglerBox);
+                this.toggler.find(':checkbox').prop('checked', false);
+                this.togglerBox.children('.ui-chkbox-icon').removeClass('fa-check');
             }
         },
 
         checkAll: function() {
-            var visibleItems = this.itemContainer.children('li.ui-multiselect-item').filter(':visible'),
+            var visibleItems = this.items.filter(':visible'),
             $this = this;
 
             visibleItems.each(function() {
-                $this.inputs.eq($(this).index()).prop('checked', true);
-                $this.check($(this).children('.ui-chkbox').children('.ui-chkbox-box'));
+                $this.selectItem($(this));
             });
-
-            this.check(this.togglerBox);
-
-            if(!this.togglerBox.hasClass('ui-state-disabled')) {
-                this.togglerBox.prev().children('input').trigger('focus.puimultiselect');
-                this.togglerBox.addClass('ui-state-active');
-            }
+        
+            this.toggler.find(':checkbox').prop('checked', true);
+            this.togglerBox.children('.ui-chkbox-icon').addClass('fa-check');
         },
 
         uncheckAll: function() {
-            var visibleItems = this.itemContainer.children('li.ui-multiselect-item').filter(':visible'),
+            var visibleItems = this.items.filter(':visible'),
             $this = this;
 
             visibleItems.each(function() {
-                $this.inputs.eq($(this).index()).prop('checked', false);
-                $this.uncheck($(this).children('.ui-chkbox').children('.ui-chkbox-box'));
+                $this.unselectItem($(this));
             });
-
-            this.uncheck(this.togglerBox);
-
-            if(!this.togglerBox.hasClass('ui-state-disabled')) {
-                this.togglerBox.prev().children('input').trigger('focus.puimultiselect');
-            }
-
+            
+            this.toggler.find(':checkbox').prop('checked', false);
+            this.togglerBox.children('.ui-chkbox-icon').removeClass('fa-check');
         },
 
         alignPanel: function() {
