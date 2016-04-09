@@ -146,6 +146,12 @@ $('#localData').puimultiselect({
                                             <td>null</td>
                                             <td>Style class of the element.</td>
                                         </tr>
+                                        <tr>
+                                            <td>value</td>
+                                            <td>string,number,array</td>
+                                            <td>null</td>
+                                            <td>Preselection value of MultiSelect.</td>
+                                        </tr>
                                     </tbody>
                                 </table>
 
@@ -193,7 +199,7 @@ $(function() {
     'ui-darkness', 'ui-lightness', 'vader');
 
     $('#basic').puimultiselect({
-        scrollHeight:120
+        value: [1,2]
     });
 
     $('#localData').puimultiselect({
