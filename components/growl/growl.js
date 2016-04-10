@@ -61,8 +61,11 @@
             markup += '</div><div style="clear: both;"></div></div></div>';
 
             var message = $(markup);
+            
+            message.addClass('ui-growl-message-' + msg.severity);
 
             this._bindMessageEvents(message);
+            
             message.appendTo(this.element).fadeIn();
         },
 
