@@ -475,7 +475,7 @@
             this.panel.trigger('onHide.puimultiselect');
         },
 
-        findSelectionIndex(val){
+        findSelectionIndex: function(val){
             var index = -1;
 
             if(this.choices) {
@@ -490,7 +490,7 @@
             return index;
         },
 
-        updateLabel() {
+        updateLabel: function() {
             var selectedItems = this.choices.filter(':selected'),
             label = null;
 
