@@ -48,6 +48,10 @@
     cursor: default;
 }
 
+.ui-dropdown .ui-dropdown-panel {
+    min-width: 100%;
+}
+
 .ui-dropdown-panel {
     position: absolute;
     height: auto;

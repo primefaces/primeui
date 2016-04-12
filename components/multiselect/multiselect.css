@@ -43,12 +43,13 @@
     cursor: auto
 }
 
-.ui-multiselect-panel {
+.ui-multiselect .ui-multiselect-panel {
     padding: 0.2em;
     position: absolute;
     -moz-box-shadow: 0px 5px 10px rgba(0,0,0,0.8);
     -webkit-box-shadow: 0px 5px 10px rgba(0,0,0,0.8);
     box-shadow: 0px 5px 10px rgba(0,0,0,0.8);
+    min-width: 100%;
 }
 
 .ui-multiselect-panel .ui-multiselect-items-wrapper {
@@ -137,4 +138,5 @@
 
 .ui-fluid .ui-multiselect {
     width: 100%;
+    box-sizing: border-box;
 }
