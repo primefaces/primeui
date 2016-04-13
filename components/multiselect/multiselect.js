@@ -58,7 +58,7 @@
 
         _render: function() {
             this.choices = this.element.children('option');
-            this.element.attr('tabindex', '0').wrap('<div class="ui-multiselect ui-widget ui-state-default ui-corner-all" />')
+            this.element.attr('tabindex', '0').wrap('<div class="ui-multiselect ui-widget ui-state-default ui-corner-all ui-shadow" />')
                 .wrap('<div class="ui-helper-hidden-accessible" />');
             this.container = this.element.closest('.ui-multiselect');
             this.container.append('<div class="ui-helper-hidden-accessible"><input readonly="readonly" type="text" /></div>');
