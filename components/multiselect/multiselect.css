@@ -105,12 +105,12 @@
 
 .ui-multiselect-header .ui-multiselect-filter-container .fa {
     position: absolute;
-    right: 5px;
+    left: 5px;
     top: 2px;
 }
             
 .ui-multiselect-header .ui-inputtext {
-    padding: 1px 20px 1px 2px;
+    padding: 1px 1px 1px 20px;
 }
 
 .ui-multiselect-header .ui-multiselect-close {
