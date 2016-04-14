@@ -1,6 +1,6 @@
 {
   "license": "Apache-2.0",
-  "version": "v4.1.8",
+  "version": "v4.1.9-SNAPSHOT",
   "scripts": {
     "start": "lite-server"
   },
