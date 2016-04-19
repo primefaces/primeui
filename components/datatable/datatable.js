@@ -1683,6 +1683,7 @@
 
             //filter support
             this.thead.find('.ui-column-filter').prop('disabled', true);
+            this.filterElements = $this.cloneContainer.find('.ui-column-filter');
         },
 
         _initEditing: function() {
