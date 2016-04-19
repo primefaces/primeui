@@ -36,7 +36,7 @@
             margin-bottom: 40px;
         }
     </style>
-    
+
     <div id="datatable-submenu" class="ContentSideSections SubSubMenu clearfix">
         <ul>
             <li><a href="datatable.html">&bull; DataSource</a></li>
@@ -64,7 +64,7 @@
         </div>
     </div>
 
-    <div class="ContentSideSections Implementation">        
+    <div class="ContentSideSections Implementation">
         <div id="tblsticky"></div>
     </div>
 
@@ -79,16 +79,16 @@
                         </ul>
                         <div>
 
-                            <div id="doc-markup">                               
+                            <div id="doc-markup">
                                 <pre name="code" class="brush:xml">
-&lt;div id="tblfilter"&gt;/&lt;/div&gt;
+&lt;div id="tblsticky"&gt;/&lt;/div&gt;
                                 </pre>
                             </div>
 
                             <div id="doc-script">
                                 <pre name="code" class="brush:js">
 $(function() {
-    $('#tblfilter').puidatatable({
+    $('#tblsticky').puidatatable({
         caption: 'Filtering',
         columns: [
             {field: 'vin', headerText: 'Vin', filter: true},
@@ -96,6 +96,7 @@ $(function() {
             {field: 'year', headerText: 'Year', filter: true},
             {field: 'color', headerText: 'Color', filter: true}
         ],
+        stickyHeader: true,
         datasource: function(callback) {
             $.ajax({
                 type: "GET",
