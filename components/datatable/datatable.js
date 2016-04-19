@@ -1647,13 +1647,15 @@
             this.stickyContainer.children('table').append(this.thead);
             table.prepend(this.clone);
             
-            this.stickyContainer.css({
-                position: 'absolute',
-                width: table.outerWidth(),
-                top: offset.top,
-                left: offset.left,
-                'z-index': ++PUI.zindex
-            });
+            setTimeout(function() {
+                $this.stickyContainer.css({
+                    position: 'absolute',
+                    width: table.outerWidth(),
+                    top: offset.top,
+                    left: offset.left,
+                    'z-index': ++PUI.zindex
+                  });
+            }, 5);
             
             this.element.prepend(this.stickyContainer);
             
