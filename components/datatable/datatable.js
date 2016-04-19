@@ -1328,7 +1328,13 @@
                 start: function(event, ui) {
                     ui.helper.data('originalposition', ui.helper.offset());
 
-                    var height = $this.options.scrollable ? $this.scrollBody.height() : $this.thead.parent().height() - $this.thead.height() - 1;
+                    var header = $this.options.stickyHeader ? $this.clone : $this.thead,
+                        height = $this.options.scrollable ? $this.scrollBody.height() : header.parent().height() - header.height() - 1;
+                    
+                    if($this.options.stickyHeader) {
+                        height = height - $this.relativeHeight;
+                    }
+                    
                     $this.resizerHelper.height(height);
                     $this.resizerHelper.show();
                 },
@@ -1358,11 +1364,7 @@
                     }
 
                     if($this.options.stickyHeader) {
-                        $this.thead.find('.ui-column-filter').prop('disabled', false);
-                        $this.clone = $this.thead.clone(true);
-                        $this.cloneContainer.find('thead').remove();
-                        $this.cloneContainer.children('table').append($this.clone);
-                        $this.thead.find('.ui-column-filter').prop('disabled', true);
+                        $this.reclone();
                     }
                 },
                 containment: this.element
@@ -1640,49 +1642,67 @@
             stickyNS = 'scroll.' + this.id,
             resizeNS = 'resize.sticky-' + this.id;
 
-            this.cloneContainer = $('<div class="ui-datatable ui-datatable-sticky ui-widget"><table></table></div>');
-            this.clone = this.thead.clone(true);
-            this.cloneContainer.children('table').append(this.clone);
-
-            this.cloneContainer.css({
+            this.stickyContainer = $('<div class="ui-datatable ui-datatable-sticky ui-widget"><table></table></div>');
+            this.clone = this.thead.clone(false);
+            this.stickyContainer.children('table').append(this.thead);
+            table.prepend(this.clone);
+            
+            this.stickyContainer.css({
                 position: 'absolute',
                 width: table.outerWidth(),
                 top: offset.top,
                 left: offset.left,
                 'z-index': ++PUI.zindex
-            })
-            .appendTo(this.element);
+            });
+            
+            this.element.prepend(this.stickyContainer);
+            
+            if(this.options.resizableColumns) {
+                this.relativeHeight = 0;
+            }
 
             win.off(stickyNS).on(stickyNS, function() {
                 var scrollTop = win.scrollTop(),
                 tableOffset = table.offset();
 
                 if(scrollTop > tableOffset.top) {
-                    $this.cloneContainer.css({
+                    $this.stickyContainer.css({
                                             'position': 'fixed',
                                             'top': '0px'
                                         })
                                         .addClass('ui-shadow ui-sticky');
+                                        
+                    if($this.options.resizableColumns) {
+                        $this.relativeHeight = scrollTop - tableOffset.top;
+                    }
 
                     if(scrollTop >= (tableOffset.top + $this.tbody.height()))
-                        $this.cloneContainer.hide();
+                        $this.stickyContainer.hide();
                     else
-                        $this.cloneContainer.show();
+                        $this.stickyContainer.show();
                 }
                 else {
-                    $this.cloneContainer.css({
+                    $this.stickyContainer.css({
                                             'position': 'absolute',
                                             'top': tableOffset.top
                                         })
                                         .removeClass('ui-shadow ui-sticky');
+                                        
+                    if($this.stickyContainer.is(':hidden')) {
+                        $this.stickyContainer.show(); 
+                    }
+                
+                    if($this.options.resizableColumns) {
+                        $this.relativeHeight = 0;
+                    }
                 }
             })
             .off(resizeNS).on(resizeNS, function() {
-                $this.cloneContainer.width(table.outerWidth());
+                $this.stickyContainer.width(table.outerWidth());
             });
 
             //filter support
-            this.thead.find('.ui-column-filter').prop('disabled', true);
+            this.clone.find('.ui-column-filter').prop('disabled', true);
         },
 
         _initEditing: function() {
@@ -1802,6 +1822,12 @@
             'input': function() {
                 return $('<input type="text" class="ui-cell-editor"/>');
             }
+        },
+        
+        reclone: function() {
+            this.clone.remove();
+            this.clone = this.thead.clone(false);
+            this.element.find('.ui-datatable-tablewrapper > table').prepend(this.clone);
         }
 
     });
