@@ -1,7 +1,21 @@
 /**
- * PrimeUI BaseMenu widget
+ * PrimeUI Menu widgets
  */
-(function() {
+ (function (factory) {
+     if (typeof define === 'function' && define.amd) {
+         // AMD. Register as an anonymous module.
+         define(['jquery'], factory);
+     } else if (typeof module === 'object' && module.exports) {
+         // Node/CommonJS
+         module.exports = function( root, jQuery ) {
+             factory(jQuery);
+             return jQuery;
+         };
+     } else {
+         // Browser globals
+         factory(jQuery);
+     }
+ }(function ($) {
 
     $.widget("primeui.puibasemenu", {
 
@@ -98,12 +112,6 @@
             }
         }
     });
-})();
-
-/**
- * PrimeUI Menu widget
- */
-(function() {
 
     $.widget("primeui.puimenu", $.primeui.puibasemenu, {
 
@@ -211,12 +219,6 @@
             }
         }
     });
-})();
-
-/**
- * PrimeUI BreadCrumb Widget
- */
-(function() {
 
     $.widget("primeui.puibreadcrumb", {
 
@@ -264,12 +266,6 @@
             });
         }
     });
-})();
-
-/*
- * PrimeUI TieredMenu Widget
- */
-(function() {
 
     $.widget("primeui.puitieredmenu", $.primeui.puibasemenu, {
 
@@ -502,13 +498,6 @@
 
     });
 
-})();
-
-/**
- * PrimeUI Menubar Widget
- */
-(function() {
-
     $.widget("primeui.puimenubar", $.primeui.puitieredmenu, {
 
         options: {
@@ -556,13 +545,6 @@
             return 'fa-caret-down';
         }
     });
-
-})();
-
-/*
- * PrimeUI SlideMenu Widget
- */
-(function() {
 
     $.widget("primeui.puislidemenu", $.primeui.puibasemenu, {
 
@@ -774,13 +756,6 @@
         }
     });
 
-})();
-
-/**
- * PrimeUI Context Menu Widget
- */
-(function() {
-
     $.widget("primeui.puicontextmenu", $.primeui.puitieredmenu, {
 
         options: {
@@ -935,14 +910,6 @@
         }
 
     });
-
-})();
-
-
-/*
- * PrimeUI MegaMenu Widget
- */
-(function() {
 
     $.widget("primeui.puimegamenu", $.primeui.puibasemenu, {
 
@@ -1407,13 +1374,6 @@
         }
 
     });
-
-})();
-
-/**
- * PrimeUI PanelMenu Widget
- */
-(function() {
 
     $.widget("primeui.puipanelmenu", $.primeui.puibasemenu, {
 
@@ -1952,4 +1912,4 @@
 
     });
 
-})();
+}));
