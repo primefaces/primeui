@@ -40,3 +40,7 @@
 .ui-dialog.ui-dialog-rtl .ui-dialog-footer {
     text-align: right;
 }
+
+.ui-dialog-draggable .ui-dialog-titlebar {
+    cursor: move;
+}
