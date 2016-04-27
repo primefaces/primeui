@@ -66,7 +66,7 @@ declare module PrimeUI {
     interface PasswordOptions {
         promptLabel?: string;
         weakLabel?: string;
-        goodLabel?: string;
+        mediumLabel?: string;
         strongLabel?: string;
         inline?: boolean;
     }
