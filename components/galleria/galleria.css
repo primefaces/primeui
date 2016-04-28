@@ -68,8 +68,16 @@
     left:1px;
     background-color: rgba(0,0,0,0.5);
     display: none;
-    color: #FFFFFF;
+    color: #ededed;
     padding: 0.2em 1em;
+}
+
+.ui-galleria-caption h4 {
+    color: #ededed;
+}
+
+.ui-galleria-caption .ui-galleria-image-description {
+    
 }
 
 .ui-galleria-panel-content {
