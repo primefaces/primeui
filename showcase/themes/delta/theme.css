@@ -647,3 +647,14 @@ button.ui-button span {
 
      border-width: 0 0 1px 0;
 }
+
+/* Growl */
+.ui-growl-item-container.ui-state-highlight.ui-growl-message-error {
+    background-color: #ff142f;
+    border-color :#ff142f;
+}
+
+.ui-growl-item-container.ui-state-highlight.ui-growl-message-warn {
+    background-color: #ff6f14;
+    border-color :#ff6f14;
+}
