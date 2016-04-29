@@ -649,12 +649,17 @@ button.ui-button span {
 }
 
 /* Growl */
+.ui-growl-item-container.ui-state-highlight.ui-growl-message-info {
+    background-color: #2196f3;
+    border-color :#2196f3;
+}
+
 .ui-growl-item-container.ui-state-highlight.ui-growl-message-error {
-    background-color: #ff142f;
-    border-color :#ff142f;
+    background-color: #f44336;
+    border-color :#f44336;
 }
 
 .ui-growl-item-container.ui-state-highlight.ui-growl-message-warn {
-    background-color: #ff6f14;
-    border-color :#ff6f14;
+    background-color: #ff9800;
+    border-color :#ff9800;
 }
