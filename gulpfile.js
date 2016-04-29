@@ -12,10 +12,8 @@ var gulp = require('gulp'),
 var ngScripts = [
     'components/core/core.js',
     'components/carousel/carousel.js',
-    'components/inputtext/inputtext.js',
     'components/lightbox/lightbox.js',
     'components/menu/menu.js',
-    'components/password/password.js',
     'components/utils/utils.js'
 ];
 var jqueryScripts = ['showcase/resources/js/jquery.js','showcase/resources/js/jquery-ui.js'];
