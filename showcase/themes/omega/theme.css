@@ -1,17 +1,20 @@
-/* Omega Theme */
+/* roboto-regular - latin */
 @font-face {
-    font-family: 'roboto';
-    src: url("fonts/roboto-regular-webfont.eot");
-    src: url("fonts/roboto-regular-webfont.eot#iefix") format('embedded-opentype'),
-         url("fonts/roboto-regular-webfont.woff2") format('woff2'),
-         url("fonts/roboto-regular-webfont.woff") format('woff'),
-         url("fonts/roboto-regular-webfont.ttf") format('truetype'),
-         url("fonts/roboto-regular-webfont.svg#RobotoRegular") format('svg');
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/roboto-v15-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Roboto'), local('Roboto-Regular'),
+       url('fonts/roboto-v15-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('fonts/roboto-v15-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('fonts/roboto-v15-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('fonts/roboto-v15-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('fonts/roboto-v15-latin-regular.svg#Roboto') format('svg'); /* Legacy iOS */
 }
 
 /* Component containers
 ----------------------------------*/
-.ui-widget { font-family: "roboto", "Trebuchet MS", Arial, Helvetica, sans-serif; font-size: 1em; font-size: 1em; }
+.ui-widget { font-family: "Roboto", "Trebuchet MS", Arial, Helvetica, sans-serif; font-size: 1em; font-size: 1em; }
 .ui-widget .ui-widget { font-size: 1em; }
 .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button { font-family: Arial,Helvetica,sans-serif; font-size: 1em; }
 .ui-widget-content { border: 1px solid #D5D5D5; background: #ffffff; color: #222222; }
@@ -542,10 +545,6 @@ button.ui-button.ui-state-active, .ui-button.ui-state-active {
 }
 
 /* Checkbox and Radio */
-.ui-chkbox-box .fa {
-    position: relative;
-    top: -2px;
-}
 .ui-chkbox-box.ui-state-active,
 .ui-chkbox-box.ui-state-focus.ui-state-active,
 .ui-radiobutton-box.ui-state-active,
