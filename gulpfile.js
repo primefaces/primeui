@@ -11,7 +11,6 @@ var gulp = require('gulp'),
     
 var ngScripts = [
     'components/core/core.js',
-    'components/carousel/carousel.js',
     'components/lightbox/lightbox.js',
     'components/menu/menu.js',
     'components/utils/utils.js'
