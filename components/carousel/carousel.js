@@ -175,8 +175,8 @@
         calculateItemWidths: function() {
             var firstItem = this.items.eq(0);
             if(firstItem.length) {
-                var itemFrameWidth = firstItem.outerWidth(true) - firstItem.width();    //sum of margin, border and padding
-                this.items.width((this.viewport.innerWidth() - itemFrameWidth * this.columns) / this.columns);
+                var itemFrameWidth = firstItem.outerWidth(true) - firstItem.outerWidth();    //sum of margin, border and padding
+                this.items.css({'width': ((this.viewport.innerWidth() - itemFrameWidth * this.columns) / this.columns)});
             }
         },
     
