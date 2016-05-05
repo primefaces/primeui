@@ -207,7 +207,7 @@
 @media ( max-width: 35em ) {
     .ui-datatable-reflow thead th,
     .ui-datatable-reflow tfoot td {
-        display: none;
+        display: none !important;
     }
 
     .ui-datatable-reflow .ui-datatable-data td {
@@ -242,7 +242,7 @@
 
 .ui-datatable-stacked thead th,
 .ui-datatable-stacked tfoot td {
-    display: none;
+    display: none !important;
 }
 
 .ui-datatable-stacked .ui-datatable-data td {
