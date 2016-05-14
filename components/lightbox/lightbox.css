@@ -50,3 +50,11 @@
 .ui-lightbox-close.ui-state-hover {
     padding: 0;
 }
+
+.ui-lightbox-nav-left, .ui-lightbox-nav-right {
+    opacity: .5;
+}
+
+.ui-lightbox-nav-left:hover, .ui-lightbox-nav-right:hover{
+    opacity: 1;
+}

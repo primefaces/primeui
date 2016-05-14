@@ -714,3 +714,26 @@ button.ui-button.ui-state-active, .ui-button.ui-state-active {
     background-color: #ff9800;
     border-color :#ff9800;
 }
+
+/* TabMenu */
+.ui-tabmenu {
+    border: 0 none;
+}
+
+.ui-tabmenu .ui-tabmenu-nav {
+    background: none;
+}
+
+.ui-tabmenu .ui-tabmenu-nav > li.ui-state-default {
+	background: #f6f7f9;
+}
+
+.ui-tabmenu .ui-tabmenu-nav > li.ui-state-default.ui-state-hover {
+    background: #ededf0;
+}
+
+.ui-tabmenu .ui-tabmenu-nav > li.ui-state-default.ui-state-active {
+    background: #ffffff; 
+    font-weight: normal; 
+    color: #555555;
+}
