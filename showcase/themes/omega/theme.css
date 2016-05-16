@@ -578,14 +578,6 @@ button.ui-button.ui-state-active, .ui-button.ui-state-active {
 	border-color: #156090;
 }
 
-/* PanelMenu */
-.ui-panelmenu .ui-panelmenu-header.ui-state-active,
-.ui-panelmenu .ui-panelmenu-header.ui-state-active a {
-    border: 1px solid #156090; 
-    background: #186ba0; 
-    color: #FFFFFF;
-}
-
 /* DataTable  */
 .ui-datatable th {
     font-weight: bold;
@@ -736,4 +728,31 @@ button.ui-button.ui-state-active, .ui-button.ui-state-active {
     background: #ffffff; 
     font-weight: normal; 
     color: #555555;
+}
+
+/* Menus */
+.ui-menu,
+.ui-menu .ui-menu-child {
+    border: 1px solid #d9d9d9;
+    color: #1b1d1f;
+    background: #f6f7f9 0 0 repeat-x;  /* Old browsers */
+    background: -moz-linear-gradient(top, #f6f7f9 0%, #ebedf0 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f6f7f9), color-stop(100%,#ebedf0)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #f6f7f9 0%,#ebedf0 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #f6f7f9 0%,#ebedf0 100%); /* Opera11.10+ */
+    background: -ms-linear-gradient(top, #f6f7f9 0%,#ebedf0 100%); /* IE10+ */
+    background: linear-gradient(top, #f6f7f9 0%,#ebedf0 100%); /* W3C */
+}
+
+.ui-menu a.ui-state-hover {
+    background-color: #a6a6a6;
+    color: #ffffff;
+}
+
+/* PanelMenu */
+.ui-panelmenu .ui-panelmenu-header.ui-state-active,
+.ui-panelmenu .ui-panelmenu-header.ui-state-active a {
+    border: 1px solid #156090; 
+    background: #186ba0; 
+    color: #FFFFFF;
 }
