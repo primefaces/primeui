@@ -95,6 +95,7 @@
 
 .ui-menu .ui-menu-parent .ui-submenu-icon {
     float:right;
+    margin-right: -5px;
 }
 
 .ui-menubutton {
