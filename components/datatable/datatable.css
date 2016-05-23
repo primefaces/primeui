@@ -9,6 +9,7 @@
 .ui-datatable .ui-datatable-footer {
     text-align: center;
     padding: 4px 10px;
+    box-sizing: border-box;
 }
 
 .ui-datatable .ui-datatable-caption,
