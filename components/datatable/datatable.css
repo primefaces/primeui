@@ -41,6 +41,7 @@
 
 .ui-datatable thead th {
     border-color: inherit;
+    box-sizing: border-box;
 }
 
 .ui-datatable tbody {
@@ -139,7 +140,7 @@
     right: 0px;
     margin: 0;
     width:8px;
-    height:20px;
+    height:100%;
     padding:0px;
     cursor:col-resize;
     border: 1px solid transparent;
