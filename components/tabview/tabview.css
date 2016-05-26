@@ -44,9 +44,13 @@
     display: block; 
 }
 
-.ui-tabview .ui-tabview-nav li .fa { 
-    float: left; 
-    margin: 0.6em 0.3em 0 0; 
+.ui-tabview .ui-tabview-nav li .ui-tabview-left-icon,
+.ui-tabview .ui-tabview-nav li .ui-tabview-right-icon { 
+    vertical-align: text-top;
+}
+
+.ui-tabview .ui-tabview-nav li .ui-tabview-close { 
+    margin: 0.5em 0.3em 0 0; 
     cursor: pointer; 
 }
 
