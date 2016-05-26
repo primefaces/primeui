@@ -58,3 +58,10 @@
     top: 5px;
     right: 5px;
 }
+
+/* Message */
+.ui-message {
+    border: 1px solid;
+    margin: 0px 5px;
+    padding: 2px 5px;
+}
