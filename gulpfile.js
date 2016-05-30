@@ -9,12 +9,7 @@ var gulp = require('gulp'),
     flatten = require('gulp-flatten'),
     zip = require('gulp-zip');
     
-var ngScripts = [
-    'components/core/core.js',
-    'components/utils/utils.js'
-];
-var jqueryScripts = ['showcase/resources/js/jquery.js','showcase/resources/js/jquery-ui.js'];
-var ngScriptsAll = jqueryScripts.concat(ngScripts);
+var ngScriptsAll = ['showcase/resources/js/jquery.js','showcase/resources/js/jquery-ui.js'];
         
 //Building only primeui.js
 gulp.task('build-js', function() {
