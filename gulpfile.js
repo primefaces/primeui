@@ -129,23 +129,6 @@ gulp.task('build-primeui-css-all', function() {
     .pipe(gulp.dest('build'));	
 });
 
-//Building PrimeNg Dependencies - Js
-gulp.task('build-primeng', function() {
-    gulp.src(ngScripts)
-	.pipe(concat('primeui-ng.js'))
-	.pipe(gulp.dest('build'));
-});
-
-//Building primeui-ng.js and primeui-ng.min.js
-gulp.task('build-primeng-prod', function() {
-    gulp.src(ngScripts)
-	.pipe(concat('primeui-ng.js'))
-	.pipe(gulp.dest('build'))
-    .pipe(uglify())
-    .pipe(rename('primeui-ng.min.js'))
-    .pipe(gulp.dest('build'));
-});
-
 //Build primeui-ng-all.js
 gulp.task('build-primeng-all', function() {
     gulp.src(ngScriptsAll)
@@ -175,7 +158,7 @@ gulp.task('clean', function() {
 });
 
 //Building project with run sequence
-gulp.task('build-all', ['build-js-prod', 'build-css-prod', 'build-elements-prod', 'build-primeng-prod', 
+gulp.task('build-all', ['build-js-prod', 'build-css-prod', 'build-elements-prod', 
         'build-primeui-js-all', 'build-primeui-css-all',
         'build-primeng-all', 'build-primeng-css-all', 
         'images','themes','plugins']);
