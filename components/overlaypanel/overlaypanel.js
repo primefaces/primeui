@@ -222,7 +222,7 @@
             var keyCode = $.ui.keyCode, key = e.which;
             
             if(key === keyCode.ENTER||key === keyCode.NUMPAD_ENTER) {
-                $this._toggle();
+                this._toggle();
                 e.preventDefault();
             }
         },
