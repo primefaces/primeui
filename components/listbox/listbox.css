@@ -11,7 +11,7 @@
 }
 
 .ui-listbox .ui-listbox-item {
-    margin:2px;
+    padding:2px;
     border:0 none;
     cursor: pointer;
     font-weight: normal;
