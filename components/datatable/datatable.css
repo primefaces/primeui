@@ -275,3 +275,17 @@
     margin: -.4em 1em -.4em -.4em;
     font-weight: bold;
 }
+
+.ui-datatable .ui-selection-column .ui-chkbox,
+.ui-datatable .ui-selection-column .ui-radiobutton {
+     margin: 0;
+     display: block;
+}
+
+.ui-datatable .ui-selection-column .ui-chkbox-box,
+.ui-datatable .ui-selection-column .ui-radiobutton-box {
+    display: block;
+    box-sizing: border-box;
+    height: 17px;
+    width: 17px;
+}
