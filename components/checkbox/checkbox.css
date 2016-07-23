@@ -1,6 +1,7 @@
 .ui-chkbox {
     display: inline-block;
     cursor: pointer;
+    vertical-align: middle;
 }
 
 .ui-chkbox .ui-chkbox-box {
@@ -18,12 +19,7 @@
     margin-left: -1px;
 }
 
-.ui-chkbox .ui-chkbox-label {
-    cursor: pointer;
-    display: block;
-    margin: 0 3px;
-    outline: medium none;
-    z-index: 1;
-    float: left;
+.ui-chkbox-label {
+    vertical-align: middle;    
 }
 
