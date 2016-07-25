@@ -21,4 +21,12 @@
     margin-left: 2px;
     display: block;
 }
-  
+ 
+.ui-radiobutton, .ui-radiobutton-label {
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.ui-radiobutton-label {
+    margin-left: 3px;
+}
