@@ -35,6 +35,10 @@
     float:left;
 }
 
+.ui-dropdown .ui-dropdown-label-empty {
+    text-indent: -9999px;   
+}
+
 .ui-dropdown.ui-state-disabled .ui-dropdown-trigger,
 .ui-dropdown.ui-state-disabled .ui-dropdown-label {
     cursor: default;
