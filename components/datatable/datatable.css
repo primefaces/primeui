@@ -135,6 +135,7 @@
 
 /* Resizable */
 .ui-datatable .ui-column-resizer {
+    display: block;
     position: absolute !important;
     top: 0px;
     right: 0px;
