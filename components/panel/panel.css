@@ -48,4 +48,8 @@
 
 .ui-panel.ui-panel-collapsed-h .ui-panel-title {
     display:none;
-}            
+}       
+
+.ui-panel-content-wrapper-overflown {
+    overflow: hidden;
+}     
