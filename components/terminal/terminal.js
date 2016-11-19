@@ -30,7 +30,7 @@
                         .append('<div>' + this.options.welcomeMessage + '</div>')
                         .append('<div class="ui-terminal-content"></div>')
                         .append('<div><span class="ui-terminal-prompt">' + this.options.prompt + '</span>' +
-                                 '<input type="text" class="ui-terminal-input" autocomplete="off"></div>' );
+                                 '<input type="text" class="ui-terminal-input" autocomplete="off" autofocus></div>' );
                          
             this.promptContainer = this.element.find('> div:last-child > span.ui-terminal-prompt');
             this.content = this.element.children('.ui-terminal-content');
