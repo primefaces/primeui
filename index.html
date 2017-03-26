@@ -16,7 +16,6 @@
         <script type="text/javascript" src="showcase/resources/js/jquery-ui.js"></script>
         <script type="text/javascript" src="showcase/resources/js/perfect-scrollbar.js"></script>
         <script type="text/javascript" src="showcase/resources/js/site.js"></script>
-        <script type="text/javascript" src="showcase/resources/js/index.js"></script>
 
         <!-- Dependencies of some widgets -->
         <script type="text/javascript" src="showcase/resources/js/plugins/plugins-all.js"></script>
@@ -34,391 +33,152 @@
     </head>
 
     <body>
-        <div class="PC">
-            <div id="MENUSIDE">
-                <div id="MENUSIDEindent">
-                    <span id="LOGO" class="bordersOfMenuSide">
+        <div class="layout-wrapper">
+            <div id="layout-sidebar">
+                
+            </div>
+        </div>
+        <div class="layout-wrapper">
+            <div id="layout-sidebar">
+                <span class="layout-logo">
+                    <a href="#" class="sidebar-logo">
                         <img alt="logo" src="showcase/resources/images/logo.svg" />
-                        <img id="BlueLogo" alt="logo" src="showcase/resources/images/logoBlue.svg" class="hiddenLogo"/>
-                    </span>
-                    <span id="SubMenu-PrimeElements" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.changePageWithLink('primeelements.html')"><img src="showcase/resources/images/mono/components.svg" /><img class="hiddenIcons" src="showcase/resources/images/mono/componentsBlue.svg" /><span class="MainLinkText">Web Components</span></span>
-                    <span id="SubMenu-Input" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><img src="showcase/resources/images/mono/input.svg" /><img class="hiddenIcons" src="showcase/resources/images/mono/inputBlue.svg" /><span class="MainLinkText">Input</span></span>
-                    <div class="SubMenuLinkContainer">
-                        <a class="SubMenuLink" href="autocomplete.html">&#9679; AutoComplete</a>
-                        <a class="SubMenuLink" href="inputtext.html">&#9679; InputText</a>
-                        <a class="SubMenuLink" href="inputtextarea.html">&#9679; InputTextarea</a>
-                        <a class="SubMenuLink" href="checkbox.html">&#9679; Checkbox</a>
-                        <a class="SubMenuLink" href="datepickerElement.html">&#9679; Datepicker</a>
-                        <a class="SubMenuLink" href="dropdown.html">&#9679; DropDown</a>
-                        <a class="SubMenuLink" href="listbox.html">&#9679; Listbox</a>
-                        <a class="SubMenuLink" href="selectbutton.html">&#9679; SelectButton</a>
-                        <a class="SubMenuLink" href="password.html">&#9679; Password</a>
-                        <a class="SubMenuLink" href="radiobutton.html">&#9679; RadioButton</a>
-                        <a class="SubMenuLink" href="rating.html">&#9679; Rating</a>
-                        <a class="SubMenuLink" href="spinner.html">&#9679; Spinner</a>
-                        <a class="SubMenuLink" href="sliderElement.html">&#9679; Slider</a>
-                        <a class="SubMenuLink" href="togglebutton.html">&#9679; ToggleButton</a>
-                        <a class="SubMenuLink" href="switch.html">&#9679; InputSwitch</a>
-                        <a class="SubMenuLink" href="multiselect.html">&#9679; MultiSelect</a>
-                        <a class="SubMenuLink" href="multiselectlistbox.html">&#9679; MultiSelectListBox</a>
-                    </div>
-                    <span id="SubMenu-Button" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><img src="showcase/resources/images/mono/button.svg" /><img class="hiddenIcons" src="showcase/resources/images/mono/buttonBlue.svg" /><span class="MainLinkText">Button</span></span>
-                    <div class="SubMenuLinkContainer">
-                        <a class="SubMenuLink" href="button.html">&#9679; Button</a>
-                        <a class="SubMenuLink" href="splitbutton.html">&#9679; SplitButton</a>
-                    </div>
+                    </a>
+                </span>
+                
+                <a id="menu_input" onclick="Showcase.openSubMenu(this)">
+                    <img src="showcase/resources/images/mono/input.svg" />
+                    <span>Input</span>
+                </span>
+                <div>
+                    <a href="autocomplete.html">&#9679; AutoComplete</a>
+                    <a href="inputtext.html">&#9679; InputText</a>
+                    <a href="inputtextarea.html">&#9679; InputTextarea</a>
+                    <a href="checkbox.html">&#9679; Checkbox</a>
+                    <a href="datepickerElement.html">&#9679; Datepicker</a>
+                    <a href="dropdown.html">&#9679; DropDown</a>
+                    <a href="listbox.html">&#9679; Listbox</a>
+                    <a href="selectbutton.html">&#9679; SelectButton</a>
+                    <a href="password.html">&#9679; Password</a>
+                    <a href="radiobutton.html">&#9679; RadioButton</a>
+                    <a href="rating.html">&#9679; Rating</a>
+                    <a href="spinner.html">&#9679; Spinner</a>
+                    <a href="sliderElement.html">&#9679; Slider</a>
+                    <a href="togglebutton.html">&#9679; ToggleButton</a>
+                    <a href="switch.html">&#9679; InputSwitch</a>
+                    <a href="multiselect.html">&#9679; MultiSelect</a>
+                    <a href="multiselectlistbox.html">&#9679; MultiSelectListBox</a>
+                </div>
+                
+                <a id="menu_button" onclick="Showcase.openSubMenu(this)">
+                    <img src="showcase/resources/images/mono/button.svg" />
+                    <span>Button</span>
+                </span>
+                <div class="SubMenuLinkContainer">
+                    <a href="button.html">&#9679; Button</a>
+                    <a href="splitbutton.html">&#9679; SplitButton</a>
+                </div>
 
-                    <span id="SubMenu-Data" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><img src="showcase/resources/images/mono/data.svg" /><img class="hiddenIcons" src="showcase/resources/images/mono/dataBlue.svg" /><span class="MainLinkText">Data</span></span>
-                    <div class="SubMenuLinkContainer">
-                        <a class="SubMenuLink" href="carousel.html">&#9679; Carousel</a>
-                        <a class="SubMenuLink" href="datagrid.html">&#9679; DataGrid</a>
-                        <a class="SubMenuLink" href="datascroller.html">&#9679; DataScroller</a>
-                        <a class="SubMenuLink" href="datatable.html">&#9679; DataTable</a>
-                        <a class="SubMenuLink" href="orderlist.html">&#9679; OrderList</a>
-                        <a class="SubMenuLink" href="picklist.html">&#9679; PickList</a>
-                        <a class="SubMenuLink" href="tree.html">&#9679; Tree</a>
-                        <a class="SubMenuLink" href="treetable.html">&#9679; TreeTable</a>
-                        <a class="SubMenuLink" href="paginator.html">&#9679; Paginator</a>
-                    </div>
+                <a id="menu_data" onclick="Showcase.openSubMenu(this)">
+                    <img src="showcase/resources/images/mono/data.svg" />
+                    <span>Data</span>
+                </a>
+                <div>
+                    <a href="carousel.html">&#9679; Carousel</a>
+                    <a href="datagrid.html">&#9679; DataGrid</a>
+                    <a href="datascroller.html">&#9679; DataScroller</a>
+                    <a href="datatable.html">&#9679; DataTable</a>
+                    <a href="orderlist.html">&#9679; OrderList</a>
+                    <a href="picklist.html">&#9679; PickList</a>
+                    <a href="tree.html">&#9679; Tree</a>
+                    <a href="treetable.html">&#9679; TreeTable</a>
+                    <a href="paginator.html">&#9679; Paginator</a>
+                </div>
 
-                    <span id="SubMenu-Panel" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><img src="showcase/resources/images/mono/panel.svg" /><img class="hiddenIcons" src="showcase/resources/images/mono/panelBlue.svg" /><span class="MainLinkText">Panel</span></span>
-                    <div class="SubMenuLinkContainer">
-                        <a class="SubMenuLink" href="accordion.html">&#9679; Accordion</a>
-                        <a class="SubMenuLink" href="fieldset.html">&#9679; Fieldset</a>
-                        <a class="SubMenuLink" href="grid.html">&#9679; Grid CSS</a>
-                        <a class="SubMenuLink" href="notify.html">&#9679; Notify</a>
-                        <a class="SubMenuLink" href="panel.html">&#9679; Panel</a>
-                        <a class="SubMenuLink" href="tabview.html">&#9679; TabView</a>
-                    </div>
+                <a id="menu_panel" onclick="Showcase.openSubMenu(this)">
+                    <img src="showcase/resources/images/mono/panel.svg" />
+                    <span>Panel</span>
+                </a>
+                <div>
+                    <a href="accordion.html">&#9679; Accordion</a>
+                    <a href="fieldset.html">&#9679; Fieldset</a>
+                    <a href="grid.html">&#9679; Grid CSS</a>
+                    <a href="notify.html">&#9679; Notify</a>
+                    <a href="panel.html">&#9679; Panel</a>
+                    <a href="tabview.html">&#9679; TabView</a>
+                </div>
 
-                    <span id="SubMenu-Overlay" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><img src="showcase/resources/images/mono/overlay.svg" /><img class="hiddenIcons" src="showcase/resources/images/mono/overlayBlue.svg" /><span class="MainLinkText">Overlay</span></span>
-                    <div class="SubMenuLinkContainer">
-                        <a class="SubMenuLink" href="dialog.html">&#9679; Dialog</a>
-                        <a class="SubMenuLink" href="lightbox.html">&#9679; LightBox</a>
-                        <a class="SubMenuLink" href="tooltip.html">&#9679; Tooltip</a>
-                        <a class="SubMenuLink" href="overlaypanel.html">&#9679; OverlayPanel</a>
-                    </div>
+                <a id="menu_overlay" onclick="Showcase.openSubMenu(this)">
+                    <img src="showcase/resources/images/mono/overlay.svg" />
+                    <span>Overlay</span>
+                </a>
+                <div>
+                    <a href="dialog.html">&#9679; Dialog</a>
+                    <a href="lightbox.html">&#9679; LightBox</a>
+                    <a href="tooltip.html">&#9679; Tooltip</a>
+                    <a href="overlaypanel.html">&#9679; OverlayPanel</a>
+                </div>
 
-                    <span id="SubMenu-Menu" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><img src="showcase/resources/images/mono/menu.svg" /><img class="hiddenIcons" src="showcase/resources/images/mono/menuBlue.svg" /><span class="MainLinkText">Menu</span></span>
-                    <div class="SubMenuLinkContainer">
-                        <a class="SubMenuLink" href="breadcrumb.html">&#9679; Breadcrumb</a>
-                        <a class="SubMenuLink" href="contextmenu.html">&#9679; ContextMenu</a>
-                        <a class="SubMenuLink" href="megamenu.html">&#9679; MegaMenu</a>
-                        <a class="SubMenuLink" href="menu.html">&#9679; Menu</a>
-                        <a class="SubMenuLink" href="menubar.html">&#9679; Menubar</a>
-                        <a class="SubMenuLink" href="panelmenu.html">&#9679; PanelMenu</a>
-                        <a class="SubMenuLink" href="slidemenu.html">&#9679; SlideMenu</a>
-                        <a class="SubMenuLink" href="tieredmenu.html">&#9679; TieredMenu</a>
-                    </div>
+                <a id="menu_menu" onclick="Showcase.openSubMenu(this)">
+                    <img src="showcase/resources/images/mono/menu.svg" />
+                    <span>Menu</span>
+                </a>
+                <div>
+                    <a href="breadcrumb.html">&#9679; Breadcrumb</a>
+                    <a href="contextmenu.html">&#9679; ContextMenu</a>
+                    <a href="megamenu.html">&#9679; MegaMenu</a>
+                    <a href="menu.html">&#9679; Menu</a>
+                    <a href="menubar.html">&#9679; Menubar</a>
+                    <a href="panelmenu.html">&#9679; PanelMenu</a>
+                    <a href="slidemenu.html">&#9679; SlideMenu</a>
+                    <a href="tieredmenu.html">&#9679; TieredMenu</a>
+                </div>
 
-                    <span id="SubMenu-Message" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><img src="showcase/resources/images/mono/message.svg" /><img class="hiddenIcons" src="showcase/resources/images/mono/messageBlue.svg" /><span class="MainLinkText">Messages</span></span>
-                    <div class="SubMenuLinkContainer">
-                        <a class="SubMenuLink" href="growl.html">&#9679; Growl</a>
-                        <a class="SubMenuLink" href="messages.html">&#9679; Messages</a>
-                    </div>
+                <a id="menu_message" onclick="Showcase.openSubMenu(this)">
+                    <img src="showcase/resources/images/mono/message.svg" />
+                    <img class="hiddenIcons" src="showcase/resources/images/mono/messageBlue.svg" />
+                    <span>Messages</span>
+                </span>
+                <div>
+                    <a href="growl.html">&#9679; Growl</a>
+                    <a href="messages.html">&#9679; Messages</a>
+                </div>
 
-                    <span id="SubMenu-Multimedia" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><img src="showcase/resources/images/mono/multimedia.svg" /><img class="hiddenIcons" src="showcase/resources/images/mono/multimediaBlue.svg" /><span class="MainLinkText">Multimedia</span></span>
-                    <div class="SubMenuLinkContainer">
-                        <a class="SubMenuLink" href="galleria.html">&#9679; Galleria</a>
-                    </div>
+                <a id="menu_multimedia" onclick="Showcase.openSubMenu(this)">
+                    <img src="showcase/resources/images/mono/multimedia.svg" />
+                    <span>Multimedia</span>
+                </span>
+                <div class="SubMenuLinkContainer">
+                    <a href="galleria.html">&#9679; Galleria</a>
+                </div>
 
-                    <span id="SubMenu-Misc" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><img src="showcase/resources/images/mono/misc.svg" /><img class="hiddenIcons" src="showcase/resources/images/mono/miscBlue.svg" /><span class="MainLinkText">Misc</span></span>
-                    <div class="SubMenuLinkContainer">
-                        <a class="SubMenuLink" href="responsive.html">&#9679; Responsive</a>
-                        <a class="SubMenuLink" href="fontawesome.html">&#9679; FontAwesome</a>
-                        <a class="SubMenuLink" href="progressbar.html">&#9679; ProgressBar</a>
-                        <a class="SubMenuLink" href="sticky.html">&#9679; Sticky</a>
-                        <a class="SubMenuLink" href="terminal.html">&#9679; Terminal</a>
-                    </div>
-
-                    <span id="SubMenu-Misc" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><img src="showcase/resources/images/mono/apps.svg" /><img class="hiddenIcons" src="showcase/resources/images/mono/appsBlue.svg" /><span class="MainLinkText">Samples</span></span>
-                    <div class="SubMenuLinkContainer">
-                        <a class="SubMenuLinkSamples" href="http://www.demo.znetdk.fr">&#9679; ZnetDK-1</a>
-                        <a class="SubMenuLinkSamples" href="http://www.demo2.znetdk.fr">&#9679; ZnetDK-2</a>
-                        <a class="SubMenuLinkSamples" href="http://www.demo3.znetdk.fr">&#9679; ZnetDK-3</a>
-                        <a class="SubMenuLinkSamples" href="http://www.pm-consultant.fr/primeui/">&#9679; PHP</a>
-                    </div>
+                <a id="menu_misc" onclick="Showcase.openSubMenu(this)">
+                    <img src="showcase/resources/images/mono/misc.svg" />
+                    <span>Misc</span>
+                </span>
+                <div class="SubMenuLinkContainer">
+                    <a href="responsive.html">&#9679; Responsive</a>
+                    <a href="fontawesome.html">&#9679; FontAwesome</a>
+                    <a href="progressbar.html">&#9679; ProgressBar</a>
+                    <a href="sticky.html">&#9679; Sticky</a>
+                    <a href="terminal.html">&#9679; Terminal</a>
                 </div>
             </div>
 
-            <div id="CONTENTSIDE">
-                <div id="CONTENTSIDEindent">
-
-                    <!-- header bar start-->
-                    <div class="ContentSideSections" id="PFTopLinksCover" style="height:60px;">
-                        <a id="LOGOTEXTSIDE" href="/">
-                            <span class="dispBlock logoDarkText fontSize30">PrimeUI</span>
-                            <span class="dispBlock logoBlueText fontSize30 mediumFont">SHOWCASE</span>
-                        </a>
-
-                        <a href="http://forum.primefaces.org/viewforum.php?f=16" class="PFTopLinks floatRight boldFont"><img alt="mockosx" src="showcase/resources/images/community.svg" /><span class="PFDarkText">Forum</span></a>
-
-                        <span class="PFTopLinks floatRight boldFont cursorPointer" id="themeSwitcher">
-                            <img src="showcase/resources/images/themeswitcher.svg" /><span class="PFDarkText">Free Themes</span>
-                            <div id="GlobalThemeSwitcher" class="navOverlay">
-                                <a href="#" data-theme="afterdark"><span class="ui-theme ui-theme-afterdark"></span><span class="ui-text">Afterdark</span></a>
-                                <a href="#" data-theme="afternoon"><span class="ui-theme ui-theme-afternoon"></span><span class="ui-text">Afternoon</span></a>
-                                <a href="#" data-theme="afterwork"><span class="ui-theme ui-theme-afterwork"></span><span class="ui-text">Afterwork</span></a>
-                                <a href="#" data-theme="aristo"><span class="ui-theme ui-theme-aristo"></span><span class="ui-text">Aristo</span></a>
-                                <a href="#" data-theme="black-tie"><span class="ui-theme ui-theme-black-tie"></span><span class="ui-text">Black-Tie</span></a>
-                                <a href="#" data-theme="bluesky"><span class="ui-theme ui-theme-bluesky"></span><span class="ui-text">Bluesky</span></a>
-                                <a href="#" data-theme="bootstrap"><span class="ui-theme ui-theme-bootstrap"></span><span class="ui-text">Bootstrap</span></a>
-                                <a href="#" data-theme="casablanca"><span class="ui-theme ui-theme-casablanca"></span><span class="ui-text">Casablanca</span></a>
-                                <a href="#" data-theme="cruze"><span class="ui-theme ui-theme-cruze"></span><span class="ui-text">Cruze</span></a>
-                                <a href="#" data-theme="dark-hive"><span class="ui-theme ui-theme-dark-hive"></span><span class="ui-text">Dark-Hive</span></a>
-                                <a href="#" data-theme="delta"><span class="ui-theme ui-theme-delta"></span><span class="ui-text">Delta</span></a>
-                                <a href="#" data-theme="dot-luv"><span class="ui-theme ui-theme-dot-luv"></span><span class="ui-text">Dot-Lov</span></a>
-                                <a href="#" data-theme="eggplant"><span class="ui-theme ui-theme-eggplant"></span><span class="ui-text">Eggplant</span></a>
-                                <a href="#" data-theme="excite-bike"><span class="ui-theme ui-theme-excite-bike"></span><span class="ui-text">Excite-Bike</span></a>
-                                <a href="#" data-theme="flick"><span class="ui-theme ui-theme-flick"></span><span class="ui-text">Flick</span></a>
-                                <a href="#" data-theme="glass-x"><span class="ui-theme ui-theme-glass-x"></span><span class="ui-text">Glass-X</span></a>
-                                <a href="#" data-theme="home"><span class="ui-theme ui-theme-home"></span><span class="ui-text">Home</span></a>
-                                <a href="#" data-theme="hot-sneaks"><span class="ui-theme ui-theme-hot-sneaks"></span><span class="ui-text">Hot-Sneaks</span></a>
-                                <a href="#" data-theme="humanity"><span class="ui-theme ui-theme-humanity"></span><span class="ui-text">Humanity</span></a>
-                                <a href="#" data-theme="le-frog"><span class="ui-theme ui-theme-le-frog"></span><span class="ui-text">Le-Forg</span></a>
-                                <a href="#" data-theme="midnight"><span class="ui-theme ui-theme-midnight"></span><span class="ui-text">Midnight</span></a>
-                                <a href="#" data-theme="mint-choc"><span class="ui-theme ui-theme-mint-choc"></span><span class="ui-text">Mint-Choc</span></a>
-                                <a href="#" data-theme="overcast"><span class="ui-theme ui-theme-overcast"></span><span class="ui-text">Overcast</span></a>
-                                <a href="#" data-theme="pepper-grinder"><span class="ui-theme ui-theme-pepper-grinder"></span><span class="ui-text">Pepper-Grinder</span></a>
-                                <a href="#" data-theme="redmond"><span class="ui-theme ui-theme-redmond"></span><span class="ui-text">Redmond</span></a>
-                                <a href="#" data-theme="rocket"><span class="ui-theme ui-theme-rocket"></span><span class="ui-text">Rocket</span></a>
-                                <a href="#" data-theme="sam"><span class="ui-theme ui-theme-sam"></span><span class="ui-text">Sam</span></a>
-                                <a href="#" data-theme="smoothness"><span class="ui-theme ui-theme-smoothness"></span><span class="ui-text">Smoothness</span></a>
-                                <a href="#" data-theme="south-street"><span class="ui-theme ui-theme-south-street"></span><span class="ui-text">South-Street</span></a>
-                                <a href="#" data-theme="start"><span class="ui-theme ui-theme-start"></span><span class="ui-text">Start</span></a>
-                                <a href="#" data-theme="sunny"><span class="ui-theme ui-theme-sunny"></span><span class="ui-text">Sunny</span></a>
-                                <a href="#" data-theme="swanky-purse"><span class="ui-theme ui-theme-swanky-purse"></span><span class="ui-text">Swanky-Purse</span></a>
-                                <a href="#" data-theme="trontastic"><span class="ui-theme ui-theme-trontastic"></span><span class="ui-text">Trontastic</span></a>
-                                <a href="#" data-theme="ui-darkness"><span class="ui-theme ui-theme-ui-darkness"></span><span class="ui-text">UI-Darkness</span></a>
-                                <a href="#" data-theme="ui-lightness"><span class="ui-theme ui-theme-ui-lightness"></span><span class="ui-text">UI-Lightness</span></a>
-                                <a href="#" data-theme="vader"><span class="ui-theme ui-theme-var"></span><span class="ui-text">Vader</span></a>
-                            </div>
-                        </span>
-                        <a href="https://github.com/primefaces/primeui/releases" class="PFTopLinks floatRight boldFont hashed"><img alt="mockosx" src="showcase/resources/images/download.svg" /><span class="PFDarkText">Download</span></a>
-                        <a href="setup.html" class="PFTopLinks floatRight boldFont marginRight20 hashed"><img alt="mockosx" src="showcase/resources/images/setup.svg" /><span class="PFDarkText">QuickStart</span></a>
-
-                        <div class="mobileLogoCover">
-                            <img src="showcase/resources/images/logoDark.svg" style="height:30px;" class="floatLeft marginRight10" />
-                            <span class="dispBlock logoDarkText fontSize14 floatLeft">PrimeUI <span class="dispBlock logoBlueText fontSize14 mediumFont">SHOWCASE</span></span>
-                        </div>
-                        <select id="mobilemenu" class="selectmenu mediumFont">
-                            <optgroup label="Menu" class="LEVEL1">
-                                <option value="#">Home</option>
-                                <option value="setup.html">Quickstart</option>
-                                <option value="https://github.com/primefaces/primeui/releases">Download</option>
-                            </optgroup>
-                            <optgroup label="PrimeElements" class="LEVEL1">
-                                <option value="primeelements.html">PrimeElements</option>
-                            </optgroup>
-                            <optgroup label="Input" class="LEVEL1">
-                                <option value="autocomplete.html">AutoComplete</option>
-                                <option value="inputtext.html">InputText</option>
-                                <option value="inputtextarea.html">InputTextarea</option>
-                                <option value="checkbox.html">Checkbox</option>
-                                <option value="datepickerElement.html">Datepicker</option>
-                                <option value="dropdown.html">DropDown</option>
-                                <option value="listbox.html">Listbox</option>
-                                <option value="selectbutton.html">SelectButton</option>
-                                <option value="password.html">Password</option>
-                                <option value="radiobutton.html">RadioButton</option>
-                                <option value="rating.html">Rating</option>
-                                <option value="spinner.html">Spinner</option>
-                                <option value="sliderElement.html">Slider</option>
-                                <option value="togglebutton.html">ToggleButton</option>
-                                <option value="switch.html">InputSwitch</option>
-                                <option value="multiselect.html">MultiSelect</option>
-                                <option value="multiselectlistbox.html">MultiSelectListBox</option>
-                            </optgroup>
-                            <optgroup label="Button" class="LEVEL1">
-                                <option value="button.html">Button</option>
-                                <option value="splitbutton.html">SplitButton</option>
-                            </optgroup>
-                            <optgroup label="Data" class="LEVEL1">
-                                <option value="carousel.html">Carousel</option>
-                                <option value="datagrid.html">DataGrid</option>
-                                <option value="datascroller.html">DataScroller - Basic</option>
-                                <option value="datascrollerInline.html">DataScroller - Inline Lazy</option>
-                                <option value="datascrollerLoader.html">DataScroller - Loader</option>
-                                <option value="datascrollerElement.html">DataScroller - Element</option>
-                                <option value="datatable.html">DataTable - Basic</option>
-                                <option value="datatablePaginator.html">DataTable - Paginator</option>
-                                <option value="datatableSort.html">DataTable - Sort</option>
-                                <option value="datatableFilter.html">DataTable - Filter</option>
-                                <option value="datatableSelection.html">DataTable - Selection</option>
-                                <option value="datatableEditable.html">DataTable - Editable</option>
-                                <option value="datatableReorder.html">DataTable - Reorder</option>
-                                <option value="datatableResize.html">DataTable - Resize</option>
-                                <option value="datatableExpansion.html">DataTable - Expansion</option>
-                                <option value="datatableScroll.html">DataTable - Scroll</option>
-                                <option value="datatableGroup.html">DataTable - Group</option>
-                                <option value="datatableResponsive.html">DataTable - Responsive</option>
-                                <option value="datatableContextMenu.html">DataTable - ContextMenu</option>
-                                <option value="datatableSticky.html">DataTable - Sticky</option>
-                                <option value="datatableElement.html">DataTable - Element</option>
-                                <option value="orderlist.html">OrderList</option>
-                                <option value="picklist.html">PickList</option>
-                                <option value="tree.html">Tree</option>
-                                <option value="treetable.html">TreeTable</option>
-                                <option value="paginator.html">Paginator</option>
-                            </optgroup>
-                            <optgroup label="Panel" class="LEVEL1">
-                                <option value="accordion.html">Accordion</option>
-                                <option value="fieldset.html">Fieldset</option>
-                                <option value="grid.html">Grid CSS</option>
-                                <option value="notify.html">Notify</option>
-                                <option value="panel.html">Panel</option>
-                                <option value="tabview.html">TabView</option>
-                            </optgroup>
-                            <optgroup label="Overlay" class="LEVEL1">
-                                <option value="dialog.html">Dialog</option>
-                                <option value="lightbox.html">LightBox</option>
-                                <option value="tooltip.html">Tooltip</option>
-                                <option value="overlaypanel.html">OverlayPanel</option>
-                            </optgroup>
-                            <optgroup label="Menu" class="LEVEL1">
-                                <option value="breadcrumb.html">Breadcrumb</option>
-                                <option value="contextmenu.html">ContextMenu</option>
-                                <option value="megamenu.html">MegaMenu</option>
-                                <option value="menu.html">Menu</option>
-                                <option value="menubar.html">Menubar</option>
-                                <option value="panelmenu.html">PanelMenu</option>
-                                <option value="slidemenu.html">SlideMenu</option>
-                                <option value="tieredmenu.html">TieredMenu</option>
-                            </optgroup>
-                            <optgroup label="Messages" class="LEVEL1">
-                                <option value="growl.html">Growl</option>
-                                <option value="messages.html">Messages</option>
-                            </optgroup>
-                            <optgroup label="Multimedia" class="LEVEL1">
-                                <option value="galleria.html">Galleria</option>
-                            </optgroup>
-                            <optgroup label="Misc" class="LEVEL1">
-                                <option value="responsive.html">Responsive</option>
-                                <option value="fontawesome.html">FontAwesome</option>
-                                <option value="progressbar.html">ProgressBar</option>
-                                <option value="sticky.html">Sticky</option>
-                                <option value="terminal.html">Terminal</option>
-                            </optgroup>
-                            <optgroup label="Samples" class="LEVEL1">
-                                <option value="http://www.demo.znetdk.fr">ZnetDK-1</option>
-                                <option value="http://www.demo2.znetdk.fr">ZnetDK-2</option>
-                                <option value="http://www.demo3.znetdk.fr">ZnetDK-3</option>
-                                <option value="http://www.pm-consultant.fr/primeui/">PHP</option>
-                            </optgroup>
-                        </select>
-                    </div>
-                    <!-- header bar end-->
-
-                    <div id="widgetdemo">
-                        <div class="ContentSideSections overHidden">
-                            <div class="Content33 floatLeft overHidden TextShadow">
-                                <span class="defaultTopic mediumFont dispTable">PrimeUI</span>
-                                <span class="defaultText dispTable">PrimeUI is a collection of rich javascript widgets based on jQuery UI. PrimeUI is a spin-off from the popular JavaServer Faces Component Suite, <a href="http://www.primefaces.org">PrimeFaces</a>.</span>
-                                <br />
-                                <span class="defaultText dispTable">All widgets are open source and free to use under Apache License 2.0, a commercial friendly license.</span>
-                                <a href="https://github.com/primefaces/primeui/releases" class="BigButton TextShadowNone YellowBtn"> <span class="floatLeft">Download</span> <img src="showcase/resources/images/btnArrow.svg" style="float:right"/></a>
-                                <a href="https://github.com/primefaces/primeui" class="BigButton TextShadowNone OrangeBtn"> <span class="floatLeft">View on GitHub</span> <img src="showcase/resources/images/btnDocumenticon.svg" style="float:right"/></a>
-                            </div>
-                            <div class="Content66 floatRight overHidden">
-                                <div class="PropertyBox TextShadow">
-                                    <img src="showcase/resources/images/ajaxFramework.svg" />
-                                    <span class="PropertyTopic boldFont">PRIMEFACES UI</span>
-                                    <span class="PropertyText mediumFont">Derived from the mighty PrimeFaces</span>
-                                </div>
-                                <div class="PropertyBox TextShadow">
-                                    <img src="showcase/resources/images/components.svg" />
-                                    <span class="PropertyTopic boldFont">WIDGETS</span>
-                                    <span class="PropertyText mediumFont">45+ Components<br />Easy to Use<br />Accessible</span>
-                                </div>
-                                <div class="PropertyBox TextShadow">
-                                    <img src="showcase/resources/images/productivity.svg" />
-                                    <span class="PropertyTopic boldFont">PRODUCTIVITY</span>
-                                    <span class="PropertyText mediumFont">Simple<br />Lightweight<br />Powerful</span>
-                                </div>
-                                <div class="PropertyBox TextShadow">
-                                    <img src="showcase/resources/images/mobile.svg" />
-                                    <span class="PropertyTopic boldFont">MOBILE</span>
-                                    <span class="PropertyText mediumFont">Responsive<br />Cross Browser<br />Touch Optimized</span>
-                                </div>
-                                <div class="PropertyBox TextShadow">
-                                    <img src="showcase/resources/images/community.svg"/>
-                                    <span class="PropertyTopic boldFont">COMMUNITY</span>
-                                    <span class="PropertyText mediumFont">Active<br />Vibrant<br />Open Source<br /></span>
-                                </div>
-                                <div class="PropertyBox TextShadow">
-                                    <img src="showcase/resources/images/themeswitcher.svg" />
-                                    <span class="PropertyTopic boldFont">THEMES</span>
-                                    <span class="PropertyText mediumFont">35+ Available Themes<br />Premium Themes<br />Theme Creator Tool<br /></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="ContentSideSections overHidden">
-                            <div class="Content33 floatLeft overHidden" style="min-height:200px">
-                                <div class="BoxesIndent">
-                                    <img src="showcase/resources/images/optimushear.svg" class="floatLeft overHidden" style="height:60px; margin-right:20px;"/>
-                                    <span class="floatLeft PFGrayText fontSize18 mediumFont overHidden">Blog<br /><span class="green fontSize24">NEWS</span></span>
-                                    <div id="latestNews" class="dispTable overHidden Content100 logoBlueText boldFont fontSize18" style=" padding-top:20px;">
-                                        <span class="gray dispBlock regularFont fontSize14"></span><br />
-                                        <a href="http://blog.primefaces.org" class="pink boldItalicFont underline fontSize14">View All</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="Content33 floatLeft overHidden" style="min-height:200px">
-                                <div class="BoxesIndent">
-                                    <img src="showcase/resources/images/logoDark.svg" class="floatLeft overHidden" style="height:30px; margin-right:20px;"/>
-                                    <span class="floatLeft PFGrayText fontSize18 mediumFont overHidden">Professional<br /><span class="green fontSize24">SUPPORT</span></span>
-                                    <div class="dispTable overHidden Content100 gray fontSize14" style=" padding-top:20px;">
-
-                                        <span class="gray dispBlock regularFont fontSize14"> With PrimeUI PRO, it's easy to support, tune and add features to PrimeUI as if it were an in-house framework.
-                                            <br /><br />
-                                            PrimeUI PRO is a term based commercial support service. With the exclusive services of Pro account,
-                                            you no longer need to post your questions in PrimeUI community forum and your issues to community issue tracker.</span><br />
-                                        <ul style="margin-top:0">
-                                            <li>Access to pro.primefaces.org</li>
-                                            <li>Response within 1 business day.</li>
-                                            <li>Unlimited number of cases</li>
-                                            <li>Remote desktop connection</li>
-                                            <li>Conference calls for discussions</li>
-                                            <li>High priority to your issues</li>
-                                        </ul>
-                                        <a href="mailto:contact@primetek.com.tr" class="pink boldItalicFont underline fontSize14">Contact us</a> for more information.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="Content33 floatLeft overHidden" style="min-height:200px">
-                                <div class="BoxesIndent">
-                                    <img src="showcase/resources/images/loveClients.svg" class="floatLeft overHidden" style="height:60px; margin-right:20px;"/>
-                                    <span class="floatLeft PFGrayText fontSize18 mediumFont overHidden">Who Uses?<br /><span class="green fontSize24">BRANDS</span></span>
-                                    <div class="dispTable overHidden Content100 logoBlueText boldFont fontSize18" style=" padding-top:20px;">
-                                        <div class="dispBlock overHidden">
-                                            <img class="brandLogo" src="showcase/resources/images/brands/lufthansa.png" />
-                                            <img class="brandLogo" src="showcase/resources/images/brands/unicredit.png" />
-                                            <img class="brandLogo" src="showcase/resources/images/brands/ford.jpg" />
-                                            <img class="brandLogo" src="showcase/resources/images/brands/boeing.jpg" />
-                                            <img class="brandLogo" src="showcase/resources/images/brands/nvidia.jpg" />
-                                            <img class="brandLogo" src="showcase/resources/images/brands/vw.jpg" />
-                                            <img class="brandLogo" src="showcase/resources/images/brands/dell.jpg" />
-                                            <img class="brandLogo" src="showcase/resources/images/brands/verizon.jpg" />
-                                            <img class="brandLogo" src="showcase/resources/images/brands/bmw.png" />
-                                        </div>
-                                        <a href="http://www.primefaces.org/whouses" class="pink boldItalicFont underline fontSize14">View All</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                    <!-- footer start-->
-                    <div class="ContentSideSections">
-                        <span class="floatLeft fontSize14 gray"><a href="http://www.primetek.com.tr">PrimeTek</a>, Copyright &copy; 2016</span>
-                        <span class="floatRight fontSize14 gray">All rights reserved</span>
-                        <div style="clear:both"></div>
-                    </div>
-                    <!-- footer end-->
-
+            <div id="layout-content">
+                <div id="topbar">
+                    <a href="http://forum.primefaces.org/viewforum.php?f=35" class="topbar-link">
+                        <img alt="mockosx" src="showcase/resources/images/community.svg" />
+                        <span>Forum</span>
+                    </a>
+                    <a href="setup.html" class="topbar-link">
+                        <img alt="mockosx" src="showcase/resources/images/setup.svg" />
+                        <span>Setup</span>
+                    </a>
+                </div>
+                
+                <div id="widgetdemo">
+                    Test
                 </div>
             </div>
 
