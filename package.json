@@ -1,6 +1,7 @@
 {
-  "license": "Apache-2.0",
-  "version": "v4.1.16-SNAPSHOT",
+  "name": "primeui",
+  "version": "5.0.0-SNAPSHOT",
+  "license": "MIT",
   "scripts": {
     "start": "lite-server"
   },
