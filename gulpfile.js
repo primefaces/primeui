@@ -9,8 +9,7 @@ var gulp = require('gulp'),
     flatten = require('gulp-flatten'),
     zip = require('gulp-zip');
     
-var ngScriptsAll = ['showcase/resources/js/jquery.js','showcase/resources/js/jquery-ui.js'];
-        
+    
 //Building only primeui.js
 gulp.task('build-js', function() {
 	gulp.src([
@@ -126,29 +125,6 @@ gulp.task('build-primeui-css-all', function() {
 	.pipe(gulp.dest('build'))
     .pipe(uglifycss({"uglyComments": true}))
     .pipe(rename('primeui-all.min.css'))
-    .pipe(gulp.dest('build'));	
-});
-
-//Build primeui-ng-all.js
-gulp.task('build-primeng-all', function() {
-    gulp.src(ngScriptsAll)
-	.pipe(concat('primeui-ng-all.js'))
-	.pipe(gulp.dest('build'))
-    .pipe(uglify({compress: {hoist_funs: false, hoist_vars: false}}))
-    .pipe(rename('primeui-ng-all.min.js'))
-    .pipe(gulp.dest('build'));
-});
-
-//Build primeui-ng-all.css
-gulp.task('build-primeng-css-all', function() {
-    gulp.src([
-		'showcase/resources/css/jquery-ui.css',
-        'components/**/*.css'
-    ])
-	.pipe(concat('primeui-ng-all.css'))
-	.pipe(gulp.dest('build'))
-    .pipe(uglifycss({"uglyComments": true}))
-    .pipe(rename('primeui-ng-all.min.css'))
     .pipe(gulp.dest('build'));	
 });
 
