@@ -7,14 +7,14 @@
         });
     </script>
 
-    <div class="ContentSideSections">
-        <div class="Content100 overHidden TextShadow">
-            <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock">Inputtext</span>
-            <span class="defaultText dispTable">InputText is an extension to standard inputText with skinning capabilities.</span>
+    <div class="content-section">
+        <div>
+            <span class="feature-title">Inputtext</span>
+            <span>InputText is an extension to standard inputText with skinning capabilities.</span>
         </div>
     </div>
 
-    <div class="ContentSideSections Implementation">
+    <div class="content-section implementation">
         <h3 class="first">Basic</h3>
         <input id="in" type="text" size="30"/>
         
@@ -22,101 +22,95 @@
         <input type="text" is="p-inputtext" value="" size="30" />
     </div>
 
-    <div id="SourceContentSide" class="ContentSideSections Source">
-        <div class="Content100 overHidden TextShadow">
-            <span class="defaultText">
-                <span class="fontSize18 logoBlueText">
-                    <div id="doc">
-                        <ul>
-                            <li><a href="#doc-overview">Overview</a></li>
-                            <li><a href="#doc-options">Options</a></li>
-                            <li><a href="#doc-events">Events</a></li>
-                            <li><a href="#doc-methods">Methods</a></li>
-                            <li><a href="#doc-methods">Source</a></li>
-                            <li class="tab-primeelement"><a href="#doc-element">PrimeElement</a></li>
-                        </ul>
-                        <div>
-                            <div id="doc-overview">
-                                <pre class="brush: html">
+    <div class="content-section source">
+        <div id="doc">
+            <ul>
+                <li><a href="#doc-overview">Overview</a></li>
+                <li><a href="#doc-options">Options</a></li>
+                <li><a href="#doc-events">Events</a></li>
+                <li><a href="#doc-methods">Methods</a></li>
+                <li><a href="#doc-methods">Source</a></li>
+                <li class="tab-primeelement"><a href="#doc-element">PrimeElement</a></li>
+            </ul>
+            <div>
+                <div id="doc-overview">
+                    <pre class="brush: html">
 $('#default').puiinputtext(); 
-                                </pre>
+                    </pre>
 
-                                <pre class="brush: js">
+                    <pre class="brush: js">
 &lt;input id="default" type="text" /&gt;
-                                </pre>
+                    </pre>
 
-                            </div>
+                </div>
 
-                            <div id="doc-options">
-                                <h3>No options.</h3>
-                            </div>
+                <div id="doc-options">
+                    <h3>No options.</h3>
+                </div>
 
-                            <div id="doc-events">
-                                <h3>No events.</h3>
-                            </div>
+                <div id="doc-events">
+                    <h3>No events.</h3>
+                </div>
 
-                            <div id="doc-methods">
-                                <table class="doc-table">
-                                    <thead>
-                                        <th>Name</th>
-                                        <th>Parameters</th>
-                                        <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>enable</td>
-                                            <td>-</td>
-                                            <td>Enable the widget</td>
-                                        </tr>
-                                        <tr>
-                                            <td>disable</td>
-                                            <td>-</td>
-                                            <td>Disable the widget.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>option</td>
-                                            <td>name: Name of the option</td>
-                                            <td>Returns the value of the option.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>option</td>
-                                            <td>name: Name of the option, value: Value of the option</td>
-                                            <td>Set the value of the option.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                <div id="doc-methods">
+                    <table class="doc-table">
+                        <thead>
+                            <th>Name</th>
+                            <th>Parameters</th>
+                            <th>Description</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>enable</td>
+                                <td>-</td>
+                                <td>Enable the widget</td>
+                            </tr>
+                            <tr>
+                                <td>disable</td>
+                                <td>-</td>
+                                <td>Disable the widget.</td>
+                            </tr>
+                            <tr>
+                                <td>option</td>
+                                <td>name: Name of the option</td>
+                                <td>Returns the value of the option.</td>
+                            </tr>
+                            <tr>
+                                <td>option</td>
+                                <td>name: Name of the option, value: Value of the option</td>
+                                <td>Set the value of the option.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-                            <div id="doc-source">
+                <div id="doc-source">
 
-                                <pre class="brush:js">
+                    <pre class="brush:js">
 $(function() {
-    $('#in').puiinputtext();
+$('#in').puiinputtext();
 });
-                                </pre>
+                    </pre>
 
-                                <pre class="brush:xml">
+                    <pre class="brush:xml">
 &lt;h3 class="first"&gt;Basic&lt;/h3&gt;
 &lt;input id="in" type="text" size="30"/&gt;
 
 &lt;h3&gt;PrimeElement&lt;/h3&gt;
 &lt;input type="text" is="p-inputtext" value="" size="30" /&gt;           
-                                </pre>
+                    </pre>
 
-                            </div>
-                            
-                            <div id="doc-element">
-                                <h3>Usage</h3>
-                                Inputtext is an extension to standard input element so applied using is="p-inputtext" attribute.
-                                <pre name="code" class="brush:xml">
+                </div>
+                
+                <div id="doc-element">
+                    <h3>Usage</h3>
+                    Inputtext is an extension to standard input element so applied using is="p-inputtext" attribute.
+                    <pre name="code" class="brush:xml">
 &lt;input type="text" is="p-inputtext" value="" size="30" /&gt;
-                                </pre>
-                            </div>
+                    </pre>
+                </div>
 
-                        </div>
-                    </div>
-                </span>
-            </span>
+            </div>
         </div>
     </div>
 
