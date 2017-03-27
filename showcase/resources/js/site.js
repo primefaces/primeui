@@ -4,12 +4,7 @@ var winH=$(window).height();
 Showcase = {
 
     init: function() {
-        this.menu = $('#MENUSIDE');
-        this.hiddenMenuIcons = this.menu.find('> div > span.MenuSideMainLink > .hiddenIcons');
-        this.hiddenLogo = $('#BlueLogo');
-
-        this.menu.height($(window).height());
-
+        this.menu = $('#layout-sidebar');
         this.menu.perfectScrollbar({
             wheelSpeed: 40,
             suppressScrollX: true
@@ -23,19 +18,15 @@ Showcase = {
     bindEvents: function() {
         var $this = this;
         
-        this.menu.on("mouseenter", function() {
-            Showcase.highlightMenu();
-        })
-        .on("mouseleave", function() {
-            Showcase.unhighlightMenu();
+        this.categoryLinks = this.menu.children('a');
+        this.categoryLinks.on('click', function(e) {
+            var link = $(this);
+            link.siblings('.active-menuitem').removeClass('active-menuitem').next('div').slideUp();
+            $(this).toggleClass('active-menuitem').next('div').slideToggle();
+            e.preventDefault();
         });
         
-        $('#mobilemenu').on('change', function(e) {
-            Showcase.changePageWithLink($(this).val());
-        });
-
-        var hashedLinks = this.menu.find('a.SubMenuLink');
-        hashedLinks = hashedLinks.add($('#PFTopLinksCover').children('a.hashed'));
+        var hashedLinks = this.menu.find('div > div > a');
         hashedLinks.on('click', function(e) {
             Showcase.changePageWithLink($(this).attr('href'));
             e.preventDefault();
@@ -100,16 +91,6 @@ Showcase = {
 
     onWinResize: function() {
         this.menu.height($(window).height());
-    },
-
-    highlightMenu: function() {
-        this.hiddenMenuIcons.animate({opacity:1}, 250);
-        this.hiddenLogo.animate({opacity:1}, 250);
-    },
-
-    unhighlightMenu: function() {
-        this.hiddenMenuIcons.animate({opacity:0}, 250);
-        this.hiddenLogo.animate({opacity:0}, 250);
     },
 
     openSubMenu: function(header) {

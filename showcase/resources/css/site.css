@@ -36,6 +36,10 @@ body {
     font-size: 1em;
 }
 
+body * {
+    box-sizing: border-box;
+}
+
 #layout-sidebar {
     position: absolute;
     left: 0;
@@ -47,16 +51,17 @@ body {
 }
 
 .layout-logo {
-    height: 65px;
     display: block;
-    padding: 15px 0 17px 0;
     z-index: 997;
     background-color: #313b3f;
     text-align: center;
+    height: 100px;
 }
 
 .layout-logo img {
-    height: 70px;
+    width: 200px;
+    display: inline-block;
+    margin-top: 35px;
 }
 
 #layout-sidebar > a {
@@ -102,38 +107,13 @@ body {
 
 #layout-sidebar > div {
     width: auto;
+    background-color: #20282b;
+    display: none;
+}
+
+#layout-sidebar > div > div {
     padding: 20px 15px;
     overflow: hidden;
-    background-color: #20282b;
-}
-
-#layout-sidebar > div.submenuhide {
-    overflow: hidden;
-    max-height: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    -moz-transition-duration: 0.3s;
-    -webkit-transition-duration: 0.3s;
-    -o-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-    -moz-transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
-    -webkit-transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
-    -o-transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
-    transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
-}
-
-#layout-sidebar > div.submenushow {
-    -moz-transition-duration: 0.3s;
-    -webkit-transition-duration: 0.3s;
-    -o-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-    -moz-transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
-    -webkit-transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
-    -o-transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
-    transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
-    max-height: 500px;
 }
 
 #layout-sidebar > div a {
@@ -142,7 +122,7 @@ body {
     padding: 6px;
     box-sizing: border-box;
     cursor: pointer;
-    border-radius: 4homepapx;
+    border-radius: 4;
     -webkit-border-radius: 4px;
     color: #659eb3;
     font-size: 14px;
@@ -188,6 +168,7 @@ body {
     border-bottom: solid 1px #dde3e6;
     padding: 15px;
     overflow: hidden;
+    height: 100px;
 }
 
 .topbar-link {
