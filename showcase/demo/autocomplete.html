@@ -102,7 +102,7 @@
 
         <h3>Remote</h3>
         <input id="remote" name="remote" type="text"/>
-        
+
         <h3>PrimeElement</h3>
         <input name="element" type="text" is="p-autocomplete" completesource="Showcase.demo.themes" />
 
@@ -244,6 +244,8 @@ $('#input').puiautocomplete({
 $('#basic').puiautocomplete({
     select: function(event, item) {
         //...
+        console.log(item.data().label);
+        console.log(item.data().value);
     }
 });
                                 </pre>
@@ -308,7 +310,7 @@ $('#basic').puiautocomplete('search', 'A');
         $('#customcontent').puiautocomplete({
             completeSource: themes,
             content: function(data) {
-                return '&lt;img src="showcase/resources/demo/images/themes/' + data.label + '.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;' 
+                return '&lt;img src="showcase/resources/demo/images/themes/' + data.label + '.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;'
                     + data.label + '&lt;/span&gt;';
             }
         });
@@ -347,7 +349,7 @@ $('#basic').puiautocomplete('search', 'A');
             }
         });
 
-        $('#growl').puigrowl(); 
+        $('#growl').puigrowl();
     });
 &lt;/script&gt;
                                 </pre>
@@ -382,7 +384,7 @@ $('#basic').puiautocomplete('search', 'A');
                                 <pre name="code" class="brush:xml">
 &lt;input name="element" type="text" is="p-autocomplete" completesource="AutoCompleteDemo.themes" /&gt;
                                 </pre>
-                                
+
                                 <h3>Attributes</h3>
                                 <table class="doc-table">
                                     <thead>
@@ -470,12 +472,12 @@ $('#basic').puiautocomplete('search', 'A');
                                 </table>
                             </div>
                         </div>
-                    </div>  
+                    </div>
                 </span>
             </span>
         </div>
     </div>
-    
+
     <script language="javascript">
         SyntaxHighlighter.highlight();
     </script>

@@ -40,7 +40,7 @@
     <div class="content-section source">
         <div>
             <span class="defaultText">
-                <span class="fontSize18 logoBlueText">           
+                <span class="fontSize18 logoBlueText">
                     <div id="doc">
                         <ul>
                             <li><a href="#doc-overview">Overview</a></li>
@@ -135,6 +135,7 @@ $('#chk1').puitogglebutton();
             $(':checkbox').puitogglebutton({
                 change: function(event, checked) {
                     //..
+                    console.log(checked.checked);
             }});
                                 </pre>
                             </div>
@@ -192,7 +193,7 @@ $('#chk1').puitogglebutton();
 
                                 <h3>Example</h3>
                                 <pre name="code" class="brush:js">
-            $('#default').puitogglebutton('check');  
+            $('#default').puitogglebutton('check');
                                 </pre>
                             </div>
 
@@ -341,7 +342,7 @@ $(function() {
                             </div>
 
                         </div>
-                    </div>   
+                    </div>
                 </span>
             </span>
         </div>

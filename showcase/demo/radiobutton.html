@@ -36,7 +36,7 @@
                 <div class="ui-grid-col-11"><label for="rd1_3" class="ui-widget">Option 3</label></div>
             </div>
         </div>
-        
+
         <h3>PrimeElement</h3>
         <div class="ui-grid ui-grid-responsive" style="width:250px">
             <div class="ui-grid-row">
@@ -64,7 +64,7 @@
                             <li><a href="#doc-options">Options</a></li>
                             <li><a href="#doc-events">Events</a></li>
                             <li><a href="#doc-methods">Methods</a></li>
-                            <li><a href="#doc-methods">Source</a></li>               
+                            <li><a href="#doc-methods">Source</a></li>
                             <li class="tab-primeelement"><a href="#doc-element">PrimeElement</a></li>
                         </ul>
                         <div>
@@ -92,10 +92,7 @@ $('#rd1').puiradiobutton();
                                     <tbody>
                                         <tr>
                                             <td>change</td>
-                                            <td>event: puiradiobuttonchange event
-                                                <br />
-                                                checked: Boolean value of selected state.
-                                            </td>
+                                            <td>event: puiradiobuttonchange event</td>
                                             <td>Fired when value changes.</td>
                                         </tr>
                                     </tbody>
@@ -106,6 +103,7 @@ $('#rd1').puiradiobutton();
 $(':radio').puiradiobutton({
     change: function(event) {
         //..
+        console.log(event.target.value);
     }
 });
                                 </pre>
@@ -187,11 +185,11 @@ $(function() {
                                 </pre>
 
                             </div>
-                            
+
                             <div id="doc-element">
                                 <h3>Usage</h3>
                                 RadioButton extends standard radio element and applied using is="p-radiobutton" attribute.
-                                
+
                                 <pre name="code" class="brush:xml">
 &lt;input type="radio" name="rb" id="rb" value="0" is="p-radiobutton"/&gt;
                                 </pre>
