@@ -59,7 +59,7 @@
         },
 
         _destroy: function() {
-            this.element.removeClass('ui-button ui-widget ui-state-default ui-state-hover ui-state-active ui-state-disabled ui-state-focus ui-corner-all ' + 
+            this.element.removeClass('ui-button ui-widget ui-state-default ui-state-active ui-state-disabled ui-corner-all ' + 
                                                     'ui-button-text-only ui-button-icon-only ui-button-text-icon-right ui-button-text-icon-left');
             this._unbindEvents();
             this.element.children('.fa').remove();
@@ -72,23 +72,16 @@
             $this = this;
             
             element.on('mouseover.puibutton', function(){
-                if(!element.prop('disabled')) {
-                    element.addClass('ui-state-hover');
-                }
             }).on('mouseout.puibutton', function() {
-                $(this).removeClass('ui-state-active ui-state-hover');
+                $(this).removeClass('ui-state-active');
             }).on('mousedown.puibutton', function() {
                 if(!element.hasClass('ui-state-disabled')) {
-                    element.addClass('ui-state-active').removeClass('ui-state-hover');
+                    element.addClass('ui-state-active');
                 }
             }).on('mouseup.puibutton', function(e) {
-                element.removeClass('ui-state-active').addClass('ui-state-hover');
+                element.removeClass('ui-state-active');
                 
                 $this._trigger('click', e);
-            }).on('focus.puibutton', function() {
-                element.addClass('ui-state-focus');
-            }).on('blur.puibutton', function() {
-                element.removeClass('ui-state-focus');
             }).on('keydown.puibutton',function(e) {
                 if(e.keyCode == $.ui.keyCode.SPACE || e.keyCode == $.ui.keyCode.ENTER || e.keyCode == $.ui.keyCode.NUMPAD_ENTER) {
                     element.addClass('ui-state-active');
