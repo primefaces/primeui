@@ -62,15 +62,7 @@
             this._bindKeyEvents();
             
             if(this.options.dropdown) {
-                this.dropdown.on('mouseenter.puiautocomplete', function() {
-                    if(!$this.element.prop('disabled')) {
-                        $this.dropdown.addClass('ui-state-hover');
-                    }
-                })
-                .on('mouseleave.puiautocomplete', function() {
-                    $this.dropdown.removeClass('ui-state-hover');
-                })
-                .on('mousedown.puiautocomplete', function() {
+                this.dropdown.on('mousedown.puiautocomplete', function() {
                     if(!$this.element.prop('disabled')) {
                         $this.dropdown.addClass('ui-state-active');
                     }
@@ -101,10 +93,7 @@
             }
             
             if(this.options.multiple) {
-                this.multiContainer.on('hover.puiautocomplete', function() {
-                    $(this).toggleClass('ui-state-hover');
-                })
-                .on('click.puiautocomplete', function() {
+                this.multiContainer.on('click.puiautocomplete', function() {
                     $this.element.trigger('focus');
                 });
 
