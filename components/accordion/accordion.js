@@ -75,7 +75,7 @@
         _destroy: function() {
             this._unbindEvents();
             this.element.removeClass('ui-accordion ui-widget ui-helper-reset');
-            this.headers.removeClass('ui-accordion-header ui-helper-reset ui-state-default ui-state-hover ui-state-active ui-state-disabled ui-corner-all ui-corner-top');
+            this.headers.removeClass('ui-accordion-header ui-helper-reset ui-state-default ui-state-active ui-state-disabled ui-corner-all ui-corner-top');
             this.panels.removeClass('ui-accordion-content ui-helper-reset ui-widget-content ui-helper-hidden');
             this.headers.children('.fa').remove();
             this.headers.children('a').contents().unwrap();
@@ -86,14 +86,8 @@
 
             this.headers.on('mouseover.puiaccordion', function() {
                 var element = $(this);
-                if(!element.hasClass('ui-state-active')&&!element.hasClass('ui-state-disabled')) {
-                    element.addClass('ui-state-hover');
-                }
             }).on('mouseout.puiaccordion', function() {
                 var element = $(this);
-                if(!element.hasClass('ui-state-active')&&!element.hasClass('ui-state-disabled')) {
-                    element.removeClass('ui-state-hover');
-                }
             }).on('click.puiaccordion', function(e) {
                 var element = $(this);
                 if(!element.hasClass('ui-state-disabled')) {
@@ -159,7 +153,7 @@
 
             //activate selected
             var newHeader = panel.prev();
-            newHeader.attr('aria-expanded', true).addClass('ui-state-active ui-corner-top').removeClass('ui-state-hover ui-corner-all')
+            newHeader.attr('aria-expanded', true).addClass('ui-state-active ui-corner-top').removeClass('ui-corner-all')
                     .children('.fa').removeClass('fa-caret-right').addClass('fa-caret-down');
 
             panel.attr('aria-hidden', false).slideDown('normal');
