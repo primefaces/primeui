@@ -136,20 +136,6 @@
                 </div>
             </div>
         </template>
-
-        <p-datagrid datasource="Showcase.demo.loadAllCars" header="PrimeElement" paginator rows="9">
-            <template>
-                <div class="ui-panel ui-widget ui-widget-content ui-corner-all">
-                    <div class="ui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all">
-                        <span class="ui-panel-title">{{vin}}</span>
-                    </div>
-                    <div class="ui-panel-content ui-widget-content">
-                        <img src="showcase/resources/demo/images/car/{{brand}}.gif">
-                        <div class="car-detail">{{year}} - {{color}}</div>
-                    </div>
-                </div>
-            </template>
-        </p-datagrid>
     </div>
 
     <div class="content-section source">
@@ -163,7 +149,6 @@
                             <li><a href="#doc-events">Events</a></li>
                             <li><a href="#doc-methods">Methods</a></li>
                             <li><a href="#doc-methods">Source</a></li>
-                            <li class="tab-primeelement"><a href="#doc-element">PrimeElement</a></li>
                         </ul>
                         <div>
                             <div id="doc-overview">
@@ -361,20 +346,6 @@ $(function() {
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/template&gt;
-
-&lt;p-datagrid datasource="Showcase.demo.loadAllCars" header="PrimeElement" paginator rows="9"&gt;
-    &lt;template&gt;
-        &lt;div class="ui-panel ui-widget ui-widget-content ui-corner-all"&gt;
-            &lt;div class="ui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all"&gt;
-                &lt;span class="ui-panel-title"&gt;{{vin}}&lt;/span&gt;
-            &lt;/div&gt;
-            &lt;div class="ui-panel-content ui-widget-content"&gt;
-                &lt;img src="showcase/resources/demo/images/car/{{brand}}.gif"&gt;
-                &lt;div class="car-detail"&gt;{{year}} - {{color}}&lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/template&gt;
-&lt;/p-datagrid&gt;
                                 </pre>
                             </div>
                             <div id="doc-element">
