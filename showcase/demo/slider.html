@@ -1,0 +1,303 @@
+<div>
+    <script type="text/javascript">
+        $(function () {
+            $('#default').val(0);
+            
+            $('#test').text(50);
+            
+            $('#basic').puislider({
+                onChange: function(event,obj) {
+                    $('#default').val(obj.value);
+                }
+            });
+            
+            $('#input').puislider({
+                value: 50,
+                onChange: function(event,obj) {
+                    $('#test').text(obj.value);
+                }
+            });
+            
+            $('#animate').puislider({
+                animate: true
+            });
+            
+            $('#step').puislider({
+                step: 10
+            });
+            
+            $('#range').puislider({
+                range: true,
+                value: [20,80]
+            });
+            
+            $('#vertical').puislider({
+                orientation: 'vertical'
+            });
+            
+            $('#default').puiinputtext(); 
+
+            $('#doc').puitabview();
+        });
+    </script>
+
+    <div class="content-section">
+        <div>
+            <span class="feature-title">Slider</span>
+            <span>Slider is a component to provide input using dragging of a handle.</span>
+        </div>
+    </div>
+
+    <div class="content-section implementation">
+
+        <h3 class="first">Default</h3>
+        <input id="default" type="text" readonly/>
+        <div id="basic" style="width:200px;"/>
+        
+        <h3>Input: <span id="test"></span></h3>
+        <div id="input" style="width:200px;"/>
+        
+        <h3>Animate</h3>
+        <div id="animate" style="width:200px;"/>
+        
+        <h3>Step</h3>
+        <div id="step" style="width:200px;"></div>
+        
+        <h3>Range</h3>
+        <div id="range" style="width:200px;"></div>
+        
+        <h3>Vertical</h3>
+        <div id="vertical" style="height:200px;"></div>
+
+    </div>
+
+    <div class="content-section source">
+        <div>
+            <span class="defaultText">
+                <span class="fontSize18 logoBlueText">
+                    <div id="doc">
+                        <ul>
+                            <li><a href="#doc-overview">Overview</a></li>
+                            <li><a href="#doc-options">Options</a></li>
+                            <li><a href="#doc-events">Events</a></li>
+                            <li><a href="#doc-methods">Methods</a></li>
+                            <li><a href="#doc-methods">Source</a></li>
+                            <li class="tab-primeelement"><a href="#doc-element">PrimeElement</a></li>
+
+                        </ul>
+                        <div>
+                            <div id="doc-overview">
+
+                                <pre name="code" class="brush:js">
+$('#basic').puislider();
+                                </pre>
+
+                                <pre name="code" class="brush:xml">
+&lt;input id="basic" type="text" /&gt;
+                                </pre>
+                                
+                            </div>
+
+                            <div id="doc-options">
+                                <table class="doc-table">
+                                    <thead>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>step</td>
+                                            <td>number</td>
+                                            <td>null</td>
+                                            <td>Step factor to increment/decrement.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>min</td>
+                                            <td>number</td>
+                                            <td>null</td>
+                                            <td>Mininum value for slider.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>max</td>
+                                            <td>number</td>
+                                            <td>null</td>
+                                            <td>Maximum value for slider.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>animate</td>
+                                            <td>boolean</td>
+                                            <td>null</td>
+                                            <td>When enabled, displays an animation on click of the slider bar.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>orientation</td>
+                                            <td>string</td>
+                                            <td>horizontal</td>
+                                            <td>Orientation of the slider, valid values are horizontal and vertical.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div id="doc-events">
+                                <h3>No events.</h3>
+                            </div>
+
+                            <div id="doc-methods">
+                                <table class="doc-table">
+                                    <thead>
+                                    <th>Name</th>
+                                    <th>Parameters</th>
+                                    <th>Description</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>enable</td>
+                                            <td>-</td>
+                                            <td>Enable the widget</td>
+                                        </tr>
+                                        <tr>
+                                            <td>disable</td>
+                                            <td>-</td>
+                                            <td>Disable the widget.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>option</td>
+                                            <td>name: Name of the option</td>
+                                            <td>Returns the value of the option.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>option</td>
+                                            <td>name: Name of the option, value: Value of the option</td>
+                                            <td>Set the value of the option.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div id="doc-source">
+                                <pre name="code" class="brush:js">
+$(function() {
+    $('#basic').puispinner();
+
+    $('#step').puispinner({step:0.25});
+
+    $('#minmax').puispinner({
+        min:0,
+        max:100
+    });
+
+    $('#prefix').puispinner({prefix:'$'});                                           
+});
+                                </pre>
+
+                                <pre name="code" class="brush:xml">
+&lt;input id="basic" type="text" /&gt;
+
+&lt;input id="step" type="text" /&gt;
+
+&lt;input id="minmax" type="text" /&gt;
+
+&lt;input id="prefix" type="text" value="$10"/&gt;
+
+&lt;input type="text" is="p-spinner" value="$10" /&gt;
+                                </pre>
+                            </div>
+
+                            <div id="doc-element">
+                                <h3>Usage</h3>
+                                Spinner is an extension to standard input element so applied using is="p-spinner" attribute.
+
+                                <pre name="code" class="brush:xml">
+&lt;input type="text" is="p-spinner" /&gt;
+                                </pre>
+
+                                <h3>Attributes</h3>
+                                <table class="doc-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Default</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>id</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Identifier of the element.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>step</td>
+                                            <td>number</td>
+                                            <td>1.0</td>
+                                            <td>Step factor to increment/decrement.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>min</td>
+                                            <td>number</td>
+                                            <td>null</td>
+                                            <td>Mininum value for spinner.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>max</td>
+                                            <td>number</td>
+                                            <td>null</td>
+                                            <td>Maximum value for spinner.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>prefix</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Prefix for the value of spinner.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>suffix</td>
+                                            <td>string</td>
+                                            <td>null</td>
+                                            <td>Suffix for the value of spinner.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                                <h3>Methods</h3>
+                                <table class="doc-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Parameters</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>enable()</td>
+                                            <td>-</td>
+                                            <td>Enables the element.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>disable()</td>
+                                            <td>-</td>
+                                            <td>Disables the element.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </span>
+            </span>
+        </div>
+    </div>
+
+    <script language="javascript">
+        SyntaxHighlighter.highlight();
+    </script>
+
+</div>
