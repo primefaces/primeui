@@ -3,7 +3,7 @@
         $(function () {
             $('#default').val(0);
             
-            $('#test').text(50);
+            $('#value').text(50);
             
             $('#basic').puislider({
                 onChange: function(event,obj) {
@@ -14,7 +14,7 @@
             $('#input').puislider({
                 value: 50,
                 onChange: function(event,obj) {
-                    $('#test').text(obj.value);
+                    $('#value').text(obj.value);
                 }
             });
             
@@ -54,11 +54,11 @@
         <input id="default" type="text" readonly/>
         <div id="basic" style="width:200px;"/>
         
-        <h3>Input: <span id="test"></span></h3>
-        <div id="input" style="width:200px;"/>
+        <h3>Input: <span id="value"></span></h3>
+        <div id="input" style="width:200px;"></div>
         
         <h3>Animate</h3>
-        <div id="animate" style="width:200px;"/>
+        <div id="animate" style="width:200px;"></div>
         
         <h3>Step</h3>
         <div id="step" style="width:200px;"></div>
@@ -82,7 +82,6 @@
                             <li><a href="#doc-events">Events</a></li>
                             <li><a href="#doc-methods">Methods</a></li>
                             <li><a href="#doc-methods">Source</a></li>
-                            <li class="tab-primeelement"><a href="#doc-element">PrimeElement</a></li>
 
                         </ul>
                         <div>
@@ -137,72 +136,106 @@ $('#basic').puislider();
                                             <td>horizontal</td>
                                             <td>Orientation of the slider, valid values are horizontal and vertical.</td>
                                         </tr>
+                                         <tr>
+                                            <td>range</td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>When speficed, allows two boundary values to be picked.</td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
 
                             <div id="doc-events">
-                                <h3>No events.</h3>
+                               <table class="doc-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Parameters</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>onChange</td>
+                                        <td>
+                                            event.originalEvent: Slide event <br />
+                                            event.value: New value <br />
+                                            event.values: Values in range mode <br />
+                                        </td>
+                                        <td>Callback to invoke on value change via slide.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>onSlideEnd</td>
+                                        <td>
+                                            event.originalEvent: Mouseup event<br />
+                                            event.value: New value 
+                                        </td>
+                                        <td>Callback to invoke when slide stops.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                             </div>
 
                             <div id="doc-methods">
-                                <table class="doc-table">
-                                    <thead>
-                                    <th>Name</th>
-                                    <th>Parameters</th>
-                                    <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>enable</td>
-                                            <td>-</td>
-                                            <td>Enable the widget</td>
-                                        </tr>
-                                        <tr>
-                                            <td>disable</td>
-                                            <td>-</td>
-                                            <td>Disable the widget.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>option</td>
-                                            <td>name: Name of the option</td>
-                                            <td>Returns the value of the option.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>option</td>
-                                            <td>name: Name of the option, value: Value of the option</td>
-                                            <td>Set the value of the option.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <h3>No methods.</h3>
                             </div>
 
                             <div id="doc-source">
                                 <pre name="code" class="brush:js">
-$(function() {
-    $('#basic').puispinner();
-
-    $('#step').puispinner({step:0.25});
-
-    $('#minmax').puispinner({
-        min:0,
-        max:100
+$(function () {
+    $('#default').val(0);
+    
+    $('#value').text(50);
+    
+    $('#basic').puislider({
+        onChange: function(event,obj) {
+            $('#default').val(obj.value);
+        }
     });
+    
+    $('#input').puislider({
+        value: 50,
+        onChange: function(event,obj) {
+            $('#value').text(obj.value);
+        }
+    });
+    
+    $('#animate').puislider({
+        animate: true
+    });
+    
+    $('#step').puislider({
+        step: 10
+    });
+    
+    $('#range').puislider({
+        range: true,
+        value: [20,80]
+    });
+    
+    $('#vertical').puislider({
+        orientation: 'vertical'
+    });
+    
+    $('#default').puiinputtext(); 
 
-    $('#prefix').puispinner({prefix:'$'});                                           
+    $('#doc').puitabview();
 });
                                 </pre>
 
                                 <pre name="code" class="brush:xml">
-&lt;input id="basic" type="text" /&gt;
+&lt;div id="basic" style="width:200px;"&gt;;&lt;/div&gt;
 
-&lt;input id="step" type="text" /&gt;
+&lt;div id="input" style="width:200px;"&gt;;&lt;/div&gt;
 
-&lt;input id="minmax" type="text" /&gt;
+&lt;div id="animate" style="width:200px;"&gt;;&lt;/div&gt;
 
-&lt;input id="prefix" type="text" value="$10"/&gt;
+&lt;div id="step" style="width:200px;"&gt;&lt;/div&gt;
 
-&lt;input type="text" is="p-spinner" value="$10" /&gt;
+&lt;div id="range" style="width:200px;"&gt;&lt;/div&gt;
+
+&lt;div id="vertical" style="height:200px;"&gt;&lt;/div&gt;
                                 </pre>
                             </div>
 
