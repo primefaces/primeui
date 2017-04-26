@@ -42,14 +42,7 @@
         _bindEvents: function() {
             var $this = this;
             
-            this.box.on('mouseover.puicheckbox', function() {
-                if(!$this.isChecked())
-                    $this.box.addClass('ui-state-hover');
-            })
-            .on('mouseout.puicheckbox', function() {
-                $this.box.removeClass('ui-state-hover');
-            })
-            .on('click.puicheckbox', function() {
+            this.box.on('click.puicheckbox', function() {
                 $this.toggle();
             });
             
@@ -139,7 +132,7 @@
         disable: function() {
             this.box.prop('disabled', true);
             this.box.attr('aria-disabled', true);
-            this.box.addClass('ui-state-disabled').removeClass('ui-state-hover');
+            this.box.addClass('ui-state-disabled');
             this._unbindEvents();
         },
 
