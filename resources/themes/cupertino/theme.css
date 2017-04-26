@@ -170,6 +170,10 @@
   color: #0070a3; }
   .ui-listbox:not(.ui-state-disabled) .ui-listbox-item:not(.ui-state-highlight):hover a {
     color: #0070a3; }
+.ui-listbox.ui-state-disabled .ui-chkbox-box:not(.ui-state-active):hover {
+  border-color: #aed0ea;
+  background: #d7ebf9;
+  color: #2779aa; }
 
 .ui-multiselect:not(.ui-state-disabled):hover {
   border-color: #74b2e2;
@@ -499,5 +503,3 @@ p-togglebutton.ng-dirty.ng-invalid .ui-button {
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
   border-radius: 6px; }
-
-/*# sourceMappingURL=theme.css.map */
