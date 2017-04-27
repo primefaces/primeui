@@ -68,13 +68,7 @@
             }
             
             if(this.options.showCloseIcon) {
-                this.closerIcon.on('mouseover.puioverlaypanel', function() {
-                    $(this).addClass('ui-state-hover');
-                })
-                .on('mouseout.puioverlaypanel', function() {
-                    $(this).removeClass('ui-state-hover');
-                })
-                .on('click.puioverlaypanel', function(e) {
+                this.closerIcon.on('click.puioverlaypanel', function(e) {
                     if($this._isVisible() ) {
                         $this.hide();
                     }
