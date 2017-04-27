@@ -170,13 +170,6 @@
         _bindEvents: function() {
             var $this = this;
 
-            this.menuitemLinks.on('mouseenter.ui-menu', function(e) {
-                    $(this).addClass('ui-state-hover');
-                })
-                .on('mouseleave.ui-menu', function(e) {
-                    $(this).removeClass('ui-state-hover');
-                });
-
             if(this.options.popup) {
                 this.menuitemLinks.on('click.ui-menu', function() {
                     $this.hide();
@@ -415,7 +408,7 @@
 
         _deactivate: function(menuitem, animate) {
             this.activeitem = null;
-            menuitem.children('a.ui-menuitem-link').removeClass('ui-state-hover');
+            menuitem.children('a.ui-menuitem-link');
             menuitem.removeClass('ui-menuitem-active');
 
             if(animate) {
@@ -448,7 +441,7 @@
 
         _highlight: function(menuitem) {
             this.activeitem = menuitem;
-            menuitem.children('a.ui-menuitem-link').addClass('ui-state-hover');
+            menuitem.children('a.ui-menuitem-link');
             menuitem.addClass('ui-menuitem-active');
         },
 
@@ -656,13 +649,7 @@
         _bindEvents: function() {
             var $this = this;
 
-            this.links.on('mouseenter.ui-menu',function() {
-                    $(this).addClass('ui-state-hover');
-                })
-                .on('mouseleave.ui-menu',function() {
-                    $(this).removeClass('ui-state-hover');
-                })
-                .on('click.ui-menu',function() {
+            this.links.on('click.ui-menu',function() {
                     var link = $(this),
                         submenu = link.next();
 
@@ -1079,7 +1066,6 @@
                 if($this.activeitem && !$this.isRootLink($this.activeitem)) {
                     $this._deactivate($this.activeitem);    
                 }
-                $(this).removeClass('ui-state-hover');
             });
             
             this.rootList.on('mouseleave.ui-megamenu', function(e) {
@@ -1124,7 +1110,6 @@
                 submenu = link.next();
 
             menuitem.removeClass('ui-menuitem-active');
-            link.removeClass('ui-state-hover');
             this.activeitem = null;
 
             if(submenu.length > 0) {
@@ -1150,7 +1135,6 @@
             var link = menuitem.children('a.ui-menuitem-link');
 
             menuitem.addClass('ui-menuitem-active');
-            link.addClass('ui-state-hover');
             this.activeitem = menuitem;
         },
 
@@ -1470,7 +1454,7 @@
             }
 
             this.panels.removeClass('ui-panelmenu-panel');
-            this.headers.removeClass('ui-widget ui-panelmenu-header ui-state-default ui-state-hover ui-state-active ui-corner-all ui-corner-top').removeAttr('tabindex');
+            this.headers.removeClass('ui-widget ui-panelmenu-header ui-state-default ui-state-active ui-corner-all ui-corner-top').removeAttr('tabindex');
             this.contents.removeClass('ui-panelmenu-content ui-widget-content ui-helper-hidden').removeAttr('tabindex')
             this.contents.find('ul').removeClass('ui-menu-list ui-helper-reset ui-helper-hidden');
 
@@ -1513,14 +1497,8 @@
 
             this.headers.on('mouseover.ui-panelmenu', function() {
                 var element = $(this);
-                if(!element.hasClass('ui-state-active')) {
-                    element.addClass('ui-state-hover');
-                }
             }).on('mouseout.ui-panelmenu', function() {
                 var element = $(this);
-                if(!element.hasClass('ui-state-active')) {
-                    element.removeClass('ui-state-hover');
-                }
             }).on('click.ui-panelmenu', function(e) {
                 var header = $(this);
 
@@ -1534,11 +1512,7 @@
                 e.preventDefault();
             });
 
-            this.menuitemLinks.on('mouseover.ui-panelmenu', function() {
-                $(this).addClass('ui-state-hover');
-            }).on('mouseout.ui-panelmenu', function() {
-                $(this).removeClass('ui-state-hover');
-            }).on('click.ui-panelmenu', function(e) {
+            this.menuitemLinks.on('click.ui-panelmenu', function(e) {
                 var currentLink = $(this);
                 $this._focusItem(currentLink.closest('.ui-menuitem'));
 
@@ -1585,7 +1559,7 @@
                     $(this).addClass('ui-menuitem-outline');
                 })
                 .on('blur.panelmenu', function(){
-                    $(this).removeClass('ui-menuitem-outline ui-state-hover');
+                    $(this).removeClass('ui-menuitem-outline');
                 })
                 .on('keydown.panelmenu', function(e) {
                     var keyCode = $.ui.keyCode,
@@ -1759,7 +1733,7 @@
         _collapseRootSubmenu: function(header) {
             var panel = header.next();
 
-            header.attr('aria-expanded', false).removeClass('ui-state-active ui-corner-top').addClass('ui-state-hover ui-corner-all');
+            header.attr('aria-expanded', false).removeClass('ui-state-active ui-corner-top').addClass('ui-corner-all');
             header.children('span.fa').removeClass('fa-caret-down').addClass('fa-caret-right');
             panel.attr('aria-hidden', true).slideUp('normal', 'easeInOutCirc');
 
@@ -1769,7 +1743,7 @@
         _expandRootSubmenu: function(header, restoring) {
             var panel = header.next();
 
-            header.attr('aria-expanded', true).addClass('ui-state-active ui-corner-top').removeClass('ui-state-hover ui-corner-all');
+            header.attr('aria-expanded', true).addClass('ui-state-active ui-corner-top').removeClass('ui-corner-all');
             header.children('span.fa').removeClass('fa-caret-right').addClass('fa-caret-down');
 
             if(restoring) {

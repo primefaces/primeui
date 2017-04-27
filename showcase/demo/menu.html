@@ -42,18 +42,6 @@
             <li><a data-icon="fa-refresh">Undo</a></li>
             <li><a data-icon="fa-close">Delete</a></li>
         </ul>
-
-        <h3>PrimeElement</h3>
-        <p-menu>
-            <p-submenu value="File">
-                <p-menuitem value="New" icon="fa-plus"></p-menuitem>
-                <p-menuitem value="Open" icon="fa-download"></p-menuitem>
-            </p-submenu>
-            <p-submenu value="Edit">
-                <p-menuitem value="Undo" icon="fa-refresh"></p-menuitem>
-                <p-menuitem value="Close" icon="fa-close"></p-menuitem>
-            </p-submenu>
-        </p-menu>
     </div>
 
     <div class="content-section source">
@@ -67,7 +55,6 @@
                             <li><a href="#doc-events">Events</a></li>
                             <li><a href="#doc-methods">Methods</a></li>
                             <li><a href="#doc-methods">Source</a></li>
-                            <li class="tab-primeelement"><a href="#doc-element">PrimeElement</a></li>
                         </ul>
 
                         <div>
@@ -199,109 +186,10 @@ $('button').puibutton();
     &lt;li&gt;&lt;a data-icon="fa-refresh"&gt;Undo&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a data-icon="fa-close"&gt;Delete&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;h3&gt;PrimeElement&lt;/h3&gt;
-&lt;p-menu&gt;
-    &lt;p-submenu value="File"&gt;
-        &lt;p-menuitem value="New" icon="fa-plus"&gt;&lt;/p-menuitem&gt;
-        &lt;p-menuitem value="Open" icon="fa-download"&gt;&lt;/p-menuitem&gt;
-    &lt;/p-submenu&gt;
-    &lt;p-submenu value="Edit"&gt;
-        &lt;p-menuitem value="Undo" icon="fa-refresh"&gt;&lt;/p-menuitem&gt;
-        &lt;p-menuitem value="Close" icon="fa-close"&gt;&lt;/p-menuitem&gt;
-    &lt;/p-submenu&gt;
-&lt;/p-menu&gt;
                                 </pre>
 
                             </div>
-
-                            <div id="doc-element">
-                                <h3>Usage</h3>
-                                Menu is defined using submenus and menuitem elements.
-                                
-                                <h4>Inline</h4>
-                                <pre name="code" class="brush:xml">
-&lt;p-menu&gt;
-    &lt;p-submenu value="File"&gt;
-        &lt;p-menuitem value="New" icon="fa-plus"&gt;&lt;/p-menuitem&gt;
-        &lt;p-menuitem value="Open" icon="fa-download"&gt;&lt;/p-menuitem&gt;
-    &lt;/p-submenu&gt;
-    &lt;p-submenu value="Edit"&gt;
-        &lt;p-menuitem value="Undo" icon="fa-refresh"&gt;&lt;/p-menuitem&gt;
-        &lt;p-menuitem value="Close" icon="fa-close"&gt;&lt;/p-menuitem&gt;
-    &lt;/p-submenu&gt;
-&lt;/p-menu&gt;
-                                </pre>
-                                
-                                <h4>Popup</h4>
-                                <pre name="code" class="brush:xml">
-&lt;button id="btn" type="button" is="p-button"&gt;Show&lt;/button&gt;
-
-&lt;p-menu popup trigger="btn"&gt;
-    &lt;p-submenu value="File"&gt;
-        &lt;p-menuitem value="New" icon="fa-plus"&gt;&lt;/p-menuitem&gt;
-        &lt;p-menuitem value="Open" icon="fa-download"&gt;&lt;/p-menuitem&gt;
-    &lt;/p-submenu&gt;
-    &lt;p-submenu value="Edit"&gt;
-        &lt;p-menuitem value="Undo" icon="fa-refresh"&gt;&lt;/p-menuitem&gt;
-        &lt;p-menuitem value="Close" icon="fa-close"&gt;&lt;/p-menuitem&gt;
-    &lt;/p-submenu&gt;
-&lt;/p-menu&gt;
-                                </pre>
-
-                                <h3>Attributes</h3>
-                                <table class="doc-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Type</th>
-                                            <th>Default</th>
-                                            <th>Description</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>id</td>
-                                            <td>string</td>
-                                            <td>null</td>
-                                            <td>Identifier of the element.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>popup</td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>Defines if menu would displayed as a popup.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>trigger</td>
-                                            <td>string</td>
-                                            <td>null</td>
-                                           <td>Id of trigger element to show the menu in popup mode.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>my</td>
-                                            <td>string</td>
-                                            <td>left top</td>
-                                            <td>Corners of menu to align with trigger in popup mode.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>at</td>
-                                            <td>string</td>
-                                            <td>left bottom</td>
-                                            <td>Corner of the trigger to align with menu in popup mode.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>triggerEvent</td>
-                                            <td>string</td>
-                                            <td>click</td>
-                                            <td>Event to show the menu in popup mode.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
                         </div>
-
                     </div>
                 </span>
             </span>
