@@ -87,17 +87,6 @@
                     this.content.hide();
                 }
             }
-
-            this._bindEvents();
-        },
-
-        _bindEvents: function() {
-            this.header.children('a.ui-panel-titlebar-icon').on('mouseenter.puipanel', function() {
-                $(this).addClass('ui-state-hover');
-            })
-            .on('mouseleave.puipanel', function() {
-                $(this).removeClass('ui-state-hover');
-            });
         },
 
         _unbindEvents: function() {
