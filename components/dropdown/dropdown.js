@@ -233,17 +233,7 @@
                 $this._bindItemEvents($(item));
             });
 
-            this.triggers.on('mouseenter.puidropdown', function() {
-                    if(!$this.container.hasClass('ui-state-focus')) {
-                        $this.container.addClass('ui-state-hover');
-                        $this.menuIcon.addClass('ui-state-hover');
-                    }
-                })
-                .on('mouseleave.puidropdown', function() {
-                    $this.container.removeClass('ui-state-hover');
-                    $this.menuIcon.removeClass('ui-state-hover');
-                })
-                .on('click.puidropdown', function(e) {
+            this.triggers.on('click.puidropdown', function(e) {
                     if($this.panel.is(":hidden")) {
                         $this._show();
                     }
@@ -253,8 +243,6 @@
                         $this._revert();
                     }
 
-                    $this.container.removeClass('ui-state-hover');
-                    $this.menuIcon.removeClass('ui-state-hover');
                     $this.focusElement.trigger('focus.puidropdown');
                     e.preventDefault();
                 });
@@ -296,12 +284,6 @@
 
             item.on('mouseover.puidropdown', function() {
                     var el = $(this);
-
-                    if(!el.hasClass('ui-state-highlight'))
-                        $(this).addClass('ui-state-hover');
-                })
-                .on('mouseout.puidropdown', function() {
-                    $(this).removeClass('ui-state-hover');
                 })
                 .on('click.puidropdown', function() {
                     $this._selectItem($(this));
