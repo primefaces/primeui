@@ -78,7 +78,7 @@
             this.container.append('<div class="ui-helper-hidden-accessible"><input readonly="readonly" type="text" /></div>');
             this.labelContainer = $('<div class="ui-multiselect-label-container"><label class="ui-multiselect-label ui-corner-all">' + this.options.defaultLabel +
              '</label></div>').appendTo(this.container);
-            this.menuIcon = $('<div class="ui-multiselect-trigger ui-state-default ui-corner-right"><span class="fa fa-fw fa-caret-down"></span></div>')
+            this.menuIcon = $('<div class="ui-multiselect-trigger ui-state-default ui-corner-right"><span class="fa fa-caret-down"></span></div>')
                 .appendTo(this.container);
 
             this._renderPanel();
@@ -99,7 +99,7 @@
             this.panelHeader = $('<div class="ui-widget-header ui-corner-all ui-multiselect-header ui-helper-clearfix"></div>').appendTo(this.panel);
             this.toggler = $('<div class="ui-chkbox ui-widget">' +
                 '<div class="ui-helper-hidden-accessible"><input readonly="readonly" type="checkbox"/></div>' +
-                '<div class="ui-chkbox-box ui-widget ui-corner-all ui-state-default"><span class="ui-chkbox-icon ui-c fa fa-fw"></span></div>' +
+                '<div class="ui-chkbox-box ui-widget ui-corner-all ui-state-default"><span class="ui-chkbox-icon ui-c fa"></span></div>' +
                     '</div>');
             this.togglerBox = this.toggler.children('.ui-chkbox-box');
             this.panelHeader.append(this.toggler);
@@ -117,7 +117,7 @@
                 this.listItems = $('<li data-label="' + optionLabel + '" class="ui-multiselect-item ui-corner-all">' +
                 '<div class="ui-chkbox ui-widget">' +
                     '<div class="ui-helper-hidden-accessible"><input readonly="readonly" type="checkbox"/></div>' +
-                    '<div class="ui-chkbox-box ui-widget ui-corner-all ui-state-default"><span class="ui-chkbox-icon ui-c fa fa-fw"></span></div>' +
+                    '<div class="ui-chkbox-box ui-widget ui-corner-all ui-state-default"><span class="ui-chkbox-icon ui-c fa"></span></div>' +
                 '</div>' + '<label>' + optionLabel + '</label>' + '</li>').appendTo(this.itemContainer);
             }
 
