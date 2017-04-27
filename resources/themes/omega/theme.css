@@ -562,13 +562,13 @@ p-togglebutton.ng-dirty.ng-invalid .ui-button {
     background: #ededf0; }
 
 /* Spinner */
-.ui-spinner:not(.ui-state-disabled) .ui-spinner-button:enabled:hover {
+.ui-spinner:not(.ui-state-disabled) .ui-spinner-button:hover {
   border: 1px solid #1f89ce;
   background: #1f89ce;
   outline: 0 none;
   color: #ffffff; }
 
-.ui-spinner:not(.ui-state-disabled) .ui-spinner-button:enabled:active {
+.ui-spinner:not(.ui-state-disabled) .ui-spinner-button:active {
   border: 1px solid #156090;
   background: #186ba0;
   color: #ffffff; }
