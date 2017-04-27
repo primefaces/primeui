@@ -92,7 +92,7 @@
                 this.element.removeClass('ui-selectbutton ui-buttonset ui-widget ui-corner-all').removeAttr('tabindex');
             }
             else {
-                this.buttons.removeClass('ui-state-focus ui-state-hover ui-state-active ui-corner-left ui-corner-right');
+                this.buttons.removeClass('ui-state-focus ui-state-active ui-corner-left ui-corner-right');
             }
             this.input.remove();
         },
@@ -134,16 +134,7 @@
         _bindEvents: function() {
             var $this = this;
 
-            this.buttons.on('mouseover.puiselectbutton', function() {
-                    var btn = $(this);
-                    if(!btn.hasClass('ui-state-active')) {
-                        btn.addClass('ui-state-hover');
-                    }
-                })
-                .on('mouseout.puiselectbutton', function() {
-                    $(this).removeClass('ui-state-hover');
-                })
-                .on('click.puiselectbutton', function(e) {
+            this.buttons.on('click.puiselectbutton', function(e) {
                     var btn = $(this);
 
                     if($(this).hasClass("ui-state-active")) {
