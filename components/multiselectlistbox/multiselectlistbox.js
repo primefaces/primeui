@@ -79,19 +79,7 @@
         _bindEvents: function() {
            var $this = this;
            
-           this.items.on('mouseover.multiSelectListbox', function() {
-               var item = $(this);
-
-               if(!item.hasClass('ui-state-highlight'))
-                   $(this).addClass('ui-state-hover');
-           })
-           .on('mouseout.multiSelectListbox', function() {
-               var item = $(this);
-
-               if(!item.hasClass('ui-state-highlight'))
-                   $(this).removeClass('ui-state-hover');
-           })
-           .on('click.multiSelectListbox', function() {
+           this.items.on('click.multiSelectListbox', function() {
                var item = $(this);
                if(!item.hasClass('ui-state-highlight')) {
                    $this.showOptionGroup(item);
