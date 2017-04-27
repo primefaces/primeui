@@ -58,19 +58,7 @@
             var $this = this;
 
             //Tab header events
-            this.tabHeaders.on('mouseover.puitabview', function(e) {
-                        var element = $(this);
-                        if(!element.hasClass('ui-state-disabled')&&!element.hasClass('ui-state-active')) {
-                            element.addClass('ui-state-hover');
-                        }
-                    })
-                    .on('mouseout.puitabview', function(e) {
-                        var element = $(this);
-                        if(!element.hasClass('ui-state-disabled')&&!element.hasClass('ui-state-active')) {
-                            element.removeClass('ui-state-hover');
-                        }
-                    })
-                    .on('click.puitabview', function(e) {
+            this.tabHeaders.on('click.puitabview', function(e) {
                         var element = $(this);
 
                         if($(e.target).is(':not(.fa-close)')) {
@@ -119,7 +107,7 @@
                 oldPanel.hide(this.options.effect.name, null, this.options.effect.duration, function() {
                    oldHeader.removeClass('ui-tabview-selected ui-state-active');
 
-                   newHeader.removeClass('ui-state-hover').addClass('ui-tabview-selected ui-state-active');
+                   newHeader.addClass('ui-tabview-selected ui-state-active');
                    newPanel.show($this.options.name, null, $this.options.effect.duration, function() {
                        $this._trigger('change', null, {'index':index});
                    });
@@ -129,7 +117,7 @@
                oldHeader.removeClass('ui-tabview-selected ui-state-active');
                oldPanel.hide();
 
-               newHeader.removeClass('ui-state-hover').addClass('ui-tabview-selected ui-state-active');
+               newHeader.addClass('ui-tabview-selected ui-state-active');
                newPanel.show();
 
                $this._trigger('change', null, {'index':index});
@@ -156,7 +144,7 @@
                newHeader = this.tabHeaders.eq(newIndex),
                newPanel = this.panels.eq(newIndex);
                
-               newHeader.removeClass('ui-state-hover').addClass('ui-tabview-selected ui-state-active');
+               newHeader.addClass('ui-tabview-selected ui-state-active');
                newPanel.show(); 
            }
        },
