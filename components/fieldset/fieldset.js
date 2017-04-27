@@ -65,10 +65,9 @@
             var $this = this;
             
             this.legend.on('click.puifieldset', function(e) {$this.toggle(e);})
-                            .on('mouseover.puifieldset', function() {$this.legend.addClass('ui-state-hover');})
-                            .on('mouseout.puifieldset', function() {$this.legend.removeClass('ui-state-hover ui-state-active');})
-                            .on('mousedown.puifieldset', function() {$this.legend.removeClass('ui-state-hover').addClass('ui-state-active');})
-                            .on('mouseup.puifieldset', function() {$this.legend.removeClass('ui-state-active').addClass('ui-state-hover');});
+                            .on('mouseout.puifieldset', function() {$this.legend.removeClass('ui-state-active');})
+                            .on('mousedown.puifieldset', function() {$this.legend.addClass('ui-state-active');})
+                            .on('mouseup.puifieldset', function() {$this.legend.removeClass('ui-state-active');});
         },
 
         _unbindEvents: function() {
@@ -96,7 +95,7 @@
         _destroy: function() {
             if(!this.options.enhanced) {
                 this.element.removeClass('ui-fieldset ui-widget ui-widget-content ui-corner-all')
-                            .children('legend').removeClass('ui-fieldset-legend ui-corner-all ui-state-default ui-state-hover ui-state-active');
+                            .children('legend').removeClass('ui-fieldset-legend ui-corner-all ui-state-default ui-state-active');
                 this.content.contents().unwrap();
 
                 if(this.options.toggleable) {
