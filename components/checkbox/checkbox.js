@@ -29,7 +29,7 @@
             
             if(this.isChecked()) {
                 this.box.addClass('ui-state-active');
-                this.icon.addClass('fa fa-fw fa-check');
+                this.icon.addClass('fa fa-check');
             }
             
             if(this.disabled) {
@@ -98,7 +98,7 @@
         check: function(activate, silent) {
             if(!this.isChecked()) {
                 this.element.prop('checked', true);
-                this.icon.addClass('fa fa-fw fa-check');
+                this.icon.addClass('fa fa-check');
 
                 if(!activate) {
                     this.box.addClass('ui-state-active');
@@ -114,7 +114,7 @@
             if(this.isChecked()) {
                 this.element.prop('checked', false);
                 this.box.removeClass('ui-state-active');
-                this.icon.removeClass('fa fa-fw fa-check');
+                this.icon.removeClass('fa fa-check');
 
                 this.element.trigger('change');
             }
