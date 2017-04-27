@@ -178,18 +178,6 @@
                 var rowSelector = '> tr';
         
                 this.tbody.off('mouseover.puitreetable mouseout.puitreetable click.puitreetable', rowSelector)
-                    .on('mouseover.puitreetable', rowSelector, null, function(e) {
-                        var element = $(this);
-                        if(!element.hasClass('ui-state-highlight')) {
-                            element.addClass('ui-state-hover');
-                        }
-                    })
-                    .on('mouseout.puitreetable', rowSelector, null, function(e) {
-                        var element = $(this);
-                        if(!element.hasClass('ui-state-highlight')) {
-                            element.removeClass('ui-state-hover');
-                        }
-                    })
                     .on('click.puitreetable', rowSelector, null, function(e) {
                         $this.onRowClick(e, $(this));
                     });
@@ -285,7 +273,7 @@
         },
 
         selectNode: function(row, silent) {
-            row.removeClass('ui-state-hover').addClass('ui-state-highlight').attr('aria-selected', true);
+            row.addClass('ui-state-highlight').attr('aria-selected', true);
 
             if(!silent) {
                 this._trigger('nodeSelect', {}, {'node': row, 'data': row.data('puidata')});
