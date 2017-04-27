@@ -45,13 +45,7 @@
         _bindEvents: function() {
             var $this = this;
         
-            this.box.on('mouseover.puiradiobutton', function() {
-                if(!$this._isChecked()) 
-                    $this.box.addClass('ui-state-hover');
-            }).on('mouseout.puiradiobutton', function() {
-                if(!$this._isChecked())
-                    $this.box.removeClass('ui-state-hover');
-            }).on('click.puiradiobutton', function() {
+            this.box.on('click.puiradiobutton', function() {
                 if(!$this._isChecked()) {
                     $this.element.trigger('click');
 
@@ -86,7 +80,7 @@
             .on('change.puiradiobutton', function(e) {
                 var name = $this.element.attr('name');
                 if(checkedRadios[name]) {
-                    checkedRadios[name].removeClass('ui-state-active ui-state-focus ui-state-hover').children('.ui-radiobutton-icon').removeClass('fa fa-fw fa-circle');
+                    checkedRadios[name].removeClass('ui-state-active ui-state-focus').children('.ui-radiobutton-icon').removeClass('fa fa-fw fa-circle');
                 }
 
                 $this.icon.addClass('fa fa-fw fa-circle');
