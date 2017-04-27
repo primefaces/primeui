@@ -339,12 +339,6 @@
                 }
              });
 
-            this.icons.mouseover(function() {
-                $(this).addClass('ui-state-hover');
-            }).mouseout(function() {
-                $(this).removeClass('ui-state-hover');
-            });
-
             this.closeIcon.on('click.puidialog', function(e) {
                 $this.hide();
                 $this._trigger('clickClose');
@@ -461,7 +455,6 @@
                 this.element.removeClass('ui-dialog-maximized');
                 this._restoreState();
 
-                this.maximizeIcon.removeClass('ui-state-hover');
                 this.maximized = false;
             }
             else {
@@ -483,7 +476,6 @@
                     height: 'auto'
                 });
 
-                this.maximizeIcon.removeClass('ui-state-hover');
                 this.maximized = true;
                 this._trigger('maximize');
             }
@@ -504,7 +496,7 @@
                 this.element.appendTo(this.parent).removeClass('ui-dialog-minimized').css({'position':'fixed', 'float':'none'});
                 this._restoreState();
                 this.content.show();
-                this.minimizeIcon.removeClass('ui-state-hover').children('.fa').removeClass('fa-plus').addClass('fa-minus');
+                this.minimizeIcon.children('.fa').removeClass('fa-plus').addClass('fa-minus');
                 this.minimized = false;
 
                 if(this.options.resizable) {
@@ -538,7 +530,7 @@
             this.element.appendTo(zone).css('position', 'static');
             this.element.css({'height':'auto', 'width':'auto', 'float': 'left'});
             this.content.hide();
-            this.minimizeIcon.removeClass('ui-state-hover').children('.fa').removeClass('fa-minus').addClass('fa-plus');
+            this.minimizeIcon.children('.fa').removeClass('fa-minus').addClass('fa-plus');
             this.minimized = true;
 
             if(this.options.resizable) {
