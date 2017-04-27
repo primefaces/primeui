@@ -71,22 +71,20 @@
             
             //visuals for spinner buttons
             this.wrapper.children('.ui-spinner-button')
-                .mouseover(function() {
-                    $(this).addClass('ui-state-hover');
-                }).mouseout(function() {
-                    $(this).removeClass('ui-state-hover ui-state-active');
+                .mouseout(function() {
+                    $(this).removeClass('ui-state-active');
 
                     if($this.timer) {
                         window.clearInterval($this.timer);
                     }
                 }).mouseup(function() {
                     window.clearInterval($this.timer);
-                    $(this).removeClass('ui-state-active').addClass('ui-state-hover');
+                    $(this).removeClass('ui-state-active');
                 }).mousedown(function(e) {
                     var element = $(this),
                     dir = element.hasClass('ui-spinner-up') ? 1 : -1;
 
-                    element.removeClass('ui-state-hover').addClass('ui-state-active');
+                    element.addClass('ui-state-active');
 
                     if($this.element.is(':not(:focus)')) {
                         $this.element.focus();
