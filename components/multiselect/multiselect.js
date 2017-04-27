@@ -143,7 +143,6 @@
             this._bindItemEvents(this.items.filter(':not(.ui-state-disabled)'));
             
             //Toggler
-            this._bindCheckboxHover(this.togglerBox);
             this.togglerBox.on('click.puimultiselect', function() {
                 var el = $(this);
                 if(el.children('.ui-chkbox-icon').hasClass('fa-check'))
@@ -176,26 +175,14 @@
             });
 
             //Closer
-            this.closeIcon.on('mouseenter.puimultiselect', function(){
-                $(this).addClass('ui-state-hover');
-            }).on('mouseleave.puimultiselect', function() {
-                $(this).removeClass('ui-state-hover');
-            }).on('click.puimultiselect', function(e) {
+            this.closeIcon.on('click.puimultiselect', function(e) {
                 $this.hide(true);
 
                 e.preventDefault();
             });
 
             //Events to show/hide the panel
-            this.triggers.on('mouseover.puimultiselect', function() {
-                if(!$this.disabled&&!$this.triggers.hasClass('ui-state-focus')) {
-                    $this.triggers.addClass('ui-state-hover');
-                }
-            }).on('mouseout.puimultiselect', function() {
-                if(!$this.disabled) {
-                    $this.triggers.removeClass('ui-state-hover');
-                }
-            }).on('click.puimultiselect', function(e) {
+            this.triggers.on('click.puimultiselect', function(e) {
                 if(!$this.disabled) {
                     if($this.panel.is(":hidden"))
                         $this.show();
@@ -249,16 +236,7 @@
         _bindItemEvents: function(item) {
             var $this = this;
 
-            item.on('mouseover.puimultiselect', function() {
-                    var el = $(this);
-
-                    if(!el.hasClass('ui-state-highlight'))
-                        $(this).addClass('ui-state-hover');
-                })
-                .on('mouseout.puimultiselect', function() {
-                    $(this).removeClass('ui-state-hover');
-                })
-                .on('click.puimultiselect', function() {
+            item.on('click.puimultiselect', function() {
                     $this._toggleItem($(this));
                     PUI.clearSelection();
                 });
@@ -344,17 +322,6 @@
                             e.preventDefault();
                         }
                     });
-        },
-
-        _bindCheckboxHover: function(item) {
-            item.on('mouseenter.puimultiselect', function() {
-                var item = $(this);
-                if(!item.hasClass('ui-state-active')&&!item.hasClass('ui-state-disabled')) {
-                    item.addClass('ui-state-hover');
-                }
-            }).on('mouseleave.puimultiselect', function() {
-                $(this).removeClass('ui-state-hover');
-            });
         },
 
         _bindCheckboxKeyEvents: function(items) {
