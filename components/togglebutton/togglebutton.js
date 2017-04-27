@@ -67,14 +67,7 @@
         _bindEvents: function() {
             var $this = this;
             
-            this.container.on('mouseover.puitogglebutton', function() {
-                if(!$this.container.hasClass('ui-state-active')) {
-                    $this.container.addClass('ui-state-hover');
-                }
-            }).on('mouseout.puitogglebutton', function() {
-                $this.container.removeClass('ui-state-hover');
-            })
-            .on('click.puitogglebutton', function() {
+            this.container.on('click.puitogglebutton', function() {
                 $this.toggle();
                 $this.element.trigger('focus');
             });
@@ -144,7 +137,7 @@
         disable: function () {
             this.element.prop('disabled', true);
             this.container.attr('aria-disabled', true);
-            this.container.addClass('ui-state-disabled').removeClass('ui-state-focus ui-state-hover');
+            this.container.addClass('ui-state-disabled').removeClass('ui-state-focus');
             this._unbindEvents();
         },
 
