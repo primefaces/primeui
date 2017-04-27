@@ -154,7 +154,7 @@
                 'icon': icon,
                 'click': function() {
                     fn();
-                    $(this).removeClass('ui-state-hover ui-state-focus');
+                    $(this).removeClass('ui-state-focus');
                 }
 
             });
@@ -165,17 +165,7 @@
         _bindEvents: function() {
             var $this = this;
         
-            this.items.on('mouseover.puipicklist', function(e) {
-                var element = $(this);
-
-                if(!element.hasClass('ui-state-highlight')) {
-                    $(this).addClass('ui-state-hover');
-                }
-            })
-            .on('mouseout.puipicklist', function(e) {
-                $(this).removeClass('ui-state-hover');
-            })
-            .on('click.puipicklist', function(e) {
+            this.items.on('click.puipicklist', function(e) {
                 var item = $(this),
                 metaKey = (e.metaKey||e.ctrlKey);
 
@@ -253,7 +243,7 @@
         },
                 
         selectItem: function(item) {
-            item.removeClass('ui-state-hover').addClass('ui-state-highlight');
+            item.addClass('ui-state-highlight');
         },
 
         unselectItem: function(item) {
@@ -449,7 +439,7 @@
                 });
             }
             else {
-                items.hide().removeClass('ui-state-highlight ui-state-hover').appendTo(to).show();
+                items.hide().removeClass('ui-state-highlight').appendTo(to).show();
 
                 this._saveState();
                 this._triggerTransferEvent(items, from, to, type);
