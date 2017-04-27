@@ -87,11 +87,7 @@
                     $this.hide();
             });
 
-            this.menuList.children().on('mouseover.puisplitbutton', function(e) {
-                $(this).addClass('ui-state-hover');
-            }).on('mouseout.puisplitbutton', function(e) {
-                $(this).removeClass('ui-state-hover');
-            }).on('click.puisplitbutton', function() {
+            this.menuList.children().on('click.puisplitbutton', function() {
                 $this.hide();
             });
             
@@ -111,7 +107,7 @@
                     e.pageY < offset.top ||
                     e.pageY > offset.top + $this.menu.height()) {
 
-                    $this.element.removeClass('ui-state-focus ui-state-hover');
+                    $this.element.removeClass('ui-state-focus');
                     $this.hide();
                 }
             });
