@@ -40,7 +40,7 @@
 
             update: function(element, state) {
                 if(state.page === 0) {
-                    element.addClass('ui-state-disabled').removeClass('ui-state-hover ui-state-active');
+                    element.addClass('ui-state-disabled').removeClass('ui-state-active');
                 }
                 else {
                     element.removeClass('ui-state-disabled');
@@ -69,7 +69,7 @@
 
             update: function(element, state) {
                 if(state.page === 0) {
-                    element.addClass('ui-state-disabled').removeClass('ui-state-hover ui-state-active');
+                    element.addClass('ui-state-disabled').removeClass('ui-state-active');
                 }
                 else {
                     element.removeClass('ui-state-disabled');
@@ -84,7 +84,7 @@
                 var element = $(this.markup);
 
                 if(paginator.options.page === (paginator.getPageCount() - 1)) {
-                    element.addClass('ui-state-disabled').removeClass('ui-state-hover ui-state-active');
+                    element.addClass('ui-state-disabled').removeClass('ui-state-active');
                 }
 
                 element.on('click.puipaginator', function() {
@@ -98,7 +98,7 @@
 
             update: function(element, state) {
                 if(state.page === (state.pageCount - 1)) {
-                    element.addClass('ui-state-disabled').removeClass('ui-state-hover ui-state-active');
+                    element.addClass('ui-state-disabled').removeClass('ui-state-active');
                 }
                 else {
                     element.removeClass('ui-state-disabled');
@@ -113,7 +113,7 @@
                 var element = $(this.markup);
 
                 if(paginator.options.page === (paginator.getPageCount() - 1)) {
-                    element.addClass('ui-state-disabled').removeClass('ui-state-hover ui-state-active');
+                    element.addClass('ui-state-disabled').removeClass('ui-state-active');
                 }
 
                 element.on('click.puipaginator', function() {
@@ -127,7 +127,7 @@
 
             update: function(element, state) {
                 if(state.page === (state.pageCount - 1)) {
-                    element.addClass('ui-state-disabled').removeClass('ui-state-hover ui-state-active');
+                    element.addClass('ui-state-disabled').removeClass('ui-state-active');
                 }
                 else {
                     element.removeClass('ui-state-disabled');
@@ -198,8 +198,6 @@
                         }
                     });
 
-                    paginator._bindHover(pageLinkElement);
-
                     element.append(pageLinkElement);
                 }
             },
@@ -249,27 +247,6 @@
                     this.element.append(paginatorElement);
                 }
             }
-
-            this._bindEvents();
-        },
-
-        _bindEvents: function() {
-            this._bindHover(this.element.find('span.ui-paginator-element'));
-        },
-
-        _bindHover: function(elements) {
-            elements.on('mouseover.puipaginator', function() {
-                        var el = $(this);
-                        if(!el.hasClass('ui-state-active')&&!el.hasClass('ui-state-disabled')) {
-                            el.addClass('ui-state-hover');
-                        }
-                    })
-                    .on('mouseout.puipaginator', function() {
-                        var el = $(this);
-                        if(el.hasClass('ui-state-hover')) {
-                            el.removeClass('ui-state-hover');
-                        }
-                    });
         },
 
         _setOption: function(key, value) {
