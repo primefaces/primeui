@@ -315,7 +315,7 @@
 
                 if (sortField === data.field) {
                     var sortIcon = $column.children('.ui-sortable-column-icon');
-                        $column.data('order', sortOrder).removeClass('ui-state-hover').addClass('ui-state-active');
+                        $column.data('order', sortOrder).addClass('ui-state-active');
 
                     if(sortOrder == -1)
                         sortIcon.removeClass('fa-sort fa-sort-asc').addClass('fa-sort-desc');
@@ -397,15 +397,9 @@
 
             this.sortableColumns.on('mouseover.puidatatable', function() {
                 var column = $(this);
-
-                if(!column.hasClass('ui-state-active'))
-                    column.addClass('ui-state-hover');
             })
             .on('mouseout.puidatatable', function() {
                 var column = $(this);
-
-                if(!column.hasClass('ui-state-active'))
-                    column.removeClass('ui-state-hover');
             })
             .on('click.puidatatable', function(event) {
                 if(!$(event.target).is('th,span')) {
@@ -441,7 +435,6 @@
                 }
 
                 //update visuals
-                column.data('order', sortOrder).removeClass('ui-state-hover').addClass('ui-state-active');
                 if(sortOrder === -1)
                     sortIcon.removeClass('fa-sort fa-sort-asc').addClass('fa-sort-desc');
                 else if(sortOrder === 1)
@@ -687,17 +680,9 @@
             this.tbody.off('mouseover.puidatatable mouseout.puidatatable mousedown.puidatatable click.puidatatable', this.rowSelector)
                     .on('mouseover.datatable', this.rowSelector, null, function() {
                         var element = $(this);
-
-                        if(!element.hasClass('ui-state-highlight')) {
-                            element.addClass('ui-state-hover');
-                        }
                     })
                     .on('mouseout.datatable', this.rowSelector, null, function() {
                         var element = $(this);
-
-                        if(!element.hasClass('ui-state-highlight')) {
-                            element.removeClass('ui-state-hover');
-                        }
                     })
                     .on('mousedown.datatable', this.rowSelector, null, function() {
                         $this.mousedownOnRow = true;
@@ -766,12 +751,10 @@
                 //ignore mouse click on row
                 if(!$this.mousedownOnRow) {
                     $this.focusedRow = $this.tbody.children('tr.ui-widget-content').eq(0);
-                    $this.focusedRow.addClass('ui-state-hover');
                 }
             })
             .on('blur', function() {
                 if($this.focusedRow) {
-                    $this.focusedRow.removeClass('ui-state-hover');
                     $this.focusedRow = null;
                 }
             })
@@ -784,9 +767,7 @@
                         case keyCode.UP:
                             var prevRow = $this.focusedRow.prev('tr.ui-widget-content');
                             if(prevRow.length) {
-                                $this.focusedRow.removeClass('ui-state-hover');
                                 $this.focusedRow = prevRow;
-                                $this.focusedRow.addClass('ui-state-hover');
                             }
                             e.preventDefault();
                         break;
@@ -794,9 +775,7 @@
                         case keyCode.DOWN:
                             var nextRow = $this.focusedRow.next('tr.ui-widget-content');
                             if(nextRow.length) {
-                                $this.focusedRow.removeClass('ui-state-hover');
                                 $this.focusedRow = nextRow;
-                                $this.focusedRow.addClass('ui-state-hover');
                             }
                             e.preventDefault();
                         break;
@@ -843,7 +822,7 @@
 
         selectRow: function(row, silent, event) {
             var selectedData = row.data('rowdata');
-            row.removeClass('ui-state-hover').addClass('ui-state-highlight').attr('aria-selected', true);
+            row.addClass('ui-state-highlight').attr('aria-selected', true);
 
             this._addSelection(selectedData);
 
@@ -1055,10 +1034,10 @@
                 });
 
                 clonedSortableColumns.on('blur.dataTable', function() {
-                    $(PUI.escapeClientId($(this).data('original'))).removeClass('ui-state-focus');
+                    $(PUI.escapeClientId($(this).data('original')));
                 })
                 .on('focus.dataTable', function() {
-                    $(PUI.escapeClientId($(this).data('original'))).addClass('ui-state-focus');
+                    $(PUI.escapeClientId($(this).data('original')));
                 })
                 .on('keydown.dataTable', function(e) {
                     var key = e.which,
