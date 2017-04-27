@@ -34,30 +34,11 @@
                 input.addClass('ui-state-disabled');
             else if(this.options.disabled)
                 this.disable();
-            else
-                this._enableMouseEffects();
         },
         
         _destroy: function() {
-            this.element.removeClass('ui-inputtext ui-widget ui-state-default ui-state-disabled ui-state-hover ui-state-focus ui-corner-all');
+            this.element.removeClass('ui-inputtext ui-widget ui-state-default ui-state-disabled ui-corner-all');
             this._disableMouseEffects();
-        },
-
-        _enableMouseEffects: function () {
-            var input = this.element;
-
-            input.on('mouseover.puiinputtext', function() {
-                input.addClass('ui-state-hover');
-            })
-            .on('mouseout.puiinputtext', function() {
-                input.removeClass('ui-state-hover');
-            })
-            .on('focus.puiinputtext', function() {
-                input.addClass('ui-state-focus');
-            })
-            .on('blur.puiinputtext', function() {
-                input.removeClass('ui-state-focus');
-            });
         },
 
         _disableMouseEffects: function () {
@@ -67,14 +48,12 @@
         disable: function () {
             this.element.prop('disabled', true);
             this.element.addClass('ui-state-disabled');
-            this.element.removeClass('ui-state-focus ui-state-hover');
             this._disableMouseEffects();
         },
 
         enable: function () {
             this.element.prop('disabled', false);
             this.element.removeClass('ui-state-disabled');
-            this._enableMouseEffects();
         },
 
         _setOption: function(key, value) {
