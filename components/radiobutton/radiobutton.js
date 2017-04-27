@@ -31,7 +31,7 @@
             
             if(this.element.prop('checked')) {
                 this.box.addClass('ui-state-active');
-                this.icon.addClass('fa fa-fw fa-circle');
+                this.icon.addClass('fa fa-circle');
                 checkedRadios[this.element.attr('name')] = this.box;
             }
             
@@ -80,10 +80,10 @@
             .on('change.puiradiobutton', function(e) {
                 var name = $this.element.attr('name');
                 if(checkedRadios[name]) {
-                    checkedRadios[name].removeClass('ui-state-active ui-state-focus').children('.ui-radiobutton-icon').removeClass('fa fa-fw fa-circle');
+                    checkedRadios[name].removeClass('ui-state-active ui-state-focus').children('.ui-radiobutton-icon').removeClass('fa fa-circle');
                 }
 
-                $this.icon.addClass('fa fa-fw fa-circle');
+                $this.icon.addClass('fa fa-circle');
                 if(!$this.element.is(':focus')) {
                     $this.box.addClass('ui-state-active');
                 }
