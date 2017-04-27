@@ -119,7 +119,7 @@
                 'icon': icon,
                 'click': function() {
                     fn();
-                    $(this).removeClass('ui-state-hover ui-state-focus');
+                    $(this).removeClass('ui-state-focus');
                 }
             });
             
@@ -353,24 +353,15 @@
         _bindItemEvents: function(item) {
             var $this = this;
 
-            item.on('mouseover.puiorderlist', function(e) {
+            item.on('mouseout.puiorderlist', function(e) {
                 var element = $(this);
-
-                if(!element.hasClass('ui-state-highlight'))
-                    $(this).addClass('ui-state-hover');
-            })
-            .on('mouseout.puiorderlist', function(e) {
-                var element = $(this);
-
-                if(!element.hasClass('ui-state-highlight'))
-                    $(this).removeClass('ui-state-hover');
             })
             .on('mousedown.puiorderlist', function(e) {
                 var element = $(this),
                 metaKey = (e.metaKey||e.ctrlKey);
 
                 if(!metaKey) {
-                    element.removeClass('ui-state-hover').addClass('ui-state-highlight')
+                    element.addClass('ui-state-highlight')
                             .siblings('.ui-state-highlight').removeClass('ui-state-highlight');
 
                     //$this.fireItemSelectEvent(element, e);
@@ -381,7 +372,7 @@
                         //$this.fireItemUnselectEvent(element);
                     }
                     else {
-                        element.removeClass('ui-state-hover').addClass('ui-state-highlight');
+                        element.addClass('ui-state-highlight');
                         //$this.fireItemSelectEvent(element, e);
                     }
                 }
