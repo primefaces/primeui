@@ -118,12 +118,6 @@
 
             item.on('mouseover.puilistbox', function() {
                     var item = $(this);
-                    if(!item.hasClass('ui-state-highlight')) {
-                        item.addClass('ui-state-hover');
-                    }
-                })
-                .on('mouseout.puilistbox', function() {
-                    $(this).removeClass('ui-state-hover');
                 })
                 .on('dblclick.puilistbox', function(e) {
                     $this.element.trigger('dblclick');
@@ -230,7 +224,7 @@
         },
 
         unselectAll: function() {
-            this.items.removeClass('ui-state-highlight ui-state-hover');
+            this.items.removeClass('ui-state-highlight');
             this.choices.filter(':selected').prop('selected', false);
         },
 
@@ -243,7 +237,7 @@
                 item = value;
             }
 
-            item.addClass('ui-state-highlight').removeClass('ui-state-hover');
+            item.addClass('ui-state-highlight');
             this.choices.eq(item.index()).prop('selected', true);
             this._trigger('itemSelect', null, this.choices.eq(item.index()));
         },
