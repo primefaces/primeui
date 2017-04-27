@@ -130,12 +130,6 @@
                 nodeContentSelector = '#' + elementId + ' .ui-treenode-selectable.ui-treenode-content';
 
                 $(document).off('mouseout.puitree-' + elementId + ' mouseover.puitree-' + elementId, nodeLabelSelector)
-                        .on('mouseout.puitree-' + elementId, nodeLabelSelector, null, function() {
-                            $(this).removeClass('ui-state-hover');
-                        })
-                        .on('mouseover.puitree-' + elementId, nodeLabelSelector, null, function() {
-                            $(this).addClass('ui-state-hover');
-                        })
                         .off('click.puitree-' + elementId, nodeContentSelector)
                         .on('click.puitree-' + elementId, nodeContentSelector, null, function(e) {
                             $this._nodeClick(e, $(this));
@@ -229,13 +223,13 @@
         },
                 
         selectNode: function(node) {
-            node.attr('aria-selected', true).find('> .ui-treenode-content > .ui-treenode-label').removeClass('ui-state-hover').addClass('ui-state-highlight');
+            node.attr('aria-selected', true).find('> .ui-treenode-content > .ui-treenode-label').addClass('ui-state-highlight');
             this._addToSelection(node.data('puidata'));
             this._trigger('nodeSelect', null, {'node': node, 'data': node.data('puidata')});
         },
                 
         unselectNode: function(node) {           
-            node.attr('aria-selected', false).find('> .ui-treenode-content > .ui-treenode-label').removeClass('ui-state-highlight ui-state-hover');
+            node.attr('aria-selected', false).find('> .ui-treenode-content > .ui-treenode-label').removeClass('ui-state-highlight');
             this._removeFromSelection(node.data('puidata'));
             this._trigger('nodeUnselect', null, {'node': node, 'data': node.data('puidata')});
         },
