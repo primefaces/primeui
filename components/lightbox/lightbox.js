@@ -69,10 +69,7 @@
         _bindCommonEvents: function() {
             var $this = this;
 
-            this.closeIcon.on('hover.ui-lightbox', function() {
-                    $(this).toggleClass('ui-state-hover');
-                })
-                .on('click.ui-lightbox', function(e) {
+            this.closeIcon.on('click.ui-lightbox', function(e) {
                     $this.hide();
                     e.preventDefault();
                 });
@@ -167,10 +164,7 @@
                 }, 500);
             });
 
-            this.navigators.on('hover.ui-lightbox', function() {
-                    $(this).toggleClass('ui-state-hover');
-                })
-                .on('click.ui-lightbox', function(e) {
+            this.navigators.on('click.ui-lightbox', function(e) {
                     var nav = $(this),
                         index;
 

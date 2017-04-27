@@ -58,22 +58,6 @@
         <a id="external" href="http://www.primefaces.org">
             PrimeFaces Home
         </a>
-
-        <h3>Prime Element</h3>
-        <p-lightbox>
-            <a href="showcase/resources/demo/images/sopranos/sopranos1.jpg" title="Sopranos 1">
-                <img src="showcase/resources/demo/images/sopranos/sopranos1_small.jpg" alt="Sopranos 1"/>
-            </a>
-            <a href="showcase/resources/demo/images/sopranos/sopranos2.jpg" title="Sopranos 2">
-                <img src="showcase/resources/demo/images/sopranos/sopranos2_small.jpg" alt="Sopranos 2"/>
-            </a>
-            <a href="showcase/resources/demo/images/sopranos/sopranos3.jpg" title="Sopranos 3">
-                <img src="showcase/resources/demo/images/sopranos/sopranos3_small.jpg" alt="Sopranos 3"/>
-            </a>
-            <a href="showcase/resources/demo/images/sopranos/sopranos4.jpg" title="Sopranos 4">
-                <img src="showcase/resources/demo/images/sopranos/sopranos4_small.jpg" alt="Sopranos 4"/>
-            </a>
-        </p-lightbox>
     </div>
 
     <div class="content-section source">
@@ -87,7 +71,6 @@
                             <li><a href="#doc-events">Events</a></li>
                             <li><a href="#doc-methods">Methods</a></li>
                             <li><a href="#doc-methods">Source</a></li>
-                            <li class="tab-primeelement"><a href="#doc-element">PrimeElement</a></li>
                         </ul>
                         <div>
                             <div id="doc-overview">
@@ -271,115 +254,7 @@ $(function() {
 &lt;a id="external" href="http://www.primefaces.org"&gt;
     PrimeFaces Home
 &lt;/a&gt;
-
-&lt;h3&gt;Prime Element&lt;/h3&gt;
-&lt;p-lightbox&gt;
-    &lt;a href="showcase/resources/demo/images/sopranos/sopranos1.jpg" title="Sopranos 1"&gt;
-        &lt;img src="showcase/resources/demo/images/sopranos/sopranos1_small.jpg" alt="Sopranos 1"/&gt;
-    &lt;/a&gt;
-    &lt;a href="showcase/resources/demo/images/sopranos/sopranos2.jpg" title="Sopranos 2"&gt;
-        &lt;img src="showcase/resources/demo/images/sopranos/sopranos2_small.jpg" alt="Sopranos 2"/&gt;
-    &lt;/a&gt;
-    &lt;a href="showcase/resources/demo/images/sopranos/sopranos3.jpg" title="Sopranos 3"&gt;
-        &lt;img src="showcase/resources/demo/images/sopranos/sopranos3_small.jpg" alt="Sopranos 3"/&gt;
-    &lt;/a&gt;
-    &lt;a href="showcase/resources/demo/images/sopranos/sopranos4.jpg" title="Sopranos 4"&gt;
-        &lt;img src="showcase/resources/demo/images/sopranos/sopranos4_small.jpg" alt="Sopranos 4"/&gt;
-    &lt;/a&gt;
-&lt;/p-lightbox&gt;
                                 </pre>
-                            </div>
-
-                            <div id="doc-element">
-                                <h3>Usage</h3>
-                                Lightbox is used as a container for anchor elements.
-                                <pre name="code" class="brush:xml">
-&lt;p-lightbox&gt;
-    &lt;a href="showcase/resources/demo/images/sopranos/sopranos1.jpg" title="Sopranos 1"&gt;
-        &lt;img src="resources/demo/images/sopranos/sopranos1_small.jpg" alt="Sopranos 1"/&gt;
-    &lt;/a&gt;
-    &lt;a href="showcase/resources/demo/images/sopranos/sopranos2.jpg" title="Sopranos 2"&gt;
-        &lt;img src="resources/demo/images/sopranos/sopranos2_small.jpg" alt="Sopranos 2"/&gt;
-    &lt;/a&gt;
-    &lt;a href="showcase/resources/demo/images/sopranos/sopranos3.jpg" title="Sopranos 3"&gt;
-        &lt;img src="resources/demo/images/sopranos/sopranos3_small.jpg" alt="Sopranos 3"/&gt;
-    &lt;/a&gt;
-    &lt;a href="showcase/resources/demo/images/sopranos/sopranos4.jpg" title="Sopranos 4"&gt;
-        &lt;img src="showcase/resources/demo/images/sopranos/sopranos4_small.jpg" alt="Sopranos 4"/&gt;
-    &lt;/a&gt;
-&lt;/p-lightbox&gt;
-                                </pre>
-
-                                <h3>Attributes</h3>
-                                <table class="doc-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Type</th>
-                                            <th>Default</th>
-                                            <th>Description</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>id</td>
-                                            <td>string</td>
-                                            <td>null</td>
-                                            <td>Identifier of the element.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>iframe</td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>Enables iframe mode to open target of link in an iframe.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>iframewidth</td>
-                                            <td>integer</td>
-                                            <td>640</td>
-                                            <td>Width of the iframe.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>iframeheight</td>
-                                            <td>integer</td>
-                                            <td>480</td>
-                                            <td>Height of the iframe.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                
-                                <h3>Methods</h3>
-                                <table class="doc-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Parameters</th>
-                                            <th>Description</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>show()</td>
-                                            <td>-</td>
-                                            <td>Displays the lightbox.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>hide()</td>
-                                            <td>-</td>
-                                            <td>Hides the lightbox.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>showURL(cfg)</td>
-                                             <td>cfg.src: Source url to show.
-                                                <br />
-                                                cfg.width: Width of the iframe.
-                                                <br />
-                                                cfg.height: Height of the iframe
-                                            </td>
-                                            <td>Shows a url in iframe.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
                             </div>
                         </div>
                     </div>
