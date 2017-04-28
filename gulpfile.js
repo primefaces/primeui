@@ -14,7 +14,6 @@ var gulp = require('gulp'),
 gulp.task('build-js', function() {
 	gulp.src([
         'components/core/core.js',
-        '!components/**/*-element.js',
 		'components/**/*.js'
     ])
 	.pipe(concat('primeui.js'))
@@ -30,17 +29,8 @@ gulp.task('build-css', function() {
 	.pipe(gulp.dest('build'));
 });
 
-//Building only primeelements.js
-gulp.task('build-elements', function() {
-	gulp.src([
-		'components/**/*-element.js'
-    ])
-	.pipe(concat('primeelements.js'))
-	.pipe(gulp.dest('build'));
-});
-
-//Building primeui.js, primeui.css, primelements.js at the same time
-gulp.task('build-dev', ['build-js', 'build-css', 'build-elements']);
+//Building primeui.js, primeui.css at the same time
+gulp.task('build-dev', ['build-js', 'build-css']);
 
 //Building images
 gulp.task('images', function() {
@@ -65,7 +55,6 @@ gulp.task('plugins', function () {
 gulp.task('build-js-prod', function() {
     gulp.src([
         'components/core/core.js',
-        '!components/**/*-element.js',
 		'components/**/*.js'
     ])
 	.pipe(concat('primeui.js'))
@@ -87,25 +76,12 @@ gulp.task('build-css-prod', function() {
     .pipe(gulp.dest('build'));	
 });
 
-//Building primeelements.js and primeelements.min.js
-gulp.task('build-elements-prod', function() {
-    gulp.src([
-		'components/**/*-element.js'
-    ])
-	.pipe(concat('primeelements.js'))
-	.pipe(gulp.dest('build'))
-    .pipe(uglify())
-    .pipe(rename('primeelements.min.js'))
-    .pipe(gulp.dest('build'));
-});
-
 //Build primeui-all.js
 gulp.task('build-primeui-js-all', function() {
     gulp.src([
         'showcase/resources/js/jquery.js',
         'showcase/resources/js/jquery-ui.js',
         'components/core/core.js',
-        '!components/**/*-element.js',
 		'components/**/*.js'
     ])
 	.pipe(concat('primeui-all.js'))
@@ -134,7 +110,7 @@ gulp.task('clean', function() {
 });
 
 //Building project with run sequence
-gulp.task('build-all', ['build-js-prod', 'build-css-prod', 'build-elements-prod', 
+gulp.task('build-all', ['build-js-prod', 'build-css-prod', 
         'build-primeui-js-all', 'build-primeui-css-all',
         'build-primeng-all', 'build-primeng-css-all', 
         'images','themes','plugins']);
