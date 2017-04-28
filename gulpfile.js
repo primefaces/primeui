@@ -112,7 +112,6 @@ gulp.task('clean', function() {
 //Building project with run sequence
 gulp.task('build-all', ['build-js-prod', 'build-css-prod', 
         'build-primeui-js-all', 'build-primeui-css-all',
-        'build-primeng-all', 'build-primeng-css-all', 
         'images','themes','plugins']);
 
 //Building distribution version with zip folder
