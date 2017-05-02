@@ -160,7 +160,6 @@
             this.initY = rect.top + this.getWindowScrollTop();
             this.barWidth = this.wrapper[0].offsetWidth;
             this.barHeight = this.wrapper[0].offsetHeight;
-            console.log(this.initY);
         },
         
         handleChange(event) {
@@ -216,8 +215,6 @@
         },
         
         calculateHandleValue(event) {
-            //console.log(Math.floor((((this.initY + this.barHeight) - event.pageY) * 100) / (this.barHeight)));
-            //console.log(event.pageY);
             if(this.options.orientation === 'horizontal')
                 return Math.floor(((event.pageX - this.initX) * 100) / (this.barWidth));
             else
