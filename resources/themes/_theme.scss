@@ -505,6 +505,16 @@
     }
 }
 
+.ui-multiselectlistbox {
+    .ui-multiselectlistbox-listcontainer {
+        .ui-multiselectlistbox-list {
+            .ui-multiselectlistbox-item:not(.ui-state-highlight):hover {
+                @include hover-element();
+            }
+        }
+    }
+}
+
 .ui-rating {
     a {
         color: $inputTextColor;

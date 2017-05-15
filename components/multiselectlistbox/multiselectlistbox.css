@@ -1,6 +1,6 @@
 .ui-multiselectlistbox-listcontainer {
-    padding: 2px;
-    width: 150px;
+    padding: 0.125em;
+    width: 10em;
 }
 
 .ui-multiselectlistbox-listcontainer {
@@ -14,7 +14,7 @@
 }
 
 .ui-multiselectlistbox .ui-multiselectlistbox-item {
-    margin: 2px;
+    margin: 0.125em;
     border: 0 none;
     cursor: pointer;
     font-weight: normal;
@@ -22,7 +22,7 @@
 
 .ui-multiselectlistbox .ui-multiselectlistbox-listcontainer {
     float: left;
-    margin-right: 4px;
+    margin-right: 0.25em;
 }
 
 .ui-multiselectlistbox .ui-multiselectlistbox-item {
@@ -35,6 +35,6 @@
 
 .ui-multiselectlistbox .ui-multiselectlistbox-header {
     text-align: center;
-    padding: 2px 10px;
-    border-bottom: 0px none;
+    padding: 0.125em 0.625em;
+    border-bottom: 0 none;
 }
