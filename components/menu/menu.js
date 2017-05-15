@@ -935,7 +935,7 @@
                 }
             }
 
-            this.element.children('ul').addClass('ui-menu-list ui-helper-reset');
+            this.element.children('ul').addClass('ui-menu-list ui-helper-reset ui-menubar-root-list');
 
             this.element.find('li').each(function(){
                 var listItem = $(this),
