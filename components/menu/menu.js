@@ -503,6 +503,7 @@
 
             if(!this.options.enhanced) {
                 this.element.parent().removeClass('ui-tieredmenu').addClass('ui-menubar');
+                this.element.addClass('ui-menubar-root-list');
             }
         },
 
