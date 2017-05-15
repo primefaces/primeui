@@ -379,6 +379,11 @@
 .ui-dialog {
     .ui-dialog-titlebar-icon {
         color: $headerTextColor;
+        float: right;
+        
+        .fa-minus,.fa-sort {
+            margin-top: 0.2em;
+        }
         
         &:hover {
             @include hover-element();
