@@ -20,7 +20,7 @@
     var ElementHandlers = {
 
         '{FirstPageLink}': {
-            markup: '<span class="ui-paginator-first ui-paginator-element ui-state-default ui-corner-all"><span class="fa fa-step-backward"></span></span>',
+            markup: '<a class="ui-paginator-first ui-paginator-element ui-state-default ui-corner-all"><span class="fa fa-step-backward"></span></a>',
 
             create: function(paginator) {
                 var element = $(this.markup);
@@ -49,7 +49,7 @@
         },
 
         '{PreviousPageLink}': {
-            markup: '<span class="ui-paginator-prev ui-paginator-element ui-state-default ui-corner-all"><span class="fa fa-backward"></span></span>',
+            markup: '<a class="ui-paginator-prev ui-paginator-element ui-state-default ui-corner-all"><span class="fa fa-backward"></span></a>',
 
             create: function(paginator) {
                 var element = $(this.markup);
@@ -78,7 +78,7 @@
         },
 
         '{NextPageLink}': {
-            markup: '<span class="ui-paginator-next ui-paginator-element ui-state-default ui-corner-all"><span class="fa fa-forward"></span></span>',
+            markup: '<a class="ui-paginator-next ui-paginator-element ui-state-default ui-corner-all"><span class="fa fa-forward"></span></a>',
 
             create: function(paginator) {
                 var element = $(this.markup);
@@ -107,7 +107,7 @@
         },
 
         '{LastPageLink}': {
-            markup: '<span class="ui-paginator-last ui-paginator-element ui-state-default ui-corner-all"><span class="fa fa-step-forward"></span></span>',
+            markup: '<a class="ui-paginator-last ui-paginator-element ui-state-default ui-corner-all"><span class="fa fa-step-forward"></span></a>',
 
             create: function(paginator) {
                 var element = $(this.markup);
@@ -136,7 +136,7 @@
         },
 
         '{PageLinks}': {
-            markup: '<span class="ui-paginator-pages"></span>',
+            markup: '<a class="ui-paginator-pages"></a>',
 
             create: function(paginator) {
                 var element = $(this.markup),
@@ -150,7 +150,7 @@
 
                 for(var i = start; i <= end; i++) {
                     var pageLinkNumber = (i + 1),
-                    pageLinkElement = $('<span class="ui-paginator-page ui-paginator-element ui-state-default ui-corner-all">' + pageLinkNumber + "</span>");
+                    pageLinkElement = $('<a class="ui-paginator-page ui-paginator-element ui-state-default ui-corner-all">' + pageLinkNumber + "</a>");
 
                     if(i === paginator.options.page) {
                         pageLinkElement.addClass('ui-state-active');
@@ -184,7 +184,7 @@
 
                 for(var i = start; i <= end; i++) {
                     var pageLinkNumber = (i + 1),
-                    pageLinkElement = $('<span class="ui-paginator-page ui-paginator-element ui-state-default ui-corner-all">' + pageLinkNumber + "</span>");
+                    pageLinkElement = $('<a class="ui-paginator-page ui-paginator-element ui-state-default ui-corner-all">' + pageLinkNumber + "</a>");
 
                     if(i === state.page) {
                         pageLinkElement.addClass('ui-state-active');
