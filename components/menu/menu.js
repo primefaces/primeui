@@ -1417,7 +1417,6 @@
 
                 if(listItem.children('ul').length) {
                     listItem.addClass('ui-menu-parent');
-                    menuitemLink.prepend('<span class="ui-panelmenu-icon fa fa-fw fa-caret-right"></span>');
                     listItem.children('ul').addClass('ui-helper-hidden');
 
                     if(icon) {
@@ -1436,10 +1435,10 @@
                     icon = headerLink.data('icon');
 
                 if(icon) {
-                    headerLink.addClass('ui-panelmenu-headerlink-hasicon').prepend('<span class="ui-menuitem-icon fa fa-fw ' + icon + '"></span>');
+                    headerLink.addClass('ui-panelmenu-headerlink-hasicon').prepend('<span class="ui-menuitem-icon fa fa-fw ' + icon + '"></span>').prepend('<span class="ui-panelmenu-icon fa fa-fw fa-caret-right"></span>');
                 }
 
-                header.addClass('ui-widget ui-panelmenu-header ui-state-default ui-corner-all').prepend('<span class="ui-panelmenu-icon fa fa-fw fa-caret-right"></span>');
+                header.addClass('ui-widget ui-panelmenu-header ui-state-default ui-corner-all');
             });
 
             //contents
