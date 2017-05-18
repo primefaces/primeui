@@ -266,7 +266,14 @@
     @include hover-element();
 }
 
-.ui-paginator a:not(.ui-state-disabled):not(.ui-state-active):hover {
+.ui-paginator .ui-paginator-pages a:not(.ui-state-disabled):not(.ui-state-active):hover {
+    @include hover-element();
+}
+
+.ui-paginator a.ui-paginator-first:not(.ui-state-disabled):not(.ui-state-active):hover,
+.ui-paginator a.ui-paginator-prev:not(.ui-state-disabled):not(.ui-state-active):hover,
+.ui-paginator a.ui-paginator-next:not(.ui-state-disabled):not(.ui-state-active):hover,
+.ui-paginator a.ui-paginator-last:not(.ui-state-disabled):not(.ui-state-active):hover {
     @include hover-element();
 }
 
