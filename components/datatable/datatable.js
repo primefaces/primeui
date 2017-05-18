@@ -436,7 +436,9 @@
                     $this._resetSortState(column);
                     $this.sort();
                 }
-
+                
+                column.data('order', sortOrder).addClass('ui-state-active');
+                
                 //update visuals
                 if(sortOrder === -1)
                     sortIcon.removeClass('fa-sort fa-sort-asc').addClass('fa-sort-desc');
