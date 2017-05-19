@@ -7,8 +7,23 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     del = require('del'),
     flatten = require('gulp-flatten'),
-    zip = require('gulp-zip');
+    zip = require('gulp-zip'),
+    watch = require('gulp-watch');
     
+//Building only primeui.js in watch mode
+gulp.task('build-js-w', function() {
+    return watch([
+        'components/core/core.js',
+		'components/**/*.js'
+    ], function() {
+        gulp.src([
+            'components/core/core.js',
+    		'components/**/*.js'
+        ])
+    	.pipe(concat('primeui.js'))
+    	.pipe(gulp.dest('build'));
+    });
+});    
     
 //Building only primeui.js
 gulp.task('build-js', function() {
