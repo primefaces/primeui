@@ -2,7 +2,7 @@ var winW=$(window).width();
 var winH=$(window).height();
 
 Showcase = {
-
+    
     init: function() {
         this.menu = $('#layout-sidebar');
         this.menu.perfectScrollbar({
@@ -52,7 +52,7 @@ Showcase = {
             if(!Showcase.hashChangeByLink) {
                 var hash = window.location.hash;
                 if(hash) {
-                    Showcase.openPageHash(hash);
+                    Showcase.openPageWithHash(hash);
                 }
             }
             else {
@@ -66,26 +66,27 @@ Showcase = {
     },
 
     changePageWithLink: function(page) {
-        if(page === '#') {
-            window.location.href = '';
-        }
-        else if(page.indexOf('http') === 0) {
-            window.location.href = page;
-        }
-        else {
-            var newPageHash = page.substring(page.lastIndexOf('/'), page.indexOf('.html'));
-            if('#' + newPageHash != window.location.hash) {
+        if(page !== this.currentPage) {
+            this.currentPage = page;
+            
+            if(page === '#') {
+                window.location.href = '';
+            }
+            else if(page.indexOf('http') === 0) {
+                window.location.href = page;
+            }
+            else {
                 Showcase.hashChangeByLink = true;
-                Showcase.openPage('showcase/demo/' + page);
-                window.location.hash = newPageHash;
+                Showcase.openPage(page);
+                window.location.hash = page;
             }
         }
     },
-
+    
     initMenuState: function() {
         var hash = window.location.hash;
         if(hash) {
-            this.openPageHash(hash);
+            this.openPageWithHash(hash);
         }
     },
 
@@ -122,35 +123,33 @@ Showcase = {
         }
     },
 
-    openPageHash: function(hash) {
+    openPageWithHash: function(hash) {
         if(hash && hash.length > 1) {
-            var plainHash = hash.substring(1),
-            root = window.location.href.split('#')[0],
-            url = root + 'showcase/demo/' + plainHash + '.html';
-            
-            this.openPage(url);
+            var plainHash = hash.substring(1);
+            this.openPage(plainHash);
 
-            this.menu.find('> div > span.MenuSideMainLink.MenuSideMainLinkDark').removeClass('MenuSideMainLinkDark').next().hide();
-            var menuitem = this.menu.find('a.SubMenuLink[href="'+ plainHash + '.html"]');
+            this.menu.find('> a.active-menuitem').removeClass('active-menuitem').next().hide();
+            var menuitem = this.menu.find('a[href="'+ plainHash + '"]');
             if(menuitem.length) {
-                var submenu = menuitem.parent(),
+                var submenu = menuitem.parent().parent(),
                 submenuTitle = submenu.prev();
 
                 submenu.show();
-                submenuTitle.addClass('MenuSideMainLinkDark');
+                submenuTitle.addClass('active-menuitem');
                 this.activeMenu = submenuTitle;
             }
         }
     },
 
-    openPage: function(url) {
+    openPage: function(route) {
         //cleanup spa
-        $(document.body).children('.ui-notify,.ui-shadow,.ui-growl').remove();
+        /*$(document.body).children('.ui-notify,.ui-shadow,.ui-growl').remove();
         if(this.pbinterval1) {clearInterval(this.pbinterval1); this.pbinterval1 = null;}
-        if(this.pbinterval2) {clearInterval(this.pbinterval2); this.pbinterval2 = null;}
-        $(window).off('scroll resize');
+        if(this.pbinterval2) {clearInterval(this.pbinterval2); this.pbinterval2 = null;}*/
+        //$(window).off('scroll resize');
+        $(document).trigger('onRouteChange');
 
-        $.get(url, function(content) {
+        $.get('showcase/demo/' + route + '.html', function(content) {
             $('#widgetdemo').html(content);
         });
     },
