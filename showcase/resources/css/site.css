@@ -234,29 +234,53 @@ body * {
     height: 25px;
 }
 
-.property-box {
-    height: 280px;
-    float: left;
-    overflow: hidden;
+/* HomePage */
+.homepage {
+    padding: 30px;
+}
+
+.homepage .features img {
+    width: 100%;
+}
+
+.homepage h1 {
+    color: #26a9e0;
+    font-weight: bold;
+}
+
+.homepage .features .ui-g-12 {
+    padding: 2em;
     text-align: center;
-    border-radius: 5px;
-    -webkit-border-radius: 5px;
-    display: block;
 }
-.property-box img {
-    width: 60%;
+
+.homepage .features .ui-g-12 span {
+    line-height: 1.5;
 }
-.property-box .property-topic {
-    display: block;
-    color: #25aae1;
-    font-size: 18px;
-    margin-bottom: 10px;
+
+.homepage .btn-download {
+    background-color: #ffd100;
+    color: #404C51;
 }
-.property-box .property-text {
-    display: block;
-    color: #414D52;
-    font-size: 14px;
-    line-height: 22px;
+
+.homepage .btn-download:hover {
+    background-color: #ffda32;
+}
+
+.homepage .btn-github {
+    background-color: #26a9e0;
+    color: #ffffff;
+}
+
+.homepage .btn-github:hover {
+    background-color: #51bae6;
+}
+
+.homepage .btn-big {
+    padding: 10px 30px;
+    display: block; 
+    margin-bottom: 8px;
+    border-radius: 3px;
+    text-align: center;
 }
 
 .footer {
