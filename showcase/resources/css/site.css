@@ -45,7 +45,6 @@ body * {
     left: 0;
     top: 0;
     background-color: #313b3f;
-    border-right: solid 1px #151d21;
     overflow: hidden;
     width: 299px;
 }
@@ -162,10 +161,9 @@ body * {
 }
 
 #topbar {
-    background-color: #1976D2;
+    background-color: #313b3f;
     box-sizing: border-box;
     display: block;
-    border-bottom: solid 1px #dde3e6;
     padding: 15px;
     overflow: hidden;
     height: 100px;
