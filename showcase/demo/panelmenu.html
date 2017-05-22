@@ -4,6 +4,11 @@
             $('#pm').puipanelmenu();
 
             $('#doc').puitabview();
+            
+            $(document).off('onRouteChange').on('onRouteChange', function() {
+                $('#doc').puitabview('destroy');
+                $('#pm').puipanelmenu('destroy');
+            });
         });
     </script>
 
