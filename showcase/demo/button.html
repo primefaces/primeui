@@ -19,6 +19,15 @@
             $('#disabled').puibutton();
 
             $('#doc').puitabview();
+            
+            $(document).off('onRouteChange').on('onRouteChange', function() {
+                $('#doc').puitabview('destroy');
+                $('#default').puibutton('destroy');
+                $('#left').puibutton('destroy');
+                $('#right').puibutton('destroy');
+                $('#icononly').puibutton('destroy');
+                $('#disabled').puibutton('destroy');
+            });
         });
     </script>
 
