@@ -33,6 +33,15 @@
             });
 
             $('#doc').puitabview();
+            
+            $(document).off('onRouteChange').on('onRouteChange', function() {
+                $('#doc').puitabview('destroy');
+                $('#default').puitabview('destroy');
+                $('#dynamic').puitabview('destroy');
+                $('#effect').puitabview('destroy');
+                $('#closable').puitabview('destroy');
+                $('#left').puitabview('destroy');
+            });
         });
     </script>
 
