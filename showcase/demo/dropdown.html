@@ -42,6 +42,16 @@
             });
 
             $('#doc').puitabview();
+            
+            $(document).off('onRouteChange').on('onRouteChange', function() {
+                $('#doc').puitabview('destroy');
+                $('#basic').puidropdown('destroy');
+                $('#editable').puidropdown('destroy');
+                $('#custom').puidropdown('destroy');
+                $('#filter').puidropdown('destroy');
+                $('#rfn').puidropdown('destroy');
+                $('#rurl').puidropdown('destroy');
+            });
 
         });
     </script>
