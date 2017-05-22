@@ -4,6 +4,11 @@
             $(':checkbox').puicheckbox();
 
             $('#doc').puitabview();
+            
+            $(document).off('onRouteChange').on('onRouteChange', function() {
+                $('#doc').puitabview('destroy');
+                $(':checkbox').puicheckbox('destroy');
+            });
 
         });
     </script>
