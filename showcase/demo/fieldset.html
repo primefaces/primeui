@@ -8,6 +8,12 @@
             });
 
             $('#doc').puitabview();
+            
+            $(document).off('onRouteChange').on('onRouteChange', function() {
+                $('#doc').puitabview('destroy');
+                $('#default').puifieldset('destroy');
+                $('#toggle').puifieldset('destroy');
+            });
         });
     </script>
 
