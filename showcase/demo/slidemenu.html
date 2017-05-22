@@ -4,6 +4,12 @@
             $('#sm1').puislidemenu();
 
             $('#doc').puitabview();
+            
+            $(document).off('onRouteChange').on('onRouteChange', function() {
+                $('#doc').puitabview('destroy');
+                $('#sm1').puislidemenu('destroy');
+            });
+            
         });
     </script>
 
