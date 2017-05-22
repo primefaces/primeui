@@ -18,6 +18,12 @@
                 effectSpeed: 500
             });
             $('#doc').puitabview();
+            
+            $(document).off('onRouteChange').on('onRouteChange', function() {
+                $('#doc').puitabview('destroy');
+                $('#images').puigalleria('destroy');
+                $('#customcontent').puigalleria('destroy');
+            });
         });
     </script>
 
