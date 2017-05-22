@@ -4,6 +4,11 @@
             $('#in').puiinputtext();
             
             $('#doc').puitabview();
+            
+            $(document).off('onRouteChange').on('onRouteChange', function() {
+                $('#doc').puitabview('destroy');
+                $('#in').puiinputtext('destroy');
+            });
         });
     </script>
 
