@@ -15,6 +15,15 @@
             $('button').puibutton();
 
             $('#doc').puitabview();
+            
+            $(document).off('onRouteChange').on('onRouteChange', function() {
+                clearInterval(Showcase.pbinterval1);
+                $('#doc').puitabview('destroy');
+                $('button').puibutton('destroy');
+                $('#tm1').puitieredmenu('destroy');
+                $('#tm2').puitieredmenu('destroy');
+                $('#tm3').puitieredmenu('destroy');
+            });
         });
     </script>
 
