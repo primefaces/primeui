@@ -14,6 +14,15 @@
             $('#readonly').puirating({readonly: true, cancel: false});
 
             $('#doc').puitabview();
+            
+            $(document).off('onRouteChange').on('onRouteChange', function() {
+                $('#doc').puitabview('destroy');
+                $('#rating').puirating('destroy');
+                $('#default').puirating('destroy');
+                $('#callback').puirating('destroy');
+                $('#nocancel').puirating('destroy');
+                $('#readonly').puirating('destroy');
+            });
         });
     </script>
 
