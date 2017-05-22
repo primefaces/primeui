@@ -13,6 +13,12 @@
             });
 
             $('#doc').puitabview();
+            
+            $(document).off('onRouteChange').on('onRouteChange', function() {
+                $('#doc').puitabview('destroy');
+                $('#default').puipanel('destroy');
+                $('#options').puipanel('destroy');
+            });
         });
     </script>
 
