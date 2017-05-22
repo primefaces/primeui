@@ -18,6 +18,13 @@
             });
 
             $('#doc').puitabview();
+            
+            $(document).off('onRouteChange').on('onRouteChange', function() {
+                $('#doc').puitabview('destroy');
+                $('#basic').puilistbox('destroy');
+                $('#multiple').puilistbox('destroy');
+                $('#custom').puilistbox('destroy');
+            });
         });
     </script>
 
