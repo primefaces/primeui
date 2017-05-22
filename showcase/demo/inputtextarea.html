@@ -32,6 +32,14 @@
             });
 
             $('#doc').puitabview();
+            
+            $(document).off('onRouteChange').on('onRouteChange', function() {
+                $('#doc').puitabview('destroy');
+                $('#basic').puiinputtextarea('destroy');
+                $('#resize').puiinputtextarea('destroy');
+                $('#counter').puiinputtextarea('destroy');
+                $('#ac').puiinputtextarea('destroy');
+            });
         });
     </script>
 
