@@ -60,6 +60,13 @@
             }, 100);
             
             $('#doc').puitabview();
+            
+            $(document).off('onRouteChange').on('onRouteChange', function() {
+                $('#doc').puitabview('destroy');
+                $('#cars1').puicarousel('destroy');
+                $('#cars2').puicarousel('destroy');
+                $('#cars3').puicarousel('destroy');
+            });
         });
     </script>
     <style type="text/css">
