@@ -11,6 +11,13 @@
             $('button').puibutton();
 
             $('#doc').puitabview();
+            
+            $(document).off('onRouteChange').on('onRouteChange', function() {
+                $('#doc').puitabview('destroy');
+                $('button').puibutton('destroy');
+                $('#pm1').puimenu('destroy');
+                $('#pm2').puimenu('destroy');
+            });
         });
     </script>
 
