@@ -142,11 +142,6 @@ Showcase = {
     },
 
     openPage: function(route) {
-        //cleanup spa
-        /*$(document.body).children('.ui-notify,.ui-shadow,.ui-growl').remove();
-        if(this.pbinterval1) {clearInterval(this.pbinterval1); this.pbinterval1 = null;}
-        if(this.pbinterval2) {clearInterval(this.pbinterval2); this.pbinterval2 = null;}*/
-        //$(window).off('scroll resize');
         $(document).trigger('onRouteChange');
 
         $.get('showcase/demo/' + route + '.html', function(content) {

@@ -6,6 +6,12 @@
             $('#multiple').puiaccordion({multiple: true});
 
             $('#doc').puitabview();
+            
+            $(document).off('onRouteChange').on('onRouteChange', function() {
+                $('#default').puiaccordion('destroy');
+                $('#multiple').puiaccordion('destroy');
+                $('#doc').puitabview('destroy');
+            });
         });
     </script>
 

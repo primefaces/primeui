@@ -13,6 +13,13 @@
                 var val = $('#pb1').puiprogressbar('option', 'value') + 10;
                 $('#pb1').puiprogressbar('option', 'value', val);
             }, 1000);
+            
+            $(document).off('onRouteChange').on('onRouteChange', function() {
+                clearInterval(Showcase.pbinterval1);
+                $('#doc').puitabview('destroy');
+                $('#pb1').puiprogressbar('destroy');
+                $('#pb2').puiprogressbar('destroy');
+            });
 
             $('#doc').puitabview();
         });

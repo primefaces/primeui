@@ -88,6 +88,13 @@
                     .attr('aria-valuenow', this.options.value)
                     .attr('aria-valuemax', 100);
         },
+        
+        disableAria: function() {
+            this.element.removeAttr('role')
+                    .removeAttr('aria-valuemin')
+                    .removeAttr('aria-valuenow')
+                    .removeAttr('aria-valuemax');
+        },
                 
         _setOption: function(key, value) {
             if(key === 'value') {
@@ -98,7 +105,8 @@
         },
         
         _destroy: function() {
-            
+            this.disableAria();
+            this.element.removeClass('ui-progressbar ui-widget ui-widget-content ui-corner-all').empty();
         }
         
     });
