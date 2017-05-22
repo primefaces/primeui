@@ -9,6 +9,13 @@
                 iframe: true
             });
             $('#doc').puitabview();
+            
+            $(document).off('onRouteChange').on('onRouteChange', function() {
+                $('#doc').puitabview('destroy');
+                $('#images').puilightbox('destroy');
+                $('#inline').puilightbox('destroy');
+                $('#external').puilightbox('destroy');
+            });
         });
     </script>
     <style type="text/css">
