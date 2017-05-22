@@ -9,6 +9,12 @@
             });
 
             $('#doc').puitabview();
+            
+            $(document).off('onRouteChange').on('onRouteChange', function() {
+                $('#doc').puitabview('destroy');
+                $('#mm').puimegamenu('destroy');
+                $('#vertical').puimegamenu('destroy');
+            });
         });
     </script>
 
