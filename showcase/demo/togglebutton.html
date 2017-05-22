@@ -11,6 +11,13 @@
             });
 
             $('#doc').puitabview();
+            
+            $(document).off('onRouteChange').on('onRouteChange', function() {
+                clearInterval(Showcase.pbinterval1);
+                $('#doc').puitabview('destroy');
+                $('#basic').puitogglebutton('destroy');
+                $('#icons').puitogglebutton('destroy');
+            });
         });
     </script>
     <style type="text/css">
