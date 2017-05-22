@@ -22,6 +22,12 @@
             });
 
             $('#doc').puitabview();
+            
+            $(document).off('onRouteChange').on('onRouteChange', function() {
+                $('#doc').puitabview('destroy');
+                $('#single').puiselectbutton('destroy');
+                $('#multiple').puiselectbutton('destroy');
+            });
 
         });
     </script>
