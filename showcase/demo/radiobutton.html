@@ -4,6 +4,11 @@
             $(':radio').puiradiobutton();
 
             $('#doc').puitabview();
+            
+            $(document).off('onRouteChange').on('onRouteChange', function() {
+                $('#doc').puitabview('destroy');
+                $(':radio').puiradiobutton('destroy');
+            });
         });
     </script>
     <style type="text/css">
