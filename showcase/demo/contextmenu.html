@@ -6,6 +6,11 @@
             });
 
             $('#doc').puitabview();
+            
+            $(document).off('onRouteChange').on('onRouteChange', function() {
+                $('#doc').puitabview('destroy');
+                $('#cm').puicontextmenu('destroy');
+            });
         });
     </script>
 
