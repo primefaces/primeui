@@ -77,6 +77,18 @@
                     return $('<div title="'+ car.vin + '"><img src="showcase/resources/demo/images/car/' + car.brand + '.gif" /><div class="car-detail">' + car.year + ' - ' + car.color  +'</div></div>').puipanel();
                 }
             });
+            
+            $(document).one('onRouteChange', function() {
+                $('#it').puiinputtext('destroy');
+                $('#ita').puiinputtext('destroy');
+                $('#btn').puibutton('destroy');
+                $('#lbox').puilistbox('destroy');
+                $('#pnl').puipanel('destroy');
+                $('#dlgbtn').puibutton('destroy');
+                $('#dlg').puidialog('destroy');
+                $('#dd').puidropdown('destroy');
+            });
+            
         });
     </script>
     <style type="text/css">
