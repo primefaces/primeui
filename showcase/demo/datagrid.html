@@ -86,6 +86,11 @@
             });
 
             $('#doc').puitabview();
+            
+            $(document).one('onRouteChange', function() {
+                $('#doc').puitabview('destroy');
+            });
+            
         });
     </script>
     <style type="text/css">
