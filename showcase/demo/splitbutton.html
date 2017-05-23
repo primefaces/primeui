@@ -32,6 +32,13 @@
             $('#messages').puigrowl();
 
             $('#doc').puitabview();
+            
+            $(document).one('onRouteChange', function() {
+                $('#doc').puitabview('destroy');
+                $('#messages').puigrowl('destroy');
+                $('#btn').puisplitbutton('destroy');
+            });
+            
         });
     </script>
 
