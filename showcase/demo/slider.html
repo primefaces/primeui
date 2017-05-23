@@ -38,6 +38,18 @@
             $('#default').puiinputtext(); 
 
             $('#doc').puitabview();
+            
+            $(document).one('onRouteChange', function() {
+                $('#doc').puitabview('destroy');
+                $('#basic').puislider('destroy');
+                $('#input').puislider('destroy');
+                $('#animate').puislider('destroy');
+                $('#step').puislider('destroy');
+                $('#range').puislider('destroy');
+                $('#vertical').puislider('destroy');
+                $('#default').puiinputtext('destroy');
+            });
+            
         });
     </script>
 
