@@ -4,6 +4,12 @@
             $('#bc1').puibreadcrumb();
 
             $('#doc').puitabview();
+            
+            $(document).one('onRouteChange', function() {
+                $('#doc').puitabview('destroy');
+                $('#bc1').puibreadcrumb('destroy');
+            });
+            
         });
     </script>
 
