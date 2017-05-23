@@ -243,9 +243,7 @@
 
         _destroy: function() {
             var $this = this;
-            if(!this.options.enhanced) {
-                this.unwrap();
-            }
+            
             this.element.children('li.ui-breadcrumb-chevron,.fa-home').remove();
             this.element.children('li').each(function() {
                 var listItem = $(this),
