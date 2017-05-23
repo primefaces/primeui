@@ -19,6 +19,11 @@
             });
 
             $('#doc').puitabview();
+            
+            $(document).one('onRouteChange', function() {
+                $('#doc').puitabview('destroy');
+            });
+            
         });
     </script>
 
