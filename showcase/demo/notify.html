@@ -12,6 +12,12 @@
             });
 
             $('#doc').puitabview();
+            
+            $(document).one('onRouteChange', function() {
+                $('#doc').puitabview('destroy');
+                $('#t-btn-show').puibutton('destroy');
+            });
+            
         });
     </script>
     <div class="content-section">
