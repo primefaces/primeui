@@ -64,6 +64,13 @@
             $('#commandButton').puibutton();
             $('#closeIcon').puibutton();
             $('#doc').puitabview();
+            
+            $(document).one('onRouteChange', function() {
+                $('#commandButton').puibutton('destroy');
+                $('#closeIcon').puibutton('destroy');
+                $('#doc').puitabview('destroy');
+            });
+            
         });
     </script>
 
