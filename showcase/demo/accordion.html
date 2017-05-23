@@ -63,183 +63,176 @@
 
     <div class="content-section source">
         <div>
-            <span class="defaultText">
-                <span class="fontSize18 logoBlueText">
-                    <div id="doc">
-                        <ul>
-                            <li><a href="#doc-overview">Overview</a></li>
-                            <li><a href="#doc-options">Options</a></li>
-                            <li><a href="#doc-events">Events</a></li>
-                            <li><a href="#doc-methods">Methods</a></li>
-                            <li><a href="#doc-methods">Source</a></li>
-                        </ul>
-                        <div>
-                            <div id="doc-overview">
-                                <pre name="code" class="brush:js">
-            $('#default').puiaccordion();
-                                </pre>
+            <div id="doc">
+                <ul>
+                    <li><a href="#documentation">Documentation</a></li>
+                    <li><a href="#doc-methods">Source</a></li>
+                </ul>
+                <div>
+                    <div id="documentation">
+                        <h3 style="margin-bottom:20px">Getting Started</h3>
+                        <pre name="code" class="brush:js">
+    $('#default').puiaccordion();
+                        </pre>
 
-                                <pre name="code" class="brush:xml">
-            &lt;div id="default"&gt;
-                &lt;h3&gt;Title 1&lt;/h3&gt;
-                &lt;div&gt;
-                    Content 1
-                &lt;/div&gt;  
+                        <pre name="code" class="brush:xml">
+    &lt;div id="default"&gt;
+        &lt;h3&gt;Title 1&lt;/h3&gt;
+        &lt;div&gt;
+            Content 1
+        &lt;/div&gt;  
 
-                &lt;h3&gt;Title 2&lt;/h3&gt;
-                &lt;div&gt;
-                    Content 2
-                &lt;/div&gt;  
+        &lt;h3&gt;Title 2&lt;/h3&gt;
+        &lt;div&gt;
+            Content 2
+        &lt;/div&gt;  
 
-                &lt;h3&gt;Title 3&lt;/h3&gt;
-                &lt;div&gt;
-                    Content 3
-                &lt;/div&gt;  
-            &lt;/div&gt;
-                                </pre>
-                            </div>
+        &lt;h3&gt;Title 3&lt;/h3&gt;
+        &lt;div&gt;
+            Content 3
+        &lt;/div&gt;  
+    &lt;/div&gt;
+                        </pre>
+                        
+                        <h3 style="margin-bottom:20px">Attributes</h3>
+                        <table class="doc-table">
+                            <thead>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Default</th>
+                            <th>Description</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>activeIndex</td>
+                                    <td>Integer/Array</td>
+                                    <td>0</td>
+                                    <td>Index of the active tab. If multiple is enabled, an array of active indexes.</td>
+                                </tr>
+                                <tr>
+                                    <td>multiple</td>
+                                    <td>Boolean</td>
+                                    <td>false</td>
+                                    <td>Defines if multiple tabs can be active at the same time.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h3 style="margin-bottom:20px">Events</h3>
+                        <table class="doc-table">
+                            <thead>
+                            <th>Name</th>
+                            <th>Parameters</th>
+                            <th>Description</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>change</td>
+                                    <td>event: puiaccordionchange event
+                                        <br />
+                                        panel: New panel content</td>
+                                    <td>Fired when an inactive tab is selected.</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-                            <div id="doc-options">
-                                <table class="doc-table">
-                                    <thead>
-                                    <th>Name</th>
-                                    <th>Type</th>
-                                    <th>Default</th>
-                                    <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>activeIndex</td>
-                                            <td>Integer/Array</td>
-                                            <td>0</td>
-                                            <td>Index of the active tab. If multiple is enabled, an array of active indexes.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>multiple</td>
-                                            <td>Boolean</td>
-                                            <td>false</td>
-                                            <td>Defines if multiple tabs can be active at the same time.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <div id="doc-events">
-                                <table class="doc-table">
-                                    <thead>
-                                    <th>Name</th>
-                                    <th>Parameters</th>
-                                    <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>change</td>
-                                            <td>event: puiaccordionchange event
-                                                <br />
-                                                panel: New panel content</td>
-                                            <td>Fired when an inactive tab is selected.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                                <h3>Example</h3>
-                                <pre name="code" class="brush:js">
-            $('#default').puiaccordion({
-                change: function(event, panel) {
-                    //...
-                }
-            });
-                                </pre>
-                            </div>
-
-                            <div id="doc-methods">
-                                <table class="doc-table">
-                                    <thead>
-                                    <th>Name</th>
-                                    <th>Parameters</th>
-                                    <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>select</td>
-                                            <td>index: Index of the tab to select.</td>
-                                            <td>Activates the tab with given index.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>unselect</td>
-                                            <td>index: Index of the tab to unselect.</td>
-                                            <td>Deactivates the tab with given index.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>option</td>
-                                            <td>name: Name of the option</td>
-                                            <td>Returns the value of the option.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>option</td>
-                                            <td>name: Name of the option, value: Value of the option</td>
-                                            <td>Set the value of the option.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                
-                                <h3>Example</h3>
-                                <pre name="code" class="brush:js">
-$('#default').puiaccordion('select', 1);
-                                </pre>
-                            </div>
-
-                            <div id="doc-source">
-                                <pre name="code" class="brush:js">
-&lt;script type="text/javascript"&gt;
-    $(function() {
-        $('#default').puiaccordion();
-
-        $('#multiple').puiaccordion({multiple:true});
+                        <h3>Example</h3>
+                        <pre name="code" class="brush:js">
+    $('#default').puiaccordion({
+        change: function(event, panel) {
+            //...
+        }
     });
+                        </pre>
+                        
+                        <h3 style="margin-bottom:20px">Methods</h3>
+                        <table class="doc-table">
+                            <thead>
+                            <th>Name</th>
+                            <th>Parameters</th>
+                            <th>Description</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>select</td>
+                                    <td>index: Index of the tab to select.</td>
+                                    <td>Activates the tab with given index.</td>
+                                </tr>
+                                <tr>
+                                    <td>unselect</td>
+                                    <td>index: Index of the tab to unselect.</td>
+                                    <td>Deactivates the tab with given index.</td>
+                                </tr>
+                                <tr>
+                                    <td>option</td>
+                                    <td>name: Name of the option</td>
+                                    <td>Returns the value of the option.</td>
+                                </tr>
+                                <tr>
+                                    <td>option</td>
+                                    <td>name: Name of the option, value: Value of the option</td>
+                                    <td>Set the value of the option.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h3>Example</h3>
+                        <pre name="code" class="brush:js">
+$('#default').puiaccordion('select', 1);
+                        </pre>
+                    </div>
+
+                    <div id="doc-source">
+                        <h3 style="margin-bottom:20px">Javascript</h3>
+                        <pre name="code" class="brush:js">
+&lt;script type="text/javascript"&gt;
+$(function() {
+$('#default').puiaccordion();
+
+$('#multiple').puiaccordion({multiple:true});
+});
 &lt;/script&gt;
-                                </pre>
-
-                                <pre name="code" class="brush:xml">
+                        </pre>
+                        
+                        <h3 style="margin-bottom:20px">HTML</h3>
+                        <pre name="code" class="brush:xml">
 &lt;div id="default"&gt;
-    &lt;h3&gt;Godfather 1&lt;/h3&gt;
-    &lt;div&gt;
-        The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
-    &lt;/div&gt;
+&lt;h3&gt;Godfather 1&lt;/h3&gt;
+&lt;div&gt;
+The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
+&lt;/div&gt;
 
-    &lt;h3&gt;Godfather 2&lt;/h3&gt;
-    &lt;div&gt;
-        Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows.
-    &lt;/div&gt;
+&lt;h3&gt;Godfather 2&lt;/h3&gt;
+&lt;div&gt;
+Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows.
+&lt;/div&gt;
 
-    &lt;h3&gt;Godfather 3&lt;/h3&gt;
-    &lt;div&gt;
-        After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.
-    &lt;/div&gt;    
+&lt;h3&gt;Godfather 3&lt;/h3&gt;
+&lt;div&gt;
+After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.
+&lt;/div&gt;    
 &lt;/div&gt;
 
 &lt;div id="multiple"&gt;
-    &lt;h3&gt;Godfather 1&lt;/h3&gt;
-    &lt;div&gt;
-        The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
-    &lt;/div&gt;
-
-    &lt;h3&gt;Godfather 2&lt;/h3&gt;
-    &lt;div&gt;
-        Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows.
-    &lt;/div&gt;
-
-    &lt;h3&gt;Godfather 3&lt;/h3&gt;
-    &lt;div&gt;
-        After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.
-    &lt;/div&gt;    
+&lt;h3&gt;Godfather 1&lt;/h3&gt;
+&lt;div&gt;
+The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, but given to ruthless violence whenever anything stands against the good of the family.
 &lt;/div&gt;
-                                </pre>
-                            </div>
-                        </div>
-                    </div>  
-                </span>
-            </span>
+
+&lt;h3&gt;Godfather 2&lt;/h3&gt;
+&lt;div&gt;
+Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream. In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy, killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows.
+&lt;/div&gt;
+
+&lt;h3&gt;Godfather 3&lt;/h3&gt;
+&lt;div&gt;
+After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.
+&lt;/div&gt;    
+&lt;/div&gt;
+                        </pre>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
