@@ -8,6 +8,11 @@
             }, 100);
 
             $('#doc').puitabview();
+            
+            $(document).one('onRouteChange', function() {
+                $('#stickymenu').puimenubar('destroy');
+                $('#doc').puitabview('destroy');
+            });
         });
     </script>
 
