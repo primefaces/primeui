@@ -77,6 +77,12 @@
             $('#growl').puigrowl();
 
             $('#doc').puitabview();
+            
+            $(document).one('onRouteChange', function() {
+                $('#doc').puitabview('destroy');
+                $('#growl').puigrowl('destroy');
+            });
+            
         });
     </script>
 
