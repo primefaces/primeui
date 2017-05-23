@@ -29,6 +29,15 @@
             }
 
             $('#doc').puitabview();
+            
+            $(document).one('onRouteChange', function() {
+                $('#doc').puitabview('destroy');
+                $('#btn-info').puibutton('destroy');
+                $('#btn-warn').puibutton('destroy');
+                $('#btn-error').puibutton('destroy');
+                $('#btn-multiple').puibutton('destroy');
+            });
+            
         });
     </script>
     <div class="content-section">
