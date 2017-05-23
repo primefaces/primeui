@@ -13,6 +13,15 @@
             $('#prefix').puispinner({prefix: '$'});
 
             $('#doc').puitabview();
+            
+            $(document).one('onRouteChange', function() {
+                $('#doc').puitabview('destroy');
+                $('#basic').puispinner('destroy');
+                $('#step').puispinner('destroy');
+                $('#minmax').puispinner('destroy');
+                $('#prefix').puispinner('destroy');
+            });
+            
         });
     </script>
 
