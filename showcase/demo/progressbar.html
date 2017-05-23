@@ -14,7 +14,7 @@
                 $('#pb1').puiprogressbar('option', 'value', val);
             }, 1000);
             
-            $(document).off('onRouteChange').on('onRouteChange', function() {
+            $(document).one('onRouteChange', function() {
                 clearInterval(Showcase.pbinterval1);
                 $('#doc').puitabview('destroy');
                 $('#pb1').puiprogressbar('destroy');

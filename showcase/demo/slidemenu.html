@@ -5,7 +5,7 @@
 
             $('#doc').puitabview();
             
-            $(document).off('onRouteChange').on('onRouteChange', function() {
+            $(document).one('onRouteChange', function() {
                 $('#doc').puitabview('destroy');
                 $('#sm1').puislidemenu('destroy');
             });

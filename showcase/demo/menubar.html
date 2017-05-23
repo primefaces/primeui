@@ -9,7 +9,7 @@
 
             $('#doc').puitabview();
             
-            $(document).off('onRouteChange').on('onRouteChange', function() {
+            $(document).one('onRouteChange', function() {
                 $('#doc').puitabview('destroy');
                 $('#mb1').puimenubar('destroy');
                 $('#mb2').puimenubar('destroy');

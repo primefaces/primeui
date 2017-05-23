@@ -33,7 +33,7 @@
 
             $('#doc').puitabview();
             
-            $(document).off('onRouteChange').on('onRouteChange', function() {
+            $(document).one('onRouteChange', function() {
                 $('#doc').puitabview('destroy');
                 $('#basic').puiinputtextarea('destroy');
                 $('#resize').puiinputtextarea('destroy');

@@ -15,7 +15,7 @@
 
             $('#doc').puitabview();
             
-            $(document).off('onRouteChange').on('onRouteChange', function() {
+            $(document).one('onRouteChange', function() {
                 $('#doc').puitabview('destroy');
                 $('#rating').puirating('destroy');
                 $('#default').puirating('destroy');

@@ -61,7 +61,7 @@
             
             $('#doc').puitabview();
             
-            $(document).off('onRouteChange').on('onRouteChange', function() {
+            $(document).one('onRouteChange', function() {
                 $('#doc').puitabview('destroy');
                 $('#cars1').puicarousel('destroy');
                 $('#cars2').puicarousel('destroy');

@@ -19,7 +19,7 @@
             });
             $('#doc').puitabview();
             
-            $(document).off('onRouteChange').on('onRouteChange', function() {
+            $(document).one('onRouteChange', function() {
                 $('#doc').puitabview('destroy');
                 $('#images').puigalleria('destroy');
                 $('#customcontent').puigalleria('destroy');

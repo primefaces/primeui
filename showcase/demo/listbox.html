@@ -19,7 +19,7 @@
 
             $('#doc').puitabview();
             
-            $(document).off('onRouteChange').on('onRouteChange', function() {
+            $(document).one('onRouteChange', function() {
                 $('#doc').puitabview('destroy');
                 $('#basic').puilistbox('destroy');
                 $('#multiple').puilistbox('destroy');

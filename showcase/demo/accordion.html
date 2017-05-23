@@ -7,7 +7,7 @@
 
             $('#doc').puitabview();
             
-            $(document).off('onRouteChange').on('onRouteChange', function() {
+            $(document).one('onRouteChange', function() {
                 $('#default').puiaccordion('destroy');
                 $('#multiple').puiaccordion('destroy');
                 $('#doc').puitabview('destroy');

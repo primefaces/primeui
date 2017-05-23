@@ -12,7 +12,7 @@
 
             $('#doc').puitabview();
             
-            $(document).off('onRouteChange').on('onRouteChange', function() {
+            $(document).one('onRouteChange', function() {
                 clearInterval(Showcase.pbinterval1);
                 $('#doc').puitabview('destroy');
                 $('#basic').puitogglebutton('destroy');

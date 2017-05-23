@@ -34,7 +34,7 @@
 
             $('#doc').puitabview();
             
-            $(document).off('onRouteChange').on('onRouteChange', function() {
+            $(document).one('onRouteChange', function() {
                 $('#doc').puitabview('destroy');
                 $('#default').puitabview('destroy');
                 $('#dynamic').puitabview('destroy');
