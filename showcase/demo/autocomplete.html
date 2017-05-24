@@ -114,247 +114,232 @@
 
     <div class="content-section source">
         <div>
-            <span class="defaultText">
-                <span class="fontSize18 logoBlueText">
-                    <div id="doc">
-                        <ul>
-                            <li><a href="#doc-overview">Overview</a></li>
-                            <li><a href="#doc-options">Options</a></li>
-                            <li><a href="#doc-events">Events</a></li>
-                            <li><a href="#doc-methods">Methods</a></li>
-                            <li><a href="#doc-methods">Source</a></li>
-                        </ul>
-                        <div>
-                            <div id="doc-overview">
-
-                                <pre class="brush:js">
+            <div id="doc">
+                <ul>
+                    <li><a href="#documentation">Documentation</a></li>
+                    <li><a href="#doc-methods">Source</a></li>
+                </ul>
+                <div>
+                    <div id="documentation">
+                        <h3 style="margin-bottom:20px">Getting Started</h3>
+                        <pre class="brush:js">
 $('#input').puiautocomplete({
-    completeSource: //array or a function
+completeSource: //array or a function
 });
-                                </pre>
+                        </pre>
 
-                                <pre class="brush:xml">
+                        <pre class="brush:xml">
 &lt;input id="basic" name="basic" type="text"/&gt;
-                                </pre>
-
-                            </div>
-
-                            <div id="doc-options">
-
-                                <table class="doc-table">
-                                    <thead>
-                                        <th>Name</th>
-                                        <th>Type</th>
-                                        <th>Default</th>
-                                        <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>delay</td>
-                                            <td>integer</td>
-                                            <td>300</td>
-                                            <td>Delay in milliseconds before doing a search.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>minQueryLength</td>
-                                            <td>Integer</td>
-                                            <td>1</td>
-                                            <td>Minimum length of input value to run a query.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>multiple</td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>Enables multiple selection mode.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>dropdown</td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>Displays a dropdown button next to the input field to search all items.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>scrollHeight</td>
-                                            <td>integer</td>
-                                            <td>200</td>
-                                            <td>Maximum height of the suggestions panel in pixels.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>forceSelection</td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>When enabled, input value is restricted only with suggested items.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>effect</td>
-                                            <td>string</td>
-                                            <td>null</td>
-                                            <td>Name of effect to display when showing suggestions.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>effectSpeed</td>
-                                            <td>int/string</td>
-                                            <td>normal</td>
-                                            <td>Duration in milliseconds or keywords like slow, normal and fast.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>effectOptions</td>
-                                            <td>object</td>
-                                            <td>null</td>
-                                            <td>Additional options for effect, refer to jQuery UI effect api.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>content</td>
-                                            <td>function</td>
-                                            <td>null</td>
-                                            <td>Function that returns string as html content of an item for customizable suggestions.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>caseSensitive</td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>Defines if search on a local datasource should be case sensitive.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                            </div>
-
-                            <div id="doc-events">
-
-                                <table class="doc-table">
-                                    <thead>
-                                        <th>Name</th>
-                                        <th>Parameters</th>
-                                        <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>select</td>
-                                            <td>
-                                                event: puiautocompleteselect event
-                                                <br />
-                                                item: selected item from callback.
-                                            </td>
-                                            <td>Fired when suggested item is selected.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                                <h3>Example</h3>
-                                <pre name="code" class="brush:js">
+                        </pre>
+                        
+                        <h3 style="margin-bottom:20px">Attributes</h3>
+                        <table class="doc-table">
+                            <thead>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Default</th>
+                                <th>Description</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>delay</td>
+                                    <td>integer</td>
+                                    <td>300</td>
+                                    <td>Delay in milliseconds before doing a search.</td>
+                                </tr>
+                                <tr>
+                                    <td>minQueryLength</td>
+                                    <td>Integer</td>
+                                    <td>1</td>
+                                    <td>Minimum length of input value to run a query.</td>
+                                </tr>
+                                <tr>
+                                    <td>multiple</td>
+                                    <td>boolean</td>
+                                    <td>false</td>
+                                    <td>Enables multiple selection mode.</td>
+                                </tr>
+                                <tr>
+                                    <td>dropdown</td>
+                                    <td>boolean</td>
+                                    <td>false</td>
+                                    <td>Displays a dropdown button next to the input field to search all items.</td>
+                                </tr>
+                                <tr>
+                                    <td>scrollHeight</td>
+                                    <td>integer</td>
+                                    <td>200</td>
+                                    <td>Maximum height of the suggestions panel in pixels.</td>
+                                </tr>
+                                <tr>
+                                    <td>forceSelection</td>
+                                    <td>boolean</td>
+                                    <td>false</td>
+                                    <td>When enabled, input value is restricted only with suggested items.</td>
+                                </tr>
+                                <tr>
+                                    <td>effect</td>
+                                    <td>string</td>
+                                    <td>null</td>
+                                    <td>Name of effect to display when showing suggestions.</td>
+                                </tr>
+                                <tr>
+                                    <td>effectSpeed</td>
+                                    <td>int/string</td>
+                                    <td>normal</td>
+                                    <td>Duration in milliseconds or keywords like slow, normal and fast.</td>
+                                </tr>
+                                <tr>
+                                    <td>effectOptions</td>
+                                    <td>object</td>
+                                    <td>null</td>
+                                    <td>Additional options for effect, refer to jQuery UI effect api.</td>
+                                </tr>
+                                <tr>
+                                    <td>content</td>
+                                    <td>function</td>
+                                    <td>null</td>
+                                    <td>Function that returns string as html content of an item for customizable suggestions.</td>
+                                </tr>
+                                <tr>
+                                    <td>caseSensitive</td>
+                                    <td>boolean</td>
+                                    <td>false</td>
+                                    <td>Defines if search on a local datasource should be case sensitive.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h3 style="margin-bottom:20px">Events</h3>
+                        <table class="doc-table">
+                            <thead>
+                                <th>Name</th>
+                                <th>Parameters</th>
+                                <th>Description</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>select</td>
+                                    <td>
+                                        event: puiautocompleteselect event
+                                        <br />
+                                        item: selected item from callback.
+                                    </td>
+                                    <td>Fired when suggested item is selected.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3>Example</h3>
+                        <pre name="code" class="brush:js">
 $('#basic').puiautocomplete({
-    select: function(event, item) {
-        //...
+select: function(event, item) {
+//...
+}
+});
+                        </pre>
+                        
+                        <h3 style="margin-bottom:20px">Functions</h3>
+                        <table class="doc-table">
+                            <thead>
+                                <th>Name</th>
+                                <th>Parameters</th>
+                                <th>Description</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>search</td>
+                                    <td>query: Query string to search.</td>
+                                    <td>Initiates a search with given query.</td>
+                                </tr>
+                                <tr>
+                                    <td>option</td>
+                                    <td>name: Name of the option</td>
+                                    <td>Returns the value of the option.</td>
+                                </tr>
+                                <tr>
+                                    <td>option</td>
+                                    <td>name: Name of the option, value: Value of the option</td>
+                                    <td>Set the value of the option.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3>Example</h3>
+                        <pre name="code" class="brush:js">
+$('#basic').puiautocomplete('search', 'A');
+                        </pre>
+
+                    </div>
+
+                    <div id="doc-source">
+                        <h3 style="margin-bottom:20px">Javascript</h3>
+                        <pre class="brush:js">
+&lt;script type="text/javascript"&gt;
+$(function() {
+var countries = new Array("Afghanistan", "Albania", "Algeria", "Andorra", ...);
+
+var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
+'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
+'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
+'ui-darkness', 'ui-lightness', 'varder');
+
+$('#basic').puiautocomplete({
+    completeSource: countries
+});
+
+$('#dropdown').puiautocomplete({
+    completeSource: countries,
+    dropdown: true
+});
+
+$('#customcontent').puiautocomplete({
+    completeSource: themes,
+    content: function(data) {
+        return '&lt;img src="showcase/resources/demo/images/themes/' + data.label + '.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;' 
+            + data.label + '&lt;/span&gt;';
     }
 });
-                                </pre>
 
-                            </div>
+$('#multiple').puiautocomplete({
+    completeSource: countries,
+    multiple: true,
+    select: function(event, item) {
+        $('#growl').puigrowl('show', [{severity: 'info', summary: 'City Selected', detail: item.data('label')}]);
+    },
+    unselect: function(event, item) {
+        $('#growl').puigrowl('show', [{severity: 'info', summary: 'City Unselected', detail: item.data('label')}]);
+    }
+});
 
-                            <div id="doc-methods">
-
-                                <table class="doc-table">
-                                    <thead>
-                                        <th>Name</th>
-                                        <th>Parameters</th>
-                                        <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>search</td>
-                                            <td>query: Query string to search.</td>
-                                            <td>Initiates a search with given query.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>option</td>
-                                            <td>name: Name of the option</td>
-                                            <td>Returns the value of the option.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>option</td>
-                                            <td>name: Name of the option, value: Value of the option</td>
-                                            <td>Set the value of the option.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                                <h3>Example</h3>
-                                <pre name="code" class="brush:js">
-$('#basic').puiautocomplete('search', 'A');
-                                </pre>
-
-                            </div>
-
-                            <div id="doc-source">
-
-                                <pre class="brush:js">
-&lt;script type="text/javascript"&gt;
-    $(function() {
-        var countries = new Array("Afghanistan", "Albania", "Algeria", "Andorra", ...);
-
-        var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
-        'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
-        'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
-        'ui-darkness', 'ui-lightness', 'varder');
-
-        $('#basic').puiautocomplete({
-            completeSource: countries
-        });
-
-        $('#dropdown').puiautocomplete({
-            completeSource: countries,
-            dropdown: true
-        });
-
-        $('#customcontent').puiautocomplete({
-            completeSource: themes,
-            content: function(data) {
-                return '&lt;img src="showcase/resources/demo/images/themes/' + data.label + '.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;' 
-                    + data.label + '&lt;/span&gt;';
-            }
-        });
-
-        $('#multiple').puiautocomplete({
-            completeSource: countries,
-            multiple: true,
-            select: function(event, item) {
-                $('#growl').puigrowl('show', [{severity: 'info', summary: 'City Selected', detail: item.data('label')}]);
-            },
-            unselect: function(event, item) {
-                $('#growl').puigrowl('show', [{severity: 'info', summary: 'City Unselected', detail: item.data('label')}]);
-            }
-        });
-
-        $('#remote').puiautocomplete({
-            effect: 'fade',
-            effectSpeed: 'fast',
-            completeSource: function(request, response) {
-                //in a real application, make a call to a remote url by passing the request.query as parameter
-                $.ajax({
-                    type: "GET",
-                    url: 'showcase/resources/data/themes.json',
-                    dataType: "json",
-                    context: this,
-                    success: function(data) {
-                        var filtered = [];
-                        for(var i = 0; i < data.length; i++) {
-                            if(data[i].label.indexOf(request.query) === 0) {
-                                filtered.push(data[i]);
-                            }
-                        }
-                        response.call(this, filtered);
+$('#remote').puiautocomplete({
+    effect: 'fade',
+    effectSpeed: 'fast',
+    completeSource: function(request, response) {
+        //in a real application, make a call to a remote url by passing the request.query as parameter
+        $.ajax({
+            type: "GET",
+            url: 'showcase/resources/data/themes.json',
+            dataType: "json",
+            context: this,
+            success: function(data) {
+                var filtered = [];
+                for(var i = 0; i < data.length; i++) {
+                    if(data[i].label.indexOf(request.query) === 0) {
+                        filtered.push(data[i]);
                     }
-                });
+                }
+                response.call(this, filtered);
             }
         });
+    }
+});
 
-        $('#growl').puigrowl(); 
-    });
+$('#growl').puigrowl(); 
+});
 &lt;/script&gt;
-                                </pre>
-
-                                <pre class="brush:xml">
+                        </pre>
+                        <h3 style="margin-bottom:20px">HTML</h3>
+                        <pre class="brush:xml">
 &lt;h3 class="title title-short" style="margin-top: 0px;"&gt;Basic&lt;/h3&gt;
 &lt;input id="basic" name="basic" type="text"/&gt;
 
@@ -371,13 +356,11 @@ $('#basic').puiautocomplete('search', 'A');
 &lt;input id="remote" name="remote" type="text"/&gt;
 
 &lt;div id="growl"&gt;&lt;/div&gt;
-                                </pre>
+                        </pre>
 
-                            </div>
-                        </div>
-                    </div>  
-                </span>
-            </span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     
