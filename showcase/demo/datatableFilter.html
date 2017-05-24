@@ -75,56 +75,52 @@
 
     <div class="content-section source">
         <div>
-            <span class="defaultText">
-                <span class="fontSize18 logoBlueText">
-                    <div id="doc">
-                        <ul>
-                            <li><a href="#doc-overview">Markup</a></li>
-                            <li><a href="#doc-options">Script</a></li>
-                        </ul>
-                        <div>
+            <div id="doc">
+                <ul>
+                    <li><a href="#doc-overview">Markup</a></li>
+                    <li><a href="#doc-options">Script</a></li>
+                </ul>
+                <div>
 
-                            <div id="doc-markup">                               
-                                <pre name="code" class="brush:xml">
+                    <div id="doc-markup">                               
+                        <pre name="code" class="brush:xml">
 &lt;input id="globalFilter" placeholder="Global Filter" size="30"&gt;&lt;/input&gt;
 &lt;div id="tblfilter"&gt;/&lt;/div&gt;
-                                </pre>
-                            </div>
+                        </pre>
+                    </div>
 
-                            <div id="doc-script">
-                                <pre name="code" class="brush:js">
+                    <div id="doc-script">
+                        <pre name="code" class="brush:js">
 $(function() {
-    $('#tblfilter').puidatatable({
-        caption: 'Filtering',
-        columns: [
-            {field: 'vin', headerText: 'Vin', filter: true},
-            {field: 'brand', headerText: 'Brand', filter: true},
-            {field: 'year', headerText: 'Year', filter: true},
-            {field: 'color', headerText: 'Color', filter: true}
-        ],
-        globalFilter:'#globalFilter',
-        datasource: function(callback) {
-            $.ajax({
-                type: "GET",
-                url: 'showcase/resources/data/cars-large.json',
-                dataType: "json",
-                context: this,
-                success: function(response) {
-                    callback.call(this, response);
-                }
-            });
-        },
-        paginator: {
-            rows: 10
+$('#tblfilter').puidatatable({
+caption: 'Filtering',
+columns: [
+    {field: 'vin', headerText: 'Vin', filter: true},
+    {field: 'brand', headerText: 'Brand', filter: true},
+    {field: 'year', headerText: 'Year', filter: true},
+    {field: 'color', headerText: 'Color', filter: true}
+],
+globalFilter:'#globalFilter',
+datasource: function(callback) {
+    $.ajax({
+        type: "GET",
+        url: 'showcase/resources/data/cars-large.json',
+        dataType: "json",
+        context: this,
+        success: function(response) {
+            callback.call(this, response);
         }
     });
+},
+paginator: {
+    rows: 10
+}
 });
-                                </pre>
-                            </div>
-                        </div>
+});
+                        </pre>
                     </div>
-                </span>
-            </span>
+                </div>
+            </div>
         </div>
     </div>
 

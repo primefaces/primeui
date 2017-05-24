@@ -112,82 +112,78 @@
 
     <div class="content-section source">
         <div>
-            <span class="defaultText">
-                <span class="fontSize18 logoBlueText">
-                    <div id="doc">
-                        <ul>
-                            <li><a href="#doc-overview">Markup</a></li>
-                            <li><a href="#doc-options">Script</a></li>
-                        </ul>
-                        <div>
+            <div id="doc">
+                <ul>
+                    <li><a href="#doc-overview">Markup</a></li>
+                    <li><a href="#doc-options">Script</a></li>
+                </ul>
+                <div>
 
-                            <div id="doc-markup">                               
-                                <pre name="code" class="brush:xml">
+                    <div id="doc-markup">                               
+                        <pre name="code" class="brush:xml">
 &lt;div id="tbllocal"&gt;&lt;/div&gt;
 
 &lt;div id="tblmultisort"&gt;&lt;/div&gt;
-                                </pre>
-                            </div>
-
-                            <div id="doc-script">
-                                <pre name="code" class="brush:js">
-$(function() {
-    $('#tbllocal').puidatatable({
-        caption: 'Client Side Sorting',
-        paginator: {
-            rows: 10
-        },
-        columns: [
-            {field: 'vin', headerText: 'Vin', sortable: true},
-            {field: 'brand', headerText: 'Brand', sortable: true},
-            {field: 'year', headerText: 'Year', sortable: true},
-            {field: 'color', headerText: 'Color', sortable: true}
-        ],
-        datasource: function(callback) {
-            $.ajax({
-                type: "GET",
-                url: 'showcase/resources/data/cars-large.json',
-                dataType: "json",
-                context: this,
-                success: function(response) {
-                    callback.call(this, response);
-                }
-            });
-        }
-    });
-    
-    $('#tblmultisort').puidatatable({
-        caption: 'Multiple Column Sort with Metakey',
-        paginator: {
-            rows: 10
-        },
-        sortMode: 'multiple',
-        sortMeta: [{field: 'brand', order:1}, {field:'year',order:1}],
-        columns: [
-            {field: 'vin', headerText: 'Vin', sortable: true},
-            {field: 'brand', headerText: 'Brand', sortable: true},
-            {field: 'year', headerText: 'Year', sortable: true},
-            {field: 'color', headerText: 'Color', sortable: true}
-        ],
-        datasource: function(callback) {
-            $.ajax({
-                type: "GET",
-                url: 'showcase/resources/data/cars-large.json',
-                dataType: "json",
-                context: this,
-                success: function(response) {
-                    callback.call(this, response);
-                }
-            });
-        }
-    });
-});
-                                </pre>
-                            </div>
-                        </div>
+                        </pre>
                     </div>
-                </span>
-            </span>
+
+                    <div id="doc-script">
+                        <pre name="code" class="brush:js">
+$(function() {
+$('#tbllocal').puidatatable({
+caption: 'Client Side Sorting',
+paginator: {
+    rows: 10
+},
+columns: [
+    {field: 'vin', headerText: 'Vin', sortable: true},
+    {field: 'brand', headerText: 'Brand', sortable: true},
+    {field: 'year', headerText: 'Year', sortable: true},
+    {field: 'color', headerText: 'Color', sortable: true}
+],
+datasource: function(callback) {
+    $.ajax({
+        type: "GET",
+        url: 'showcase/resources/data/cars-large.json',
+        dataType: "json",
+        context: this,
+        success: function(response) {
+            callback.call(this, response);
+        }
+    });
+}
+});
+
+$('#tblmultisort').puidatatable({
+caption: 'Multiple Column Sort with Metakey',
+paginator: {
+    rows: 10
+},
+sortMode: 'multiple',
+sortMeta: [{field: 'brand', order:1}, {field:'year',order:1}],
+columns: [
+    {field: 'vin', headerText: 'Vin', sortable: true},
+    {field: 'brand', headerText: 'Brand', sortable: true},
+    {field: 'year', headerText: 'Year', sortable: true},
+    {field: 'color', headerText: 'Color', sortable: true}
+],
+datasource: function(callback) {
+    $.ajax({
+        type: "GET",
+        url: 'showcase/resources/data/cars-large.json',
+        dataType: "json",
+        context: this,
+        success: function(response) {
+            callback.call(this, response);
+        }
+    });
+}
+});
+});
+                        </pre>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

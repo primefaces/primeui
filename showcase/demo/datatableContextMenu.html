@@ -106,90 +106,86 @@
 
     <div class="content-section source">
         <div>
-            <span class="defaultText">
-                <span class="fontSize18 logoBlueText">
-                    <div id="doc">
-                        <ul>
-                            <li><a href="#doc-overview">Markup</a></li>
-                            <li><a href="#doc-options">Script</a></li>
-                        </ul>
-                        <div>
+            <div id="doc">
+                <ul>
+                    <li><a href="#doc-overview">Markup</a></li>
+                    <li><a href="#doc-options">Script</a></li>
+                </ul>
+                <div>
 
-                            <div id="doc-markup">                               
-                                <pre name="code" class="brush:xml">
+                    <div id="doc-markup">                               
+                        <pre name="code" class="brush:xml">
 &lt;div id="messages"&gt;&lt;/div&gt;
-        
+
 &lt;div id="tblcm"&gt;&lt;/div&gt;
 
 &lt;ul id="cm"&gt;
-    &lt;li&gt;&lt;a data-icon="fa-search" onclick="ContextMenuDemo.view()"&gt;View&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a data-icon="fa-close" onclick="ContextMenuDemo.remove()"&gt;Delete&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a data-icon="fa-search" onclick="ContextMenuDemo.view()"&gt;View&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a data-icon="fa-close" onclick="ContextMenuDemo.remove()"&gt;Delete&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-                                </pre>
-                            </div>
-
-                            <div id="doc-script">
-                                <pre name="code" class="brush:js">
-$(function() {
-    var localData = [
-        {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
-        {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
-        {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
-        {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
-        {'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
-        {'brand': 'Volvo', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
-        {'brand': 'Honda', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
-        {'brand': 'Jaguar', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
-        {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'},
-        {'brand': 'Fiat', 'year': 2013, 'color': 'Red', 'vin': '245t2s'}
-    ];
-
-    $('#tblcm').puidatatable({
-        caption: 'Context Menu Integration',
-        columns: [
-            {field: 'vin', headerText: 'Vin'},
-            {field: 'brand', headerText: 'Brand'},
-            {field: 'year', headerText: 'Year'},
-            {field: 'color', headerText: 'Color'}
-        ],
-        selectionMode: 'single',
-        datasource: localData
-    });
-
-    $('#cm').puicontextmenu({
-        target: $('#tblcm')
-    });
-
-    $('#messages').puigrowl();
-
-    window.ContextMenuDemo = {
-
-        view: function() {
-            var data = $('#tblcm').puidatatable('getContextMenuSelection');
-            $('#messages').puigrowl('show', [{severity: 'info', summary: 'Row Selected', detail: (data.brand + ' ' + data.vin)}]);
-        },
-
-        remove: function() {
-            var data = $('#tblcm').puidatatable('getContextMenuSelection'),
-            datasource = $('#tblcm').puidatatable('option','datasource');
-
-            for(var i = 0 ; i < datasource.length; i++) {
-                if(datasource[i].vin === data.vin) {
-                    datasource.splice(i,1);
-                    break;
-                }
-            }
-
-            $('#tblcm').puidatatable('option','datasource', datasource);
-        }
-    };
-});
-                                </pre>
-                            </div>
-                        </div>
+                        </pre>
                     </div>
-                </span>
-            </span>
+
+                    <div id="doc-script">
+                        <pre name="code" class="brush:js">
+$(function() {
+var localData = [
+{'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
+{'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
+{'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
+{'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
+{'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
+{'brand': 'Volvo', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
+{'brand': 'Honda', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
+{'brand': 'Jaguar', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
+{'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'},
+{'brand': 'Fiat', 'year': 2013, 'color': 'Red', 'vin': '245t2s'}
+];
+
+$('#tblcm').puidatatable({
+caption: 'Context Menu Integration',
+columns: [
+    {field: 'vin', headerText: 'Vin'},
+    {field: 'brand', headerText: 'Brand'},
+    {field: 'year', headerText: 'Year'},
+    {field: 'color', headerText: 'Color'}
+],
+selectionMode: 'single',
+datasource: localData
+});
+
+$('#cm').puicontextmenu({
+target: $('#tblcm')
+});
+
+$('#messages').puigrowl();
+
+window.ContextMenuDemo = {
+
+view: function() {
+    var data = $('#tblcm').puidatatable('getContextMenuSelection');
+    $('#messages').puigrowl('show', [{severity: 'info', summary: 'Row Selected', detail: (data.brand + ' ' + data.vin)}]);
+},
+
+remove: function() {
+    var data = $('#tblcm').puidatatable('getContextMenuSelection'),
+    datasource = $('#tblcm').puidatatable('option','datasource');
+
+    for(var i = 0 ; i < datasource.length; i++) {
+        if(datasource[i].vin === data.vin) {
+            datasource.splice(i,1);
+            break;
+        }
+    }
+
+    $('#tblcm').puidatatable('option','datasource', datasource);
+}
+};
+});
+                        </pre>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

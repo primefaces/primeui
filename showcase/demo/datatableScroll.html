@@ -96,79 +96,75 @@
 
     <div class="content-section source">
         <div>
-            <span class="defaultText">
-                <span class="fontSize18 logoBlueText">
-                    <div id="doc">
-                        <ul>
-                            <li><a href="#doc-overview">Markup</a></li>
-                            <li><a href="#doc-options">Script</a></li>
-                        </ul>
-                        <div>
+            <div id="doc">
+                <ul>
+                    <li><a href="#doc-overview">Markup</a></li>
+                    <li><a href="#doc-options">Script</a></li>
+                </ul>
+                <div>
 
-                            <div id="doc-markup">                               
-                                <pre name="code" class="brush:xml">
+                    <div id="doc-markup">                               
+                        <pre name="code" class="brush:xml">
 &lt;div id="tblscrolly"&gt;/&lt;/div&gt;
 
 &lt;div id="tblscrollxy"&gt;/&lt;/div&gt;
-                                </pre>
-                            </div>
-
-                            <div id="doc-script">
-                                <pre name="code" class="brush:js">
-$(function() {
-    $('#tblscrolly').puidatatable({
-         caption: 'Vertical Scrolling',
-         scrollable: true,
-         scrollHeight: '200',
-         columns: [
-             {field: 'vin', headerText: 'Vin'},
-             {field: 'brand', headerText: 'Brand'},
-             {field: 'year', headerText: 'Year'},
-             {field: 'color', headerText: 'Color'}
-         ],
-         datasource: function(callback) {
-             $.ajax({
-                 type: "GET",
-                 url: 'showcase/resources/data/cars-medium.json',
-                 dataType: "json",
-                 context: this,
-                 success: function(response) {
-                     callback.call(this, response);
-                 }
-             });
-         }
-     });
-
-     $('#tblscrollxy').puidatatable({
-         caption: 'Vertical and Horizontal Scrolling',
-         scrollable: true,
-         scrollHeight: '200',
-         scrollWidth: '75%',
-         columns: [
-             {field: 'vin', headerText: 'Vin'},
-             {field: 'brand', headerText: 'Brand'},
-             {field: 'year', headerText: 'Year'},
-             {field: 'color', headerText: 'Color'}
-         ],
-         datasource: function(callback) {
-             $.ajax({
-                 type: "GET",
-                 url: 'showcase/resources/data/cars-medium.json',
-                 dataType: "json",
-                 context: this,
-                 success: function(response) {
-                     callback.call(this, response);
-                 }
-             });
-         }
-     });
-});
-                                </pre>
-                            </div>
-                        </div>
+                        </pre>
                     </div>
-                </span>
-            </span>
+
+                    <div id="doc-script">
+                        <pre name="code" class="brush:js">
+$(function() {
+$('#tblscrolly').puidatatable({
+ caption: 'Vertical Scrolling',
+ scrollable: true,
+ scrollHeight: '200',
+ columns: [
+     {field: 'vin', headerText: 'Vin'},
+     {field: 'brand', headerText: 'Brand'},
+     {field: 'year', headerText: 'Year'},
+     {field: 'color', headerText: 'Color'}
+ ],
+ datasource: function(callback) {
+     $.ajax({
+         type: "GET",
+         url: 'showcase/resources/data/cars-medium.json',
+         dataType: "json",
+         context: this,
+         success: function(response) {
+             callback.call(this, response);
+         }
+     });
+ }
+});
+
+$('#tblscrollxy').puidatatable({
+ caption: 'Vertical and Horizontal Scrolling',
+ scrollable: true,
+ scrollHeight: '200',
+ scrollWidth: '75%',
+ columns: [
+     {field: 'vin', headerText: 'Vin'},
+     {field: 'brand', headerText: 'Brand'},
+     {field: 'year', headerText: 'Year'},
+     {field: 'color', headerText: 'Color'}
+ ],
+ datasource: function(callback) {
+     $.ajax({
+         type: "GET",
+         url: 'showcase/resources/data/cars-medium.json',
+         dataType: "json",
+         context: this,
+         success: function(response) {
+             callback.call(this, response);
+         }
+     });
+ }
+});
+});
+                        </pre>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
