@@ -286,448 +286,441 @@
 
     <div class="content-section source">
         <div>
-            <span class="defaultText">
-                <span class="fontSize18 logoBlueText">
-                    <div id="doc">
-                        <ul>
-                            <li><a href="#doc-overview">Overview</a></li>
-                            <li><a href="#doc-options">Options</a></li>
-                            <li><a href="#doc-events">Events</a></li>
-                            <li><a href="#doc-methods">Methods</a></li>
-                            <li><a href="#doc-methods">Source</a></li>
-                        </ul>
-                        <div>
-                            <div id="doc-overview">
-                                <p>Carousel's content can be defined either programmatically or declaratively. For programmatic way, define
-                                provide the data using the datasource option where the value can be a javascript array or a function that returns
-                                data usually by connecting to a remote source. Declarative approach simply requires a list element with "li" items as children.</p>
-                                <pre class="brush: html">
+            <div id="doc">
+                <ul>
+                    <li><a href="#documentation">Documentation</a></li>
+                    <li><a href="#doc-methods">Source</a></li>
+                </ul>
+                <div>
+                    <div id="documentation">
+                        <h3 style="margin-bottom:20px">Getting Started</h3>
+                        <p>Carousel's content can be defined either programmatically or declaratively. For programmatic way, define
+                        provide the data using the datasource option where the value can be a javascript array or a function that returns
+                        data usually by connecting to a remote source. Declarative approach simply requires a list element with "li" items as children.</p>
+                        <pre class="brush: html">
 $('#list').puicarousel(); 
-                                </pre>
+                        </pre>
 
-                                <pre class="brush: js">
+                        <pre class="brush: js">
 &lt;ul id="list"&gt;&lt;/ul&gt;
-                                </pre>
-                                
-                                <p>Note: Carousel requires touchswipe plugin for swipe support.</p> 
+                        </pre>
+                        
+                        <p>Note: Carousel requires touchswipe plugin for swipe support.</p>
+                        
+                        <h3 style="margin-bottom:20px;">Attributes</h3>
+                        <table class="doc-table">
+                            <thead>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Default</th>
+                            <th>Description</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>datasource</td>
+                                    <td>Array/Function</td>
+                                    <td>null</td>
+                                    <td>Datasource for the carousel, valid options are an array and a function to load data.</td>
+                                </tr>
+                                <tr>
+                                    <td>numVisible</td>
+                                    <td>Integer</td>
+                                    <td>3</td>
+                                    <td>Number of visible items per page.</td>
+                                </tr>
+                                <tr>
+                                    <td>firstVisible</td>
+                                    <td>Integer</td>
+                                    <td>0</td>
+                                    <td>Index of the first visible item.</td>
+                                </tr>
+                                <tr>
+                                    <td>headerText</td>
+                                    <td>String</td>
+                                    <td>null</td>
+                                    <td>Text of the header section.</td>
+                                </tr>
+                                <tr>
+                                    <td>effectDuration</td>
+                                    <td>Integer</td>
+                                    <td>500</td>
+                                    <td>Duration of the scrolling animation in milliseconds.</td>
+                                </tr>
+                                <tr>
+                                    <td>circular</td>
+                                    <td>Boolean</td>
+                                    <td>false</td>
+                                    <td>Defines continuous scrolling.</td>
+                                </tr>
+                                <tr>
+                                    <td>breakpoint</td>
+                                    <td>Integer</td>
+                                    <td>560</td>
+                                    <td>Breakpoint value in pixels to switch between small and large viewport.</td>
+                                </tr>
+                                <tr>
+                                    <td>itemContent</td>
+                                    <td>Function</td>
+                                    <td>null</td>
+                                    <td>Function to provide item content as string or jQuery object.</td>
+                                </tr>
+                                <tr>
+                                    <td>responsive</td>
+                                    <td>Boolean</td>
+                                    <td>true</td>
+                                    <td>Breakpoint value in pixels to switch between small and large viewport.</td>
+                                </tr>
+                                <tr>
+                                    <td>autoplayInterval</td>
+                                    <td>Integer</td>
+                                    <td>0</td>
+                                    <td>Time in milliseconds to have carousel start scrolling automatically.</td>
+                                </tr>
+                                <tr>
+                                    <td>easing</td>
+                                    <td>String</td>
+                                    <td>easeInOutCirc</td>
+                                    <td>Easing animation to use for scrolling.</td>
+                                </tr>
+                                <tr>
+                                    <td>pageLinks</td>
+                                    <td>String</td>
+                                    <td>3</td>
+                                    <td>Number of maximum page links to display. If total page count exceeds this value a dropdown is displayed instead.</td>
+                                </tr>
+                                <tr>
+                                    <td>style</td>
+                                    <td>String</td>
+                                    <td>null</td>
+                                    <td>Inline style of the main wrapper element.</td>
+                                </tr>
+                                <tr>
+                                    <td>styleClass</td>
+                                    <td>String</td>
+                                    <td>null</td>
+                                    <td>Style class for the main wrapper element.</td>
+                                </tr>
+                                <tr>
+                                    <td>template</td>
+                                    <td>jQuery</td>
+                                    <td>null</td>
+                                    <td>Template element as jQuery object.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h3 style="margin-bottom:20px;">Events</h3>
+                        <table class="doc-table">
+                            <thead>
+                            <th>Name</th>
+                            <th>Parameters</th>
+                            <th>Description</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>pageChange</td>
+                                    <td>ui.page: index of the new page</td>
+                                    <td>Fired when carousel page changes.</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-                            </div>
-
-                            <div id="doc-options">
-                                <table class="doc-table">
-                                    <thead>
-                                    <th>Name</th>
-                                    <th>Type</th>
-                                    <th>Default</th>
-                                    <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>datasource</td>
-                                            <td>Array/Function</td>
-                                            <td>null</td>
-                                            <td>Datasource for the carousel, valid options are an array and a function to load data.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>numVisible</td>
-                                            <td>Integer</td>
-                                            <td>3</td>
-                                            <td>Number of visible items per page.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>firstVisible</td>
-                                            <td>Integer</td>
-                                            <td>0</td>
-                                            <td>Index of the first visible item.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>headerText</td>
-                                            <td>String</td>
-                                            <td>null</td>
-                                            <td>Text of the header section.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>effectDuration</td>
-                                            <td>Integer</td>
-                                            <td>500</td>
-                                            <td>Duration of the scrolling animation in milliseconds.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>circular</td>
-                                            <td>Boolean</td>
-                                            <td>false</td>
-                                            <td>Defines continuous scrolling.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>breakpoint</td>
-                                            <td>Integer</td>
-                                            <td>560</td>
-                                            <td>Breakpoint value in pixels to switch between small and large viewport.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>itemContent</td>
-                                            <td>Function</td>
-                                            <td>null</td>
-                                            <td>Function to provide item content as string or jQuery object.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>responsive</td>
-                                            <td>Boolean</td>
-                                            <td>true</td>
-                                            <td>Breakpoint value in pixels to switch between small and large viewport.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>autoplayInterval</td>
-                                            <td>Integer</td>
-                                            <td>0</td>
-                                            <td>Time in milliseconds to have carousel start scrolling automatically.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>easing</td>
-                                            <td>String</td>
-                                            <td>easeInOutCirc</td>
-                                            <td>Easing animation to use for scrolling.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>pageLinks</td>
-                                            <td>String</td>
-                                            <td>3</td>
-                                            <td>Number of maximum page links to display. If total page count exceeds this value a dropdown is displayed instead.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>style</td>
-                                            <td>String</td>
-                                            <td>null</td>
-                                            <td>Inline style of the main wrapper element.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>styleClass</td>
-                                            <td>String</td>
-                                            <td>null</td>
-                                            <td>Style class for the main wrapper element.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>template</td>
-                                            <td>jQuery</td>
-                                            <td>null</td>
-                                            <td>Template element as jQuery object.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <div id="doc-events">
-                                <table class="doc-table">
-                                    <thead>
-                                    <th>Name</th>
-                                    <th>Parameters</th>
-                                    <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>pageChange</td>
-                                            <td>ui.page: index of the new page</td>
-                                            <td>Fired when carousel page changes.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                                <h3>Example</h3>
-                                <pre name="code" class="brush:js">
+                        <h3>Example</h3>
+                        <pre name="code" class="brush:js">
 $('#default').puicarousel({
-    pageChange: function(event, ui) {
-        //...
-    }
+pageChange: function(event, ui) {
+//...
+}
 });
-                                </pre>
-                            </div>
+                        </pre>
+                        
+                        <h3 style="margin-bottom:20px;">Functions</h3>
+                        <table class="doc-table">
+                            <thead>
+                                <th>Name</th>
+                                <th>Parameters</th>
+                                <th>Description</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>setPage</td>
+                                    <td>index: Index of the page to navigate to.</td>
+                                    <td>Enable the widget</td>
+                                </tr>
 
-                            <div id="doc-methods">
-                                <table class="doc-table">
-                                    <thead>
-                                        <th>Name</th>
-                                        <th>Parameters</th>
-                                        <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>setPage</td>
-                                            <td>index: Index of the page to navigate to.</td>
-                                            <td>Enable the widget</td>
-                                        </tr>
- 
-                                        <tr>
-                                            <td>option</td>
-                                            <td>name: Name of the option</td>
-                                            <td>Returns the value of the option.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>option</td>
-                                            <td>name: Name of the option, value: Value of the option</td>
-                                            <td>Set the value of the option.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                
-                                <h3>Example</h3>
-                                <pre name="code" class="brush:js">
+                                <tr>
+                                    <td>option</td>
+                                    <td>name: Name of the option</td>
+                                    <td>Returns the value of the option.</td>
+                                </tr>
+                                <tr>
+                                    <td>option</td>
+                                    <td>name: Name of the option, value: Value of the option</td>
+                                    <td>Set the value of the option.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h3>Example</h3>
+                        <pre name="code" class="brush:js">
 $('#default').puicarousel('setPage', 3);
-                                </pre>
-                            </div>
+                        </pre>
+                        
+                    </div>
 
-                            <div id="doc-source">
-                                <pre class="brush:js">
+                    <div id="doc-source">
+                        <h3 style="margin-bottom:20px;">Javascript</h3>
+                        <pre class="brush:js">
 $(function() {
-    var cars = [
-        {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
-        {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
-        {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
-        {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
-        {'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
-        {'brand': 'Jaguar', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
-        {'brand': 'BMW', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
-        {'brand': 'Fiat', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
-        {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'}
-    ];
+var cars = [
+{'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
+{'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
+{'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
+{'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
+{'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
+{'brand': 'Jaguar', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
+{'brand': 'BMW', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
+{'brand': 'Fiat', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
+{'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'}
+];
 
-    $('#cars1').puicarousel({
-        headerText: 'Local Javascript Array',
-        datasource: cars,
-        itemContent: function(car) {
-            var content = $('&lt;div class="ui-grid ui-grid-responsive"&gt;&lt;/div&gt;');
-            content.append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/' + car.brand +  '.gif" /&gt;&lt;/div&gt;')
-                    .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.vin + ' &lt;/div&gt;&lt;/div&gt;')
-                    .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.year + ' &lt;/div&gt;&lt;/div&gt;')
-                    .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.color + ' &lt;/div&gt;&lt;/div&gt;');
+$('#cars1').puicarousel({
+headerText: 'Local Javascript Array',
+datasource: cars,
+itemContent: function(car) {
+    var content = $('&lt;div class="ui-grid ui-grid-responsive"&gt;&lt;/div&gt;');
+    content.append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/' + car.brand +  '.gif" /&gt;&lt;/div&gt;')
+            .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.vin + ' &lt;/div&gt;&lt;/div&gt;')
+            .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.year + ' &lt;/div&gt;&lt;/div&gt;')
+            .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.color + ' &lt;/div&gt;&lt;/div&gt;');
 
-            return content;
-        }
-    });
-
-    $('#cars2').puicarousel({
-        headerText: 'Remote DataSource',
-        pageLinks: 5,
-        datasource: function(callback) {
-            $.ajax({
-                type: "GET",
-                url: 'showcase/resources/data/cars-medium.json',
-                dataType: "json",
-                context: this,
-                success: function(response) {
-                    callback.call(this, response.slice(0,15));
-                }
-            });
-        },
-        itemContent: function(car) {
-            var content = $('&lt;div class="ui-grid ui-grid-responsive"&gt;&lt;/div&gt;');
-            content.append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/' + car.brand +  '.gif" /&gt;&lt;/div&gt;')
-                    .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.vin + ' &lt;/div&gt;&lt;/div&gt;')
-                    .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.year + ' &lt;/div&gt;&lt;/div&gt;')
-                    .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.color + ' &lt;/div&gt;&lt;/div&gt;');
-
-            return content.html();
-        }
-    });
-
-    $('#cars3').puicarousel({
-        headerText: 'Enhanced Markup'
-    });
+    return content;
+}
 });
-                                </pre>
 
-                                <pre class="brush:xml">
+$('#cars2').puicarousel({
+headerText: 'Remote DataSource',
+pageLinks: 5,
+datasource: function(callback) {
+    $.ajax({
+        type: "GET",
+        url: 'showcase/resources/data/cars-medium.json',
+        dataType: "json",
+        context: this,
+        success: function(response) {
+            callback.call(this, response.slice(0,15));
+        }
+    });
+},
+itemContent: function(car) {
+    var content = $('&lt;div class="ui-grid ui-grid-responsive"&gt;&lt;/div&gt;');
+    content.append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/' + car.brand +  '.gif" /&gt;&lt;/div&gt;')
+            .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.vin + ' &lt;/div&gt;&lt;/div&gt;')
+            .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.year + ' &lt;/div&gt;&lt;/div&gt;')
+            .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.color + ' &lt;/div&gt;&lt;/div&gt;');
+
+    return content.html();
+}
+});
+
+$('#cars3').puicarousel({
+headerText: 'Enhanced Markup'
+});
+});
+                        </pre>
+                        
+                        <h3 style="margin-bottom:20px;">HTML</h3>
+                        <pre class="brush:xml">
 &lt;ul id="cars1"&gt;&lt;/ul&gt;
-        
+
 &lt;ul id="cars2"&gt;&lt;/ul&gt;
 
 &lt;ul id="cars3"&gt;
-    &lt;li&gt;
-        &lt;div class="ui-grid ui-grid-responsive"&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/Volkswagen.gif"&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
-                &lt;div class="ui-grid-col-6"&gt;dsad231ff &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
-                &lt;div class="ui-grid-col-6"&gt;2012 &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
-                &lt;div class="ui-grid-col-6"&gt;White &lt;/div&gt;
-            &lt;/div&gt;
+&lt;li&gt;
+&lt;div class="ui-grid ui-grid-responsive"&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/Volkswagen.gif"&gt;
         &lt;/div&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-        &lt;div class="ui-grid ui-grid-responsive"&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/Audi.gif"&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
-                &lt;div class="ui-grid-col-6"&gt;gwregre345 &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
-                &lt;div class="ui-grid-col-6"&gt;2011 &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
-                &lt;div class="ui-grid-col-6"&gt;Black &lt;/div&gt;
-            &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+        &lt;div class="ui-grid-col-6"&gt;dsad231ff &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+        &lt;div class="ui-grid-col-6"&gt;2012 &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+        &lt;div class="ui-grid-col-6"&gt;White &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;div class="ui-grid ui-grid-responsive"&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/Audi.gif"&gt;
         &lt;/div&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-        &lt;div class="ui-grid ui-grid-responsive"&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/Renault.gif"&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
-                &lt;div class="ui-grid-col-6"&gt;h354htr &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
-                &lt;div class="ui-grid-col-6"&gt;2005 &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
-                &lt;div class="ui-grid-col-6"&gt;Gray &lt;/div&gt;
-            &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+        &lt;div class="ui-grid-col-6"&gt;gwregre345 &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+        &lt;div class="ui-grid-col-6"&gt;2011 &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+        &lt;div class="ui-grid-col-6"&gt;Black &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;div class="ui-grid ui-grid-responsive"&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/Renault.gif"&gt;
         &lt;/div&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-        &lt;div class="ui-grid ui-grid-responsive"&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/BMW.gif"&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
-                &lt;div class="ui-grid-col-6"&gt;j6w54qgh &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
-                &lt;div class="ui-grid-col-6"&gt;2003 &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
-                &lt;div class="ui-grid-col-6"&gt;Blue &lt;/div&gt;
-            &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+        &lt;div class="ui-grid-col-6"&gt;h354htr &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+        &lt;div class="ui-grid-col-6"&gt;2005 &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+        &lt;div class="ui-grid-col-6"&gt;Gray &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;div class="ui-grid ui-grid-responsive"&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/BMW.gif"&gt;
         &lt;/div&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-        &lt;div class="ui-grid ui-grid-responsive"&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/Mercedes.gif"&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
-                &lt;div class="ui-grid-col-6"&gt;hrtwy34 &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
-                &lt;div class="ui-grid-col-6"&gt;1995 &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
-                &lt;div class="ui-grid-col-6"&gt;White &lt;/div&gt;
-            &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+        &lt;div class="ui-grid-col-6"&gt;j6w54qgh &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+        &lt;div class="ui-grid-col-6"&gt;2003 &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+        &lt;div class="ui-grid-col-6"&gt;Blue &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;div class="ui-grid ui-grid-responsive"&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/Mercedes.gif"&gt;
         &lt;/div&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-        &lt;div class="ui-grid ui-grid-responsive"&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/Jaguar.gif"&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
-                &lt;div class="ui-grid-col-6"&gt;jejtyj &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
-                &lt;div class="ui-grid-col-6"&gt;2005 &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
-                &lt;div class="ui-grid-col-6"&gt;Black &lt;/div&gt;
-            &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+        &lt;div class="ui-grid-col-6"&gt;hrtwy34 &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+        &lt;div class="ui-grid-col-6"&gt;1995 &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+        &lt;div class="ui-grid-col-6"&gt;White &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;div class="ui-grid ui-grid-responsive"&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/Jaguar.gif"&gt;
         &lt;/div&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-        &lt;div class="ui-grid ui-grid-responsive"&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/BMW.gif"&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
-                &lt;div class="ui-grid-col-6"&gt;g43gr &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
-                &lt;div class="ui-grid-col-6"&gt;2012 &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
-                &lt;div class="ui-grid-col-6"&gt;Yellow &lt;/div&gt;
-            &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+        &lt;div class="ui-grid-col-6"&gt;jejtyj &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+        &lt;div class="ui-grid-col-6"&gt;2005 &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+        &lt;div class="ui-grid-col-6"&gt;Black &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;div class="ui-grid ui-grid-responsive"&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/BMW.gif"&gt;
         &lt;/div&gt;
-    &lt;/li&gt;
-    &lt;li class="ui-carousel-item ui-widget-content ui-corner-all" style="width: 349px;"&gt;
-        &lt;div class="ui-grid ui-grid-responsive"&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/Fiat.gif"&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
-                &lt;div class="ui-grid-col-6"&gt;greg34 &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
-                &lt;div class="ui-grid-col-6"&gt;2013 &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
-                &lt;div class="ui-grid-col-6"&gt;White &lt;/div&gt;
-            &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+        &lt;div class="ui-grid-col-6"&gt;g43gr &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+        &lt;div class="ui-grid-col-6"&gt;2012 &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+        &lt;div class="ui-grid-col-6"&gt;Yellow &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li class="ui-carousel-item ui-widget-content ui-corner-all" style="width: 349px;"&gt;
+&lt;div class="ui-grid ui-grid-responsive"&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/Fiat.gif"&gt;
         &lt;/div&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-        &lt;div class="ui-grid ui-grid-responsive"&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/Ford.gif"&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
-                &lt;div class="ui-grid-col-6"&gt;h54hw5 &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
-                &lt;div class="ui-grid-col-6"&gt;2000 &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
-                &lt;div class="ui-grid-col-6"&gt;Black &lt;/div&gt;
-            &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+        &lt;div class="ui-grid-col-6"&gt;greg34 &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+        &lt;div class="ui-grid-col-6"&gt;2013 &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+        &lt;div class="ui-grid-col-6"&gt;White &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;div class="ui-grid ui-grid-responsive"&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/Ford.gif"&gt;
         &lt;/div&gt;
-    &lt;/li&gt;
+    &lt;/div&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+        &lt;div class="ui-grid-col-6"&gt;h54hw5 &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+        &lt;div class="ui-grid-col-6"&gt;2000 &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+        &lt;div class="ui-grid-col-6"&gt;Black &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
 &lt;/ul&gt;           
-                                </pre>
-                            </div>
-                        </div>
+                        </pre>
                     </div>
-                </span>
-            </span>
+                </div>
+            </div>
         </div>
     </div>
 
