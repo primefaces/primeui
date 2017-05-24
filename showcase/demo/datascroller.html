@@ -40,9 +40,9 @@
     </style>
     <div id="datascroller-submenu" class="ContentSideSections SubSubMenu clearfix">
         <ul>
-            <li><a href="datascroller.html">&bull; Document</a></li>
-            <li><a href="datascrollerInline.html">&bull; Inline and Lazy</a></li>
-            <li><a href="datascrollerLoader.html">&bull; Loader</a></li>
+            <li><a href="datascroller">&bull; Document</a></li>
+            <li><a href="datascrollerInline">&bull; Inline and Lazy</a></li>
+            <li><a href="datascrollerLoader">&bull; Loader</a></li>
         </ul>
     </div>
 
@@ -97,186 +97,173 @@
 
     <div class="content-section source">
         <div>
-            <span class="defaultText">
-                <span class="fontSize18 logoBlueText">
-                    <div id="doc">
-                        <ul>
-                            <li><a href="#doc-overview">Overview</a></li>
-                            <li><a href="#doc-options">Options</a></li>
-                            <li><a href="#doc-events">Events</a></li>
-                            <li><a href="#doc-methods">Methods</a></li>
-                            <li><a href="#doc-methods">Source</a></li>
-                        </ul>
-                        <div>
-                            <div id="doc-overview">
-                                <p class="defaultText">Datasource of Datascroller can either be a javascript array or a function to load
-                                data from a remote location. In eager mode, datasource is loaded only once and in lazy mode,
-                                invoked everytime whenever a load is necessary.</p>
+            <div id="doc">
+                <ul>
+                    <li><a href="#documentation">Documentation</a></li>
+                    <li><a href="#doc-methods">Source</a></li>
+                </ul>
+                <div>
+                    <div id="documentation">
+                        <h3 style="margin-bottom:20px">Getting Started</h3>
+                        <p class="defaultText">Datasource of Datascroller can either be a javascript array or a function to load
+                        data from a remote location. In eager mode, datasource is loaded only once and in lazy mode,
+                        invoked everytime whenever a load is necessary.</p>
 
-                                <pre name="code" class="brush:js">
+                        <pre name="code" class="brush:js">
 $('#grid').puidatagrid({
-    datasource: [],
-    content: function(data) {}
-    ...
+datasource: [],
+content: function(data) {}
+...
 });
-                                </pre>
+                        </pre>
 
-                                <pre name="code" class="brush:xml">
+                        <pre name="code" class="brush:xml">
 &lt;div id="grid"&gt;&lt;/div&gt;
-                                </pre>
-                            </div>
+                        </pre>
+                        
+                        <h3 style="margin-bottom:20px">Attributes</h3>
+                        <table class="doc-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>header</td>
+                                    <td>string</td>
+                                    <td>null</td>
+                                    <td>Text for header section.</td>
+                                </tr>
+                                <tr>
+                                    <td>buffer</td>
+                                    <td>float</td>
+                                    <td>0.9</td>
+                                    <td>Percentage height of the buffer between the bottom of the page and the scroll position to initiate
+                                    the load for the new chunk. Value is defined as a float and default is 0.9 meaning load would happen after 90% of the viewport is scrolled down.</td>
+                                </tr>
+                                <tr>
+                                    <td>chunkSize</td>
+                                    <td>number</td>
+                                    <td>10</td>
+                                    <td>Number of records to display per each load.</td>
+                                </tr>
+                                <tr>
+                                    <td>datasource</td>
+                                    <td>object</td>
+                                    <td>null</td>
+                                    <td>Datasource to load the data. Valid values are an array or a function to load the data.</td>
+                                </tr>
+                                <tr>
+                                    <td>lazy</td>
+                                    <td>boolean</td>
+                                    <td>false</td>
+                                    <td>Determines if the remote data loading is lazy, only the current page is loaded if true.</td>
+                                </tr>
+                                <tr>
+                                    <td>content</td>
+                                    <td>function</td>
+                                    <td>null</td>
+                                    <td>Function that takes the item to render as a parameter and returns the content for it.</td>
+                                </tr>
+                                <tr>
+                                    <td>template</td>
+                                    <td>jQuery</td>
+                                    <td>null</td>
+                                    <td>Template element as jQuery object.</td>
+                                </tr>
+                                <tr>
+                                    <td>mode</td>
+                                    <td>string</td>
+                                    <td>document</td>
+                                    <td>Defines the element whose scroll event will be listened, valid values are "document" and "self".</td>
+                                </tr>
+                                <tr>
+                                    <td>loader</td>
+                                    <td>string</td>
+                                    <td>null</td>
+                                    <td>Element to load the data manually on click instead of scrolling based loading.</td>
+                                </tr>
+                                <tr>
+                                    <td>scrollHeight</td>
+                                    <td>string</td>
+                                    <td>null</td>
+                                    <td>Height of the datascroller's viewport in "self" mode.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
-                            <div id="doc-options">
-                                <table class="doc-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Type</th>
-                                            <th>Default</th>
-                                            <th>Description</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>header</td>
-                                            <td>string</td>
-                                            <td>null</td>
-                                            <td>Text for header section.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>buffer</td>
-                                            <td>float</td>
-                                            <td>0.9</td>
-                                            <td>Percentage height of the buffer between the bottom of the page and the scroll position to initiate
-                                            the load for the new chunk. Value is defined as a float and default is 0.9 meaning load would happen after 90% of the viewport is scrolled down.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>chunkSize</td>
-                                            <td>number</td>
-                                            <td>10</td>
-                                            <td>Number of records to display per each load.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>datasource</td>
-                                            <td>object</td>
-                                            <td>null</td>
-                                            <td>Datasource to load the data. Valid values are an array or a function to load the data.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>lazy</td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>Determines if the remote data loading is lazy, only the current page is loaded if true.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>content</td>
-                                            <td>function</td>
-                                            <td>null</td>
-                                            <td>Function that takes the item to render as a parameter and returns the content for it.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>template</td>
-                                            <td>jQuery</td>
-                                            <td>null</td>
-                                            <td>Template element as jQuery object.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>mode</td>
-                                            <td>string</td>
-                                            <td>document</td>
-                                            <td>Defines the element whose scroll event will be listened, valid values are "document" and "self".</td>
-                                        </tr>
-                                        <tr>
-                                            <td>loader</td>
-                                            <td>string</td>
-                                            <td>null</td>
-                                            <td>Element to load the data manually on click instead of scrolling based loading.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>scrollHeight</td>
-                                            <td>string</td>
-                                            <td>null</td>
-                                            <td>Height of the datascroller's viewport in "self" mode.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <div id="doc-events">
-                                <h3>No events</h3>
-                            </div>
-
-                            <div id="doc-methods">
-                                <h3>No methods</h3>
-                            </div>
-
-                            <div id="doc-source">
-                                <pre name="code" class="brush:js">
+                    <div id="doc-source">
+                        <h3 style="margin-bottom:20px">Javascript</h3>
+                        <pre name="code" class="brush:js">
 $("#ds").puidatascroller({
-    header:'Scroll Down to Load More Cars',
-    chunkSize: 10,
-    datasource: function (callback) {
-        $.ajax({
-            type: "GET",
-            url: 'showcase/resources/data/cars-large.json',
-            dataType: "json",
-            context: this,
-            success: function (response) {
-                callback.call(this, response);
-            }
-        });
-    },
-    mode:'document',
-    template: $('#cartemplate')
+header:'Scroll Down to Load More Cars',
+chunkSize: 10,
+datasource: function (callback) {
+$.ajax({
+    type: "GET",
+    url: 'showcase/resources/data/cars-large.json',
+    dataType: "json",
+    context: this,
+    success: function (response) {
+        callback.call(this, response);
+    }
 });
-                                </pre>
+},
+mode:'document',
+template: $('#cartemplate')
+});
+                        </pre>
 
-                                <pre name="code" class="brush:xml">
+                        <h3 style="margin-bottom:20px">HTML</h3>
+                        <pre name="code" class="brush:xml">
 &lt;div id="ds"&gt;&lt;/div&gt;
 
 &lt;template id="cartemplate"&gt;
-    &lt;div class="ui-grid"&gt;
-        &lt;div class="ui-grid-row"&gt;
-            &lt;div class="ui-grid-col-3"&gt;
-                &lt;img src="showcase/resources/demo/images/car/{{brand}}-big.gif" /&gt;
+&lt;div class="ui-grid"&gt;
+&lt;div class="ui-grid-row"&gt;
+    &lt;div class="ui-grid-col-3"&gt;
+        &lt;img src="showcase/resources/demo/images/car/{{brand}}-big.gif" /&gt;
+    &lt;/div&gt;
+    &lt;div class="ui-grid-col-12" style="padding-top:20px"&gt;
+        &lt;div class="ui-grid"&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-2"&gt;
+                    &lt;span style="font-size:24px"&gt;Vin:&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class="ui-grid-col-10"&gt;
+                    &lt;span style="font-size:24px;font-weight:bold"&gt;{{vin}}&lt;/span&gt;
+                &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div class="ui-grid-col-12" style="padding-top:20px"&gt;
-                &lt;div class="ui-grid"&gt;
-                    &lt;div class="ui-grid-row"&gt;
-                        &lt;div class="ui-grid-col-2"&gt;
-                            &lt;span style="font-size:24px"&gt;Vin:&lt;/span&gt;
-                        &lt;/div&gt;
-                        &lt;div class="ui-grid-col-10"&gt;
-                            &lt;span style="font-size:24px;font-weight:bold"&gt;{{vin}}&lt;/span&gt;
-                        &lt;/div&gt;
-                    &lt;/div&gt;
-                    &lt;div class="ui-grid-row"&gt;
-                        &lt;div class="ui-grid-col-2"&gt;
-                            &lt;span style="font-size:24px"&gt;Year:&lt;/span&gt;
-                        &lt;/div&gt;
-                        &lt;div class="ui-grid-col-10"&gt;
-                            &lt;span style="font-size:24px;font-weight:bold"&gt;{{year}}&lt;/span&gt;
-                        &lt;/div&gt;
-                    &lt;/div&gt;
-                    &lt;div class="ui-grid-row"&gt;
-                        &lt;div class="ui-grid-col-2"&gt;
-                            &lt;span style="font-size:24px"&gt;Color:&lt;/span&gt;
-                        &lt;/div&gt;
-                        &lt;div class="ui-grid-col-10"&gt;
-                            &lt;span style="font-size:24px;font-weight:bold"&gt;{{color}}&lt;/span&gt;
-                        &lt;/div&gt;
-                    &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-2"&gt;
+                    &lt;span style="font-size:24px"&gt;Year:&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class="ui-grid-col-10"&gt;
+                    &lt;span style="font-size:24px;font-weight:bold"&gt;{{year}}&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-2"&gt;
+                    &lt;span style="font-size:24px"&gt;Color:&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class="ui-grid-col-10"&gt;
+                    &lt;span style="font-size:24px;font-weight:bold"&gt;{{color}}&lt;/span&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
         &lt;/div&gt;
     &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;/template&gt;
-                                </pre>
-                            </div>
-                        </div>
+                        </pre>
                     </div>
-                </span>
-            </span>
+                </div>
+            </div>
         </div>
     </div>
 

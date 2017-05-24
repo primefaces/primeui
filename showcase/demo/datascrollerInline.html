@@ -41,9 +41,9 @@
     </style>
     <div id="datascroller-submenu" class="ContentSideSections SubSubMenu clearfix">
         <ul>
-            <li><a href="datascroller.html">&bull; Document</a></li>
-            <li><a href="datascrollerInline.html">&bull; Inline and Lazy</a></li>
-            <li><a href="datascrollerLoader.html">&bull; Loader</a></li>
+            <li><a href="datascroller">&bull; Document</a></li>
+            <li><a href="datascrollerInline">&bull; Inline and Lazy</a></li>
+            <li><a href="datascrollerLoader">&bull; Loader</a></li>
         </ul>
     </div>
 
@@ -99,89 +99,86 @@
 
     <div class="content-section source">
         <div>
-            <span class="defaultText">
-                <span class="fontSize18 logoBlueText">
-                    <div id="doc">
-                        <ul>
-                            <li><a href="#doc-overview">Markup</a></li>
-                            <li><a href="#doc-options">Script</a></li>
-                        </ul>
-                        <div>
-                            <div id="doc-markup">                               
-                                <pre name="code" class="brush:xml">
+            <div id="doc">
+                <ul>
+                    <li><a href="#doc-overview">Markup</a></li>
+                    <li><a href="#doc-options">Script</a></li>
+                </ul>
+                <div>
+                    <div id="doc-markup">                               
+                        <pre name="code" class="brush:xml">
 &lt;div id="ds"&gt;&lt;/div&gt;
 
 &lt;template id="cartemplate"&gt;
-    &lt;div class="ui-grid"&gt;
-        &lt;div class="ui-grid-row"&gt;
-            &lt;div class="ui-grid-col-3"&gt;
-                &lt;img src="showcase/resources/demo/images/car/{{brand}}-big.gif" /&gt;
+&lt;div class="ui-grid"&gt;
+&lt;div class="ui-grid-row"&gt;
+    &lt;div class="ui-grid-col-3"&gt;
+        &lt;img src="showcase/resources/demo/images/car/{{brand}}-big.gif" /&gt;
+    &lt;/div&gt;
+    &lt;div class="ui-grid-col-12" style="padding-top:20px"&gt;
+        &lt;div class="ui-grid"&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-2"&gt;
+                    &lt;span style="font-size:24px"&gt;Vin:&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class="ui-grid-col-10"&gt;
+                    &lt;span style="font-size:24px;font-weight:bold"&gt;{{vin}}&lt;/span&gt;
+                &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div class="ui-grid-col-12" style="padding-top:20px"&gt;
-                &lt;div class="ui-grid"&gt;
-                    &lt;div class="ui-grid-row"&gt;
-                        &lt;div class="ui-grid-col-2"&gt;
-                            &lt;span style="font-size:24px"&gt;Vin:&lt;/span&gt;
-                        &lt;/div&gt;
-                        &lt;div class="ui-grid-col-10"&gt;
-                            &lt;span style="font-size:24px;font-weight:bold"&gt;{{vin}}&lt;/span&gt;
-                        &lt;/div&gt;
-                    &lt;/div&gt;
-                    &lt;div class="ui-grid-row"&gt;
-                        &lt;div class="ui-grid-col-2"&gt;
-                            &lt;span style="font-size:24px"&gt;Year:&lt;/span&gt;
-                        &lt;/div&gt;
-                        &lt;div class="ui-grid-col-10"&gt;
-                            &lt;span style="font-size:24px;font-weight:bold"&gt;{{year}}&lt;/span&gt;
-                        &lt;/div&gt;
-                    &lt;/div&gt;
-                    &lt;div class="ui-grid-row"&gt;
-                        &lt;div class="ui-grid-col-2"&gt;
-                            &lt;span style="font-size:24px"&gt;Color:&lt;/span&gt;
-                        &lt;/div&gt;
-                        &lt;div class="ui-grid-col-10"&gt;
-                            &lt;span style="font-size:24px;font-weight:bold"&gt;{{color}}&lt;/span&gt;
-                        &lt;/div&gt;
-                    &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-2"&gt;
+                    &lt;span style="font-size:24px"&gt;Year:&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class="ui-grid-col-10"&gt;
+                    &lt;span style="font-size:24px;font-weight:bold"&gt;{{year}}&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-2"&gt;
+                    &lt;span style="font-size:24px"&gt;Color:&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class="ui-grid-col-10"&gt;
+                    &lt;span style="font-size:24px;font-weight:bold"&gt;{{color}}&lt;/span&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
         &lt;/div&gt;
     &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;/template&gt;
-                                </pre>
-                            </div>
-
-                            <div id="doc-script">
-                                <pre name="code" class="brush:js">
-$("#ds").puidatascroller({
-    header:'Scroll Down to Load More Cars',
-    chunkSize: 10,
-    totalSize: 200,
-    scrollHeight: 500,
-    lazy: true,
-    datasource: function (callback, ui) {
-        var uri = 'showcase/resources/data/cars-large.json';
-
-        $.ajax({
-            type: "GET",
-            url: uri,
-            dataType: "json",
-            context: this,
-            success: function (response) {
-                //imitate lazy loading by slicing a new list from whole data, in real application the response should actually contain just the new chunk
-                callback.call(this, response.slice(ui.first, ui.first + 10));
-            }
-        });
-    },
-    mode: 'self',
-    template: $('#cartemplate')
-});
-                                </pre>
-                            </div>
-                        </div>
+                        </pre>
                     </div>
-                </span>
-            </span>
+
+                    <div id="doc-script">
+                        <pre name="code" class="brush:js">
+$("#ds").puidatascroller({
+header:'Scroll Down to Load More Cars',
+chunkSize: 10,
+totalSize: 200,
+scrollHeight: 500,
+lazy: true,
+datasource: function (callback, ui) {
+var uri = 'showcase/resources/data/cars-large.json';
+
+$.ajax({
+    type: "GET",
+    url: uri,
+    dataType: "json",
+    context: this,
+    success: function (response) {
+        //imitate lazy loading by slicing a new list from whole data, in real application the response should actually contain just the new chunk
+        callback.call(this, response.slice(ui.first, ui.first + 10));
+    }
+});
+},
+mode: 'self',
+template: $('#cartemplate')
+});
+                        </pre>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </div>
 
