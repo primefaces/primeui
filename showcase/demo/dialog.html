@@ -66,316 +66,308 @@
 
     <div class="content-section source">
         <div>
-            <span class="defaultText">
-                <span class="fontSize18 logoBlueText">
-                    <div id="doc">
-                        <ul>
-                            <li><a href="#doc-overview">Overview</a></li>
-                            <li><a href="#doc-options">Options</a></li>
-                            <li><a href="#doc-events">Events</a></li>
-                            <li><a href="#doc-methods">Methods</a></li>
-                            <li><a href="#doc-methods">Source</a></li>
-                        </ul>
-                        <div>
-                            <div id="doc-overview">
-
-                                <pre name="code" class="brush:js">
+            <div id="doc">
+                <ul>
+                    <li><a href="#documentation">Documentation</a></li>
+                    <li><a href="#doc-methods">Source</a></li>
+                </ul>
+                <div>
+                    <div id="documentation">
+                        <h3 style="margin-bottom:20px;">Getting Started</h3>
+                        <pre name="code" class="brush:js">
 $('#dlg').puidialog();
-                                </pre>
+                        </pre>
 
-                                <pre name="code" class="brush:xml">
+                        <pre name="code" class="brush:xml">
 &lt;div id="dlg" title="Header"&gt;
-    Content
+Content
 &lt;/div&gt;
-                                </pre>
-                            </div>
+                        </pre>
+                        
+                        <h3 style="margin-bottom:20px;">Attributes</h3>
+                        <table class="doc-table">
+                            <thead>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Default</th>
+                            <th>Description</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>draggable</td>
+                                    <td>boolean</td>
+                                    <td>true</td>
+                                    <td>Enables dragging using header.</td>
+                                </tr>
+                                <tr>
+                                    <td>resizable</td>
+                                    <td>boolean</td>
+                                    <td>true</td>
+                                    <td>Enables content resizing.</td>
+                                </tr>
+                                <tr>
+                                    <td>location</td>
+                                    <td>string</td>
+                                    <td>center</td>
+                                    <td>Defines the position of the dialog, valid values are combination of "left", "right", "top", "bottom" like "left right"
+                                        or absolute coordinates like "50,150".</td>
+                                </tr>
+                                <tr>
+                                    <td>width</td>
+                                    <td>int</td>
+                                    <td>300</td>
+                                    <td>Width of the dialog.</td>
+                                </tr>
+                                <tr>
+                                    <td>height</td>
+                                    <td>int</td>
+                                    <td>auto</td>
+                                    <td>Height of the dialog.</td>
+                                </tr>
+                                <tr>
+                                    <td>minWidth</td>
+                                    <td>int</td>
+                                    <td>150</td>
+                                    <td>Minimum width of a resizable dialog.</td>
+                                </tr>
+                                <tr>
+                                    <td>minHeight</td>
+                                    <td>int</td>
+                                    <td>25</td>
+                                    <td>Minimum width of a resizable dialog.</td>
+                                </tr>
+                                <tr>
+                                    <td>visible</td>
+                                    <td>boolean</td>
+                                    <td>false</td>
+                                    <td>When true, dialog is visible on page load.</td>
+                                </tr>
+                                <tr>
+                                    <td>modal</td>
+                                    <td>boolean</td>
+                                    <td>false</td>
+                                    <td>Defines if background should be blocked.</td>
+                                </tr>
+                                <tr>
+                                    <td>showEffect</td>
+                                    <td>string</td>
+                                    <td>null</td>
+                                    <td>Effect to run to show the dialog.</td>
+                                </tr>
+                                <tr>
+                                    <td>hideEffect</td>
+                                    <td>string</td>
+                                    <td>false</td>
+                                    <td>Effect to run to hide the dialog.</td>
+                                </tr>
+                                <tr>
+                                    <td>effectOptions</td>
+                                    <td>object</td>
+                                    <td>{}</td>
+                                    <td>Options for show and hide effect.</td>
+                                </tr>
+                                <tr>
+                                    <td>effectSpeed</td>
+                                    <td>string</td>
+                                    <td>normal</td>
+                                    <td>Speed of the animation in milliseconds or predefines values like slow, normal and fast.</td>
+                                </tr>
+                                <tr>
+                                    <td>closeOnEscape</td>
+                                    <td>boolean</td>
+                                    <td>true</td>
+                                    <td>Specifices if pressing escape key should hide the dialog.</td>
+                                </tr>
+                                <tr>
+                                    <td>rtl</td>
+                                    <td>boolean</td>
+                                    <td>false</td>
+                                    <td>When enabled dialog is displayed in RTL direction.</td>
+                                </tr>
+                                <tr>
+                                    <td>closable</td>
+                                    <td>boolean</td>
+                                    <td>true</td>
+                                    <td>Adds a close icon to the header to hide the dialog.</td>
+                                </tr>
+                                <tr>
+                                    <td>minimizable</td>
+                                    <td>boolean</td>
+                                    <td>true</td>
+                                    <td>Adds a toggle icon to the header to minimize the dialog.</td>
+                                </tr>
+                                <tr>
+                                    <td>maximizable</td>
+                                    <td>boolean</td>
+                                    <td>true</td>
+                                    <td>Adds a toggle icon to the header to maximize the dialog.</td>
+                                </tr>
+                                <tr>
+                                    <td>appendTo</td>
+                                    <td>element</td>
+                                    <td>null</td>
+                                    <td>Defines where dialog should be appended e.g. document body.</td>
+                                </tr>
+                                <tr>
+                                    <td>buttons</td>
+                                    <td>array</td>
+                                    <td>null</td>
+                                    <td>An array of options for generated dialog buttons.</td>
+                                </tr>
+                                <tr>
+                                    <td>responsive</td>
+                                    <td>boolean</td>
+                                    <td>false</td>
+                                    <td>In responsive mode, dialog adjusts itself based on screen width.</td>
+                                </tr>
+                                <tr>
+                                    <td>title</td>
+                                    <td>string</td>
+                                    <td>nukk</td>
+                                    <td>Header text of dialog, if not defined title attribute of target element is used.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h3 style="margin-bottom:20px;">Events</h3>
+                        <table class="doc-table">
+                            <thead>
+                            <th>Name</th>
+                            <th>Parameters</th>
+                            <th>Description</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>beforeShow</td>
+                                    <td>event: puidialogbeforeShow event
+                                    <td>Fired before showing.</td>
+                                </tr>
+                                <tr>
+                                    <td>afterShow</td>
+                                    <td>event: puidialogafterShow event
+                                    <td>Fired after showing.</td>
+                                </tr>
+                                <tr>
+                                    <td>beforeHide</td>
+                                    <td>event: puidialogbeforeHide event
+                                    <td>Fired before hiding.</td>
+                                </tr>
+                                <tr>
+                                    <td>afterHide</td>
+                                    <td>event: puidialogafterHide event
+                                    <td>Fired after hiding.</td>
+                                </tr>
+                                <tr>
+                                    <td>minimize</td>
+                                    <td>event: puidialogafterMinimize event
+                                    <td>Fired after minimize.</td>
+                                </tr>
+                                <tr>
+                                    <td>maximize</td>
+                                    <td>event: puidialogafterMaximize event
+                                    <td>Fired after maximize.</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-                            <div id="doc-options">
-                                <table class="doc-table">
-                                    <thead>
-                                    <th>Name</th>
-                                    <th>Type</th>
-                                    <th>Default</th>
-                                    <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>draggable</td>
-                                            <td>boolean</td>
-                                            <td>true</td>
-                                            <td>Enables dragging using header.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>resizable</td>
-                                            <td>boolean</td>
-                                            <td>true</td>
-                                            <td>Enables content resizing.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>location</td>
-                                            <td>string</td>
-                                            <td>center</td>
-                                            <td>Defines the position of the dialog, valid values are combination of "left", "right", "top", "bottom" like "left right"
-                                                or absolute coordinates like "50,150".</td>
-                                        </tr>
-                                        <tr>
-                                            <td>width</td>
-                                            <td>int</td>
-                                            <td>300</td>
-                                            <td>Width of the dialog.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>height</td>
-                                            <td>int</td>
-                                            <td>auto</td>
-                                            <td>Height of the dialog.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>minWidth</td>
-                                            <td>int</td>
-                                            <td>150</td>
-                                            <td>Minimum width of a resizable dialog.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>minHeight</td>
-                                            <td>int</td>
-                                            <td>25</td>
-                                            <td>Minimum width of a resizable dialog.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>visible</td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>When true, dialog is visible on page load.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>modal</td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>Defines if background should be blocked.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>showEffect</td>
-                                            <td>string</td>
-                                            <td>null</td>
-                                            <td>Effect to run to show the dialog.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>hideEffect</td>
-                                            <td>string</td>
-                                            <td>false</td>
-                                            <td>Effect to run to hide the dialog.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>effectOptions</td>
-                                            <td>object</td>
-                                            <td>{}</td>
-                                            <td>Options for show and hide effect.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>effectSpeed</td>
-                                            <td>string</td>
-                                            <td>normal</td>
-                                            <td>Speed of the animation in milliseconds or predefines values like slow, normal and fast.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>closeOnEscape</td>
-                                            <td>boolean</td>
-                                            <td>true</td>
-                                            <td>Specifices if pressing escape key should hide the dialog.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>rtl</td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>When enabled dialog is displayed in RTL direction.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>closable</td>
-                                            <td>boolean</td>
-                                            <td>true</td>
-                                            <td>Adds a close icon to the header to hide the dialog.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>minimizable</td>
-                                            <td>boolean</td>
-                                            <td>true</td>
-                                            <td>Adds a toggle icon to the header to minimize the dialog.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>maximizable</td>
-                                            <td>boolean</td>
-                                            <td>true</td>
-                                            <td>Adds a toggle icon to the header to maximize the dialog.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>appendTo</td>
-                                            <td>element</td>
-                                            <td>null</td>
-                                            <td>Defines where dialog should be appended e.g. document body.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>buttons</td>
-                                            <td>array</td>
-                                            <td>null</td>
-                                            <td>An array of options for generated dialog buttons.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>responsive</td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>In responsive mode, dialog adjusts itself based on screen width.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>title</td>
-                                            <td>string</td>
-                                            <td>nukk</td>
-                                            <td>Header text of dialog, if not defined title attribute of target element is used.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <div id="doc-events">
-                                <table class="doc-table">
-                                    <thead>
-                                    <th>Name</th>
-                                    <th>Parameters</th>
-                                    <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>beforeShow</td>
-                                            <td>event: puidialogbeforeShow event
-                                            <td>Fired before showing.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>afterShow</td>
-                                            <td>event: puidialogafterShow event
-                                            <td>Fired after showing.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>beforeHide</td>
-                                            <td>event: puidialogbeforeHide event
-                                            <td>Fired before hiding.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>afterHide</td>
-                                            <td>event: puidialogafterHide event
-                                            <td>Fired after hiding.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>minimize</td>
-                                            <td>event: puidialogafterMinimize event
-                                            <td>Fired after minimize.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>maximize</td>
-                                            <td>event: puidialogafterMaximize event
-                                            <td>Fired after maximize.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                                <h3>Example</h3>
-                                <pre name="code" class="brush:js">
+                        <h3>Example</h3>
+                        <pre name="code" class="brush:js">
 $('#dlg').puidialog({
-    afterHide: function(event) {
-        //...
-    }
+afterHide: function(event) {
+//...
+}
 });
-                                </pre>
-                            </div>
+                        </pre>
+                        
+                        <h3 style="margin-bottom:20px;">Functions</h3>
+                        <table class="doc-table">
+                            <thead>
+                            <th>Name</th>
+                            <th>Parameters</th>
+                            <th>Description</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>show</td>
+                                    <td>-</td>
+                                    <td>Shows dialog.</td>
+                                </tr>
+                                <tr>
+                                    <td>hide</td>
+                                    <td>-</td>
+                                    <td>Hides dialog.</td>
+                                </tr>
+                                <tr>
+                                    <td>toggleMinimize</td>
+                                    <td>-</td>
+                                    <td>Toggles minimized and current state.</td>
+                                </tr>
+                                <tr>
+                                    <td>toggleMaximize</td>
+                                    <td>-</td>
+                                    <td>Toggles maximized and current state.</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-                            <div id="doc-methods">
-                                <table class="doc-table">
-                                    <thead>
-                                    <th>Name</th>
-                                    <th>Parameters</th>
-                                    <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>show</td>
-                                            <td>-</td>
-                                            <td>Shows dialog.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>hide</td>
-                                            <td>-</td>
-                                            <td>Hides dialog.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>toggleMinimize</td>
-                                            <td>-</td>
-                                            <td>Toggles minimized and current state.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>toggleMaximize</td>
-                                            <td>-</td>
-                                            <td>Toggles maximized and current state.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                                <h3>Example</h3>
-                                <pre name="code" class="brush:js">
+                        <h3>Example</h3>
+                        <pre name="code" class="brush:js">
 $('#dlg').puidialog('show');
-                                </pre>
-                            </div>
+                        </pre>
+                    </div>
 
-                            <div id="doc-source">
-                                <pre name="code" class="brush:js">
+                    <div id="doc-source">
+                        <h3 style="margin-bottom:20px;">Javascript</h3>
+                        <pre name="code" class="brush:js">
 $(function() {
-    $('#dlg').puidialog({
-        showEffect: 'fade',
-        hideEffect: 'fade',
-        minimizable: true,
-        maximizable: true,
-        responsive: true,
-        minWidth: 200,
-        modal: true,
-        buttons: [{
-                text: 'Yes',
-                icon: 'fa-check',
-                click: function() {
-                    $('#dlg').puidialog('hide');
-                }
-            },
-            {
-                text: 'No',
-                icon: 'fa-close',
-                click: function() {
-                    $('#dlg').puidialog('hide');
-                }
-            }
-        ]
-    });
-
-    $('#btn-show').puibutton({
-        icon: 'fa-external-link-square',
+$('#dlg').puidialog({
+showEffect: 'fade',
+hideEffect: 'fade',
+minimizable: true,
+maximizable: true,
+responsive: true,
+minWidth: 200,
+modal: true,
+buttons: [{
+        text: 'Yes',
+        icon: 'fa-check',
         click: function() {
-            $('#dlg').puidialog('show');
+            $('#dlg').puidialog('hide');
         }
-    });
+    },
+    {
+        text: 'No',
+        icon: 'fa-close',
+        click: function() {
+            $('#dlg').puidialog('hide');
+        }
+    }
+]
 });
-                                </pre>
 
-                                <pre name="code" class="brush:xml">
+$('#btn-show').puibutton({
+icon: 'fa-external-link-square',
+click: function() {
+    $('#dlg').puidialog('show');
+}
+});
+});
+                        </pre>
+
+                        <h3 style="margin-bottom:20px;">HTML</h3>
+                        <pre name="code" class="brush:xml">
 &lt;button id="btn-show" type="button"&gt;Show&lt;/button&gt;
 &lt;div id="dlg" title="Godfather I"&gt;
-    &lt;p&gt;The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
-        His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. 
-        Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, 
-        kind and benevolent to those who give respect, 
-        but given to ruthless violence whenever anything stands against the good of the family.&lt;/p&gt;
+&lt;p&gt;The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
+His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. 
+Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, 
+kind and benevolent to those who give respect, 
+but given to ruthless violence whenever anything stands against the good of the family.&lt;/p&gt;
 &lt;/div&gt;
-                                </pre>
-                            </div>
-                        </div>
+                        </pre>
                     </div>
-                </span>
-            </span>
+                </div>
+            </div>
         </div>
     </div>
 
