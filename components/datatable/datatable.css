@@ -29,9 +29,10 @@
     border-width: 0;
 }
 
-.ui-datatable .ui-datatable-thead > tr > th,
-.ui-datatable .ui-datatable-tfoot > tr > td,
-.ui-datatable .ui-datatable-data > tr > td {
+.ui-datatable thead th, 
+.ui-datatable tbody td, 
+.ui-datatable tfoot td, 
+.ui-datatable tfoot th {
     border-color: inherit;
     box-sizing: border-box;
     padding: .25em .5em;

@@ -124,6 +124,7 @@
         },
 
         _createScrollableDatatable: function() {
+            this.element.addClass('ui-datatable-scrollable');
             this.element.append('<div class="ui-widget-header ui-datatable-scrollable-header"><div class="ui-datatable-scrollable-header-box"><table><thead></thead></table></div></div>')
                         .append('<div class="ui-datatable-scrollable-body"><table><tbody></tbody></table></div>');
 
