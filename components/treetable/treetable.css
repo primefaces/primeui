@@ -54,7 +54,7 @@
     margin-left: 1px;
 }
 
-.ui-treetable .ui-treetable-row.ui-treetable-row-selectable {
+.ui-treetable .ui-treetable-row-selectable {
     cursor: pointer;
 }
 

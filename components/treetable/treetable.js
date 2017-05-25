@@ -105,6 +105,10 @@
                 if(!expanded) {
                     row.addClass('ui-helper-hidden');
                 }
+
+                if(this.options.selectionMode) {
+                    row.addClass('ui-treetable-row-selectable');
+                }
                 
                 for(var j = 0; j < this.options.columns.length; j++) {
                     var column = $('<td />').appendTo(row),

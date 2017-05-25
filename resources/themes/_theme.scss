@@ -345,7 +345,7 @@
 }
 
 .ui-treetable {
-    .ui-treetable-row.ui-treetable-row-selectable:not(.ui-state-highlight):hover {
+    .ui-treetable-row-selectable:not(.ui-state-highlight):hover {
         background: $stateHoverBgColor;
         color: $stateHoverTextColor;
     }
