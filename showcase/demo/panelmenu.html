@@ -88,154 +88,136 @@
 
     <div class="content-section source">
         <div>
-            <span class="defaultText">
-                <span class="fontSize18 logoBlueText">
-                    <div id="doc">
-                        <ul>
-                            <li><a href="#doc-overview">Overview</a></li>
-                            <li><a href="#doc-options">Options</a></li>
-                            <li><a href="#doc-events">Events</a></li>
-                            <li><a href="#doc-methods">Methods</a></li>
-                            <li><a href="#doc-methods">Source</a></li>
-                        </ul>
+            <div id="doc">
+                <ul>
+                    <li><a href="#documentation">Documentation</a></li>
+                    <li><a href="#doc-methods">Source</a></li>
+                </ul>
 
-                        <div>
+                <div>
 
-                            <div id="doc-overview">
+                    <div id="documentation">
+                        <h3 style="margin-bottom:20px;">Getting Started</h3>
+                        <pre name="code" class="brush:js">
+        $('#pm').puipanelmenu();
+                        </pre>
 
-                                <pre name="code" class="brush:js">
-                $('#pm').puipanelmenu();
-                                </pre>
-
-                                <pre name="code" class="brush:xml">
+                        <pre name="code" class="brush:xml">
 &lt;div id="pm" style="width:300px"&gt;
-    &lt;div&gt;
-        &lt;div&gt;&lt;a data-icon="fa-file-o"&gt;File&lt;/a&gt;&lt;/div&gt;
-        &lt;div&gt;
+&lt;div&gt;
+&lt;div&gt;&lt;a data-icon="fa-file-o"&gt;File&lt;/a&gt;&lt;/div&gt;
+&lt;div&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a data-icon="fa-plus"&gt;New&lt;/a&gt;
             &lt;ul&gt;
-                &lt;li&gt;&lt;a data-icon="fa-plus"&gt;New&lt;/a&gt;
-                    &lt;ul&gt;
-                        &lt;li&gt;&lt;a&gt;Project&lt;/a&gt;&lt;/li&gt;
-                        &lt;li&gt;&lt;a&gt;Other&lt;/a&gt;&lt;/li&gt;
-                    &lt;/ul&gt;
-                &lt;/li&gt;
-                &lt;li&gt;&lt;a&gt;Open&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a&gt;Quit&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a&gt;Project&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a&gt;Other&lt;/a&gt;&lt;/li&gt;
             &lt;/ul&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a&gt;Open&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a&gt;Quit&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 
-                                </pre>
-
-                            </div>
-
-                            <div id="doc-options">
-                                <table class="doc-table">
-                                    <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Type</th>
-                                        <th>Default</th>
-                                        <th>Description</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>stateful</td>
-                                        <td>boolean</td>
-                                        <td>false</td>
-                                        <td>Saves the last state of panel menu.</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <div id="doc-events">
-                                <h3>No events.</h3>
-                            </div>
-
-                            <div id="doc-methods">
-                                <h3>No methods.</h3>
-                            </div>
-
-                            <div id="doc-source">
-
-                                <pre name="code" class="brush:js">
-$('#pm').puipanelmenu();
-                                </pre>
-
-                                <pre name="code" class="brush:xml">
-&lt;div id="pm" style="width:300px"&gt;
-    &lt;div&gt;
-        &lt;div&gt;&lt;a data-icon="fa-file-o"&gt;File&lt;/a&gt;&lt;/div&gt;
-        &lt;div&gt;
-            &lt;ul&gt;
-                &lt;li&gt;&lt;a data-icon="fa-plus"&gt;New&lt;/a&gt;
-                    &lt;ul&gt;
-                        &lt;li&gt;&lt;a&gt;Project&lt;/a&gt;&lt;/li&gt;
-                        &lt;li&gt;&lt;a&gt;Other&lt;/a&gt;&lt;/li&gt;
-                    &lt;/ul&gt;
-                &lt;/li&gt;
-                &lt;li&gt;&lt;a&gt;Open&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a&gt;Quit&lt;/a&gt;&lt;/li&gt;
-            &lt;/ul&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div&gt;
-        &lt;div&gt;&lt;a data-icon="fa-edit"&gt;Edit&lt;/a&gt;&lt;/div&gt;
-        &lt;div&gt;
-            &lt;ul&gt;
-                &lt;li&gt;&lt;a data-icon="fa-mail-forward"&gt;Undo&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a data-icon="fa-mail-reply"&gt;Redo&lt;/a&gt;&lt;/li&gt;
-            &lt;/ul&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div&gt;
-        &lt;div&gt;&lt;a data-icon="fa-question"&gt;Help&lt;/a&gt;&lt;/div&gt;
-        &lt;div&gt;
-            &lt;ul&gt;
-                &lt;li&gt;&lt;a&gt;Contents&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a data-icon="fa-search"&gt;Search&lt;/a&gt;
-                    &lt;ul&gt;
-                        &lt;li&gt;&lt;a&gt;Text&lt;/a&gt;
-                            &lt;ul&gt;
-                                &lt;li&gt;&lt;a&gt;Workspace&lt;/a&gt;&lt;/li&gt;
-                            &lt;/ul&gt;
-                        &lt;/li&gt;
-                        &lt;li&gt;&lt;a&gt;File&lt;/a&gt;&lt;/li&gt;
-                    &lt;/ul&gt;
-                &lt;/li&gt;
-            &lt;/ul&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div&gt;
-        &lt;div&gt;&lt;a data-icon="fa-gear"&gt;Actions&lt;/a&gt;&lt;/div&gt;
-        &lt;div&gt;
-            &lt;ul&gt;
-                &lt;li&gt;&lt;a data-icon="fa-pencil"&gt;Edit&lt;/a&gt;
-                    &lt;ul&gt;
-                        &lt;li&gt;&lt;a data-icon="fa-save"&gt;Save&lt;/a&gt;&lt;/li&gt;
-                        &lt;li&gt;&lt;a data-icon="fa-save"&gt;Update&lt;/a&gt;&lt;/li&gt;
-                    &lt;/ul&gt;
-                &lt;/li&gt;
-                &lt;li&gt;&lt;a data-icon="fa-phone"&gt;Other&lt;/a&gt;
-                    &lt;ul&gt;
-                        &lt;li&gt;&lt;a data-icon="fa-minus"&gt;Delete&lt;/a&gt;&lt;/li&gt;
-                    &lt;/ul&gt;
-                &lt;/li&gt;
-            &lt;/ul&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-                                </pre>
-
-                            </div>
-
+                        </pre>
+                        
+                        <h3 style="margin-bottom:20px;">Attributes</h3>
+                        <table class="doc-table">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Default</th>
+                                <th>Description</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>stateful</td>
+                                <td>boolean</td>
+                                <td>false</td>
+                                <td>Saves the last state of panel menu.</td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
-                </span>
-            </span>
+
+                    <div id="doc-source">
+                        <h3 style="margin-bottom:20px;">Javascript</h3>
+                        <pre name="code" class="brush:js">
+$('#pm').puipanelmenu();
+                        </pre>
+                        
+                        <h3 style="margin-bottom:20px;">HTML</h3>
+                        <pre name="code" class="brush:xml">
+&lt;div id="pm" style="width:300px"&gt;
+&lt;div&gt;
+&lt;div&gt;&lt;a data-icon="fa-file-o"&gt;File&lt;/a&gt;&lt;/div&gt;
+&lt;div&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a data-icon="fa-plus"&gt;New&lt;/a&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a&gt;Project&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a&gt;Other&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a&gt;Open&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a&gt;Quit&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;
+&lt;div&gt;&lt;a data-icon="fa-edit"&gt;Edit&lt;/a&gt;&lt;/div&gt;
+&lt;div&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a data-icon="fa-mail-forward"&gt;Undo&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a data-icon="fa-mail-reply"&gt;Redo&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;
+&lt;div&gt;&lt;a data-icon="fa-question"&gt;Help&lt;/a&gt;&lt;/div&gt;
+&lt;div&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a&gt;Contents&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a data-icon="fa-search"&gt;Search&lt;/a&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a&gt;Text&lt;/a&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;&lt;a&gt;Workspace&lt;/a&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/li&gt;
+                &lt;li&gt;&lt;a&gt;File&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;
+&lt;div&gt;&lt;a data-icon="fa-gear"&gt;Actions&lt;/a&gt;&lt;/div&gt;
+&lt;div&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a data-icon="fa-pencil"&gt;Edit&lt;/a&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a data-icon="fa-save"&gt;Save&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a data-icon="fa-save"&gt;Update&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a data-icon="fa-phone"&gt;Other&lt;/a&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a data-icon="fa-minus"&gt;Delete&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+                        </pre>
+                    </div>
+            </div>
         </div>
     </div>
 
