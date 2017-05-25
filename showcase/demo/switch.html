@@ -27,131 +27,123 @@
     </div>
 
     <div class="content-section source">
-        <div>
-            <span class="defaultText">
-                <span class="fontSize18 logoBlueText">           
-                    <div id="doc">
-                        <ul>
-                            <li><a href="#doc-overview">Overview</a></li>
-                            <li><a href="#doc-options">Options</a></li>
-                            <li><a href="#doc-events">Events</a></li>
-                            <li><a href="#doc-methods">Methods</a></li>
-                            <li><a href="#doc-methods">Source</a></li>
-                        </ul>
-                        <div>
-                            <div id="doc-overview">
-                                <pre name="code" class="brush:xml">
+        <div>        
+            <div id="doc">
+                <ul>
+                    <li><a href="#documentation">Documentation</a></li>
+                    <li><a href="#doc-methods">Source</a></li>
+                </ul>
+                <div>
+                    <div id="documentation">
+                        <h3 style="margin-bottom:20px;">Getting Started</h3>
+                        <pre name="code" class="brush:xml">
 &lt;input id="basic" type="checkbox" /&gt;&lt;/input&gt;
-                                </pre>
+                        </pre>
 
-                                <pre name="code" class="brush:js">
+                        <pre name="code" class="brush:js">
 $('#basic').puiswitch();
-                                </pre>
-                            </div>
+                        </pre>
+                        
+                        <h3 style="margin-bottom:20px;">Attributes</h3>
+                        <table class="doc-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>onLabel</td>
+                                    <td>string </td>
+                                    <td>On</td>
+                                    <td>Label for on state.</td>
+                                </tr>
+                                <tr>
+                                    <td>offLabel</td>
+                                    <td>string</td>
+                                    <td>Off</td>
+                                    <td>Label for off state.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h3 style="margin-bottom:20px;">Events</h3>
+                        <table class="doc-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Parameters</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>change</td>
+                                    <td>event: puiswitchchange event
+                                        <br />
+                                    </td>
+                                    <td>Fires when value changes.</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-                            <div id="doc-options">
-                                <table class="doc-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Type</th>
-                                            <th>Default</th>
-                                            <th>Description</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>onLabel</td>
-                                            <td>string </td>
-                                            <td>On</td>
-                                            <td>Label for on state.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>offLabel</td>
-                                            <td>string</td>
-                                            <td>Off</td>
-                                            <td>Label for off state.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                        <h3>Example</h3>
+                        <pre name="code" class="brush:js">
+    $('input').puiswitch({
+        change: function(event) {
+            //..
+    }});
+                        </pre>
+                        
+                        <h3 style="margin-bottom:20px;">Functions</h3>
+                        <table class="doc-table">
+                            <thead>
+                                <th>Name</th>
+                                <th>Parameters</th>
+                                <th>Description</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>toggle</td>
+                                    <td>-</td>
+                                    <td>Slides the element.</td>
+                                </tr>
+                                <tr>
+                                    <td>check</td>
+                                    <td>-</td>
+                                    <td>Mark Checked to the checkbox.</td>
+                                </tr>
+                                <tr>
+                                    <td>uncheck</td>
+                                    <td>-</td>
+                                    <td>Mark Unchecked to the checkbox.</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-                            <div id="doc-events">
-                                <table class="doc-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Parameters</th>
-                                            <th>Description</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>change</td>
-                                            <td>event: puiswitchchange event
-                                                <br />
-                                            </td>
-                                            <td>Fires when value changes.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                                <h3>Example</h3>
-                                <pre name="code" class="brush:js">
-            $('input').puiswitch({
-                change: function(event) {
-                    //..
-            }});
-                                </pre>
-                            </div>
-
-                            <div id="doc-methods">
-                                <table class="doc-table">
-                                    <thead>
-                                        <th>Name</th>
-                                        <th>Parameters</th>
-                                        <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>toggle</td>
-                                            <td>-</td>
-                                            <td>Slides the element.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>check</td>
-                                            <td>-</td>
-                                            <td>Mark Checked to the checkbox.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>uncheck</td>
-                                            <td>-</td>
-                                            <td>Mark Unchecked to the checkbox.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                                <h3>Example</h3>
-                                <pre name="code" class="brush:js">
+                        <h3>Example</h3>
+                        <pre name="code" class="brush:js">
 $('#basic').puiswitch('check');
-                                </pre>
-                            </div>
+                        </pre>
+                    </div>
 
-                            <div id="doc-source">
-
-                                <pre name="code" class="brush:js">
+                    <div id="doc-source">
+                        <h3 style="margin-bottom:20px;">Javascript</h3>
+                        <pre name="code" class="brush:js">
 $('#basic').puiswitch();
-                                </pre>
-                                <pre name="code" class="brush:xml">
+                        </pre>
+                        <h3 style="margin-bottom:20px;">HTML</h3>
+                        <pre name="code" class="brush:xml">
 &lt;h3&gt;Basic&lt;/h3&gt;
 &lt;input id="basic" type="checkbox" name="inputSwitch" style="margin-bottom:20px;"&gt;&lt;/input&gt;
 
-                                </pre>
-                            </div>
-                        </div>
-                    </div>   
-                </span>
-            </span>
+                        </pre>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
