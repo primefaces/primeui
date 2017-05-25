@@ -104,18 +104,18 @@ body * {
     display: block;
 }
 
-#layout-sidebar > div {
+#layout-sidebar > div.submenu-container {
     width: auto;
     background-color: #20282b;
     display: none;
 }
 
-#layout-sidebar > div > div {
+#layout-sidebar > div.submenu-container > div {
     padding: 20px 15px;
     overflow: hidden;
 }
 
-#layout-sidebar > div a {
+#layout-sidebar > div.submenu-container a {
     width: 50%;
     float: left;
     padding: 6px;
@@ -127,7 +127,7 @@ body * {
     font-size: 14px;
 }
 
-#layout-sidebar > div a:hover {
+#layout-sidebar > div.submenu-container a:hover {
     background-color: #101517;
     color: #8dc5d9;
 }
