@@ -59,138 +59,130 @@
 
     <div class="content-section source">
         <div>
-            <span class="defaultText">
-                <span class="fontSize18 logoBlueText">
-                    <div id="doc">
-                        <ul>
-                            <li><a href="#doc-overview">Overview</a></li>
-                            <li><a href="#doc-options">Options</a></li>
-                            <li><a href="#doc-events">Events</a></li>
-                            <li><a href="#doc-methods">Methods</a></li>
-                            <li><a href="#doc-methods">Source</a></li>
-                        </ul>
-                        <div>
-                            <div id="doc-overview">
-                                <p>Growl is a notification widget to display messages as an overlay.</p>
+            <div id="doc">
+                <ul>
+                    <li><a href="#documentation">Documentation</a></li>
+                    <li><a href="#doc-methods">Source</a></li>
+                </ul>
+                <div>
+                    <div id="documentation">
+                        <h3 style="margin-bottom:20px;">Getting Started</h3>
+                        <p>Growl is a notification widget to display messages as an overlay.</p>
 
-                                <pre name="code" class="brush:js">
+                        <pre name="code" class="brush:js">
 //initialize
 $('#default').puigrowl();
 
 //show messages
 $('#default').puigrowl('show', [{severity: 'info', summary: 'Message Summary', detail: 'Message Detail'}]);
-                                </pre>
+                        </pre>
 
-                                <pre name="code" class="brush:xml">
+                        <pre name="code" class="brush:xml">
 &lt;div id="default" /&gt;   
-                                </pre>
-                            </div>
+                        </pre>
+                        
+                        <h3 style="margin-bottom:20px;">Attributes</h3>
+                        <table class="doc-table">
+                            <thead>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Default</th>
+                            <th>Description</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>sticky</td>
+                                    <td>boolean</td>
+                                    <td>false</td>
+                                    <td>Sticky messages do not disappear after a timeout defined by life.</td>
+                                </tr>
+                                <tr>
+                                    <td>life</td>
+                                    <td>int</td>
+                                    <td>3000</td>
+                                    <td>Defines timeout in milliseconds to remove messages.</td>
+                                </tr>
+                                <tr>
+                                    <td>appendTo</td>
+                                    <td>jQuery,Selector,Element</td>
+                                    <td>document.body</td>
+                                    <td>Defines where the growl would be appended.</td>
+                                </tr>
+                                <tr>
+                                    <td>messages</td>
+                                    <td>array</td>
+                                    <td>null</td>
+                                    <td>Array of messages to display initially after creating growl.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h3 style="margin-bottom:20px;">Functions</h3>
+                        <table class="doc-table">
+                            <thead>
+                            <th>Name</th>
+                            <th>Parameters</th>
+                            <th>Description</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>show</td>
+                                    <td>messages: Array of messages</td>
+                                    <td>Displays an array of messages.</td>
+                                </tr>
+                                <tr>
+                                    <td>clear</td>
+                                    <td>-</td>
+                                    <td>Hides the growl and clears the displayed messages.</td>
+                                </tr>
+                                <tr>
+                                    <td>option</td>
+                                    <td>name: Name of the option</td>
+                                    <td>Returns the value of the option.</td>
+                                </tr>
+                                <tr>
+                                    <td>option</td>
+                                    <td>name: Name of the option, value: Value of the option</td>
+                                    <td>Set the value of the option.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
-                            <div id="doc-options">
-                                <table class="doc-table">
-                                    <thead>
-                                    <th>Name</th>
-                                    <th>Type</th>
-                                    <th>Default</th>
-                                    <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>sticky</td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>Sticky messages do not disappear after a timeout defined by life.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>life</td>
-                                            <td>int</td>
-                                            <td>3000</td>
-                                            <td>Defines timeout in milliseconds to remove messages.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>appendTo</td>
-                                            <td>jQuery,Selector,Element</td>
-                                            <td>document.body</td>
-                                            <td>Defines where the growl would be appended.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>messages</td>
-                                            <td>array</td>
-                                            <td>null</td>
-                                            <td>Array of messages to display initially after creating growl.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <div id="doc-events">
-                                <h3>No events.</h3>
-                            </div>
-
-                            <div id="doc-methods">
-                                <table class="doc-table">
-                                    <thead>
-                                    <th>Name</th>
-                                    <th>Parameters</th>
-                                    <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>show</td>
-                                            <td>messages: Array of messages</td>
-                                            <td>Displays an array of messages.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>clear</td>
-                                            <td>-</td>
-                                            <td>Hides the growl and clears the displayed messages.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>option</td>
-                                            <td>name: Name of the option</td>
-                                            <td>Returns the value of the option.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>option</td>
-                                            <td>name: Name of the option, value: Value of the option</td>
-                                            <td>Set the value of the option.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <div id="doc-source">
-                                <pre name="code" class="brush:js">
+                    <div id="doc-source">
+                        <h3 style="margin-bottom:20px;">Javascript</h3>
+                        <pre name="code" class="brush:js">
 $(function() {
-    $('#default').puigrowl();
+$('#default').puigrowl();
 
-    $('#doc').puitabview();
+$('#doc').puitabview();
 
-    $('#btn-info').puibutton().click(function() {
-        addMessage([{severity: 'info', summary: 'Message Title', detail: 'Message Detail here.'}]);
-    });
-
-    $('#btn-warn').puibutton().click(function() {
-        addMessage([{severity: 'warn', summary: 'Message Title', detail: 'Message Detail here.'}]);
-    });
-
-    $('#btn-error').puibutton().click(function() {
-        addMessage([{severity: 'error', summary: 'Message Title', detail: 'Message Detail here.'}]);
-    });
-
-    $('#btn-multiple').puibutton().click(function() {
-        addMessage([{severity: 'info', summary: 'Message Title', detail: 'Message Detail here.'}
-            , {severity: 'warn', summary: 'Message Title', detail: 'Message Detail here.'}
-            , {severity: 'error', summary: 'Message Title', detail: 'Message Detail here.'}]);
-    });
-
-    addMessage = function(msg) {
-        $('#default').puigrowl('show', msg);
-    };
+$('#btn-info').puibutton().click(function() {
+addMessage([{severity: 'info', summary: 'Message Title', detail: 'Message Detail here.'}]);
 });
-                                </pre>
 
-                                <pre name="code" class="brush:xml">
+$('#btn-warn').puibutton().click(function() {
+addMessage([{severity: 'warn', summary: 'Message Title', detail: 'Message Detail here.'}]);
+});
+
+$('#btn-error').puibutton().click(function() {
+addMessage([{severity: 'error', summary: 'Message Title', detail: 'Message Detail here.'}]);
+});
+
+$('#btn-multiple').puibutton().click(function() {
+addMessage([{severity: 'info', summary: 'Message Title', detail: 'Message Detail here.'}
+    , {severity: 'warn', summary: 'Message Title', detail: 'Message Detail here.'}
+    , {severity: 'error', summary: 'Message Title', detail: 'Message Detail here.'}]);
+});
+
+addMessage = function(msg) {
+$('#default').puigrowl('show', msg);
+};
+});
+                        </pre>
+                        
+                        <h3 style="margin-bottom:20px;">HTML</h3>
+                        <pre name="code" class="brush:xml">
 &lt;h3&gt;Basic&lt;/h3&gt;
 &lt;div id="default"&gt;&lt;/div&gt;
 
@@ -199,12 +191,10 @@ $(function() {
 &lt;button id="btn-error" type="button"&gt;Error&lt;/button&gt;
 &lt;button id="btn-multiple" type="button"&gt;Multiple&lt;/button&gt;
 
-                                </pre>
-                            </div>
-                        </div>
+                        </pre>
                     </div>
-                </span>
-            </span>
+                </div>
+            </div>
         </div>
     </div>
 
