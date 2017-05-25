@@ -66,292 +66,279 @@
 
     <div class="content-section source">
         <div>
-            <span class="defaultText">
-                <span class="fontSize18 logoBlueText">
-                    <div id="doc">
-                        <ul>
-                            <li><a href="#doc-overview">Overview</a></li>
-                            <li><a href="#doc-options">Options</a></li>
-                            <li><a href="#doc-events">Events</a></li>
-                            <li><a href="#doc-methods">Methods</a></li>
-                            <li><a href="#doc-methods">Source</a></li>
-                        </ul>
-                        <div>
-                            <div id="doc-overview">
-                                <p>Picklist is applied to a container with two select elements. First
-                                    select is the source and the second one is the target list. Items
-                                    can be populated from the option elements or using the sourceData/targetData
-                                    options.</p>
+            <div id="doc">
+                <ul>
+                    <li><a href="#documentation">Documentation</a></li>
+                    <li><a href="#doc-methods">Source</a></li>
+                </ul>
+                <div>
+                    <div id="documentation">
+                        <h3 style="margin-bottom">Getting Started</h3>
+                        <p>Picklist is applied to a container with two select elements. First
+                            select is the source and the second one is the target list. Items
+                            can be populated from the option elements or using the sourceData/targetData
+                            options.</p>
 
-                                <pre name="code" class="brush:js">
+                        <pre name="code" class="brush:js">
 $('#pick').puipicklist();
-                                </pre>
+                        </pre>
 
-                                <pre name="code" class="brush:xml">
+                        <pre name="code" class="brush:xml">
 &lt;div id="pick"&gt;
-    &lt;select&gt;&lt;/select&gt;
-    &lt;select&gt;&lt;/select&gt;
+&lt;select&gt;&lt;/select&gt;
+&lt;select&gt;&lt;/select&gt;
 &lt;/div&gt;
-                                </pre>
-
-                            </div>
-
-                            <div id="doc-options">
-
-                                <table class="doc-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Type</th>
-                                            <th>Default</th>
-                                            <th>Description</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>effect</td>
-                                            <td>string</td>
-                                            <td>fade</td>
-                                            <td>Name of the jQuery UI effect.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>effectSpeed</td>
-                                            <td>string/number</td>
-                                            <td>fast</td>
-                                            <td>Speed of the jQuery UI effect, valid values are "slow","normal", "fast" or value in milliseconds.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>sourceCaption</td>
-                                            <td>string</td>
-                                            <td>null</td>
-                                            <td>Caption text for source list.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>targetCaption</td>
-                                            <td>string</td>
-                                            <td>null</td>
-                                            <td>Caption text for target list.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>dragdrop</td>
-                                            <td>boolean</td>
-                                            <td>true</td>
-                                            <td>When enabled, items can be reordered using dragdrop.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>sourceData</td>
-                                            <td>array</td>
-                                            <td>false</td>
-                                            <td>An array of items to populate list dynamically. Objects in this array can be simple types or object with
-                                                label-value pairs like {label:'Option 1', value:1}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>targetData</td>
-                                            <td>array</td>
-                                            <td>false</td>
-                                            <td>An array of items to populate list dynamically. Objects in this array can be simple types or object with
-                                                label-value pairs like {label:'Option 1', value:1}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>filter</td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>Boolean value to control filtering feature.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>filterMatchMode</td>
-                                            <td>string</td>
-                                            <td>startsWith</td>
-                                            <td>Defines built-in filtering mode, valid values are "startsWith", "contains", "endsWith" and "custom".</td>
-                                        </tr>
-                                        <tr>
-                                            <td>filter</td>
-                                            <td>function</td>
-                                            <td>null</td>
-                                            <td>Filter function to use in case filterMatchMode is custom. This function gets item label and filter value as parameters and required
-                                                to return a boolean value to implement filtering. true accepts the item and false rejects it.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>content</td>
-                                            <td>function</td>
-                                            <td>null</td>
-                                            <td>Template of an item to customize content.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>showSourceControls</td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>Show the command buttons to reorder the source list.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>showTargetControls</td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>Show the command buttons to reorder the target list.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>template</td>
-                                            <td>jQuery</td>
-                                            <td>null</td>
-                                            <td>Template element as jQuery object.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>responsive</td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>When enabled, picklist layout adjusts itself according to screen size.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                            </div>
-
-                            <div id="doc-events">
-
-                                <table class="doc-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Parameters</th>
-                                            <th>Description</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>transfer</td>
-                                            <td>
-                                                event: puipicklisttransfer event
-                                                <br />
-                                                ui: Data about the event.
-                                            </td>
-                                            <td>Fired when a transfer occurs between source and target.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                                <h3>Example</h3>
-                                <pre name="code" class="brush:js">
-                $('#default').puipicklist({
-                    transfer: function(event, ui) {
-                        //ui.items: Transferred items. 
-                        //ui.from: Old list.
-                        //ui.to: New list.
-                        //ui.type: Type of transfer e.g. "dragdrop","button" and "command"
-                    }
-                });
-                                </pre>
-                            </div>
-
-                            <div id="doc-methods">
-
-                                <table class="doc-table">
-                                    <thead>
+                        </pre>
+                        
+                        <h3 style="margin-bottom">Attributes</h3>
+                        <table class="doc-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>effect</td>
+                                    <td>string</td>
+                                    <td>fade</td>
+                                    <td>Name of the jQuery UI effect.</td>
+                                </tr>
+                                <tr>
+                                    <td>effectSpeed</td>
+                                    <td>string/number</td>
+                                    <td>fast</td>
+                                    <td>Speed of the jQuery UI effect, valid values are "slow","normal", "fast" or value in milliseconds.</td>
+                                </tr>
+                                <tr>
+                                    <td>sourceCaption</td>
+                                    <td>string</td>
+                                    <td>null</td>
+                                    <td>Caption text for source list.</td>
+                                </tr>
+                                <tr>
+                                    <td>targetCaption</td>
+                                    <td>string</td>
+                                    <td>null</td>
+                                    <td>Caption text for target list.</td>
+                                </tr>
+                                <tr>
+                                    <td>dragdrop</td>
+                                    <td>boolean</td>
+                                    <td>true</td>
+                                    <td>When enabled, items can be reordered using dragdrop.</td>
+                                </tr>
+                                <tr>
+                                    <td>sourceData</td>
+                                    <td>array</td>
+                                    <td>false</td>
+                                    <td>An array of items to populate list dynamically. Objects in this array can be simple types or object with
+                                        label-value pairs like {label:'Option 1', value:1}</td>
+                                </tr>
+                                <tr>
+                                    <td>targetData</td>
+                                    <td>array</td>
+                                    <td>false</td>
+                                    <td>An array of items to populate list dynamically. Objects in this array can be simple types or object with
+                                        label-value pairs like {label:'Option 1', value:1}</td>
+                                </tr>
+                                <tr>
+                                    <td>filter</td>
+                                    <td>boolean</td>
+                                    <td>false</td>
+                                    <td>Boolean value to control filtering feature.</td>
+                                </tr>
+                                <tr>
+                                    <td>filterMatchMode</td>
+                                    <td>string</td>
+                                    <td>startsWith</td>
+                                    <td>Defines built-in filtering mode, valid values are "startsWith", "contains", "endsWith" and "custom".</td>
+                                </tr>
+                                <tr>
+                                    <td>filter</td>
+                                    <td>function</td>
+                                    <td>null</td>
+                                    <td>Filter function to use in case filterMatchMode is custom. This function gets item label and filter value as parameters and required
+                                        to return a boolean value to implement filtering. true accepts the item and false rejects it.</td>
+                                </tr>
+                                <tr>
+                                    <td>content</td>
+                                    <td>function</td>
+                                    <td>null</td>
+                                    <td>Template of an item to customize content.</td>
+                                </tr>
+                                <tr>
+                                    <td>showSourceControls</td>
+                                    <td>boolean</td>
+                                    <td>false</td>
+                                    <td>Show the command buttons to reorder the source list.</td>
+                                </tr>
+                                <tr>
+                                    <td>showTargetControls</td>
+                                    <td>boolean</td>
+                                    <td>false</td>
+                                    <td>Show the command buttons to reorder the target list.</td>
+                                </tr>
+                                <tr>
+                                    <td>template</td>
+                                    <td>jQuery</td>
+                                    <td>null</td>
+                                    <td>Template element as jQuery object.</td>
+                                </tr>
+                                <tr>
+                                    <td>responsive</td>
+                                    <td>boolean</td>
+                                    <td>false</td>
+                                    <td>When enabled, picklist layout adjusts itself according to screen size.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h3 style="margin-bottom">Events</h3>
+                        <table class="doc-table">
+                            <thead>
+                                <tr>
                                     <th>Name</th>
                                     <th>Parameters</th>
                                     <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>selectItem</td>
-                                            <td>item: Item to select.</td>
-                                            <td>Selects the given item.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>unselectItem</td>
-                                            <td>item: Item to unselect.</td>
-                                            <td>Unselects the given item.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>unselectAll</td>
-                                            <td>-.</td>
-                                            <td>Clears selections.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>enable</td>
-                                            <td>-</td>
-                                            <td>Enable the widget</td>
-                                        </tr>
-                                        <tr>
-                                            <td>disable</td>
-                                            <td>-</td>
-                                            <td>Disable the widget.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>option</td>
-                                            <td>name: Name of the option</td>
-                                            <td>Returns the value of the option.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>option</td>
-                                            <td>name: Name of the option, value: Value of the option</td>
-                                            <td>Set the value of the option.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>transfer</td>
+                                    <td>
+                                        event: puipicklisttransfer event
+                                        <br />
+                                        ui: Data about the event.
+                                    </td>
+                                    <td>Fired when a transfer occurs between source and target.</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-                                <h3>Example</h3>
-                                <pre name="code" class="brush:js">
+                        <h3>Example</h3>
+                        <pre name="code" class="brush:js">
+        $('#default').puipicklist({
+            transfer: function(event, ui) {
+                //ui.items: Transferred items. 
+                //ui.from: Old list.
+                //ui.to: New list.
+                //ui.type: Type of transfer e.g. "dragdrop","button" and "command"
+            }
+        });
+                        </pre>
+                        
+                        <h3 style="margin-bottom">Functions</h3>
+                        <table class="doc-table">
+                            <thead>
+                            <th>Name</th>
+                            <th>Parameters</th>
+                            <th>Description</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>selectItem</td>
+                                    <td>item: Item to select.</td>
+                                    <td>Selects the given item.</td>
+                                </tr>
+                                <tr>
+                                    <td>unselectItem</td>
+                                    <td>item: Item to unselect.</td>
+                                    <td>Unselects the given item.</td>
+                                </tr>
+                                <tr>
+                                    <td>unselectAll</td>
+                                    <td>-.</td>
+                                    <td>Clears selections.</td>
+                                </tr>
+                                <tr>
+                                    <td>enable</td>
+                                    <td>-</td>
+                                    <td>Enable the widget</td>
+                                </tr>
+                                <tr>
+                                    <td>disable</td>
+                                    <td>-</td>
+                                    <td>Disable the widget.</td>
+                                </tr>
+                                <tr>
+                                    <td>option</td>
+                                    <td>name: Name of the option</td>
+                                    <td>Returns the value of the option.</td>
+                                </tr>
+                                <tr>
+                                    <td>option</td>
+                                    <td>name: Name of the option, value: Value of the option</td>
+                                    <td>Set the value of the option.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3>Example</h3>
+                        <pre name="code" class="brush:js">
 var item = //li element as jQuery object
 $('#basic').puipicklist('selectItem', item);
-                                </pre>
+                        </pre>
 
-                            </div>
+                    </div>
 
-                            <div id="doc-source">
-
-                                <pre name="code" class="brush:js">
+                    <div id="doc-source">
+                        <h3 style="margin-bottom">Javascript</h3>
+                        <pre name="code" class="brush:js">
 var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
-                'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
-                'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
-                'ui-darkness', 'ui-lightness', 'vader');
+        'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
+        'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
+        'ui-darkness', 'ui-lightness', 'vader');
 
-    $('#basic').puipicklist();
+$('#basic').puipicklist();
 
-    $('#advanced').puipicklist({
-        showSourceControls: true,
-        showTargetControls: true,
-        sourceCaption: 'Available',
-        targetCaption: 'Selected',
-        filter: true,
-        responsive: true,
-        sourceData: themes,
-        content: function(option) {
-            return '&lt;img src="showcase/resources/demo/images/themes/' + option.label + '.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;' + option.label + '&lt;/span&gt;';
-        }
-    });
-                                </pre>
+$('#advanced').puipicklist({
+showSourceControls: true,
+showTargetControls: true,
+sourceCaption: 'Available',
+targetCaption: 'Selected',
+filter: true,
+responsive: true,
+sourceData: themes,
+content: function(option) {
+    return '&lt;img src="showcase/resources/demo/images/themes/' + option.label + '.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;' + option.label + '&lt;/span&gt;';
+}
+});
+                        </pre>
 
-                                <pre name="code" class="brush:xml">
+                        <h3 style="margin-bottom">HTML</h3>
+                        <pre name="code" class="brush:xml">
 &lt;h3 class="first"&gt;Basic&lt;/h3&gt;
 &lt;div id="basic"&gt;
-    &lt;select name="source1"&gt;
-        &lt;option value="1"&gt;Volkswagen&lt;/option&gt;
-        &lt;option value="2"&gt;Ford&lt;/option&gt;
-        &lt;option value="3"&gt;Mercedes&lt;/option&gt;
-        &lt;option value="4"&gt;Audi&lt;/option&gt;
-        &lt;option value="5"&gt;BMW&lt;/option&gt;
-        &lt;option value="6"&gt;Honda&lt;/option&gt;
-        &lt;option value="7"&gt;Porsche&lt;/option&gt;
-        &lt;option value="8"&gt;Chevrolet&lt;/option&gt;
-        &lt;option value="9"&gt;Jaguar&lt;/option&gt;
-    &lt;/select&gt;
-    &lt;select name="target1"&gt;
-    &lt;/select&gt;
+&lt;select name="source1"&gt;
+&lt;option value="1"&gt;Volkswagen&lt;/option&gt;
+&lt;option value="2"&gt;Ford&lt;/option&gt;
+&lt;option value="3"&gt;Mercedes&lt;/option&gt;
+&lt;option value="4"&gt;Audi&lt;/option&gt;
+&lt;option value="5"&gt;BMW&lt;/option&gt;
+&lt;option value="6"&gt;Honda&lt;/option&gt;
+&lt;option value="7"&gt;Porsche&lt;/option&gt;
+&lt;option value="8"&gt;Chevrolet&lt;/option&gt;
+&lt;option value="9"&gt;Jaguar&lt;/option&gt;
+&lt;/select&gt;
+&lt;select name="target1"&gt;
+&lt;/select&gt;
 &lt;/div&gt;
 
 &lt;h3&gt;Advanced&lt;/h3&gt;
 &lt;div id="advanced"&gt;
-    &lt;select name="source2"&gt;
-    &lt;/select&gt;
-    &lt;select name="target2"&gt;
-    &lt;/select&gt;
+&lt;select name="source2"&gt;
+&lt;/select&gt;
+&lt;select name="target2"&gt;
+&lt;/select&gt;
 &lt;/div&gt;                  
-                                </pre>
-                            </div>
-                        </div>
+                        </pre>
                     </div>
-                </span>
-            </span>
+                </div>
+            </div>
         </div>
     </div>
 
