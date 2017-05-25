@@ -60,232 +60,218 @@
 
     <div class="content-section source">
         <div>
-            <span class="defaultText">
-                <span class="fontSize18 logoBlueText">
-                    <div id="doc">
-                        <ul>
-                            <li><a href="#doc-overview">Overview</a></li>
-                            <li><a href="#doc-options">Options</a></li>
-                            <li><a href="#doc-events">Events</a></li>
-                            <li><a href="#doc-methods">Methods</a></li>
-                            <li><a href="#doc-methods">Source</a></li>
-                        </ul>
-                        <div>
-                            <div id="doc-overview">
-                                <p>Listbox widget is applied to a select element.</p>
+            <div id="doc">
+                <ul>
+                    <li><a href="#documentation">Documentation</a></li>
+                    <li><a href="#doc-methods">Source</a></li>
+                </ul>
+                <div>
+                    <div id="documentation">
+                        <h3 style="margin-bottom:20px;">Getting Started</h3>
+                        <p>Listbox widget is applied to a select element.</p>
 
-                                <pre name="code" class="brush:js">
+                        <pre name="code" class="brush:js">
 $('#basic').puilistbox();
-                                </pre>
+                        </pre>
 
-                                <pre name="code" class="brush:xml">
+                        <pre name="code" class="brush:xml">
 &lt;select id="basic"&gt;
-    &lt;option value="0"&gt;Select One&lt;/option&gt;
-    &lt;option value="1"&gt;Option 1&lt;/option&gt;
-    &lt;option value="2"&gt;Option 2&lt;/option&gt;
-    &lt;option value="3"&gt;Option 3&lt;/option&gt;
+&lt;option value="0"&gt;Select One&lt;/option&gt;
+&lt;option value="1"&gt;Option 1&lt;/option&gt;
+&lt;option value="2"&gt;Option 2&lt;/option&gt;
+&lt;option value="3"&gt;Option 3&lt;/option&gt;
 &lt;/select&gt;
-                                </pre>
-
-                            </div>
-
-                            <div id="doc-options">
-
-                                <table class="doc-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Type</th>
-                                            <th>Default</th>
-                                            <th>Description</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>data</td>
-                                            <td>array</td>
-                                            <td>null</td>
-                                            <td>An array of items to populate listbox dynamically. Objects in this array can be simple types or object with
-                                                label-value pairs like {label:'Option 1', value:1}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>content</td>
-                                            <td>function</td>
-                                            <td>null</td>
-                                            <td>Template of an item to customize content.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>scrollHeight</td>
-                                            <td>integer</td>
-                                            <td>200</td>
-                                            <td>Maximum height boundary of the content, if total height of items exceed this value, scrollbar is displayed.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>template</td>
-                                            <td>jQuery</td>
-                                            <td>null</td>
-                                            <td>Template element as jQuery object.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                            </div>
-
-                            <div id="doc-events">
-
-                                <table class="doc-table">
-                                    <thead>
+                        </pre>
+                        
+                        <h3 style="margin-bottom:20px;">Attributes</h3>
+                        <table class="doc-table">
+                            <thead>
+                                <tr>
                                     <th>Name</th>
-                                    <th>Parameters</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
                                     <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>itemSelect</td>
-                                            <td>
-                                                event: puilistboxitemselect event
-                                                <br />
-                                                item: Selected item
-                                            </td>
-                                            <td>Fired when an item is selected.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>itemUnselect</td>
-                                            <td>
-                                                event: puilistboxitemunselect event
-                                                <br />
-                                                item: Unselected item
-                                            </td>
-                                            <td>Fired when an item is unselected.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>data</td>
+                                    <td>array</td>
+                                    <td>null</td>
+                                    <td>An array of items to populate listbox dynamically. Objects in this array can be simple types or object with
+                                        label-value pairs like {label:'Option 1', value:1}</td>
+                                </tr>
+                                <tr>
+                                    <td>content</td>
+                                    <td>function</td>
+                                    <td>null</td>
+                                    <td>Template of an item to customize content.</td>
+                                </tr>
+                                <tr>
+                                    <td>scrollHeight</td>
+                                    <td>integer</td>
+                                    <td>200</td>
+                                    <td>Maximum height boundary of the content, if total height of items exceed this value, scrollbar is displayed.</td>
+                                </tr>
+                                <tr>
+                                    <td>template</td>
+                                    <td>jQuery</td>
+                                    <td>null</td>
+                                    <td>Template element as jQuery object.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h3 style="margin-bottom:20px;">Events</h3>
+                        <table class="doc-table">
+                            <thead>
+                            <th>Name</th>
+                            <th>Parameters</th>
+                            <th>Description</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>itemSelect</td>
+                                    <td>
+                                        event: puilistboxitemselect event
+                                        <br />
+                                        item: Selected item
+                                    </td>
+                                    <td>Fired when an item is selected.</td>
+                                </tr>
+                                <tr>
+                                    <td>itemUnselect</td>
+                                    <td>
+                                        event: puilistboxitemunselect event
+                                        <br />
+                                        item: Unselected item
+                                    </td>
+                                    <td>Fired when an item is unselected.</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-                                <h3>Example</h3>
-                                <pre name="code" class="brush:js">
-                $('#default').puilistbox({
-                    itemSelect: function(event, item) {
+                        <h3>Example</h3>
+                        <pre name="code" class="brush:js">
+        $('#default').puilistbox({
+            itemSelect: function(event, item) {
 
-                    }
-                });
-                                </pre>
-                            </div>
+            }
+        });
+                        </pre>
+                        
+                        <h3 style="margin-bottom:20px;">Functions</h3>
+                        <table class="doc-table">
+                            <thead>
+                            <th>Name</th>
+                            <th>Parameters</th>
+                            <th>Description</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>selectItem</td>
+                                    <td>index: Index of the item.</td>
+                                    <td>Selects item with given index.</td>
+                                </tr>
+                                <tr>
+                                    <td>unselectItem</td>
+                                    <td>index: Index of the item.</td>
+                                    <td>Unselects item with given index.</td>
+                                </tr>
+                                <tr>
+                                    <td>unselectAll</td>
+                                    <td>-</td>
+                                    <td>Clears selections.</td>
+                                </tr>
+                                <tr>
+                                    <td>removeAllOptions</td>
+                                    <td>-</td>
+                                    <td>Removes all options of the listbox.</td>
+                                </tr>
+                                <tr>
+                                    <td>addOption</td>
+                                    <td>value,label</td>
+                                    <td>Adds new option to the listbox.</td>
+                                </tr>
+                                <tr>
+                                    <td>enable</td>
+                                    <td>-</td>
+                                    <td>Enable the widget</td>
+                                </tr>
+                                <tr>
+                                    <td>disable</td>
+                                    <td>-</td>
+                                    <td>Disable the widget.</td>
+                                </tr>
+                                <tr>
+                                    <td>option</td>
+                                    <td>name: Name of the option</td>
+                                    <td>Returns the value of the option.</td>
+                                </tr>
+                                <tr>
+                                    <td>option</td>
+                                    <td>name: Name of the option, value: Value of the option</td>
+                                    <td>Set the value of the option.</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-                            <div id="doc-methods">
-
-                                <table class="doc-table">
-                                    <thead>
-                                    <th>Name</th>
-                                    <th>Parameters</th>
-                                    <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>selectItem</td>
-                                            <td>index: Index of the item.</td>
-                                            <td>Selects item with given index.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>unselectItem</td>
-                                            <td>index: Index of the item.</td>
-                                            <td>Unselects item with given index.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>unselectAll</td>
-                                            <td>-</td>
-                                            <td>Clears selections.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>removeAllOptions</td>
-                                            <td>-</td>
-                                            <td>Removes all options of the listbox.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>addOption</td>
-                                            <td>value,label</td>
-                                            <td>Adds new option to the listbox.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>enable</td>
-                                            <td>-</td>
-                                            <td>Enable the widget</td>
-                                        </tr>
-                                        <tr>
-                                            <td>disable</td>
-                                            <td>-</td>
-                                            <td>Disable the widget.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>option</td>
-                                            <td>name: Name of the option</td>
-                                            <td>Returns the value of the option.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>option</td>
-                                            <td>name: Name of the option, value: Value of the option</td>
-                                            <td>Set the value of the option.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                                <h3>Example</h3>
-                                <pre name="code" class="brush:js">
+                        <h3>Example</h3>
+                        <pre name="code" class="brush:js">
 $('#basic').puilistbox('selectItem', 1);
-                                </pre>
+                        </pre>
 
-                            </div>
+                    </div>
 
-                            <div id="doc-source">
-
-                                <pre name="code" class="brush:js">
+                    <div id="doc-source">
+                        <h3 style="margin-bottom:20px;">Javascript</h3>
+                        <pre name="code" class="brush:js">
 $(function() {
-    var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
-            'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
-            'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse',
-            'trontastic', 'ui-darkness', 'ui-lightness', 'vader');
+var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
+    'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
+    'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse',
+    'trontastic', 'ui-darkness', 'ui-lightness', 'vader');
 
-    $('#basic').puilistbox();
+$('#basic').puilistbox();
 
-    $('#multiple').puilistbox();
+$('#multiple').puilistbox();
 
-    $('#custom').puilistbox({
-        data: themes,
-        content: function(option) {
-            return '&lt;img src="showcase/resources/demo/images/themes/' + option.label + '.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;' + option.label + '&lt;/span&gt;';
-        }
-    });
+$('#custom').puilistbox({
+data: themes,
+content: function(option) {
+    return '&lt;img src="showcase/resources/demo/images/themes/' + option.label + '.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;' + option.label + '&lt;/span&gt;';
+}
+});
 });
 
-                                </pre>
-
-                                <pre name="code" class="brush:xml">
+                        </pre>
+                        
+                        <h3 style="margin-bottom:20px;">HTML</h3>
+                        <pre name="code" class="brush:xml">
 &lt;h3&gt;Basic&lt;/h3&gt;
 &lt;select id="basic"&gt;
-    &lt;option value="1"&gt;Option 1&lt;/option&gt;
-    &lt;option value="2"&gt;Option 2&lt;/option&gt;
-    &lt;option value="3"&gt;Option 3&lt;/option&gt;
-    &lt;option value="4"&gt;Option 4&lt;/option&gt;
-    &lt;option value="5"&gt;Option 5&lt;/option&gt;
+&lt;option value="1"&gt;Option 1&lt;/option&gt;
+&lt;option value="2"&gt;Option 2&lt;/option&gt;
+&lt;option value="3"&gt;Option 3&lt;/option&gt;
+&lt;option value="4"&gt;Option 4&lt;/option&gt;
+&lt;option value="5"&gt;Option 5&lt;/option&gt;
 &lt;/select&gt;
 
 &lt;h3&gt;Multiple&lt;/h3&gt;
 &lt;select id="multiple" multiple="multiple"&gt;
-    &lt;option value="1"&gt;Option 1&lt;/option&gt;
-    &lt;option value="2"&gt;Option 2&lt;/option&gt;
-    &lt;option value="3"&gt;Option 3&lt;/option&gt;
-    &lt;option value="4"&gt;Option 4&lt;/option&gt;
-    &lt;option value="5"&gt;Option 5&lt;/option&gt;
+&lt;option value="1"&gt;Option 1&lt;/option&gt;
+&lt;option value="2"&gt;Option 2&lt;/option&gt;
+&lt;option value="3"&gt;Option 3&lt;/option&gt;
+&lt;option value="4"&gt;Option 4&lt;/option&gt;
+&lt;option value="5"&gt;Option 5&lt;/option&gt;
 &lt;/select&gt;
 
 &lt;h3&gt;Custom&lt;/h3&gt;
 &lt;select id="custom"&gt;&lt;/select&gt;
-                                </pre>
-
-                            </div>
-                        </div>
+                        </pre>
                     </div>
-                </span>
-            </span>
+                </div>
+            </div>
         </div>
     </div>
 
