@@ -65,241 +65,230 @@
 
     <div class="content-section source">
         <div>
-            <span class="defaultText">
-                <span class="fontSize18 logoBlueText">
-                    <div id="doc">
-                        <ul>
-                            <li><a href="#doc-overview">Overview</a></li>
-                            <li><a href="#doc-options">Options</a></li>
-                            <li><a href="#doc-events">Events</a></li>
-                            <li><a href="#doc-methods">Methods</a></li>
-                            <li><a href="#doc-methods">Source</a></li>
-                        </ul>
-                        <div>
-                            <div id="doc-overview">
-                                <p>OrderList is applied to select element. Items
-                                    can either be populated from the option elements or using the datasource that can be a local javascript array or function to load the array.</p>
+            <div id="doc">
+                <ul>
+                    <li><a href="#documentation">Documentation</a></li>
+                    <li><a href="#doc-methods">Source</a></li>
+                </ul>
+                <div>
+                    <div id="documentation">
+                        <h3 style="margin-bottom:20px">Getting Started</h3>
+                        <p>OrderList is applied to select element. Items
+                            can either be populated from the option elements or using the datasource that can be a local javascript array or function to load the array.</p>
 
-                                <pre name="code" class="brush:js">
+                        <pre name="code" class="brush:js">
 $('#list').puiorderlist();
-                                </pre>
+                        </pre>
 
-                                <pre name="code" class="brush:xml">
+                        <pre name="code" class="brush:xml">
 &lt;select id="list"&gt;&lt;/select&gt;
-                                </pre>
-
-                            </div>
-
-                            <div id="doc-options">
-
-                                <table class="doc-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Type</th>
-                                            <th>Default</th>
-                                            <th>Description</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>controlsLocation</td>
-                                            <td>string</td>
-                                            <td>none</td>
-                                            <td>Location of buttons, valid values are none, left and right.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>dragdrop</td>
-                                            <td>boolean</td>
-                                            <td>true</td>
-                                            <td>Defines if items can be reordered usign dragdrop.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>effect</td>
-                                            <td>string</td>
-                                            <td>fade</td>
-                                            <td>Name of the jQuery UI effect.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>caption</td>
-                                            <td>string</td>
-                                            <td>null</td>
-                                            <td>Caption text for the list.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>responsive</td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>When enabled, orderlist layout adjusts itself according to screen size.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>datasource</td>
-                                            <td>array/function</td>
-                                            <td>null</td>
-                                            <td>An array of items or a function to provide the items in case items are not provided declaratively via option tags.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>content</td>
-                                            <td>function</td>
-                                            <td>null</td>
-                                            <td>Template of an item to customize content.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>template</td>
-                                            <td>jQuery</td>
-                                            <td>null</td>
-                                            <td>Template element as jQuery object.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                            </div>
-
-                            <div id="doc-events">
-
-                                <table class="doc-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Parameters</th>
-                                            <th>Description</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>reorder</td>
-                                            <td>
-                                                event: puiorderlistreorder event
-                                            </td>
-                                            <td>Fired when list is reordered.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                                <h3>Example</h3>
-                                <pre name="code" class="brush:js">
-                $('#default').puiorderlist({
-                    reorder: function(event) {
+                        </pre>
                         
-                    }
-                });
-                                </pre>
-                            </div>
+                        <h3 style="margin-bottom:20px">Attributes</h3>
+                        <table class="doc-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>controlsLocation</td>
+                                    <td>string</td>
+                                    <td>none</td>
+                                    <td>Location of buttons, valid values are none, left and right.</td>
+                                </tr>
+                                <tr>
+                                    <td>dragdrop</td>
+                                    <td>boolean</td>
+                                    <td>true</td>
+                                    <td>Defines if items can be reordered usign dragdrop.</td>
+                                </tr>
+                                <tr>
+                                    <td>effect</td>
+                                    <td>string</td>
+                                    <td>fade</td>
+                                    <td>Name of the jQuery UI effect.</td>
+                                </tr>
+                                <tr>
+                                    <td>caption</td>
+                                    <td>string</td>
+                                    <td>null</td>
+                                    <td>Caption text for the list.</td>
+                                </tr>
+                                <tr>
+                                    <td>responsive</td>
+                                    <td>boolean</td>
+                                    <td>false</td>
+                                    <td>When enabled, orderlist layout adjusts itself according to screen size.</td>
+                                </tr>
+                                <tr>
+                                    <td>datasource</td>
+                                    <td>array/function</td>
+                                    <td>null</td>
+                                    <td>An array of items or a function to provide the items in case items are not provided declaratively via option tags.</td>
+                                </tr>
+                                <tr>
+                                    <td>content</td>
+                                    <td>function</td>
+                                    <td>null</td>
+                                    <td>Template of an item to customize content.</td>
+                                </tr>
+                                <tr>
+                                    <td>template</td>
+                                    <td>jQuery</td>
+                                    <td>null</td>
+                                    <td>Template element as jQuery object.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h3 style="margin-bottom:20px">Events</h3>
+                        <table class="doc-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Parameters</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>reorder</td>
+                                    <td>
+                                        event: puiorderlistreorder event
+                                    </td>
+                                    <td>Fired when list is reordered.</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-                            <div id="doc-methods">
-                                <table class="doc-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Parameters</th>
-                                            <th>Description</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>addOption</td>
-                                            <td>
-                                                value , label
-                                            </td>
-                                            <td>Adds new item to the orderlist.(If there is no label added both the label and value will be the value.)</td>
-                                        </tr>
-                                        <tr>
-                                            <td>removeOption</td>
-                                            <td>
-                                                value
-                                            </td>
-                                            <td>Removes the option with the specific value.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>getSelection</td>
-                                            <td>
-                                                -
-                                            </td>
-                                            <td>Gets the selected list items values.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>setSelection</td>
-                                            <td>
-                                                values as an array('[1,5]')
-                                            </td>
-                                            <td>Selects specific list items with values.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>enable</td>
-                                            <td>
-                                                -
-                                            </td>
-                                            <td>Enables the orderlist.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>disable</td>
-                                            <td>
-                                                -
-                                            </td>
-                                            <td>Disables the orderlist.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                        <h3>Example</h3>
+                        <pre name="code" class="brush:js">
+        $('#default').puiorderlist({
+            reorder: function(event) {
+                
+            }
+        });
+                        </pre>
+                        
+                        <h3 style="margin-bottom:20px">Functions</h3>
+                        <table class="doc-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Parameters</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>addOption</td>
+                                    <td>
+                                        value , label
+                                    </td>
+                                    <td>Adds new item to the orderlist.(If there is no label added both the label and value will be the value.)</td>
+                                </tr>
+                                <tr>
+                                    <td>removeOption</td>
+                                    <td>
+                                        value
+                                    </td>
+                                    <td>Removes the option with the specific value.</td>
+                                </tr>
+                                <tr>
+                                    <td>getSelection</td>
+                                    <td>
+                                        -
+                                    </td>
+                                    <td>Gets the selected list items values.</td>
+                                </tr>
+                                <tr>
+                                    <td>setSelection</td>
+                                    <td>
+                                        values as an array('[1,5]')
+                                    </td>
+                                    <td>Selects specific list items with values.</td>
+                                </tr>
+                                <tr>
+                                    <td>enable</td>
+                                    <td>
+                                        -
+                                    </td>
+                                    <td>Enables the orderlist.</td>
+                                </tr>
+                                <tr>
+                                    <td>disable</td>
+                                    <td>
+                                        -
+                                    </td>
+                                    <td>Disables the orderlist.</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-                                <h3>Example</h3>
-                                <pre name="code" class="brush:js">
-                $('#basic').puiorderlist('disable');
-                $('#advanced').puiorderlist('setSelection',[1,3,5]);
-                                </pre>
-                            </div>
+                        <h3>Example</h3>
+                        <pre name="code" class="brush:js">
+        $('#basic').puiorderlist('disable');
+        $('#advanced').puiorderlist('setSelection',[1,3,5]);
+                        </pre>
 
-                            <div id="doc-source">
+                    </div>
 
-                                <pre name="code" class="brush:js">
+                    <div id="doc-source">
+                        <h3 style="margin-bottom:20px">Javascript</h3>
+                        <pre name="code" class="brush:js">
 var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
-                    'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
-                    'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
-                    'ui-darkness', 'ui-lightness', 'vader');
+            'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
+            'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
+            'ui-darkness', 'ui-lightness', 'vader');
 
 $('#basic').puiorderlist();
 
 $('#advanced').puiorderlist({
-    controlsLocation: 'left',
-    caption: 'Themes',
-    effect: 'bounce',
-    responsive: true,
-    datasource: themes,
-    content: function (option) {
-        return $('&lt;div class="ui-helper-clearfix"&gt;&lt;img src="showcase/resources/demo/images/themes/' + option.label + '.png" alt="" style="float:left"/&gt;&lt;span style="float:left; margin-left:15px; font-size:20px"&gt;' + option.label + '&lt;/span&gt;&lt;/div&gt;');
-    }
+controlsLocation: 'left',
+caption: 'Themes',
+effect: 'bounce',
+responsive: true,
+datasource: themes,
+content: function (option) {
+return $('&lt;div class="ui-helper-clearfix"&gt;&lt;img src="showcase/resources/demo/images/themes/' + option.label + '.png" alt="" style="float:left"/&gt;&lt;span style="float:left; margin-left:15px; font-size:20px"&gt;' + option.label + '&lt;/span&gt;&lt;/div&gt;');
+}
 });
-                                </pre>
-
-                                <pre name="code" class="brush:xml">
+                        </pre>
+                        
+                        <h3 style="margin-bottom:20px">HTML</h3>
+                        <pre name="code" class="brush:xml">
 &lt;div class="ui-grid ui-grid-responsive"&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-6"&gt;
-            &lt;h3&gt;Basic&lt;/h3&gt;
-            &lt;select id="basic"&gt;
-                &lt;option value="1"&gt;Volkswagen&lt;/option&gt;
-                &lt;option value="2"&gt;Ford&lt;/option&gt;
-                &lt;option value="3"&gt;Mercedes&lt;/option&gt;
-                &lt;option value="4"&gt;Audi&lt;/option&gt;
-                &lt;option value="5"&gt;BMW&lt;/option&gt;
-                &lt;option value="6"&gt;Honda&lt;/option&gt;
-                &lt;option value="7"&gt;Porsche&lt;/option&gt;
-                &lt;option value="8"&gt;Chevrolet&lt;/option&gt;
-                &lt;option value="9"&gt;Jaguar&lt;/option&gt;
-            &lt;/select&gt;
-        &lt;/div&gt;
-        &lt;div class="ui-grid-col-6"&gt;
-            &lt;h3&gt;Advanced&lt;/h3&gt;
-            &lt;select id="advanced"&gt;&lt;/select&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
+&lt;div class="ui-grid-row"&gt;
+&lt;div class="ui-grid-col-6"&gt;
+    &lt;h3&gt;Basic&lt;/h3&gt;
+    &lt;select id="basic"&gt;
+        &lt;option value="1"&gt;Volkswagen&lt;/option&gt;
+        &lt;option value="2"&gt;Ford&lt;/option&gt;
+        &lt;option value="3"&gt;Mercedes&lt;/option&gt;
+        &lt;option value="4"&gt;Audi&lt;/option&gt;
+        &lt;option value="5"&gt;BMW&lt;/option&gt;
+        &lt;option value="6"&gt;Honda&lt;/option&gt;
+        &lt;option value="7"&gt;Porsche&lt;/option&gt;
+        &lt;option value="8"&gt;Chevrolet&lt;/option&gt;
+        &lt;option value="9"&gt;Jaguar&lt;/option&gt;
+    &lt;/select&gt;
+&lt;/div&gt;
+&lt;div class="ui-grid-col-6"&gt;
+    &lt;h3&gt;Advanced&lt;/h3&gt;
+    &lt;select id="advanced"&gt;&lt;/select&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;/div&gt;                                     
-                                </pre>
+                        </pre>
 
-                            </div>
-                        </div>
                     </div>
-                </span>
-            </span>
+                </div>
+            </div>
         </div>
     </div>
 
