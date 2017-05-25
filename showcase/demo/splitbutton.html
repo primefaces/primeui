@@ -57,188 +57,181 @@
 
     <div class="content-section source">
         <div>
-            <span class="defaultText">
-                <span class="fontSize18 logoBlueText">
-                    <div id="doc">
-                        <ul>
-                            <li><a href="#doc-overview">Overview</a></li>
-                            <li><a href="#doc-options">Options</a></li>
-                            <li><a href="#doc-events">Events</a></li>
-                            <li><a href="#doc-methods">Methods</a></li>
-                            <li><a href="#doc-methods">Source</a></li>
-                        </ul>
-                        <div>
-                            <div id="doc-overview">
-                                <p>SplitButton requires a button and a list of items for the menu.</p>
+            <div id="doc">
+                <ul>
+                    <li><a href="#documentation">Documentation</a></li>
+                    <li><a href="#doc-methods">Source</a></li>
+                </ul>
+                <div>
+                    <div id="documentation">
+                        <h3 style="margin-bottom:20px;">Getting Started</h3>
+                        <p>SplitButton requires a button and a list of items for the menu.</p>
 
-                                <pre name="code" class="brush:js">
+                        <pre name="code" class="brush:js">
 $('#btn').puisplitbutton({
-    items: []
+items: []
 });
-                                </pre>
+                        </pre>
 
-                                <pre name="code" class="brush:xml">
+                        <pre name="code" class="brush:xml">
 &lt;button id="btn" type="button"&gt;Default&lt;/button&gt;
-                                </pre>
-                            </div>
+                        </pre>
+                        
+                        <h3 style="margin-bottom:20px;">Attributes</h3>
+                        <table class="doc-table">
+                            <thead>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Default</th>
+                            <th>Description</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>icon</td>
+                                    <td>string</td>
+                                    <td>null</td>
+                                    <td>Defines the icon of the button.</td>
+                                </tr>
+                                <tr>
+                                    <td>iconPos</td>
+                                    <td>string</td>
+                                    <td>left</td>
+                                    <td>Position of the icon, valid values are "left" and "right".</td>
+                                </tr>
+                                <tr>
+                                    <td>items</td>
+                                    <td>array</td>
+                                    <td>null</td>
+                                    <td>An array of items, each item is defined with "icon", "text", "click" and "url" attributes.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h3 style="margin-bottom:20px;">Events</h3>
+                        <table class="doc-table">
+                            <thead>
+                            <th>Name</th>
+                            <th>Parameters</th>
+                            <th>Description</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>click</td>
+                                    <td>event: puisplitbuttonclick instance
+                                    <td>Fired when default button is clicked.</td>
+                                </tr>
+                                <tr>
+                                    <td>show</td>
+                                    <td>event: puisplitbuttonshow instance
+                                    <td>Fired when menu is shown.</td>
+                                </tr>
+                                <tr>
+                                    <td>hide</td>
+                                    <td>event: puisplitbuttonhide instance.</td>
+                                    <td>Fired when menu is hidden.</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-                            <div id="doc-options">
-                                <table class="doc-table">
-                                    <thead>
-                                    <th>Name</th>
-                                    <th>Type</th>
-                                    <th>Default</th>
-                                    <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>icon</td>
-                                            <td>string</td>
-                                            <td>null</td>
-                                            <td>Defines the icon of the button.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>iconPos</td>
-                                            <td>string</td>
-                                            <td>left</td>
-                                            <td>Position of the icon, valid values are "left" and "right".</td>
-                                        </tr>
-                                        <tr>
-                                            <td>items</td>
-                                            <td>array</td>
-                                            <td>null</td>
-                                            <td>An array of items, each item is defined with "icon", "text", "click" and "url" attributes.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <div id="doc-events">
-                                <table class="doc-table">
-                                    <thead>
-                                    <th>Name</th>
-                                    <th>Parameters</th>
-                                    <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>click</td>
-                                            <td>event: puisplitbuttonclick instance
-                                            <td>Fired when default button is clicked.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>show</td>
-                                            <td>event: puisplitbuttonshow instance
-                                            <td>Fired when menu is shown.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>hide</td>
-                                            <td>event: puisplitbuttonhide instance.</td>
-                                            <td>Fired when menu is hidden.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                                <h3>Example</h3>
-                                <pre name="code" class="brush:js">
+                        <h3>Example</h3>
+                        <pre name="code" class="brush:js">
 $('#default').puisplitbutton({
-    click: function(event) {
-        //...
-    }
+click: function(event) {
+//...
+}
 });
-                                </pre>
-                            </div>
+                        </pre>
+                        
+                        <h3 style="margin-bottom:20px;">Functions</h3>
+                        <table class="doc-table">
+                            <thead>
+                            <th>Name</th>
+                            <th>Parameters</th>
+                            <th>Description</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>show</td>
+                                    <td>-</td>
+                                    <td>Shows the menu.</td>
+                                </tr>
+                                <tr>
+                                    <td>hide</td>
+                                    <td>-</td>
+                                    <td>Hides the menu.</td>
+                                </tr>
+                                <tr>
+                                    <td>enable</td>
+                                    <td>-</td>
+                                    <td>Enable the widget</td>
+                                </tr>
+                                <tr>
+                                    <td>disable</td>
+                                    <td>-</td>
+                                    <td>Disable the widget.</td>
+                                </tr>
+                                <tr>
+                                    <td>option</td>
+                                    <td>name: Name of the option</td>
+                                    <td>Returns the value of the option.</td>
+                                </tr>
+                                <tr>
+                                    <td>option</td>
+                                    <td>name: Name of the option, value: Value of the option</td>
+                                    <td>Set the value of the option.</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-                            <div id="doc-methods">
-                                <table class="doc-table">
-                                    <thead>
-                                    <th>Name</th>
-                                    <th>Parameters</th>
-                                    <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>show</td>
-                                            <td>-</td>
-                                            <td>Shows the menu.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>hide</td>
-                                            <td>-</td>
-                                            <td>Hides the menu.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>enable</td>
-                                            <td>-</td>
-                                            <td>Enable the widget</td>
-                                        </tr>
-                                        <tr>
-                                            <td>disable</td>
-                                            <td>-</td>
-                                            <td>Disable the widget.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>option</td>
-                                            <td>name: Name of the option</td>
-                                            <td>Returns the value of the option.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>option</td>
-                                            <td>name: Name of the option, value: Value of the option</td>
-                                            <td>Set the value of the option.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                                <h3>Example</h3>
-                                <pre name="code" class="brush:js">
+                        <h3>Example</h3>
+                        <pre name="code" class="brush:js">
 $('#default').puisplitbutton('show');
-                                </pre>
-                            </div>
+                        </pre>
+                    </div>
 
-                            <div id="doc-source">
-                                <pre name="code" class="brush:js">
+                    <div id="doc-source">
+                        <h3 style="margin-bottom:20px;">Javascript</h3>
+                        <pre name="code" class="brush:js">
 $('#btn').puisplitbutton({
-    icon: 'fa-check',
+icon: 'fa-check',
+click: function() {
+$('#messages').puigrowl('show', [{severity: 'info', summary: 'Saved'}]);
+},
+items: [
+{
+    icon: 'fa-edit',
+    text: 'Update',
     click: function() {
-        $('#messages').puigrowl('show', [{severity: 'info', summary: 'Saved'}]);
-    },
-    items: [
-        {
-            icon: 'fa-edit',
-            text: 'Update',
-            click: function() {
-                $('#messages').puigrowl('show', [{severity: 'info', summary: 'Updated'}]);
-            }
-        },
-        {
-            icon: 'fa-minus',
-            text: 'Delete',
-            click: function() {
-                $('#messages').puigrowl('show', [{severity: 'info', summary: 'Deleted'}]);
-            }
-        },
-        {
-            icon: 'fa-home',
-            text: 'Homepage',
-            url: 'http://www.primefaces.org/primeui'
-        }
-    ]
+        $('#messages').puigrowl('show', [{severity: 'info', summary: 'Updated'}]);
+    }
+},
+{
+    icon: 'fa-minus',
+    text: 'Delete',
+    click: function() {
+        $('#messages').puigrowl('show', [{severity: 'info', summary: 'Deleted'}]);
+    }
+},
+{
+    icon: 'fa-home',
+    text: 'Homepage',
+    url: 'http://www.primefaces.org/primeui'
+}
+]
 });
 
 $('#messages').puigrowl();
-                                </pre>
+                        </pre>
 
-                                <pre name="code" class="brush:xml">
+                        <h3 style="margin-bottom:20px;">HTML</h3>
+                        <pre name="code" class="brush:xml">
 &lt;button id="btn" type="button"&gt;Save&lt;/button&gt;
 
 &lt;div id="messages"&gt;&lt;/div&gt;
-                                </pre>
-                            </div>
-                        </div>
+                        </pre>
                     </div>
-                </span>
-            </span>
+                </div>
+            </div>
         </div>
     </div>
 
