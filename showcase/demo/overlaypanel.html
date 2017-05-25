@@ -114,233 +114,227 @@
 
     <div class="content-section source">
         <div>
-            <span class="defaultText">
-                <span class="fontSize18 logoBlueText">
-                    <div id="doc">
-                        <ul>
-                            <li><a href="#doc-overview">Overview</a></li>
-                            <li><a href="#doc-options">Options</a></li>
-                            <li><a href="#doc-events">Events</a></li>
-                            <li><a href="#doc-methods">Methods</a></li>
-                            <li><a href="#doc-methods">Source</a></li>
-                        </ul>
-                        <div>
-                            <div id="doc-overview">
-                                <p>Overlay panel is applied on a container element and requires a target to bind.</p>
-                                <pre name="code" class="brush:js">
+            <div id="doc">
+                <ul>
+                    <li><a href="#documentation">Documentation</a></li>
+                    <li><a href="#doc-methods">Source</a></li>
+                </ul>
+                <div>
+                    <div id="documentation">
+                        <h3 style="margin-bottom:20px;">Getting Started</h3>
+                        <p>Overlay panel is applied on a container element and requires a target to bind.</p>
+                        <pre name="code" class="brush:js">
 $('#overlay').puioverlaypanel({
-    target:'#default'
+target:'#default'
 });
-                                </pre>
+                        </pre>
 
-                                <pre name="code" class="brush:xml">
+                        <pre name="code" class="brush:xml">
 &lt;button id="default" type="button"&gt;default&lt;/button&gt;
 &lt;div id="overlay"&gt;
-    &lt;img src="resources/demo/images/..."&gt;
+&lt;img src="resources/demo/images/..."&gt;
 &lt;/div&lt;
-                                </pre>
-                            </div>
+                        </pre>
+                        
+                        <h3 style="margin-bottom:20px;">Attributes</h3>
+                        <table class="doc-table">
+                            <thead>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Default</th>
+                                <th>Description</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>target</td>
+                                    <td>string</td>
+                                    <td>null</td>
+                                    <td>Selector of the target element to bind.</td>
+                                </tr>
+                                <tr>
+                                    <td>showEvent</td>
+                                    <td>string</td>
+                                    <td>click</td>
+                                    <td>Event to show the overlay panel.</td>
+                                </tr>
+                                <tr>
+                                    <td>hideEvent</td>
+                                    <td>string</td>
+                                    <td>click</td>
+                                    <td>Event to hide the overlay panel.</td>
+                                </tr>
+                                <tr>
+                                    <td>showCloseIcon</td>
+                                    <td>boolean</td>
+                                    <td>false</td>
+                                    <td>Displays a close icon to hide the overlay.</td>
+                                </tr>
+                                <tr>
+                                    <td>dismissable</td>
+                                    <td>boolean</td>
+                                    <td>false</td>
+                                    <td>When set true, clicking outside of the panel hides the overlay.</td>
+                                </tr>
+                                <tr>
+                                    <td>my</td>
+                                    <td>string</td>
+                                    <td>left top</td>
+                                    <td>Position of the panel relative to the target.</td>
+                                </tr>
+                                <tr>
+                                    <td>at</td>
+                                    <td>string</td>
+                                    <td>left bottom</td>
+                                    <td>Position of the target relative to the panel.</td>
+                                </tr>
+                                <tr>
+                                    <td>shared</td>
+                                    <td>boolean</td>
+                                    <td>false</td>
+                                    <td>When enabled, allows having multiple targets defined with delegatedTarget option.</td>
+                                </tr>
+                                <tr>
+                                    <td>delegatedTarget</td>
+                                    <td>string</td>
+                                    <td>null</td>
+                                    <td>Selector to use in shared mode.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3 style="margin-bottom:20px;">Events</h3>
+                        <table class="doc-table">
+                            <thead>
+                            <th>Name</th>
+                            <th>Parameters</th>
+                            <th>Description</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>preShow</td>
+                                    <td>event: event instance</td>
+                                    <td>Client side callback to execute before panel is displayed.</td>
+                                </tr>
+                                <tr>
+                                    <td>postShow</td>
+                                    <td>event: event instance</td>
+                                    <td>Client side callback to execute after panel is displayed.</td>
+                                </tr>
+                                <tr>
+                                    <td>onHide</td>
+                                    <td>event: event instance</td>
+                                    <td>Client side callback to execute when panel is hidden.</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-                            <div id="doc-options">
-                                <table class="doc-table">
-                                    <thead>
-                                        <th>Name</th>
-                                        <th>Type</th>
-                                        <th>Default</th>
-                                        <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>target</td>
-                                            <td>string</td>
-                                            <td>null</td>
-                                            <td>Selector of the target element to bind.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>showEvent</td>
-                                            <td>string</td>
-                                            <td>click</td>
-                                            <td>Event to show the overlay panel.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>hideEvent</td>
-                                            <td>string</td>
-                                            <td>click</td>
-                                            <td>Event to hide the overlay panel.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>showCloseIcon</td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>Displays a close icon to hide the overlay.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>dismissable</td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>When set true, clicking outside of the panel hides the overlay.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>my</td>
-                                            <td>string</td>
-                                            <td>left top</td>
-                                            <td>Position of the panel relative to the target.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>at</td>
-                                            <td>string</td>
-                                            <td>left bottom</td>
-                                            <td>Position of the target relative to the panel.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>shared</td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>When enabled, allows having multiple targets defined with delegatedTarget option.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>delegatedTarget</td>
-                                            <td>string</td>
-                                            <td>null</td>
-                                            <td>Selector to use in shared mode.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                        <h3>Example</h3>
+                        <pre name="code" class="brush:js">
+    $('#default').puioverlaypanel({
+        'postShow': function(event) {
+            //
+        } 
+    });
+                        </pre>
+                        
+                        <h3 style="margin-bottom:20px;">Functions</h3>
+                        <table class="doc-table">
+                            <thead>
+                                <th>Name</th>
+                                <th>Parameters</th>
+                                <th>Description</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>show</td>
+                                    <td>-</td>
+                                    <td>Shows the panel.</td>
+                                </tr>
+                                <tr>
+                                    <td>hide</td>
+                                    <td>-</td>
+                                    <td>Hides the panel.</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-                            <div id="doc-events">
-                                <table class="doc-table">
-                                    <thead>
-                                    <th>Name</th>
-                                    <th>Parameters</th>
-                                    <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>preShow</td>
-                                            <td>event: event instance</td>
-                                            <td>Client side callback to execute before panel is displayed.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>postShow</td>
-                                            <td>event: event instance</td>
-                                            <td>Client side callback to execute after panel is displayed.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>onHide</td>
-                                            <td>event: event instance</td>
-                                            <td>Client side callback to execute when panel is hidden.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                        <h3>Example</h3>
+                        <pre name="code" class="brush:js">
+    $('#default').puioverlaypanel('show');
+                        </pre>
+                    </div>
 
-                                <h3>Example</h3>
-                                <pre name="code" class="brush:js">
-            $('#default').puioverlaypanel({
-                'postShow': function(event) {
-                    //
-                } 
-            });
-                                </pre>
-                            </div>
-
-                            <div id="doc-methods">
-                                <table class="doc-table">
-                                    <thead>
-                                        <th>Name</th>
-                                        <th>Parameters</th>
-                                        <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>show</td>
-                                            <td>-</td>
-                                            <td>Shows the panel.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>hide</td>
-                                            <td>-</td>
-                                            <td>Hides the panel.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                                <h3>Example</h3>
-                                <pre name="code" class="brush:js">
-            $('#default').puioverlaypanel('show');
-                                </pre>
-                            </div>
-
-                            <div id="doc-source">
-                                <pre name="code" class="brush:js">
+                    <div id="doc-source">
+                        <h3 style="margin-bottom:20px;">Javascript</h3>
+                        <pre name="code" class="brush:js">
 var localData = [
-    {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
-    {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
-    {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
-    {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
-    {'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
-    {'brand': 'Volvo', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
-    {'brand': 'Honda', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
-    {'brand': 'Jaguar', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
-    {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'},
-    {'brand': 'Fiat', 'year': 2013, 'color': 'Red', 'vin': '245t2s'}
+{'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
+{'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
+{'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
+{'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
+{'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
+{'brand': 'Volvo', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
+{'brand': 'Honda', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
+{'brand': 'Jaguar', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
+{'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'},
+{'brand': 'Fiat', 'year': 2013, 'color': 'Red', 'vin': '245t2s'}
 ];
 
 $('#sharedOverlay').puioverlaypanel({
-    target: '#tbllocal',
-    shared: true,
-    delegatedTarget: 'td:last-child > button',
-    showCloseIcon: true,
-    showEffect: 'fade',
-    hideEffect: 'fade',
-    preShow: function(event, ui) {
-        $('#brandimage').attr('src', 'showcase/resources/demo/images/car/' + $(ui.target).data('brand') + '-big.gif');
-    }
+target: '#tbllocal',
+shared: true,
+delegatedTarget: 'td:last-child > button',
+showCloseIcon: true,
+showEffect: 'fade',
+hideEffect: 'fade',
+preShow: function(event, ui) {
+$('#brandimage').attr('src', 'showcase/resources/demo/images/car/' + $(ui.target).data('brand') + '-big.gif');
+}
 });
 
 $('#tbllocal').puidatatable({
-    caption: 'Datatable Integration',
-    columns: [
-        {field: 'vin', headerText: 'Vin'},
-        {field: 'brand', headerText: 'Brand'},
-        {field: 'year', headerText: 'Year'},
-        {field: 'color', headerText: 'Color'},
-        {field: 'Integration', headerStyle:"width:10%",bodyStyle: 'text-align:center', headerText: 'Integration', content: function(localData) {
-            return $('&lt;button type="button" data-brand="' + localData.brand + '"&gt;&lt;/button&gt;').puibutton({
-                icon: 'fa-search'
-            });
-        }}
-    ],
-    datasource: localData
+caption: 'Datatable Integration',
+columns: [
+{field: 'vin', headerText: 'Vin'},
+{field: 'brand', headerText: 'Brand'},
+{field: 'year', headerText: 'Year'},
+{field: 'color', headerText: 'Color'},
+{field: 'Integration', headerStyle:"width:10%",bodyStyle: 'text-align:center', headerText: 'Integration', content: function(localData) {
+    return $('&lt;button type="button" data-brand="' + localData.brand + '"&gt;&lt;/button&gt;').puibutton({
+        icon: 'fa-search'
+    });
+}}
+],
+datasource: localData
 });
 
 $('#overlay').puioverlaypanel({
-    target:'#commandButton',
-    hideEffect:'explode'
+target:'#commandButton',
+hideEffect:'explode'
 });
 
 $('#datatableOverlay').puioverlaypanel({
-    target:'#searchIcon',
-    showEvent:"mouseover",
-    hideEvent:"click",
-    showCloseIcon:true,
-    showEffect:"blind",
-    dismissable:false
+target:'#searchIcon',
+showEvent:"mouseover",
+hideEvent:"click",
+showCloseIcon:true,
+showEffect:"blind",
+dismissable:false
 });
 
 handleRowSelect = function(event, data) {
-    document.getElementById('messages').show([{severity: 'info', summary: 'Row Selected', detail: data.vin + ' ' + data.year}]);
+document.getElementById('messages').show([{severity: 'info', summary: 'Row Selected', detail: data.vin + ' ' + data.year}]);
 };
 
 $('#commandButton').puibutton();
 $('#closeIcon').puibutton();
-                                </pre>
+                        </pre>
 
-                                <pre name="code" class="brush:xml">
+                        <h3 style="margin-bottom:20px;">HTML</h3>
+                        <pre name="code" class="brush:xml">
 &lt;h3 class="first"&gt;Basic&lt;/h3&gt;
 &lt;button id="commandButton" type="button"&gt;View&lt;/button&gt;
 &lt;div id="overlay"&gt;
-    &lt;img src="showcase/resources/demo/images/mr-robot/mr-robot.jpg" style="width:200px"&gt;
+&lt;img src="showcase/resources/demo/images/mr-robot/mr-robot.jpg" style="width:200px"&gt;
 &lt;/div&gt;
 
 &lt;h3&gt;Hover&lt;/h3&gt;
@@ -348,30 +342,28 @@ $('#closeIcon').puibutton();
 
 &lt;h3&gt;Shared&lt;/h3&gt;
 &lt;div id="datatableOverlay" style="width:400px"&gt;
-    &lt;p-growl id="messages"&gt;&lt;/p-growl&gt;
-    &lt;p-datatable datasource="Showcase.demo.loadAllCars" paginator rows="10" selectionmode="single" onrowselect="handleRowSelect"&gt;
-        &lt;p-column field="vin" headertext="Vin" sortable filter&gt;&lt;/p-column&gt;
-        &lt;p-column field="year" headertext="Year" sortable filter&gt;&lt;/p-column&gt;
-        &lt;p-column field="brand" headertext="Brand" sortable filter&gt;&lt;/p-column&gt;
-        &lt;p-column field="color" headertext="Color" sortable filter&gt; 
-            &lt;template&gt;
-                &lt;span style="color:{{color}}"&gt;{{color}}&lt;/span&gt;
-            &lt;/template&gt;
-        &lt;/p-column&gt;
-    &lt;/p-datatable&gt;
+&lt;p-growl id="messages"&gt;&lt;/p-growl&gt;
+&lt;p-datatable datasource="Showcase.demo.loadAllCars" paginator rows="10" selectionmode="single" onrowselect="handleRowSelect"&gt;
+&lt;p-column field="vin" headertext="Vin" sortable filter&gt;&lt;/p-column&gt;
+&lt;p-column field="year" headertext="Year" sortable filter&gt;&lt;/p-column&gt;
+&lt;p-column field="brand" headertext="Brand" sortable filter&gt;&lt;/p-column&gt;
+&lt;p-column field="color" headertext="Color" sortable filter&gt; 
+    &lt;template&gt;
+        &lt;span style="color:{{color}}"&gt;{{color}}&lt;/span&gt;
+    &lt;/template&gt;
+&lt;/p-column&gt;
+&lt;/p-datatable&gt;
 &lt;/div&gt;
-        
+
 &lt;div id="tbllocal"&gt;&lt;/div&gt;
 &lt;div id="sharedOverlay"&gt;
-    &lt;img id="brandimage" src="showcase/resources/demo/images/car/BMW-big.gif" style="width:200px"/&gt;
+&lt;img id="brandimage" src="showcase/resources/demo/images/car/BMW-big.gif" style="width:200px"/&gt;
 &lt;/div&gt;
-                                    </pre>
-                                </div>
-                            </div>
+                            </pre>
                         </div>
                     </div>
-                </span>
-            </span>
+                </div>
+            </div>
         </div>
     </div>
 
