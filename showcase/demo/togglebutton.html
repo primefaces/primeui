@@ -42,191 +42,182 @@
     </div>
 
     <div class="content-section source">
-        <div>
-            <span class="defaultText">
-                <span class="fontSize18 logoBlueText">           
-                    <div id="doc">
-                        <ul>
-                            <li><a href="#doc-overview">Overview</a></li>
-                            <li><a href="#doc-options">Options</a></li>
-                            <li><a href="#doc-events">Events</a></li>
-                            <li><a href="#doc-methods">Methods</a></li>
-                            <li><a href="#doc-methods">Source</a></li>
-                        </ul>
-                        <div>
-                            <div id="doc-overview">
-                                <pre name="code" class="brush:xml">
+        <div>         
+            <div id="doc">
+                <ul>
+                    <li><a href="#documentation">Documentation</a></li>
+                    <li><a href="#doc-methods">Source</a></li>
+                </ul>
+                <div>
+                    <div id="documentation">
+                        <pre name="code" class="brush:xml">
 &lt;input type="checkbox" name="chk" id="chk1" value="1"/&gt;
-                                </pre>
+                        </pre>
 
-                                <pre name="code" class="brush:js">
+                        <pre name="code" class="brush:js">
 $('#chk1').puitogglebutton();
-                                </pre>
+                        </pre>
+                        
+                        <h3 style="margin-bottom:20px;">Attributes</h3>
+                        <table class="doc-table">
+                            <thead>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Default</th>
+                            <th>Description</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>onLabel</td>
+                                    <td>string</td>
+                                    <td>yes</td>
+                                    <td>Label for the on state.</td>
+                                </tr>
+                                <tr>
+                                    <td>offLabel</td>
+                                    <td>string</td>
+                                    <td>no</td>
+                                    <td>Label for the off state.</td>
+                                </tr>
+                                <tr>
+                                    <td>onIcon</td>
+                                    <td>string</td>
+                                    <td>null</td>
+                                    <td>Icon for the on state.</td>
+                                </tr>
+                                <tr>
+                                    <td>offIcon</td>
+                                    <td>string</td>
+                                    <td>null</td>
+                                    <td>Icon for the off state.</td>
+                                </tr>
+                                <tr>
+                                    <td>style</td>
+                                    <td>string</td>
+                                    <td>null</td>
+                                    <td>Inline style of the element.</td>
+                                </tr>
+                                <tr>
+                                    <td>styleClass</td>
+                                    <td>string</td>
+                                    <td>null</td>
+                                    <td>Style class of the element.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h3 style="margin-bottom:20px;">Events</h3>
+                        <table class="doc-table">
+                            <thead>
+                            <th>Name</th>
+                            <th>Parameters</th>
+                            <th>Description</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>change</td>
+                                    <td>event: puitogglebuttonchange event
+                                        <br />
+                                        checked: Boolean value of the state.
+                                    </td>
+                                    <td>Fires when value changes.</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-                            </div>
+                        <h3>Example</h3>
+                        <pre name="code" class="brush:js">
+    $(':checkbox').puitogglebutton({
+        change: function(event, checked) {
+            //..
+    }});
+                        </pre>
+                        
+                        <h3 style="margin-bottom:20px;">Functions</h3>
+                        <table class="doc-table">
+                            <thead>
+                            <th>Name</th>
+                            <th>Parameters</th>
+                            <th>Description</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>check</td>
+                                    <td>-</td>
+                                    <td>Selects value.</td>
+                                </tr>
+                                <tr>
+                                    <td>unselect</td>
+                                    <td>-</td>
+                                    <td>Unselects value.</td>
+                                </tr>
+                                <tr>
+                                    <td>toggle</td>
+                                    <td>-</td>
+                                    <td>Toggles checked state.</td>
+                                </tr>
+                                <tr>
+                                    <td>isChecked</td>
+                                    <td>-</td>
+                                    <td>Returns checked state.</td>
+                                </tr>
+                                <tr>
+                                    <td>enable</td>
+                                    <td>-</td>
+                                    <td>Enable the widget.</td>
+                                </tr>
+                                <tr>
+                                    <td>disable</td>
+                                    <td>-</td>
+                                    <td>Disable the widget.</td>
+                                </tr>
+                                <tr>
+                                    <td>option</td>
+                                    <td>name: Name of the option</td>
+                                    <td>Returns the value of the option.</td>
+                                </tr>
+                                <tr>
+                                    <td>option</td>
+                                    <td>name: Name of the option, value: Value of the option</td>
+                                    <td>Set the value of the option.</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-                            <div id="doc-options">
-                                <table class="doc-table">
-                                    <thead>
-                                    <th>Name</th>
-                                    <th>Type</th>
-                                    <th>Default</th>
-                                    <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>onLabel</td>
-                                            <td>string</td>
-                                            <td>yes</td>
-                                            <td>Label for the on state.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>offLabel</td>
-                                            <td>string</td>
-                                            <td>no</td>
-                                            <td>Label for the off state.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>onIcon</td>
-                                            <td>string</td>
-                                            <td>null</td>
-                                            <td>Icon for the on state.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>offIcon</td>
-                                            <td>string</td>
-                                            <td>null</td>
-                                            <td>Icon for the off state.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>style</td>
-                                            <td>string</td>
-                                            <td>null</td>
-                                            <td>Inline style of the element.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>styleClass</td>
-                                            <td>string</td>
-                                            <td>null</td>
-                                            <td>Style class of the element.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                        <h3>Example</h3>
+                        <pre name="code" class="brush:js">
+    $('#default').puitogglebutton('check');  
+                        </pre>
 
-                            <div id="doc-events">
-                                <table class="doc-table">
-                                    <thead>
-                                    <th>Name</th>
-                                    <th>Parameters</th>
-                                    <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>change</td>
-                                            <td>event: puitogglebuttonchange event
-                                                <br />
-                                                checked: Boolean value of the state.
-                                            </td>
-                                            <td>Fires when value changes.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                    </div>
 
-                                <h3>Example</h3>
-                                <pre name="code" class="brush:js">
-            $(':checkbox').puitogglebutton({
-                change: function(event, checked) {
-                    //..
-            }});
-                                </pre>
-                            </div>
-
-                            <div id="doc-methods">
-                                <table class="doc-table">
-                                    <thead>
-                                    <th>Name</th>
-                                    <th>Parameters</th>
-                                    <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>check</td>
-                                            <td>-</td>
-                                            <td>Selects value.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>unselect</td>
-                                            <td>-</td>
-                                            <td>Unselects value.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>toggle</td>
-                                            <td>-</td>
-                                            <td>Toggles checked state.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>isChecked</td>
-                                            <td>-</td>
-                                            <td>Returns checked state.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>enable</td>
-                                            <td>-</td>
-                                            <td>Enable the widget.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>disable</td>
-                                            <td>-</td>
-                                            <td>Disable the widget.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>option</td>
-                                            <td>name: Name of the option</td>
-                                            <td>Returns the value of the option.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>option</td>
-                                            <td>name: Name of the option, value: Value of the option</td>
-                                            <td>Set the value of the option.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                                <h3>Example</h3>
-                                <pre name="code" class="brush:js">
-            $('#default').puitogglebutton('check');  
-                                </pre>
-                            </div>
-
-                            <div id="doc-source">
-
-                                <pre name="code" class="brush:js">
+                    <div id="doc-source">
+                        <h3 style="margin-bottom:20px;">Javascript</h3>
+                        <pre name="code" class="brush:js">
 $(function() {
-    $('#basic').puitogglebutton();
+$('#basic').puitogglebutton();
 
-    $('#icons').puitogglebutton({
-        onLabel: 'I agree',
-        offLabel: 'I disagree',
-        onIcon: 'fa-check-square',
-        offIcon: 'fa-square'
-    });
+$('#icons').puitogglebutton({
+onLabel: 'I agree',
+offLabel: 'I disagree',
+onIcon: 'fa-check-square',
+offIcon: 'fa-square'
 });
-                                </pre>
+});
+                        </pre>
 
-                                <pre name="code" class="brush:xml">
+                        <h3 style="margin-bottom:20px;">HTML</h3>
+                        <pre name="code" class="brush:xml">
 &lt;h3 class="first"&gt;Basic&lt;/h3&gt;
 &lt;input id="basic" type="checkbox" /&gt;
 
 &lt;h3&gt;Icons&lt;/h3&gt;
 &lt;input id="icons" type="checkbox" /&gt;
 
-                                </pre>
-                            </div>
-                        </div>
-                    </div>   
-                </span>
-            </span>
+                        </pre>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
