@@ -298,7 +298,7 @@
             .on('click', function(event) {
                 var item = $(this),
                 itemValue = item.attr('data-item-value'),
-                insertValue = itemValue.substring($this.query.length);
+                insertValue = itemValue ? itemValue.substring($this.query.length): "";
 
                 $this.element.focus();
 
