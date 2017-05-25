@@ -60,117 +60,109 @@
 
     <div class="content-section source">
         <div>
-            <span class="defaultText">
-                <span class="fontSize18 logoBlueText">
-                    <div id="doc">
-                        <ul>
-                            <li><a href="#doc-overview">Overview</a></li>
-                            <li><a href="#doc-options">Options</a></li>
-                            <li><a href="#doc-events">Events</a></li>
-                            <li><a href="#doc-methods">Methods</a></li>
-                            <li><a href="#doc-methods">Source</a></li>
-                        </ul>
-                        <div>
-                            <div id="doc-overview">
-                                <pre name="code" class="brush:js">
+            <div id="doc">
+                <ul>
+                    <li><a href="#documentation">Documentation</a></li>
+                    <li><a href="#doc-methods">Source</a></li>
+                </ul>
+                <div>
+                    <div id="documentation">
+                        <h3 style="margin-bottom:20px;">Getting Started</h3>
+                        <pre name="code" class="brush:js">
 //initialize
 $('#default').puimessages();
 
 //show messages
 $('#default').puimessages('show', 'info', {summary: 'Message Summary', detail: 'Message Detail'});
-                                </pre>
+                        </pre>
 
-                                <pre name="code" class="brush:xml">
+                        <pre name="code" class="brush:xml">
 &lt;div id="default" /&gt;   
-                                </pre>
-                            </div>
+                        </pre>
+                        
+                        <h3 style="margin-bottom:20px;">Attributes</h3>
+                        <table class="doc-table">
+                            <thead>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Default</th>
+                            <th>Description</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>closable</td>
+                                    <td>boolean</td>
+                                    <td>true</td>
+                                    <td>Displays a closer icon at top right when enabled.</td>
+                                </tr>                                        
+                            </tbody>
+                        </table>
+                        
+                        <h3 style="margin-bottom:20px;">Functions</h3>
+                        <table class="doc-table">
+                            <thead>
+                            <th>Name</th>
+                            <th>Parameters</th>
+                            <th>Description</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>show</td>
+                                    <td>severity: Type of the messages, valid values are "info", "warn" and "error".
+                                        <br />
+                                    msgs: An array of messages or a single message</td>
+                                    <td>Displays given message(s) with severity.</td>
+                                </tr>
+                                <tr>
+                                    <td>clear</td>
+                                    <td>-</td>
+                                    <td>Cleans the content of container.</td>
+                                </tr>
+                                <tr>
+                                    <td>option</td>
+                                    <td>name: Name of the option</td>
+                                    <td>Returns the value of the option.</td>
+                                </tr>
+                                <tr>
+                                    <td>option</td>
+                                    <td>name: Name of the option, value: Value of the option</td>
+                                    <td>Set the value of the option.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
-                            <div id="doc-options">
-                                <table class="doc-table">
-                                    <thead>
-                                    <th>Name</th>
-                                    <th>Type</th>
-                                    <th>Default</th>
-                                    <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>closable</td>
-                                            <td>boolean</td>
-                                            <td>true</td>
-                                            <td>Displays a closer icon at top right when enabled.</td>
-                                        </tr>                                        
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <div id="doc-events">
-                                <h3>No events.</h3>
-                            </div>
-
-                            <div id="doc-methods">
-                                <table class="doc-table">
-                                    <thead>
-                                    <th>Name</th>
-                                    <th>Parameters</th>
-                                    <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>show</td>
-                                            <td>severity: Type of the messages, valid values are "info", "warn" and "error".
-                                                <br />
-                                            msgs: An array of messages or a single message</td>
-                                            <td>Displays given message(s) with severity.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>clear</td>
-                                            <td>-</td>
-                                            <td>Cleans the content of container.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>option</td>
-                                            <td>name: Name of the option</td>
-                                            <td>Returns the value of the option.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>option</td>
-                                            <td>name: Name of the option, value: Value of the option</td>
-                                            <td>Set the value of the option.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <div id="doc-source">
-                                <pre name="code" class="brush:js">
+                    <div id="doc-source">
+                        <h3 style="margin-bottom:20px;">Javascript</h3>
+                        <pre name="code" class="brush:js">
 $('#default').puimessages();
 
 $('#btn-info').puibutton().click(function() {
-    addMessage('info', {summary: 'Message Title', detail: 'Message Detail here.'});
+addMessage('info', {summary: 'Message Title', detail: 'Message Detail here.'});
 });
 
 $('#btn-warn').puibutton().click(function() {
-    addMessage('warn', {summary: 'Message Title', detail: 'Message Detail here.'});
+addMessage('warn', {summary: 'Message Title', detail: 'Message Detail here.'});
 });
 
 $('#btn-error').puibutton().click(function() {
-    addMessage('error', {summary: 'Message Title', detail: 'Message Detail here.'});
+addMessage('error', {summary: 'Message Title', detail: 'Message Detail here.'});
 });
 
 $('#btn-multiple').puibutton().click(function() {
-    addMessage('info', [{summary: 'Message Title', detail: 'Message Detail here.'}
-        ,{summary: 'Message Title', detail: 'Message Detail here.'}
-        ,{summary: 'Message Title', detail: 'Message Detail here.'}]);
+addMessage('info', [{summary: 'Message Title', detail: 'Message Detail here.'}
+,{summary: 'Message Title', detail: 'Message Detail here.'}
+,{summary: 'Message Title', detail: 'Message Detail here.'}]);
 });
 
 addMessage = function(severity, msg) {
-    $('#default').puimessages('show', severity, msg);
-    document.getElementById('msgs').show(severity, msg);
+$('#default').puimessages('show', severity, msg);
+document.getElementById('msgs').show(severity, msg);
 }
-                                </pre>
+                        </pre>
 
-                                <pre name="code" class="brush:xml">
+                        <h3 style="margin-bottom:20px;">HTML</h3>
+                        <pre name="code" class="brush:xml">
 &lt;h3&gt;Basic&lt;/h3&gt;
 &lt;div id="default"&gt;&lt;/div&gt;
 
@@ -180,12 +172,10 @@ addMessage = function(severity, msg) {
 &lt;button id="btn-warn" type="button"&gt;Warn&lt;/button&gt;
 &lt;button id="btn-error" type="button"&gt;Error&lt;/button&gt;
 &lt;button id="btn-multiple" type="button"&gt;Multiple&lt;/button&gt;
-                                </pre>
-                            </div>
-                        </div>
+                        </pre>
                     </div>
-                </span>
-            </span>
+                </div>
+            </div>
         </div>
     </div>
 
