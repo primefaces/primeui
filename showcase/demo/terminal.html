@@ -42,114 +42,101 @@
 
     <div class="content-section source">
         <div>
-            <span class="defaultText">
-                <span class="fontSize18 logoBlueText">
-                    <div id="doc">
-                        <ul>
-                            <li><a href="#doc-overview">Overview</a></li>
-                            <li><a href="#doc-options">Options</a></li>
-                            <li><a href="#doc-events">Events</a></li>
-                            <li><a href="#doc-methods">Methods</a></li>
-                            <li><a href="#doc-methods">Source</a></li>
-                        </ul>
-                        <div>
-                            <div id="doc-overview">
-
-
-                                <pre name="code" class="brush:js">
+            <div id="doc">
+                <ul>
+                    <li><a href="#documentation">Documentation</a></li>
+                    <li><a href="#doc-methods">Source</a></li>
+                </ul>
+                <div>
+                    <div id="documentation">
+                        <h3 style="margin-bottom:20px;">Getting Started</h3>
+                        <pre name="code" class="brush:js">
 $('#trmnl').puiterminal({
-    handler: // function
+handler: // function
 });
-                                </pre>
+                        </pre>
 
-                                <pre name="code" class="brush:xml">
+                        <pre name="code" class="brush:xml">
 &lt;div id="trmnl" /&gt;
-                                </pre>
+                        </pre>
+                        
+                        <h3 style="margin-bottom:20px;">Attributes</h3>
+                        <table class="doc-table">
+                            <thead>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Default</th>
+                            <th>Description</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>welcomeMessage</td>
+                                    <td>string</td>
+                                    <td>''</td>
+                                    <td>Welcome message to be displayed on initial load.</td>
+                                </tr>
+                                <tr>
+                                    <td>prompt</td>
+                                    <td>string</td>
+                                    <td>prime $</td>
+                                    <td>Primary prompt text.</td>
+                                </tr>
+                                <tr>
+                                    <td>handler</td>
+                                    <td>function</td>
+                                    <td>null</td>
+                                    <td>Function to handle commands.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h3 style="margin-bottom:20px;">Functions</h3>
+                        <table class="doc-table">
+                            <thead>
+                            <th>Name</th>
+                            <th>Parameters</th>
+                            <th>Description</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>clear</td>
+                                    <td>-</td>
+                                    <td>Clears the terminal content.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
-                            </div>
-
-                            <div id="doc-options">
-                                <table class="doc-table">
-                                    <thead>
-                                    <th>Name</th>
-                                    <th>Type</th>
-                                    <th>Default</th>
-                                    <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>welcomeMessage</td>
-                                            <td>string</td>
-                                            <td>''</td>
-                                            <td>Welcome message to be displayed on initial load.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>prompt</td>
-                                            <td>string</td>
-                                            <td>prime $</td>
-                                            <td>Primary prompt text.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>handler</td>
-                                            <td>function</td>
-                                            <td>null</td>
-                                            <td>Function to handle commands.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <div id="doc-events">
-                                <h3>No events.</h3>
-                            </div>
-
-                            <div id="doc-methods">
-                                <table class="doc-table">
-                                    <thead>
-                                    <th>Name</th>
-                                    <th>Parameters</th>
-                                    <th>Description</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>clear</td>
-                                            <td>-</td>
-                                            <td>Clears the terminal content.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <div id="doc-source">
-                                <pre name="code" class="brush:js">
+                    <div id="doc-source">
+                        <h3 style="margin-bottom:20px;">Javascript</h3>
+                        <pre name="code" class="brush:js">
 $('#trmnl').puiterminal({
-    welcomeMessage: 'Welcome to PrimeUI Terminal, how are you today?',
-    handler: function(request, response) {
-        if($.trim(request).length) {
-           if(request == 'date') {
-               response.call(this, new Date());
-           }
-           else if (request.indexOf('greet') === 0) {
-               response.call(this, 'Hello ' + request.split(' ')[1]);
-           }
-           else {
-               response.call(this, "Unknown command: " + request);
-           }
-        }
-    }
+welcomeMessage: 'Welcome to PrimeUI Terminal, how are you today?',
+handler: function(request, response) {
+if($.trim(request).length) {
+   if(request == 'date') {
+       response.call(this, new Date());
+   }
+   else if (request.indexOf('greet') === 0) {
+       response.call(this, 'Hello ' + request.split(' ')[1]);
+   }
+   else {
+       response.call(this, "Unknown command: " + request);
+   }
+}
+}
 });
-                                </pre>
-
-                                <pre name="code" class="brush:xml">
+                        </pre>
+                        
+                        <h3 style="margin-bottom:20px;">HTML</h3>
+                        <pre name="code" class="brush:xml">
 &lt;h3 class="first"&gt;Remote Connection&lt;/h3&gt;
 &lt;div id="trmnl" style="margin-bottom:20px"&gt;&lt;/div&gt;
 
-                                </pre>
-                            </div>
-                        </div>
+                        </pre>
                     </div>
-                </span>
-            </span>
+                </div>
+            </div>
         </div>
     </div>
 
