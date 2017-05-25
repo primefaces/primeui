@@ -25,7 +25,6 @@
 
             addMessage = function(severity, msg) {
                 $('#default').puimessages('show', severity, msg);
-                document.getElementById('msgs').show(severity, msg);
             }
 
             $('#doc').puitabview();
@@ -157,7 +156,6 @@ addMessage('info', [{summary: 'Message Title', detail: 'Message Detail here.'}
 
 addMessage = function(severity, msg) {
 $('#default').puimessages('show', severity, msg);
-document.getElementById('msgs').show(severity, msg);
 }
                         </pre>
 
