@@ -112,12 +112,16 @@
                 }
             });
 
-            var resizeNS = 'resize.' + this.container.attr('id');
-            $(window).unbind(resizeNS).bind(resizeNS, function() {
+            this.resizeNS = 'resize.' + this.container.attr('id');
+            $(window).unbind(this.resizeNS).bind(this.resizeNS, function() {
                 if($this.menu.is(':visible')) {
                     $this._alignPanel();
                 }
             });
+        },
+        
+        _destroy: function() {
+            $(window).off(this.resizeNS);
         },
                 
         show: function() {
