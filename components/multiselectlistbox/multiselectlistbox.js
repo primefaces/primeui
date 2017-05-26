@@ -87,6 +87,10 @@
            });
         },
         
+        _destroy: function() {
+            this._unbindEvents();
+        },
+        
         showOptionGroup: function(item) {
            item.addClass('ui-state-highlight').removeClass('ui-state-hover').siblings().filter('.ui-state-highlight').removeClass('ui-state-highlight');
            item.closest('.ui-multiselectlistbox-listcontainer').nextAll().remove();
