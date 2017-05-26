@@ -42,7 +42,7 @@ Showcase = {
         $("#GlobalThemeSwitcher > a").on("click", function(e) {
             var theme = $(this).data("theme"),
             themeLink = $('link[href$="theme.css"]'),
-            newThemeURL =  'showcase/' + 'themes/' + theme + '/theme.css';
+            newThemeURL =  'resources/' + 'themes/' + theme + '/theme.css';
 
             themeLink.attr('href', newThemeURL);
             e.preventDefault();

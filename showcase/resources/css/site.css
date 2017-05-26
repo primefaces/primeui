@@ -292,7 +292,7 @@ body * {
 
 /** ThemeSwitcher **/
 #GlobalThemeSwitcher {
-    display: block;
+    display: none;
     text-align: left;
     width: 200px;
     max-height: 400px;
