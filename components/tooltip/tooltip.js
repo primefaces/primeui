@@ -98,12 +98,18 @@
             this.element.removeAttr('title');
             this.target = this.element;
 
-            var resizeNS = 'resize.' + this.element.attr('id');
-            $(window).unbind(resizeNS).bind(resizeNS, function() {
+            this.resizeNS = 'resize.' + this.element.attr('id');
+            $(window).unbind(this.resizeNS).bind(this.resizeNS, function() {
                 if($this.container.is(':visible')) {
                     $this._align();
                 }
             });
+        },
+        
+        _destroy: function() {
+            var resizeNS = 'resize.puitooltip';
+            $(window).off(resizeNS);
+            $(window).off(this.resizeNS);
         },
         
         _align: function() {
