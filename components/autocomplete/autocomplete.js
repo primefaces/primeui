@@ -156,12 +156,12 @@
             }
             
             if(this.options.multiple) {
-                this.multiContainer.off(click.puiautocomplete);
-                this.element.off(focus.puiautocomplete blur.puiautocomplete);
+                this.multiContainer.off('click.puiautocomplete');
+                this.element.off('focus.puiautocomplete blur.puiautocomplete');
             }
             
             if(this.options.forceSelection) {
-                this.element.off(blur.puiautocomplete);
+                this.element.off('blur.puiautocomplete');
             }
 
             $(document.body).off('mousedown.puiautocomplete');
