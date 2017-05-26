@@ -5,6 +5,7 @@ Showcase = {
     
     init: function() {
         this.menu = $('#layout-sidebar');
+        this.logo = $('.layout-logo');
         this.menu.perfectScrollbar({
             wheelSpeed: 40,
             suppressScrollX: true
@@ -25,6 +26,10 @@ Showcase = {
             $(this).toggleClass('active-menuitem').next('div').slideToggle();
             e.preventDefault();
         });
+        
+        this.logo.on('click', function(e) {
+            window.location.href = '';
+        })
         
         var hashedLinks = this.menu.find('div > div > a');
         hashedLinks.on('click', function(e) {
@@ -69,10 +74,7 @@ Showcase = {
         if(page !== this.currentPage) {
             this.currentPage = page;
             
-            if(page === '#') {
-                window.location.href = '';
-            }
-            else if(page.indexOf('http') === 0) {
+            if(page.indexOf('http') === 0) {
                 window.location.href = page;
             }
             else {
