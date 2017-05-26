@@ -136,9 +136,9 @@
         },
 
         _bindEvents: function() {
-            var $this = this,
-            hideNS = 'click.' + this.id,
-            resizeNS = 'resize.' + this.id;
+            var $this = this;
+            this.hideNS = 'click.' + this.id,
+            this.resizeNS = 'resize.' + this.id;
 
             this._bindItemEvents(this.items.filter(':not(.ui-state-disabled)'));
             
@@ -204,7 +204,7 @@
             this._bindKeyEvents();
 
             //hide overlay when outside is clicked
-            $(document.body).off(hideNS).on(hideNS, function (e) {
+            $(document.body).off(this.hideNS).on(this.hideNS, function (e) {
                 if($this.panel.is(':hidden')) {
                     return;
                 }
@@ -226,11 +226,20 @@
             });
 
             //Realign overlay on resize
-            $(window).off(resizeNS).on(resizeNS, function() {
+            $(window).off(this.resizeNS).on(this.resizeNS, function() {
                 if($this.panel.is(':visible')) {
                     $this.alignPanel();
                 }
             });
+        },
+        
+        _unBindEvents: function() {
+            $(window).off(this.resizeNS);
+            $(document).off(this.hideNS);
+        },
+        
+        _destroy: function() {
+            this._unBindEvents();
         },
 
         _bindItemEvents: function(item) {
