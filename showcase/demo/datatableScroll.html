@@ -54,6 +54,12 @@
             });
             
             $('#doc').puitabview();
+            
+            $(document).one('onRouteChange', function() {
+                $('#doc').puitabview('destroy');
+                $('#tblscrolly').puidatatable('destroy');
+                $('#tblscrollxy').puidatatable('destroy');
+            });
         });
     </script>
     <style type="text/css">

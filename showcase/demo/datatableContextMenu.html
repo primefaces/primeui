@@ -38,6 +38,10 @@
             $('#messages').puigrowl();
             $('#doc').puitabview();
             
+            $(document).one('onRouteChange', function() {
+                $('#doc').puitabview('destroy');
+            });
+            
             window.ContextMenuDemo = {
                 
                 view: function() {

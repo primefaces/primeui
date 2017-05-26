@@ -33,6 +33,11 @@
             
             $('#globalFilter').puiinputtext();
             $('#doc').puitabview();
+            
+            $(document).one('onRouteChange', function() {
+                $('#doc').puitabview('destroy');
+                $('#globalFilter').puiinputtext('destroy');
+            });
         });
     </script>
     <style type="text/css">

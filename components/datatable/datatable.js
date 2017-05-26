@@ -1829,6 +1829,15 @@
             this.clone.remove();
             this.clone = this.thead.clone(false);
             this.element.find('.ui-datatable-tablewrapper > table').prepend(this.clone);
+        },
+        
+        _destroy: function() {
+            if(this.options.scrollable) {
+                this.scrollBody.off('scroll.datatable');
+                this.scrollHeader.off('scroll.datatable');
+                var resizeNS = 'resize.' + this.id;
+                $(window).off(resizeNS);
+            }
         }
 
     });
