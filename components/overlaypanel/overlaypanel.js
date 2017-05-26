@@ -81,9 +81,9 @@
             
             //hide overlay when mousedown is at outside of overlay
             if(this.options.dismissable) {
-                var hideNS = 'click.' + this.id;
+                this.hideNS = 'click.' + this.id;
                 
-                $(document.body).off(hideNS).on(hideNS, function (e) {
+                $(document.body).off(this.hideNS).on(this.hideNS, function (e) {
                     if($this._isVisible() && !$this.targetClick && !$this.selfClick) {
                         $this.hide();
                     }
@@ -94,12 +94,17 @@
             }
 
             //Hide overlay on resize
-            var resizeNS = 'resize.' + this.id;
-            $(window).off(resizeNS).on(resizeNS, function() {
+            this.resizeNS = 'resize.' + this.id;
+            $(window).off(this.resizeNS).on(this.resizeNS, function() {
                 if($this._isVisible()) {
                     $this._align();
                 }
             });
+        },
+        
+        _destroy: function() {
+            $(window).off(this.resizeNS);
+            $(document).off(this.hideNS);
         },
         
         _bindTargetEvents: function() {
