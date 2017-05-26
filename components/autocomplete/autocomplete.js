@@ -150,6 +150,28 @@
             });
         },
         
+        _unbindEvents: function() {
+            if(this.options.dropdown) {
+                this.dropdown.off('mousedown.puiautocomplete mouseup.puiautocomplete focus.puiautocomplete blur.puiautocomplete keydown.puiautocomplete');
+            }
+            
+            if(this.options.multiple) {
+                this.multiContainer.off(click.puiautocomplete);
+                this.element.off(focus.puiautocomplete blur.puiautocomplete);
+            }
+            
+            if(this.options.forceSelection) {
+                this.element.off(blur.puiautocomplete);
+            }
+
+            $(document.body).off('mousedown.puiautocomplete');
+            $(window).unbind('resize');
+        },
+        
+        destroy: function() {
+            this._unbindEvents();
+        },
+        
         _bindKeyEvents: function() {
             var $this = this;
 
