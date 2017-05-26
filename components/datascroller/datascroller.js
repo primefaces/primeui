@@ -148,6 +148,20 @@
                 e.preventDefault();
             });
         },
+        
+        _unBindListener: function () {
+            if(this.options.mode === 'document') {
+                var NS = 'scroll.' + this.id;
+                $(window).off(NS);
+            }
+            else {
+                this.content.off('scroll');
+            }
+        },
+        
+        _destroy: function () {
+            this._unBindListener();
+        },
 
         _load: function() {
             this.loading = true;
