@@ -277,6 +277,10 @@
     @include hover-element();
 }
 
+.ui-paginator .ui-paginator-pages a:not(.ui-state-disabled).ui-state-active:hover {
+    color: #ffffff;
+}
+
 .ui-datatable {
     .ui-rowgroup-header a {
         color: $headerTextColor;
