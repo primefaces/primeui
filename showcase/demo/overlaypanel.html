@@ -48,15 +48,6 @@
                 hideEffect:'explode'
             });
             
-            $('#datatableOverlay').puioverlaypanel({
-                target:'#searchIcon',
-                showEvent:"mouseover",
-                hideEvent:"click",
-                showCloseIcon:true,
-                showEffect:"blind",
-                dismissable:false
-            });
-            
             handleRowSelect = function(event, data) {
                 document.getElementById('messages').show([{severity: 'info', summary: 'Row Selected', detail: data.vin + ' ' + data.year}]);
             };
@@ -91,9 +82,6 @@
         <div id="overlay">
             <img src="showcase/resources/demo/images/mr-robot/mr-robot.jpg" style="width:200px">
         </div>
-        
-        <h3>Hover</h3>
-        <i id="searchIcon" class="fa fa-search" style="font-size:24px"></i>
         
         <h3>Shared</h3>
         <div id="datatableOverlay" style="width:400px">
