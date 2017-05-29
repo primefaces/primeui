@@ -37,7 +37,11 @@
             this.element.wrap('<span class="ui-autocomplete ui-widget" />');
             this.element.puiinputtext();
             this.panel = $('<div class="ui-autocomplete-panel ui-widget-content ui-corner-all ui-helper-hidden ui-shadow"></div>').appendTo('body');
-            
+
+            this.panel.html('');
+            this.listContainer = $('<ul class="ui-autocomplete-items ui-autocomplete-list ui-widget-content ui-widget ui-corner-all ui-helper-reset"></ul>').appendTo(this.panel);
+            this.items = this.listContainer.children('.ui-autocomplete-item');
+
             if(this.options.multiple) {
                 this.element.wrap('<ul class="ui-autocomplete-multiple ui-widget ui-inputtext ui-state-default ui-corner-all">' + 
                                         '<li class="ui-autocomplete-input-token"></li></ul>');
