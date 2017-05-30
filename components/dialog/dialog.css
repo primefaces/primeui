@@ -42,14 +42,15 @@
 .ui-dialog .ui-dialog-titlebar-icon {
     text-decoration: none
 }
-.ui-dialog .ui-dialog-titlebar-close {
+.ui-dialog .ui-dialog-titlebar-close,
+.ui-dialog .ui-dialog-titlebar-maximize,
+.ui-dialog .ui-dialog-titlebar-minimize {
     float: right;
     padding: .125em;
     cursor: pointer;
     border: 1px solid transparent;
 }
 .ui-dialog .ui-dialog-titlebar-close span {
-    display: block;
     margin: 0;
 }
 .ui-dialog-footer {
