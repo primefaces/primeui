@@ -226,11 +226,31 @@
                         }
                     })
                     .bind(this.blockEvents, function(event) {
-                        if ($(event.target).zIndex() < $this.element.zIndex()) {
+                        if ($this.zIndex($(event.target)) < $this.zIndex($this.element)) {
                             return false;
                         }
                     });
         },
+
+        zIndex: function(elem) {
+		    if(elem.length) {
+			    var position, 
+                value;
+
+			    while(elem.length && elem[0] !== document) {
+				    position = elem.css("position");
+				    if(position === "absolute" || position === "relative" || position === "fixed") {
+					    value = parseInt(elem.css("zIndex"), 10);
+					    if (!isNaN(value) && value !== 0) {
+						    return value;
+					    }
+				    }
+				    elem = elem.parent();
+			    }
+		    }
+
+		    return 0;
+	    },
 
         _disableModality: function() {
             if(this.modality) {
@@ -252,6 +272,8 @@
             
             this._trigger('beforeShow', null);
 
+            this._moveToTop();
+
             if(this.options.showEffect) {
                 var $this = this;
 
@@ -264,8 +286,6 @@
 
                 this._postShow();
             }
-
-            this._moveToTop();
 
             if(this.options.modal) {
                 this._enableModality();

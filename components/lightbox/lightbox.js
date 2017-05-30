@@ -353,8 +353,28 @@
         },
 
         _showNavigators: function() {
-            this.navigators.zIndex(this.imageDisplay.zIndex() + 1).show();
+            this.navigators.css('zIndex', this.zIndex(this.imageDisplay) + 1).show();
         },
+
+        zIndex: function(elem) {
+		    if(elem.length) {
+			    var position, 
+                value;
+
+			    while(elem.length && elem[0] !== document) {
+				    position = elem.css("position");
+				    if(position === "absolute" || position === "relative" || position === "fixed") {
+					    value = parseInt(elem.css("zIndex"), 10);
+					    if (!isNaN(value) && value !== 0) {
+						    return value;
+					    }
+				    }
+				    elem = elem.parent();
+			    }
+		    }
+
+		    return 0;
+	    },
 
         _hideNavigators: function() {
             this.navigators.hide();

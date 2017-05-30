@@ -64,6 +64,12 @@
     height: 100%;
 }
 
+.ui-dialog-docking-zone {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
 /* ConfirmDialog */
 .ui-confirmdialog.ui-dialog .ui-dialog-content {
     padding: 1em 2em;
