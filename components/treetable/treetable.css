@@ -54,7 +54,7 @@
     margin-left: 1px;
 }
 
-.ui-treetable .ui-treetable-row-selectable {
+.ui-treetable .ui-treetable-row.ui-treetable-row-selectable {
     cursor: pointer;
 }
 
@@ -77,11 +77,6 @@
 .ui-treetable td.ui-treetable-child-table-container {
     padding: 0;
     border: 0 none;
-}
-
-.ui-treetable .ui-treetable-row {
-    display: table-row;
-    border-bottom: 0 transparent
 }
 
 .ui-treetable tbody .ui-treetable-row td {

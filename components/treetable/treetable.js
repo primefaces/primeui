@@ -90,7 +90,7 @@
                 var node = nodes[i],
                 nodeData = node.data,
                 leaf = this.options.lazy ? node.leaf : !(node.children && node.children.length),
-                row = $('<tr class="ui-widget-content"></tr>'),
+                row = $('<tr class="ui-widget-content ui-treetable-row"></tr>'),
                 depth = rootRow ? rootRow.data('depth') + 1 : 0,
                 parentRowkey = rootRow ? rootRow.data('rowkey'): null,
                 rowkey = parentRowkey ? parentRowkey + '_' + i : i.toString();
