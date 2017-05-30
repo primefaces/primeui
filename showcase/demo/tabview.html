@@ -4,21 +4,6 @@
 
             $('#default').puitabview();
 
-            $('#dynamic').puitabview({
-                change: function (event, ui) {
-                    $.ajax({
-                        type: "GET",
-                        url: './tabcontent',
-                        data: {tabindex: ui.index},
-                        dataType: "html",
-                        context: this,
-                        success: function (data) {
-                            $(this).children('div.ui-tabview-panels').children().eq(ui.index).html(data);
-                        }
-                    });
-                }
-            });
-
             $('#effect').puitabview({
                 effect: {
                     name: 'fade'
@@ -69,24 +54,6 @@
                 </div>
                 <div id="tab3">
                     After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate.
-                </div>
-            </div>
-        </div>
-
-        <h3>Ajax Content Loading</h3>
-        <div id="dynamic">
-            <ul>
-                <li><a href="#tab1">Tab 1</a></li>
-                <li><a href="#tab2">Tab 2</a></li>
-                <li><a href="#tab3">Tab 3</a></li>
-            </ul>
-            <div>
-                <div id="tab1">
-                    <p>Dynamic Content for Tab 1</p>
-                </div>
-                <div id="tab2">
-                </div>
-                <div id="tab3">
                 </div>
             </div>
         </div>
