@@ -6,6 +6,8 @@ Showcase = {
     init: function() {
         this.menu = $('#layout-sidebar');
         this.logo = $('.layout-logo');
+        this.menuButton = $('#menu-button');
+        this.mobileMenuButton = $('#menu-button-mobile');
         this.menu.perfectScrollbar({
             wheelSpeed: 40,
             suppressScrollX: true
@@ -26,14 +28,28 @@ Showcase = {
             $(this).toggleClass('active-menuitem').next('div').slideToggle();
             e.preventDefault();
         });
+
+        this.menuButton.on('click', function() {
+             $this.menu.addClass('active');
+             $this.mobileMenuButton.addClass('active');
+             $(this).addClass('active');
+        });
         
+        this.mobileMenuButton.on('click', function(e) {
+             $this.removeActiveClass();
+        });
+
         this.logo.on('click', function(e) {
-            window.location.href = '';
+            var el = $(e.target);
+            if(el && !el.is('#menu-button-mobile') && !el.parent().is('#menu-button-mobile')) {
+                window.location.href = '';
+            }
         })
         
         var hashedLinks = this.menu.find('div > div > a');
         hashedLinks.on('click', function(e) {
             Showcase.changePageWithLink($(this).attr('href'));
+            $this.removeActiveClass();
             e.preventDefault();
         });
 
@@ -68,6 +84,12 @@ Showcase = {
         $(window).on("resize", function() {
             $this.onWinResize();
         });
+    },
+
+    removeActiveClass() {
+        this.menu.removeClass('active');
+        this.mobileMenuButton.removeClass('active');
+        this.menuButton.removeClass('active');
     },
 
     changePageWithLink: function(page) {

@@ -230,6 +230,8 @@ body * {
 #menu-button-mobile img {
     width: 30px;
     height: 25px;
+    margin-top: auto;
+    display: initial;
 }
 
 /* HomePage */
