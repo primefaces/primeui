@@ -166,7 +166,6 @@ body * {
     display: block;
     padding: 15px;
     overflow: hidden;
-    height: 100px;
 }
 
 .topbar-link {
