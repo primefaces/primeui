@@ -59,8 +59,24 @@ Showcase = {
         .on("mouseleave",function(){
             $("#GlobalThemeSwitcher").slideUp(1);
         });
-
+        
+        $("#themeSwitcherMobile").on("click",function(){
+            $("#GlobalThemeSwitcherMobile").slideDown(500);
+        })
+        .on("mouseleave",function(){
+            $("#GlobalThemeSwitcherMobile").slideUp(1);
+        });
+        
         $("#GlobalThemeSwitcher > a").on("click", function(e) {
+            var theme = $(this).data("theme"),
+            themeLink = $('link[href$="theme.css"]'),
+            newThemeURL =  'resources/' + 'themes/' + theme + '/theme.css';
+
+            themeLink.attr('href', newThemeURL);
+            e.preventDefault();
+        });
+        
+        $("#GlobalThemeSwitcherMobile > a").on("click", function(e) {
             var theme = $(this).data("theme"),
             themeLink = $('link[href$="theme.css"]'),
             newThemeURL =  'resources/' + 'themes/' + theme + '/theme.css';

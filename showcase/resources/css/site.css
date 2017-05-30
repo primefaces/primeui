@@ -49,7 +49,8 @@ body * {
     width: 299px;
 }
 
-.layout-logo {
+.layout-logo,
+.layout-logo-mobile {
     display: block;
     z-index: 997;
     background-color: #313b3f;
@@ -58,6 +59,12 @@ body * {
 }
 
 .layout-logo img {
+    width: 200px;
+    display: inline-block;
+    margin-top: 35px;
+}
+
+.layout-logo-mobile img {
     width: 200px;
     display: inline-block;
     margin-top: 35px;
@@ -198,6 +205,10 @@ body * {
     width: 80%;
     height: 30px;
 }
+
+.topbar-link-container {
+    display: none;
+}
 /*
 .PFGrayText {
     color: #aab7c1;
@@ -240,6 +251,7 @@ body * {
 
 .homepage .features img {
     width: 100%;
+    max-width: 100px;
 }
 
 .homepage h1 {
@@ -289,6 +301,31 @@ body * {
 .footer span:last-child {
     float: right;
 
+}
+
+.property-box {
+    height: 280px;
+    float: left;
+    overflow: hidden;
+    text-align: center;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    display: block;
+}
+.property-box img {
+    width: 60%;
+}
+.property-box .property-topic {
+    display: block;
+    color: #25aae1;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.property-box .property-text {
+    display: block;
+    color: #414D52;
+    font-size: 14px;
+    line-height: 22px;
 }
 
 /** ThemeSwitcher **/
@@ -342,6 +379,61 @@ body * {
     font-size: 14px;
 }
 #GlobalThemeSwitcher  > span {
+    font-size: 18px;
+    display: inline-block;
+    margin: 20px 0 0 9px;
+}
+
+#GlobalThemeSwitcherMobile {
+    display: none;
+    text-align: left;
+    width: 200px;
+    max-height: 400px;
+    overflow-y: auto;
+    background-color: #eff3f6;
+    border: solid 1px #bcc7cf;
+    z-index: 99999999999;
+    position: absolute;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
+    margin-left: -60px;
+}
+#GlobalThemeSwitcherMobile  a {
+    display: block;
+    padding: 10px;
+    border-bottom: solid 1px #dde3e7;
+    text-align: left;
+    color: #87939B;
+    overflow: hidden;
+}
+#GlobalThemeSwitcherMobile  a:hover {
+    color: #fdd106;
+}
+#GlobalThemeSwitcherMobile  a span.ui-theme {
+    width: 30px;
+    height: 27px;
+    float: left;
+    border: solid 1px #D7DCE0;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+#GlobalThemeSwitcherMobile  a img {
+    float: left;
+    width: 30px;
+    height: 27px;
+}
+#GlobalThemeSwitcherMobile  a span.ui-text {
+    display: inline-block;
+    margin-top: 7px;
+    margin-left: 10px;
+    font-size: 14px;
+}
+#GlobalThemeSwitcherMobile  > span {
     font-size: 18px;
     display: inline-block;
     margin: 20px 0 0 9px;
@@ -638,6 +730,34 @@ input.searchInput {
     .home-logo {
         width: 100%;
     }
+    
+    .layout-logo-mobile {
+        display: none;
+    }
+}
+
+@media (max-width: 1025px) {
+    .layout-logo-mobile {
+        float: right;
+    }
+    
+    .layout-logo-mobile img {
+        margin: 0;
+        margin-top: 15px;
+    }
+    
+    #menu-button,
+    #menu-button-mobile {
+        margin-top: 25px;
+    }
+    
+    .topbar-link {
+        margin-top: 15px;
+    }
+    
+    #layout-sidebar.active .topbar-link {
+        display: block;
+    }
 }
 
 @media screen and (max-width: 64em) {
@@ -645,9 +765,6 @@ input.searchInput {
         width: 340px;
     }
     
-    .topbar-link {
-        display: none
-    }
     .mobile-logo {
         display: block;
         float: right;
@@ -668,11 +785,17 @@ input.searchInput {
         overflow-y: auto;
         z-index: 999;
     }
-    .layout-logo {
+    .layout-logo,
+    .layout-logo-mobile {
         padding: 15px;
-        height: 68px;
+        height: 98px;
         box-sizing: border-box;
     }
+    
+    #layout-sidebar.active .layout-logo{
+        height: 128px;
+    }
+    
     .layout-logo .sidebar-logo {
         display: none;
     }
@@ -712,14 +835,38 @@ input.searchInput {
     .SubSubMenu ul li {
         width: 50%
     }
-    .property-box img {
+    .homepage .property-box img {
         width: 40%;
+    }
+    
+    .layout-logo-mobile {
+        margin-left: 30px;
     }
 }
 
 @media (max-width: 768px) {
     .doc-table tbody td {
         word-break: break-word;
+    }
+    
+    .topbar-link {
+        display: none;
+    }
+    
+    .topbar-link-container {
+        display: block;
+        height: 128px;
+        background-color: #889597;
+    }
+    
+    .topbar-link-container .topbar-link {
+        display: inline-block;
+        float: none;
+    }
+    
+    .link-container {
+        text-align: center;
+        margin-top: 10px;
     }
 }
 
@@ -957,5 +1104,5 @@ pre {
 }
 
 .whouses img {
-    width: 100%;
+    width: 60%;
 }

@@ -180,6 +180,11 @@
 
             <div id="layout-content">
                 <div id="topbar">
+                    <span class="layout-logo-mobile">
+                        <a href="#" class="sidebar-logo">
+                            <img alt="logo" src="showcase/resources/images/logo.svg" />
+                        </a>
+                    </span>
                     <a id="menu-button" href="#">
                         <img src="showcase/resources/images/menuicon.svg" />
                     </a>
@@ -191,14 +196,13 @@
                         <img alt="mockosx" src="showcase/resources/images/setup.svg" />
                         <span>Setup</span>
                     </a>
-                    <a href="https://github.com/primefaces/primeui/releases" class="topbar-link"><img alt="mockosx" src="showcase/resources/images/download.svg" /><span class="PFDarkText">Download</span></a>
                     <span class="topbar-link" id="themeSwitcher">
                             <img src="showcase/resources/images/themeswitcher.svg" /><span class="PFDarkText">Free Themes</span>
                             <div id="GlobalThemeSwitcher" class="navOverlay">
                                 <a href="#" data-theme="bootstrap"><span class="ui-theme ui-theme-bootstrap"></span><span class="ui-text">Bootstrap</span></a>
                                 <a href="#" data-theme="cruze"><span class="ui-theme ui-theme-cruze"></span><span class="ui-text">Cruze</span></a>
                                 <a href="#" data-theme="cupertino"><span class="ui-theme ui-theme-cupertino"></span><span class="ui-text">Cupertino</span></a>
-                                <a href="#" data-theme="ui-darkness"><span class="ui-theme ui-theme-ui-darkness"></span><span class="ui-text">UI-Darkness</span></a>
+                                <a href="#" data-theme="darkness"><span class="ui-theme ui-theme-ui-darkness"></span><span class="ui-text">Darkness</span></a>
                                 <a href="#" data-theme="flick"><span class="ui-theme ui-theme-flick"></span><span class="ui-text">Flick</span></a>
                                 <a href="#" data-theme="home"><span class="ui-theme ui-theme-home"></span><span class="ui-text">Home</span></a>
                                 <a href="#" data-theme="kasper"><span class="ui-theme ui-theme-hot-kasper"></span><span class="ui-text">Kasper</span></a>
@@ -216,9 +220,48 @@
                         </span>
                 </div>
                 
+                <div class="topbar-link-container">
+                    <div class="ui-g">
+                        <div class="ui-g-1"></div>
+                        <div class="ui-g-10 link-container">
+                            <a href="http://forum.primefaces.org/viewforum.php?f=35" class="topbar-link">
+                                <img alt="mockosx" src="showcase/resources/images/community.svg" />
+                                <span>Forum</span>
+                            </a>
+                            <span class="topbar-link" id="themeSwitcherMobile">
+                                <img src="showcase/resources/images/themeswitcher.svg" /><span class="PFDarkText">Free Themes</span>
+                                <div id="GlobalThemeSwitcherMobile" class="navOverlay">
+                                    <a href="#" data-theme="bootstrap"><span class="ui-theme ui-theme-bootstrap"></span><span class="ui-text">Bootstrap</span></a>
+                                    <a href="#" data-theme="cruze"><span class="ui-theme ui-theme-cruze"></span><span class="ui-text">Cruze</span></a>
+                                    <a href="#" data-theme="cupertino"><span class="ui-theme ui-theme-cupertino"></span><span class="ui-text">Cupertino</span></a>
+                                    <a href="#" data-theme="darkness"><span class="ui-theme ui-theme-ui-darkness"></span><span class="ui-text">Darkness</span></a>
+                                    <a href="#" data-theme="flick"><span class="ui-theme ui-theme-flick"></span><span class="ui-text">Flick</span></a>
+                                    <a href="#" data-theme="home"><span class="ui-theme ui-theme-home"></span><span class="ui-text">Home</span></a>
+                                    <a href="#" data-theme="kasper"><span class="ui-theme ui-theme-hot-kasper"></span><span class="ui-text">Kasper</span></a>
+                                    <a href="#" data-theme="lightness"><span class="ui-theme ui-theme-lightness"></span><span class="ui-text">Lightness</span></a>
+                                    <a href="#" data-theme="ludvig"><span class="ui-theme ui-theme-south-ludvig"></span><span class="ui-text">Ludvig</span></a>
+                                    <a href="#" data-theme="omega"><span class="ui-theme ui-theme-omega"></span><span class="ui-text">Omega</span></a>
+                                    <a href="#" data-theme="pepper-grinder"><span class="ui-theme ui-theme-pepper-grinder"></span><span class="ui-text">Pepper-Grinder</span></a>
+                                    <a href="#" data-theme="redmond"><span class="ui-theme ui-theme-redmond"></span><span class="ui-text">Redmond</span></a>
+                                    <a href="#" data-theme="rocket"><span class="ui-theme ui-theme-rocket"></span><span class="ui-text">Rocket</span></a>
+                                    <a href="#" data-theme="south-street"><span class="ui-theme ui-theme-south-street"></span><span class="ui-text">South-Street</span></a>
+                                    <a href="#" data-theme="start"><span class="ui-theme ui-theme-start"></span><span class="ui-text">Start</span></a>
+                                    <a href="#" data-theme="trontastic"><span class="ui-theme ui-theme-trontastic"></span><span class="ui-text">Trontastic</span></a>
+                                    <a href="#" data-theme="voclain"><span class="ui-theme ui-theme-voclain"></span><span class="ui-text">Voclain</span></a>
+                                </div>
+                            </span>
+                            <a href="setup" class="topbar-link">
+                                <img alt="mockosx" src="showcase/resources/images/setup.svg" />
+                                <span>Setup</span>
+                            </a>
+                        </div>
+                        <div class="ui-g-1"></div>
+                    </div>
+                </div>
+                
                 <div id="widgetdemo">
                     <div class="ui-g homepage">
-                        <div class="ui-g-4">
+                        <div class="ui-lg-4 ui-md-12">
                             <h1>PrimeUI</h1>
                             <p>PrimeUI is a collection of rich javascript widgets based on jQuery UI. PrimeUI is a spin-off from the popular JavaServer Faces Component Suite, <a href="http://www.primefaces.org">PrimeFaces</a>.</p>
                             <p>All widgets are open source and free to use under MIT License, a commercial friendly license.</p>
@@ -226,33 +269,33 @@
                             <a href="https://github.com/primefaces/primeui/releases" class="btn-big btn-download">Download</a>
                             <a href="https://github.com/primefaces/primeui" class="btn-big btn-github">View Source</a>
                         </div>
-                        <div class="ui-g-8 features">
-                            <div class="ui-g-12 ui-md-4">
+                        <div class="ui-lg-8 ui-md-12 features">
+                            <div class="property-box ui-g-12 ui-md-4">
                                 <img src="showcase/resources/images/ajaxFramework.svg">
                                 <h3>PRIMEFACES UI</h3>
                                 <span>Derived from the mighty PrimeFaces</span>
                             </div>
-                            <div class="ui-g-12 ui-md-4">
+                            <div class="property-box ui-g-12 ui-md-4">
                                 <img src="showcase/resources/images/components.svg">
                                 <h3>WIDGETS</h3>
                                 <span>45+ Components<br>Easy to Use<br>Accessible</span>
                             </div>
-                            <div class="ui-g-12 ui-md-4">
+                            <div class="property-box ui-g-12 ui-md-4">
                                 <img src="showcase/resources/images/productivity.svg">
                                 <h3>PRODUCTIVITY</h3>
                                 <span>Simple<br>Lightweight<br>Powerful</span>
                             </div>
-                            <div class="ui-g-12 ui-md-4">
+                            <div class="property-box ui-g-12 ui-md-4">
                                 <img src="showcase/resources/images/mobile.svg">
                                 <h3>MOBILE</h3>
                                 <span>Responsive<br>Cross Browser<br>Touch Optimized</span>
                             </div>
-                            <div class="ui-g-12 ui-md-4">
+                            <div class="property-box ui-g-12 ui-md-4">
                                 <img src="showcase/resources/images/community.svg">
                                 <h3>COMMUNITY</h3>
                                 <span>Active<br>Vibrant<br>Open Source<br></span>
                             </div>
-                            <div class="ui-g-12 ui-md-4">
+                            <div class="property-box ui-g-12 ui-md-4">
                                 <img src="showcase/resources/images/themeswitcher.svg">
                                 <h3>THEMES</h3>
                                 <span>35+ Available Themes<br>Premium Themes<br>Theme Creator Tool<br></span>
