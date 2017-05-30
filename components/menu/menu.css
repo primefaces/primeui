@@ -177,6 +177,7 @@
 
 .ui-megamenu .ui-megamenu-panel.ui-menu-child {
     width: auto;
+    z-index: 1;
 }
 
 .ui-megamenu .ui-megamenu-panel .ui-menu-list {
