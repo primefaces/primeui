@@ -129,7 +129,7 @@
             });
         },
         
-        onMouseDown(event,index) {
+        onMouseDown: function(event,index) {
             if(this.options.disabled) {
                 return;
             }
@@ -140,7 +140,7 @@
             this.handleIndex = index;
         },
         
-        onBarClick(event) {
+        onBarClick: function(event) {
             if(this.options.disabled) {
                 return;
             }
@@ -154,7 +154,7 @@
             this.sliderHandleClick = false;
         },
         
-        updateDomData(event) {
+        updateDomData: function(event) {
             var rect = this.wrapper[0].getBoundingClientRect();
             this.initX = rect.left + this.getWindowScrollLeft();
             this.initY = rect.top + this.getWindowScrollTop();
@@ -162,7 +162,7 @@
             this.barHeight = this.wrapper[0].offsetHeight;
         },
         
-        handleChange(event) {
+        handleChange: function(event) {
             var handleValue = this.calculateHandleValue(event);
             var newValue = this.getValueFromHandle(handleValue);
          
@@ -186,7 +186,7 @@
             }
         },
         
-        updateHandleValue(value) {
+        updateHandleValue: function(value) {
             if(this.options.range) {
                 this.handleValues[0] = (this.values[0] < this.options.min ? 0 : this.values[0] - this.options.min) * 100 / (this.options.max - this.options.min);
                 this.handleValues[1] = (this.values[1] > this.options.max ? 100 : this.values[1] - this.options.min) * 100 / (this.options.max - this.options.min);
@@ -214,18 +214,18 @@
             }
         },
         
-        calculateHandleValue(event) {
+        calculateHandleValue: function(event) {
             if(this.options.orientation === 'horizontal')
                 return Math.floor(((event.pageX - this.initX) * 100) / (this.barWidth));
             else
                 return Math.floor((((this.initY + this.barHeight) - event.pageY) * 100) / (this.barHeight));
         },
         
-        getValueFromHandle(handleValue) {
+        getValueFromHandle: function(handleValue) {
             return (this.options.max - this.options.min) * (handleValue / 100) + this.options.min;
         },
         
-        handleStepChange(newValue, oldValue) {
+        handleStepChange: function(newValue, oldValue) {
             var diff = (newValue - oldValue);
             
             if(diff < 0 && (-1 * diff) >= this.options.step / 2) {
@@ -240,7 +240,7 @@
             }
         },
         
-        updateValue(val, event) {
+        updateValue: function(val, event) {
             if(this.options.range) {
                 var value = val;
                 
@@ -294,12 +294,12 @@
         },
         
         getWindowScrollTop: function() {
-            let doc = document.documentElement;
+            var doc = document.documentElement;
             return (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
         },
 
         getWindowScrollLeft: function() {
-            let doc = document.documentElement;
+            var doc = document.documentElement;
             return (window.pageXOffset || doc.scrollLeft) - (doc.clientLeft || 0);
         },
 
