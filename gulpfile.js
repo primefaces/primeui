@@ -2,13 +2,17 @@
 
 var gulp = require('gulp'),
     concat = require('gulp-concat'),
-    uglify = require('gulp-uglify'),
+    composer = require('gulp-uglify/composer'),
+    uglifyjs = require('uglify-js'),
+    pump = require('pump'),
     uglifycss = require('gulp-uglifycss'),
     rename = require('gulp-rename'),
     del = require('del'),
     flatten = require('gulp-flatten'),
     zip = require('gulp-zip'),
     watch = require('gulp-watch');
+
+var minify = composer(uglifyjs, console);
     
 //Building only primeui.js in watch mode
 gulp.task('build-js-w', function() {
@@ -67,16 +71,21 @@ gulp.task('plugins', function () {
 });
 
 //Building primeui.js and primeui.min.js
-gulp.task('build-js-prod', function() {
-    gulp.src([
-        'components/core/core.js',
-		'components/**/*.js'
-    ])
-	.pipe(concat('primeui.js'))
-	.pipe(gulp.dest('build'))
-    .pipe(uglify())
-    .pipe(rename('primeui.min.js'))
-    .pipe(gulp.dest('build'));
+gulp.task('build-js-prod', function(cb) {
+    var options = {};
+
+    pump([
+        gulp.src([
+            'components/core/core.js',
+		    'components/**/*.js'
+        ]),
+	    concat('primeui.js'),
+	    gulp.dest('build'),
+        minify(options),
+        rename('primeui.min.js'),
+        gulp.dest('build')
+    ],
+    cb);
 });
 
 //Building primeui.css and primeui.min.css
@@ -92,18 +101,23 @@ gulp.task('build-css-prod', function() {
 });
 
 //Build primeui-all.js
-gulp.task('build-primeui-js-all', function() {
-    gulp.src([
-        'showcase/resources/js/jquery.js',
-        'showcase/resources/js/jquery-ui.js',
-        'components/core/core.js',
-		'components/**/*.js'
-    ])
-	.pipe(concat('primeui-all.js'))
-	.pipe(gulp.dest('build'))
-    .pipe(uglify({compress: {hoist_funs: false, hoist_vars: false}}))
-    .pipe(rename('primeui-all.min.js'))
-    .pipe(gulp.dest('build'));
+gulp.task('build-primeui-js-all', function(cb) {
+    var options = {compress: {hoist_funs: false, hoist_vars: false}};
+
+    pump([
+        gulp.src([
+            'showcase/resources/js/jquery.js',
+            'showcase/resources/js/jquery-ui.js',
+            'components/core/core.js',
+		    'components/**/*.js'
+        ]),
+	    concat('primeui-all.js'),
+	    gulp.dest('build'),
+        minify(options),
+        rename('primeui-all.min.js'),
+        gulp.dest('build')
+    ],
+    cb);
 });
 
 //Build primeui-all.css
