@@ -95,7 +95,7 @@
 
         _renderPanel: function() {
             //panel
-            this.panel = $('<div id="'+this.element.attr('id')+ "_panel" +'"class="ui-multiselect-panel ui-widget ui-widget-content ui-corner-all ui-helper-hidden"/>');
+            this.panel = $('<div id="'+this.element.attr('id')+ "_panel" +'"class="ui-multiselect-panel ui-widget ui-widget-content ui-corner-all ui-helper-hidden ui-shadow"/>');
             this.panelHeader = $('<div class="ui-widget-header ui-corner-all ui-multiselect-header ui-helper-clearfix"></div>').appendTo(this.panel);
             this.toggler = $('<div class="ui-chkbox ui-widget">' +
                 '<div class="ui-helper-hidden-accessible"><input readonly="readonly" type="checkbox"/></div>' +
@@ -158,12 +158,6 @@
             this.filterInput.on('keyup.puimultiselect', function() {
                 $(this).trigger('focus');
                 $this.filter($(this).val());
-            })
-            .on('focus.puimultiselect', function() {
-                $(this).addClass('ui-state-focus');
-            })
-            .on('blur.puimultiselect', function() {
-                $(this).removeClass('ui-state-focus');
             });
 
             //Container focus
@@ -373,18 +367,22 @@
         },
 
         selectItem: function(item) {
-            var checkbox = item.find('> .ui-chkbox');
+            var checkbox = item.find('> .ui-chkbox'),
+            chkbox = checkbox.children('.ui-chkbox-box');
             item.addClass('ui-state-highlight');
+            chkbox.addClass('ui-state-active');
             checkbox.find(':checkbox').prop('checked', true);
-            checkbox.find('> .ui-chkbox-box > .ui-chkbox-icon').addClass('fa-check');
+            chkbox.children('.ui-chkbox-icon').addClass('fa-check');
             this.choices.eq(item.index()).prop('selected', true);
         },
 
         unselectItem: function(item) {
-            var checkbox = item.find('> .ui-chkbox');
+            var checkbox = item.find('> .ui-chkbox'),
+            chkbox = checkbox.children('.ui-chkbox-box');
             item.removeClass('ui-state-highlight');
+            chkbox.removeClass('ui-state-active');
             checkbox.find(':checkbox').prop('checked', false);
-            checkbox.find('> .ui-chkbox-box > .ui-chkbox-icon').removeClass('fa-check');
+            chkbox.children('.ui-chkbox-icon').removeClass('fa-check');
             this.choices.eq(item.index()).prop('selected', false);
         },
 
@@ -505,11 +503,11 @@
 
             if(visibleItems.length && visibleItems.filter('.ui-state-highlight').length === visibleItems.length) {
                 this.toggler.find(':checkbox').prop('checked', true);
-                this.togglerBox.children('.ui-chkbox-icon').addClass('fa-check');
+                this.togglerBox.addClass('ui-state-active').children('.ui-chkbox-icon').addClass('fa-check');
             }
             else {
                 this.toggler.find(':checkbox').prop('checked', false);
-                this.togglerBox.children('.ui-chkbox-icon').removeClass('fa-check');
+                this.togglerBox.removeClass('ui-state-active').children('.ui-chkbox-icon').removeClass('fa-check');
             }
         },
 
@@ -522,7 +520,7 @@
             });
 
             this.toggler.find(':checkbox').prop('checked', true);
-            this.togglerBox.children('.ui-chkbox-icon').addClass('fa-check');
+            this.togglerBox.addClass('ui-state-active').children('.ui-chkbox-icon').addClass('fa-check');
         },
 
         uncheckAll: function() {
@@ -534,7 +532,7 @@
             });
 
             this.toggler.find(':checkbox').prop('checked', false);
-            this.togglerBox.children('.ui-chkbox-icon').removeClass('fa-check');
+            this.togglerBox.removeClass('ui-state-active').children('.ui-chkbox-icon').removeClass('fa-check');
         },
 
         alignPanel: function() {
