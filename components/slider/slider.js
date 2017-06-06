@@ -50,7 +50,7 @@
             }
             else if (this.options.orientation === 'vertical') {
                 this.wrapper.addClass('ui-slider-vertical');
-                this.wrapper.append('<span class="ui-slider-range ui-slider-range-min ui-widget-header ui-corner-all"></span>');
+                this.wrapper.prepend('<span class="ui-slider-range ui-slider-range-min ui-widget-header ui-corner-all"></span>');
                 this.verticalSliderHandler = this.wrapper.children('span.ui-slider-range');
             }
 
@@ -138,7 +138,6 @@
             this.updateDomData(event);
             this.sliderHandleClick = true;
             this.handleIndex = index;
-            event.target.style.transition="none";
         },
 
         onBarClick: function(event) {
