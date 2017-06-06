@@ -5,7 +5,7 @@
                 Showcase.changePageWithLink($(this).attr('href'));
                 e.preventDefault();
             });
-            
+
             var localData = [
                 {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
                 {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
@@ -18,7 +18,7 @@
                 {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'},
                 {'brand': 'Fiat', 'year': 2013, 'color': 'Red', 'vin': '245t2s'}
             ];
-            
+
             $('#tblexpandable').puidatatable({
                 caption: 'Expandable Rows',
                 columns: [
@@ -32,22 +32,22 @@
                 expandableRows: true,
                 rowExpandMode: 'single',
                 expandedRowContent: function(car) {
-                    return $('<div class="ui-grid" style="width:200px"></div>')
+                    return $('<div class="ui-grid" style="width:200px; margin-left: 50px;"></div>')
                             .append('<div class="ui-grid-row"><div class="ui-grid-col-12"><img src="showcase/resources/demo/images/car/' + car.brand + '-big.gif"/></div>')
                             .append('<div class="ui-grid-row"><div class="ui-grid-col-6">Vin</div><div class="ui-grid-col-6">' + car.vin +'</div></div>')
                             .append('<div class="ui-grid-row"><div class="ui-grid-col-6">Brand</div><div class="ui-grid-col-6">' + car.brand +'</div></div>')
                             .append('<div class="ui-grid-row"><div class="ui-grid-col-6">Year</div><div class="ui-grid-col-6">' + car.color +'</div></div>')
                             .append('<div class="ui-grid-row"><div class="ui-grid-col-6">Color</div><div class="ui-grid-col-6">' + car.year +'</div></div>');
-                        
+
                 }
             });
-            
+
             $('#doc').puitabview();
-            
+
             $(document).one('onRouteChange', function() {
                 $('#doc').puitabview('destroy');
             });
-            
+
         });
     </script>
     <style type="text/css">
@@ -55,7 +55,7 @@
             margin-bottom: 40px;
         }
     </style>
-    
+
     <div id="datatable-submenu" class="ContentSideSections SubSubMenu clearfix">
         <ul>
             <li><a href="datatable">&bull; DataSource</a></li>
@@ -96,7 +96,7 @@
                 </ul>
                 <div>
 
-                    <div id="doc-markup">                               
+                    <div id="doc-markup">
                         <pre name="code" class="brush:xml">
 &lt;div id="tblexpandable"&gt;/&lt;/div&gt;
                         </pre>
