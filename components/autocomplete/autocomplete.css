@@ -101,10 +101,15 @@
     background-color: transparent;
     margin: 0;
     padding: 0;
-    box-shadow: none;
     -moz-border-radius: 0;
     -webkit-border-radius: 0;
-    border-radius: 0;
+    border-radius: 0; 
+}
+
+.ui-autocomplete-input-token input:focus {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
 }
 
 .ui-autocomplete-dd input.ui-corner-all ,

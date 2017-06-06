@@ -39,7 +39,9 @@
             this.panel = $('<div class="ui-autocomplete-panel ui-widget-content ui-corner-all ui-helper-hidden ui-shadow"></div>').appendTo('body');
             
             if(this.options.multiple) {
-                this.element.wrap('<ul class="ui-autocomplete-multiple ui-widget ui-inputtext ui-state-default ui-corner-all">' + 
+                this.element.parent().addClass('ui-autocomplete-multiple');
+
+                this.element.wrap('<ul class="ui-autocomplete-multiple-container ui-widget ui-inputtext ui-state-default ui-corner-all">' + 
                                         '<li class="ui-autocomplete-input-token"></li></ul>');
                 this.inputContainer = this.element.parent();
                 this.multiContainer = this.inputContainer.parent();
@@ -62,23 +64,11 @@
             this._bindKeyEvents();
             
             if(this.options.dropdown) {
-                this.dropdown.on('mousedown.puiautocomplete', function() {
+                this.dropdown.on('mouseup.puiautocomplete', function() {
                     if(!$this.element.prop('disabled')) {
-                        $this.dropdown.addClass('ui-state-active');
-                    }
-                })
-                .on('mouseup.puiautocomplete', function() {
-                    if(!$this.element.prop('disabled')) {
-                        $this.dropdown.removeClass('ui-state-active');
                         $this.search('');
                         $this.element.focus();
                     }
-                })
-                .on('focus.puiautocomplete', function() {
-                    $this.dropdown.addClass('ui-state-focus');
-                })
-                .on('blur.puiautocomplete', function() {
-                    $this.dropdown.removeClass('ui-state-focus');
                 })
                 .on('keydown.puiautocomplete', function(e) {
                     var keyCode = $.ui.keyCode;
@@ -284,7 +274,7 @@
                 var item = $(this);
                 
                 if($this.options.multiple) {
-                    var tokenMarkup = '<li class="ui-autocomplete-token ui-state-active ui-corner-all ui-helper-hidden">';
+                    var tokenMarkup = '<li class="ui-autocomplete-token ui-state-highlight ui-corner-all ui-helper-hidden">';
                     tokenMarkup += '<span class="ui-autocomplete-token-icon fa fa-fw fa-close" />';
                     tokenMarkup += '<span class="ui-autocomplete-token-label">' + item.data('label') + '</span></li>';
 
