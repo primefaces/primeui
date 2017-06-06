@@ -20,7 +20,7 @@
     var checkedRadios = {};
 
     $.widget("primeui.puiradiobutton", {
-       
+
         _create: function() {
             this.element.wrap('<div class="ui-radiobutton ui-widget"><div class="ui-helper-hidden-accessible"></div></div>');
             this.container = this.element.parent().parent();
@@ -28,23 +28,27 @@
             this.icon = $('<span class="ui-radiobutton-icon"></span>').appendTo(this.box);
             this.disabled = this.element.prop('disabled');
             this.label = $('label[for="' + this.element.attr('id') + '"]');
-            
+
             if(this.element.prop('checked')) {
                 this.box.addClass('ui-state-active');
                 this.icon.addClass('fa fa-circle');
                 checkedRadios[this.element.attr('name')] = this.box;
             }
-            
+
             if(this.disabled) {
                 this.box.addClass('ui-state-disabled');
             } else {
                 this._bindEvents();
             }
+
+            if(this.label) {
+                this.label.addClass('ui-radiobutton-label');
+            }
         },
-        
+
         _bindEvents: function() {
             var $this = this;
-        
+
             this.box.on('click.puiradiobutton', function() {
                 if(!$this._isChecked()) {
                     $this.element.trigger('click');
@@ -54,7 +58,7 @@
                     }
                 }
             });
-            
+
             if(this.label.length > 0) {
                 this.label.on('click.puiradiobutton', function(e) {
                     $this.element.trigger('click');
@@ -62,19 +66,11 @@
                     e.preventDefault();
                 });
             }
-            
-            this.element.on('focus.puiradiobutton', function() {
-                if($this._isChecked()) {
-                    $this.box.removeClass('ui-state-active');
-                }
 
+            this.element.on('focus.puiradiobutton', function() {
                 $this.box.addClass('ui-state-focus');
             })
             .on('blur.puiradiobutton', function() {
-                if($this._isChecked()) {
-                    $this.box.addClass('ui-state-active');
-                }
-
                 $this.box.removeClass('ui-state-focus');
             })
             .on('change.puiradiobutton', function(e) {
@@ -84,16 +80,16 @@
                 }
 
                 $this.icon.addClass('fa fa-circle');
-                if(!$this.element.is(':focus')) {
+                if($this._isChecked()) {
                     $this.box.addClass('ui-state-active');
                 }
 
                 checkedRadios[name] = $this.box;
-                
+
                 $this._trigger('change', null);
             });
         },
-        
+
         _isChecked: function() {
             return this.element.prop('checked');
         },
@@ -124,5 +120,5 @@
             this.element.unwrap().unwrap();
         }
     });
-    
+
 }));
