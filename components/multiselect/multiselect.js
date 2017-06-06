@@ -62,7 +62,7 @@
                 var checkboxes = this.items.find('.ui-chkbox-box');
                 for (var i = 0; i < this.options.value.length; i++) {
                     var index =  this.findSelectionIndex(this.options.value[i]);
-                    this.selectItem(this.items.eq(index));                    
+                    this.selectItem(this.items.eq(index));
                 }
                 this.updateLabel();
             }
@@ -85,7 +85,7 @@
 
             //filter
             this.filterContainer = $('<div class="ui-multiselect-filter-container" />').appendTo(this.panelHeader);
-            this.filterInput = $('<input type="text" aria-readonly="false" aria-disabled="false" aria-multiline="false" class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all" />')
+            this.filterInput = $('<input type="text" aria-readonly="false" aria-disabled="false" aria-multiline="false" class="ui-inputtext ui-widget ui-state-default ui-corner-all" />')
                 .appendTo(this.filterContainer);
             this.filterContainer.append('<span class="fa fa-search"></span>');
 
@@ -107,7 +107,7 @@
             this.itemContainer = $('<ul class="ui-multiselect-items ui-multiselect-list ui-widget-content ui-widget ui-corner-all ui-helper-reset"></ul>')
                 .appendTo(this.itemsWrapper);
 
-            this.itemsWrapper.css('max-height', this.options.scrollHeight);
+            this.itemContainer.css('max-height', this.options.scrollHeight);
         },
 
         _generateItems: function() {
@@ -141,7 +141,7 @@
             this.resizeNS = 'resize.' + this.id;
 
             this._bindItemEvents(this.items.filter(':not(.ui-state-disabled)'));
-            
+
             //Toggler
             this.togglerBox.on('click.puimultiselect', function() {
                 var el = $(this);
@@ -149,7 +149,7 @@
                     $this.uncheckAll();
                 else
                     $this.checkAll();
-                    
+
                 $this.updateLabel();
             });
 
@@ -232,12 +232,12 @@
                 }
             });
         },
-        
+
         _unBindEvents: function() {
             $(window).off(this.resizeNS);
             $(document).off(this.hideNS);
         },
-        
+
         _destroy: function() {
             this._unBindEvents();
         },
@@ -325,7 +325,7 @@
                         if(e.which === $.ui.keyCode.SPACE) {
                             var input = $(this),
                             box = input.parent().next();
-                            
+
                             $this._toggleItem(input.closest('li'));
 
                             e.preventDefault();
@@ -367,11 +367,11 @@
                 this.unselectItem(item);
             else
                 this.selectItem(item);
-            
+
             this.updateLabel();
             this.updateToggler();
         },
-        
+
         selectItem: function(item) {
             var checkbox = item.find('> .ui-chkbox');
             item.addClass('ui-state-highlight');
@@ -379,7 +379,7 @@
             checkbox.find('> .ui-chkbox-box > .ui-chkbox-icon').addClass('fa-check');
             this.choices.eq(item.index()).prop('selected', true);
         },
-        
+
         unselectItem: function(item) {
             var checkbox = item.find('> .ui-chkbox');
             item.removeClass('ui-state-highlight');
@@ -496,7 +496,7 @@
             else {
                 label = this.options.defaultLabel;
             }
-            
+
             this.label.text(label);
         },
 
@@ -520,7 +520,7 @@
             visibleItems.each(function() {
                 $this.selectItem($(this));
             });
-        
+
             this.toggler.find(':checkbox').prop('checked', true);
             this.togglerBox.children('.ui-chkbox-icon').addClass('fa-check');
         },
@@ -532,7 +532,7 @@
             visibleItems.each(function() {
                 $this.unselectItem($(this));
             });
-            
+
             this.toggler.find(':checkbox').prop('checked', false);
             this.togglerBox.children('.ui-chkbox-icon').removeClass('fa-check');
         },
@@ -551,5 +551,5 @@
                             });
         }
     });
-    
+
 }));
