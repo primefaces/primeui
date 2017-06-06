@@ -37,6 +37,10 @@
             } else {
                 this._bindEvents();
             }
+
+            if(this.label) {
+                this.label.addClass('ui-chkbox-label');
+            }
         },
         
         _bindEvents: function() {
