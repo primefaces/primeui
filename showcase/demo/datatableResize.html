@@ -5,7 +5,7 @@
                 Showcase.changePageWithLink($(this).attr('href'));
                 e.preventDefault();
             });
-        
+
             var localData = [
                 {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
                 {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
@@ -18,9 +18,8 @@
                 {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'},
                 {'brand': 'Fiat', 'year': 2013, 'color': 'Red', 'vin': '245t2s'}
             ];
-            
+
             $('#tblresizablefit').puidatatable({
-                caption: 'Fit Mode',
                 columns: [
                     {field: 'vin', headerText: 'Vin'},
                     {field: 'brand', headerText: 'Brand'},
@@ -30,9 +29,8 @@
                 datasource: localData,
                 resizableColumns: true
             });
-            
+
             $('#tblresizableexpand').puidatatable({
-                caption: 'Expand Mode',
                 columns: [
                     {field: 'vin', headerText: 'Vin'},
                     {field: 'brand', headerText: 'Brand'},
@@ -43,9 +41,9 @@
                 resizableColumns: true,
                 columnResizeMode: 'expand'
             });
-            
+
             $('#doc').puitabview();
-            
+
             $(document).one('onRouteChange', function() {
                 $('#doc').puitabview('destroy');
             });
@@ -56,7 +54,7 @@
             margin-bottom: 40px;
         }
     </style>
-    
+
     <div id="datatable-submenu" class="ContentSideSections SubSubMenu clearfix">
         <ul>
             <li><a href="datatable">&bull; DataSource</a></li>
@@ -84,9 +82,11 @@
         </div>
     </div>
 
-    <div class="content-section implementation">        
+    <div class="content-section implementation">
+        <h3 class="title title-short">Fit Mode</h3>
         <div id="tblresizablefit"></div>
-        
+
+        <h3 class="title title-short">Expand Mode</h3>
         <div id="tblresizableexpand"></div>
     </div>
 
@@ -99,7 +99,7 @@
                 </ul>
                 <div>
 
-                    <div id="doc-markup">                               
+                    <div id="doc-markup">
                         <pre name="code" class="brush:xml">
 &lt;div id="tblresizablefit"&gt;/&lt;/div&gt;
 
