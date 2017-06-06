@@ -308,11 +308,6 @@
 }
 
 /** MegaMenu and TieredMenus **/
-.ui-menuitem-active > .ui-submenu > ul,
-.ui-menuitem-active > .ui-megamenu-panel {
-    display: block !important;
-}
-
 .ui-menuitem-outline {
     outline: 1px dotted;
     z-index: 1;
