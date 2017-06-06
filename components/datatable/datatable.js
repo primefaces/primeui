@@ -437,9 +437,9 @@
                     $this._resetSortState(column);
                     $this.sort();
                 }
-                
+
                 column.data('order', sortOrder).addClass('ui-state-active');
-                
+
                 //update visuals
                 if(sortOrder === -1)
                     sortIcon.removeClass('fa-sort fa-sort-asc').addClass('fa-sort-desc');
@@ -1329,11 +1329,11 @@
 
                     var header = $this.options.stickyHeader ? $this.clone : $this.thead,
                         height = $this.options.scrollable ? $this.scrollBody.height() : header.parent().height() - header.height() - 1;
-                    
+
                     if($this.options.stickyHeader) {
                         height = height - $this.relativeHeight;
                     }
-                    
+
                     $this.resizerHelper.height(height);
                     $this.resizerHelper.show();
                 },
@@ -1645,7 +1645,7 @@
             this.clone = this.thead.clone(false);
             this.stickyContainer.children('table').append(this.thead);
             table.prepend(this.clone);
-            
+
             setTimeout(function() {
                 $this.stickyContainer.css({
                     position: 'absolute',
@@ -1655,9 +1655,9 @@
                     'z-index': ++PUI.zindex
                   });
             }, 5);
-            
+
             this.element.prepend(this.stickyContainer);
-            
+
             if(this.options.resizableColumns) {
                 this.relativeHeight = 0;
             }
@@ -1672,7 +1672,7 @@
                                             'top': '0px'
                                         })
                                         .addClass('ui-shadow ui-sticky');
-                                        
+
                     if($this.options.resizableColumns) {
                         $this.relativeHeight = scrollTop - tableOffset.top;
                     }
@@ -1688,11 +1688,11 @@
                                             'top': tableOffset.top
                                         })
                                         .removeClass('ui-shadow ui-sticky');
-                                        
+
                     if($this.stickyContainer.is(':hidden')) {
-                        $this.stickyContainer.show(); 
+                        $this.stickyContainer.show();
                     }
-                
+
                     if($this.options.resizableColumns) {
                         $this.relativeHeight = 0;
                     }
@@ -1821,16 +1821,16 @@
         editors: {
 
             'input': function() {
-                return $('<input type="text" class="ui-cell-editor"/>');
+                return $('<input type="text" class="ui-cell-editor ui-inputtext ui-widget ui-state-default ui-corner-all"/>');
             }
         },
-        
+
         reclone: function() {
             this.clone.remove();
             this.clone = this.thead.clone(false);
             this.element.find('.ui-datatable-tablewrapper > table').prepend(this.clone);
         },
-        
+
         _destroy: function() {
             if(this.options.scrollable) {
                 this.scrollBody.off('scroll.datatable');
@@ -1841,5 +1841,5 @@
         }
 
     });
-    
+
 }));
