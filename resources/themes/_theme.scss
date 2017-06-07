@@ -359,8 +359,14 @@
 }
 
 .ui-accordion {
-    .ui-accordion-header:not(.ui-state-active):not(.ui-state-disabled):hover {
-        @include hover-element();
+    .ui-accordion-header {
+        &.ui-state-default {
+            border: $stateDefaultBorderWidth solid $stateDefaultBorderColor;
+        }
+         
+        &:not(.ui-state-active):not(.ui-state-disabled):hover {
+            @include hover-element();
+        }
     }
 }
 
