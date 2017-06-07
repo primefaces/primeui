@@ -55,8 +55,11 @@
         },
         
         _bindEvents: function() {
-            var $this = this;
+            var $this = this,
+            closeIcons = this.navContainer.find('li .fa-close');
 
+            closeIcons.addClass('ui-tabview-close');
+            
             //Tab header events
             this.tabHeaders.on('click.puitabview', function(e) {
                         var element = $(this);
@@ -73,8 +76,7 @@
                     });
 
             //Closable tabs
-            this.navContainer.find('li .fa-close')
-                .on('click.puitabview', function(e) {
+            closeIcons.on('click.puitabview', function(e) {
                     var index = $(this).parent().index();
 
                     $this.remove(index);
