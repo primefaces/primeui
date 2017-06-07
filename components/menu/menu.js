@@ -236,7 +236,7 @@
                     listItem.before('<li class="ui-breadcrumb-chevron fa fa-chevron-right"></li>');
                 }
                 else {
-                    listItem.before('<li class="fa fa-home"></li>');
+                    listItem.before('<li class="ui-breadcrumb-home fa fa-home"></li>');
                 }
             });
         },
