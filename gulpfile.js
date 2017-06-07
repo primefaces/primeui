@@ -29,6 +29,27 @@ gulp.task('build-js-w', function() {
     });
 });    
     
+gulp.task('build-watch', function() {
+    return watch([
+        'components/core/core.js',
+		'components/**/*.js',
+        'components/**/*.css'
+    ], function() {
+        gulp.src([
+            'components/core/core.js',
+    		'components/**/*.js',
+        ])
+    	.pipe(concat('primeui.js'))
+    	.pipe(gulp.dest('build'));
+
+        gulp.src([
+		    'components/**/*.css'
+        ])
+	    .pipe(concat('primeui.css'))
+	    .pipe(gulp.dest('build'));
+    });
+}); 
+
 //Building only primeui.js
 gulp.task('build-js', function() {
 	gulp.src([
