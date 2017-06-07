@@ -525,7 +525,7 @@
 
             //adjust height within viewport
             submenu.css('height', 'auto');
-            if((submenuOffsetTop + submenu.outerHeight()) > win.height()) {
+            if((submenuOffsetTop + submenu.outerHeight()) > win.height() && !this.element.parent().hasClass('ui-menubar')) {
                 submenuCSS.overflow = 'auto';
                 submenuCSS.height = win.height() - (submenuOffsetTop + 20);
             }
