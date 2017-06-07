@@ -1415,6 +1415,7 @@
 
                 if(listItem.children('ul').length) {
                     listItem.addClass('ui-menu-parent');
+                    menuitemLink.prepend('<span class="ui-panelmenu-icon fa fa-fw fa-caret-right"></span>');
                     listItem.children('ul').addClass('ui-helper-hidden');
 
                     if(icon) {
