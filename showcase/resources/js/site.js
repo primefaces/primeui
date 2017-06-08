@@ -5,7 +5,7 @@ Showcase = {
     
     init: function() {
         this.menu = $('#layout-sidebar');
-        this.logo = $('.layout-logo');
+        this.logo = $('.layout-logo, .layout-logo-mobile');
         this.menuButton = $('#menu-button');
         this.mobileMenuButton = $('#menu-button-mobile');
         this.menu.perfectScrollbar({
