@@ -184,8 +184,13 @@ Showcase = {
     openPage: function(route) {
         $(document).trigger('onRouteChange');
 
+        var widgetdemo = $('#widgetdemo');
+        widgetdemo.children().css('visibility', 'hidden');
+        widgetdemo.fadeOut(50);
+
         $.get('showcase/demo/' + route + '.html', function(content) {
             $('#widgetdemo').html(content);
+            $('#widgetdemo').fadeIn(300);
         });
     },
     
