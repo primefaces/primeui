@@ -33,9 +33,9 @@
             
             input.puiinputtext().addClass('ui-spinner-input').wrap('<span class="ui-spinner ui-widget ui-corner-all" />');
             this.wrapper = input.parent();
-            this.wrapper.append('<a class="ui-spinner-button ui-spinner-up ui-corner-tr ui-button ui-widget ui-state-default ui-button-text-only"><span class="ui-button-text"><span class="fa fa-fw fa-caret-up"></span></span></a><a class="ui-spinner-button ui-spinner-down ui-corner-br ui-button ui-widget ui-state-default ui-button-text-only"><span class="ui-button-text"><span class="fa fa-fw fa-caret-down"></span></span></a>');
-            this.upButton = this.wrapper.children('a.ui-spinner-up');
-            this.downButton = this.wrapper.children('a.ui-spinner-down');
+            this.wrapper.append('<button type="button" class="ui-spinner-button ui-spinner-up ui-corner-tr ui-button ui-widget ui-state-default"><span class="fa fa-fw fa-caret-up"></span></button><button type="button" class="ui-spinner-button ui-spinner-down ui-corner-br ui-button ui-widget ui-state-default"><span class="fa fa-fw fa-caret-down"></span></button>');
+            this.upButton = this.wrapper.children('button.ui-spinner-up');
+            this.downButton = this.wrapper.children('button.ui-spinner-down');
             this.options.step = this.options.step||1;
             
             if(parseInt(this.options.step, 10) === 0) {
