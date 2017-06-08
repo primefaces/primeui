@@ -52,7 +52,7 @@
                         <h3 style="margin-bottom:20px;">Getting Started</h3>
                         <pre name="code" class="brush:js">
 $('#trmnl').puiterminal({
-handler: // function
+    handler: // function
 });
                         </pre>
 
@@ -111,20 +111,20 @@ handler: // function
                         <h3 style="margin-bottom:20px;">Javascript</h3>
                         <pre name="code" class="brush:js">
 $('#trmnl').puiterminal({
-welcomeMessage: 'Welcome to PrimeUI Terminal, how are you today?',
-handler: function(request, response) {
-if($.trim(request).length) {
-   if(request == 'date') {
-       response.call(this, new Date());
-   }
-   else if (request.indexOf('greet') === 0) {
-       response.call(this, 'Hello ' + request.split(' ')[1]);
-   }
-   else {
-       response.call(this, "Unknown command: " + request);
-   }
-}
-}
+    welcomeMessage: 'Welcome to PrimeUI Terminal, how are you today?',
+    handler: function(request, response) {
+        if($.trim(request).length) {
+           if(request == 'date') {
+               response.call(this, new Date());
+           }
+           else if (request.indexOf('greet') === 0) {
+               response.call(this, 'Hello ' + request.split(' ')[1]);
+           }
+           else {
+               response.call(this, "Unknown command: " + request);
+           }
+        }
+    }
 });
                         </pre>
                         

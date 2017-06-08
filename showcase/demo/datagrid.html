@@ -160,9 +160,9 @@
 
                         <pre name="code" class="brush:js">
 $('#grid').puidatagrid({
-datasource: [],
-content: function(data) {}
-...
+    datasource: [],
+    content: function(data) {}
+    ...
 });
                         </pre>
 
@@ -235,89 +235,89 @@ content: function(data) {}
                         <h3 style="margin-bottom:20px;">Javascript</h3>
                         <pre name="code" class="brush:js">
 $(function() {
-$('#localgrid').puidatagrid({
-paginator: {
-    rows: 9
-},
-header: 'Local Javascript Array',
-datasource: [
-    {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
-    {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
-    {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
-    {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
-    {'brand': 'Ford', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
-    {'brand': 'Fiat', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
-    {'brand': 'Honda', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
-    {'brand': 'Volvo', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
-    {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'},
-    {'brand': 'BMW', 'year': 2013, 'color': 'Red', 'vin': '245t2s'},
-    {'brand': 'Jaguar', 'year': 2011, 'color': 'Blue', 'vin': 'few234'},
-    {'brand': 'Ford', 'year': 2010, 'color': 'White', 'vin': 'bfnt23'},
-    {'brand': 'BMW', 'year': 2011, 'color': 'Green', 'vin': 'aad423'},
-    {'brand': 'Mercedes', 'year': 2012, 'color': 'Black', 'vin': 'vx23f2'},
-    {'brand': 'Fiat', 'year': 2014, 'color': 'Grey', 'vin': 'vxr23fd'},
-    {'brand': 'Renault', 'year': 2015, 'color': 'Blue', 'vin': 'vxc23f'},
-    {'brand': 'Volvo', 'year': 2015, 'color': 'Yellow', 'vin': 'vxcff4'},
-    {'brand': 'Volvo', 'year': 2015, 'color': 'White', 'vin': 'ht3w1d'},
-    {'brand': 'Renault', 'year': 2013, 'color': 'Black', 'vin': 'az12s2'},
-    {'brand': 'Fiat', 'year': 2015, 'color': 'Green', 'vin': 'ds12d1'},
-    {'brand': 'Volkswagen', 'year': 2001, 'color': 'Grey', 'vin': 'vsd3f2'},
-    {'brand': 'Volvo', 'year': 2011, 'color': 'Blue', 'vin': 'dsy4g22'},
-    {'brand': 'BMW', 'year': 1996, 'color': 'Black', 'vin': 'h3g254'},
-    {'brand': 'Audi', 'year': 2005, 'color': 'Red', 'vin': 'g54gwg'},
-    {'brand': 'Ford', 'year': 2011, 'color': 'Blue', 'vin': '14ffqf4'},
-    {'brand': 'BMW', 'year': 2015, 'color': 'Black', 'vin': 'h465he6'},
-    {'brand': 'Jaguar', 'year': 2010, 'color': 'White', 'vin': 'dsf4frt'},
-    {'brand': 'Jaguar', 'year': 2009, 'color': 'Red', 'vin': 'g6hehr'},
-],
-content: function(car) {
-    return $('&lt;div title="'+ car.vin + '"&gt;&lt;img src="showcase/resources/demo/images/car/' + car.brand + 
-            '.gif" /&gt;&lt;div class="car-detail"&gt;' + car.year + ' - ' + car.color  +'&lt;/div&gt;&lt;/div&gt;').puipanel();
-}
-});
-
-$('#remotegrid').puidatagrid({
-header: 'Remote Restful Webservice',
-paginator: {
-    rows: 9
-},
-datasource: function(callback) {
-    $.ajax({
-        type: "GET",
-        url: 'showcase/resources/data/cars-large.json',
-        dataType: "json",
-        context: this,
-        success: function(response) {
-            callback.call(this, response);
+    $('#localgrid').puidatagrid({
+        paginator: {
+            rows: 9
+        },
+        header: 'Local Javascript Array',
+        datasource: [
+            {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
+            {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
+            {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
+            {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
+            {'brand': 'Ford', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
+            {'brand': 'Fiat', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
+            {'brand': 'Honda', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
+            {'brand': 'Volvo', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
+            {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'},
+            {'brand': 'BMW', 'year': 2013, 'color': 'Red', 'vin': '245t2s'},
+            {'brand': 'Jaguar', 'year': 2011, 'color': 'Blue', 'vin': 'few234'},
+            {'brand': 'Ford', 'year': 2010, 'color': 'White', 'vin': 'bfnt23'},
+            {'brand': 'BMW', 'year': 2011, 'color': 'Green', 'vin': 'aad423'},
+            {'brand': 'Mercedes', 'year': 2012, 'color': 'Black', 'vin': 'vx23f2'},
+            {'brand': 'Fiat', 'year': 2014, 'color': 'Grey', 'vin': 'vxr23fd'},
+            {'brand': 'Renault', 'year': 2015, 'color': 'Blue', 'vin': 'vxc23f'},
+            {'brand': 'Volvo', 'year': 2015, 'color': 'Yellow', 'vin': 'vxcff4'},
+            {'brand': 'Volvo', 'year': 2015, 'color': 'White', 'vin': 'ht3w1d'},
+            {'brand': 'Renault', 'year': 2013, 'color': 'Black', 'vin': 'az12s2'},
+            {'brand': 'Fiat', 'year': 2015, 'color': 'Green', 'vin': 'ds12d1'},
+            {'brand': 'Volkswagen', 'year': 2001, 'color': 'Grey', 'vin': 'vsd3f2'},
+            {'brand': 'Volvo', 'year': 2011, 'color': 'Blue', 'vin': 'dsy4g22'},
+            {'brand': 'BMW', 'year': 1996, 'color': 'Black', 'vin': 'h3g254'},
+            {'brand': 'Audi', 'year': 2005, 'color': 'Red', 'vin': 'g54gwg'},
+            {'brand': 'Ford', 'year': 2011, 'color': 'Blue', 'vin': '14ffqf4'},
+            {'brand': 'BMW', 'year': 2015, 'color': 'Black', 'vin': 'h465he6'},
+            {'brand': 'Jaguar', 'year': 2010, 'color': 'White', 'vin': 'dsf4frt'},
+            {'brand': 'Jaguar', 'year': 2009, 'color': 'Red', 'vin': 'g6hehr'},
+        ],
+        content: function(car) {
+            return $('&lt;div title="'+ car.vin + '"&gt;&lt;img src="showcase/resources/demo/images/car/' + car.brand + 
+                    '.gif" /&gt;&lt;div class="car-detail"&gt;' + car.year + ' - ' + car.color  +'&lt;/div&gt;&lt;/div&gt;').puipanel();
         }
     });
-},
-template: $('#cartemplate')
-});
 
-$('#lazygrid').puidatagrid({
-header: 'Remote Restful Webservice - Lazy',
-lazy: true,
-paginator: {
-    rows: 9,
-    totalRecords: 200
-},
-datasource: function(callback, ui) {
-    var uri = 'showcase/resources/data/cars-large.json';
-
-    $.ajax({
-        type: "GET",
-        url: uri,
-        dataType: "json",
-        context: this,
-        success: function(response) {
-            //imitate lazy loading by slicing a new list from whole data, in real application the response should actually contain just the new chunk
-            callback.call(this, response.slice(ui.first, ui.first + 10));
-        }
+    $('#remotegrid').puidatagrid({
+        header: 'Remote Restful Webservice',
+        paginator: {
+            rows: 9
+        },
+        datasource: function(callback) {
+            $.ajax({
+                type: "GET",
+                url: 'showcase/resources/data/cars-large.json',
+                dataType: "json",
+                context: this,
+                success: function(response) {
+                    callback.call(this, response);
+                }
+            });
+        },
+        template: $('#cartemplate')
     });
-},
-template: $('#cartemplate')
-});
+
+    $('#lazygrid').puidatagrid({
+        header: 'Remote Restful Webservice - Lazy',
+        lazy: true,
+        paginator: {
+            rows: 9,
+            totalRecords: 200
+        },
+        datasource: function(callback, ui) {
+            var uri = 'showcase/resources/data/cars-large.json';
+
+            $.ajax({
+                type: "GET",
+                url: uri,
+                dataType: "json",
+                context: this,
+                success: function(response) {
+                    //imitate lazy loading by slicing a new list from whole data, in real application the response should actually contain just the new chunk
+                    callback.call(this, response.slice(ui.first, ui.first + 10));
+                }
+            });
+        },
+        template: $('#cartemplate')
+    });
 });
                         </pre>
 
@@ -330,15 +330,15 @@ template: $('#cartemplate')
 &lt;div id="lazygrid"&gt;&lt;/div&gt;
 
 &lt;template id="cartemplate"&gt;
-&lt;div class="ui-panel ui-widget ui-widget-content ui-corner-all"&gt;
-&lt;div class="ui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all"&gt;
-    &lt;span class="ui-panel-title"&gt;{{vin}}&lt;/span&gt;
-&lt;/div&gt;
-&lt;div class="ui-panel-content ui-widget-content"&gt;
-    &lt;img src="showcase/resources/demo/images/car/{{brand}}.gif"&gt;
-    &lt;div class="car-detail"&gt;{{year}} - {{color}}&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+    &lt;div class="ui-panel ui-widget ui-widget-content ui-corner-all"&gt;
+        &lt;div class="ui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all"&gt;
+            &lt;span class="ui-panel-title"&gt;{{vin}}&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="ui-panel-content ui-widget-content"&gt;
+            &lt;img src="showcase/resources/demo/images/car/{{brand}}.gif"&gt;
+            &lt;div class="car-detail"&gt;{{year}} - {{color}}&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
 &lt;/template&gt;
                         </pre>
                     </div>

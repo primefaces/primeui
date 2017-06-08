@@ -80,7 +80,7 @@ $('#dlg').puidialog();
 
                         <pre name="code" class="brush:xml">
 &lt;div id="dlg" title="Header"&gt;
-Content
+    Content
 &lt;/div&gt;
                         </pre>
                         
@@ -273,9 +273,9 @@ Content
                         <h3>Example</h3>
                         <pre name="code" class="brush:js">
 $('#dlg').puidialog({
-afterHide: function(event) {
-//...
-}
+    afterHide: function(event) {
+        //...
+    }
 });
                         </pre>
                         
@@ -320,37 +320,37 @@ $('#dlg').puidialog('show');
                         <h3 style="margin-bottom:20px;">Javascript</h3>
                         <pre name="code" class="brush:js">
 $(function() {
-$('#dlg').puidialog({
-showEffect: 'fade',
-hideEffect: 'fade',
-minimizable: true,
-maximizable: true,
-responsive: true,
-minWidth: 200,
-modal: true,
-buttons: [{
-        text: 'Yes',
-        icon: 'fa-check',
-        click: function() {
-            $('#dlg').puidialog('hide');
-        }
-    },
-    {
-        text: 'No',
-        icon: 'fa-close',
-        click: function() {
-            $('#dlg').puidialog('hide');
-        }
-    }
-]
-});
+    $('#dlg').puidialog({
+        showEffect: 'fade',
+        hideEffect: 'fade',
+        minimizable: true,
+        maximizable: true,
+        responsive: true,
+        minWidth: 200,
+        modal: true,
+        buttons: [{
+                text: 'Yes',
+                icon: 'fa-check',
+                click: function() {
+                    $('#dlg').puidialog('hide');
+                }
+            },
+            {
+                text: 'No',
+                icon: 'fa-close',
+                click: function() {
+                    $('#dlg').puidialog('hide');
+                }
+            }
+        ]
+    });
 
-$('#btn-show').puibutton({
-icon: 'fa-external-link-square',
-click: function() {
-    $('#dlg').puidialog('show');
-}
-});
+    $('#btn-show').puibutton({
+        icon: 'fa-external-link-square',
+        click: function() {
+            $('#dlg').puidialog('show');
+        }
+    });
 });
                         </pre>
 

@@ -428,9 +428,9 @@ $('#list').puicarousel();
                         <h3>Example</h3>
                         <pre name="code" class="brush:js">
 $('#default').puicarousel({
-pageChange: function(event, ui) {
-//...
-}
+    pageChange: function(event, ui) {
+        //...
+    }
 });
                         </pre>
                         
@@ -472,60 +472,60 @@ $('#default').puicarousel('setPage', 3);
                         <h3 style="margin-bottom:20px;">Javascript</h3>
                         <pre class="brush:js">
 $(function() {
-var cars = [
-{'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
-{'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
-{'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
-{'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
-{'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
-{'brand': 'Jaguar', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
-{'brand': 'BMW', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
-{'brand': 'Fiat', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
-{'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'}
-];
+    var cars = [
+        {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
+        {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
+        {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
+        {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
+        {'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
+        {'brand': 'Jaguar', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
+        {'brand': 'BMW', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
+        {'brand': 'Fiat', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
+        {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'}
+        ];
 
-$('#cars1').puicarousel({
-headerText: 'Local Javascript Array',
-datasource: cars,
-itemContent: function(car) {
-    var content = $('&lt;div class="ui-grid ui-grid-responsive"&gt;&lt;/div&gt;');
-    content.append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/' + car.brand +  '.gif" /&gt;&lt;/div&gt;')
-            .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.vin + ' &lt;/div&gt;&lt;/div&gt;')
-            .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.year + ' &lt;/div&gt;&lt;/div&gt;')
-            .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.color + ' &lt;/div&gt;&lt;/div&gt;');
+    $('#cars1').puicarousel({
+        headerText: 'Local Javascript Array',
+        datasource: cars,
+        itemContent: function(car) {
+            var content = $('&lt;div class="ui-grid ui-grid-responsive"&gt;&lt;/div&gt;');
+            content.append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/' + car.brand +  '.gif" /&gt;&lt;/div&gt;')
+                    .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.vin + ' &lt;/div&gt;&lt;/div&gt;')
+                    .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.year + ' &lt;/div&gt;&lt;/div&gt;')
+                    .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.color + ' &lt;/div&gt;&lt;/div&gt;');
 
-    return content;
-}
-});
-
-$('#cars2').puicarousel({
-headerText: 'Remote DataSource',
-pageLinks: 5,
-datasource: function(callback) {
-    $.ajax({
-        type: "GET",
-        url: 'showcase/resources/data/cars-medium.json',
-        dataType: "json",
-        context: this,
-        success: function(response) {
-            callback.call(this, response.slice(0,15));
+            return content;
         }
     });
-},
-itemContent: function(car) {
-    var content = $('&lt;div class="ui-grid ui-grid-responsive"&gt;&lt;/div&gt;');
-    content.append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/' + car.brand +  '.gif" /&gt;&lt;/div&gt;')
-            .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.vin + ' &lt;/div&gt;&lt;/div&gt;')
-            .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.year + ' &lt;/div&gt;&lt;/div&gt;')
-            .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.color + ' &lt;/div&gt;&lt;/div&gt;');
 
-    return content.html();
-}
-});
+    $('#cars2').puicarousel({
+        headerText: 'Remote DataSource',
+        pageLinks: 5,
+        datasource: function(callback) {
+            $.ajax({
+                type: "GET",
+                url: 'showcase/resources/data/cars-medium.json',
+                dataType: "json",
+                context: this,
+                success: function(response) {
+                    callback.call(this, response.slice(0,15));
+                }
+            });
+        },
+        itemContent: function(car) {
+            var content = $('&lt;div class="ui-grid ui-grid-responsive"&gt;&lt;/div&gt;');
+            content.append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/' + car.brand +  '.gif" /&gt;&lt;/div&gt;')
+                    .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.vin + ' &lt;/div&gt;&lt;/div&gt;')
+                    .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.year + ' &lt;/div&gt;&lt;/div&gt;')
+                    .append('&lt;div class="ui-grid-row"&gt;&lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;&lt;div class="ui-grid-col-6"&gt;' + car.color + ' &lt;/div&gt;&lt;/div&gt;');
 
-$('#cars3').puicarousel({
-headerText: 'Enhanced Markup'
-});
+            return content.html();
+        }
+    });
+
+    $('#cars3').puicarousel({
+        headerText: 'Enhanced Markup'
+    });
 });
                         </pre>
                         
@@ -536,186 +536,186 @@ headerText: 'Enhanced Markup'
 &lt;ul id="cars2"&gt;&lt;/ul&gt;
 
 &lt;ul id="cars3"&gt;
-&lt;li&gt;
-&lt;div class="ui-grid ui-grid-responsive"&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/Volkswagen.gif"&gt;
+    &lt;li&gt;
+        &lt;div class="ui-grid ui-grid-responsive"&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/Volkswagen.gif"&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;dsad231ff &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;2012 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;White &lt;/div&gt;
+            &lt;/div&gt;
         &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
-        &lt;div class="ui-grid-col-6"&gt;dsad231ff &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
-        &lt;div class="ui-grid-col-6"&gt;2012 &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
-        &lt;div class="ui-grid-col-6"&gt;White &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;div class="ui-grid ui-grid-responsive"&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/Audi.gif"&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div class="ui-grid ui-grid-responsive"&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/Audi.gif"&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;gwregre345 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;2011 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;Black &lt;/div&gt;
+            &lt;/div&gt;
         &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
-        &lt;div class="ui-grid-col-6"&gt;gwregre345 &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
-        &lt;div class="ui-grid-col-6"&gt;2011 &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
-        &lt;div class="ui-grid-col-6"&gt;Black &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;div class="ui-grid ui-grid-responsive"&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/Renault.gif"&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div class="ui-grid ui-grid-responsive"&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/Renault.gif"&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;h354htr &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;2005 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;Gray &lt;/div&gt;
+            &lt;/div&gt;
         &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
-        &lt;div class="ui-grid-col-6"&gt;h354htr &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
-        &lt;div class="ui-grid-col-6"&gt;2005 &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
-        &lt;div class="ui-grid-col-6"&gt;Gray &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;div class="ui-grid ui-grid-responsive"&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/BMW.gif"&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div class="ui-grid ui-grid-responsive"&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/BMW.gif"&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;j6w54qgh &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;2003 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;Blue &lt;/div&gt;
+            &lt;/div&gt;
         &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
-        &lt;div class="ui-grid-col-6"&gt;j6w54qgh &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
-        &lt;div class="ui-grid-col-6"&gt;2003 &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
-        &lt;div class="ui-grid-col-6"&gt;Blue &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;div class="ui-grid ui-grid-responsive"&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/Mercedes.gif"&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div class="ui-grid ui-grid-responsive"&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/Mercedes.gif"&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;hrtwy34 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;1995 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;White &lt;/div&gt;
+            &lt;/div&gt;
         &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
-        &lt;div class="ui-grid-col-6"&gt;hrtwy34 &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
-        &lt;div class="ui-grid-col-6"&gt;1995 &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
-        &lt;div class="ui-grid-col-6"&gt;White &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;div class="ui-grid ui-grid-responsive"&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/Jaguar.gif"&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div class="ui-grid ui-grid-responsive"&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/Jaguar.gif"&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;jejtyj &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;2005 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;Black &lt;/div&gt;
+            &lt;/div&gt;
         &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
-        &lt;div class="ui-grid-col-6"&gt;jejtyj &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
-        &lt;div class="ui-grid-col-6"&gt;2005 &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
-        &lt;div class="ui-grid-col-6"&gt;Black &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;div class="ui-grid ui-grid-responsive"&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/BMW.gif"&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div class="ui-grid ui-grid-responsive"&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/BMW.gif"&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;g43gr &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;2012 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;Yellow &lt;/div&gt;
+            &lt;/div&gt;
         &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
-        &lt;div class="ui-grid-col-6"&gt;g43gr &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
-        &lt;div class="ui-grid-col-6"&gt;2012 &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
-        &lt;div class="ui-grid-col-6"&gt;Yellow &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;li class="ui-carousel-item ui-widget-content ui-corner-all" style="width: 349px;"&gt;
-&lt;div class="ui-grid ui-grid-responsive"&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/Fiat.gif"&gt;
+    &lt;/li&gt;
+    &lt;li class="ui-carousel-item ui-widget-content ui-corner-all" style="width: 349px;"&gt;
+        &lt;div class="ui-grid ui-grid-responsive"&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/Fiat.gif"&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;greg34 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;2013 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;White &lt;/div&gt;
+            &lt;/div&gt;
         &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
-        &lt;div class="ui-grid-col-6"&gt;greg34 &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
-        &lt;div class="ui-grid-col-6"&gt;2013 &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
-        &lt;div class="ui-grid-col-6"&gt;White &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;div class="ui-grid ui-grid-responsive"&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/Ford.gif"&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div class="ui-grid ui-grid-responsive"&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-12"&gt;&lt;img src="showcase/resources/demo/images/car/Ford.gif"&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;h54hw5 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;2000 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="ui-grid-row"&gt;
+                &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
+                &lt;div class="ui-grid-col-6"&gt;Black &lt;/div&gt;
+            &lt;/div&gt;
         &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-6"&gt;Vin&lt;/div&gt;
-        &lt;div class="ui-grid-col-6"&gt;h54hw5 &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-6"&gt;Year&lt;/div&gt;
-        &lt;div class="ui-grid-col-6"&gt;2000 &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="ui-grid-row"&gt;
-        &lt;div class="ui-grid-col-6"&gt;Color&lt;/div&gt;
-        &lt;div class="ui-grid-col-6"&gt;Black &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;/li&gt;
+    &lt;/li&gt;
 &lt;/ul&gt;           
                         </pre>
                     </div>

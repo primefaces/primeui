@@ -199,155 +199,155 @@
             <h3 style="margin-bottom:20px;">Javascript</h3>
            <pre name="code" class="brush:js">
 $(function() {
-var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
-            'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
-            'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
-            'ui-darkness', 'ui-lightness', 'vader');
+    var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
+                'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
+                'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
+                'ui-darkness', 'ui-lightness', 'vader');
 
-$('#it').puiinputtext();
+    $('#it').puiinputtext();
 
-$('#ita').puiinputtext();
+    $('#ita').puiinputtext();
 
-$('#btn').puibutton();
+    $('#btn').puibutton();
 
-$('#lbox').puilistbox({
-    data: themes
-});
+    $('#lbox').puilistbox({
+        data: themes
+    });
 
-$('#pnl').puipanel();
+    $('#pnl').puipanel();
 
-$('#tbl').puidatatable({
-    caption: 'Cars',
-    responsive: true,
-    columns: [
-        {field: 'vin', headerText: 'Vin'},
-        {field: 'brand', headerText: 'Brand'},
-        {field: 'year', headerText: 'Year'},
-        {field: 'color', headerText: 'Color'}
-    ],
-    datasource: [
-        {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
-        {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
-        {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
-        {'brand': 'Bmw', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
-        {'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
-        {'brand': 'Opel', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
-        {'brand': 'Honda', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
-        {'brand': 'Chevrolet', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
-        {'brand': 'Opel', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'},
-        {'brand': 'Mazda', 'year': 2013, 'color': 'Red', 'vin': '245t2s'}
-    ]
-});
+    $('#tbl').puidatatable({
+        caption: 'Cars',
+        responsive: true,
+        columns: [
+            {field: 'vin', headerText: 'Vin'},
+            {field: 'brand', headerText: 'Brand'},
+            {field: 'year', headerText: 'Year'},
+            {field: 'color', headerText: 'Color'}
+        ],
+        datasource: [
+            {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
+            {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
+            {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
+            {'brand': 'Bmw', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
+            {'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
+            {'brand': 'Opel', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
+            {'brand': 'Honda', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
+            {'brand': 'Chevrolet', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
+            {'brand': 'Opel', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'},
+            {'brand': 'Mazda', 'year': 2013, 'color': 'Red', 'vin': '245t2s'}
+        ]
+    });
 
-$('#dlgbtn').puibutton({
-    icon: 'fa-external-link',
-    click: function() {
-        $('#dlg').puidialog('show');
-    }
-});
+    $('#dlgbtn').puibutton({
+        icon: 'fa-external-link',
+        click: function() {
+            $('#dlg').puidialog('show');
+        }
+    });
 
-$('#dlg').puidialog({
-    responsive: true
-});
+    $('#dlg').puidialog({
+        responsive: true
+    });
 
-$('#dd').puidropdown({
-    appendTo: 'self'
-});
+    $('#dd').puidropdown({
+        appendTo: 'self'
+    });
 
-$('#dtgrid').puidatagrid({
-    header: 'DataGrid',
-    datasource: [
-        {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
-        {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
-        {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
-        {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
-        {'brand': 'Ford', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
-        {'brand': 'Fiat', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
-        {'brand': 'Honda', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
-        {'brand': 'Volvo', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
-        {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'}
-    ],
-    content: function(car) {
-        return $('&lt;div title="'+ car.vin + '"&gt;&lt;img src="resources/demo/images/car/' + car.brand + 
-                '.gif" /&gt;&lt;div class="car-detail"&gt;' + car.year + ' - ' + car.color  +'&lt;/div&gt;&lt;/div&gt;').puipanel();
-    }
-});
+    $('#dtgrid').puidatagrid({
+        header: 'DataGrid',
+        datasource: [
+            {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
+            {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
+            {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
+            {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
+            {'brand': 'Ford', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
+            {'brand': 'Fiat', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
+            {'brand': 'Honda', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
+            {'brand': 'Volvo', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
+            {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'}
+        ],
+        content: function(car) {
+            return $('&lt;div title="'+ car.vin + '"&gt;&lt;img src="resources/demo/images/car/' + car.brand + 
+                    '.gif" /&gt;&lt;div class="car-detail"&gt;' + car.year + ' - ' + car.color  +'&lt;/div&gt;&lt;/div&gt;').puipanel();
+        }
+    });
 });
            </pre>
             
             <h3 style="margin-bottom:20px;">HTML</h3>
            <pre name="code" class="brush:xml">
 &lt;div class="ui-grid ui-grid-responsive"&gt;
-&lt;div class="ui-grid-row"&gt;
-    &lt;div class="ui-grid-col-2"&gt;
-        InputText
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-2"&gt;
+            InputText
+        &lt;/div&gt;
+        &lt;div class="ui-grid-col-10"&gt;
+            &lt;input id="it" type="text" /&gt;
+        &lt;/div&gt;
     &lt;/div&gt;
-    &lt;div class="ui-grid-col-10"&gt;
-        &lt;input id="it" type="text" /&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-2"&gt;
+            InputTextarea
+        &lt;/div&gt;
+        &lt;div class="ui-grid-col-10"&gt;
+            &lt;textarea id="ita" type="text"&gt;&lt;/textarea&gt;
+        &lt;/div&gt;
     &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ui-grid-row"&gt;
-    &lt;div class="ui-grid-col-2"&gt;
-        InputTextarea
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-2"&gt;
+            Button
+        &lt;/div&gt;
+        &lt;div class="ui-grid-col-10"&gt;
+            &lt;button id="btn" type="button"&gt;Save&lt;/button&gt;
+        &lt;/div&gt;
     &lt;/div&gt;
-    &lt;div class="ui-grid-col-10"&gt;
-        &lt;textarea id="ita" type="text"&gt;&lt;/textarea&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-2"&gt;
+            Dropdown
+        &lt;/div&gt;
+        &lt;div class="ui-grid-col-10"&gt;
+            &lt;select id="dd" name="dd"&gt;
+                &lt;option value="0"&gt;Select One&lt;/option&gt;
+                &lt;option value="1"&gt;Option 1&lt;/option&gt;
+                &lt;option value="2"&gt;Option 2&lt;/option&gt;
+                &lt;option value="3"&gt;Option 3&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/div&gt;
     &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ui-grid-row"&gt;
-    &lt;div class="ui-grid-col-2"&gt;
-        Button
-    &lt;/div&gt;
-    &lt;div class="ui-grid-col-10"&gt;
-        &lt;button id="btn" type="button"&gt;Save&lt;/button&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ui-grid-row"&gt;
-    &lt;div class="ui-grid-col-2"&gt;
-        Dropdown
-    &lt;/div&gt;
-    &lt;div class="ui-grid-col-10"&gt;
-        &lt;select id="dd" name="dd"&gt;
-            &lt;option value="0"&gt;Select One&lt;/option&gt;
-            &lt;option value="1"&gt;Option 1&lt;/option&gt;
-            &lt;option value="2"&gt;Option 2&lt;/option&gt;
-            &lt;option value="3"&gt;Option 3&lt;/option&gt;
-        &lt;/select&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
 
-&lt;div class="ui-grid-row"&gt;
-    &lt;div class="ui-grid-col-2"&gt;
-        Listbox
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-2"&gt;
+            Listbox
+        &lt;/div&gt;
+        &lt;div class="ui-grid-col-10"&gt;
+            &lt;select id="lbox"&gt;&lt;/select&gt;
+        &lt;/div&gt;
     &lt;/div&gt;
-    &lt;div class="ui-grid-col-10"&gt;
-        &lt;select id="lbox"&gt;&lt;/select&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-2"&gt;
+            Dialog
+        &lt;/div&gt;
+        &lt;div class="ui-grid-col-10"&gt;
+            &lt;button id="dlgbtn" type="button"&gt;Show&lt;/button&gt;
+        &lt;/div&gt;
     &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="ui-grid-row"&gt;
-    &lt;div class="ui-grid-col-2"&gt;
-        Dialog
-    &lt;/div&gt;
-    &lt;div class="ui-grid-col-10"&gt;
-        &lt;button id="dlgbtn" type="button"&gt;Show&lt;/button&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
 &lt;/div&gt;
 
 &lt;div id="dlg" title="Godfather I"&gt;
-&lt;p&gt;The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
-    His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. 
-    Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, 
-    kind and benevolent to those who give respect, 
-    but given to ruthless violence whenever anything stands against the good of the family.&lt;/p&gt;
+    &lt;p&gt;The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
+        His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. 
+        Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, 
+        kind and benevolent to those who give respect, 
+        but given to ruthless violence whenever anything stands against the good of the family.&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;div id="pnl" title="Panel" style="margin-top:20px"&gt;
-The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
-His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. 
-Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, 
-kind and benevolent to those who give respect, 
-but given to ruthless violence whenever anything stands against the good of the family.
+    The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
+    His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. 
+    Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, 
+    kind and benevolent to those who give respect, 
+    but given to ruthless violence whenever anything stands against the good of the family.
 &lt;/div&gt;
 
 &lt;div id="tbl" style="margin-top:20px"&gt;&lt;/div&gt;

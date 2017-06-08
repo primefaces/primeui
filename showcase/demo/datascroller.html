@@ -112,9 +112,9 @@
 
                         <pre name="code" class="brush:js">
 $('#grid').puidatagrid({
-datasource: [],
-content: function(data) {}
-...
+    datasource: [],
+    content: function(data) {}
+    ...
 });
                         </pre>
 
@@ -202,21 +202,21 @@ content: function(data) {}
                         <h3 style="margin-bottom:20px">Javascript</h3>
                         <pre name="code" class="brush:js">
 $("#ds").puidatascroller({
-header:'Scroll Down to Load More Cars',
-chunkSize: 10,
-datasource: function (callback) {
-$.ajax({
-    type: "GET",
-    url: 'showcase/resources/data/cars-large.json',
-    dataType: "json",
-    context: this,
-    success: function (response) {
-        callback.call(this, response);
-    }
-});
-},
-mode:'document',
-template: $('#cartemplate')
+    header:'Scroll Down to Load More Cars',
+    chunkSize: 10,
+    datasource: function (callback) {
+    $.ajax({
+        type: "GET",
+        url: 'showcase/resources/data/cars-large.json',
+        dataType: "json",
+        context: this,
+        success: function (response) {
+            callback.call(this, response);
+        }
+    });
+    },
+    mode:'document',
+    template: $('#cartemplate')
 });
                         </pre>
 
@@ -225,41 +225,41 @@ template: $('#cartemplate')
 &lt;div id="ds"&gt;&lt;/div&gt;
 
 &lt;template id="cartemplate"&gt;
-&lt;div class="ui-grid"&gt;
-&lt;div class="ui-grid-row"&gt;
-    &lt;div class="ui-grid-col-3"&gt;
-        &lt;img src="showcase/resources/demo/images/car/{{brand}}-big.gif" /&gt;
-    &lt;/div&gt;
-    &lt;div class="ui-grid-col-12" style="padding-top:20px"&gt;
-        &lt;div class="ui-grid"&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-2"&gt;
-                    &lt;span style="font-size:24px"&gt;Vin:&lt;/span&gt;
-                &lt;/div&gt;
-                &lt;div class="ui-grid-col-10"&gt;
-                    &lt;span style="font-size:24px;font-weight:bold"&gt;{{vin}}&lt;/span&gt;
-                &lt;/div&gt;
+    &lt;div class="ui-grid"&gt;
+        &lt;div class="ui-grid-row"&gt;
+            &lt;div class="ui-grid-col-3"&gt;
+                &lt;img src="showcase/resources/demo/images/car/{{brand}}-big.gif" /&gt;
             &lt;/div&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-2"&gt;
-                    &lt;span style="font-size:24px"&gt;Year:&lt;/span&gt;
-                &lt;/div&gt;
-                &lt;div class="ui-grid-col-10"&gt;
-                    &lt;span style="font-size:24px;font-weight:bold"&gt;{{year}}&lt;/span&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class="ui-grid-row"&gt;
-                &lt;div class="ui-grid-col-2"&gt;
-                    &lt;span style="font-size:24px"&gt;Color:&lt;/span&gt;
-                &lt;/div&gt;
-                &lt;div class="ui-grid-col-10"&gt;
-                    &lt;span style="font-size:24px;font-weight:bold"&gt;{{color}}&lt;/span&gt;
+            &lt;div class="ui-grid-col-12" style="padding-top:20px"&gt;
+                &lt;div class="ui-grid"&gt;
+                    &lt;div class="ui-grid-row"&gt;
+                        &lt;div class="ui-grid-col-2"&gt;
+                            &lt;span style="font-size:24px"&gt;Vin:&lt;/span&gt;
+                        &lt;/div&gt;
+                        &lt;div class="ui-grid-col-10"&gt;
+                            &lt;span style="font-size:24px;font-weight:bold"&gt;{{vin}}&lt;/span&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class="ui-grid-row"&gt;
+                        &lt;div class="ui-grid-col-2"&gt;
+                            &lt;span style="font-size:24px"&gt;Year:&lt;/span&gt;
+                        &lt;/div&gt;
+                        &lt;div class="ui-grid-col-10"&gt;
+                            &lt;span style="font-size:24px;font-weight:bold"&gt;{{year}}&lt;/span&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class="ui-grid-row"&gt;
+                        &lt;div class="ui-grid-col-2"&gt;
+                            &lt;span style="font-size:24px"&gt;Color:&lt;/span&gt;
+                        &lt;/div&gt;
+                        &lt;div class="ui-grid-col-10"&gt;
+                            &lt;span style="font-size:24px;font-weight:bold"&gt;{{color}}&lt;/span&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
         &lt;/div&gt;
     &lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 &lt;/template&gt;
                         </pre>
                     </div>

@@ -175,9 +175,9 @@ $('#default').puiinputtextarea();
                         <h3>Example</h3>
                         <pre class="brush: js">
 $('#default').puiinputtextarea({
-itemselect: function(event, item) {
-//...
-}
+    itemselect: function(event, item) {
+        //...
+    }
 });
                         </pre>
                         
@@ -218,35 +218,35 @@ $('#default').puiinputtextarea('hide');
                         <pre name="code" class="brush:js">
 &lt;script type="text/javascript"&gt;
 $(function() {
-$('#basic').puiinputtextarea();
+    $('#basic').puiinputtextarea();
 
-$('#resize').puiinputtextarea({autoResize:true});
+    $('#resize').puiinputtextarea({autoResize:true});
 
-$('#counter').puiinputtextarea({counter:$('#display'), counterTemplate:'{0} characters remaining.', maxlength:10});
+    $('#counter').puiinputtextarea({counter:$('#display'), counterTemplate:'{0} characters remaining.', maxlength:10});
 
-$('#ac').puiinputtextarea({
-autoComplete:true,
-scrollHeight:150,
-minQueryLength: 2,
-completeSource: function(request, response) {
-    //in a real application, make a call to a remote url by passing the request.query as parameter
-    $.ajax({
-        type: "GET",
-        url: 'showcase/resources/data/themes.json',
-        dataType: "json",
-        context: this,
-        success: function(data) {
-            var filtered = [];
-            for(var i = 0; i < data.length; i++) {
-                if(data[i].label.indexOf(request.query) === 0) {
-                    filtered.push(data[i]);
+    $('#ac').puiinputtextarea({
+        autoComplete:true,
+        scrollHeight:150,
+        minQueryLength: 2,
+        completeSource: function(request, response) {
+            //in a real application, make a call to a remote url by passing the request.query as parameter
+            $.ajax({
+                type: "GET",
+                url: 'showcase/resources/data/themes.json',
+                dataType: "json",
+                context: this,
+                success: function(data) {
+                    var filtered = [];
+                    for(var i = 0; i < data.length; i++) {
+                        if(data[i].label.indexOf(request.query) === 0) {
+                            filtered.push(data[i]);
+                        }
+                    }
+                    response.call(this, filtered);
                 }
-            }
-            response.call(this, filtered);
+            });
         }
     });
-}
-});
 
 });
 &lt;/script&gt;

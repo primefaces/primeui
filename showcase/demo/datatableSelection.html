@@ -137,69 +137,69 @@
                     <div id="doc-script">
                         <pre name="code" class="brush:js">
 $(function() {
-$('#tblsingle').puidatatable({
-caption: 'Single Selection',
-paginator: {
-    rows: 10
-},
-columns: [
-    {field: 'vin', headerText: 'Vin'},
-    {field: 'brand', headerText: 'Brand'},
-    {field: 'year', headerText: 'Year'},
-    {field: 'color', headerText: 'Color'}
-],
-datasource: function(callback) {
-    $.ajax({
-        type: "GET",
-        url: 'showcase/resources/data/cars-medium.json',
-        dataType: "json",
-        context: this,
-        success: function(response) {
-            callback.call(this, response);
+    $('#tblsingle').puidatatable({
+        caption: 'Single Selection',
+        paginator: {
+            rows: 10
+        },
+        columns: [
+            {field: 'vin', headerText: 'Vin'},
+            {field: 'brand', headerText: 'Brand'},
+            {field: 'year', headerText: 'Year'},
+            {field: 'color', headerText: 'Color'}
+        ],
+        datasource: function(callback) {
+            $.ajax({
+                type: "GET",
+                url: 'showcase/resources/data/cars-medium.json',
+                dataType: "json",
+                context: this,
+                success: function(response) {
+                    callback.call(this, response);
+                }
+            });
+        },
+        selectionMode: 'single',
+        rowSelect: function(event, data) {
+            $('#messages').puigrowl('show', [{severity: 'info', summary: 'Row Selected', detail: (data.brand + ' ' + data.vin)}]);
+        },
+        rowUnselect: function(event, data) {
+            $('#messages').puigrowl('show', [{severity: 'info', summary: 'Row Unselected', detail: (data.brand + ' ' + data.vin)}]);
         }
     });
-},
-selectionMode: 'single',
-rowSelect: function(event, data) {
-    $('#messages').puigrowl('show', [{severity: 'info', summary: 'Row Selected', detail: (data.brand + ' ' + data.vin)}]);
-},
-rowUnselect: function(event, data) {
-    $('#messages').puigrowl('show', [{severity: 'info', summary: 'Row Unselected', detail: (data.brand + ' ' + data.vin)}]);
-}
-});
 
-$('#tblmultiple').puidatatable({
-caption: 'Multiple Selection with Metakey',
-paginator: {
-    rows: 10
-},
-columns: [
-    {field: 'vin', headerText: 'Vin'},
-    {field: 'brand', headerText: 'Brand'},
-    {field: 'year', headerText: 'Year'},
-    {field: 'color', headerText: 'Color'}
-],
-datasource: function(callback) {
-    $.ajax({
-        type: "GET",
-        url: 'showcase/resources/data/cars-medium.json',
-        dataType: "json",
-        context: this,
-        success: function(response) {
-            callback.call(this, response);
+    $('#tblmultiple').puidatatable({
+        caption: 'Multiple Selection with Metakey',
+        paginator: {
+            rows: 10
+        },
+        columns: [
+            {field: 'vin', headerText: 'Vin'},
+            {field: 'brand', headerText: 'Brand'},
+            {field: 'year', headerText: 'Year'},
+            {field: 'color', headerText: 'Color'}
+        ],
+        datasource: function(callback) {
+            $.ajax({
+                type: "GET",
+                url: 'showcase/resources/data/cars-medium.json',
+                dataType: "json",
+                context: this,
+                success: function(response) {
+                    callback.call(this, response);
+                }
+            });
+        },
+        selectionMode: 'multiple',
+        rowSelect: function(event, data) {
+            $('#messages').puigrowl('show', [{severity: 'info', summary: 'Row Selected', detail: (data.brand + ' ' + data.vin)}]);
+        },
+        rowUnselect: function(event, data) {
+            $('#messages').puigrowl('show', [{severity: 'info', summary: 'Row Unselected', detail: (data.brand + ' ' + data.vin)}]);
         }
     });
-},
-selectionMode: 'multiple',
-rowSelect: function(event, data) {
-    $('#messages').puigrowl('show', [{severity: 'info', summary: 'Row Selected', detail: (data.brand + ' ' + data.vin)}]);
-},
-rowUnselect: function(event, data) {
-    $('#messages').puigrowl('show', [{severity: 'info', summary: 'Row Unselected', detail: (data.brand + ' ' + data.vin)}]);
-}
-});
 
-$('#messages').puigrowl();
+    $('#messages').puigrowl();
 });
                         </pre>
                     </div>

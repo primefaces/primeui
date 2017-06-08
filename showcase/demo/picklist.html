@@ -85,8 +85,8 @@ $('#pick').puipicklist();
 
                         <pre name="code" class="brush:xml">
 &lt;div id="pick"&gt;
-&lt;select&gt;&lt;/select&gt;
-&lt;select&gt;&lt;/select&gt;
+    &lt;select&gt;&lt;/select&gt;
+    &lt;select&gt;&lt;/select&gt;
 &lt;/div&gt;
                         </pre>
                         
@@ -296,16 +296,16 @@ var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-t
 $('#basic').puipicklist();
 
 $('#advanced').puipicklist({
-showSourceControls: true,
-showTargetControls: true,
-sourceCaption: 'Available',
-targetCaption: 'Selected',
-filter: true,
-responsive: true,
-sourceData: themes,
-content: function(option) {
-    return '&lt;img src="showcase/resources/demo/images/themes/' + option.label + '.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;' + option.label + '&lt;/span&gt;';
-}
+    showSourceControls: true,
+    showTargetControls: true,
+    sourceCaption: 'Available',
+    targetCaption: 'Selected',
+    filter: true,
+    responsive: true,
+    sourceData: themes,
+    content: function(option) {
+        return '&lt;img src="showcase/resources/demo/images/themes/' + option.label + '.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;' + option.label + '&lt;/span&gt;';
+    }
 });
                         </pre>
 
@@ -313,27 +313,27 @@ content: function(option) {
                         <pre name="code" class="brush:xml">
 &lt;h3 class="first"&gt;Basic&lt;/h3&gt;
 &lt;div id="basic"&gt;
-&lt;select name="source1"&gt;
-&lt;option value="1"&gt;Volkswagen&lt;/option&gt;
-&lt;option value="2"&gt;Ford&lt;/option&gt;
-&lt;option value="3"&gt;Mercedes&lt;/option&gt;
-&lt;option value="4"&gt;Audi&lt;/option&gt;
-&lt;option value="5"&gt;BMW&lt;/option&gt;
-&lt;option value="6"&gt;Honda&lt;/option&gt;
-&lt;option value="7"&gt;Porsche&lt;/option&gt;
-&lt;option value="8"&gt;Chevrolet&lt;/option&gt;
-&lt;option value="9"&gt;Jaguar&lt;/option&gt;
-&lt;/select&gt;
-&lt;select name="target1"&gt;
-&lt;/select&gt;
+    &lt;select name="source1"&gt;
+        &lt;option value="1"&gt;Volkswagen&lt;/option&gt;
+        &lt;option value="2"&gt;Ford&lt;/option&gt;
+        &lt;option value="3"&gt;Mercedes&lt;/option&gt;
+        &lt;option value="4"&gt;Audi&lt;/option&gt;
+        &lt;option value="5"&gt;BMW&lt;/option&gt;
+        &lt;option value="6"&gt;Honda&lt;/option&gt;
+        &lt;option value="7"&gt;Porsche&lt;/option&gt;
+        &lt;option value="8"&gt;Chevrolet&lt;/option&gt;
+        &lt;option value="9"&gt;Jaguar&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;select name="target1"&gt;
+    &lt;/select&gt;
 &lt;/div&gt;
 
 &lt;h3&gt;Advanced&lt;/h3&gt;
 &lt;div id="advanced"&gt;
-&lt;select name="source2"&gt;
-&lt;/select&gt;
-&lt;select name="target2"&gt;
-&lt;/select&gt;
+    &lt;select name="source2"&gt;
+    &lt;/select&gt;
+    &lt;select name="target2"&gt;
+    &lt;/select&gt;
 &lt;/div&gt;                  
                         </pre>
                     </div>

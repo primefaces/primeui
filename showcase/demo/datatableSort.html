@@ -134,55 +134,55 @@
                     <div id="doc-script">
                         <pre name="code" class="brush:js">
 $(function() {
-$('#tbllocal').puidatatable({
-caption: 'Client Side Sorting',
-paginator: {
-    rows: 10
-},
-columns: [
-    {field: 'vin', headerText: 'Vin', sortable: true},
-    {field: 'brand', headerText: 'Brand', sortable: true},
-    {field: 'year', headerText: 'Year', sortable: true},
-    {field: 'color', headerText: 'Color', sortable: true}
-],
-datasource: function(callback) {
-    $.ajax({
-        type: "GET",
-        url: 'showcase/resources/data/cars-large.json',
-        dataType: "json",
-        context: this,
-        success: function(response) {
-            callback.call(this, response);
+    $('#tbllocal').puidatatable({
+        caption: 'Client Side Sorting',
+        paginator: {
+            rows: 10
+        },
+        columns: [
+            {field: 'vin', headerText: 'Vin', sortable: true},
+            {field: 'brand', headerText: 'Brand', sortable: true},
+            {field: 'year', headerText: 'Year', sortable: true},
+            {field: 'color', headerText: 'Color', sortable: true}
+        ],
+        datasource: function(callback) {
+            $.ajax({
+                type: "GET",
+                url: 'showcase/resources/data/cars-large.json',
+                dataType: "json",
+                context: this,
+                success: function(response) {
+                    callback.call(this, response);
+                }
+            });
         }
     });
-}
-});
 
-$('#tblmultisort').puidatatable({
-caption: 'Multiple Column Sort with Metakey',
-paginator: {
-    rows: 10
-},
-sortMode: 'multiple',
-sortMeta: [{field: 'brand', order:1}, {field:'year',order:1}],
-columns: [
-    {field: 'vin', headerText: 'Vin', sortable: true},
-    {field: 'brand', headerText: 'Brand', sortable: true},
-    {field: 'year', headerText: 'Year', sortable: true},
-    {field: 'color', headerText: 'Color', sortable: true}
-],
-datasource: function(callback) {
-    $.ajax({
-        type: "GET",
-        url: 'showcase/resources/data/cars-large.json',
-        dataType: "json",
-        context: this,
-        success: function(response) {
-            callback.call(this, response);
+    $('#tblmultisort').puidatatable({
+        caption: 'Multiple Column Sort with Metakey',
+        paginator: {
+            rows: 10
+        },
+        sortMode: 'multiple',
+        sortMeta: [{field: 'brand', order:1}, {field:'year',order:1}],
+        columns: [
+            {field: 'vin', headerText: 'Vin', sortable: true},
+            {field: 'brand', headerText: 'Brand', sortable: true},
+            {field: 'year', headerText: 'Year', sortable: true},
+            {field: 'color', headerText: 'Color', sortable: true}
+        ],
+        datasource: function(callback) {
+            $.ajax({
+                type: "GET",
+                url: 'showcase/resources/data/cars-large.json',
+                dataType: "json",
+                context: this,
+                success: function(response) {
+                    callback.call(this, response);
+                }
+            });
         }
     });
-}
-});
 });
                         </pre>
                     </div>

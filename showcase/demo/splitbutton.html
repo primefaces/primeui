@@ -70,7 +70,7 @@
 
                         <pre name="code" class="brush:js">
 $('#btn').puisplitbutton({
-items: []
+    items: []
 });
                         </pre>
 
@@ -137,9 +137,9 @@ items: []
                         <h3>Example</h3>
                         <pre name="code" class="brush:js">
 $('#default').puisplitbutton({
-click: function(event) {
-//...
-}
+    click: function(event) {
+        //...
+    }
 });
                         </pre>
                         
@@ -194,31 +194,31 @@ $('#default').puisplitbutton('show');
                         <h3 style="margin-bottom:20px;">Javascript</h3>
                         <pre name="code" class="brush:js">
 $('#btn').puisplitbutton({
-icon: 'fa-check',
-click: function() {
-$('#messages').puigrowl('show', [{severity: 'info', summary: 'Saved'}]);
-},
-items: [
-{
-    icon: 'fa-edit',
-    text: 'Update',
+    icon: 'fa-check',
     click: function() {
-        $('#messages').puigrowl('show', [{severity: 'info', summary: 'Updated'}]);
-    }
-},
-{
-    icon: 'fa-minus',
-    text: 'Delete',
-    click: function() {
-        $('#messages').puigrowl('show', [{severity: 'info', summary: 'Deleted'}]);
-    }
-},
-{
-    icon: 'fa-home',
-    text: 'Homepage',
-    url: 'https://www.primefaces.org/primeui'
-}
-]
+        $('#messages').puigrowl('show', [{severity: 'info', summary: 'Saved'}]);
+    },
+    items: [
+        {
+            icon: 'fa-edit',
+            text: 'Update',
+            click: function() {
+                $('#messages').puigrowl('show', [{severity: 'info', summary: 'Updated'}]);
+            }
+        },
+        {
+            icon: 'fa-minus',
+            text: 'Delete',
+            click: function() {
+                $('#messages').puigrowl('show', [{severity: 'info', summary: 'Deleted'}]);
+            }
+        },
+        {
+            icon: 'fa-home',
+            text: 'Homepage',
+            url: 'https://www.primefaces.org/primeui'
+        }
+    ]
 });
 
 $('#messages').puigrowl();

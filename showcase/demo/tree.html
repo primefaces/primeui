@@ -331,97 +331,97 @@ $('#default').puitree('unselectAllNodes');
                         <h3 style="margin-bottom:20px;">Javascript</h3>
                         <pre name="code" class="brush:js">
 $(function() {
-$('#local').puitree({
-animate: true,
-selectionMode: 'single',
-nodes: [
-    {
-        label: 'Documents',
-        data: 'Documents Folder',
-        children: [{
-                label: 'Work',
-                data: 'Work Folder',
-                children: [{label: 'Expenses.doc', iconType:'doc', data: 'Expenses Document'},{label: 'Resume.doc', iconType:'doc', 
-                        data: 'Resume Document'}]
+    $('#local').puitree({
+        animate: true,
+        selectionMode: 'single',
+        nodes: [
+            {
+                label: 'Documents',
+                data: 'Documents Folder',
+                children: [{
+                        label: 'Work',
+                        data: 'Work Folder',
+                        children: [{label: 'Expenses.doc', iconType:'doc', data: 'Expenses Document'},{label: 'Resume.doc', iconType:'doc', 
+                                data: 'Resume Document'}]
+                    },
+                    {
+                        label: 'Home',
+                        data: 'Home Folder',
+                        children: [{label: 'Invoices.txt', iconType:'doc', data: 'Invoices for this month'}]
+                    }]
             },
             {
-                label: 'Home',
-                data: 'Home Folder',
-                children: [{label: 'Invoices.txt', iconType:'doc', data: 'Invoices for this month'}]
-            }]
-    },
-    {
-        label: 'Pictures',
-        data: 'Pictures Folder',
-        children:[
-            {label:'barcelona.jpg',iconType:'picture',data: 'Barcelona Photo'},
-            {label:'logo.jpg',iconType:'picture',data: 'PrimeFaces Logo'},
-            {label:'primeui.png',iconType:'picture', data: 'PrimeUI Logo'}]
-    },
-    {
-        label: 'Movies',
-        data: 'Movies Folder',
-        children: [{
-                label: 'Al Pacino',
-                data: 'Pacino Movies',
-                children: [{label: 'Scarface',iconType:'video',data:'Scarface Movie'},{label: 'Serpico',iconType:'video',data:'Serpico Movie'}]
+                label: 'Pictures',
+                data: 'Pictures Folder',
+                children:[
+                    {label:'barcelona.jpg',iconType:'picture',data: 'Barcelona Photo'},
+                    {label:'logo.jpg',iconType:'picture',data: 'PrimeFaces Logo'},
+                    {label:'primeui.png',iconType:'picture', data: 'PrimeUI Logo'}]
             },
             {
-                label: 'Robert De Niro',
-                data: 'De Niro Movies',
-                children: [{label: 'Goodfellas',iconType:'video',data:'Goodfellas Movie'},{label: 'Untouchables',iconType:'video',
-                        data:'Untouchables Movie'}]
-            }]
-    }
-],
-icons: {
-     def: {
-         expanded: 'fa-folder-open',
-         collapsed: 'fa-folder'
-     },
-     picture: 'fa-file-image-o',
-     doc: 'fa-file-word-o',
-     video: 'fa-file-video-o'
- },
-nodeSelect: function(event, ui) {
-    $('#messages').puigrowl('show', [{severity:'info', summary: 'Node Selected', detail: 'Data: ' + ui.data}]);
-},
-nodeUnselect: function(event, ui) {
-    $('#messages').puigrowl('show', [{severity:'info', summary: 'Node Unselected', detail: 'Data: ' + ui.data}]);
-}
-});
-
-$('#remoteeager').puitree({
-nodes: function(ui, response) {                        
-    $.ajax({
-        type: "GET",
-        url: 'rest/tree/all',
-        dataType: "json",
-        context: this,
-        success: function(data) {
-            response.call(this, data);
+                label: 'Movies',
+                data: 'Movies Folder',
+                children: [{
+                        label: 'Al Pacino',
+                        data: 'Pacino Movies',
+                        children: [{label: 'Scarface',iconType:'video',data:'Scarface Movie'},{label: 'Serpico',iconType:'video',data:'Serpico Movie'}]
+                    },
+                    {
+                        label: 'Robert De Niro',
+                        data: 'De Niro Movies',
+                        children: [{label: 'Goodfellas',iconType:'video',data:'Goodfellas Movie'},{label: 'Untouchables',iconType:'video',
+                                data:'Untouchables Movie'}]
+                    }]
+            }
+        ],
+        icons: {
+             def: {
+                 expanded: 'fa-folder-open',
+                 collapsed: 'fa-folder'
+             },
+             picture: 'fa-file-image-o',
+             doc: 'fa-file-word-o',
+             video: 'fa-file-video-o'
+         },
+        nodeSelect: function(event, ui) {
+            $('#messages').puigrowl('show', [{severity:'info', summary: 'Node Selected', detail: 'Data: ' + ui.data}]);
+        },
+        nodeUnselect: function(event, ui) {
+            $('#messages').puigrowl('show', [{severity:'info', summary: 'Node Unselected', detail: 'Data: ' + ui.data}]);
         }
     });
-}
-});
 
-$('#remotelazy').puitree({
-lazy: true,
-nodes: function (ui, response) {
-    //in a real application, make a call to a remote url to load new nodes to append current node
-    $.ajax({
-        type: "GET",
-        url: 'showcase/resources/data/lazy-nodes.json',
-        dataType: "json",
-        context: this,
-        success: function (data) {
-            response.call(this, data, ui.node);
+    $('#remoteeager').puitree({
+        nodes: function(ui, response) {                        
+            $.ajax({
+                type: "GET",
+                url: 'rest/tree/all',
+                dataType: "json",
+                context: this,
+                success: function(data) {
+                    response.call(this, data);
+                }
+            });
         }
     });
-}
-});
 
-$('#messages').puigrowl();
+    $('#remotelazy').puitree({
+        lazy: true,
+        nodes: function (ui, response) {
+            //in a real application, make a call to a remote url to load new nodes to append current node
+            $.ajax({
+                type: "GET",
+                url: 'showcase/resources/data/lazy-nodes.json',
+                dataType: "json",
+                context: this,
+                success: function (data) {
+                    response.call(this, data, ui.node);
+                }
+            });
+        }
+    });
+
+    $('#messages').puigrowl();
 });
                         </pre>
 

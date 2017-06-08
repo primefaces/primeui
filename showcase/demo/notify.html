@@ -127,9 +127,9 @@ $('#notify').puinotify();
                         <h3>Example</h3>
                         <pre name="code" class="brush:js">
 $('#default').puinotify({
-beforeShow: function(event) {
-//...
-}
+    beforeShow: function(event) {
+        //...
+    }
 });
                         </pre>
                         
@@ -179,16 +179,15 @@ $('#default').puinotify('show');
                         <h3 style="margin-bottom:20px">Javascript</h3>
                         <pre name="code" class="brush:js">
 $(function() {              
-$('#t-btn-show').puibutton({
-click: function() {
-    $('#notifytop').puinotify('show', '&lt;h1&gt;PrimeUI Notify Widget&lt;/h1&gt; &lt;p&gt;Notify is a notification bar that can be positioned at the top or bottom of screen.&lt;/p&gt;');
-}
-});
-});
+    $('#t-btn-show').puibutton({
+        click: function() {
+            $('#notifytop').puinotify('show', '&lt;h1&gt;PrimeUI Notify Widget&lt;/h1&gt; &lt;p&gt;Notify is a notification bar that can be positioned at the top or bottom of screen.&lt;/p&gt;');
+        }
+    });
 
-$('#notifytop').puinotify({
-easing: 'easeInOutCirc'
-});
+    $('#notifytop').puinotify({
+        easing: 'easeInOutCirc'
+    });
 });
                         </pre>
                         

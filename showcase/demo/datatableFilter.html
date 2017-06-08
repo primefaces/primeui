@@ -97,30 +97,30 @@
                     <div id="doc-script">
                         <pre name="code" class="brush:js">
 $(function() {
-$('#tblfilter').puidatatable({
-caption: 'Filtering',
-columns: [
-    {field: 'vin', headerText: 'Vin', filter: true},
-    {field: 'brand', headerText: 'Brand', filter: true},
-    {field: 'year', headerText: 'Year', filter: true},
-    {field: 'color', headerText: 'Color', filter: true}
-],
-globalFilter:'#globalFilter',
-datasource: function(callback) {
-    $.ajax({
-        type: "GET",
-        url: 'showcase/resources/data/cars-large.json',
-        dataType: "json",
-        context: this,
-        success: function(response) {
-            callback.call(this, response);
+    $('#tblfilter').puidatatable({
+        caption: 'Filtering',
+        columns: [
+            {field: 'vin', headerText: 'Vin', filter: true},
+            {field: 'brand', headerText: 'Brand', filter: true},
+            {field: 'year', headerText: 'Year', filter: true},
+            {field: 'color', headerText: 'Color', filter: true}
+        ],
+        globalFilter:'#globalFilter',
+        datasource: function(callback) {
+            $.ajax({
+                type: "GET",
+                url: 'showcase/resources/data/cars-large.json',
+                dataType: "json",
+                context: this,
+                success: function(response) {
+                    callback.call(this, response);
+                }
+            });
+        },
+        paginator: {
+            rows: 10
         }
     });
-},
-paginator: {
-    rows: 10
-}
-});
 });
                         </pre>
                     </div>

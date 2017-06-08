@@ -180,60 +180,60 @@
                         <h4>Local Data</h4>
                         <pre name="code" class="brush:js">
 $('#tbl').puidatatable({
-columns: [],
-datasource: [],
-...
+    columns: [],
+    datasource: [],
+    ...
 });
                         </pre>
 
                         <h4>Remote Data</h4>
                         <pre name="code" class="brush:js">
 $('#tbl').puidatatable({
-columns: [],
-datasource: function(callback) {
-$.ajax({
-    type: "GET",
-    url: 'showcase/resources/data/cars-large.json',
-    dataType: "json",
-    context: this,
-    success: function(response) {
-        callback.call(this, response);
-    }
-});
-},
-...
+    columns: [],
+    datasource: function(callback) {
+        $.ajax({
+            type: "GET",
+            url: 'showcase/resources/data/cars-large.json',
+            dataType: "json",
+            context: this,
+            success: function(response) {
+                callback.call(this, response);
+            }
+        });
+    },
+    ...
 });
                         </pre>
 
                         <h4>Lazy Remote Data</h4>
                         <pre name="code" class="brush:js">
 $('#tbl').puidatatable({
-columns: [],
-datasource: function(callback, ui) {
-//ui.first = Index of the first record
-//ui.rows = Number of rows to load
-//ui.sortField = Field name of the sorted column
-//ui.sortOrder = Sort order of the sorted column
-//ui.sortMeta = Array of field names and sort orders of the sorted columns 
-//ui.filters = Filtering information with field-value pairs like ui.filters['fieldname'] = 'filtervalue'
+    columns: [],
+    datasource: function(callback, ui) {
+        //ui.first = Index of the first record
+        //ui.rows = Number of rows to load
+        //ui.sortField = Field name of the sorted column
+        //ui.sortOrder = Sort order of the sorted column
+        //ui.sortMeta = Array of field names and sort orders of the sorted columns 
+        //ui.filters = Filtering information with field-value pairs like ui.filters['fieldname'] = 'filtervalue'
 
-//builds a url based on parameters
-var uri = 'showcase/resources/data/cars-large.json';
-if (ui.sortField) {
-    uri += '/' + ui.sortField + '/' + ui.sortOrder;
-}
+        //builds a url based on parameters
+        var uri = 'showcase/resources/data/cars-large.json';
+        if (ui.sortField) {
+            uri += '/' + ui.sortField + '/' + ui.sortOrder;
+        }
 
-$.ajax({
-    type: "GET",
-    url: uri,
-    dataType: "json",
-    context: this,
-    success: function(response) {
-        //imitate lazy loading by slicing a new list from whole data, in real application the response should actually contain just the new chunk
-        callback.call(this, response.slice(ui.first, ui.first + 10));
+        $.ajax({
+            type: "GET",
+            url: uri,
+            dataType: "json",
+            context: this,
+            success: function(response) {
+                //imitate lazy loading by slicing a new list from whole data, in real application the response should actually contain just the new chunk
+                callback.call(this, response.slice(ui.first, ui.first + 10));
+            }
+        });
     }
-});
-}
 });
                         </pre>
                         
@@ -503,9 +503,9 @@ $.ajax({
                         <h3>Example</h3>
                         <pre name="code" class="brush:js">
 $('#tbl').puidatatable({
-rowSelect: function(event, data) {
-//...
-}
+    rowSelect: function(event, data) {
+        //...
+    }
 });
                         </pre>
                         
@@ -583,85 +583,85 @@ $('#default').puidatatable('unselectAllRows');
                         <pre name="code" class="brush:js">
 &lt;script type="text/javascript"&gt;
 $(function() {
-var localData = [
-    {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
-    {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
-    {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
-    {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
-    {'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
-    {'brand': 'Volvo', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
-    {'brand': 'Honda', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
-    {'brand': 'Jaguar', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
-    {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'},
-    {'brand': 'Fiat', 'year': 2013, 'color': 'Red', 'vin': '245t2s'}
-];
+    var localData = [
+        {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
+        {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
+        {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
+        {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
+        {'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
+        {'brand': 'Volvo', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
+        {'brand': 'Honda', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
+        {'brand': 'Jaguar', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
+        {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'},
+        {'brand': 'Fiat', 'year': 2013, 'color': 'Red', 'vin': '245t2s'}
+    ];
 
-$('#tbllocal').puidatatable({
-    caption: 'Local Datasource',
-    columns: [
-        {field: 'vin', headerText: 'Vin'},
-        {field: 'brand', headerText: 'Brand'},
-        {field: 'year', headerText: 'Year'},
-        {field: 'color', headerText: 'Color'}
-    ],
-    datasource: localData
-});
+    $('#tbllocal').puidatatable({
+        caption: 'Local Datasource',
+        columns: [
+            {field: 'vin', headerText: 'Vin'},
+            {field: 'brand', headerText: 'Brand'},
+            {field: 'year', headerText: 'Year'},
+            {field: 'color', headerText: 'Color'}
+        ],
+        datasource: localData
+    });
 
-$('#tblremoteeager').puidatatable({
-    caption: 'Remote Restful Webservice - Eager',
-    paginator: {
-        rows: 10
-    },
-    columns: [
-        {field: 'vin', headerText: 'Vin'},
-        {field: 'brand', headerText: 'Brand'},
-        {field: 'year', headerText: 'Year'},
-        {field: 'color', headerText: 'Color'}
-    ],
-    datasource: function(callback) {
-        $.ajax({
-            type: "GET",
-            url: 'showcase/resources/data/cars-large.json',
-            dataType: "json",
-            context: this,
-            success: function(response) {
-                callback.call(this, response);
-            }
-        });
-    }
-});
-
-$('#tblremotelazy').puidatatable({
-    lazy: true,
-    caption: 'Remote Restful Webservice - Lazy',
-    paginator: {
-        rows: 10,
-        totalRecords: 200
-    },
-    columns: [
-        {field: 'vin', headerText: 'Vin'},
-        {field: 'brand', headerText: 'Brand'},
-        {field: 'year', headerText: 'Year'},
-        {field: 'color', headerText: 'Color'}
-    ],
-    datasource: function(callback, ui) {
-        var uri = 'showcase/resources/data/cars-large.json';
-        if (ui.sortField) {
-            uri += '/' + ui.sortField + '/' + ui.sortOrder;
+    $('#tblremoteeager').puidatatable({
+        caption: 'Remote Restful Webservice - Eager',
+        paginator: {
+            rows: 10
+        },
+        columns: [
+            {field: 'vin', headerText: 'Vin'},
+            {field: 'brand', headerText: 'Brand'},
+            {field: 'year', headerText: 'Year'},
+            {field: 'color', headerText: 'Color'}
+        ],
+        datasource: function(callback) {
+            $.ajax({
+                type: "GET",
+                url: 'showcase/resources/data/cars-large.json',
+                dataType: "json",
+                context: this,
+                success: function(response) {
+                    callback.call(this, response);
+                }
+            });
         }
+    });
 
-        $.ajax({
-            type: "GET",
-            url: uri,
-            dataType: "json",
-            context: this,
-            success: function(response) {
-                //imitate lazy loading by slicing a new list from whole data, in real application the response should actually contain just the new chunk
-                callback.call(this, response.slice(ui.first, ui.first + 10));
+    $('#tblremotelazy').puidatatable({
+        lazy: true,
+        caption: 'Remote Restful Webservice - Lazy',
+        paginator: {
+            rows: 10,
+            totalRecords: 200
+        },
+        columns: [
+            {field: 'vin', headerText: 'Vin'},
+            {field: 'brand', headerText: 'Brand'},
+            {field: 'year', headerText: 'Year'},
+            {field: 'color', headerText: 'Color'}
+        ],
+        datasource: function(callback, ui) {
+            var uri = 'showcase/resources/data/cars-large.json';
+            if (ui.sortField) {
+                uri += '/' + ui.sortField + '/' + ui.sortOrder;
             }
-        });
-    }
-});
+
+            $.ajax({
+                type: "GET",
+                url: uri,
+                dataType: "json",
+                context: this,
+                success: function(response) {
+                    //imitate lazy loading by slicing a new list from whole data, in real application the response should actually contain just the new chunk
+                    callback.call(this, response.slice(ui.first, ui.first + 10));
+                }
+            });
+        }
+    });
 });
 &lt;/script&gt;
                         </pre>

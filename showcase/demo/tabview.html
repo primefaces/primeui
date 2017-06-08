@@ -136,22 +136,22 @@ $('#default').puitabview();
 
                         <pre name="code" class="brush:xml">
 &lt;div id="default"&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="#tab1"&gt;Tab 1&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#tab2"&gt;Tab 2&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#tab3"&gt;Tab 3&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div&gt;
-&lt;div id="tab1"&gt;
-    content 1
-&lt;/div&gt;
-&lt;div id="tab2"&gt;
-    content 2
-&lt;/div&gt;
-&lt;div id="tab3"&gt;
-    content 3
-&lt;/div&gt;
-&lt;/div&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#tab1"&gt;Tab 1&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#tab2"&gt;Tab 2&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#tab3"&gt;Tab 3&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;div&gt;
+        &lt;div id="tab1"&gt;
+            content 1
+        &lt;/div&gt;
+        &lt;div id="tab2"&gt;
+            content 2
+        &lt;/div&gt;
+        &lt;div id="tab3"&gt;
+            content 3
+        &lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
                         </pre>
                         
@@ -274,34 +274,33 @@ $(function() {
 $('#default').puitabview();
 
 $('#dynamic').puitabview({
-change: function(event, ui) {
+    change: function(event, ui) {
 
-    $.ajax({
-        type: "GET",
-        url: './tabcontent',
-        data: {tabindex: ui.index},
-        dataType: "html",
-        context: this,
-        success: function(data) {
-            $(this).children('div.ui-tabview-panels').children().eq(ui.index).html(data);
-        }
-    });
-}
+        $.ajax({
+            type: "GET",
+            url: './tabcontent',
+            data: {tabindex: ui.index},
+            dataType: "html",
+            context: this,
+            success: function(data) {
+                $(this).children('div.ui-tabview-panels').children().eq(ui.index).html(data);
+            }
+        });
+    }
 });
 
 
 $('#effect').puitabview({
-effect: {
-    name: 'fade'
-    ,duration: 'normal'
-}
+    effect: {
+        name: 'fade'
+        ,duration: 'normal'
+    }
 });
 
 $('#closable').puitabview();
 
 $('#left').puitabview({
-orientation: 'left'
-});
+    orientation: 'left'
 });
                         </pre>
 

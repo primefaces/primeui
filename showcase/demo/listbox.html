@@ -76,10 +76,10 @@ $('#basic').puilistbox();
 
                         <pre name="code" class="brush:xml">
 &lt;select id="basic"&gt;
-&lt;option value="0"&gt;Select One&lt;/option&gt;
-&lt;option value="1"&gt;Option 1&lt;/option&gt;
-&lt;option value="2"&gt;Option 2&lt;/option&gt;
-&lt;option value="3"&gt;Option 3&lt;/option&gt;
+    &lt;option value="0"&gt;Select One&lt;/option&gt;
+    &lt;option value="1"&gt;Option 1&lt;/option&gt;
+    &lt;option value="2"&gt;Option 2&lt;/option&gt;
+    &lt;option value="3"&gt;Option 3&lt;/option&gt;
 &lt;/select&gt;
                         </pre>
                         
@@ -227,21 +227,21 @@ $('#basic').puilistbox('selectItem', 1);
                         <h3 style="margin-bottom:20px;">Javascript</h3>
                         <pre name="code" class="brush:js">
 $(function() {
-var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
-    'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
-    'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse',
-    'trontastic', 'ui-darkness', 'ui-lightness', 'vader');
+    var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
+        'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
+        'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse',
+        'trontastic', 'ui-darkness', 'ui-lightness', 'vader');
 
-$('#basic').puilistbox();
+    $('#basic').puilistbox();
 
-$('#multiple').puilistbox();
+    $('#multiple').puilistbox();
 
-$('#custom').puilistbox({
-data: themes,
-content: function(option) {
-    return '&lt;img src="showcase/resources/demo/images/themes/' + option.label + '.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;' + option.label + '&lt;/span&gt;';
-}
-});
+    $('#custom').puilistbox({
+        data: themes,
+        content: function(option) {
+            return '&lt;img src="showcase/resources/demo/images/themes/' + option.label + '.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;' + option.label + '&lt;/span&gt;';
+        }
+    });
 });
 
                         </pre>
@@ -250,20 +250,20 @@ content: function(option) {
                         <pre name="code" class="brush:xml">
 &lt;h3&gt;Basic&lt;/h3&gt;
 &lt;select id="basic"&gt;
-&lt;option value="1"&gt;Option 1&lt;/option&gt;
-&lt;option value="2"&gt;Option 2&lt;/option&gt;
-&lt;option value="3"&gt;Option 3&lt;/option&gt;
-&lt;option value="4"&gt;Option 4&lt;/option&gt;
-&lt;option value="5"&gt;Option 5&lt;/option&gt;
+    &lt;option value="1"&gt;Option 1&lt;/option&gt;
+    &lt;option value="2"&gt;Option 2&lt;/option&gt;
+    &lt;option value="3"&gt;Option 3&lt;/option&gt;
+    &lt;option value="4"&gt;Option 4&lt;/option&gt;
+    &lt;option value="5"&gt;Option 5&lt;/option&gt;
 &lt;/select&gt;
 
 &lt;h3&gt;Multiple&lt;/h3&gt;
 &lt;select id="multiple" multiple="multiple"&gt;
-&lt;option value="1"&gt;Option 1&lt;/option&gt;
-&lt;option value="2"&gt;Option 2&lt;/option&gt;
-&lt;option value="3"&gt;Option 3&lt;/option&gt;
-&lt;option value="4"&gt;Option 4&lt;/option&gt;
-&lt;option value="5"&gt;Option 5&lt;/option&gt;
+    &lt;option value="1"&gt;Option 1&lt;/option&gt;
+    &lt;option value="2"&gt;Option 2&lt;/option&gt;
+    &lt;option value="3"&gt;Option 3&lt;/option&gt;
+    &lt;option value="4"&gt;Option 4&lt;/option&gt;
+    &lt;option value="5"&gt;Option 5&lt;/option&gt;
 &lt;/select&gt;
 
 &lt;h3&gt;Custom&lt;/h3&gt;

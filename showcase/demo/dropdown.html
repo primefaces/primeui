@@ -129,10 +129,10 @@ $('#basic').puidropdown();
 
                         <pre name="code" class="brush:xml">
 &lt;select id="basic" name="basic"&gt;
-&lt;option value="0"&gt;Select One&lt;/option&gt;
-&lt;option value="1"&gt;Option 1&lt;/option&gt;
-&lt;option value="2"&gt;Option 2&lt;/option&gt;
-&lt;option value="3"&gt;Option 3&lt;/option&gt;
+    &lt;option value="0"&gt;Select One&lt;/option&gt;
+    &lt;option value="1"&gt;Option 1&lt;/option&gt;
+    &lt;option value="2"&gt;Option 2&lt;/option&gt;
+    &lt;option value="3"&gt;Option 3&lt;/option&gt;
 &lt;/select&gt;
                         </pre>
                         
@@ -141,7 +141,7 @@ $('#basic').puidropdown();
 var themes = new Array('afterdark', 'afternoon', 'afterwork', ...);
 
 $('#custom').puidropdown({
-data: themes
+    data: themes
 });
                         </pre>
                         <pre name="code" class="brush:xml">
@@ -151,17 +151,17 @@ data: themes
                         <h4>Remote Data</h4>
                         <pre name="code" class="brush:js">
 $('#rfn').puidropdown({
-data:  function(callback) {
-$.ajax({
-    type: "GET",
-    url: 'showcase/resources/data/options.json',
-    dataType: "json",
-    context: this,
-    success: function(response) {
-        callback.call(this, response);
+    data:  function(callback) {
+        $.ajax({
+            type: "GET",
+            url: 'showcase/resources/data/options.json',
+            dataType: "json",
+            context: this,
+            success: function(response) {
+                callback.call(this, response);
+            }
+        });
     }
-});
-}
 });
                         </pre>
                         <pre name="code" class="brush:xml">
@@ -171,7 +171,7 @@ $.ajax({
                         <h4>Remote URL</h4>
                         <pre name="code" class="brush:js">
 $('#rurl').puidropdown({
-data: 'showcase/resources/data/options.json'
+    data: 'showcase/resources/data/options.json'
 });
                         </pre>
                         <pre name="code" class="brush:xml">
@@ -348,45 +348,45 @@ $('#basic').puidropdown('selectValue', 1);
                         <pre name="code" class="brush:js">
 &lt;script type="text/javascript"&gt;
 $(function() {
-var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
-'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
-'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
-'ui-darkness', 'ui-lightness', 'vader');
+    var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
+    'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
+    'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
+    'ui-darkness', 'ui-lightness', 'vader');
 
-$('#basic').puidropdown();
+    $('#basic').puidropdown();
 
-$('#editable').puidropdown({
-    editable: true
-});
+    $('#editable').puidropdown({
+        editable: true
+    });
 
-$('#custom').puidropdown({
-    data: themes,
-    content: function(option) {
-        return '&lt;img src="showcase/resources/demo/images/themes/' + option + '.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;' + option + '&lt;/span&gt;';
-    }
-});
+    $('#custom').puidropdown({
+        data: themes,
+        content: function(option) {
+            return '&lt;img src="showcase/resources/demo/images/themes/' + option + '.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;' + option + '&lt;/span&gt;';
+        }
+    });
 
-$('#filter').puidropdown({
-    filter: true
-});
+    $('#filter').puidropdown({
+        filter: true
+    });
 
-$('#rfn').puidropdown({
-    data:  function(callback) {
-        $.ajax({
-            type: "GET",
-            url: 'showcase/resources/data/options.json',
-            dataType: "json",
-            context: this,
-            success: function(response) {
-                callback.call(this, response);
-            }
-        });
-    }
-});
+    $('#rfn').puidropdown({
+        data:  function(callback) {
+            $.ajax({
+                type: "GET",
+                url: 'showcase/resources/data/options.json',
+                dataType: "json",
+                context: this,
+                success: function(response) {
+                    callback.call(this, response);
+                }
+            });
+        }
+    });
 
-$('#rurl').puidropdown({
-    data: 'showcase/resources/data/options.json'
-});                                     
+    $('#rurl').puidropdown({
+        data: 'showcase/resources/data/options.json'
+    });                                     
 });
 &lt;/script&gt;
                         </pre>
@@ -395,22 +395,22 @@ $('#rurl').puidropdown({
                         <pre name="code" class="brush:xml">
 &lt;h3 class="title title-short" style="margin-top: 0px;"&gt;Basic&lt;/h3&gt;
 &lt;select id="basic" name="basic"&gt;
-&lt;option value="0"&gt;Select One&lt;/option&gt;
-&lt;option value="1"&gt;Option 1&lt;/option&gt;
-&lt;option value="2"&gt;Option 2&lt;/option&gt;
-&lt;option value="3"&gt;Option 3&lt;/option&gt;
+    &lt;option value="0"&gt;Select One&lt;/option&gt;
+    &lt;option value="1"&gt;Option 1&lt;/option&gt;
+    &lt;option value="2"&gt;Option 2&lt;/option&gt;
+    &lt;option value="3"&gt;Option 3&lt;/option&gt;
 &lt;/select&gt;
 
 &lt;h3 class="title title-short"&gt;Editable&lt;/h3&gt;
 &lt;select id="editable" name="editable"&gt;
-&lt;option value="0"&gt;Select a City&lt;/option&gt;
-&lt;option value="1"&gt;Barcelona&lt;/option&gt;
-&lt;option value="2"&gt;Berlin&lt;/option&gt;
-&lt;option value="3"&gt;Istanbul&lt;/option&gt;
-&lt;option value="4"&gt;London&lt;/option&gt;
-&lt;option value="5"&gt;New York&lt;/option&gt;
-&lt;option value="6"&gt;Paris&lt;/option&gt;
-&lt;option value="7"&gt;Rome&lt;/option&gt;
+    &lt;option value="0"&gt;Select a City&lt;/option&gt;
+    &lt;option value="1"&gt;Barcelona&lt;/option&gt;
+    &lt;option value="2"&gt;Berlin&lt;/option&gt;
+    &lt;option value="3"&gt;Istanbul&lt;/option&gt;
+    &lt;option value="4"&gt;London&lt;/option&gt;
+    &lt;option value="5"&gt;New York&lt;/option&gt;
+    &lt;option value="6"&gt;Paris&lt;/option&gt;
+    &lt;option value="7"&gt;Rome&lt;/option&gt;
 &lt;/select&gt;
 
 &lt;h3 class="title title-short"&gt;Custom Content&lt;/h3&gt;
@@ -418,14 +418,14 @@ $('#rurl').puidropdown({
 
 &lt;h3 class="title title-short"&gt;Filter&lt;/h3&gt;
 &lt;select id="filter" name="filter"&gt;
-&lt;option value="0"&gt;Select a City&lt;/option&gt;
-&lt;option value="1"&gt;Barcelona&lt;/option&gt;
-&lt;option value="2"&gt;Berlin&lt;/option&gt;
-&lt;option value="3"&gt;Istanbul&lt;/option&gt;
-&lt;option value="4"&gt;London&lt;/option&gt;
-&lt;option value="5"&gt;New York&lt;/option&gt;
-&lt;option value="6"&gt;Paris&lt;/option&gt;
-&lt;option value="7"&gt;Rome&lt;/option&gt;
+    &lt;option value="0"&gt;Select a City&lt;/option&gt;
+    &lt;option value="1"&gt;Barcelona&lt;/option&gt;
+    &lt;option value="2"&gt;Berlin&lt;/option&gt;
+    &lt;option value="3"&gt;Istanbul&lt;/option&gt;
+    &lt;option value="4"&gt;London&lt;/option&gt;
+    &lt;option value="5"&gt;New York&lt;/option&gt;
+    &lt;option value="6"&gt;Paris&lt;/option&gt;
+    &lt;option value="7"&gt;Rome&lt;/option&gt;
 &lt;/select&gt;
 
 &lt;h3&gt;Remote Function&lt;/h3&gt;

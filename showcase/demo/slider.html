@@ -185,43 +185,43 @@ $('#basic').puislider();
                         <h3 style="margin-bottom:20px;">Javascript</h3>
                         <pre name="code" class="brush:js">
 $(function () {
-$('#default').val(0);
+    $('#default').val(0);
 
-$('#value').text(50);
+    $('#value').text(50);
 
-$('#basic').puislider({
-onChange: function(event,obj) {
-    $('#default').val(obj.value);
-}
-});
+    $('#basic').puislider({
+        onChange: function(event,obj) {
+            $('#default').val(obj.value);
+        }
+    });
 
-$('#input').puislider({
-value: 50,
-onChange: function(event,obj) {
-    $('#value').text(obj.value);
-}
-});
+    $('#input').puislider({
+        value: 50,
+        onChange: function(event,obj) {
+            $('#value').text(obj.value);
+        }
+    });
 
-$('#animate').puislider({
-animate: true
-});
+    $('#animate').puislider({
+        animate: true
+    });
 
-$('#step').puislider({
-step: 10
-});
+    $('#step').puislider({
+        step: 10
+    });
 
-$('#range').puislider({
-range: true,
-value: [20,80]
-});
+    $('#range').puislider({
+        range: true,
+        value: [20,80]
+    });
 
-$('#vertical').puislider({
-orientation: 'vertical'
-});
+    $('#vertical').puislider({
+        orientation: 'vertical'
+    });
 
-$('#default').puiinputtext(); 
+    $('#default').puiinputtext(); 
 
-$('#doc').puitabview();
+    $('#doc').puitabview();
 });
                         </pre>
 

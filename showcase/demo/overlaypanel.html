@@ -116,14 +116,14 @@
                         <p>Overlay panel is applied on a container element and requires a target to bind.</p>
                         <pre name="code" class="brush:js">
 $('#overlay').puioverlaypanel({
-target:'#default'
+    target:'#default'
 });
                         </pre>
 
                         <pre name="code" class="brush:xml">
 &lt;button id="default" type="button"&gt;default&lt;/button&gt;
 &lt;div id="overlay"&gt;
-&lt;img src="resources/demo/images/..."&gt;
+    &lt;img src="resources/demo/images/..."&gt;
 &lt;/div&lt;
                         </pre>
                         
@@ -271,49 +271,49 @@ var localData = [
 ];
 
 $('#sharedOverlay').puioverlaypanel({
-target: '#tbllocal',
-shared: true,
-delegatedTarget: 'td:last-child > button',
-showCloseIcon: true,
-showEffect: 'fade',
-hideEffect: 'fade',
-preShow: function(event, ui) {
-$('#brandimage').attr('src', 'showcase/resources/demo/images/car/' + $(ui.target).data('brand') + '-big.gif');
-}
+    target: '#tbllocal',
+    shared: true,
+    delegatedTarget: 'td:last-child > button',
+    showCloseIcon: true,
+    showEffect: 'fade',
+    hideEffect: 'fade',
+    preShow: function(event, ui) {
+        $('#brandimage').attr('src', 'showcase/resources/demo/images/car/' + $(ui.target).data('brand') + '-big.gif');
+    }
 });
 
 $('#tbllocal').puidatatable({
-caption: 'Datatable Integration',
-columns: [
-{field: 'vin', headerText: 'Vin'},
-{field: 'brand', headerText: 'Brand'},
-{field: 'year', headerText: 'Year'},
-{field: 'color', headerText: 'Color'},
-{field: 'Integration', headerStyle:"width:10%",bodyStyle: 'text-align:center', headerText: 'Integration', content: function(localData) {
-    return $('&lt;button type="button" data-brand="' + localData.brand + '"&gt;&lt;/button&gt;').puibutton({
-        icon: 'fa-search'
-    });
-}}
-],
-datasource: localData
+    caption: 'Datatable Integration',
+    columns: [
+        {field: 'vin', headerText: 'Vin'},
+        {field: 'brand', headerText: 'Brand'},
+        {field: 'year', headerText: 'Year'},
+        {field: 'color', headerText: 'Color'},
+        {field: 'Integration', headerStyle:"width:10%",bodyStyle: 'text-align:center', headerText: 'Integration', content: function(localData) {
+            return $('&lt;button type="button" data-brand="' + localData.brand + '"&gt;&lt;/button&gt;').puibutton({
+                icon: 'fa-search'
+            });
+        }}
+    ],
+    datasource: localData
 });
 
 $('#overlay').puioverlaypanel({
-target:'#commandButton',
-hideEffect:'explode'
+    target:'#commandButton',
+    hideEffect:'explode'
 });
 
 $('#datatableOverlay').puioverlaypanel({
-target:'#searchIcon',
-showEvent:"mouseover",
-hideEvent:"click",
-showCloseIcon:true,
-showEffect:"blind",
-dismissable:false
+    target:'#searchIcon',
+    showEvent:"mouseover",
+    hideEvent:"click",
+    showCloseIcon:true,
+    showEffect:"blind",
+    dismissable:false
 });
 
 handleRowSelect = function(event, data) {
-document.getElementById('messages').show([{severity: 'info', summary: 'Row Selected', detail: data.vin + ' ' + data.year}]);
+    document.getElementById('messages').show([{severity: 'info', summary: 'Row Selected', detail: data.vin + ' ' + data.year}]);
 };
 
 $('#commandButton').puibutton();
@@ -325,30 +325,15 @@ $('#closeIcon').puibutton();
 &lt;h3 class="first"&gt;Basic&lt;/h3&gt;
 &lt;button id="commandButton" type="button"&gt;View&lt;/button&gt;
 &lt;div id="overlay"&gt;
-&lt;img src="showcase/resources/demo/images/mr-robot/mr-robot.jpg" style="width:200px"&gt;
+    &lt;img src="showcase/resources/demo/images/mr-robot/mr-robot.jpg" style="width:200px"&gt;
 &lt;/div&gt;
 
 &lt;h3&gt;Hover&lt;/h3&gt;
 &lt;i id="searchIcon" class="fa fa-search" style="font-size:24px"&gt;&lt;/i&gt;
 
-&lt;h3&gt;Shared&lt;/h3&gt;
-&lt;div id="datatableOverlay" style="width:400px"&gt;
-&lt;p-growl id="messages"&gt;&lt;/p-growl&gt;
-&lt;p-datatable datasource="Showcase.demo.loadAllCars" paginator rows="10" selectionmode="single" onrowselect="handleRowSelect"&gt;
-&lt;p-column field="vin" headertext="Vin" sortable filter&gt;&lt;/p-column&gt;
-&lt;p-column field="year" headertext="Year" sortable filter&gt;&lt;/p-column&gt;
-&lt;p-column field="brand" headertext="Brand" sortable filter&gt;&lt;/p-column&gt;
-&lt;p-column field="color" headertext="Color" sortable filter&gt; 
-    &lt;template&gt;
-        &lt;span style="color:{{color}}"&gt;{{color}}&lt;/span&gt;
-    &lt;/template&gt;
-&lt;/p-column&gt;
-&lt;/p-datatable&gt;
-&lt;/div&gt;
-
 &lt;div id="tbllocal"&gt;&lt;/div&gt;
 &lt;div id="sharedOverlay"&gt;
-&lt;img id="brandimage" src="showcase/resources/demo/images/car/BMW-big.gif" style="width:200px"/&gt;
+    &lt;img id="brandimage" src="showcase/resources/demo/images/car/BMW-big.gif" style="width:200px"/&gt;
 &lt;/div&gt;
                             </pre>
                         </div>

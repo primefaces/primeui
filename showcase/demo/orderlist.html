@@ -249,40 +249,40 @@ var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-t
 $('#basic').puiorderlist();
 
 $('#advanced').puiorderlist({
-controlsLocation: 'left',
-caption: 'Themes',
-effect: 'bounce',
-responsive: true,
-datasource: themes,
-content: function (option) {
-return $('&lt;div class="ui-helper-clearfix"&gt;&lt;img src="showcase/resources/demo/images/themes/' + option.label + '.png" alt="" style="float:left"/&gt;&lt;span style="float:left; margin-left:15px; font-size:20px"&gt;' + option.label + '&lt;/span&gt;&lt;/div&gt;');
-}
+    controlsLocation: 'left',
+    caption: 'Themes',
+    effect: 'bounce',
+    responsive: true,
+    datasource: themes,
+    content: function (option) {
+        return $('&lt;div class="ui-helper-clearfix"&gt;&lt;img src="showcase/resources/demo/images/themes/' + option.label + '.png" alt="" style="float:left"/&gt;&lt;span style="float:left; margin-left:15px; font-size:20px"&gt;' + option.label + '&lt;/span&gt;&lt;/div&gt;');
+    }
 });
                         </pre>
                         
                         <h3 style="margin-bottom:20px">HTML</h3>
                         <pre name="code" class="brush:xml">
 &lt;div class="ui-grid ui-grid-responsive"&gt;
-&lt;div class="ui-grid-row"&gt;
-&lt;div class="ui-grid-col-6"&gt;
-    &lt;h3&gt;Basic&lt;/h3&gt;
-    &lt;select id="basic"&gt;
-        &lt;option value="1"&gt;Volkswagen&lt;/option&gt;
-        &lt;option value="2"&gt;Ford&lt;/option&gt;
-        &lt;option value="3"&gt;Mercedes&lt;/option&gt;
-        &lt;option value="4"&gt;Audi&lt;/option&gt;
-        &lt;option value="5"&gt;BMW&lt;/option&gt;
-        &lt;option value="6"&gt;Honda&lt;/option&gt;
-        &lt;option value="7"&gt;Porsche&lt;/option&gt;
-        &lt;option value="8"&gt;Chevrolet&lt;/option&gt;
-        &lt;option value="9"&gt;Jaguar&lt;/option&gt;
-    &lt;/select&gt;
-&lt;/div&gt;
-&lt;div class="ui-grid-col-6"&gt;
-    &lt;h3&gt;Advanced&lt;/h3&gt;
-    &lt;select id="advanced"&gt;&lt;/select&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+    &lt;div class="ui-grid-row"&gt;
+        &lt;div class="ui-grid-col-6"&gt;
+            &lt;h3&gt;Basic&lt;/h3&gt;
+            &lt;select id="basic"&gt;
+                &lt;option value="1"&gt;Volkswagen&lt;/option&gt;
+                &lt;option value="2"&gt;Ford&lt;/option&gt;
+                &lt;option value="3"&gt;Mercedes&lt;/option&gt;
+                &lt;option value="4"&gt;Audi&lt;/option&gt;
+                &lt;option value="5"&gt;BMW&lt;/option&gt;
+                &lt;option value="6"&gt;Honda&lt;/option&gt;
+                &lt;option value="7"&gt;Porsche&lt;/option&gt;
+                &lt;option value="8"&gt;Chevrolet&lt;/option&gt;
+                &lt;option value="9"&gt;Jaguar&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/div&gt;
+        &lt;div class="ui-grid-col-6"&gt;
+            &lt;h3&gt;Advanced&lt;/h3&gt;
+            &lt;select id="advanced"&gt;&lt;/select&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;                                     
                         </pre>
 

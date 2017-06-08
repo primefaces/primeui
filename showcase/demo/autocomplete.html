@@ -129,7 +129,7 @@
                         <h3 style="margin-bottom:20px">Getting Started</h3>
                         <pre class="brush:js">
 $('#input').puiautocomplete({
-completeSource: //array or a function
+    completeSource: //array or a function
 });
                         </pre>
 
@@ -237,9 +237,9 @@ completeSource: //array or a function
                         <h3>Example</h3>
                         <pre name="code" class="brush:js">
 $('#basic').puiautocomplete({
-select: function(event, item) {
-//...
-}
+    select: function(event, item) {
+    //...
+    }
 });
                         </pre>
                         
@@ -281,65 +281,65 @@ $('#basic').puiautocomplete('search', 'A');
                         <pre class="brush:js">
 &lt;script type="text/javascript"&gt;
 $(function() {
-var countries = new Array("Afghanistan", "Albania", "Algeria", "Andorra", ...);
+    var countries = new Array("Afghanistan", "Albania", "Algeria", "Andorra", ...);
 
-var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
-'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
-'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
-'ui-darkness', 'ui-lightness', 'varder');
+    var themes = new Array('afterdark', 'afternoon', 'afterwork', 'aristo', 'black-tie', 'blitzer', 'bluesky', 'bootstrap', 'casablanca', 'cruze',
+    'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'glass-x', 'home', 'hot-sneaks', 'humanity', 'le-frog', 'midnight',
+    'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'rocket', 'sam', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic',
+    'ui-darkness', 'ui-lightness', 'varder');
 
-$('#basic').puiautocomplete({
-    completeSource: countries
-});
+    $('#basic').puiautocomplete({
+        completeSource: countries
+    });
 
-$('#dropdown').puiautocomplete({
-    completeSource: countries,
-    dropdown: true
-});
+    $('#dropdown').puiautocomplete({
+        completeSource: countries,
+        dropdown: true
+    });
 
-$('#customcontent').puiautocomplete({
-    completeSource: themes,
-    content: function(data) {
-        return '&lt;img src="showcase/resources/demo/images/themes/' + data.label + '.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;' 
-            + data.label + '&lt;/span&gt;';
-    }
-});
+    $('#customcontent').puiautocomplete({
+        completeSource: themes,
+        content: function(data) {
+            return '&lt;img src="showcase/resources/demo/images/themes/' + data.label + '.png" alt="" /&gt;&lt;span style="float:right;font-size:14px"&gt;' 
+                + data.label + '&lt;/span&gt;';
+        }
+    });
 
-$('#multiple').puiautocomplete({
-    completeSource: countries,
-    multiple: true,
-    select: function(event, item) {
-        $('#growl').puigrowl('show', [{severity: 'info', summary: 'City Selected', detail: item.data('label')}]);
-    },
-    unselect: function(event, item) {
-        $('#growl').puigrowl('show', [{severity: 'info', summary: 'City Unselected', detail: item.data('label')}]);
-    }
-});
+    $('#multiple').puiautocomplete({
+        completeSource: countries,
+        multiple: true,
+        select: function(event, item) {
+            $('#growl').puigrowl('show', [{severity: 'info', summary: 'City Selected', detail: item.data('label')}]);
+        },
+        unselect: function(event, item) {
+            $('#growl').puigrowl('show', [{severity: 'info', summary: 'City Unselected', detail: item.data('label')}]);
+        }
+    });
 
-$('#remote').puiautocomplete({
-    effect: 'fade',
-    effectSpeed: 'fast',
-    completeSource: function(request, response) {
-        //in a real application, make a call to a remote url by passing the request.query as parameter
-        $.ajax({
-            type: "GET",
-            url: 'showcase/resources/data/themes.json',
-            dataType: "json",
-            context: this,
-            success: function(data) {
-                var filtered = [];
-                for(var i = 0; i < data.length; i++) {
-                    if(data[i].label.indexOf(request.query) === 0) {
-                        filtered.push(data[i]);
+    $('#remote').puiautocomplete({
+        effect: 'fade',
+        effectSpeed: 'fast',
+        completeSource: function(request, response) {
+            //in a real application, make a call to a remote url by passing the request.query as parameter
+            $.ajax({
+                type: "GET",
+                url: 'showcase/resources/data/themes.json',
+                dataType: "json",
+                context: this,
+                success: function(data) {
+                    var filtered = [];
+                    for(var i = 0; i < data.length; i++) {
+                        if(data[i].label.indexOf(request.query) === 0) {
+                            filtered.push(data[i]);
+                        }
                     }
+                    response.call(this, filtered);
                 }
-                response.call(this, filtered);
-            }
-        });
-    }
-});
+            });
+        }
+    });
 
-$('#growl').puigrowl(); 
+    $('#growl').puigrowl(); 
 });
 &lt;/script&gt;
                         </pre>
