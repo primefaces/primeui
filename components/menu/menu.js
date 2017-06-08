@@ -726,7 +726,11 @@
         },
 
         _applyDimensions: function() {
-            this.submenus.width(this.container.width());
+            var containerWidth = this.container.width();
+            for(var i = 0; i < this.submenus.length; i++) {
+                this.submenus.eq(i).css('width', containerWidth);
+            }
+
             this.wrapper.height(this.rootList.outerHeight(true) + this.backward.outerHeight(true));
             this.content.height(this.rootList.outerHeight(true));
             this.rendered = true;
