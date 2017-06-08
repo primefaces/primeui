@@ -3,3 +3,5 @@ build
 *.log
 .DS_STORE
 .sass-cache
+resources/themes/**/*.css
+!resources/themes/bootstrap/theme.css
