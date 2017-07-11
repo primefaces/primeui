@@ -626,6 +626,7 @@ input.searchInput {
 
 .SubSubMenu {
     padding: 15px 30px;
+    border-top: 1px solid #dde3e6;
 }
 .SubSubMenu ul {
     margin: 0;
