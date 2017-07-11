@@ -766,6 +766,10 @@ input.searchInput {
 }
 
 @media (max-width: 1025px) {
+    body.layout-sidebar-active {
+        overflow: hidden;
+    }
+    
     .layout-logo-mobile {
         float: right;
     }

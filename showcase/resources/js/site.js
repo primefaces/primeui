@@ -31,6 +31,7 @@ Showcase = {
 
         this.menuButton.on('click', function() {
              $this.menu.addClass('active');
+             $('body').addClass('layout-sidebar-active');
              $this.mobileMenuButton.addClass('active');
              $(this).addClass('active');
         });
@@ -106,6 +107,7 @@ Showcase = {
         this.menu.removeClass('active');
         this.mobileMenuButton.removeClass('active');
         this.menuButton.removeClass('active');
+        $('body').removeClass('layout-sidebar-active');
     },
 
     changePageWithLink: function(page) {
