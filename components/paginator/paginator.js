@@ -136,7 +136,7 @@
         },
 
         '{PageLinks}': {
-            markup: '<a class="ui-paginator-pages"></a>',
+            markup: '<span class="ui-paginator-pages"></span>',
 
             create: function(paginator) {
                 var element = $(this.markup),
