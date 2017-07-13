@@ -44,7 +44,9 @@
             }
             
             //content
-            this.content = $('<div class="ui-datagrid-content ui-widget-content ui-datagrid-col-' + this.options.columns + '"></div>').appendTo(this.element);
+            this.content = $('<div class="ui-datagrid-content ui-widget-content"></div>').appendTo(this.element);
+            
+            this.gridContent = $('<div class="ui-g"></div>').appendTo(this.content);
             
             //footer
             if(this.options.footer) {
@@ -102,7 +104,7 @@
                
         _renderData: function() {
             if(this.data) {
-                this.content.html('');
+                this.gridContent.html('');
                 
                 var firstNonLazy = this._getFirst(),
                 first = this.options.lazy ? 0 : firstNonLazy,
@@ -113,9 +115,8 @@
                     var dataValue = this.data[i];
                     
                     if(dataValue) {                        
-                        var gridColumn = $('<div></div>').appendTo(this.content),
-                        markup = this._createItemContent(dataValue);
-                        gridColumn.append(markup);
+                        var markup = this._createItemContent(dataValue);
+                        this.gridContent.append(markup);
                     }
                 }
             }
