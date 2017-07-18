@@ -111,7 +111,7 @@
 
         _createRegularDatatable: function() {
             this.tableWrapper = $('<div class="ui-datatable-tablewrapper" />').appendTo(this.element);
-            this.table = $('<table><thead></thead><tbody></tbody></table>').appendTo(this.tableWrapper);
+            this.table = $('<table><thead class="ui-datatable-thead"></thead><tbody></tbody></table>').appendTo(this.tableWrapper);
             this.thead = this.table.children('thead');
             this.tbody = this.table.children('tbody').addClass('ui-datatable-data ui-widget-content');
             if(this.options.selectionMode) {
@@ -125,7 +125,7 @@
 
         _createScrollableDatatable: function() {
             this.element.addClass('ui-datatable-scrollable');
-            this.element.append('<div class="ui-widget-header ui-datatable-scrollable-header"><div class="ui-datatable-scrollable-header-box"><table><thead></thead></table></div></div>')
+            this.element.append('<div class="ui-widget-header ui-datatable-scrollable-header"><div class="ui-datatable-scrollable-header-box"><table><thead class="ui-datatable-thead"></thead></table></div></div>')
                         .append('<div class="ui-datatable-scrollable-body"><table><tbody></tbody></table></div>');
 
             this.thead = this.element.find('> .ui-datatable-scrollable-header > .ui-datatable-scrollable-header-box > table > thead');
