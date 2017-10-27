@@ -5,3 +5,4 @@ build
 .sass-cache
 resources/themes/**/*.css
 !resources/themes/bootstrap/theme.css
+showcase/resources/css/site.css
