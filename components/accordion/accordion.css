@@ -14,7 +14,7 @@
     padding: .5em .5em .5em 2em; 
 }
 
-.ui-accordion .ui-accordion-header .fa {
+.ui-accordion .ui-accordion-header>.fa {
     position: absolute; 
     left: .5em; 
     top: 50%; 
@@ -35,4 +35,17 @@
 
 .ui-accordion-content-wrapper-overflown {
     overflow: hidden;
+}
+
+.ui-rtl .ui-accordion .ui-accordion-header a {
+    padding: .5em 2em .5em .5em;
+}
+ 
+.ui-rtl .ui-accordion .ui-accordion-header > .fa {
+    left: initial;
+    right: .5em;
+}
+
+.ui-rtl .ui-accordion .ui-accordion-header > .fa-caret-right:before {
+    content: '\f0d9';
 }

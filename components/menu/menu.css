@@ -4,6 +4,10 @@
     position:relative;
 }
 
+.ui-menu-separator {
+    border-width: 1px 0 0 0;
+}
+
 .ui-menu.ui-menu-dynamic {
     position: absolute;
     display: none;
@@ -37,7 +41,6 @@
 .ui-menu .ui-menuitem-link {
     display: block;
     width: 100%;
-    outline: none;
     text-decoration: none;
     font-weight: normal;
     border: 1px solid transparent;
@@ -72,7 +75,6 @@
     padding: .25em;
     position:absolute;
     margin: 0; 
-    outline: 0; 
     text-decoration:none;
     list-style:none;
 }
@@ -115,8 +117,24 @@
     width: auto;
 }
 
+.ui-menubar:not(.ui-megamenu-vertical) .ui-menubar-root-list > .ui-menu-separator {
+    display: inline-block;
+    border-width: 0 0 0 1px;
+    width: 1px;
+    text-indent: -9999999px;
+}
+
+.ui-menubar:not(.ui-megamenu-vertical) .ui-menubar-root-list > .ui-menu-separator:before {
+    content: 'ui-menu-separator';
+}
+
 .ui-menubar .ui-menu-child .ui-menuitem {
     width: 100%;
+}
+
+.ui-menubar .ui-menuitem.ui-menuitem-custom {
+    float: right;
+    margin-top: 0.25em;
 }
 
 .ui-menubar .ui-menubar-options {
@@ -177,7 +195,6 @@
 
 .ui-megamenu .ui-megamenu-panel.ui-menu-child {
     width: auto;
-    z-index: 1;
 }
 
 .ui-megamenu .ui-megamenu-panel .ui-menu-list {
@@ -218,6 +235,7 @@
 .ui-panelmenu .ui-panelmenu-header a {
     display: block;
     padding: .25em .5em;
+    text-decoration: none;
 }
 
 .ui-panelmenu span {
@@ -248,6 +266,10 @@
     margin-bottom: 1px;
 }
 
+.ui-panelmenu .ui-panelmenu-content .ui-menu-parent {
+    overflow: hidden;
+}
+
 .ui-panelmenu .ui-panelmenu-content-wrapper {
     box-sizing: border-box;
 }
@@ -270,9 +292,13 @@
     padding: 0;
 }
 
+.ui-panelmenu .ui-menu-separator {
+    width: 95%;
+    margin: 0 auto;
+}
+
 .ui-panelmenu .ui-menuitem-link {
     display: block;
-    outline: none;
     text-decoration: none;
     font-weight: normal;
     border: 1px solid  transparent;
@@ -286,34 +312,18 @@
     margin-left: 1.5em;
 }
 
-/** Breadcrumb **/
-.ui-breadcrumb {
-    margin: 0;
-    padding: 0;
-    padding: .3em;
-}
-
-.ui-breadcrumb ul {
-    margin: 0;
-    padding: 0;
-}
-
-.ui-breadcrumb ul li {
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.ui-breadcrumb ul li .ui-menuitem-link {
-    text-decoration: none;
-}
-
 /** MegaMenu and TieredMenus **/
+.ui-menuitem-active > .ui-submenu > ul,
+.ui-menuitem-active > .ui-megamenu-panel {
+    display: block !important;
+}
+
 .ui-menuitem-outline {
     outline: 1px dotted;
     z-index: 1;
 }
 
 /** Fluid **/
-.ui-fluid .ui-menu {
+.ui-fluid .ui-menu:not(.ui-menu-dynamic) {
     width: 100%;
 }

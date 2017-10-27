@@ -4,7 +4,8 @@ var winH=$(window).height();
 Showcase = {
     
     init: function() {
-        this.menu = $('#layout-sidebar');
+        this.sidebar = $('#layout-sidebar');
+        this.menu = this.sidebar.children('.layout-menu');
         this.logo = $('.layout-logo, .layout-logo-mobile');
         this.menuButton = $('#menu-button');
         this.mobileMenuButton = $('#menu-button-mobile');
