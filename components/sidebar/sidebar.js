@@ -23,7 +23,9 @@
             position: 'left',
             baseZIndex: 0,
             autoZIndex: true,
-            fullScreen: false
+            fullScreen: false,
+            onShow: null,
+            onHide: null
         },
 
         _create: function() {
@@ -91,6 +93,7 @@
             this._disableModality();
             this.closeIcon.remove();
             this.element.removeClass('ui-sidebar ui-widget ui-widget-content ui-shadow ui-sidebar-full ui-sidebar-' + this.options.position);
-        },
+        }
+        
     });
 }));
