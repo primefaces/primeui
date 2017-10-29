@@ -1,5 +1,4 @@
-if(!PUI.isIE(8)) {
-    /**
+/**
  * SyntaxHighlighter
  * http://alexgorbatchev.com/SyntaxHighlighter
  *
@@ -231,11 +230,3 @@ eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a
 	// CommonJS
 	typeof(exports) != 'undefined' ? exports.Brush = Brush : null;
 })();
-}
-else {
-    SyntaxHighlighter = {
-        highlight: function() {
-            return false;
-        }
-    }
-}

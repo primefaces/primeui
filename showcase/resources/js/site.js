@@ -9,10 +9,6 @@ Showcase = {
         this.logo = $('.layout-logo, .layout-logo-mobile');
         this.menuButton = $('#menu-button');
         this.mobileMenuButton = $('#menu-button-mobile');
-        this.menu.perfectScrollbar({
-            wheelSpeed: 40,
-            suppressScrollX: true
-        });
 
         this.bindEvents();
 
@@ -144,14 +140,14 @@ Showcase = {
         if(this.activeMenu) {
             if(this.activeMenu === header) {
                 headerJQ.removeClass('MenuSideMainLinkDark').next().slideUp(500,"easeInOutQuint", function() {
-                    $this.menu.perfectScrollbar('update');
+                    
                 });
                 this.activeMenu = null;
             }
             else {
                 $(this.activeMenu).removeClass('MenuSideMainLinkDark').next().slideUp(500,"easeInOutQuint", function() {
                     headerJQ.addClass("MenuSideMainLinkDark").next().slideDown(500,"easeInOutQuint", function() {
-                        $this.menu.perfectScrollbar('update');
+                        
                     });
                 });
 
@@ -160,7 +156,7 @@ Showcase = {
         }
         else {
             headerJQ.addClass("MenuSideMainLinkDark").next().slideDown(500,"easeInOutQuint", function() {
-                    $this.menu.perfectScrollbar('update');
+                    
                 });
             this.activeMenu = header;
         }
