@@ -21,6 +21,7 @@
        
         options: {
             value: null,
+            name: null,
             field: null,
             onAdd: null,
             onRemove: null,
@@ -47,6 +48,8 @@
                                   '</div>');
             this.list = this.element.parent().parent();
             this.container = this.list.parent();
+            this.selectElement = $('<select multiple="multiple" class="ui-helper-hidden"></select>').attr('name', this.options.name).appendTo(this.container);
+            
             if(this.options.style) {
                 this.container.css(this.options.style);
             }
@@ -57,6 +60,10 @@
             if(this.options.disabled) {
                 this.disable();
             }
+        },
+
+        _renderSelectElement() {
+           
         },
         
         _renderChips: function() {
@@ -78,6 +85,9 @@
             chip.children('.ui-chips-token-icon').on('click.puichips', function() {
                 $this._removeChip(chip.index());
             });
+
+            var optionValue = this.options.field ? PUI.resolveFieldData(value, this.options.field) : value;
+            this.selectElement.append('<option selected="selected">' + value + '</option>');
             
             this.element.parent().before(chip);
         },
@@ -133,6 +143,7 @@
             if(!this.options.disabled) {
                 this._trigger('onRemove', this.value[index]);
                 this.list.children().eq(index).remove();
+                this.selectElement.children().eq(index).remove();
                 this.value.splice(index, 1);
             }
         },
