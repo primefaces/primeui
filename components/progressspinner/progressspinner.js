@@ -38,7 +38,7 @@
         _destroy: function() {
             this.svg = null;
             this.circle = null;
-            this.element.removeClass('ui-progress-spinner').children().remove();
+            this.element.removeClass('ui-progress-spinner').empty();
         }
 
     });

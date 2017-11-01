@@ -9,7 +9,6 @@
     height: 100%;
     width: 0%;
     position: absolute;
-    display: none;
     border: 0 none;
 }
 
@@ -25,8 +24,11 @@
     height: 100%;
     width: 100%;
     position: absolute;
-    display: none;
     font-weight: bold;
+}
+
+.ui-progressbar-indeterminate {
+    height: .5em;
 }
 
 .ui-progressbar-indeterminate .ui-progressbar-value {

@@ -23,29 +23,26 @@
             value: 0,
             labelTemplate: '{value}%',
             complete: null,
-            easing: 'easeInOutCirc',
-            effectSpeed: 'normal',
-            showLabel: true
+            showLabel: true,
+            mode: 'determinate'
         },
        
         _create: function() {
-            this.element.addClass('ui-progressbar ui-widget ui-widget-content ui-corner-all')
-                    .append('<div class="ui-progressbar-value ui-widget-header ui-corner-all"></div>')
+            this.element.addClass('ui-progressbar ui-widget ui-widget-content ui-corner-all ' + 'ui-progressbar-' + this.options.mode)
+                    .append('<div class="ui-progressbar-value ui-progressbar-value-animate ui-widget-header ui-corner-all"></div>')
                     .append('<div class="ui-progressbar-label"></div>');
             
             this.jqValue = this.element.children('.ui-progressbar-value');
             this.jqLabel = this.element.children('.ui-progressbar-label');
             
-            if(this.options.value !==0) {
+            if(this.options.value !== 0) {
                 this._setValue(this.options.value, false);
             }
 
             this.enableARIA();
         },
         
-        _setValue: function(value, animate) {
-            var anim = (animate === undefined || animate) ? true : false; 
-            
+        _setValue: function(value) {            
             if(value >= 0 && value <= 100) {
                 if(value === 0) {
                     this.jqValue.hide().css('width', '0%').removeClass('ui-corner-right');
@@ -53,14 +50,7 @@
                     this.jqLabel.hide();
                 }
                 else {
-                    if(anim) {
-                        this.jqValue.show().animate({
-                            'width': value + '%' 
-                        }, this.options.effectSpeed, this.options.easing);
-                    }
-                    else {
-                        this.jqValue.show().css('width', value + '%');
-                    }
+                    this.jqValue.css('width', value + '%');
 
                     if(this.options.labelTemplate && this.options.showLabel) {
                         var formattedLabel = this.options.labelTemplate.replace(/{value}/gi, value);
@@ -106,7 +96,8 @@
         
         _destroy: function() {
             this.disableAria();
-            this.element.removeClass('ui-progressbar ui-widget ui-widget-content ui-corner-all').empty();
+            this.element.removeClass('ui-progressbar ui-progressbar-determinate ui-progressbar-indeterminate ui-widget ui-widget-content ui-corner-all')
+                    .empty();
         }
         
     });
