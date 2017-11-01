@@ -1,0 +1,172 @@
+<div>
+    <script type="text/javascript">
+        $(function () {
+            $('#ps1').puiprogressspinner();
+
+            $('#ps2').puiprogressspinner({
+                strokeWidth: '8',
+                fill: '#EEEEEE'
+            });
+
+            $('#doc').puitabview();
+
+            $(document).one('onRouteChange', function () {
+                $('#doc').puitabview('destroy');
+                $('#ps1').puiprogressspinner('destroy');
+                $('#ps2').puiprogpuiprogressspinnerressbar('destroy');
+            });
+
+            $('#doc').puitabview();
+        });
+    </script>
+
+    <div class="content-section introduction">
+        <div class="feature-intro">
+            <h1>ProgressSpinner</h1>
+            <p>ProgressSpinner is a process status indicator.</p>
+        </div>
+    </div>
+
+    <div class="content-section implementation">
+        <h3 class="first">Basic</h3>
+        <div id="ps1"></div>
+
+        <h3>Custom</h3>
+        <div id="ps2" style="width:50px; height: 50px"></div>
+    </div>
+
+    <div class="content-section source">
+        <div>
+            <div id="doc">
+                <ul>
+                    <li>
+                        <a href="#documentation">Documentation</a>
+                    </li>
+                    <li>
+                        <a href="#doc-methods">Source</a>
+                    </li>
+                </ul>
+                <div>
+                    <div id="documentation">
+                        <h3 style="margin-bottom:20px;">Getting Started</h3>
+                        <p>ProgressSpinner is applied on a div element.</p>
+
+                        <pre name="code" class="brush:html">
+&lt;div id="ps"&gt;&lt;/div&gt;
+                        </pre>
+
+                        <pre name="code" class="brush:js">
+$('#ps').puiprogressspinner();
+                        </pre>
+
+                        <h3>Colors</h3>
+                        <p>Colors of the spinner can be changed by overriding the keyframes animation</p>
+                        
+                        <pre name="code" class="brush:css">
+@keyframes ui-progress-spinner-color &#123;
+    100%,
+    0% &#123;
+        stroke: #d62d20;
+    &#125;
+    40% &#123;
+        stroke: #0057e7;
+    &#125;
+    66% &#123;
+        stroke: #008744;
+    &#125;
+    80%,
+    90% &#123;
+        stroke: #ffa700;
+    &#125;
+&#125;
+                        </pre>
+
+                        <h3 style="margin-bottom:20px;">Attributes</h3>
+                        <table class="doc-table">
+                            <thead>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Default</th>
+                                <th>Description</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>strokeWidth</td>
+                                    <td>string</td>
+                                    <td>2</td>
+                                    <td>Width of the circle stroke.</td>
+                                </tr>
+                                <tr>
+                                    <td>fill</td>
+                                    <td>string</td>
+                                    <td>null</td>
+                                    <td>Color for the background of the circle.</td>
+                                </tr>
+                                <tr>
+                                    <td>animationDuration</td>
+                                    <td>string</td>
+                                    <td>2s</td>
+                                    <td>Duration of the rotate animation.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3>Styling</h3>
+                        <div class="doc-tablewrapper">
+                            <table class="doc-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Element</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>ui-progress-spinner</td>
+                                        <td>Container element.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ui-progress-circle</td>
+                                        <td>SVG element.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ui-progress-path</td>
+                                        <td>Circle element.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="doc-source">
+                        <h3 style="margin-bottom:20px;">Javascript</h3>
+                        <pre name="code" class="brush:js">
+$(function() {
+    $('#ps1').puiprogressspinner(); 
+    
+    $('#ps2').puiprogressspinner({ 
+        strokeWidth: '8', 
+        fill: '#EEEEEE' 
+    });
+}); 
+                        </pre>
+
+                        <h3 style="margin-bottom:20px;">HTML</h3>
+                        <pre name="code" class="brush:xml">
+&lt;h3 class="first"&gt;Basic&lt;/h3&gt;
+&lt;div id="ps1"&gt;&lt;/div&gt;
+
+&lt;h3&gt;Custom&lt;/h3&gt;
+&lt;div id="ps2" style="width:50px; height: 50px"&gt;&lt;/div&gt;
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script language="javascript">
+        SyntaxHighlighter.highlight();
+    </script>
+
+</div>
