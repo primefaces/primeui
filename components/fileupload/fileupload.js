@@ -107,12 +107,23 @@
             this.cancelButton.on('click.puifileupload', function(e) {
                 $this.clear();
             });
+            
+            this.content.on('dragenter.puifileupload', function(e) {
+                $this.onDragEnter(e);
+            }).on('dragover.puifileupload', function(e) {
+                $this.onDragOver(e);
+            }).on('dragleave.puifileupload', function(e) {
+                $this.onDragLeave(e);
+            }).on('drop.puifileupload', function(e) {
+                $this.onDrop(e);
+            });
         },
         
         _unbindEvents: function() {
-            this.input.off('change.puifileupload');
+            this.input.off('change.puifileupload focus.puifileupload blur.puifileupload');
             this.uploadButton.off('click.puifileupload');
             this.cancelButton.off('click.puifileupload');
+            this.bar.off('dragenter.puifileupload dragover.puifileupload dragleave.puifileupload drop.puifileupload')
         },
         
         _onFileSelect: function(event) {
@@ -295,6 +306,34 @@
             i = Math.floor(Math.log(bytes) / Math.log(k));
             
             return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+        },
+        
+        onDragEnter: function(event) {
+            event.stopPropagation();
+            event.preventDefault();
+        },
+        
+        onDragOver: function(event) {
+            this.content.addClass('ui-fileupload-highlight');
+            event.stopPropagation();
+            event.preventDefault();
+        },
+        
+        onDragLeave: function(event) {
+            this.content.removeClass('ui-fileupload-highlight');
+        },
+        
+        onDrop: function(event) {
+            this.content.removeClass('ui-fileupload-highlight');
+            event.stopPropagation();
+            event.preventDefault();
+            
+            var files = event.dataTransfer ? event.dataTransfer.files : event.target.files;
+            var allowDrop = this.options.multiple||(files && files.length === 1);
+            
+            if(allowDrop) {
+                this._onFileSelect(event);
+            }
         },
         
         _destroy: function() {
