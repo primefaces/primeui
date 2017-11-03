@@ -32,6 +32,7 @@
             name: null,
             previewWidth: 50,
             withCredentials: false,
+            disabled: false,
             invalidFileSizeMessageSummary: '{0}: Invalid file size, ',
             invalidFileSizeMessageDetail: 'maximum upload size is {0}.'
         },
@@ -72,6 +73,10 @@
             this.filesListElement = this.content.children('.ui-fileupload-files');
             this.messagesElement = this.content.children('.ui-fileupload-messages').puimessages();
             this.progressBar = this.content.children('.ui-fileupload-progressbar').puiprogressbar();
+            
+            if(this.options.disabled) {
+                this._disable();
+            }
         },
                 
         _createInput: function() {
@@ -309,14 +314,18 @@
         },
         
         onDragEnter: function(event) {
-            event.stopPropagation();
-            event.preventDefault();
+            if(this._isEnabled()) {
+                event.stopPropagation();
+                event.preventDefault();
+            }
         },
         
         onDragOver: function(event) {
-            this.content.addClass('ui-fileupload-highlight');
-            event.stopPropagation();
-            event.preventDefault();
+            if(this._isEnabled()) {
+                this.content.addClass('ui-fileupload-highlight');
+                event.stopPropagation();
+                event.preventDefault();
+            }
         },
         
         onDragLeave: function(event) {
@@ -324,16 +333,45 @@
         },
         
         onDrop: function(event) {
-            this.content.removeClass('ui-fileupload-highlight');
-            event.stopPropagation();
-            event.preventDefault();
-            
-            var files = event.dataTransfer ? event.dataTransfer.files : event.target.files;
-            var allowDrop = this.options.multiple||(files && files.length === 1);
-            
-            if(allowDrop) {
-                this._onFileSelect(event);
+            if(this._isEnabled()) {
+                this.content.removeClass('ui-fileupload-highlight');
+                event.stopPropagation();
+                event.preventDefault();
+                
+                var files = event.dataTransfer ? event.dataTransfer.files : event.target.files;
+                var allowDrop = this.options.multiple||(files && files.length === 1);
+                
+                if(allowDrop) {
+                    this._onFileSelect(event);
+                }
             }
+        },
+        
+        disable: function() {
+            this.input.prop('disabled', true);
+            this.chooseButton.puibutton('disable');
+            this._disableButtons();
+        },
+        
+        enable: function() {
+            this.input.prop('disabled', false);
+            this.chooseButton.puibutton('enable');
+        },
+        
+        _setOption: function(key, value) {
+            if(key === 'disabled') {
+                if(value)
+                    this.disable();
+                else
+                    this.enable();
+            }
+            else {
+                $.Widget.prototype._setOption.apply(this, arguments);
+            }
+        },
+        
+        _isEnabled: function() {
+            return !this.chooseButton.prop('disabled');
         },
         
         _destroy: function() {
