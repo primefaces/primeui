@@ -37,57 +37,63 @@
         },
        
         _create: function() {
-            if(this.options.mode === 'advanced')
-                this._createAdvanced();
-            else if(this.options.mode === 'basic')
-                this._createSimple();
-                
             this.files = [];
+            
+            this._render();
             this._bindEvents();
         },
         
-        _createAdvanced: function() {
+        _render: function() {
             this.element.addClass('ui-fileupload ui-widget')
                         .append('<div class="ui-fileupload-buttonbar ui-widget-header ui-corner-top">' + 
                                     '<span data-icon="fa-plus" class="ui-fileupload-choose">' + this.options.chooseLabel +'</span>' + 
-                                    '<button data-icon="fa-upload" type="button" class="ui-fileupload-upload">' + this.options.uploadLabel + '</button>' + 
-                                    '<button data-icon="fa-close" type="button" class="ui-fileupload-cancel">' + this.options.cancelLabel + '</button>' + 
                                 '</div>' + 
                                 '<div class="ui-fileupload-content ui-widget-content ui-corner-bottom">' + 
                                     '<div class="ui-fileupload-progressbar"></div>' + 
                                     '<div class="ui-fileupload-messages"></div>' + 
                                     '<div class="ui-fileupload-files"></div>' + 
                                 '</div>');
-                                
             
+            //header
             this.bar = this.element.children('.ui-fileupload-buttonbar');
-            this.content = this.element.children('.ui-fileupload-content');
-            this.filesListElement = this.content.children('.ui-fileupload-files');
+            if(!this.options.auto) {
+                this.bar.append('<button data-icon="fa-upload" type="button" class="ui-fileupload-upload" disabled>' + this.options.uploadLabel + '</button>' + 
+                                '<button data-icon="fa-close" type="button" class="ui-fileupload-cancel" disabled>' + this.options.cancelLabel + '</button>');
+            }
+            
             this.bar.children().puibutton();
             this.chooseButton = this.bar.children('.ui-fileupload-choose');
             this.uploadButton = this.bar.children('.ui-fileupload-upload');
             this.cancelButton = this.bar.children('.ui-fileupload-cancel');
             this._createInput();
+            
+            //content
+            this.content = this.element.children('.ui-fileupload-content');
+            this.filesListElement = this.content.children('.ui-fileupload-files');
             this.messagesElement = this.content.children('.ui-fileupload-messages').puimessages();
             this.progressBar = this.content.children('.ui-fileupload-progressbar').puiprogressbar();
         },
-        
-        _createSimple: function() {
-            
-        },
-        
+                
         _createInput: function() {
             var $this = this;
             
             if(this.input) {
-                this.input.off('change.puifileupload').remove();
+                this.input.off('change.puifileupload focus.puifileupload blur.puifileupload').remove();
             }
             
-            this.input = $('<input type="file">').prependTo(this.chooseButton).attr({
+            this.input = $('<input type="file">').prependTo(this.chooseButton)
+            .attr({
                 'multiple': this.options.multiple ? 'multiple' : null,
                 'accept': this.options.accept
-            }).on('change.puifileupload', function(e) {
+            })
+            .on('change.puifileupload', function(e) {
                 $this._onFileSelect(e);
+            })
+            .on('focus.puifileupload', function(e) {
+                $this.chooseButton.addClass('ui-state-focus');
+            })
+            .on('blur.puifileupload', function(e) {
+                $this.chooseButton.removeClass('ui-state-focus');
             });
         },
         
@@ -132,8 +138,11 @@
             
             this._refreshInputElement();
             
-            if(this.options.mode === 'basic') {
-                this.fileInput.style.display = 'none';
+            if(this.files) {
+                if(this.options.auto)
+                    this.upload();
+                else
+                    this._enableButtons();
             }
         },
         
@@ -176,10 +185,10 @@
 
         _validate: function(file) {
             if(this.options.maxFileSize && file.size > this.options.maxFileSize) {
-                this.messagesElement.puimessages('show', {
+                this.messagesElement.puimessages('show', 'error', {
                     summary: this.options.invalidFileSizeMessageSummary.replace('{0}', file.name), 
                     detail: this.options.invalidFileSizeMessageDetail.replace('{0}', this._formatSize(this.options.maxFileSize))
-                })
+                });
                 return false;
             }
             
@@ -242,12 +251,30 @@
             this.filesListElement.children().fadeOut('normal', function() {$(this.remove())});
             this._trigger('onClear');
             this._refreshInputElement();
+            this._disableButtons();
+        },
+        
+        _disableButtons: function() {
+            if(!this.options.auto) {
+                this.uploadButton.puibutton('option', 'disabled', true);
+                this.cancelButton.puibutton('option', 'disabled', true);
+            }
+        },
+        
+        _enableButtons: function() {
+            if(!this.options.auto) {
+                this.uploadButton.puibutton('option', 'disabled', false);
+                this.cancelButton.puibutton('option', 'disabled', false);
+            }
         },
         
         _remove(index) {
             this._refreshInputElement();
             this.files.splice(index, 1);
             this.filesListElement.children().eq(index).fadeOut('normal', function() {$(this.remove())});
+            if(this.files.length === 0) {
+                this._disableButtons();
+            }
         },
         
         _isImage: function(file) {
