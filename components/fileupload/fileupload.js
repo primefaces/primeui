@@ -375,8 +375,9 @@
         },
         
         _destroy: function() {
-            this.element.removeClass('ui-inputtext ui-widget ui-state-default ui-state-disabled ui-corner-all');
-            this._disableMouseEffects();
+            this._unbindEvents();
+            this.element.removeClass('ui-fileupload ui-widget');
+            this.element.empty();
         }
         
     });
