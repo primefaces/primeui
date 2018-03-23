@@ -227,6 +227,10 @@
     @include hover-element();
 }
 
+.ui-dropdown .ui-dropdown-clear-icon {
+    color: lighten($inputTextColor, 40%);
+}
+
 .ui-dropdown:not(.ui-state-disabled):hover {
     @include hover-element();
 }
@@ -472,22 +476,20 @@
     }
 }
 
-.ui-menu {
-    .ui-menuitem {
-        .ui-menuitem-link {
-            color: $contentTextColor;
+.ui-menuitem {
+    .ui-menuitem-link {
+        color: $contentTextColor;
 
-            &:hover {
-                @include hover-element();
-                border-color: transparent;
-            }
+        &:hover {
+            @include hover-element();
+            border-color: transparent;
         }
+    }
 
-        &.ui-menuitem-active {
-            > .ui-menuitem-link {
-                @include hover-element();
-                border-color: transparent;
-            }
+    &.ui-menuitem-active {
+        > .ui-menuitem-link {
+            @include hover-element();
+            border-color: transparent;
         }
     }
 }
@@ -589,10 +591,6 @@
         border-right: 1px solid darken($contentBorderColor, 10%);
     }
 
-    .ui-organizationchart-line-right {
-
-    }
-
     .ui-organizationchart-line-top {
         border-top: 1px solid darken($contentBorderColor, 10%);
     }
@@ -604,6 +602,72 @@
     .ui-organizationchart-node-content .ui-node-toggler {
         color: darken($contentBorderColor, 10%);
     }
+}
+
+/* TurboTable */
+.ui-table {
+    .ui-table-thead > tr > th,
+    .ui-table-tfoot > tr > td {
+        background: $headerBgColor;
+        border: 1px solid $headerBorderColor;
+        color: $headerTextColor;
+    }
+
+    .ui-table-tbody > tr {
+        background: $contentBgColor;
+        color: $contentTextColor;
+
+        > td {
+            border: 1px solid $contentBorderColor;
+            background: inherit;
+        }
+
+        &.ui-state-highlight {
+            background-color: $stateHighlightBgColor;
+            color: $stateHighlightTextColor;
+        }
+
+        &.ui-contextmenu-selected {
+            background-color: lighten($stateHighlightBgColor, 20%);
+            color: $stateHighlightTextColor;
+        }
+    }
+
+    .ui-sortable-column {
+        &.ui-state-highlight {
+            background-color: $stateHighlightBgColor;
+            color: $stateHighlightTextColor;
+        }
+
+        &:not(.ui-state-highlight):hover {
+            background: $stateHoverBgColor;
+            color: $stateHoverTextColor;
+        }
+    }
+
+    &.ui-table-hoverable-rows {
+        .ui-table-tbody > tr:not(.ui-state-highlight):hover {
+            cursor: pointer;
+            background: $stateHoverBgColor;
+            color: $stateHoverTextColor;
+        }
+    }
+}
+
+@media ( max-width: 35em ) {
+    .ui-table-responsive .ui-table-tbody > tr {
+        border-top: 1px solid $contentBorderColor;
+        border-bottom: 1px solid $contentBorderColor;
+    }
+}
+
+/* Row Reorder */
+.ui-table .ui-table-tbody > tr.ui-table-dragpoint-top > td {
+    box-shadow: inset 0 2px 0 0 $stateHighlightBgColor;
+}
+
+.ui-table .ui-table-tbody > tr.ui-table-dragpoint-bottom > td {
+    box-shadow: inset 0 -2px 0 0 $stateHighlightBgColor;
 }
 
 /* Validation */
