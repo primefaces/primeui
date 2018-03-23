@@ -1544,7 +1544,7 @@
                 this.options.datasource.call(this, this._onLazyLoad, this._createStateMeta());
             }
             else {
-                var globalFilterValue = $(this.options.globalFilter).val();
+                var globalFilterValue = $(this.options.globalFilter).val().toLowerCase();
                 this.filteredData = [];
 
                 for(var i = 0; i < this.data.length; i++) {
