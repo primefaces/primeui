@@ -4,5 +4,6 @@ build
 .DS_STORE
 .sass-cache
 resources/themes/**/*.css
+resources/themes/**/*.map
 !resources/themes/bootstrap/theme.css
 showcase/resources/css/site.css
