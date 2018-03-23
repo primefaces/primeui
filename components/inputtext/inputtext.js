@@ -29,6 +29,7 @@
 
             //visuals
             input.addClass('ui-inputtext ui-widget ui-state-default ui-corner-all');
+            this._updateFilledState();
             
             if(input.prop('disabled')) {
                 input.addClass('ui-state-disabled');
