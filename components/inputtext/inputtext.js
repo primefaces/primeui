@@ -30,25 +30,44 @@
             //visuals
             input.addClass('ui-inputtext ui-widget ui-state-default ui-corner-all');
             
-            if(input.prop('disabled'))
+            if(input.prop('disabled')) {
                 input.addClass('ui-state-disabled');
-            else if(this.options.disabled)
+            }
+            else if(this.options.disabled) {
                 this.disable();
+            }
+            else {
+                this._bindEvents();
+            }
+        },
+
+        _bindEvents: function() {
+            var $this = this;
+            this.element.on('input.puiinputtext', function() {
+                $this._updateFilledState();
+            });
+        },
+
+        _updateFilledState: function() {
+            var value = this.element.val(); 
+            isFilled = (value && value.length)
+            
+            if(isFilled) {
+                this.element.addClass('ui-state-filled');
+            }
+            else {
+                this.element.removeClass('ui-state-filled');
+            }
         },
         
         _destroy: function() {
+            this.element.off('input.puiinputtext');
             this.element.removeClass('ui-inputtext ui-widget ui-state-default ui-state-disabled ui-corner-all');
-            this._disableMouseEffects();
-        },
-
-        _disableMouseEffects: function () {
-            this.element.off('mouseover.puiinputtext mouseout.puiinputtext focus.puiinputtext blur.puiinputtext');
         },
 
         disable: function () {
             this.element.prop('disabled', true);
             this.element.addClass('ui-state-disabled');
-            this._disableMouseEffects();
         },
 
         enable: function () {
