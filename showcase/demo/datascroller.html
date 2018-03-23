@@ -1,7 +1,7 @@
 <div>
     <script type="text/javascript">
         $(function() {
-            $('#datascroller-submenu a').on('click', function(e) {
+            $('.content-section.submenu a a').on('click', function(e) {
                 Showcase.changePageWithLink($(this).attr('href'));
                 e.preventDefault();
             });
