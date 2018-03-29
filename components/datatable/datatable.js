@@ -519,7 +519,9 @@
         _singleSort: function() {
             var $this = this;
 
-            this.data.sort(function(data1, data2) {
+            var dataToSort = this.filteredData ? this.filteredData : this.data;
+
+            dataToSort.sort(function(data1, data2) {
                 var value1 = data1[$this.options.sortField], value2 = data2[$this.options.sortField],
                 result = null;
 

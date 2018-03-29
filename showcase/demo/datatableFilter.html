@@ -9,10 +9,10 @@
             $('#tblfilter').puidatatable({
                 caption: 'Filtering',
                 columns: [
-                    {field: 'vin', headerText: 'Vin', filter: true},
-                    {field: 'brand', headerText: 'Brand', filter: true},
-                    {field: 'year', headerText: 'Year', filter: true},
-                    {field: 'color', headerText: 'Color', filter: true}
+                    {field: 'vin', headerText: 'Vin', filter: true, sortable: true},
+                    {field: 'brand', headerText: 'Brand', filter: true, sortable: true},
+                    {field: 'year', headerText: 'Year', filter: true, sortable: true},
+                    {field: 'color', headerText: 'Color', filter: true, sortable: true}
                 ],
                 globalFilter:'#globalFilter',
                 datasource: function(callback) {
