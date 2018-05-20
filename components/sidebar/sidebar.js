@@ -40,7 +40,7 @@
             this._bindEvents();
         },
         
-        _bindEvents() {
+        _bindEvents:function() {
             var $this = this;
             
             this.closeIcon.on('click.puisidebar', function(e) {
@@ -49,7 +49,7 @@
             });
         },
         
-        _unbindEvents() {
+        _unbindEvents: function() {
             this.closeIcon.off('click.puisidebar');
         },
         
@@ -68,7 +68,7 @@
             this._trigger('onHide');
         },
         
-        _enableModality() {
+        _enableModality: function() {
             if(!this.mask) {
                 var $this = this;
                 this.mask = $('<div class="ui-widget-overlay ui-sidebar-mask"></div>');
@@ -80,7 +80,7 @@
             }
         },
             
-        _disableModality() {
+        _disableModality:function() {
             if(this.mask) {
                 this.mask.off('click.puislider').remove();
                 $(document.body).removeClass('ui-overflow-hidden');

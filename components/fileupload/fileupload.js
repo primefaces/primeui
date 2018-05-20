@@ -135,7 +135,7 @@
             this.messagesElement.puimessages('clear');
             var files = event.dataTransfer ? event.dataTransfer.files : event.target.files;
             
-            for(var file of files) {
+            for(var file in files) {
                 if(!this._isFileSelected(file)) {
                     if(this._validate(file)) {
                         if(this._isImage(file)) {
@@ -191,7 +191,7 @@
         },
         
         _isFileSelected: function(file) {
-            for(var sFile of this.files){
+            for(var sFile in this.files){
                 if((sFile.name + sFile.type + sFile.size) === (file.name + file.type + file.size))
                     return true;
             }
@@ -217,17 +217,17 @@
 
         upload: function() {
             this.messagesElement.puimessages('clear');
-            let xhr = new XMLHttpRequest();
-            let formData = new FormData();
+            var xhr = new XMLHttpRequest();
+            var formData = new FormData();
             var $this = this;
 
             this._trigger('onBeforeUpload', null, {'xhr': xhr, 'formData': formData});
     		
-            for(var file of this.files) {
+            for(var file in this.files) {
                 formData.append(this.options.name, file, file.name);
             }
 
-            xhr.upload.addEventListener('progress', (event) => {
+            xhr.upload.addEventListener('progress', function(event) {
                 if(event.lengthComputable) {
                     $this.progressBar.puiprogressbar('option', 'value', Math.round((event.loaded * 100) / event.total));
                 }
@@ -235,7 +235,7 @@
                 this._trigger('onProgress', event, {progress: this.progress});
             });
 
-            xhr.onreadystatechange = () => {
+            xhr.onreadystatechange( function(){
                 if(xhr.readyState === 4) {
                    $this.progressBar.puiprogressbar('option', 'value', 0);
                     
@@ -250,7 +250,7 @@
 
                     $this.clear();
                 }
-            };
+            });
             
             xhr.open('POST', this.options.url, true);
     		
@@ -284,7 +284,7 @@
             }
         },
         
-        _remove(index) {
+        _remove: function(index) {
             this._refreshInputElement();
             this.files.splice(index, 1);
             this.filesListElement.children().eq(index).fadeOut('normal', function() {$(this.remove())});
@@ -305,7 +305,7 @@
             if(bytes === 0) {
                 return '0 B';
             }
-            let k = 1000,
+            var k = 1000,
             dm = 3,
             sizes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
             i = Math.floor(Math.log(bytes) / Math.log(k));

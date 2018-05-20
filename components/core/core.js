@@ -264,8 +264,8 @@
                     return data[field];
                 }
                 else {
-                    let fields = field.split('.');
-                    let value = data;
+                    var fields = field.split('.');
+                    var value = data;
                     for(var i = 0, len = fields.length; i < len; ++i) {
                         value = value[fields[i]];
                     }

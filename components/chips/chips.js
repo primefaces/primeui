@@ -62,13 +62,13 @@
             }
         },
 
-        _renderSelectElement() {
+        _renderSelectElement: function()  {
            
         },
         
         _renderChips: function() {
             if(this.value) {
-                for(let i = 0; i < this.value.length; i++) {
+                for(var i = 0; i < this.value.length; i++) {
                     this._renderChip(this.value[i]);
                 }
             }
