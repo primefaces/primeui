@@ -42,7 +42,8 @@
             buttons: null,
             responsive: false,
             title: null,
-            enhanced: false
+            enhanced: false,
+            toggleFreeze: null
         },
         
         _create: function() {
@@ -138,6 +139,8 @@
 
             //aria
             this._applyARIA();
+
+            this.isFreeze = false;
 
             if(this.options.visible) {
                 this.show();
@@ -360,6 +363,9 @@
              });
 
             this.closeIcon.on('click.puidialog', function(e) {
+                if($this.isFreeze) {
+                    return;
+                }
                 $this.hide();
                 $this._trigger('clickClose');
                 e.preventDefault();
@@ -377,6 +383,9 @@
 
             if(this.options.closeOnEscape) {
                 $(document).on('keydown.dialog_' + this.id, function(e) {
+                    if($this.isFreeze) {
+                        return;
+                    }
                     var keyCode = $.ui.keyCode,
                     active = parseInt($this.element.css('z-index'), 10) === PUI.zindex;
 
@@ -467,6 +476,9 @@
         },
 
         toggleMaximize: function() {
+            if(this.isFreeze) {
+                return;
+            }
             if(this.minimized) {
                 this.toggleMinimize();
             }
@@ -502,6 +514,9 @@
         },
 
         toggleMinimize: function() {
+            if(this.isFreeze) {
+                return;
+            }
             var animate = true,
             dockingZone = $(document.body).children('.ui-dialog-docking-zone');
 
@@ -625,6 +640,24 @@
             }
             else {
                 $.Widget.prototype._setOption.apply(this, arguments);
+            }
+        },
+
+        toggleFreeze: function (isFreeze) {
+            if (isFreeze) {
+                if (this.isFreeze) return;
+                this.isFreeze = true;
+                $('.ui-dialog-buttonpane button.ui-button', this.element).puibutton('disable');
+                $('.ui-dialog-titlebar-icon', this.titlebar).addClass('ui-state-disabled');
+                this.resizers.hide();
+                this._trigger('toggleFreeze', null, { isFreeze: this.isFreeze });
+            } else {
+                if (!this.isFreeze) return;
+                $('.ui-dialog-buttonpane button.ui-button', this.element).puibutton('enable');
+                $('.ui-dialog-titlebar-icon', this.titlebar).removeClass('ui-state-disabled');
+                this.resizers.show();
+                this.isFreeze = false;
+                this._trigger('toggleFreeze', null, { isFreeze: this.isFreeze });
             }
         }
     });
