@@ -101,7 +101,7 @@
 
                     if($.type(this.options.datasource) === 'function') {
                         if(this.options.lazy)
-                            this.options.datasource.call(this, this._onDataInit, {first:0, rows:this._getRows(), sortField:this.options.sortField, sortOrder:this.options.sortOrder, filters: this._createFilterMap()});
+                            this.options.datasource.call(this, this._onDataInit, {first:0, rows:this.options.paginator && this.options.paginator.rows?this.options.paginator.rows:0, sortField:this.options.sortField, sortOrder:this.options.sortOrder, filters: this._createFilterMap()});
                         else
                             this.options.datasource.call(this, this._onDataInit);
                     }
