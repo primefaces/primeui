@@ -300,7 +300,10 @@
 
         setTotalRecords: function(value) {
             this.options.totalRecords = value;
-            this.setPage(0, true);
+             if (this.options.page >= this.getPageCount())
+				this.setPage(this.getPageCount() - 1);
+			else
+				this.setPage(this.options.page, true);
         }
     });
 
