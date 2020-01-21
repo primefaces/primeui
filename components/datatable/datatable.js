@@ -635,6 +635,7 @@
                         }
                     }
                 }
+                this._trigger('render', null);
             }
             else {
                 var emptyRow = $('<tr class="ui-widget-content"></tr>').appendTo(this.tbody);
